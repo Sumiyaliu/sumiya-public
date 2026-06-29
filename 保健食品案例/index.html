@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>保健食品闭环直播 · 标杆案例集｜腾讯广告</title>
+<meta name="description" content="7 大品牌 × 6 大赛道：减肥、降血脂、降血糖、祛黄褐斑、免疫骨密度、通便。腾讯广告保健食品闭环直播标杆案例集。" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#eef2f7;font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;color:#1f2937;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1440px;margin:0 auto;padding:28px 32px 40px}
+
+  /* ====== Hero ====== */
+  .hero{position:relative;background:linear-gradient(135deg,#1d4ed8 0%,#3E79F0 50%,#8E84FD 100%);color:#fff;border-radius:18px;padding:32px 36px;box-shadow:0 16px 40px rgba(37,99,235,.22);overflow:hidden;margin-bottom:22px}
+  .hero::before{content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%}
+  .hero::after{content:"";position:absolute;bottom:-120px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(167,139,250,.25),transparent 70%);border-radius:50%}
+  .hero-inner{position:relative;z-index:2}
+  .hero .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .hero .tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12.5px;padding:5px 12px;border-radius:999px;font-weight:600;backdrop-filter:blur(6px)}
+  .hero h1{font-size:34px;font-weight:800;line-height:1.25;letter-spacing:.5px;margin-bottom:12px;text-shadow:0 2px 8px rgba(0,0,0,.1)}
+  .hero h1 .hl{color:#fde68a}
+  .hero .sub{font-size:15px;color:rgba(255,255,255,.92);line-height:1.7;max-width:900px}
+  .hero .sub b{color:#fde68a}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px}
+  .hero .meta .m-item{display:flex;align-items:baseline;gap:6px}
+  .hero .meta .m-num{font-size:24px;font-weight:800;color:#fde68a;line-height:1}
+  .hero .meta .m-lbl{font-size:12.5px;color:rgba(255,255,255,.88);font-weight:600}
+
+  /* ====== Stats Strip ====== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .stat{background:#fff;border:1px solid #e5edf7;border-radius:14px;padding:18px 18px;box-shadow:0 4px 12px rgba(30,58,138,.05);position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3E79F0,#8E84FD,#10b981)}
+  .stat .s-num{font-size:30px;font-weight:800;color:#1d4ed8;line-height:1.1}
+  .stat .s-num .u{font-size:16px;color:#6b7280;margin-left:3px;font-weight:700}
+  .stat .s-num .g{color:#059669}
+  .stat .s-lbl{font-size:12.5px;color:#4b5563;margin-top:6px;line-height:1.5;font-weight:600}
+  .stat .s-tag{display:inline-block;background:#eff6ff;color:#1d4ed8;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:5px;margin-top:6px}
+
+  /* ====== Section Title ====== */
+  .sec-h{display:flex;align-items:center;gap:12px;margin:6px 0 16px}
+  .sec-h .ico{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#3E79F0,#1d4ed8);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 10px rgba(37,99,235,.3)}
+  .sec-h h2{font-size:20px;color:#1d4ed8;font-weight:800;letter-spacing:.3px}
+  .sec-h .line{flex:1;height:1px;background:linear-gradient(90deg,#93c5fd,transparent)}
+  .sec-h .extra{font-size:12px;color:#6b7280;font-weight:600}
+
+  /* ====== Card Grid ====== */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+  .card{position:relative;background:#fff;border:1px solid #e5edf7;border-radius:14px;padding:18px 18px 16px;box-shadow:0 4px 14px rgba(30,58,138,.05);display:flex;flex-direction:column;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(30,58,138,.12)}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--c1,#3E79F0),var(--c2,#8E84FD))}
+  .card .num-badge{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--c1,#3E79F0),var(--c2,#1d4ed8));color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+  .card .category{display:inline-block;background:linear-gradient(135deg,var(--c1,#3E79F0),var(--c2,#1d4ed8));color:#fff;font-size:11.5px;font-weight:800;padding:3px 10px;border-radius:5px;margin-bottom:10px;letter-spacing:.3px}
+  .card .brand{font-size:11.5px;color:#6b7280;font-weight:700;margin-bottom:5px;letter-spacing:.3px}
+  .card .title{font-size:17px;color:#1f2937;font-weight:800;line-height:1.4;margin-bottom:10px;min-height:46px}
+  .card .title .hl{color:var(--c2,#1d4ed8)}
+  .card .desc{font-size:12.5px;color:#4b5563;line-height:1.65;background:#f8fafc;border-left:3px solid var(--c1,#3E79F0);padding:8px 11px;border-radius:6px;margin-bottom:12px;flex:1}
+  .card .desc b{color:#dc2626}
+  .card .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+  .card .kpi{text-align:center;background:linear-gradient(135deg,#f8fbff,#fff);border:1px solid #e5edf7;border-radius:8px;padding:8px 5px}
+  .card .kpi .k-v{font-size:15px;font-weight:800;color:var(--c2,#1d4ed8);line-height:1.1}
+  .card .kpi .k-v .u{font-size:10px;color:#6b7280;margin-left:1px;font-weight:600}
+  .card .kpi .k-v.green{color:#059669}
+  .card .kpi .k-v.orange{color:#ea580c}
+  .card .kpi .k-l{font-size:9.5px;color:#6b7280;margin-top:3px;line-height:1.3}
+  .card .prod{font-size:11.5px;color:#1e293b;background:linear-gradient(135deg,#fff7ed,#fef3c7);border:1px solid #fde68a;border-radius:7px;padding:7px 10px;margin-bottom:12px;line-height:1.5}
+  .card .prod b{color:#92400e}
+  .card .cta{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,var(--c1,#3E79F0),var(--c2,#1d4ed8));color:#fff;border-radius:9px;padding:10px 14px;font-size:13px;font-weight:800;box-shadow:0 6px 14px rgba(37,99,235,.22);transition:transform .2s ease}
+  .card .cta:hover{transform:translateX(2px)}
+  .card .cta .arr{font-size:16px;font-weight:900;transition:transform .2s ease}
+  .card .cta:hover .arr{transform:translateX(3px)}
+
+  /* card color variants */
+  .c-orange{--c1:#FF6D5E;--c2:#c2410c}
+  .c-blue{--c1:#3E79F0;--c2:#1e3a8a}
+  .c-purple{--c1:#8E84FD;--c2:#5b21b6}
+  .c-green{--c1:#76C84D;--c2:#15803d}
+  .c-cyan{--c1:#11CFCF;--c2:#0e7490}
+  .c-amber{--c1:#FFAE19;--c2:#b45309}
+  .c-indigo{--c1:#1d4ed8;--c2:#3E79F0}
+
+  /* ====== Guideline Card (special) ====== */
+  .guide-card{grid-column:span 3;background:linear-gradient(135deg,#1d4ed8 0%,#3E79F0 50%,#8E84FD 100%);color:#fff;border:0;position:relative;overflow:hidden}
+  .guide-card::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%}
+  .guide-card .gc-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;align-items:center}
+  .guide-card .gc-left .category{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);color:#fff}
+  .guide-card .gc-left h3{font-size:24px;font-weight:800;line-height:1.35;margin:6px 0 10px}
+  .guide-card .gc-left h3 .hl{color:#fde68a}
+  .guide-card .gc-left p{font-size:13.5px;color:rgba(255,255,255,.92);line-height:1.7}
+  .guide-card .gc-mod{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:12px 14px}
+  .guide-card .gc-mod .gm-h{font-size:12px;font-weight:800;color:#fde68a;margin-bottom:8px;letter-spacing:.3px}
+  .guide-card .gc-mod ul{list-style:none;padding:0;margin:0}
+  .guide-card .gc-mod li{font-size:12px;color:rgba(255,255,255,.95);padding:4px 0;line-height:1.55;display:flex;align-items:flex-start;gap:6px}
+  .guide-card .gc-mod li::before{content:"·";color:#fde68a;font-weight:900;flex-shrink:0}
+  .guide-card .gc-cta{background:#fff;color:#1d4ed8;border-radius:9px;padding:11px 16px;font-size:13.5px;font-weight:800;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 18px rgba(0,0,0,.18);transition:transform .2s ease}
+  .guide-card .gc-cta:hover{transform:translateX(3px)}
+
+  /* ====== Footer ====== */
+  .footer{margin-top:30px;background:#fff;border:1px solid #e5edf7;border-radius:14px;padding:18px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+  .footer .f-l{font-size:12.5px;color:#6b7280;line-height:1.6}
+  .footer .f-l b{color:#1d4ed8}
+  .footer .f-r{display:flex;gap:10px;flex-wrap:wrap}
+  .footer .f-chip{background:#eff6ff;color:#1d4ed8;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid #bfdbfe}
+
+  @media (max-width:1100px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .guide-card{grid-column:span 2}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:720px){
+    .grid{grid-template-columns:1fr}
+    .guide-card{grid-column:span 1}
+    .guide-card .gc-inner{grid-template-columns:1fr}
+    .hero h1{font-size:24px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="tags">
+        <span class="tag">腾讯广告 · 保健食品行业</span>
+        <span class="tag">闭环直播 · 小店通链路</span>
+        <span class="tag">标杆案例集</span>
+      </div>
+      <h1>保健食品闭环直播 · <span class="hl">7 大品牌 × 6 大赛道</span> 标杆案例集</h1>
+      <p class="sub">从 <b>减肥 / 降血脂 / 降血糖 / 祛黄褐斑 / 免疫骨密度 / 通便</b> 六大功能赛道，拆解 TOP 品牌的<b>商品力 · 内容力 · 经营力 · 投放力</b>四力模型。每张案例纸含核心效率指标（<b>CTR / CVR / ROI / 客单价</b>）、基建规模与可复用方法论，配套《闭环基建提升指引》一站式学习。</p>
+      <div class="meta">
+        <div class="m-item"><span class="m-num">7</span><span class="m-lbl">品牌案例</span></div>
+        <div class="m-item"><span class="m-num">6</span><span class="m-lbl">功能赛道</span></div>
+        <div class="m-item"><span class="m-num">30</span><span class="m-lbl">天数据周期</span></div>
+        <div class="m-item"><span class="m-num">2.0</span><span class="m-lbl">方法论体系</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat">
+      <div class="s-num">5~10<span class="u">万/日</span></div>
+      <div class="s-lbl">头部案例日耗规模（葵花药业）</div>
+      <span class="s-tag">规模化标杆</span>
+    </div>
+    <div class="stat">
+      <div class="s-num">1.3~1.4</div>
+      <div class="s-lbl">全场最高 ROI（美媛春）</div>
+      <span class="s-tag">转化之王</span>
+    </div>
+    <div class="stat">
+      <div class="s-num">13~14<span class="u">%</span></div>
+      <div class="s-lbl">全场最高 CVR（万秘堂）</div>
+      <span class="s-tag">优于大盘 111%</span>
+    </div>
+    <div class="stat">
+      <div class="s-num">3.8<span class="u">x</span></div>
+      <div class="s-lbl">峰值 GMV 膨胀率（黄金搭档）</div>
+      <span class="s-tag">全场最高</span>
+    </div>
+  </section>
+
+  <!-- 案例标题 -->
+  <div class="sec-h">
+    <div class="ico">①</div>
+    <h2>六大功能赛道 · 标杆品牌案例</h2>
+    <div class="line"></div>
+    <span class="extra">点击进入完整案例纸</span>
+  </div>
+
+  <!-- 案例卡片 -->
+  <section class="grid">
+
+    <!-- 案例1: 葵花药业 - 减肥 -->
+    <a class="card c-orange" href="案例1_葵花药业_减肥.html">
+      <div class="num-badge">1</div>
+      <span class="category">减肥赛道</span>
+      <div class="brand">葵花药业品牌自营店</div>
+      <div class="title">减肥赛道<span class="hl">规模化标杆</span>，日耗 5~10万/日</div>
+      <div class="desc">减肥功能赛道<b>规模化标杆直播间</b>，NEW 入局即跑量。以中老年减脂人群为核心，左旋肉碱胶囊单品打爆，闭环投放效率与基建规模双优。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-v">5~10<span class="u">万</span></div><div class="k-l">日耗规模</div></div>
+        <div class="kpi"><div class="k-v">8~9<span class="u">%</span></div><div class="k-l">CVR 优秀</div></div>
+        <div class="kpi"><div class="k-v">3~4<span class="u">%</span></div><div class="k-l">CTR 优于大盘</div></div>
+      </div>
+      <div class="prod"><b>主推品：</b>左旋肉碱胶囊 · 中老年减脂</div>
+      <div class="cta"><span>查看完整案例</span><span class="arr">→</span></div>
+    </a>
+
+    <!-- 案例2: 汤臣倍健 - 降血脂 -->
+    <a class="card c-blue" href="案例2_汤臣倍健_降血脂.html">
+      <div class="num-badge">2</div>
+      <span class="category">辅助降血脂</span>
+      <div class="brand">汤臣倍健官方甄选</div>
+      <div class="title">高客单<span class="hl">精准转化</span>，客单价 ¥400~450</div>
+      <div class="desc">辅助降血脂赛道<b>高客单价精准转化案例</b>，主打长辈送礼场景，高纯度深海鱼油单品，以品牌力 + 短直双开智投实现 <b>ROI 品类最高</b>。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-v">1.2~1.3</div><div class="k-l">ROI 品类最高</div></div>
+        <div class="kpi"><div class="k-v">¥400~450</div><div class="k-l">客单价</div></div>
+        <div class="kpi"><div class="k-v green">+76<span class="u">%</span></div><div class="k-l">日耗环比</div></div>
+      </div>
+      <div class="prod"><b>主推品：</b>高纯度深海鱼油 · 长辈送礼</div>
+      <div class="cta"><span>查看完整案例</span><span class="arr">→</span></div>
+    </a>
+
+    <!-- 案例3: 资膳堂 - 降血糖 -->
+    <a class="card c-purple" href="案例3_资膳堂_降血糖.html">
+      <div class="num-badge">3</div>
+      <span class="category">辅助降血糖</span>
+      <div class="brand">资膳堂糖管理</div>
+      <div class="title">新赛道<span class="hl">快速起量</span>，618 冲量 +131%</div>
+      <div class="desc">辅助降血糖赛道<b>新入局快速起量案例</b>，西洋参葡萄籽铬酵母片调节血糖单品，凭借 <b>CTR 强吸引力</b>与多版位拓展，618 大促冲量 +131%。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-v">4~5<span class="u">%</span></div><div class="k-l">CTR 优于大盘 41%</div></div>
+        <div class="kpi"><div class="k-v green">+131<span class="u">%</span></div><div class="k-l">618 冲量</div></div>
+        <div class="kpi"><div class="k-v">¥40~50</div><div class="k-l">客单价</div></div>
+      </div>
+      <div class="prod"><b>主推品：</b>西洋参葡萄籽铬酵母片 · 调节血糖</div>
+      <div class="cta"><span>查看完整案例</span><span class="arr">→</span></div>
+    </a>
+
+    <!-- 案例4: 美媛春 - 祛黄褐斑 -->
+    <a class="card c-green" href="案例4_美媛春_祛黄褐斑.html">
+      <div class="num-badge">4</div>
+      <span class="category">祛黄褐斑+贫血</span>
+      <div class="brand">美媛春保健品官方直播间</div>
+      <div class="title">高 ROI <span class="hl">精准获客</span>，进播率 9.2%</div>
+      <div class="desc">祛黄褐斑+贫血赛道<b>高 ROI 精准获客案例</b>，非遗认证去黄褐斑口服液，以 <b>ROI 全场最高</b>、进播率 9.2% 高粘性，320 账户并行实现行业领先基建规模。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-v">1.3~1.4</div><div class="k-l">ROI 全场最高</div></div>
+        <div class="kpi"><div class="k-v">9.2<span class="u">%</span></div><div class="k-l">进播率</div></div>
+        <div class="kpi"><div class="k-v">320</div><div class="k-l">账户并行</div></div>
+      </div>
+      <div class="prod"><b>主推品：</b>非遗认证去黄褐斑口服液</div>
+      <div class="cta"><span>查看完整案例</span><span class="arr">→</span></div>
+    </a>
+
+    <!-- 案例5: 黄金搭档 - 免疫骨密度 -->
+    <a class="card c-cyan" href="案例5_黄金搭档_免疫骨密度.html">
+      <div class="num-badge">5</div>
+      <span class="category">增强免疫力+骨密度</span>
+      <div class="brand">黄金搭档官方直播间</div>
+      <div class="title"><span class="hl">品牌力驱动</span>，素材生态最健康</div>
+      <div class="desc">增强免疫力+骨密度赛道<b>品牌力驱动案例</b>，洋参牦牛骨粉中老年补品，创意重复度仅 <b>10% 全场最低</b>，素材生态极健康，峰值冲量 <b>GMV 膨胀率 3.8 倍</b>全场最高。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-v">10<span class="u">%</span></div><div class="k-l">创意重复度全场最低</div></div>
+        <div class="kpi"><div class="k-v green">3.8<span class="u">x</span></div><div class="k-l">GMV 膨胀率</div></div>
+        <div class="kpi"><div class="k-v">48.2<span class="u">%</span></div><div class="k-l">商品点击率</div></div>
+      </div>
+      <div class="prod"><b>主推品：</b>洋参牦牛骨粉 · 中老年补品</div>
+      <div class="cta"><span>查看完整案例</span><span class="arr">→</span></div>
+    </a>
+
+    <!-- 案例6: 万秘堂 - 通便 -->
+    <a class="card c-amber" href="案例6_万秘堂_通便.html">
+      <div class="num-badge">6</div>
+      <span class="category">通便功能</span>
+      <div class="brand">万秘堂健康研究所</div>
+      <div class="title"><span class="hl">高转化率</span>直播带货，下单率 13.4%</div>
+      <div class="desc">通便功能赛道<b>高转化率直播带货案例</b>，蓝帽资质黄芪麦冬膏，主打肠道养护场景。<b>CVR 全场最高</b>，下单率 13.4% 远超大盘，直播转化能力突出。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-v">13~14<span class="u">%</span></div><div class="k-l">CVR 全场最高</div></div>
+        <div class="kpi"><div class="k-v green">13.4<span class="u">%</span></div><div class="k-l">下单率</div></div>
+        <div class="kpi"><div class="k-v">¥70~90</div><div class="k-l">客单价</div></div>
+      </div>
+      <div class="prod"><b>主推品：</b>蓝帽资质黄芪麦冬膏 · 肠道养护</div>
+      <div class="cta"><span>查看完整案例</span><span class="arr">→</span></div>
+    </a>
+
+  </section>
+
+  <!-- 基建指引标题 -->
+  <div class="sec-h">
+    <div class="ico">②</div>
+    <h2>方法论体系 · 闭环基建提升指引</h2>
+    <div class="line"></div>
+    <span class="extra">配套学习资料</span>
+  </div>
+
+  <!-- 基建指引卡片 -->
+  <section class="grid">
+    <a class="card guide-card c-indigo" href="案例7_保健食品闭环基建提升指引.html">
+      <div class="gc-inner">
+        <div class="gc-left">
+          <span class="category">方法论 · 基建提升</span>
+          <h3>保健食品闭环（直播小店）<br/><span class="hl">基建提升指引</span></h3>
+          <p>从 0 到 1 搭建保健食品闭环直播间的全链路基建方法论，覆盖核心政策、人群蓄水、智投能力、创意生态、基建诊断五大模块，搭配 7 大标杆案例对照参考。</p>
+          <div style="margin-top:16px"><span class="gc-cta">查看完整方法论 <span class="arr">→</span></span></div>
+        </div>
+        <div class="gc-mod">
+          <div class="gm-h">▍核心模块 1+2+3</div>
+          <ul>
+            <li>核心政策公式：<b>曝光 × 点击 × 进入</b></li>
+            <li>人群蓄水 & 基建诊断</li>
+            <li>智投能力四大杠杆</li>
+            <li>创意重复度 & 唯一性</li>
+          </ul>
+        </div>
+        <div class="gc-mod">
+          <div class="gm-h">▍案例对标</div>
+          <ul>
+            <li>规模化标杆：葵花药业</li>
+            <li>高客单转化：汤臣倍健</li>
+            <li>新赛道起量：资膳堂</li>
+            <li>高 ROI 精准：美媛春 / 黄金搭档 / 万秘堂</li>
+          </ul>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="f-l">
+      <b>保健食品闭环直播 · 标杆案例集</b><br/>
+      腾讯广告 · 行业策略团队  ｜  数据周期：近 30 天  ｜  案例适用于保健食品行业直播带货场景
+    </div>
+    <div class="f-r">
+      <span class="f-chip">减肥赛道</span>
+      <span class="f-chip">辅助降血脂</span>
+      <span class="f-chip">辅助降血糖</span>
+      <span class="f-chip">祛黄褐斑</span>
+      <span class="f-chip">免疫骨密度</span>
+      <span class="f-chip">通便功能</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
