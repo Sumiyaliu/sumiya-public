@@ -1,0 +1,12 @@
+# 临时文件 / 截图 / 脚本
+_layout_v2.png
+_shoot.js
+--viewport-width
+*.log
+
+# 本地分析中间产物
+_analysis_result.json
+_analyze.py
+
+# 原始数据 CSV（体积大，按需保留）
+*.csv
