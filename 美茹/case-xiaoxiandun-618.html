@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>小仙炖618直播专场案例纸</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #eef2f7; font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif; color: #1f2937; }
+  .page {
+    width: 1440px;
+    min-height: 900px;
+    margin: 24px auto;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 40%);
+    padding: 28px 32px 32px;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(59,130,246,0.18), transparent 70%);
+    border-radius: 50%;
+  }
+  .page::after {
+    content: "";
+    position: absolute;
+    bottom: -140px; left: -100px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* 标题 */
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 18px 26px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    z-index: 2;
+    margin-bottom: 12px;
+  }
+  .header .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+  }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    flex: 1;
+    line-height: 1.3;
+  }
+  .header h1 .hl {
+    color: #fde68a;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  }
+
+  /* 横版主网格：左右两列等高 */
+  .main-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1.18fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* 区块通用 */
+  .block {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 12px;
+    padding: 13px 15px;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .sec-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .sec-title .num {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+    font-size: 14px;
+  }
+  .sec-title h2 {
+    font-size: 17px;
+    color: #1e3a8a;
+    font-weight: 800;
+  }
+  .sec-title .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #93c5fd, transparent);
+  }
+
+  /* Section 1 */
+  .intro-text {
+    background: #f1f5ff;
+    border-left: 4px solid #2563eb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #1e3a8a;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .apply-text {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 6px 10px;
+    border-radius: 8px;
+    margin-bottom: 7px;
+    color: #78350f;
+    font-size: 12.5px;
+    line-height: 1.6;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .apply-text .apply-tag {
+    background: #f59e0b;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .apply-text b { color: #b45309; }
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .compare .col {
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #e5edf7;
+  }
+  .compare .before { background: #f7f8fa; border-color: #e5e7eb; }
+  .compare .after {
+    background: linear-gradient(135deg, #ecfeff, #eff6ff);
+    border-color: #bae6fd;
+  }
+  .compare .col .tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .compare .before .tag { background: #e5e7eb; color: #4b5563; }
+  .compare .after .tag { background: #2563eb; color: #fff; }
+  .compare .col p { font-size: 12.5px; line-height: 1.65; color: #374151; }
+  .compare .arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: #2563eb; font-size: 22px; font-weight: 800;
+  }
+  .alert {
+    margin-top: 7px;
+    background: #fffbeb;
+    border: 1px dashed #fbbf24;
+    color: #92400e;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+
+  /* Section 2 - 案例 */
+  .case-bg-row {
+    display: grid;
+    grid-template-columns: 92px 92px 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: stretch;
+  }
+  .case-bg {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 160px;
+  }
+  .case-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .case-side {
+    display: flex; flex-direction: column; gap: 8px;
+    padding-left: 6px;
+    justify-content: center;
+  }
+  .pain-list {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #991b1b;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .pain-list b { color: #7f1d1d; }
+  .pain-list .pain-title {
+    font-weight: 800; color: #7f1d1d; margin-bottom: 4px;
+    display: block;
+  }
+  .pain-list .pain-item { display: block; margin: 2px 0; }
+
+  .highlight-title {
+    font-size: 13.5px; font-weight: 800; color: #1e3a8a;
+    display: flex; align-items: center; gap: 8px;
+    margin: 6px 0 6px;
+  }
+  .highlight-title::before {
+    content: ""; width: 4px; height: 14px;
+    background: linear-gradient(180deg, #2563eb, #06b6d4);
+    border-radius: 3px;
+  }
+
+  .chart-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    padding: 8px 12px 4px;
+    margin-bottom: 8px;
+  }
+  .chart-wrap {
+    height: 140px;
+    position: relative;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .kpi {
+    background: linear-gradient(135deg, #ffffff, #f0f9ff);
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981);
+  }
+  .kpi .num {
+    font-size: 20px;
+    font-weight: 800;
+    color: #2563eb;
+    line-height: 1.2;
+  }
+  .kpi .num .unit { font-size: 12px; color: inherit; margin-left: 2px; }
+  .kpi .num.red { color: #dc2626; }
+  .kpi .num.green { color: #059669; }
+  .kpi .num.orange { color: #ea580c; }
+  .kpi .num.purple { color: #7c3aed; }
+  .kpi .num.cyan { color: #0891b2; }
+  .kpi .lbl {
+    font-size: 11.5px;
+    color: #4b5563;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Section 3 - 搭建 */
+  .step-block { margin-bottom: 9px; display: flex; flex-direction: column; }
+  .step-block:last-child { margin-bottom: 0; }
+  .step-head {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .step-head .step-tag {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .step-head .step-tag.blue {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+  }
+  .step-head h3 {
+    font-size: 14px;
+    color: #1f2937;
+    font-weight: 700;
+  }
+  .step-head .focus {
+    background: #fee2e2; color: #b91c1c;
+    font-size: 11.5px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px;
+  }
+
+  .substeps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .substep {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: stretch;
+  }
+  .substep .ttl {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    color: #1e3a8a;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-right: 1px solid #e5edf7;
+    line-height: 1.5;
+    display: flex; align-items: center;
+  }
+  .substep .ttl b { color: #2563eb; margin-right: 4px; font-size: 14px; }
+  .substep .img-box {
+    background: #f9fafb;
+    padding: 6px 8px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 80px;
+    max-height: 110px;
+    overflow: hidden;
+  }
+  .substep .img-box img {
+    width: 100%;
+    max-height: 95px;
+    object-fit: contain;
+    display: block;
+  }
+  /* 专门用于放截图的大图盒子 */
+  .substep .img-box.tall {
+    max-height: 160px;
+    min-height: 120px;
+  }
+  .substep .img-box.tall img {
+    max-height: 145px;
+  }
+
+  .step2-info {
+    margin-bottom: 8px;
+  }
+  .step2-info ul { list-style: none; padding: 0; }
+  .step2-info li {
+    font-size: 12.5px;
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+    color: #374151;
+  }
+  .step2-info li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 0;
+    color: #2563eb; font-weight: 800;
+  }
+  .step2-info li b { color: #1e3a8a; }
+  .step2-info .note {
+    margin-top: 6px;
+    background: #f0fdf4;
+    border-left: 3px solid #10b981;
+    padding: 6px 10px;
+    color: #065f46;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .step2-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .step2-img-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .step2-img-card .ttl {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    color: #1e3a8a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-bottom: 1px solid #e5edf7;
+    text-align: center;
+  }
+  .step2-img-card .ttl b { color: #2563eb; }
+  .step2-img-card .img-box {
+    background: #f9fafb;
+    padding: 6px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100px;
+    max-height: 140px;
+    flex: 1;
+  }
+  .step2-img-card .img-box img {
+    width: 100%;
+    max-height: 128px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* 占位图样式 */
+  .img-placeholder {
+    background: linear-gradient(135deg, #f1f5ff, #ecfeff);
+    border: 2px dashed #93c5fd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 600;
+    min-height: 90px;
+    text-align: center;
+    padding: 10px;
+  }
+  .img-placeholder .icon {
+    font-size: 22px;
+    opacity: 0.6;
+  }
+
+  /* Section 4 - 海量扶持 */
+  .support-block {
+    background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+    border: 1px solid #fcd34d;
+  }
+  .support-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+  }
+  .support-list {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .support-item {
+    background: rgba(255,255,255,0.8);
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #78350f;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .support-item .lbl {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 78px;
+    text-align: center;
+  }
+  .support-item b { color: #b45309; }
+
+  .qrcode-box {
+    background: #fff;
+    border: 2px solid #fcd34d;
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(245,158,11,0.15);
+  }
+  .qrcode-box .qr-placeholder {
+    width: 96px; height: 96px;
+    background: linear-gradient(135deg, #f1f5ff, #ecfeff);
+    border: 2px dashed #93c5fd;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 4px;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px;
+  }
+  .qrcode-box .qr-tip {
+    font-size: 11px;
+    color: #78350f;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .qrcode-box .qr-tip span { color: #dc2626; }
+
+  /* 对比表 */
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+  .cmp-table th {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #fff;
+    padding: 6px 8px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .cmp-table th:first-child { border-radius: 8px 0 0 0; }
+  .cmp-table th:last-child { border-radius: 0 8px 0 0; }
+  .cmp-table td {
+    padding: 5px 8px;
+    text-align: center;
+    border-bottom: 1px solid #e5edf7;
+    color: #374151;
+  }
+  .cmp-table tr:nth-child(even) td { background: #f8faff; }
+  .cmp-table td.metric { text-align: left; color: #1e3a8a; font-weight: 600; }
+  .cmp-table td.up { color: #dc2626; font-weight: 700; }
+  .cmp-table td.good { color: #059669; font-weight: 700; }
+
+  /* 货品卡片 */
+  .goods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .goods-card {
+    background: linear-gradient(135deg, #f8faff, #f1f5ff);
+    border: 1px solid #c7d9f8;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .goods-card .gc-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .goods-card .gc-title .gc-tag {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+  .goods-card ul { list-style: none; padding: 0; }
+  .goods-card li {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #374151;
+    padding-left: 14px;
+    position: relative;
+  }
+  .goods-card li::before { content: "·"; position: absolute; left: 2px; color: #2563eb; font-weight: 800; font-size: 14px; }
+  .goods-card li b { color: #1e3a8a; }
+  .goods-card li .hl-yellow { background: #fde68a; padding: 0 3px; border-radius: 3px; color: #78350f; font-weight: 700; }
+
+  .footer {
+    margin-top: 14px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 标题 -->
+  <div class="header">
+    <div class="badge">行业案例 · 传统滋补</div>
+    <h1>小仙炖618直播专场：双直播间+预约组合策略，618当天ROI突破 <span class="hl">2.50</span>，较520专场提升 <span class="hl">+28%</span></h1>
+    <div class="badge">传统滋补行业</div>
+  </div>
+
+  <!-- 开篇KPI带 -->
+  <div style="display:grid; grid-template-columns:repeat(8,1fr); gap:8px; margin-bottom:12px; position:relative; z-index:2;">
+    <div class="kpi">
+      <div class="num red">2.14</div>
+      <div class="lbl">整体ROI<br/><span style="color:#059669;font-weight:700;">高于大盘15%</span></div>
+    </div>
+    <div class="kpi">
+      <div class="num red">2.50</div>
+      <div class="lbl">618当天ROI<br/>全周期最高</div>
+    </div>
+    <div class="kpi">
+      <div class="num cyan">10.7<span class="unit">万</span></div>
+      <div class="lbl">618单日消耗<br/>日均3.5倍爆发</div>
+    </div>
+    <div class="kpi">
+      <div class="num orange">83.2<span class="unit">%</span></div>
+      <div class="lbl">视频号消耗占比<br/>ROI 2.23</div>
+    </div>
+    <div class="kpi">
+      <div class="num">2.71</div>
+      <div class="lbl">滋补号ROI<br/>垂直号精准优势</div>
+    </div>
+    <div class="kpi">
+      <div class="num green">2.54</div>
+      <div class="lbl">全域通ROI<br/>智投效率最优</div>
+    </div>
+    <div class="kpi">
+      <div class="num purple">2.84</div>
+      <div class="lbl">55-59岁女性ROI<br/>最高效人群</div>
+    </div>
+    <div class="kpi">
+      <div class="num cyan">4.74<span class="unit">%</span></div>
+      <div class="lbl">公众号CVR<br/>全版位最高</div>
+    </div>
+  </div>
+
+  <!-- 横版主网格 -->
+  <div class="main-grid">
+
+    <!-- 左列 -->
+    <div class="left-col">
+
+      <!-- Section 1 · 策略介绍 -->
+      <section class="block">
+        <div class="sec-title">
+          <div class="num">1</div>
+          <h2>小仙炖618核心策略</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="intro-text">
+          小仙炖品牌对调性有管控，本次618通过<b>双直播间差异化运营</b>+<b>短视频预约×福袋预约</b>组合提前蓄水，实现618当天全周期最高ROI。
+        </div>
+        <div class="apply-text">
+          <span class="apply-tag">客户亮点</span>双直播间同时运营（主号+滋补号），<b>多账户协同</b>，预约流量提前锁定大促势能。
+        </div>
+        <div class="apply-text" style="background:#f0fdf4; border-color:#10b981;">
+          <span class="apply-tag" style="background:#10b981;">赛马机制</span><b style="color:#065f46;">5大代理商同场竞投</b>，能力互补（素材、定向、出价各有所长），多账户竞争倒逼持续优化，<b style="color:#065f46;">整体投放效率显著提升</b>。
+        </div>
+
+        <div class="compare">
+          <div class="col before">
+            <span class="tag">520专场</span>
+            <p>工厂走播+固定直播间组合，<b>ROI 1.96</b>，TID 248个，重复度44.2%。</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="col after">
+            <span class="tag">618专场</span>
+            <p><b>总裁进直播间</b>+双直播间+预约组合，<b style="color:#dc2626;">ROI 2.50（+28%）</b>，消耗规模3.5倍爆发。</p>
+          </div>
+        </div>
+
+        <div class="alert">⚠ 预热期CPM低至110元（较日常-47%），预算应前置至预热期，抢占低成本流量红利。</div>
+      </section>
+
+      <!-- Section 2 · 行业案例 -->
+      <section class="block" style="flex:1;">
+        <div class="sec-title">
+          <div class="num">2</div>
+          <h2>小仙炖618直播投放案例</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="case-bg-row">
+          <div class="case-bg">
+            <img src="images/img1.jpg" alt="溯源直播间" />
+          </div>
+          <div class="case-bg">
+            <img src="images/img2.png" alt="溯源直播间1" />
+          </div>
+          <div class="case-side">
+            <div style="font-size:12.5px;color:#374151;line-height:1.7;">
+              <b style="color:#1e3a8a;">背景：</b>小仙炖鲜炖燕窝高端品牌，<b style="color:#dc2626;">客单价约2,901元</b>，品牌调性管控严，两个直播间（主号+滋补号）差异化运营。
+            </div>
+            <div class="pain-list">
+              <span class="pain-title">挑战：</span>
+              <span class="pain-item">（1）高客单价，<b>CVR天然低于大盘79%</b>，转化链路长</span>
+              <span class="pain-item">（2）竞价CPM高于大盘<b>97%</b>，618竞争白热化</span>
+              <span class="pain-item">（3）广告进播率0.65%处于<b>行业下限</b>，引流效率待提升</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-title">亮点①：618当天消耗爆发，ROI创全周期新高</div>
+        <div class="chart-card">
+          <div class="chart-wrap">
+            <canvas id="chart"></canvas>
+          </div>
+        </div>
+
+        <div class="highlight-title">亮点②：520 vs 618 直播间数据全面提升，公域流量撬动更高</div>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>指标</th>
+              <th>520专场（5/20）</th>
+              <th>618专场（6/18）</th>
+              <th>变化</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="metric">累计GMV</td>
+              <td>¥188,510</td>
+              <td>¥224,960</td>
+              <td class="up">+19.3%</td>
+            </tr>
+            <tr>
+              <td class="metric">累计看播人数</td>
+              <td>6,084</td>
+              <td>7,695</td>
+              <td class="up">+26.5%</td>
+            </tr>
+            <tr>
+              <td class="metric">公域流量进房</td>
+              <td>2,505人 / 28.83%</td>
+              <td>2,200人 / 22.25%</td>
+              <td>占比略降</td>
+            </tr>
+            <tr>
+              <td class="metric">公域成交金额</td>
+              <td>¥68,124 / 36.1%</td>
+              <td>¥121,615 / 54.1%</td>
+              <td class="up">成交占比+18pp</td>
+            </tr>
+            <tr>
+              <td class="metric">公域千次观看成交</td>
+              <td>¥27,195</td>
+              <td>¥55,280</td>
+              <td class="up">+103%</td>
+            </tr>
+            <tr>
+              <td class="metric">点击成交转化率</td>
+              <td>7.14%</td>
+              <td>6.94%</td>
+              <td>基本持平</td>
+            </tr>
+            <tr>
+              <td class="metric">预约开播通知</td>
+              <td>173人 / ¥0成交</td>
+              <td>212人 / ¥6,813</td>
+              <td class="good">预约流量激活</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert" style="margin-top:0;">✓ 618公域流量虽进房人数略降，但<b>公域成交占比从36%跃升至54%</b>，单位流量价值翻倍——预约蓄水+总裁背书显著提升公域转化质量。</div>
+      </section>
+    </div>
+
+    <!-- 右列 -->
+    <div class="right-col">
+
+      <!-- Section 3 · 直播策略搭建 -->
+      <section class="block">
+        <div class="sec-title">
+          <div class="num">3</div>
+          <h2>618双直播间+预约策略如何做？</h2>
+          <div class="line"></div>
+        </div>
+
+        <!-- 策略一：预约蓄水 + 豆子猛投 -->
+        <div class="step-block">
+          <div class="step-head">
+            <span class="step-tag">策略一</span>
+            <h3>预约蓄水 + 进播豆子猛投拉热度</h3>
+            <span class="focus">流量闭环</span>
+          </div>
+          <div class="step2-info">
+            <ul>
+              <li><b>开播前短视频预约：</b>挂载直播预约组件，提前触达目标用户，开播自动推送提醒，降低冷启动风险</li>
+              <li><b>直播全程不定时福袋：</b>无门槛参与触发二次预约提醒，持续将场外流量拉回直播间，扩大预约基数</li>
+              <li><b>进播后1小时豆子猛投：</b>开播即加热，快速拉升在线人气，<b style="color:#dc2626;">人均在线峰值达1,700人+</b>，为广告投放创造高热场直播间承接条件</li>
+            </ul>
+            <div class="note">✓ 618预约人数860人，预约–观看转化率<b>23.37%</b>，带来¥15,035成交；豆子猛投叠加预约提醒，开播1小时在线人数峰值破1,700人</div>
+          </div>
+          <!-- 总裁进直播间图 + 预约数据卡 -->
+          <div class="step2-imgs">
+            <div class="step2-img-card">
+              <div class="ttl"><b>总裁进直播间</b>品牌背书</div>
+              <div class="img-box"><img src="images/img3.jpg" alt="618当天总裁进直播间" /></div>
+            </div>
+            <div class="step2-img-card">
+              <div class="ttl"><b>直播预约效果</b> · 06/18 10:00场</div>
+              <div class="img-box" style="flex-direction:column;gap:6px;padding:10px 12px;align-items:stretch;min-height:110px;max-height:unset;">
+                <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">618最后1天！总裁特批福利加码</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                  <div style="text-align:center;background:#f1f5ff;border-radius:8px;padding:6px 4px;">
+                    <div style="font-size:17px;font-weight:800;color:#2563eb;">860</div>
+                    <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">预约人数</div>
+                  </div>
+                  <div style="text-align:center;background:#f1f5ff;border-radius:8px;padding:6px 4px;">
+                    <div style="font-size:17px;font-weight:800;color:#2563eb;">201</div>
+                    <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">预约–观看人数</div>
+                  </div>
+                  <div style="text-align:center;background:#ecfdf5;border-radius:8px;padding:6px 4px;">
+                    <div style="font-size:17px;font-weight:800;color:#059669;">23.37%</div>
+                    <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">预约–观看转化率</div>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px;">
+                  <div style="text-align:center;background:#fff7ed;border-radius:8px;padding:6px 4px;">
+                    <div style="font-size:15px;font-weight:800;color:#ea580c;">¥15,035</div>
+                    <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">成交金额</div>
+                  </div>
+                  <div style="text-align:center;background:#fff7ed;border-radius:8px;padding:6px 4px;">
+                    <div style="font-size:15px;font-weight:800;color:#ea580c;">¥1,520</div>
+                    <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">千次看播成交额</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 豆子猛投数据卡 -->
+          <div style="margin-top:8px;background:#fff;border:1px solid #e5edf7;border-radius:10px;overflow:hidden;">
+            <div style="background:linear-gradient(135deg,#eff6ff,#ecfeff);color:#1e3a8a;font-size:12px;font-weight:700;padding:5px 12px;border-bottom:1px solid #e5edf7;">
+              <b>进播1小时豆子猛投</b> · 加热流量峰值数据（06/18 08:30节点）
+            </div>
+            <div style="padding:10px 12px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+              <div style="text-align:center;background:#f1f5ff;border-radius:8px;padding:7px 4px;">
+                <div style="font-size:17px;font-weight:800;color:#dc2626;">19.3万</div>
+                <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">加热流量（全场）</div>
+              </div>
+              <div style="text-align:center;background:#f1f5ff;border-radius:8px;padding:7px 4px;">
+                <div style="font-size:17px;font-weight:800;color:#dc2626;">7,527次</div>
+                <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">峰值加热进房</div>
+              </div>
+              <div style="text-align:center;background:#f1f5ff;border-radius:8px;padding:7px 4px;">
+                <div style="font-size:17px;font-weight:800;color:#dc2626;">99.58%</div>
+                <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">峰值加热占比</div>
+              </div>
+              <div style="text-align:center;background:#ecfdf5;border-radius:8px;padding:7px 4px;">
+                <div style="font-size:17px;font-weight:800;color:#059669;">1,700人+</div>
+                <div style="font-size:10.5px;color:#4b5563;margin-top:2px;">人均在线峰值</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 策略二：双直播间协同 -->
+        <div class="step-block">
+          <div class="step-head">
+            <span class="step-tag blue">策略二</span>
+            <h3>双直播间差异化运营</h3>
+          </div>
+          <div class="step2-info">
+            <ul>
+              <li><b>主号（小仙炖鲜炖燕窝）：</b>承接大流量，广告消耗72.6万元（74.6%），视频号主力投放，ROI 1.94</li>
+              <li><b>滋补号（小仙炖鲜炖燕窝滋补号）：</b>垂直精准人群，ROI <b style="color:#dc2626;">2.71</b>，进播率0.98%，效率显著优于主号</li>
+              <li><b>两号协同：</b>主号拓量 + 滋补号精准，双轨覆盖宽泛人群同时保障核心ROI</li>
+            </ul>
+            <div class="note">✓ 双账户合计消耗97.3万元，整体ROI 2.14，高于传统滋补大盘15%</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Section 4 · 货品机制 -->
+      <section class="block" style="flex:1;">
+        <div class="sec-title">
+          <div class="num" style="background: linear-gradient(135deg, #f59e0b, #2563eb);">4</div>
+          <h2>618货品策略与抽奖机制</h2>
+          <div class="line"></div>
+        </div>
+        <div class="goods-grid">
+          <div class="goods-card">
+            <div class="gc-title"><span class="gc-tag">货品机制</span>主推季套餐</div>
+            <ul>
+              <li>主推<b>季套餐</b> + Boss专属优惠券（专属券与618抖音补贴后价格一致）</li>
+              <li>季随单礼赠：燕窝粥2盒+2盒益生菌+小金勺+<span class="hl-yellow">40g×5经典礼盒（Boss专场限时加赠）</span></li>
+              <li>年随单礼赠：燕窝粥12盒+12盒益生菌+小金勺+加热器+小冰箱+<span class="hl-yellow">40×15经典礼盒+小仙炖定制骨瓷杯碟套装</span></li>
+              <li>月随单礼赠：燕窝粥2箱+小金勺</li>
+            </ul>
+          </div>
+          <div class="goods-card">
+            <div class="gc-title"><span class="gc-tag">抽奖机制</span>多层次激励</div>
+            <ul>
+              <li><b>大转盘抽奖（拍季以上）：</b>香奈儿香水、骨瓷杯碟套装、马年黄金金片钥匙扣、迪奥999唇膏、徕芬吹风机，<b>0.5h/次</b></li>
+              <li><b>下单半年以上套餐</b>：抽70g×12月卡</li>
+              <li><b>拍月以上</b>：抽燕窝面膜，<b>1h/次</b></li>
+              <li><b>截屏抽奖/发福袋：</b>无门槛（热场），不定时抽满屏燕窝面膜</li>
+            </ul>
+          </div>
+        </div>
+        <div class="apply-text" style="margin-top:8px;margin-bottom:8px;">
+          <span class="apply-tag">直播亮点</span>Boss溯源券+买燕窝送燕窝礼盒+工人配合现场解读产品工艺；<b>直播场景</b>：走播区（工厂门口→燕窝生态区→洞燕→燕屋→历史文化区）+ 固定播区（见证一碗燕窝区）
+        </div>
+
+
+      </section>
+
+
+
+    </div>
+
+  </div>
+
+  <div class="footer">小仙炖618直播专场案例 · 传统滋补行业 · 腾讯广告 · 数据口径：竞价，2026年5月20日—6月20日</div>
+</div>
+
+<script>
+  const ctx = document.getElementById('chart').getContext('2d');
+
+  const grad1 = ctx.createLinearGradient(0, 0, 0, 170);
+  grad1.addColorStop(0, 'rgba(37, 99, 235, 0.35)');
+  grad1.addColorStop(1, 'rgba(37, 99, 235, 0.02)');
+
+  const grad2 = ctx.createLinearGradient(0, 0, 0, 170);
+  grad2.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
+  grad2.addColorStop(1, 'rgba(16, 185, 129, 0.02)');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['日常期\n(5/22-6/13)', '预热期\n(6/14-6/17)', '618爆发\n(6/18)', '延续期\n(6/19-6/20)'],
+      datasets: [
+        {
+          label: '日均消耗（元）',
+          data: [22327, 38597, 107088, 46987],
+          borderColor: '#2563eb',
+          backgroundColor: grad1,
+          borderWidth: 3,
+          tension: 0.35,
+          fill: true,
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#2563eb',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        },
+        {
+          label: 'ROI',
+          data: [1.88, 2.05, 2.50, 2.29],
+          borderColor: '#10b981',
+          backgroundColor: grad2,
+          borderWidth: 3,
+          tension: 0.35,
+          fill: true,
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#10b981',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          yAxisID: 'y2'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 18 } },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'end',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            font: { size: 11, weight: '600' },
+            color: '#1f2937',
+            boxWidth: 8,
+            padding: 8
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(30,58,138,0.95)',
+          padding: 10
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          position: 'left',
+          ticks: {
+            color: '#6b7280',
+            font: { size: 10 },
+            callback: (v) => (v/10000).toFixed(1) + '万'
+          },
+          grid: { color: 'rgba(148,163,184,0.18)' }
+        },
+        y2: {
+          beginAtZero: false,
+          position: 'right',
+          min: 1.5,
+          max: 3.0,
+          ticks: {
+            color: '#10b981',
+            font: { size: 10 },
+            callback: (v) => 'ROI ' + v
+          },
+          grid: { display: false }
+        },
+        x: {
+          ticks: { color: '#374151', font: { weight: '700', size: 10 } },
+          grid: { display: false }
+        }
+      },
+      animation: { duration: 900 }
+    },
+    plugins: [{
+      id: 'datalabels-lite',
+      afterDatasetsDraw(chart) {
+        const { ctx } = chart;
+        chart.data.datasets.forEach((ds, i) => {
+          const meta = chart.getDatasetMeta(i);
+          meta.data.forEach((pt, idx) => {
+            const v = ds.data[idx];
+            ctx.save();
+            ctx.fillStyle = ds.borderColor;
+            ctx.font = 'bold 10px PingFang SC, sans-serif';
+            ctx.textAlign = 'center';
+            const label = i === 0 ? (v/10000).toFixed(1)+'万' : 'ROI '+v;
+            ctx.fillText(label, pt.x, pt.y - 8);
+            ctx.restore();
+          });
+        });
+      }
+    }]
+  });
+</script>
+</body>
+</html>
