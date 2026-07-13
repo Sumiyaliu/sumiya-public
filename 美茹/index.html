@@ -6,57 +6,73 @@
 <title>传统滋补沟通</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #0f0c29 0%, #1a1a4e 40%, #24243e 100%); color: #e0e6f0; min-height: 100vh; padding: 40px 20px 60px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: linear-gradient(160deg, #f8faff 0%, #eef2ff 40%, #f0fdf4 100%); color: #1e293b; min-height: 100vh; padding: 40px 20px 60px; }
 .container { max-width: 1080px; margin: 0 auto; }
 
 /* 头部 */
-.header { text-align: center; margin-bottom: 44px; position: relative; }
-.header::before { content: ""; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(99,102,241,0.15), transparent 70%); pointer-events: none; }
-.header h1 { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #a5b4fc, #818cf8, #6ee7b7); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 10px; letter-spacing: 1px; }
-.header p { font-size: 14px; color: #94a3b8; letter-spacing: 0.5px; }
+.header { text-align: center; margin-bottom: 40px; position: relative; }
+.header::before { content: ""; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 350px; background: radial-gradient(ellipse, rgba(99,102,241,0.08), transparent 70%); pointer-events: none; }
+.header h1 { font-size: 30px; font-weight: 800; background: linear-gradient(135deg, #4f46e5, #7c3aed, #059669); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 10px; letter-spacing: 1px; }
+.header p { font-size: 14px; color: #64748b; letter-spacing: 0.3px; }
 .header .badges { margin-top: 14px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-.header .badge { font-size: 11px; padding: 5px 14px; border-radius: 20px; background: rgba(255,255,255,0.06); color: #a5b4fc; border: 1px solid rgba(165,180,252,0.2); backdrop-filter: blur(8px); }
+.header .badge { font-size: 11px; padding: 5px 14px; border-radius: 20px; background: #fff; color: #6366f1; border: 1px solid #e0e7ff; box-shadow: 0 2px 8px rgba(99,102,241,0.06); }
+
+/* 亮点摘录 */
+.highlights-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
+.hl-card { background: #fff; border-radius: 14px; padding: 16px 14px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 16px rgba(30,50,90,0.04); transition: transform .2s; }
+.hl-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,50,90,0.08); }
+.hl-card .hl-val { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+.hl-card .hl-lbl { font-size: 11.5px; color: #64748b; line-height: 1.4; }
+.hl-card:nth-child(1) .hl-val { color: #dc2626; }
+.hl-card:nth-child(2) .hl-val { color: #059669; }
+.hl-card:nth-child(3) .hl-val { color: #7c3aed; }
+.hl-card:nth-child(4) .hl-val { color: #ea580c; }
 
 /* 模块容器 */
-.module { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; margin-bottom: 28px; backdrop-filter: blur(12px); overflow: hidden; transition: transform .2s, box-shadow .2s; }
-.module:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-.module-head { display: flex; align-items: center; gap: 16px; padding: 22px 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.module { background: #fff; border-radius: 18px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(30,50,90,0.05); overflow: hidden; border: 1px solid #e8edf5; transition: transform .2s, box-shadow .2s; }
+.module:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(30,50,90,0.08); }
+.module-head { display: flex; align-items: center; gap: 16px; padding: 22px 28px; border-bottom: 1px solid #f1f5f9; }
 .module-icon { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-.module-head h2 { font-size: 18px; color: #f1f5f9; font-weight: 700; margin-bottom: 3px; }
-.module-head .desc { font-size: 12.5px; color: #64748b; }
-.module-count { margin-left: auto; font-size: 11px; color: #94a3b8; background: rgba(255,255,255,0.06); padding: 4px 12px; border-radius: 12px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.08); }
+.module-head h2 { font-size: 18px; color: #1e293b; font-weight: 700; margin-bottom: 3px; }
+.module-head .desc { font-size: 12.5px; color: #94a3b8; }
+.module-count { margin-left: auto; font-size: 11px; color: #6366f1; background: #eef2ff; padding: 4px 12px; border-radius: 12px; white-space: nowrap; font-weight: 600; }
 
 /* 模块内条目 */
 .item-list { padding: 8px 16px 16px; }
-.item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; text-decoration: none; color: inherit; transition: all .2s; }
-.item:hover { background: rgba(255,255,255,0.06); transform: translateX(4px); }
+.item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; text-decoration: none; color: inherit; transition: all .15s; }
+.item:hover { background: #f8fafc; transform: translateX(3px); }
 .item-num { width: 28px; height: 28px; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .item-body { flex: 1; min-width: 0; }
-.item-title { font-size: 14.5px; font-weight: 600; color: #e2e8f0; margin-bottom: 4px; }
-.item-title .ext { display: inline-block; font-size: 10px; color: #64748b; border: 1px solid rgba(255,255,255,0.12); border-radius: 5px; padding: 1px 6px; margin-left: 8px; font-weight: 500; vertical-align: 1px; }
+.item-title { font-size: 14.5px; font-weight: 600; color: #1e293b; margin-bottom: 3px; }
+.item-title .ext { display: inline-block; font-size: 10px; color: #94a3b8; border: 1px solid #e2e8f0; border-radius: 5px; padding: 1px 6px; margin-left: 8px; font-weight: 500; vertical-align: 1px; }
+.item-title .hot { display: inline-block; font-size: 10px; color: #fff; background: linear-gradient(135deg,#f59e0b,#ef4444); border-radius: 5px; padding: 1px 7px; margin-left: 6px; font-weight: 700; vertical-align: 1px; }
 .item-desc { font-size: 12.5px; color: #64748b; line-height: 1.6; }
-.item-go { font-size: 12px; color: #475569; flex-shrink: 0; transition: color .2s; }
-.item:hover .item-go { color: #818cf8; }
+.item-go { font-size: 12px; color: #cbd5e1; flex-shrink: 0; transition: color .2s; }
+.item:hover .item-go { color: #6366f1; }
 
 /* 主题色 */
-.c-blue .module-icon { background: rgba(59,130,246,0.15); color: #60a5fa; }
-.c-blue .item-num { background: rgba(59,130,246,0.12); color: #60a5fa; }
-.c-green .module-icon { background: rgba(16,185,129,0.15); color: #34d399; }
-.c-green .item-num { background: rgba(16,185,129,0.12); color: #34d399; }
-.c-orange .module-icon { background: rgba(245,158,11,0.15); color: #fbbf24; }
-.c-orange .item-num { background: rgba(245,158,11,0.12); color: #fbbf24; }
-.c-purple .module-icon { background: rgba(139,92,246,0.15); color: #a78bfa; }
-.c-purple .item-num { background: rgba(139,92,246,0.12); color: #a78bfa; }
+.c-blue .module-icon { background: linear-gradient(135deg,#eff6ff,#dbeafe); color: #3b82f6; }
+.c-blue .item-num { background: #eff6ff; color: #3b82f6; }
+.c-green .module-icon { background: linear-gradient(135deg,#ecfdf5,#d1fae5); color: #10b981; }
+.c-green .item-num { background: #ecfdf5; color: #10b981; }
+.c-orange .module-icon { background: linear-gradient(135deg,#fffbeb,#fef3c7); color: #f59e0b; }
+.c-orange .item-num { background: #fffbeb; color: #f59e0b; }
+.c-purple .module-icon { background: linear-gradient(135deg,#f5f3ff,#ede9fe); color: #8b5cf6; }
+.c-purple .item-num { background: #f5f3ff; color: #8b5cf6; }
 
 /* 动效 */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.module { animation: fadeUp 0.5s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.module, .hl-card { animation: fadeUp 0.5s ease both; }
+.hl-card:nth-child(1) { animation-delay: 0s; }
+.hl-card:nth-child(2) { animation-delay: 0.08s; }
+.hl-card:nth-child(3) { animation-delay: 0.16s; }
+.hl-card:nth-child(4) { animation-delay: 0.24s; }
 .module:nth-child(2) { animation-delay: 0.1s; }
-.module:nth-child(3) { animation-delay: 0.2s; }
-.module:nth-child(4) { animation-delay: 0.3s; }
-.module:nth-child(5) { animation-delay: 0.4s; }
+.module:nth-child(3) { animation-delay: 0.15s; }
+.module:nth-child(4) { animation-delay: 0.2s; }
+.module:nth-child(5) { animation-delay: 0.25s; }
 
-.footer { text-align: center; margin-top: 36px; font-size: 12px; color: #475569; }
+.footer { text-align: center; margin-top: 36px; font-size: 12px; color: #94a3b8; }
 </style>
 </head>
 <body>
@@ -69,6 +85,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <span class="badge">近14天 / 竞价口径</span>
             <span class="badge">区间脱敏</span>
             <span class="badge">2026 H1</span>
+        </div>
+    </div>
+
+    <!-- 亮点摘录 -->
+    <div class="highlights-bar">
+        <div class="hl-card">
+            <div class="hl-val">6 大品类</div>
+            <div class="hl-lbl">TOP直播间案例纸<br>枸杞/菌菇/药食/冲饮/燕窝/蜂蜜</div>
+        </div>
+        <div class="hl-card">
+            <div class="hl-val">ROI 1.63</div>
+            <div class="hl-lbl">全场最高·华北益养优选<br>CPM仅¥58 低于大盘29%</div>
+        </div>
+        <div class="hl-card">
+            <div class="hl-val">CTR 6.1%</div>
+            <div class="hl-lbl">鑫晨枸杞·优于大盘119%<br>日耗10~20万/日 环比+58%</div>
+        </div>
+        <div class="hl-card">
+            <div class="hl-val">618冲量+47%</div>
+            <div class="hl-lbl">老班长葛根粉·峰值3.8倍弹性<br>大促拿量能力行业领先</div>
         </div>
     </div>
 
@@ -127,7 +163,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <div class="module-icon">🎬</div>
             <div>
                 <h2>案例复盘</h2>
-                <div class="desc">品牌 / 直播间爆量案例拆解</div>
+                <div class="desc">品牌 / 直播间爆量案例拆解 · TOP6品类1440横版案例纸</div>
             </div>
             <div class="module-count">9 篇</div>
         </div>
@@ -151,7 +187,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-xiaoxiandun-618.html" target="_blank">
                 <div class="item-num">3</div>
                 <div class="item-body">
-                    <div class="item-title">小仙炖618直播专场案例<span class="ext">HTML</span></div>
+                    <div class="item-title">小仙炖618直播专场案例<span class="ext">HTML</span><span class="hot">618</span></div>
                     <div class="item-desc">双直播间+预约组合策略，618当天ROI突破2.50，较520专场提升+28%</div>
                 </div>
                 <div class="item-go">查看 →</div>
@@ -159,7 +195,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-xinchen-goji.html" target="_blank">
                 <div class="item-num">4</div>
                 <div class="item-body">
-                    <div class="item-title">鑫晨枸杞小秘坊 · 枸杞类滋补品案例纸<span class="ext">HTML</span></div>
+                    <div class="item-title">鑫晨枸杞小秘坊 · 枸杞类滋补品<span class="ext">案例纸</span><span class="hot">TOP1</span></div>
                     <div class="item-desc">枸杞赛道绝对龙头，日耗环比+58%，CTR跑赢大盘119%，峰值冲量2.0倍</div>
                 </div>
                 <div class="item-go">查看 →</div>
@@ -167,7 +203,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-huabei-yiyang.html" target="_blank">
                 <div class="item-num">5</div>
                 <div class="item-body">
-                    <div class="item-title">华北益养优选 · 菌/菇/酵素案例纸<span class="ext">HTML</span></div>
+                    <div class="item-title">华北益养优选 · 菌/菇/酵素<span class="ext">案例纸</span><span class="hot">ROI最高</span></div>
                     <div class="item-desc">菌菇酵素赛道ROI标杆，全场最高1.63，CPM仅58元，智投渗透率85%</div>
                 </div>
                 <div class="item-go">查看 →</div>
@@ -175,7 +211,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-laobanzhang-gegen.html" target="_blank">
                 <div class="item-num">6</div>
                 <div class="item-body">
-                    <div class="item-title">老班长葛根粉 · 药食同源食品案例纸<span class="ext">HTML</span></div>
+                    <div class="item-title">老班长葛根粉 · 药食同源食品<span class="ext">案例纸</span><span class="hot">618冲量</span></div>
                     <div class="item-desc">药食同源赛道头部，CTR优于大盘35%，618冲量+47%，峰值弹性3.8倍</div>
                 </div>
                 <div class="item-go">查看 →</div>
@@ -183,7 +219,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-drguo-bazhenyin.html" target="_blank">
                 <div class="item-num">7</div>
                 <div class="item-body">
-                    <div class="item-title">Dr.郭-八珍饮 · 冲饮品/食补粉案例纸<span class="ext">HTML</span></div>
+                    <div class="item-title">Dr.郭-八珍饮 · 冲饮品/食补粉<span class="ext">案例纸</span><span class="hot">NEW</span></div>
                     <div class="item-desc">冲饮品赛道NEW入局差异化案例，CVR全场最高6.4%，商品点击率92.6%</div>
                 </div>
                 <div class="item-go">查看 →</div>
@@ -191,7 +227,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-xiaoxiandun-top6.html" target="_blank">
                 <div class="item-num">8</div>
                 <div class="item-body">
-                    <div class="item-title">小仙炖鲜炖燕窝 · 燕窝滋补品案例纸<span class="ext">HTML</span></div>
+                    <div class="item-title">小仙炖鲜炖燕窝 · 燕窝滋补品<span class="ext">案例纸</span></div>
                     <div class="item-desc">燕窝赛道高端品牌，ROI 1.78全周期最高，618冲量+37%</div>
                 </div>
                 <div class="item-go">查看 →</div>
@@ -199,7 +235,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
             <a class="item" href="case-tianyemufeng.html" target="_blank">
                 <div class="item-num">9</div>
                 <div class="item-body">
-                    <div class="item-title">田野牧蜂蜂蜜号 · 蜂类滋补品案例纸<span class="ext">HTML</span></div>
+                    <div class="item-title">田野牧蜂蜂蜜号 · 蜂类滋补品<span class="ext">案例纸</span></div>
                     <div class="item-desc">蜂类滋补精准获客案例，创意重复度仅44%全场最健康，峰值冲量2.6倍</div>
                 </div>
                 <div class="item-go">查看 →</div>
