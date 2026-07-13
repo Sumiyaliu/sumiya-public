@@ -8,7 +8,7 @@
 <style>
 :root {
     --cyan: #0d9488; /* 艾绿 / 本草青 */
-    --green: #15803d; /* 竹绿 / 茶绿 */
+    --green: #15803d; /* 茶绿 / 竹绿 */
     --orange: #b45309; /* 琥珀 / 蜜橘 */
     --red: #b91c1c; /* 朱砂 / 绛红 */
     --gold: #ca8a04; /* 暖金 / 蜜黄 */
@@ -19,45 +19,42 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    /* 采用茶白、暖米和浅本草绿的高端浅色温润渐变背景 */
-    background: linear-gradient(160deg, #fbfbf9 0%, #f6f7f2 35%, #eef3eb 100%);
-    color: #2d3748;
+    /* 采用符合膳食/大健康百宝箱的去重浅灰色调（bg-slate-50），降低视觉重量，长时间阅读不疲劳 */
+    background: #f8fafc;
+    color: #334155;
     min-height: 100vh;
     padding: 40px 20px 80px;
 }
 
-/* 浅色温润毛玻璃卡片 */
-.glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(139, 150, 130, 0.04);
+/* 浅底极简卡片：降低视觉重量，凸显内容 */
+.card-base {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.015);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
 }
 
-.glass-strong {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1.5px solid rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 14px 40px rgba(112, 128, 100, 0.06), inset 0 0 12px rgba(255, 255, 255, 0.6);
+.card-base:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
 }
 
 .glow-border-gold {
-    border: 1.5px solid rgba(180, 83, 9, 0.25);
-    box-shadow: 0 0 25px rgba(180, 83, 9, 0.05);
+    border: 1.5px solid rgba(180, 83, 9, 0.2);
 }
 
-.glow-border-green {
-    border: 1.5px solid rgba(21, 128, 61, 0.2);
-    box-shadow: 0 0 25px rgba(21, 128, 61, 0.05);
+/* 膳食百宝箱风格的浅底微透明卡片 */
+.glass-light {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* 渐变文字：墨色本草绿到琥珀金 */
+/* 渐变文字：草本深绿到琥珀金 */
 .gradient-text {
-    background: linear-gradient(135deg, #164e63, #15803d, #b45309);
+    background: linear-gradient(135deg, #0f172a, #15803d, #b45309);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -66,63 +63,50 @@ body {
 /* Reveal 进场动效 */
 .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
-.reveal-delay-4 { transition-delay: 0.32s; }
-.reveal-delay-5 { transition-delay: 0.4s; }
+.reveal-delay-1 { transition-delay: 0.06s; }
+.reveal-delay-2 { transition-delay: 0.12s; }
+.reveal-delay-3 { transition-delay: 0.18s; }
+.reveal-delay-4 { transition-delay: 0.24s; }
+.reveal-delay-5 { transition-delay: 0.3s; }
 
 /* 头部 */
-.header { text-align: center; margin-bottom: 40px; position: relative; }
-.header::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(21, 128, 61, 0.04), rgba(180, 83, 9, 0.02) 40%, transparent 70%);
-    pointer-events: none;
-}
-.header h1 { font-size: 34px; font-weight: 800; letter-spacing: 1px; margin-bottom: 12px; }
-.header .sub { font-size: 14.5px; color: #718096; letter-spacing: 0.3px; }
-.header .badges { margin-top: 16px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.header { text-align: center; margin-bottom: 32px; position: relative; }
+.header h1 { font-size: 32px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 10px; }
+.header .sub { font-size: 14px; color: #64748b; letter-spacing: 0.2px; }
+.header .badges { margin-top: 14px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .header .badge {
     font-size: 11px;
-    padding: 5px 14px;
+    padding: 4px 12px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.8);
+    background: #ffffff;
     color: #15803d;
-    border: 1px solid rgba(21, 128, 61, 0.15);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
 }
-
-/* 当月重点 */
-.highlight-val { font-size: 20px; font-weight: 800; color: var(--orange); }
 
 /* 互动微动效 */
 .item-hover-effect {
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .item-hover-effect:hover {
-    background: rgba(255, 255, 255, 0.85);
+    background: #f8fafc;
     transform: translateX(4px);
-    box-shadow: 0 4px 20px rgba(112, 128, 100, 0.06);
 }
 
 /* 标签样式 */
 .badge-tag {
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 600;
     padding: 2px 8px;
     border-radius: 6px;
+    display: inline-block;
 }
 </style>
 </head>
@@ -140,33 +124,77 @@ body {
         </div>
     </div>
 
+    <!-- 📊 顶导公式看板布局 (Equation Header) -->
+    <!-- 参考膳食百宝箱经典公式可视化，直观表达传统滋补爆量核心方程式 -->
+    <div class="card-base p-5 mb-8 bg-white reveal reveal-delay-1">
+        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 text-center md:text-left">
+            📈 传统滋补爆量核心方程式 / Formula Panel
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-2 border-t border-b border-slate-50">
+            <!-- 因子 1 -->
+            <div class="flex-1 text-center py-2 px-3">
+                <div class="text-[10px] text-emerald-600 font-bold mb-1">🌿 1. 场景唤醒 (CTR)</div>
+                <div class="text-base font-bold text-slate-800">首 3 秒强痛点感知</div>
+                <div class="text-[10px] text-gray-400 mt-1">三伏/时令养生痛点直击</div>
+            </div>
+            <div class="text-gray-300 font-black text-lg select-none hidden md:block">×</div>
+            <!-- 因子 2 -->
+            <div class="flex-1 text-center py-2 px-3">
+                <div class="text-[10px] text-amber-600 font-bold mb-1">🍯 2. 爆品信任 (CVR)</div>
+                <div class="text-base font-bold text-slate-800">成分背书 × 资质背书</div>
+                <div class="text-[10px] text-gray-400 mt-1">无夸大功效，提供确定价值</div>
+            </div>
+            <div class="text-gray-300 font-black text-lg select-none hidden md:block">×</div>
+            <!-- 因子 3 -->
+            <div class="flex-1 text-center py-2 px-3">
+                <div class="text-[10px] text-cyan-600 font-bold mb-1">⚙️ 3. 智投渗透 (冷启动)</div>
+                <div class="text-base font-bold text-slate-800">智投工作台渗透 &gt; 80%</div>
+                <div class="text-[10px] text-gray-400 mt-1">腾讯油门护航，冷启动加速</div>
+            </div>
+            <div class="text-gray-300 font-black text-lg select-none hidden md:block">×</div>
+            <!-- 因子 4 -->
+            <div class="flex-1 text-center py-2 px-3">
+                <div class="text-[10px] text-purple-600 font-bold mb-1">🛡️ 4. 绕开校验 (跑量基建)</div>
+                <div class="text-base font-bold text-slate-800">多素材绕开唯一性校验</div>
+                <div class="text-[10px] text-gray-400 mt-1">添加考核单元，保障在投纯净</div>
+            </div>
+            <div class="text-slate-300 font-black text-lg select-none hidden md:block">=</div>
+            <!-- 最终效能 -->
+            <div class="flex-1 text-center py-3 px-4 bg-emerald-50/50 rounded-xl border border-emerald-50">
+                <div class="text-[10px] text-emerald-800 font-bold mb-0.5">💰 最终爆量效能</div>
+                <div class="text-lg font-extrabold text-emerald-700">下单 ROI 爆发</div>
+                <div class="text-[10px] text-emerald-600 font-semibold mt-0.5">时令/峰值大促弹性高</div>
+            </div>
+        </div>
+    </div>
+
     <!-- 🔥 入口与重点模块：本月重点 - “三伏天”选品与爆量特辑 -->
-    <div class="glass-strong glow-border-gold p-6 md:p-8 mb-8 reveal reveal-delay-1 relative overflow-hidden">
+    <div class="card-base glow-border-gold p-6 md:p-8 mb-8 relative overflow-hidden bg-gradient-to-br from-white to-amber-50/10 reveal reveal-delay-1">
         <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="flex-1">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="bg-amber-600/10 text-amber-700 font-bold px-3 py-1 rounded-full text-xs tracking-wider">📅 当月重点 FOCUS</span>
-                    <span class="text-amber-800 font-medium text-sm flex items-center gap-1">三伏黄金爆量期 (7.16 - 8.24)</span>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-amber-100 text-amber-800 font-bold px-2.5 py-0.5 rounded-full text-[10px] tracking-wider">📅 当月重点 FOCUS</span>
+                    <span class="text-amber-800 font-medium text-xs flex items-center gap-1">三伏黄金爆量期 (7.16 - 8.24)</span>
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <h2 class="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-2">
                     ☀️ 抓住“冬病夏治”大风口：传统滋补伏天爆量秘诀
                 </h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">
                     三伏天是传统滋补（如祛湿膏方、即食燕窝、参杞茶、药食同源产品）的绝对销售巅峰，属于典型的“场景唤醒型”消费。建议商户提早储备伏天创意素材，重点切入“伏天除湿、夏季养气血、冬病夏治”等高感度养生场景，快速达成生意突破。
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                    <div class="bg-white/50 p-3 rounded-xl border border-amber-500/10">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                         <strong class="text-amber-800 block mb-1">🎯 场景唤醒</strong>
-                        <p class="text-gray-500">主攻视频前3秒痛点痛感，结合三伏天出汗、精神差和湿气重进行痛点破局。</p>
+                        <p class="text-slate-500">主攻视频前3秒痛点痛感，结合三伏天出汗、精神差和湿气重进行痛点破局。</p>
                     </div>
-                    <div class="bg-white/50 p-3 rounded-xl border border-amber-500/10">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                         <strong class="text-amber-800 block mb-1">📦 黄金选品</strong>
-                        <p class="text-gray-500">主力推荐茯苓祛湿茶/膏、夏养气血八珍饮、降火西洋参。突出节气限定价值。</p>
+                        <p class="text-slate-500">主力推荐茯苓祛湿茶/膏、夏养气血八珍饮、降火西洋参。突出节气限定价值。</p>
                     </div>
-                    <div class="bg-white/50 p-3 rounded-xl border border-amber-500/10">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                         <strong class="text-amber-800 block mb-1">🚀 基建爆量</strong>
-                        <p class="text-gray-500">采用“直购/CID+小店”双通链路。配合油门工作台，智投渗透率建议拉满至80%以上。</p>
+                        <p class="text-slate-500">采用“直购/CID+小店”双通链路。配合油门工作台，智投渗透率建议拉满至80%以上。</p>
                     </div>
                 </div>
             </div>
@@ -181,52 +209,83 @@ body {
     </div>
 
     <!-- 📝 Checklist 模块：传统滋补投前 Checklist 与释疑 -->
-    <div class="glass p-6 mb-8 reveal reveal-delay-2 border-l-4 border-l-emerald-700">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded-lg bg-emerald-700/10 text-emerald-800 flex items-center justify-center font-bold text-lg">✓</div>
+    <!-- 排版彻底对齐“膳食百宝箱”：主题色标题条 + 浅底三栏网格诊断卡 -->
+    <div class="mb-8 reveal reveal-delay-2">
+        <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl">💡</span>
             <div>
-                <h3 class="font-bold text-gray-900 text-lg">💡 传统滋补“投前自检 Checklist”</h3>
-                <p class="text-xs text-gray-500">投放前扫清疑难杂症，解决高频痛点问题，保障广告快审稳跑</p>
+                <h3 class="font-bold text-slate-800 text-lg">传统滋补 “投前自检 & 痛点排查” 工具箱</h3>
+                <p class="text-xs text-gray-500">投放前扫清疑难杂症，对齐核心门槛，保障广告快审稳跑</p>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="space-y-3">
-                <div class="bg-white/40 p-4 rounded-xl border border-gray-100 flex gap-3">
-                    <span class="text-emerald-700 font-bold text-sm">01</span>
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-800 mb-1">资质完备性：视频号小店 vs 微信直购</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed">
-                            闭环小店需完成“传统滋补”一级类目准入并足额缴纳保证金。非闭环直购需备齐ICP备案、软著（如有）及产品质检报告，并在ADQ系统中进行提报。
+
+        <div class="space-y-6">
+            <!-- 诊断卡片 1：唯一性识别导致的不放量 -->
+            <div class="rounded-2xl overflow-hidden border border-purple-100 bg-white shadow-sm">
+                <!-- 主题色标题条 -->
+                <div class="bg-purple-50/60 px-4 py-3 border-b border-purple-100 flex items-center justify-between">
+                    <span class="font-bold text-purple-900 text-sm flex items-center gap-1.5">⚪ 痛点排查 1：新素材上架遭遇“唯一性拦截”，广告无法拿量</span>
+                    <span class="text-[10px] bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded-full font-bold">高频痛点</span>
+                </div>
+                <!-- 三栏网格 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <!-- 📏 排查门槛 -->
+                    <div class="p-4 bg-slate-50/50">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">📏 排查门槛 / Threshold</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            多素材使用同主商品在ADQ链路中投放时，消耗极度分化，新计划几乎“零展现”，遭遇ADQ严格的<span class="text-purple-700 font-bold">同质化过滤</span>。
                         </p>
                     </div>
-                </div>
-                <div class="bg-white/40 p-4 rounded-xl border border-gray-100 flex gap-3">
-                    <span class="text-emerald-700 font-bold text-sm">02</span>
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-800 mb-1">破解 ADQ 唯一性校验</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed">
-                            ADQ系统对于同主商品多条素材有严苛的唯一性识别。建议通过<strong>添加考核单元要素、调整出价梯度、微调包装重量或单价包装</strong>等手段，绕开唯一性校验，实现多素材在投拿量。
+                    <!-- 💡 原因解读 -->
+                    <div class="p-4 bg-white">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">💡 原因解读 / Diagnosis</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            系统为了规避流量空转及商户内卷，对ADQ同一商品的直购/CID链路有强唯一性判准（画面、落地页、商品ID相似度超过阈值即拦截）。
                         </p>
+                    </div>
+                    <!-- ✅ 优化行动 -->
+                    <div class="p-4 bg-slate-50/50">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">✅ 优化行动 / Action Plan</h4>
+                        <ul class="text-xs text-slate-700 space-y-1.5">
+                            <li class="flex items-start gap-1"><span>•</span><span><strong>微调物理规格</strong>：如改用“一周期装/多杯多规格”，微调商品单价；</span></li>
+                            <li class="flex items-start gap-1"><span>•</span><span><strong>增加考核单元要素</strong>：调整落地页细节，增加优惠信息微调其主ID；</span></li>
+                            <li class="flex items-start gap-1"><span>•</span><span><strong>差异化前3秒</strong>：对视频画面和开场镜头做显著区分。</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="space-y-3">
-                <div class="bg-white/40 p-4 rounded-xl border border-gray-100 flex gap-3">
-                    <span class="text-emerald-700 font-bold text-sm">03</span>
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-800 mb-1">创意雷区：避免医疗或暗示疗效宣传</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">
-                            传统滋补不能宣称、暗示医疗效果。<strong>雷区：</strong>包治百病、根治湿气、消炎、降血糖等。<strong>合规话术：</strong>夏养气血、温和调理、伏天养生、清爽不腻。合理利用草本成分科普。
+
+            <!-- 诊断卡片 2：审核高频拒绝 -->
+            <div class="rounded-2xl overflow-hidden border border-red-100 bg-white shadow-sm">
+                <!-- 主题色标题条 -->
+                <div class="bg-red-50/60 px-4 py-3 border-b border-red-100 flex items-center justify-between">
+                    <span class="font-bold text-red-900 text-sm flex items-center gap-1.5">🔴 痛点排查 2：审核屡投屡拒，被系统拦截夸大疗效、敏感词雷区</span>
+                    <span class="text-[10px] bg-red-100 text-red-800 px-2.5 py-0.5 rounded-full font-bold">高频雷区</span>
+                </div>
+                <!-- 三栏网格 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <!-- 📏 排查门槛 -->
+                    <div class="p-4 bg-slate-50/50">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">📏 排查门槛 / Threshold</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            视频或直播间话术中频繁提及某些日常词，甚至仅对传统成分作功能描述，便被判定为<span class="text-red-600 font-bold">“非药品涉及暗示医疗或防病效果”</span>。
                         </p>
                     </div>
-                </div>
-                <div class="bg-white/40 p-4 rounded-xl border border-gray-100 flex gap-3">
-                    <span class="text-emerald-700 font-bold text-sm">04</span>
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-800 mb-1">智投渗透率要求</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed">
-                            标杆商家实操表明，全面接入“腾讯油门/智投工作台”，保持智投渗透率在 80% 以上，冷启动通过率可提升 45%，CTR 运行稳定，极大地节省了投手人力。
+                    <!-- 💡 原因解读 -->
+                    <div class="p-4 bg-white">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">💡 原因解读 / Diagnosis</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            广告法及平台大健康规范严禁食品/滋补品暗示具体疗效（如“排湿、去根、降糖、消炎”）。即使引用中医成分，也极易在OCR/语音审核中触发自动屏蔽。
                         </p>
+                    </div>
+                    <!-- ✅ 优化行动 -->
+                    <div class="p-4 bg-slate-50/50">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">✅ 优化行动 / Action Plan</h4>
+                        <ul class="text-xs text-slate-700 space-y-1.5">
+                            <li class="flex items-start gap-1"><span>•</span><span><strong>合规话术替换</strong>：将“除湿去湿气”改用“伏天调理、养水湿”；将“消炎消暑”改用“清火不腻”；</span></li>
+                            <li class="flex items-start gap-1"><span>•</span><span><strong>利用官方白名单</strong>：素材多科普成分本身，如“据神农本草记载...”避开直白暗示；</span></li>
+                            <li class="flex items-start gap-1"><span>•</span><span><strong>自查视频号指引</strong>：使用后台提供的「审核拒绝修改指引」快速微调。</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -238,61 +297,61 @@ body {
 
         <!-- 1. 行业月度洞察（留三个位置：选品报告、在投洞察、三伏天洞察） -->
         <div class="reveal reveal-delay-3">
-            <div class="flex items-center gap-3 mb-4">
+            <div class="flex items-center gap-2 mb-4">
                 <span class="text-2xl">📅</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-lg">行业月度洞察</h3>
+                    <h3 class="font-bold text-slate-800 text-lg">行业月度洞察 / Market Insights</h3>
                     <p class="text-xs text-gray-500">前沿趋势、节气专项、在投策略透视</p>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- 位置1：选品报告（现有） -->
-                <div class="glass p-5 flex flex-col justify-between h-full hover:shadow-md transition-shadow">
+                <div class="card-base p-5 flex flex-col justify-between h-full hover:shadow-md transition-shadow">
                     <div>
                         <div class="flex items-center justify-between mb-3">
-                            <span class="badge-tag bg-emerald-100 text-emerald-800">行业选品</span>
-                            <span class="text-xs text-gray-400">2026年6月</span>
+                            <span class="badge-tag bg-emerald-50 text-emerald-800 border border-emerald-100">行业选品</span>
+                            <span class="text-[10px] text-gray-400 font-medium">2026年6月</span>
                         </div>
-                        <h4 class="font-bold text-gray-800 text-base mb-2">行业选品洞察报告</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">行业选品洞察报告</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">
                             传统滋补行业选品整体洞察，覆盖品类、链路、版位与投放策略的综合性深度解析。
                         </p>
                     </div>
-                    <a href="传统滋补行业选品洞察报告_2026年6月 .html" target="_blank" class="w-full text-center py-2 bg-emerald-700/5 text-emerald-800 font-medium rounded-lg text-xs hover:bg-emerald-700/10 transition-colors">
+                    <a href="传统滋补行业选品洞察报告_2026年6月 .html" target="_blank" class="w-full text-center py-2 bg-emerald-50 text-emerald-800 font-bold rounded-lg text-xs hover:bg-emerald-100 transition-colors">
                         查看完整 HTML 报告 →
                     </a>
                 </div>
 
                 <!-- 位置2：在投洞察 -->
-                <div class="glass p-5 flex flex-col justify-between h-full hover:shadow-md transition-shadow">
+                <div class="card-base p-5 flex flex-col justify-between h-full hover:shadow-md transition-shadow">
                     <div>
                         <div class="flex items-center justify-between mb-3">
-                            <span class="badge-tag bg-cyan-100 text-cyan-800">大盘在投</span>
-                            <span class="text-xs text-cyan-500">2026 H1 周期性更新</span>
+                            <span class="badge-tag bg-cyan-50 text-cyan-800 border border-cyan-100">大盘在投</span>
+                            <span class="text-[10px] text-cyan-600 font-medium">2026 H1 周期更新</span>
                         </div>
-                        <h4 class="font-bold text-gray-800 text-base mb-2">滋补大盘在投指标洞察</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">滋补大盘在投指标洞察</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">
                             全品类商户在投链路（直购/直播/小店/CID）消耗比重、CPM大盘走势、平均转化指标监测。
                         </p>
                     </div>
-                    <button class="w-full text-center py-2 bg-gray-100 text-gray-400 font-medium rounded-lg text-xs cursor-not-allowed">
+                    <button class="w-full text-center py-2 bg-slate-50 text-slate-400 font-medium rounded-lg text-xs cursor-not-allowed">
                         大盘数据归档中 (敬请期待)
                     </button>
                 </div>
 
                 <!-- 位置3：三伏天洞察 -->
-                <div class="glass p-5 flex flex-col justify-between h-full border border-amber-500/20 shadow-sm">
+                <div class="card-base p-5 flex flex-col justify-between h-full border border-amber-200">
                     <div>
                         <div class="flex items-center justify-between mb-3">
-                            <span class="badge-tag bg-amber-100 text-amber-800 font-bold">三伏专项</span>
-                            <span class="text-xs text-amber-600">NEW 伏天限定</span>
+                            <span class="badge-tag bg-amber-50 text-amber-800 border border-amber-100 font-bold">三伏专项</span>
+                            <span class="text-[10px] text-amber-600 font-semibold">NEW 伏天限定</span>
                         </div>
-                        <h4 class="font-bold text-gray-800 text-base mb-2">三伏天专项爆量选品指南</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">三伏天专项爆量选品指南</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">
                             夏养/冬病夏治节点专题，涵盖祛湿、参茸滋补品类的节点爆品包装与首播话术设计。
                         </p>
                     </div>
-                    <button class="w-full text-center py-2 bg-amber-600/10 text-amber-800 font-bold rounded-lg text-xs hover:bg-amber-600/15 transition-colors">
+                    <button class="w-full text-center py-2 bg-amber-50 text-amber-800 font-bold rounded-lg text-xs hover:bg-amber-100 transition-colors">
                         点击查看专项指南 (占位)
                     </button>
                 </div>
@@ -301,10 +360,10 @@ body {
 
         <!-- 2. 投放数据分析：将链路、品类、版位与案例复盘做有机整合 -->
         <div class="reveal reveal-delay-4">
-            <div class="flex items-center gap-3 mb-4">
+            <div class="flex items-center gap-2 mb-4">
                 <span class="text-2xl">📊</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-lg">投放链路分析与标杆案例整合</h3>
+                    <h3 class="font-bold text-slate-800 text-lg">投放链路分析与标杆案例整合 / Case Center</h3>
                     <p class="text-xs text-gray-500">将大盘数据、三大核心投放链路，与9个爆款案例有机结合展示</p>
                 </div>
             </div>
@@ -312,34 +371,34 @@ body {
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <!-- 左侧 4 列：大盘数据报告入口 -->
                 <div class="lg:col-span-4 flex flex-col gap-4">
-                    <div class="glass p-5 flex-1 flex flex-col justify-between">
+                    <div class="card-base p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-2 mb-3">
-                                <span class="badge-tag bg-cyan-100 text-cyan-800">14天消耗大盘</span>
-                                <span class="text-xs text-gray-400">区间脱敏</span>
+                                <span class="badge-tag bg-cyan-50 text-cyan-800 border border-cyan-100">14天消耗大盘</span>
+                                <span class="text-[10px] text-gray-400">区间脱敏</span>
                             </div>
-                            <h4 class="font-bold text-gray-800 text-base mb-2">链路 × 品类 × 版位数据</h4>
-                            <p class="text-xs text-gray-500 leading-relaxed">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2">链路 × 品类 × 版位数据</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
                                 按直购/直播/CID/小店四大链路，精细化拆解三级细分品类与版位的消耗规模、CPM、CTR、CVR、下单 ROI 区间表现。
                             </p>
                         </div>
-                        <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="w-full text-center py-2.5 bg-cyan-700/10 text-cyan-800 font-semibold rounded-lg text-xs hover:bg-cyan-700/15 transition-all mt-4">
+                        <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="w-full text-center py-2.5 bg-cyan-50 text-cyan-800 font-bold rounded-lg text-xs hover:bg-cyan-100 transition-all mt-4">
                             查看链路指标拆解 ↗
                         </a>
                     </div>
 
-                    <div class="glass p-5 flex-1 flex flex-col justify-between">
+                    <div class="card-base p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-2 mb-3">
-                                <span class="badge-tag bg-purple-100 text-purple-800">商家结构</span>
-                                <span class="text-xs text-gray-400">TOP 5 头部</span>
+                                <span class="badge-tag bg-purple-50 text-purple-800 border border-purple-100">商家结构</span>
+                                <span class="text-[10px] text-gray-400">TOP 5 头部</span>
                             </div>
-                            <h4 class="font-bold text-gray-800 text-base mb-2">小店 TOP5 客户与 DPA 商品</h4>
-                            <p class="text-xs text-gray-500 leading-relaxed">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2">小店 TOP5 客户与 DPA 商品</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
                                 小店链路头部商家的日耗规模、下单 ROI 分布。并深扒各自消耗占比最高的核心 DPA（商品广告）明细。
                             </p>
                         </div>
-                        <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="w-full text-center py-2.5 bg-purple-700/10 text-purple-800 font-semibold rounded-lg text-xs hover:bg-purple-700/15 transition-all mt-4">
+                        <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="w-full text-center py-2.5 bg-purple-50 text-purple-800 font-bold rounded-lg text-xs hover:bg-purple-100 transition-all mt-4">
                             查看 DPA 客户拆解 ↗
                         </a>
                     </div>
@@ -348,94 +407,94 @@ body {
                 <!-- 右侧 8 列：按核心链路/场景整合的案例库（极具立体感） -->
                 <div class="lg:col-span-8 flex flex-col gap-4">
                     <!-- 赛道一：高放量·直购/DPA 链路案例 -->
-                    <div class="glass p-5">
-                        <div class="flex items-center justify-between border-b border-gray-100 pb-2 mb-3">
-                            <span class="font-bold text-sm text-amber-800 flex items-center gap-1">🎯 赛道 1：直购 / DPA / 商品广告拿量标杆</span>
-                            <span class="text-xs text-gray-400">全天候跑量稳定</span>
+                    <div class="card-base p-5 bg-white">
+                        <div class="flex items-center justify-between border-b border-slate-50 pb-2 mb-3">
+                            <span class="font-bold text-xs text-amber-800 flex items-center gap-1">🎯 赛道 1：直购 / DPA / 商品广告拿量标杆</span>
+                            <span class="text-[10px] text-gray-400">全天候跑量稳定</span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="case-xinchen-goji.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-xinchen-goji.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">鑫晨枸杞小秘坊</span>
-                                    <span class="badge-tag bg-red-100 text-red-800 scale-90 origin-right">TOP1</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">鑫晨枸杞小秘坊</span>
+                                    <span class="badge-tag bg-red-50 text-red-700 scale-90 origin-right">TOP1</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">日耗环比+58%，CTR跑赢大盘119%，爆单典范</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">日耗环比+58%，CTR跑赢大盘119%，爆单典范</p>
                             </a>
-                            <a href="case-huabei-yiyang.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-huabei-yiyang.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">华北益养优选</span>
-                                    <span class="badge-tag bg-amber-100 text-amber-800 scale-90 origin-right">ROI最高</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">华北益养优选</span>
+                                    <span class="badge-tag bg-amber-50 text-amber-700 scale-90 origin-right">ROI最高</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">菌菇酵素ROI高达1.63，智投渗透率85%</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">菌菇酵素ROI高达1.63，智投渗透率85%</p>
                             </a>
-                            <a href="case-drguo-bazhenyin.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-drguo-bazhenyin.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">Dr.郭-八珍饮</span>
-                                    <span class="badge-tag bg-cyan-100 text-cyan-800 scale-90 origin-right">高转化</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">Dr.郭-八珍饮</span>
+                                    <span class="badge-tag bg-cyan-50 text-cyan-700 scale-90 origin-right">高转化</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">冲饮品NEW星案例，CVR达全场最高6.4%</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">冲饮品NEW星案例，CVR达全场最高6.4%</p>
                             </a>
                         </div>
                     </div>
 
                     <!-- 赛道二：大促爆发·直播专场/流量弹性案例 -->
-                    <div class="glass p-5">
-                        <div class="flex items-center justify-between border-b border-gray-100 pb-2 mb-3">
-                            <span class="font-bold text-sm text-purple-800 flex items-center gap-1">🎬 赛道 2：直播间大局爆发 & 精准预约复盘</span>
-                            <span class="text-xs text-gray-400">节点冲量核心</span>
+                    <div class="card-base p-5 bg-white">
+                        <div class="flex items-center justify-between border-b border-slate-50 pb-2 mb-3">
+                            <span class="font-bold text-xs text-purple-800 flex items-center gap-1">🎬 赛道 2：直播间大局爆发 & 精准预约复盘</span>
+                            <span class="text-[10px] text-gray-400">节点冲量核心</span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="case-xiaoxiandun-618.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-xiaoxiandun-618.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">小仙炖618直播</span>
-                                    <span class="badge-tag bg-red-100 text-red-800 scale-90 origin-right">618</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">小仙炖618直播</span>
+                                    <span class="badge-tag bg-red-50 text-red-700 scale-90 origin-right">618</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">双播预约策略，618当天单场ROI突破2.50</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">双播预约策略，618当天单场ROI突破2.50</p>
                             </a>
-                            <a href="老字号湿谷方案例Showcase.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="老字号湿谷方案例Showcase.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">老字号湿谷方</span>
-                                    <span class="badge-tag bg-purple-100 text-purple-800 scale-90 origin-right">秀场</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">老字号湿谷方</span>
+                                    <span class="badge-tag bg-purple-50 text-purple-700 scale-90 origin-right">秀场</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">非闭环起步到品效合一，直播间极致话术拆解</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">非闭环起步到品效合一，直播间极致话术拆解</p>
                             </a>
-                            <a href="https://sumiyaliu.github.io/sumiya-public/apopo.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="https://sumiyaliu.github.io/sumiya-public/apopo.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">apopo 冲调品</span>
-                                    <span class="badge-tag bg-blue-100 text-blue-800 scale-90 origin-right">百万级</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">apopo 冲调计划</span>
+                                    <span class="badge-tag bg-blue-50 text-blue-700 scale-90 origin-right">百万级</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">冲调品类日消耗百万级大单爆量战术总结</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">冲调品类日消耗百万级大单爆量战术总结</p>
                             </a>
                         </div>
                     </div>
 
                     <!-- 赛道三：品类垂直·药食同源与高端滋补案例 -->
-                    <div class="glass p-5">
-                        <div class="flex items-center justify-between border-b border-gray-100 pb-2 mb-3">
-                            <span class="font-bold text-sm text-emerald-800 flex items-center gap-1">🌱 赛道 3：细分滋补垂直爆单与高复购</span>
-                            <span class="text-xs text-gray-400">人群精准定向</span>
+                    <div class="card-base p-5 bg-white">
+                        <div class="flex items-center justify-between border-b border-slate-50 pb-2 mb-3">
+                            <span class="font-bold text-xs text-emerald-800 flex items-center gap-1">🌱 赛道 3：细分滋补垂直爆单与高复购</span>
+                            <span class="text-[10px] text-gray-400">人群精准定向</span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="case-laobanzhang-gegen.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-laobanzhang-gegen.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">老班长葛根粉</span>
-                                    <span class="badge-tag bg-amber-100 text-amber-800 scale-90 origin-right">弹性爆量</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">老班长葛根粉</span>
+                                    <span class="badge-tag bg-amber-50 text-amber-700 scale-90 origin-right">弹性爆量</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">CTR优于大盘35%，618峰值拿量提升47%</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">CTR优于大盘35%，618计划拿量大升47%</p>
                             </a>
-                            <a href="case-xiaoxiandun-top6.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-xiaoxiandun-top6.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">小仙炖鲜炖燕窝</span>
-                                    <span class="badge-tag bg-emerald-100 text-emerald-800 scale-90 origin-right">高奢</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">小仙炖鲜炖燕窝</span>
+                                    <span class="badge-tag bg-emerald-50 text-emerald-700 scale-90 origin-right">高奢</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">高端赛道高客单ROI标杆，全期ROI保持1.78</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">高端计划高客单标杆，全期单计划跑出1.78</p>
                             </a>
-                            <a href="case-tianyemufeng.html" target="_blank" class="block p-3 rounded-xl border border-gray-100 bg-white/40 item-hover-effect">
+                            <a href="case-tianyemufeng.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800 truncate">田野牧蜂蜂蜜</span>
-                                    <span class="badge-tag bg-gray-100 text-gray-800 scale-90 origin-right">健康度</span>
+                                    <span class="text-xs font-bold text-slate-700 truncate">田野牧蜂蜂蜜</span>
+                                    <span class="badge-tag bg-slate-100 text-slate-700 scale-90 origin-right">健康度</span>
                                 </div>
-                                <p class="text-xs text-gray-500 scale-95 origin-left leading-normal">创意重复率仅44%，极具生命力的素材组合</p>
+                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">计划重复度仅44%，极具生命力的创意排布</p>
                             </a>
                         </div>
                     </div>
@@ -445,94 +504,94 @@ body {
 
         <!-- 3. 创意素材和行业资料：针对 投前、投中、投后 科学收敛 -->
         <div class="reveal reveal-delay-5">
-            <div class="flex items-center gap-3 mb-4">
+            <div class="flex items-center gap-2 mb-4">
                 <span class="text-2xl">🎨</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-lg">创意素材 & 行业资料：生命周期归口</h3>
+                    <h3 class="font-bold text-slate-800 text-lg">创意素材 & 行业资料：生命周期归口 / Material Kit</h3>
                     <p class="text-xs text-gray-500">将零散资料规范收敛为【投前筹备】、【投中提效】与【投后合规】三阶段</p>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- 投前：资产筹备与成分梳理 -->
-                <div class="glass p-5 border-t-4 border-t-cyan-600">
+                <div class="card-base p-5 border-t-4 border-t-cyan-600">
                     <div class="flex items-center gap-2 mb-4">
                         <span class="text-xs font-bold px-2.5 py-1 rounded bg-cyan-50 text-cyan-800">STAGE 01</span>
-                        <h4 class="font-bold text-gray-800 text-base">投前筹备</h4>
+                        <h4 class="font-bold text-slate-800 text-sm">投前筹备</h4>
                     </div>
                     <ul class="space-y-3">
                         <li>
-                            <a href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank" class="block p-3 bg-white/40 rounded-xl border border-gray-100/50 hover:bg-white/80 transition-colors">
+                            <a href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">传统滋补 - 成分科普</span>
+                                    <span class="text-xs font-bold text-slate-700">传统滋补 - 成分科普</span>
                                     <span class="text-[10px] text-gray-400">腾讯文档</span>
                                 </div>
-                                <p class="text-xs text-gray-500">全面覆盖各类中药草本、药食同源功效背书，投前素材灵感来源。</p>
+                                <p class="text-xs text-slate-500">全面覆盖各类中药草本、药食同源功效背书，投前素材灵感来源。</p>
                             </a>
                         </li>
                         <li>
-                            <a href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank" class="block p-3 bg-white/40 rounded-xl border border-gray-100/50 hover:bg-white/80 transition-colors">
+                            <a href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">滋补行业资料百宝箱 2.0</span>
+                                    <span class="text-xs font-bold text-slate-700">滋补行业资料百宝箱 2.0</span>
                                     <span class="text-[10px] text-gray-400">腾讯文档</span>
                                 </div>
-                                <p class="text-xs text-gray-500">最新行业通用方法论、大健康核心创意组件打包盘点，一站式新手必备包。</p>
+                                <p class="text-xs text-slate-500">最新行业通用方法论、大健康核心创意组件打包盘点，一站式新手必备包。</p>
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- 投中：创意提效与优化突破 -->
-                <div class="glass p-5 border-t-4 border-t-amber-600">
+                <div class="card-base p-5 border-t-4 border-t-amber-600">
                     <div class="flex items-center gap-2 mb-4">
                         <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-50 text-amber-800">STAGE 02</span>
-                        <h4 class="font-bold text-gray-800 text-base">投中提效</h4>
+                        <h4 class="font-bold text-slate-800 text-sm">投中提效</h4>
                     </div>
                     <ul class="space-y-3">
                         <li>
-                            <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank" class="block p-3 bg-white/40 rounded-xl border border-gray-100/50 hover:bg-white/80 transition-colors">
+                            <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">保健 & 滋补爆款创意双周报</span>
+                                    <span class="text-xs font-bold text-slate-700">保健 & 滋补爆款创意双周报</span>
                                     <span class="text-[10px] text-gray-400">链接报告</span>
                                 </div>
-                                <p class="text-xs text-gray-500">极高信息密度的创意思维拆解，包含跑量神3秒、视频生成 Prompt 复刻指令。</p>
+                                <p class="text-xs text-slate-500">极高信息密度的创意思维拆解，包含跑量神3秒、视频生成 Prompt 复刻指令。</p>
                             </a>
                         </li>
                         <li>
-                            <a href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank" class="block p-3 bg-white/40 rounded-xl border border-gray-100/50 hover:bg-white/80 transition-colors">
+                            <a href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">大健康创意周报 · CTR专项</span>
+                                    <span class="text-xs font-bold text-slate-700">大健康创意周报 · CTR专项</span>
                                     <span class="text-[10px] text-gray-400">企微文档</span>
                                 </div>
-                                <p class="text-xs text-gray-500">视频号场景内爆量素材黄金结构与剪辑风格精细解析，专项击破CTR低痛点。</p>
+                                <p class="text-xs text-slate-500">视频号场景内爆量素材黄金结构与剪辑风格精细解析，专项击破CTR低痛点。</p>
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- 投后：审核合规与安全防线 -->
-                <div class="glass p-5 border-t-4 border-t-emerald-600">
+                <div class="card-base p-5 border-t-4 border-t-emerald-600">
                     <div class="flex items-center gap-2 mb-4">
                         <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-50 text-emerald-800">STAGE 03</span>
-                        <h4 class="font-bold text-gray-800 text-base">投后合规</h4>
+                        <h4 class="font-bold text-slate-800 text-sm">投后合规</h4>
                     </div>
                     <ul class="space-y-3">
                         <li>
-                            <a href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&tab=s8vyuv" target="_blank" class="block p-3 bg-white/40 rounded-xl border border-gray-100/50 hover:bg-white/80 transition-colors">
+                            <a href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&tab=s8vyuv" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">审核拒绝极速修改指引</span>
+                                    <span class="text-xs font-bold text-slate-700">审核拒绝极速修改指引</span>
                                     <span class="text-[10px] text-gray-400">企微文档</span>
                                 </div>
-                                <p class="text-xs text-gray-500">直击滋补品类最常见拒绝原因、敏感词雷区，提供百分百能过审的替代文案。</p>
+                                <p class="text-xs text-slate-500">直击滋补品类最常见拒绝原因、敏感词雷区，提供百分百能过审的替代文案。</p>
                             </a>
                         </li>
                         <li>
-                            <a href="https://docs.qq.com/doc/DSkpXdmVoblFZbFFQ" target="_blank" class="block p-3 bg-white/40 rounded-xl border border-gray-100/50 hover:bg-white/80 transition-colors">
+                            <a href="https://docs.qq.com/doc/DSkpXdmVoblFZbFFQ" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">视频号直播常见违规解读</span>
+                                    <span class="text-xs font-bold text-slate-700">视频号直播常见违规解读</span>
                                     <span class="text-[10px] text-gray-400">腾讯文档</span>
                                 </div>
-                                <p class="text-xs text-gray-500">直播封禁、黄排和扣分点深度自查手册。稳定直播环境必读。</p>
+                                <p class="text-xs text-slate-500">直播封禁、黄排和扣分点深度自查手册。稳定直播环境必读。</p>
                             </a>
                         </li>
                     </ul>
