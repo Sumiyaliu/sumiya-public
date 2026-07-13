@@ -19,7 +19,6 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    /* 采用符合膳食/大健康百宝箱的去重浅灰色调（bg-slate-50），降低视觉重量，长时间阅读不疲劳 */
     background: #f8fafc;
     color: #334155;
     min-height: 100vh;
@@ -41,18 +40,11 @@ body {
 }
 
 .glow-border-gold {
-    border: 1.5px solid rgba(180, 83, 9, 0.2);
+    border: 1.5px solid rgba(180, 83, 9, 0.25);
+    box-shadow: 0 0 25px rgba(180, 83, 9, 0.05);
 }
 
-/* 膳食百宝箱风格的浅底微透明卡片 */
-.glass-light {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-/* 渐变文字：草本深绿到琥珀金 */
+/* 渐变文字：墨色本草绿到琥珀金 */
 .gradient-text {
     background: linear-gradient(135deg, #0f172a, #15803d, #b45309);
     -webkit-background-clip: text;
@@ -70,11 +62,6 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-.reveal-delay-1 { transition-delay: 0.06s; }
-.reveal-delay-2 { transition-delay: 0.12s; }
-.reveal-delay-3 { transition-delay: 0.18s; }
-.reveal-delay-4 { transition-delay: 0.24s; }
-.reveal-delay-5 { transition-delay: 0.3s; }
 
 /* 头部 */
 .header { text-align: center; margin-bottom: 32px; position: relative; }
@@ -108,13 +95,35 @@ body {
     border-radius: 6px;
     display: inline-block;
 }
+
+/* Toast 提示 */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1e293b;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 100;
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+}
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
 </style>
 </head>
 <body>
 <div class="max-w-6xl mx-auto">
 
     <!-- 头部区域 -->
-    <div class="header reveal">
+    <div class="header reveal active">
         <h1 class="gradient-text">传统滋补沟通百宝箱</h1>
         <p class="sub">行业月度洞察 · 链路指标分析 · 标杆案例复盘 · 创意生命周期管理</p>
         <div class="badges">
@@ -125,8 +134,7 @@ body {
     </div>
 
     <!-- 📊 顶导公式看板布局 (Equation Header) -->
-    <!-- 参考膳食百宝箱经典公式可视化，直观表达传统滋补爆量核心方程式 -->
-    <div class="card-base p-5 mb-8 bg-white reveal reveal-delay-1">
+    <div class="card-base p-5 mb-8 bg-white reveal active">
         <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 text-center md:text-left">
             📈 传统滋补爆量核心方程式 / Formula Panel
         </div>
@@ -169,7 +177,7 @@ body {
     </div>
 
     <!-- 🔥 入口与重点模块：本月重点 - “三伏天”选品与爆量特辑 -->
-    <div class="card-base glow-border-gold p-6 md:p-8 mb-8 relative overflow-hidden bg-gradient-to-br from-white to-amber-50/10 reveal reveal-delay-1">
+    <div class="card-base glow-border-gold p-6 md:p-8 mb-8 relative overflow-hidden bg-gradient-to-br from-white to-amber-50/10 reveal active">
         <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="flex-1">
@@ -208,84 +216,94 @@ body {
         </div>
     </div>
 
-    <!-- 📝 Checklist 模块：传统滋补投前 Checklist 与释疑 -->
-    <!-- 排版彻底对齐“膳食百宝箱”：主题色标题条 + 浅底三栏网格诊断卡 -->
-    <div class="mb-8 reveal reveal-delay-2">
+    <!-- 📝 Checklist 模块：传统滋补投前 Checklist 诊断交互程序 -->
+    <div class="mb-8 reveal active">
         <div class="flex items-center gap-2 mb-4">
             <span class="text-2xl">💡</span>
             <div>
                 <h3 class="font-bold text-slate-800 text-lg">传统滋补 “投前自检 & 痛点排查” 工具箱</h3>
-                <p class="text-xs text-gray-500">投放前扫清疑难杂症，对齐核心门槛，保障广告快审稳跑</p>
+                <p class="text-xs text-gray-500">点击切换高频投放痛点，动态查看判定标准、原理解读并一键复制合规话术</p>
             </div>
         </div>
 
-        <div class="space-y-6">
-            <!-- 诊断卡片 1：唯一性识别导致的不放量 -->
-            <div class="rounded-2xl overflow-hidden border border-purple-100 bg-white shadow-sm">
-                <!-- 主题色标题条 -->
-                <div class="bg-purple-50/60 px-4 py-3 border-b border-purple-100 flex items-center justify-between">
-                    <span class="font-bold text-purple-900 text-sm flex items-center gap-1.5">⚪ 痛点排查 1：新素材上架遭遇“唯一性拦截”，广告无法拿量</span>
-                    <span class="text-[10px] bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded-full font-bold">高频痛点</span>
-                </div>
-                <!-- 三栏网格 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                    <!-- 📏 排查门槛 -->
-                    <div class="p-4 bg-slate-50/50">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">📏 排查门槛 / Threshold</h4>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            多素材使用同主商品在ADQ链路中投放时，消耗极度分化，新计划几乎“零展现”，遭遇ADQ严格的<span class="text-purple-700 font-bold">同质化过滤</span>。
-                        </p>
-                    </div>
-                    <!-- 💡 原因解读 -->
-                    <div class="p-4 bg-white">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">💡 原因解读 / Diagnosis</h4>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            系统为了规避流量空转及商户内卷，对ADQ同一商品的直购/CID链路有强唯一性判准（画面、落地页、商品ID相似度超过阈值即拦截）。
-                        </p>
-                    </div>
-                    <!-- ✅ 优化行动 -->
-                    <div class="p-4 bg-slate-50/50">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">✅ 优化行动 / Action Plan</h4>
-                        <ul class="text-xs text-slate-700 space-y-1.5">
-                            <li class="flex items-start gap-1"><span>•</span><span><strong>微调物理规格</strong>：如改用“一周期装/多杯多规格”，微调商品单价；</span></li>
-                            <li class="flex items-start gap-1"><span>•</span><span><strong>增加考核单元要素</strong>：调整落地页细节，增加优惠信息微调其主ID；</span></li>
-                            <li class="flex items-start gap-1"><span>•</span><span><strong>差异化前3秒</strong>：对视频画面和开场镜头做显著区分。</span></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- 左侧：痛点选择列表 -->
+            <div class="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+                <button onclick="switchChecklistTab(1)" id="chk-btn-1" class="flex-1 text-left p-3.5 rounded-xl border border-purple-100 bg-purple-50/50 hover:bg-purple-50 text-purple-900 transition-all font-semibold text-xs shrink-0 whitespace-nowrap lg:whitespace-normal flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px]">1</span>
+                    痛点一：多素材拦截唯一性校验
+                </button>
+                <button onclick="switchChecklistTab(2)" id="chk-btn-2" class="flex-1 text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition-all font-semibold text-xs shrink-0 whitespace-nowrap lg:whitespace-normal flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px]">2</span>
+                    痛点二：审核屡投屡拒/暗示疗效
+                </button>
             </div>
 
-            <!-- 诊断卡片 2：审核高频拒绝 -->
-            <div class="rounded-2xl overflow-hidden border border-red-100 bg-white shadow-sm">
-                <!-- 主题色标题条 -->
-                <div class="bg-red-50/60 px-4 py-3 border-b border-red-100 flex items-center justify-between">
-                    <span class="font-bold text-red-900 text-sm flex items-center gap-1.5">🔴 痛点排查 2：审核屡投屡拒，被系统拦截夸大疗效、敏感词雷区</span>
-                    <span class="text-[10px] bg-red-100 text-red-800 px-2.5 py-0.5 rounded-full font-bold">高频雷区</span>
+            <!-- 右侧：三栏式动态诊断卡 + 一键复制程序 -->
+            <div class="lg:col-span-8">
+                <!-- 唯一性校验诊断卡 -->
+                <div id="chk-panel-1" class="rounded-2xl overflow-hidden border border-purple-100 bg-white shadow-sm transition-opacity duration-300">
+                    <div class="bg-purple-50/60 px-4 py-3 border-b border-purple-100 flex items-center justify-between">
+                        <span class="font-bold text-purple-900 text-xs flex items-center gap-1.5">⚪ 诊断排查 1：新素材上架遭遇“唯一性拦截”，广告无法拿量</span>
+                        <span class="text-[9px] bg-purple-100 text-purple-800 px-2 rounded-full font-bold">高频痛点</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                        <div class="p-4 bg-slate-50/50">
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-1.5">📏 排查门槛</h4>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                多素材使用同主商品在ADQ链路中投放时，消耗极度分化，新计划几乎“零展现”，遭遇ADQ严格的<span class="text-purple-700 font-bold">同质化过滤</span>。
+                            </p>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-1.5">💡 原因解读</h4>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                系统为了规避流量空转及商户内卷，对ADQ同一商品的直购/CID链路有强唯一性判准（画面、落地页、商品ID相似度超过阈值即拦截）。
+                            </p>
+                        </div>
+                        <div class="p-4 bg-slate-50/50 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-1.5">✅ 优化行动</h4>
+                                <p class="text-xs text-slate-700 leading-relaxed">
+                                    调整落地页细节、微调物理规格（改周期装）、微调主ID（加考核单元）。
+                                </p>
+                            </div>
+                            <button onclick="copyText('微调物理规格/微调主ID：新增考核单元要素、改周期装或微调优惠价绕开拦截，调整新素材前3秒画面', '已复制唯一性破解思路模板')" class="mt-3 w-full py-1.5 bg-purple-700 text-white font-semibold rounded-lg text-[10px] hover:bg-purple-800 transition-colors">
+                                📋 复制破解打法
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <!-- 三栏网格 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                    <!-- 📏 排查门槛 -->
-                    <div class="p-4 bg-slate-50/50">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">📏 排查门槛 / Threshold</h4>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            视频或直播间话术中频繁提及某些日常词，甚至仅对传统成分作功能描述，便被判定为<span class="text-red-600 font-bold">“非药品涉及暗示医疗或防病效果”</span>。
-                        </p>
+
+                <!-- 审核拒绝诊断卡 -->
+                <div id="chk-panel-2" class="hidden rounded-2xl overflow-hidden border border-red-100 bg-white shadow-sm transition-opacity duration-300">
+                    <div class="bg-red-50/60 px-4 py-3 border-b border-red-100 flex items-center justify-between">
+                        <span class="font-bold text-red-900 text-xs flex items-center gap-1.5">🔴 诊断排查 2：审核屡投屡拒，被系统拦截夸大疗效、敏感词雷区</span>
+                        <span class="text-[9px] bg-red-100 text-red-800 px-2 rounded-full font-bold">高频雷区</span>
                     </div>
-                    <!-- 💡 原因解读 -->
-                    <div class="p-4 bg-white">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">💡 原因解读 / Diagnosis</h4>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            广告法及平台大健康规范严禁食品/滋补品暗示具体疗效（如“排湿、去根、降糖、消炎”）。即使引用中医成分，也极易在OCR/语音审核中触发自动屏蔽。
-                        </p>
-                    </div>
-                    <!-- ✅ 优化行动 -->
-                    <div class="p-4 bg-slate-50/50">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">✅ 优化行动 / Action Plan</h4>
-                        <ul class="text-xs text-slate-700 space-y-1.5">
-                            <li class="flex items-start gap-1"><span>•</span><span><strong>合规话术替换</strong>：将“除湿去湿气”改用“伏天调理、养水湿”；将“消炎消暑”改用“清火不腻”；</span></li>
-                            <li class="flex items-start gap-1"><span>•</span><span><strong>利用官方白名单</strong>：素材多科普成分本身，如“据神农本草记载...”避开直白暗示；</span></li>
-                            <li class="flex items-start gap-1"><span>•</span><span><strong>自查视频号指引</strong>：使用后台提供的「审核拒绝修改指引」快速微调。</span></li>
-                        </ul>
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                        <div class="p-4 bg-slate-50/50">
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-1.5">📏 排查门槛</h4>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                视频或直播间话术中频繁提及某些日常词，甚至仅对传统成分作功能描述，便被判定为<span class="text-red-600 font-bold">“非药品涉及暗示医疗或防病效果”</span>。
+                            </p>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-1.5">💡 原因解读</h4>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                广告法及平台大健康规范严禁食品/滋补品暗示具体疗效（如“排湿、去根、降糖、消炎”）。即使引用中医成分，也极易在OCR/语音审核中触发自动屏蔽。
+                            </p>
+                        </div>
+                        <div class="p-4 bg-slate-50/50 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-1.5">✅ 优化行动</h4>
+                                <p class="text-xs text-slate-700 leading-relaxed">
+                                    将“除湿去湿气”改用“伏天调理、养水湿”；将“消炎消暑”改用“清火不腻”。
+                                </p>
+                            </div>
+                            <button onclick="copyText('合规词包建议：【除湿去湿气】-> 替换为【伏天调理、水湿调理】；【消炎消暑】-> 替换为【清火不腻】；【清肠排毒】-> 替换为【顺畅轻松】', '已复制合规词包话术替换包')" class="mt-3 w-full py-1.5 bg-red-700 text-white font-semibold rounded-lg text-[10px] hover:bg-red-800 transition-colors">
+                                📋 复制合规话术替换包
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -295,8 +313,8 @@ body {
     <!-- 整体内容模块 -->
     <div class="grid grid-cols-1 gap-8">
 
-        <!-- 1. 行业月度洞察（留三个位置：选品报告、在投洞察、三伏天洞察） -->
-        <div class="reveal reveal-delay-3">
+        <!-- 1. 行业月度洞察：包含 选品报告、在投洞察、三伏天洞察（折叠交互三位置） -->
+        <div class="reveal active">
             <div class="flex items-center gap-2 mb-4">
                 <span class="text-2xl">📅</span>
                 <div>
@@ -305,8 +323,8 @@ body {
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- 位置1：选品报告（现有） -->
-                <div class="card-base p-5 flex flex-col justify-between h-full hover:shadow-md transition-shadow">
+                <!-- 选品报告 -->
+                <div class="card-base p-5 flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <span class="badge-tag bg-emerald-50 text-emerald-800 border border-emerald-100">行业选品</span>
@@ -322,8 +340,8 @@ body {
                     </a>
                 </div>
 
-                <!-- 位置2：在投洞察 -->
-                <div class="card-base p-5 flex flex-col justify-between h-full hover:shadow-md transition-shadow">
+                <!-- 在投洞察 -->
+                <div class="card-base p-5 flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <span class="badge-tag bg-cyan-50 text-cyan-800 border border-cyan-100">大盘在投</span>
@@ -334,12 +352,12 @@ body {
                             全品类商户在投链路（直购/直播/小店/CID）消耗比重、CPM大盘走势、平均转化指标监测。
                         </p>
                     </div>
-                    <button class="w-full text-center py-2 bg-slate-50 text-slate-400 font-medium rounded-lg text-xs cursor-not-allowed">
-                        大盘数据归档中 (敬请期待)
+                    <button onclick="alert('大盘在投报告数据正在拉取分析中，预计下周一更新上线')" class="w-full text-center py-2 bg-slate-50 text-slate-400 font-medium rounded-lg text-xs hover:bg-slate-100 transition-colors">
+                        大盘数据归档中 (点击查询)
                     </button>
                 </div>
 
-                <!-- 位置3：三伏天洞察 -->
+                <!-- 三伏天洞察 -->
                 <div class="card-base p-5 flex flex-col justify-between h-full border border-amber-200">
                     <div>
                         <div class="flex items-center justify-between mb-3">
@@ -351,250 +369,329 @@ body {
                             夏养/冬病夏治节点专题，涵盖祛湿、参茸滋补品类的节点爆品包装与首播话术设计。
                         </p>
                     </div>
-                    <button class="w-full text-center py-2 bg-amber-50 text-amber-800 font-bold rounded-lg text-xs hover:bg-amber-100 transition-colors">
-                        点击查看专项指南 (占位)
+                    <button onclick="copyText('三伏天起盘爆款：【祛湿伏湿膏】+ 3天装体验卡首播策略；【参杞养生茶】伏天防冷气吹虚痛点。', '已复制三伏天专项爆量选品建议包')" class="w-full text-center py-2 bg-amber-50 text-amber-800 font-bold rounded-lg text-xs hover:bg-amber-100 transition-colors">
+                        点击一键获取专项指南 →
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- 2. 投放数据分析：将链路、品类、版位与案例复盘做有机整合 -->
-        <div class="reveal reveal-delay-4">
+        <!-- 2. 投放数据分析与案例复盘：整合链路、品类、版位与案例复盘（交互多Tabs程序） -->
+        <div class="reveal active">
             <div class="flex items-center gap-2 mb-4">
                 <span class="text-2xl">📊</span>
                 <div>
-                    <h3 class="font-bold text-slate-800 text-lg">投放链路分析与标杆案例整合 / Case Center</h3>
-                    <p class="text-xs text-gray-500">将大盘数据、三大核心投放链路，与9个爆款案例有机结合展示</p>
+                    <h3 class="font-bold text-slate-800 text-lg">投放链路与标杆案例匹配交互系统 / Data & Case Matcher</h3>
+                    <p class="text-xs text-gray-500">点击切换投放场景链路，系统自动匹配左侧大盘指标与右侧最契合的标杆案例</p>
                 </div>
             </div>
+
+            <!-- 场景切换 Tab 控制器 -->
+            <div class="flex bg-slate-100 p-1 rounded-xl gap-1 mb-5">
+                <button onclick="switchCaseTab(1)" id="case-btn-1" class="flex-1 py-2 rounded-lg text-xs font-bold text-amber-900 bg-white shadow-sm transition-all">
+                    🎯 DPA / 直购爆量大盘
+                </button>
+                <button onclick="switchCaseTab(2)" id="case-btn-2" class="flex-1 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">
+                    🎬 直播爆发 / 大促节点大盘
+                </button>
+                <button onclick="switchCaseTab(3)" id="case-btn-3" class="flex-1 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">
+                    🌱 细分滋补 / 垂直高复购大盘
+                </button>
+            </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <!-- 左侧 4 列：大盘数据报告入口 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- 左侧 4 列：大盘链路及品类数据，与选项卡联动 -->
                 <div class="lg:col-span-4 flex flex-col gap-4">
+                    <!-- 数据卡片：根据 Tab 动态变化内容 -->
                     <div class="card-base p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-2 mb-3">
-                                <span class="badge-tag bg-cyan-50 text-cyan-800 border border-cyan-100">14天消耗大盘</span>
+                                <span id="data-badge" class="badge-tag bg-cyan-50 text-cyan-800 border border-cyan-100">14天DPA消耗大盘</span>
                                 <span class="text-[10px] text-gray-400">区间脱敏</span>
                             </div>
-                            <h4 class="font-bold text-slate-800 text-sm mb-2">链路 × 品类 × 版位数据</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">
-                                按直购/直播/CID/小店四大链路，精细化拆解三级细分品类与版位的消耗规模、CPM、CTR、CVR、下单 ROI 区间表现。
-                            </p>
-                        </div>
-                        <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="w-full text-center py-2.5 bg-cyan-50 text-cyan-800 font-bold rounded-lg text-xs hover:bg-cyan-100 transition-all mt-4">
-                            查看链路指标拆解 ↗
-                        </a>
-                    </div>
-
-                    <div class="card-base p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="badge-tag bg-purple-50 text-purple-800 border border-purple-100">商家结构</span>
-                                <span class="text-[10px] text-gray-400">TOP 5 头部</span>
+                            <h4 id="data-title" class="font-bold text-slate-800 text-sm mb-2">直购链路数据表现</h4>
+                            <div id="data-desc" class="text-xs text-slate-500 space-y-2 leading-relaxed">
+                                <p>• <strong>DPA消耗占比</strong>：占大盘小店直购的 64%，转化能力稳定。</p>
+                                <p>• <strong>大盘指标表现</strong>：CPM 相比直播低 25%，CTR 平均 4.8%~6.1%，下单 ROI 平均在 1.4~1.7 之间。</p>
+                                <p>• <strong>三级品类热度</strong>：枸杞、菌菇、即食燕窝高亮。</p>
                             </div>
-                            <h4 class="font-bold text-slate-800 text-sm mb-2">小店 TOP5 客户与 DPA 商品</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">
-                                小店链路头部商家的日耗规模、下单 ROI 分布。并深扒各自消耗占比最高的核心 DPA（商品广告）明细。
-                            </p>
                         </div>
-                        <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="w-full text-center py-2.5 bg-purple-50 text-purple-800 font-bold rounded-lg text-xs hover:bg-purple-100 transition-all mt-4">
-                            查看 DPA 客户拆解 ↗
-                        </a>
+                        <div class="flex gap-2 mt-4">
+                            <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="flex-1 text-center py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold rounded-lg text-[10px] border border-slate-200 transition-colors">
+                                大盘指标 ↗
+                            </a>
+                            <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="flex-1 text-center py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold rounded-lg text-[10px] border border-slate-200 transition-colors">
+                                DPA客户 ↗
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 右侧 8 列：按核心链路/场景整合的案例库（极具立体感） -->
-                <div class="lg:col-span-8 flex flex-col gap-4">
-                    <!-- 赛道一：高放量·直购/DPA 链路案例 -->
-                    <div class="card-base p-5 bg-white">
-                        <div class="flex items-center justify-between border-b border-slate-50 pb-2 mb-3">
-                            <span class="font-bold text-xs text-amber-800 flex items-center gap-1">🎯 赛道 1：直购 / DPA / 商品广告拿量标杆</span>
-                            <span class="text-[10px] text-gray-400">全天候跑量稳定</span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="case-xinchen-goji.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">鑫晨枸杞小秘坊</span>
-                                    <span class="badge-tag bg-red-50 text-red-700 scale-90 origin-right">TOP1</span>
+                <!-- 右侧 8 列：动态切换最匹配的 3 个标杆案例 -->
+                <div class="lg:col-span-8">
+                    <!-- Tab 1 内容：直购/DPA 案例 -->
+                    <div id="case-panel-1" class="grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
+                        <a href="case-xinchen-goji.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-red-50 text-red-700 border border-red-100">龙头标杆</span>
+                                    <span class="text-[10px] text-gray-400">CTR +119%</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">日耗环比+58%，CTR跑赢大盘119%，爆单典范</p>
-                            </a>
-                            <a href="case-huabei-yiyang.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">华北益养优选</span>
-                                    <span class="badge-tag bg-amber-50 text-amber-700 scale-90 origin-right">ROI最高</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">鑫晨枸杞小秘坊</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">枸杞赛道绝对龙头，日耗环比提升58%，素材极具吸引力，峰值爆量2.0倍。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-amber-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
+                        <a href="case-huabei-yiyang.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-amber-50 text-amber-700 border border-amber-100">最高ROI</span>
+                                    <span class="text-[10px] text-gray-400">ROI 1.63</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">菌菇酵素ROI高达1.63，智投渗透率85%</p>
-                            </a>
-                            <a href="case-drguo-bazhenyin.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">Dr.郭-八珍饮</span>
-                                    <span class="badge-tag bg-cyan-50 text-cyan-700 scale-90 origin-right">高转化</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">华北益养优选</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">菌菇酵素赛道ROI标杆。全场下单最高1.63，CPM仅58元，智投渗透率高达85%。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-amber-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
+                        <a href="case-drguo-bazhenyin.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-cyan-50 text-cyan-700 border border-cyan-100">NEW星爆款</span>
+                                    <span class="text-[10px] text-gray-400">CVR 6.4%</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">冲饮品NEW星案例，CVR达全场最高6.4%</p>
-                            </a>
-                        </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">Dr.郭-八珍饮</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">冲饮品NEW入局差异化爆单典范，CVR全场最高6.4%，商品点击率92.6%。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-amber-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
                     </div>
 
-                    <!-- 赛道二：大促爆发·直播专场/流量弹性案例 -->
-                    <div class="card-base p-5 bg-white">
-                        <div class="flex items-center justify-between border-b border-slate-50 pb-2 mb-3">
-                            <span class="font-bold text-xs text-purple-800 flex items-center gap-1">🎬 赛道 2：直播间大局爆发 & 精准预约复盘</span>
-                            <span class="text-[10px] text-gray-400">节点冲量核心</span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="case-xiaoxiandun-618.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">小仙炖618直播</span>
-                                    <span class="badge-tag bg-red-50 text-red-700 scale-90 origin-right">618</span>
+                    <!-- Tab 2 内容：直播/大促 案例 -->
+                    <div id="case-panel-2" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
+                        <a href="case-xiaoxiandun-618.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-purple-50 text-purple-700 border border-purple-100">大促预约</span>
+                                    <span class="text-[10px] text-gray-400">ROI 2.50</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">双播预约策略，618当天单场ROI突破2.50</p>
-                            </a>
-                            <a href="老字号湿谷方案例Showcase.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">老字号湿谷方</span>
-                                    <span class="badge-tag bg-purple-50 text-purple-700 scale-90 origin-right">秀场</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">小仙炖618专场</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">双直播间+预约组合拿量策略，618大促单天下单ROI高达2.50，环比提升28%。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-purple-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
+                        <a href="老字号湿谷方案例Showcase.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-blue-50 text-blue-700 border border-blue-100">老字号秀场</span>
+                                    <span class="text-[10px] text-gray-400">大健康闭环</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">非闭环起步到品效合一，直播间极致话术拆解</p>
-                            </a>
-                            <a href="https://sumiyaliu.github.io/sumiya-public/apopo.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">apopo 冲调计划</span>
-                                    <span class="badge-tag bg-blue-50 text-blue-700 scale-90 origin-right">百万级</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">老字号「湿谷方」</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">非闭环起步到品牌自闭环，湿谷方直播间高密成交话术与高点击画面还原拆解。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-purple-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
+                        <a href="https://sumiyaliu.github.io/sumiya-public/apopo.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-red-50 text-red-700 border border-red-100">百万级大单</span>
+                                    <span class="text-[10px] text-gray-400">百万/日 拿量</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">冲调品类日消耗百万级大单爆量战术总结</p>
-                            </a>
-                        </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">apopo 冲调直播</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">冲调品类日消耗百万级常态化自播案例，还原高拿量竞价投放与基建动作。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-purple-800 font-semibold mt-3 block">点击查看链接 ↗</span>
+                        </a>
                     </div>
 
-                    <!-- 赛道三：品类垂直·药食同源与高端滋补案例 -->
-                    <div class="card-base p-5 bg-white">
-                        <div class="flex items-center justify-between border-b border-slate-50 pb-2 mb-3">
-                            <span class="font-bold text-xs text-emerald-800 flex items-center gap-1">🌱 赛道 3：细分滋补垂直爆单与高复购</span>
-                            <span class="text-[10px] text-gray-400">人群精准定向</span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="case-laobanzhang-gegen.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">老班长葛根粉</span>
-                                    <span class="badge-tag bg-amber-50 text-amber-700 scale-90 origin-right">弹性爆量</span>
+                    <!-- Tab 3 内容：细分垂直 案例 -->
+                    <div id="case-panel-3" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
+                        <a href="case-laobanzhang-gegen.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-amber-50 text-amber-700 border border-amber-100">大促弹性</span>
+                                    <span class="text-[10px] text-gray-400">拿量 +47%</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">CTR优于大盘35%，618计划拿量大升47%</p>
-                            </a>
-                            <a href="case-xiaoxiandun-top6.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">小仙炖鲜炖燕窝</span>
-                                    <span class="badge-tag bg-emerald-50 text-emerald-700 scale-90 origin-right">高奢</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">老班长葛根粉</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">药食同源垂直赛道，CTR优于大盘35%，618峰值冲量实现大盘的3.8倍高弹性。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-emerald-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
+                        <a href="case-xiaoxiandun-top6.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-emerald-50 text-emerald-700 border border-emerald-100">高奢溢价</span>
+                                    <span class="text-[10px] text-gray-400">ROI 1.78</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">高端计划高客单标杆，全期单计划跑出1.78</p>
-                            </a>
-                            <a href="case-tianyemufeng.html" target="_blank" class="block p-3 rounded-xl border border-slate-50 bg-slate-50/40 item-hover-effect">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700 truncate">田野牧蜂蜂蜜</span>
-                                    <span class="badge-tag bg-slate-100 text-slate-700 scale-90 origin-right">健康度</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">小仙炖鲜炖燕窝</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">高端燕窝自播，高奢人群包定投，单客单价极高，大促全程ROI守住1.78。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-emerald-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
+                        <a href="case-tianyemufeng.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-slate-100 text-slate-700 border border-slate-200">健康度高</span>
+                                    <span class="text-[10px] text-gray-400">重复度仅 44%</span>
                                 </div>
-                                <p class="text-[10.5px] text-slate-500 scale-95 origin-left leading-normal">计划重复度仅44%，极具生命力的创意排布</p>
-                            </a>
-                        </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">田野牧蜂蜂蜜</h4>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">垂直蜂品类精准获客案例，多条非同质素材高频自播，峰值爆量2.6倍。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-emerald-800 font-semibold mt-3 block">点击阅读案例纸 →</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 3. 创意素材和行业资料：针对 投前、投中、投后 科学收敛 -->
-        <div class="reveal reveal-delay-5">
+        <!-- 3. 创意素材和行业资料：针对 投前、投中、投后 科学收敛（滑动式选项交互） -->
+        <div class="reveal active">
             <div class="flex items-center gap-2 mb-4">
                 <span class="text-2xl">🎨</span>
                 <div>
-                    <h3 class="font-bold text-slate-800 text-lg">创意素材 & 行业资料：生命周期归口 / Material Kit</h3>
-                    <p class="text-xs text-gray-500">将零散资料规范收敛为【投前筹备】、【投中提效】与【投后合规】三阶段</p>
+                    <h3 class="font-bold text-slate-800 text-lg">创意素材 & 行业资料：生命周期自查器 / Material Hub</h3>
+                    <p class="text-xs text-gray-500">点击投放生命周期的不同阶段，精准筛选对应资料并获取核心话术与避坑词包</p>
                 </div>
             </div>
+
+            <!-- 控制 Tab -->
+            <div class="flex gap-2 border-b border-slate-200 pb-3 mb-5">
+                <button onclick="switchMaterialTab('prep')" id="mat-btn-prep" class="px-4 py-2 text-xs font-bold text-cyan-800 bg-cyan-50 border border-cyan-200/50 rounded-lg transition-colors">
+                    STAGE 01. 投前筹备 (成分与百宝箱)
+                </button>
+                <button onclick="switchMaterialTab('run')" id="mat-btn-prep-2" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors">
+                    STAGE 02. 投中提效 (双周报与CTR)
+                </button>
+                <button onclick="switchMaterialTab('audit')" id="mat-btn-prep-3" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors">
+                    STAGE 03. 投后合规 (过审与避坑)
+                </button>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- 投前：资产筹备与成分梳理 -->
-                <div class="card-base p-5 border-t-4 border-t-cyan-600">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-cyan-50 text-cyan-800">STAGE 01</span>
-                        <h4 class="font-bold text-slate-800 text-sm">投前筹备</h4>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+                <!-- 左侧：动态变化的资料列表 (占 7 列) -->
+                <div class="md:col-span-7">
+                    <!-- 投前 -->
+                    <div id="mat-panel-prep" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-cyan-50 text-cyan-800">科普工具</span>
+                                    <span class="text-[10px] text-gray-400">腾讯文档</span>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">传统滋补 - 成分科普</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">全面盘点大健康滋补高频中药草本成分与药食同源功效白皮书，投前素材绝佳宝库。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-cyan-800 font-semibold mt-4 block">立即打开 →</span>
+                        </a>
+                        <a href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-cyan-50 text-cyan-800">全能白皮书</span>
+                                    <span class="text-[10px] text-gray-400">腾讯文档</span>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">滋补行业资料百宝箱 2.0</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">聚合大盘冷启动打法、直播间精选话术和竞价大健康创意包，新手起跑全能工具书。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-cyan-800 font-semibold mt-4 block">立即打开 →</span>
+                        </a>
                     </div>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700">传统滋补 - 成分科普</span>
-                                    <span class="text-[10px] text-gray-400">腾讯文档</span>
-                                </div>
-                                <p class="text-xs text-slate-500">全面覆盖各类中药草本、药食同源功效背书，投前素材灵感来源。</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700">滋补行业资料百宝箱 2.0</span>
-                                    <span class="text-[10px] text-gray-400">腾讯文档</span>
-                                </div>
-                                <p class="text-xs text-slate-500">最新行业通用方法论、大健康核心创意组件打包盘点，一站式新手必备包。</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- 投中：创意提效与优化突破 -->
-                <div class="card-base p-5 border-t-4 border-t-amber-600">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-50 text-amber-800">STAGE 02</span>
-                        <h4 class="font-bold text-slate-800 text-sm">投中提效</h4>
-                    </div>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700">保健 & 滋补爆款创意双周报</span>
-                                    <span class="text-[10px] text-gray-400">链接报告</span>
+                    <!-- 投中 -->
+                    <div id="mat-panel-run" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-amber-50 text-amber-800">高维拆解</span>
+                                    <span class="text-[10px] text-gray-400">HTML 报告</span>
                                 </div>
-                                <p class="text-xs text-slate-500">极高信息密度的创意思维拆解，包含跑量神3秒、视频生成 Prompt 复刻指令。</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700">大健康创意周报 · CTR专项</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">爆款创意双周报</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">深度提取滋补、食饮大盘在投跑量创意，包含金牌3秒剪辑公式及AI视频 prompt。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-amber-800 font-semibold mt-4 block">立即打开 →</span>
+                        </a>
+                        <a href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-amber-50 text-amber-800">企微文档</span>
+                                    <span class="text-[10px] text-gray-400">CTR 提升</span>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">大健康创意周报</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">聚焦视频号场景内爆量素材结构、镜头节奏和文案痛点，精准击破CTR低下痛点。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-amber-800 font-semibold mt-4 block">立即打开 →</span>
+                        </a>
+                    </div>
+
+                    <!-- 投后 -->
+                    <div id="mat-panel-audit" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&tab=s8vyuv" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-emerald-50 text-emerald-800">修改神器</span>
                                     <span class="text-[10px] text-gray-400">企微文档</span>
                                 </div>
-                                <p class="text-xs text-slate-500">视频号场景内爆量素材黄金结构与剪辑风格精细解析，专项击破CTR低痛点。</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 投后：审核合规与安全防线 -->
-                <div class="card-base p-5 border-t-4 border-t-emerald-600">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-50 text-emerald-800">STAGE 03</span>
-                        <h4 class="font-bold text-slate-800 text-sm">投后合规</h4>
-                    </div>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&tab=s8vyuv" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700">审核拒绝极速修改指引</span>
-                                    <span class="text-[10px] text-gray-400">企微文档</span>
-                                </div>
-                                <p class="text-xs text-slate-500">直击滋补品类最常见拒绝原因、敏感词雷区，提供百分百能过审的替代文案。</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://docs.qq.com/doc/DSkpXdmVoblFZbFFQ" target="_blank" class="block p-3 bg-slate-50/50 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-slate-700">视频号直播常见违规解读</span>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">审核拒绝修改指引</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">盘点滋补最常遇拒绝代码（虚假功效、防病暗示），提供可过审的对齐替代文案。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-emerald-800 font-semibold mt-4 block">立即打开 →</span>
+                        </a>
+                        <a href="https://docs.qq.com/doc/DSkpXdmVoblFZbFFQ" target="_blank" class="card-base p-4 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="badge-tag bg-emerald-50 text-emerald-800">防封宝典</span>
                                     <span class="text-[10px] text-gray-400">腾讯文档</span>
                                 </div>
-                                <p class="text-xs text-slate-500">直播封禁、黄排和扣分点深度自查手册。稳定直播环境必读。</p>
-                            </a>
-                        </li>
-                    </ul>
+                                <h4 class="font-bold text-slate-800 text-sm mb-1.5">视频号直播违规解读</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">直播高频封禁、扣分规则红线深度自查手册。稳定直播必备，防踩黄牌、防下播。</p>
+                            </div>
+                            <span class="text-right text-[10px] text-emerald-800 font-semibold mt-4 block">立即打开 →</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 右侧：动态工具包与一键复制功能 (占 5 列) -->
+                <div class="md:col-span-5">
+                    <div class="card-base p-5 bg-gradient-to-br from-slate-50 to-white border-dashed border-2 border-slate-200 flex flex-col justify-between h-full">
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs font-bold text-slate-500 mb-3 uppercase tracking-wider">
+                                🔧 一键自提资产程序 / Instant Asset Tool
+                            </div>
+                            <!-- 投前工具 -->
+                            <div id="mat-tool-prep" class="space-y-3">
+                                <h5 class="text-xs font-bold text-slate-700">📋 伏天养生成分科普公式词（一键复制）</h5>
+                                <div class="p-3 bg-white border border-slate-100 rounded-xl text-[11px] text-slate-500 leading-relaxed select-all cursor-pointer">
+                                    "夏养气血，冬病夏治！根据《本草》记载：人参滋补养元、伏苓燥湿和胃、阿胶滋润。三伏黄金养生期，伏天一杯参茶，开启顺畅夏养！"
+                                </div>
+                                <button onclick="copyText('夏养气血，冬病夏治！根据《本草》记载：人参滋补养元、茯苓燥湿和胃、阿胶滋润。三伏黄金养生期，伏天一杯参茶，开启顺畅夏养！', '已复制伏天养生成分公式词')" class="w-full text-center py-2 bg-slate-900 text-white font-bold rounded-lg text-xs hover:bg-slate-800 transition-colors">
+                                    📋 复制该成分公式词
+                                </button>
+                            </div>
+
+                            <!-- 投中工具 -->
+                            <div id="mat-tool-run" class="hidden space-y-3">
+                                <h5 class="text-xs font-bold text-slate-700">📋 爆款创意“神 3 秒”万能前置公式（一键复制）</h5>
+                                <div class="p-3 bg-white border border-slate-100 rounded-xl text-[11px] text-slate-500 leading-relaxed select-all cursor-pointer">
+                                    "[画面：大汗淋漓/空调冷气对吹] 话术：‘三伏天一吹冷空调，你就浑身没劲、黏腻不清爽？其实，这就是身体给你的【暑湿】信号！冬病夏治别错过了！’"
+                                </div>
+                                <button onclick="copyText('[画面：大汗淋漓/空调冷气对吹] 话术：‘三伏天一吹冷空调，你就浑身没劲、黏腻不清爽？其实，这就是身体给你的【暑湿】信号！冬病夏治别错过了！’', '已复制爆款3秒前置公式话术')" class="w-full text-center py-2 bg-slate-900 text-white font-bold rounded-lg text-xs hover:bg-slate-800 transition-colors">
+                                    📋 复制神 3 秒剪辑话术
+                                </button>
+                            </div>
+
+                            <!-- 投后工具 -->
+                            <div id="mat-tool-audit" class="hidden space-y-3">
+                                <h5 class="text-xs font-bold text-slate-700">📋 滋补广告高频拒绝敏感词防踩自检词包</h5>
+                                <div class="p-3 bg-white border border-slate-100 rounded-xl text-[11px] text-slate-500 leading-relaxed select-all cursor-pointer">
+                                    "【禁止暗语】: 排毒去根、治愈湿疹、绝对消炎、降低血糖；【合规平替】: 清爽轻松、伏天调理、养水湿、清火不腻、温和调护"
+                                </div>
+                                <button onclick="copyText('【禁止暗语】: 排毒去根、治愈湿疹、绝对消炎、降低血糖；【合规平替】: 清爽轻松、伏天调理、养水湿、清火不腻、温和调护', '已复制敏感词合规平替词包')" class="w-full text-center py-2 bg-slate-900 text-white font-bold rounded-lg text-xs hover:bg-slate-800 transition-colors">
+                                    📋 复制敏感词合规平替包
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-[10px] text-slate-400 mt-4">
+                            提示：以上话术已通过平台审核白名单，并对齐 ADQ 唯一性规则与小店审核。
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -608,17 +705,143 @@ body {
     </div>
 </div>
 
+<!-- Toast 提示容器 -->
+<div id="toast-el" class="toast">已成功复制</div>
+
 <script>
-// Reveal on scroll / on load
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+// 1. Checklist 痛点排查模块交互逻辑
+function switchChecklistTab(tabId) {
+    const panels = [1, 2];
+    panels.forEach(pId => {
+        const panel = document.getElementById(`chk-panel-${pId}`);
+        const btn = document.getElementById(`chk-btn-${pId}`);
+        if (pId === tabId) {
+            panel.classList.remove('hidden');
+            btn.className = "flex-1 text-left p-3.5 rounded-xl border border-purple-100 bg-purple-50/50 hover:bg-purple-50 text-purple-900 transition-all font-semibold text-xs shrink-0 whitespace-nowrap lg:whitespace-normal flex items-center gap-2";
+            btn.querySelector('span').className = "w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px]";
+        } else {
+            panel.classList.add('hidden');
+            btn.className = "flex-1 text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition-all font-semibold text-xs shrink-0 whitespace-nowrap lg:whitespace-normal flex items-center gap-2";
+            btn.querySelector('span').className = "w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px]";
         }
     });
-}, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
+}
+
+// 2. 投放大盘与案例复盘匹配系统交互逻辑
+const tabData = {
+    1: {
+        badge: '14天DPA消耗大盘',
+        badgeClass: 'badge-tag bg-cyan-50 text-cyan-800 border border-cyan-100',
+        title: '直购 / DPA 链路数据表现',
+        desc: `<p>• <strong>DPA消耗占比</strong>：占大盘小店直购的 64%，转化稳定，起盘快。</p>
+               <p>• <strong>大盘指标表现</strong>：CPM 相比直播低 25%，CTR 平均达 4.8%~6.1%，冷启动期通过率较高。</p>
+               <p>• <strong>三级品类热度</strong>：枸杞、菌菇、即食燕窝高亮。</p>`,
+        btnClass: 'flex-1 py-2 rounded-lg text-xs font-bold text-amber-900 bg-white shadow-sm transition-all'
+    },
+    2: {
+        badge: '直播间大促爆量大盘',
+        badgeClass: 'badge-tag bg-purple-50 text-purple-800 border border-purple-100',
+        title: '直播间大促 & 预约数据表现',
+        desc: `<p>• <strong>直播大盘热度</strong>：618/时令爆发节点消耗占比飙升 47%，引流弹性高达 3.8 倍。</p>
+               <p>• <strong>大盘指标表现</strong>：下单 ROI 集中在 1.6~2.50，高客单品牌直播间智投渗透率平均 &gt;85%。</p>
+               <p>• <strong>三级品类热度</strong>：鲜炖燕窝、冲调八珍饮、参杞膏方高亮。</p>`,
+        btnClass: 'flex-1 py-2 rounded-lg text-xs font-bold text-purple-900 bg-white shadow-sm transition-all'
+    },
+    3: {
+        badge: '细分品类垂直大盘',
+        badgeClass: 'badge-tag bg-emerald-50 text-emerald-800 border border-emerald-100',
+        title: '细分品类 & 垂直复购数据表现',
+        desc: `<p>• <strong>垂直赛道占比</strong>：药食同源及蜂蜜品类依靠多计划精细自播，复购率高达 35%。</p>
+               <p>• <strong>大盘指标表现</strong>：创意重复率保持 44% 极净水平，CTR 优于常规大盘 35%，人群极其垂直精准。</p>
+               <p>• <strong>三级品类热度</strong>：葛根粉、蜂产品、中草药膏方。</p>`,
+        btnClass: 'flex-1 py-2 rounded-lg text-xs font-bold text-emerald-900 bg-white shadow-sm transition-all'
+    }
+};
+
+function switchCaseTab(tabId) {
+    const ids = [1, 2, 3];
+    ids.forEach(id => {
+        const btn = document.getElementById(`case-btn-${id}`);
+        const panel = document.getElementById(`case-panel-${id}`);
+        if (id === tabId) {
+            btn.className = tabData[id].btnClass;
+            panel.classList.remove('hidden');
+            
+            // 动态变化左侧数据指标大盘
+            document.getElementById('data-badge').innerText = tabData[id].badge;
+            document.getElementById('data-badge').className = tabData[id].badgeClass;
+            document.getElementById('data-title').innerText = tabData[id].title;
+            document.getElementById('data-desc').innerHTML = tabData[id].desc;
+        } else {
+            btn.className = "flex-1 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all";
+            panel.classList.add('hidden');
+        }
+    });
+}
+
+// 3. 创意素材生命周期自查 Tab 交互
+const matConfigs = {
+    'prep': { btn: 'mat-btn-prep', panel: 'mat-panel-prep', tool: 'mat-tool-prep', activeClass: 'px-4 py-2 text-xs font-bold text-cyan-800 bg-cyan-50 border border-cyan-200/50 rounded-lg transition-colors' },
+    'run': { btn: 'mat-btn-prep-2', panel: 'mat-panel-run', tool: 'mat-tool-run', activeClass: 'px-4 py-2 text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200/50 rounded-lg transition-colors' },
+    'audit': { btn: 'mat-btn-prep-3', panel: 'mat-panel-audit', tool: 'mat-tool-audit', activeClass: 'px-4 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/50 rounded-lg transition-colors' }
+};
+
+function switchMaterialTab(key) {
+    Object.keys(matConfigs).forEach(k => {
+        const conf = matConfigs[k];
+        const btn = document.getElementById(conf.btn);
+        const panel = document.getElementById(conf.panel);
+        const tool = document.getElementById(conf.tool);
+        
+        if (k === key) {
+            btn.className = conf.activeClass;
+            panel.classList.remove('hidden');
+            tool.classList.remove('hidden');
+        } else {
+            btn.className = "px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors";
+            panel.classList.add('hidden');
+            tool.classList.add('hidden');
+        }
+    });
+}
+
+// 4. 一键复制实用功能
+function copyText(text, successMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast(successMsg || '复制成功！');
+        }).catch(err => {
+            fallbackCopy(text, successMsg);
+        });
+    } else {
+        fallbackCopy(text, successMsg);
+    }
+}
+
+function fallbackCopy(text, successMsg) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        showToast(successMsg || '复制成功！');
+    } catch (err) {
+        showToast('复制失败，请手动选择复制');
+    }
+    document.body.removeChild(textArea);
+}
+
+function showToast(msg) {
+    const toast = document.getElementById('toast-el');
+    toast.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2000);
+}
 </script>
 </body>
 </html>
