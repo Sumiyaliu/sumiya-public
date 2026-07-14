@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保健食品双周报 2026.06.08-06.21</title>
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'WenQuanYi Micro Hei','Microsoft YaHei',sans-serif; background:#f5f6fa; color:#333; padding:20px; }
+.container { max-width:1200px; margin:0 auto; }
+h1 { text-align:center; color:#2ecc71; font-size:24px; margin-bottom:5px; }
+.subtitle { text-align:center; color:#888; font-size:14px; margin-bottom:20px; }
+.module { background:#fff; border-radius:8px; padding:20px; margin-bottom:15px; box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+.module-title { font-size:18px; font-weight:bold; color:#2ecc71; border-left:4px solid #2ecc71; padding-left:10px; margin-bottom:15px; }
+.sub-title { font-size:15px; font-weight:bold; color:#333; margin:12px 0 8px; }
+.kpi-row { display:flex; gap:15px; flex-wrap:wrap; margin-bottom:15px; }
+.kpi-card { flex:1; min-width:150px; background:linear-gradient(135deg,#2ecc71,#27ae60); color:#fff; border-radius:8px; padding:15px; text-align:center; }
+.kpi-card .label { font-size:12px; opacity:0.9; }
+.kpi-card .value { font-size:22px; font-weight:bold; margin:5px 0; }
+.kpi-card.orange { background:linear-gradient(135deg,#e67e22,#d35400); }
+.kpi-card.blue { background:linear-gradient(135deg,#3498db,#2980b9); }
+.kpi-card.purple { background:linear-gradient(135deg,#9b59b6,#8e44ad); }
+table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+th { background:#2ecc71; color:#fff; padding:8px 6px; text-align:center; white-space:nowrap; }
+td { padding:6px; border-bottom:1px solid #eee; text-align:center; }
+tr:hover { background:#f0faf5; }
+.text-left { text-align:left; }
+.positive { color:#c0392b; }
+.negative { color:#27ae60; }
+.chart-box { width:100%; height:350px; margin:10px 0; }
+.insight { background:#f0faf5; border-left:3px solid #2ecc71; padding:10px 15px; margin:8px 0; font-size:13px; line-height:1.6; }
+.insight-title { font-weight:bold; color:#2ecc71; margin-bottom:5px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>保健食品双周报</h1>
+<div class="subtitle">2026年6月8日 - 6月21日（竞价口径）</div>
+
+<!-- 模块一：行业情况梳理 -->
+<div class="module">
+<div class="module-title">模块一：行业情况梳理</div>
+
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">本双周日耗</div><div class="value">382.97万</div></div>
+<div class="kpi-card orange"><div class="label">环比变化</div><div class="value">+5.85万</div></div>
+<div class="kpi-card blue"><div class="label">环比</div><div class="value">+1.6%</div></div>
+<div class="kpi-card purple"><div class="label">年同比</div><div class="value">+57.8%</div></div>
+</div>
+
+<div class="sub-title">日耗趋势（本双周14天）</div>
+<div id="trendChart" class="chart-box"></div>
+
+<div class="sub-title">品类变化分析</div>
+<table>
+<tr><th>品类</th><th>日耗(万/日)</th><th>上双周日耗</th><th>环比变化</th><th>环比</th></tr>
+<tr><td class="text-left">减肥|减肥</td><td>163.53</td><td>148.77</td><td class="positive">+14.76</td><td class="positive">+9.9%</td></tr><tr><td class="text-left">辅助降血糖|辅助降血糖</td><td>74.28</td><td>86.03</td><td class="negative">-11.75</td><td class="negative">-13.7%</td></tr><tr><td class="text-left">改善睡眠|改善睡眠</td><td>23.85</td><td>18.98</td><td class="positive">+4.87</td><td class="positive">+25.6%</td></tr><tr><td class="text-left">辅助降血脂|辅助降血脂</td><td>23.18</td><td>16.69</td><td class="positive">+6.48</td><td class="positive">+38.8%</td></tr><tr><td class="text-left">增强免疫力|增强免疫力</td><td>16.40</td><td>16.79</td><td class="negative">-0.39</td><td class="negative">-2.3%</td></tr><tr><td class="text-left">减肥+通便|减肥+通便</td><td>16.38</td><td>9.11</td><td class="positive">+7.27</td><td class="positive">+79.8%</td></tr><tr><td class="text-left">通便|通便</td><td>10.30</td><td>14.74</td><td class="negative">-4.44</td><td class="negative">-30.1%</td></tr><tr><td class="text-left">辅助降血糖+增强免疫力|辅助降血糖+增强免疫力</td><td>9.92</td><td>6.40</td><td class="positive">+3.52</td><td class="positive">+55.0%</td></tr><tr><td class="text-left">营养素补充剂|补充维生素、矿物质</td><td>9.50</td><td>8.73</td><td class="positive">+0.78</td><td class="positive">+8.9%</td></tr><tr><td class="text-left">辅助降血脂+辅助降血糖|辅助降血脂+辅助降血糖</td><td>6.76</td><td>8.69</td><td class="negative">-1.94</td><td class="negative">-22.3%</td></tr>
+</table>
+<div class="insight">
+<div class="insight-title">品类变化洞察</div>
+减肥|减肥日耗163.53万/日，环比+14.76万/日(+9.9%)；辅助降血糖|辅助降血糖日耗74.28万/日，环比-11.75万/日(-13.7%)；改善睡眠|改善睡眠日耗23.85万/日，环比+4.87万/日(+25.6%)；辅助降血脂|辅助降血脂日耗23.18万/日，环比+6.48万/日(+38.8%)；增强免疫力|增强免疫力日耗16.40万/日，环比-0.39万/日(-2.3%)。减肥品类持续领跑，三高品类（辅助降血糖+辅助降血脂）合计占比显著。
+</div>
+
+<div class="sub-title">品类×链路交叉热力图（日耗万/日）</div>
+<div id="crossChart" class="chart-box"></div>
+<div class="insight">
+<div class="insight-title">品类×链路交叉结论</div>
+品类×链路交叉呈现"减肥直购为主、三高直购+加粉双驱动"格局。减肥品类直购链路日耗79.81万/日，占品类总消耗49%，直购转化效率最高；辅助降血糖品类直购55.04万/日+加粉13.36万/日，形成"直购收割+加粉培育"双链路组合；辅助降血脂品类直播链路日耗10.06万/日，占比43%，直播带货成为该品类重要增长点。
+</div>
+</div>
+
+<!-- 模块二：客群层级 -->
+<div class="module">
+<div class="module-title">模块二：客群层级</div>
+
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">超头(>50w)</div><div class="value">1家</div><div class="label">上双周1家</div></div>
+<div class="kpi-card orange"><div class="label">头部(10-50w)</div><div class="value">9家</div><div class="label">上双周12家</div></div>
+<div class="kpi-card blue"><div class="label">腰部(1-10w)</div><div class="value">32家</div><div class="label">上双周27家</div></div>
+<div class="kpi-card purple"><div class="label">尾部(&lt;1w)</div><div class="value">110家</div><div class="label">上双周112家</div></div>
+</div>
+
+<div class="insight">
+<div class="insight-title">客群层级洞察</div>
+保健食品本双周共152家有消耗客户，较上双周152家略有变化。超头客户稳定在1家（双新），头部客户减少3家至9家，腰部客户增加5家至32家，尾部客户110家。层级结构呈现"超头稳定、头部收缩、腰部扩容"特征，中腰部客户池持续扩大。
+</div>
+
+<div class="sub-title">层级跃迁表</div>
+<table>
+<tr><th>客户真身</th><th>上双周层级</th><th>本双周层级</th><th>跃迁</th></tr>
+<tr><td>香丹清</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>推必达</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>润宇健康</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>成都乐多健商贸有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>佛山溢生堂健康管理有限公司</td><td>尾部</td><td>腰部</td><td style="color:#666">尾部→腰部</td></tr>
+<tr><td>吉林省德嘉教育咨询有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>启晟和泰</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>佛山市美肤悦妍科技有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>参状元</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>吉林省跃迁广告传媒有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>河北爱能生物科技股份有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>广州望鲁科技有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>新疆法米丽投资有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>百合康</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>万基</td><td>头部</td><td>新增</td><td style="color:#c0392b">头部→新增</td></tr>
+<tr><td>东营轻燃纪商贸有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>寰宇广告传媒(长春)有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>好量多</td><td>腰部</td><td>尾部</td><td style="color:#666">腰部→尾部</td></tr>
+<tr><td>多燕瘦保健自营</td><td>尾部</td><td>腰部</td><td style="color:#666">尾部→腰部</td></tr>
+<tr><td>临沂贰十壹宇智商贸有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>新启健康</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>广州泽铭锦承文化传播有限公司</td><td>尾部</td><td>腰部</td><td style="color:#666">尾部→腰部</td></tr>
+<tr><td>东莞市倾予健康管理有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>吉林省满锦记大药房连锁有限公司公主岭市河北街二店</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>欣妍</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>湖北非隽斯商贸有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>东莞市汇梦健康管理有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>甄效</td><td>腰部</td><td>尾部</td><td style="color:#666">腰部→尾部</td></tr>
+<tr><td>泰阳大药房</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>育康</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>长沙雪润养世纪科技有限公司</td><td>尾部</td><td>腰部</td><td style="color:#666">尾部→腰部</td></tr>
+<tr><td>吉林省玉秀堂土特产销售有限公司</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>广州同骏科技有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>一比十传媒</td><td>腰部</td><td>尾部</td><td style="color:#666">腰部→尾部</td></tr>
+<tr><td>开元</td><td>流失</td><td>尾部</td><td style="color:#27ae60">流失→尾部</td></tr>
+<tr><td>济南观止堂网络科技有限公司</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>仁和tmall</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+<tr><td>营养屋</td><td>腰部</td><td>尾部</td><td style="color:#666">腰部→尾部</td></tr>
+<tr><td>申子辰</td><td>头部</td><td>腰部</td><td style="color:#666">头部→腰部</td></tr>
+<tr><td>亿微心</td><td>尾部</td><td>新增</td><td style="color:#c0392b">尾部→新增</td></tr>
+
+</table>
+<div class="insight">
+<div class="insight-title">跃迁总结</div>
+本双周客户层级跃迁：新增31家客户入场，流失31家客户退场，整体客户池保持动态平衡。无客户实现层级升级，无客户发生层级降级，存量客户层级稳定。
+</div>
+
+<div class="sub-title">客户波动明细（TOP30）</div>
+<table>
+<tr><th>客户真身</th><th>日耗(万/日)</th><th>环比变化</th><th>环比率</th><th>投放品类</th><th>主链路</th><th>DPA商品</th><th>层级</th></tr>
+<tr><td>双新</td><td>84.71</td><td style="color:#c0392b">+34.09</td><td style="color:#c0392b">+67.3%</td><td>减肥、三高</td><td>直购、直播</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="纽斯康牌左旋肉碱泽泻胶囊、[调节血糖]资善堂能觉牌西洋参葡萄籽铬酵母片0.6g/片*10片/板*2板、碧生康牌好方软胶囊">纽斯康牌左旋肉碱泽泻胶囊、[调节血糖]资善堂能觉牌西洋参葡萄籽铬酵母片0.6g/片*10片/板*2板、碧生康牌好方软胶囊</td><td>超头</td></tr>
+<tr><td>然达集团</td><td>36.08</td><td style="color:#27ae60">-3.21</td><td style="color:#27ae60">-8.2%</td><td>减肥、减肥+通便</td><td>加粉、其他</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="香格儿胶囊、果疏丽人R轻畅颗粒、樱花牌决明子山楂茶">香格儿胶囊、果疏丽人R轻畅颗粒、樱花牌决明子山楂茶</td><td>头部</td></tr>
+<tr><td>霞曙</td><td>26.24</td><td style="color:#27ae60">-10.98</td><td style="color:#27ae60">-29.5%</td><td>减肥、三高</td><td>加粉、直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="归一牌美好茶、丽颖胶囊、芊姿秘宝牌普洱荷叶茶">归一牌美好茶、丽颖胶囊、芊姿秘宝牌普洱荷叶茶</td><td>头部</td></tr>
+<tr><td>善智</td><td>25.1</td><td style="color:#c0392b">+5.71</td><td style="color:#c0392b">+29.4%</td><td>辅助降血糖+增强免疫力、改善睡眠、三高</td><td>直购、直播</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="益壹生牌怡络和胶囊、朗朗上口牌天麻片、敖东牌植物甾醇银杏叶片">益壹生牌怡络和胶囊、朗朗上口牌天麻片、敖东牌植物甾醇银杏叶片</td><td>头部</td></tr>
+<tr><td>汤臣倍健</td><td>23.16</td><td style="color:#c0392b">+8.22</td><td style="color:#c0392b">+55.1%</td><td>增强免疫力、三高、补充维生素、矿物质</td><td>CID、直播</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[长辈送礼]汤臣倍健旗舰96金装鱼油高纯浓度omega3成人DHA深海鱼油软胶囊EPA、汤臣倍健臻钻®蛋白粉、汤臣倍健星钻牌蛋白粉">[长辈送礼]汤臣倍健旗舰96金装鱼油高纯浓度omega3成人DHA深海鱼油软胶囊EPA、汤臣倍健臻钻®蛋白粉、汤臣倍健星钻牌蛋白粉</td><td>头部</td></tr>
+<tr><td>雪峰集团</td><td>15.26</td><td style="color:#c0392b">+5.22</td><td style="color:#c0392b">+52.1%</td><td>改善睡眠、增加骨密度</td><td>加粉、直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="柏客健氨糖硫酸软骨素钙片、轩生堂牌美通宁片、国和堂®刺五加五味子灵芝软胶囊">柏客健氨糖硫酸软骨素钙片、轩生堂牌美通宁片、国和堂®刺五加五味子灵芝软胶囊</td><td>头部</td></tr>
+<tr><td>御方唐安</td><td>13.36</td><td style="color:#c0392b">+2.13</td><td style="color:#c0392b">+19.0%</td><td>三高</td><td>加粉</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="唐安牌唐安奶粉">唐安牌唐安奶粉</td><td>头部</td></tr>
+<tr><td>沸点文化</td><td>12.54</td><td style="color:#27ae60">-1.78</td><td style="color:#27ae60">-12.4%</td><td>三高、减肥</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="百合康牌黄芪红景天铬酵母软胶囊、美媛春共轭亚油酸甘油酯软胶囊、美太牌芦荟荷叶胶囊">百合康牌黄芪红景天铬酵母软胶囊、美媛春共轭亚油酸甘油酯软胶囊、美太牌芦荟荷叶胶囊</td><td>头部</td></tr>
+<tr><td>齐梅</td><td>11.64</td><td style="color:#27ae60">-13.39</td><td style="color:#27ae60">-53.5%</td><td>三高、辅助降血脂+辅助降血糖</td><td>直购、其他</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="膳臣®人参玉竹丸、齐梅牌胰力佳奶粉、齐梅胰力佳奶粉">膳臣®人参玉竹丸、齐梅牌胰力佳奶粉、齐梅胰力佳奶粉</td><td>头部</td></tr>
+<tr><td>俏凤姿</td><td>10.5</td><td style="color:#27ae60">-0.33</td><td style="color:#27ae60">-3.1%</td><td>三高</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="中研通牌中研万通胶囊、依乐喜牌西洋参黄芪黄精胶囊、金奥力牌葛根苦瓜铬胶囊">中研通牌中研万通胶囊、依乐喜牌西洋参黄芪黄精胶囊、金奥力牌葛根苦瓜铬胶囊</td><td>头部</td></tr>
+<tr><td>申子辰</td><td>8.19</td><td style="color:#27ae60">-4.38</td><td style="color:#27ae60">-34.8%</td><td>祛黄褐斑+改善营养性贫血、增强免疫力+增加骨密度、减肥</td><td>直播、小店</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="【活动专享】官方正品 蓝帽非遗认证美媛春口服液祛黄褐斑改善贫血 喝好气色健康美官方正品、黄金搭档洋参牦牛骨粉增强免疫力增加骨密度中老年补品营养品、【美媛春官方正品  非遗认证去黄褐斑】2026新品美媛春口服液好气色健康美祛黄褐斑改善贫血FH2">【活动专享】官方正品 蓝帽非遗认证美媛春口服液祛黄褐斑改善贫血 喝好气色健康美官方正品、黄金搭档洋参牦牛骨粉增强免疫力增加骨密度中老年补品营养品、【美媛春官方正品  非遗认证去黄褐斑】2026新品美媛春口服液好气色健康美祛黄褐斑改善贫血FH2</td><td>腰部</td></tr>
+<tr><td>吉林省星耀云联广告传媒有限公司</td><td>7.08</td><td style="color:#c0392b">+7.08</td><td style="color:#c0392b">+2104818.5%</td><td>减肥</td><td>直购、品宣</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="碧生康牌好方软胶囊">碧生康牌好方软胶囊</td><td>腰部</td></tr>
+<tr><td>健尔马</td><td>6.86</td><td style="color:#c0392b">+3.69</td><td style="color:#c0392b">+116.4%</td><td>三高</td><td>直播、小店</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[官方正品] 健尔马红曲人参银杏叶胶囊 0.3g/粒*28粒 改善中老年胆固醇高、甘油三酯高，辅助降高血脂、健尔马牌红曲人参银杏叶胶囊">[官方正品] 健尔马红曲人参银杏叶胶囊 0.3g/粒*28粒 改善中老年胆固醇高、甘油三酯高，辅助降高血脂、健尔马牌红曲人参银杏叶胶囊</td><td>腰部</td></tr>
+<tr><td>港生</td><td>6.17</td><td style="color:#27ae60">-1.81</td><td style="color:#27ae60">-22.6%</td><td>三高、辅助降血脂+辅助降血压</td><td>直购、其他</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="田耕牌罗布麻决明子杜仲胶囊、杜仲宝口服液、杜仲宝 口服液">田耕牌罗布麻决明子杜仲胶囊、杜仲宝口服液、杜仲宝 口服液</td><td>腰部</td></tr>
+<tr><td>恒凡</td><td>5.73</td><td style="color:#c0392b">+0.14</td><td style="color:#c0392b">+2.4%</td><td>减肥</td><td>直播</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="nan">nan</td><td>腰部</td></tr>
+<tr><td>恒好集团</td><td>5.46</td><td style="color:#c0392b">+1.02</td><td style="color:#c0392b">+22.9%</td><td>辅助降血脂+辅助降血糖、通便+调节肠道菌群</td><td>CID、其他</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="御生堂牌糖脂茶、回春花牌通秘茶">御生堂牌糖脂茶、回春花牌通秘茶</td><td>腰部</td></tr>
+<tr><td>哈药集团</td><td>5.42</td><td style="color:#c0392b">+0.35</td><td style="color:#c0392b">+6.9%</td><td>补充维生素、矿物质、促进消化</td><td>小店、直播</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="哈药小蓝瓶钙铁锌口服液补钙补铁补锌好吸收、[哈药消食化积口服液]山楂鸡内金 药食同源（10ml*30支 ）">哈药小蓝瓶钙铁锌口服液补钙补铁补锌好吸收、[哈药消食化积口服液]山楂鸡内金 药食同源（10ml*30支 ）</td><td>腰部</td></tr>
+<tr><td>婷轻松</td><td>5.29</td><td style="color:#27ae60">-1.19</td><td style="color:#27ae60">-18.4%</td><td>通便</td><td>直购、加粉</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="邦瑞特牌黄芪当归低聚木糖胶囊">邦瑞特牌黄芪当归低聚木糖胶囊</td><td>腰部</td></tr>
+<tr><td>北京同仁堂包商</td><td>5.27</td><td style="color:#27ae60">-0.90</td><td style="color:#27ae60">-14.6%</td><td>减肥、改善睡眠</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="同仁堂牌轻雅片、方格牌灵芝五味子胶囊、同 仁 堂 牌 轻 雅  片">同仁堂牌轻雅片、方格牌灵芝五味子胶囊、同 仁 堂 牌 轻 雅  片</td><td>腰部</td></tr>
+<tr><td>山西恒匠科技有限公司</td><td>4.45</td><td style="color:#c0392b">+4.41</td><td style="color:#c0392b">+10329.8%</td><td>三高</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="唐可夷牌黄芪人参茶、创美牌糖力宁胶囊">唐可夷牌黄芪人参茶、创美牌糖力宁胶囊</td><td>腰部</td></tr>
+<tr><td>万康文化</td><td>4.04</td><td style="color:#27ae60">-2.62</td><td style="color:#27ae60">-39.4%</td><td>三高</td><td>直购、其他</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="金七牌三七铬软胶囊、汉方康 ®和益胶囊">金七牌三七铬软胶囊、汉方康 ®和益胶囊</td><td>腰部</td></tr>
+<tr><td>国修堂</td><td>3.95</td><td style="color:#27ae60">-1.05</td><td style="color:#27ae60">-21.0%</td><td>增强免疫力、增强免疫力+缓解体力疲劳、辅助降血脂+辅助降血压</td><td>CID、直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="寿世宝元牌冬虫夏草(菌丝体)胶囊(原名：冬虫夏草长生胶囊)">寿世宝元牌冬虫夏草(菌丝体)胶囊(原名：冬虫夏草长生胶囊)</td><td>腰部</td></tr>
+<tr><td>敖东</td><td>3.35</td><td style="color:#c0392b">+0.03</td><td style="color:#c0392b">+0.9%</td><td>减肥</td><td>直购、直播</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="挺靓牌泽泻茯苓胶囊、[热销] 21金维他驼乳II型骨胶原蛋白+钙+维D片 孝敬爸妈补钙护关节关节炎滑膜炎 30片/盒">挺靓牌泽泻茯苓胶囊、[热销] 21金维他驼乳II型骨胶原蛋白+钙+维D片 孝敬爸妈补钙护关节关节炎滑膜炎 30片/盒</td><td>腰部</td></tr>
+<tr><td>葫芦巴</td><td>3.26</td><td style="color:#c0392b">+2.18</td><td style="color:#c0392b">+203.0%</td><td>三高</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="双礼牌人参葫芦巴软胶囊">双礼牌人参葫芦巴软胶囊</td><td>腰部</td></tr>
+<tr><td>喜效堂</td><td>3.17</td><td style="color:#27ae60">-3.72</td><td style="color:#27ae60">-54.0%</td><td>三高</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="盛坤牌知母人参胶囊、江河牌海通片">盛坤牌知母人参胶囊、江河牌海通片</td><td>腰部</td></tr>
+<tr><td>尚氏</td><td>3.09</td><td style="color:#27ae60">-1.92</td><td style="color:#27ae60">-38.3%</td><td>减肥</td><td>直购、品宣</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="美媛春®共轭亚油酸甘油酯软胶囊">美媛春®共轭亚油酸甘油酯软胶囊</td><td>腰部</td></tr>
+<tr><td>弘盈</td><td>2.92</td><td style="color:#27ae60">-7.08</td><td style="color:#27ae60">-70.8%</td><td>三高</td><td>直购、其他</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="唐可夷牌黄芪人参茶、创美牌糖力宁胶囊、艾蓝迪牌黄精玉竹三七胶囊">唐可夷牌黄芪人参茶、创美牌糖力宁胶囊、艾蓝迪牌黄精玉竹三七胶囊</td><td>腰部</td></tr>
+<tr><td>骏业</td><td>2.83</td><td style="color:#c0392b">+0.87</td><td style="color:#c0392b">+44.3%</td><td>三高</td><td>直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="双礼牌人参葫芦巴软胶囊">双礼牌人参葫芦巴软胶囊</td><td>腰部</td></tr>
+<tr><td>补养堂</td><td>2.56</td><td style="color:#27ae60">-2.26</td><td style="color:#27ae60">-46.8%</td><td>通便</td><td>直购、品宣</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="解优通®决明子黄芪胶囊、邦瑞特牌黄芪当归低聚木糖胶囊">解优通®决明子黄芪胶囊、邦瑞特牌黄芪当归低聚木糖胶囊</td><td>腰部</td></tr>
+<tr><td>多燕瘦保健自营</td><td>2.4</td><td style="color:#c0392b">+2.28</td><td style="color:#c0392b">+1880.8%</td><td>减肥</td><td>直播、直购</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="多燕瘦 左旋肉碱泽泻胶囊健康减肥塑形、拾春堂牌左旋肉碱荷叶胶囊">多燕瘦 左旋肉碱泽泻胶囊健康减肥塑形、拾春堂牌左旋肉碱荷叶胶囊</td><td>腰部</td></tr>
+
+</table>
+</div>
+
+<!-- 模块三：分链路能力情况 -->
+<div class="module">
+<div class="module-title">模块三：分链路能力情况</div>
+
+<div class="sub-title">链路消耗概览</div>
+<table>
+<tr><th>链路</th><th>日耗(万/日)</th><th>上双周日耗</th><th>环比变化</th><th>环比</th><th>占比</th><th>年同比</th></tr>
+<tr><td class="text-left">直购</td><td>185.60</td><td>183.83</td><td class="positive">+1.77</td><td class="positive">+1.0%</td><td>48.5%</td><td class="positive">+36013324737.0%</td></tr><tr><td class="text-left">加粉</td><td>92.66</td><td>100.41</td><td class="negative">-7.74</td><td class="negative">-7.7%</td><td>24.2%</td><td class="positive">+19.7%</td></tr><tr><td class="text-left">直播</td><td>67.86</td><td>58.96</td><td class="positive">+8.90</td><td class="positive">+15.1%</td><td>17.7%</td><td class="negative">-</td></tr><tr><td class="text-left">CID</td><td>24.69</td><td>24.95</td><td class="negative">-0.27</td><td class="negative">-1.1%</td><td>6.4%</td><td class="positive">+19920.8%</td></tr><tr><td class="text-left">小店</td><td>10.56</td><td>8.87</td><td class="positive">+1.69</td><td class="positive">+19.0%</td><td>2.8%</td><td class="positive">+126.0%</td></tr><tr><td class="text-left">品宣</td><td>1.48</td><td>0.10</td><td class="positive">+1.38</td><td class="positive">+1409.9%</td><td>0.4%</td><td class="positive">+8003.9%</td></tr><tr><td class="text-left">其他</td><td>0.12</td><td>0.00</td><td class="positive">+0.12</td><td class="negative">-</td><td>0.0%</td><td class="negative">-99.9%</td></tr>
+</table>
+<div class="insight">
+<div class="insight-title">链路波动洞察</div>
+直购链路日耗185.60万/日，环比+1.77万/日(+1.0%)，占比48.5%；加粉链路日耗92.66万/日，环比-7.74万/日(-7.7%)，占比24.2%；直播链路日耗67.86万/日，环比+8.90万/日(+15.1%)，占比17.7%；CID链路日耗24.69万/日，环比-0.27万/日(-1.1%)，占比6.4%；小店链路日耗10.56万/日，环比+1.69万/日(+19.0%)，占比2.8%。直购链路保持主力地位，直播链路稳步增长。
+</div>
+
+<div class="sub-title">全域通</div>
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">日耗(万/日)</div><div class="value">0.17</div></div>
+<div class="kpi-card orange"><div class="label">上双周</div><div class="value">0.06</div></div>
+<div class="kpi-card blue"><div class="label">环比</div><div class="value">+197.2%</div></div>
+<div class="kpi-card purple"><div class="label">渗透率</div><div class="value">0.0%</div></div>
+</div>
+<div class="insight">保健食品全域通规模极小（日耗0.17万），渗透率仅0.0%，行业特性决定全域通非主要投放方式。</div>
+
+<div class="sub-title">智投</div>
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">日耗(万/日)</div><div class="value">55.98</div></div>
+<div class="kpi-card orange"><div class="label">上双周</div><div class="value">46.39</div></div>
+<div class="kpi-card blue"><div class="label">环比</div><div class="value">+20.7%</div></div>
+<div class="kpi-card purple"><div class="label">渗透率</div><div class="value">14.6%</div></div>
+</div>
+</div>
+</div>
+
+<script>
+var trendChart = echarts.init(document.getElementById('trendChart'));
+trendChart.setOption({
+    tooltip: { trigger:'axis', formatter:function(p){ return p[0].name+'<br/>日耗: '+p[0].value+'万元'; } },
+    xAxis: { type:'category', data:["2026/05/25", "2026/05/26", "2026/05/27", "2026/05/28", "2026/05/29", "2026/05/30", "2026/05/31", "2026/06/01", "2026/06/02", "2026/06/03", "2026/06/04", "2026/06/05", "2026/06/06", "2026/06/07", "2026/06/08", "2026/06/09", "2026/06/10", "2026/06/11", "2026/06/12", "2026/06/13", "2026/06/14", "2026/06/15", "2026/06/16", "2026/06/17", "2026/06/18", "2026/06/19", "2026/06/20", "2026/06/21"], axisLabel:{rotate:30} },
+    yAxis: { type:'value', name:'万元', scale:true },
+    series:[{ type:'line', data:[332.2, 377.43, 387.92, 395.99, 341.29, 339.58, 326.45, 366.38, 385.18, 399.96, 394.79, 384.38, 418.01, 430.08, 402.44, 394.47, 407.81, 382.01, 362.53, 369.47, 383.57, 388.09, 353.33, 368.57, 352.5, 362.05, 416.89, 417.88], smooth:true, lineStyle:{color:'#2ecc71',width:3}, areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(46,204,113,0.3)'},{offset:1,color:'rgba(46,204,113,0.05)'}])}, itemStyle:{color:'#2ecc71'} }],
+    grid:{left:'8%',right:'5%',bottom:'15%'}
+});
+
+var crossChart = echarts.init(document.getElementById('crossChart'));
+var crossCats = ["保健食品|减肥|减肥", "保健食品|辅助降血糖|辅助降血糖", "保健食品|改善睡眠|改善睡眠", "保健食品|辅助降血脂|辅助降血脂", "保健食品|增强免疫力|增强免疫力", "保健食品|减肥+通便|减肥+通便", "保健食品|通便|通便", "保健食品|辅助降血糖+增强免疫力|辅助降血糖+增强免疫力", "保健食品|营养素补充剂|补充维生素、矿物质", "保健食品|辅助降血脂+辅助降血糖|辅助降血脂+辅助降血糖"];
+var crossLinks = ["直购", "加粉", "直播", "CID", "小店", "品宣", "其他"];
+var crossData = [[0, 0, 79.81], [0, 1, 45.91], [0, 2, 37.06], [0, 4, 0.69], [0, 5, 0.03], [0, 6, 0.01], [1, 0, 55.04], [1, 1, 13.36], [1, 2, 5.54], [1, 4, 0.23], [1, 5, 0.11], [1, 6, 0.0], [2, 0, 15.01], [2, 1, 8.21], [2, 5, 0.62], [2, 6, 0.0], [3, 0, 8.81], [3, 2, 10.06], [3, 3, 1.33], [3, 4, 2.96], [3, 5, 0.01], [4, 0, 1.73], [4, 1, 0.68], [4, 2, 0.0], [4, 3, 13.31], [4, 4, 0.0], [4, 5, 0.69], [5, 1, 16.38], [6, 0, 5.92], [6, 1, 2.52], [6, 2, 1.53], [6, 3, 0.0], [6, 4, 0.32], [6, 5, 0.01], [6, 6, 0.0], [7, 0, 9.43], [7, 2, 0.5], [8, 0, 0.21], [8, 2, 2.03], [8, 3, 2.61], [8, 4, 4.64], [9, 0, 1.29], [9, 1, 0.1], [9, 2, 1.08], [9, 3, 4.29], [9, 4, 0.0], [9, 6, 0.0]];
+crossChart.setOption({
+    tooltip:{ position:'top', formatter:function(p){ return crossCats[p.data[0]].replace('保健食品|','')+' × '+crossLinks[p.data[1]]+'<br/>日耗: '+p.data[2]+'万/日'; } },
+    xAxis:{ type:'category', data:crossLinks, splitArea:{show:true} },
+    yAxis:{ type:'category', data:crossCats.map(function(c){ return c.replace('保健食品|',''); }), axisLabel:{fontSize:10} },
+    visualMap:{ min:0, max:80, calculable:true, orient:'horizontal', left:'center', bottom:'0%', inRange:{color:['#f0faf5','#2ecc71']} },
+    series:[{ type:'heatmap', data:crossData, label:{show:true,fontSize:10}, emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(0,0,0,0.5)'}} }],
+    grid:{left:'20%',right:'10%',bottom:'20%',top:'5%'}
+});
+
+window.addEventListener('resize', function(){ trendChart.resize(); crossChart.resize(); });
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>
