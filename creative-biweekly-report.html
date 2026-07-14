@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传统滋补 & 保健食品创意双周报</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --mint:#2f8256; --mint-l:#43a06c; --amber:#d97706; --orange:#c2410c;
+    --ink:#2b3a30; --gray:#64746b; --line:#e3eee8;
+  }
+  body {
+    font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,#fbf8f1 0%,#f3faf6 55%,#ffffff 100%);
+    min-height:100vh; line-height:1.6;
+  }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 20px; }
+
+  /* Header */
+  header { position:relative; overflow:hidden; padding:46px 0 34px; }
+  header::before { content:""; position:absolute; inset:0;
+    background:linear-gradient(135deg,#e3f4e9 0%,#fbf8f1 55%,#f6efde 100%); z-index:-2; }
+  header::after { content:""; position:absolute; top:-90px; right:-60px; width:300px; height:300px;
+    background:rgba(199,232,211,.5); border-radius:50%; filter:blur(60px); z-index:-1; }
+  .tag { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.75);
+    backdrop-filter:blur(6px); padding:5px 12px; border-radius:99px; font-size:12px; color:var(--mint); margin-bottom:14px; }
+  h1 { font-size:34px; letter-spacing:-.5px; color:var(--ink); }
+  .subtitle { font-size:21px; color:var(--mint); font-weight:500; margin-top:2px; }
+  .meta { font-size:13px; color:var(--gray); margin-top:12px; }
+  .meta span { margin-right:16px; }
+
+  /* Sticky filter bar */
+  .filters { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.88);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:12px 0; }
+  .filters-inner { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; }
+  .fgroup { display:inline-flex; align-items:center; gap:8px; height:34px; }
+  .fgroup-label { font-size:13px; color:var(--gray); white-space:nowrap; }
+  .fdiv { width:1px; height:20px; background:var(--line); }
+  .ind-tabs { display:flex; gap:8px; }
+  .ind-tab { height:34px; display:inline-flex; align-items:center; border:1px solid var(--line);
+    background:#fff; color:var(--gray); padding:0 16px; border-radius:99px; font-size:14px;
+    line-height:1; cursor:pointer; transition:.2s; }
+  .ind-tab:hover { border-color:var(--mint-l); color:var(--mint); }
+  .ind-tab.active { background:var(--mint); color:#fff; border-color:var(--mint); }
+  .fsel { display:inline-flex; align-items:center; gap:6px; height:34px; font-size:13px; color:var(--gray); white-space:nowrap; }
+  .fsel select { height:34px; border:1px solid var(--line); border-radius:8px; padding:0 26px 0 10px;
+    font-size:13px; line-height:1; color:var(--ink); cursor:pointer;
+    background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%2364746b' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") no-repeat right 9px center;
+    -webkit-appearance:none; appearance:none; }
+  .fsel select:hover { border-color:var(--mint-l); }
+  .count { margin-left:auto; height:34px; display:inline-flex; align-items:center; font-size:13px; color:var(--gray); white-space:nowrap; }
+  .count strong { color:var(--mint); font-size:16px; margin:0 3px; }
+
+  main { padding:34px 0 20px; }
+
+  /* 行业素材过审指南 */
+  .guide-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; margin-bottom:40px; }
+  .guide-card { position:relative; display:flex; flex-direction:column; gap:12px; text-decoration:none;
+    background:rgba(255,255,255,.92); border:1px solid var(--line); border-left:4px solid var(--gc);
+    border-radius:18px; padding:20px 22px; transition:.22s; overflow:hidden; }
+  .guide-card::after { content:""; position:absolute; top:-40px; right:-40px; width:130px; height:130px;
+    background:var(--gc-bg); border-radius:50%; filter:blur(8px); z-index:0; }
+  .guide-card:hover { transform:translateY(-3px); box-shadow:0 14px 30px -16px var(--gc); border-color:var(--gc); }
+  .guide-card > * { position:relative; z-index:1; }
+  .guide-top { display:flex; align-items:center; gap:12px; }
+  .guide-emoji { width:46px; height:46px; flex:none; display:inline-flex; align-items:center; justify-content:center;
+    font-size:24px; border-radius:13px; }
+  .guide-name { font-size:18px; font-weight:700; color:var(--ink); display:flex; flex-direction:column; line-height:1.3; }
+  .guide-sub { font-size:12px; font-weight:500; color:var(--gray); margin-top:1px; }
+  .guide-desc { font-size:13px; color:#54665b; line-height:1.7; }
+  .guide-link { align-self:flex-start; display:inline-flex; align-items:center; gap:6px;
+    background:var(--gc); color:#fff; font-size:13px; font-weight:600; padding:8px 16px; border-radius:10px; }
+  .guide-arrow { transition:transform .2s; }
+  .guide-card:hover .guide-arrow { transform:translateX(4px); }
+  .guide-docs { display:flex; flex-direction:column; gap:8px; margin-top:auto; }
+  .guide-doc-link { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:11px;
+    background:var(--gc-bg); border:1px solid transparent; color:var(--gc); text-decoration:none;
+    font-size:13px; font-weight:600; transition:.2s; }
+  .guide-doc-link .doc-icon { font-size:16px; flex:none; }
+  .guide-doc-link .doc-name { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .guide-doc-link .doc-arrow { font-weight:700; transition:transform .2s; }
+  .guide-doc-link:hover { background:var(--gc); color:#fff; border-color:var(--gc); }
+  .guide-doc-link:hover .doc-arrow { transform:translateX(3px); }
+
+  .sec-title { display:flex; align-items:center; gap:9px; margin:8px 0 18px; }
+  .sec-title .bar { width:4px; height:24px; background:var(--mint); border-radius:99px; }
+  .sec-title h2 { font-size:22px; color:var(--ink); }
+  .sec-title .hint { font-size:12px; color:var(--gray); margin-left:6px; }
+
+  /* Tier overview */
+  .tier-panel { display:none; }
+  .tier-panel.active { display:block; }
+  .tier-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; margin-bottom:40px; }
+  .tier-card { background:rgba(255,255,255,.85); border:1px solid var(--line); border-left-width:4px;
+    border-radius:14px; padding:14px 16px; transition:.22s; }
+  .tier-card:hover { transform:translateY(-2px); box-shadow:0 10px 22px -12px rgba(67,160,108,.3); }
+  .tier-card.t1 { border-left-color:var(--mint); }
+  .tier-card.t2 { border-left-color:var(--amber); }
+  .tier-card.t3 { border-left-color:#94a3b8; }
+  .tier-card-name { font-weight:700; font-size:15px; display:flex; align-items:center; gap:8px; }
+  .tier-card-meta { font-size:12px; color:var(--gray); margin-top:7px; }
+  .tier-badge-small { font-size:11px; color:#fff; padding:2px 7px; border-radius:99px; }
+  .tier-badge-small.t1 { background:var(--mint); }
+  .tier-badge-small.t2 { background:var(--amber); }
+  .tier-badge-small.t3 { background:#94a3b8; }
+
+  /* Cards */
+  .cards { display:flex; flex-direction:column; gap:18px; }
+  .card { background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:20px;
+    padding:20px; box-shadow:0 6px 22px -14px rgba(67,160,108,.22); }
+  .card-head { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding-bottom:14px;
+    border-bottom:1px dashed var(--line); margin-bottom:16px; }
+  .head-l { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
+  .card-num { background:#2b3a30; color:#fff; font-size:12px; padding:2px 9px; border-radius:99px; font-family:monospace; }
+  .ind-badge { font-size:12px; padding:3px 10px; border-radius:99px; font-weight:600; }
+  .cat-badge { font-size:12px; padding:3px 10px; border-radius:99px; background:#e3f4e9; color:var(--mint); border:1px solid #c7e8d3; }
+  .tier-badge { font-size:11px; padding:3px 9px; border-radius:99px; }
+  .tier-1 { background:#e3f4e9; color:var(--mint); }
+  .tier-2 { background:#fef3c7; color:var(--amber); }
+  .tier-3 { background:#eef2f5; color:#64748b; }
+  .t-tag { font-size:11px; padding:3px 9px; border-radius:99px; background:#eff6ff; color:#2563eb; }
+  .a-tag { font-size:11px; padding:3px 9px; border-radius:99px; background:#fdf4e6; color:var(--orange); border:1px solid #f6e3c3; }
+
+  .card-body { display:grid; grid-template-columns:230px 1fr; gap:20px; }
+  .thumb-wrap { width:100%; aspect-ratio:9/16; max-height:330px; border-radius:14px; overflow:hidden;
+    background:#eef2f0; border:1px solid var(--line); }
+  .thumb { width:100%; height:100%; object-fit:cover; }
+  .vlink { display:block; text-align:center; margin-top:10px; font-size:13px; color:var(--mint);
+    border:1px solid #c7e8d3; border-radius:9px; padding:6px; text-decoration:none; transition:.2s; }
+  .vlink:hover { background:#e3f4e9; }
+  .vlink-local { color:var(--orange); border-color:#f6e3c3; margin-top:7px; }
+  .vlink-local:hover { background:#fdf4e6; }
+  .metrics { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin-top:12px; }
+  .metric { background:linear-gradient(135deg,#f8f7f2,#fff); border:1px solid #efece0; border-radius:11px;
+    padding:8px 4px; text-align:center; }
+  .m-label { display:block; font-size:10px; color:var(--gray); }
+  .m-val { display:block; font-size:16px; font-weight:700; color:var(--mint); font-variant-numeric:tabular-nums; }
+  .pcat { margin-top:10px; font-size:11px; color:var(--gray); text-align:center; line-height:1.4; }
+
+  .card-right { display:flex; flex-direction:column; gap:13px; }
+  .sec h4 { font-size:14px; color:var(--ink); margin-bottom:6px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .sec-c { font-size:13px; color:#475a4f; background:#f6faf7; border-radius:11px; padding:11px 13px; }
+  .golden .hl, .sells .hl { color:var(--mint); font-weight:600; }
+  .ai-risk { display:flex; align-items:flex-start; gap:6px; margin-top:8px; padding:7px 11px;
+    border-radius:8px; font-size:12px; line-height:1.65; }
+  .ai-risk.warn { background:rgba(234,88,12,0.10); color:#9a3412; border:1px solid rgba(234,88,12,0.28); }
+  .ai-risk.ok { background:rgba(67,160,108,0.08); color:#1f6b3f; border:1px solid rgba(67,160,108,0.22); }
+  .ai-icon { flex:none; font-size:14px; line-height:1.4; }
+  .flow { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+  .step { background:#fff; border:1px solid #c7e8d3; border-radius:8px; padding:4px 10px; font-size:12px; }
+  .arrow { color:var(--mint-l); font-weight:700; }
+  .sells { line-height:1.9; }
+
+  /* video gen prompt */
+  .vg-head { background:linear-gradient(135deg,#26312b,#1c2620); color:#e6f4ec; border-radius:11px;
+    padding:11px 14px; margin-bottom:0 !important; display:flex; align-items:center;
+    justify-content:space-between; gap:8px; }
+  .vg-title { font-size:13.5px; font-weight:600; }
+  .copy-btn { background:var(--mint); color:#fff !important; border:none; border-radius:8px; padding:6px 14px;
+    font-size:12px; font-weight:600; cursor:pointer; transition:.2s; box-shadow:0 2px 6px rgba(47,130,86,.30); }
+  .copy-btn:hover { background:var(--mint-l); box-shadow:0 3px 9px rgba(47,130,86,.38); }
+  .copy-btn.copied { background:#1f6b3f; color:#fff !important; }
+  .miaosi { display:inline-block; margin-top:11px; background:var(--amber); color:#fff; text-decoration:none;
+    font-size:12.5px; padding:7px 13px; border-radius:8px; }
+
+  /* 素材增产产品工具箱 */
+  .prod-wrap { background:rgba(255,255,255,.72); border:1px solid var(--line); border-radius:20px;
+    padding:22px 24px 24px; margin-bottom:8px; }
+  .prod-sub { font-size:15px; font-weight:700; color:var(--ink); margin:4px 0 14px;
+    display:flex; align-items:center; gap:7px; }
+  .prod-cap-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:26px; }
+  .prod-cap { background:linear-gradient(135deg,#f3faf6,#fbf8f1); border:1px solid #d9ecdf;
+    border-radius:16px; padding:18px; }
+  .pc-head { display:flex; align-items:center; gap:12px; margin-bottom:11px; }
+  .pc-ico { width:44px; height:44px; flex:none; border-radius:12px; background:var(--mint); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:22px; }
+  .pc-head h4 { font-size:16px; color:var(--ink); margin:0 0 4px; }
+  .pc-tag { font-size:11.5px; color:var(--mint); background:#e3f4e9; border:1px solid #c7e8d3;
+    border-radius:99px; padding:2px 9px; }
+  .pc-desc { font-size:13px; color:#475a4f; line-height:1.85; margin:0; }
+  .pc-desc b { color:var(--mint); }
+  .pc-link { display:inline-block; margin-top:12px; font-size:13px; color:var(--mint);
+    font-weight:600; text-decoration:none; }
+  .pc-link:hover { color:var(--mint-l); }
+  .pc-merits { display:flex; flex-direction:column; gap:9px; }
+  .merit { display:flex; gap:10px; align-items:baseline; font-size:13px; }
+  .m-k { flex:none; font-weight:700; color:var(--ink); width:58px; }
+  .m-v { color:#475a4f; line-height:1.6; }
+  .prod-tool-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:13px; }
+  .prod-tool { position:relative; background:#fff; border:1px solid var(--line); border-radius:14px;
+    padding:16px 16px 16px 18px; overflow:hidden; }
+  .prod-tool .pt-no { position:absolute; top:10px; right:14px; font-size:34px; font-weight:800;
+    color:#e3f4e9; line-height:1; }
+  .prod-tool h4 { font-size:14.5px; color:var(--ink); margin:0 0 8px; padding-right:36px; position:relative; }
+  .prod-tool p { font-size:12.5px; color:#56685d; line-height:1.8; margin:0; position:relative; }
+  .prod-tool b { color:var(--orange); }
+  .pt-link { display:inline-block; margin-top:10px; font-size:12.5px; color:var(--mint);
+    font-weight:600; text-decoration:none; position:relative; }
+  .pt-link:hover { color:var(--mint-l); }
+  .pt-star { font-size:10.5px; color:var(--amber); background:#fff3e0; border-radius:99px;
+    padding:1px 7px; vertical-align:middle; font-weight:600; }
+  .prod-note { margin-top:16px; background:rgba(217,119,6,.08); border:1px solid rgba(217,119,6,.22);
+    border-radius:11px; padding:11px 14px; font-size:12.5px; color:#9a3412; line-height:1.75; }
+  @media (max-width:680px) { .prod-cap-grid, .prod-tool-grid { grid-template-columns:1fr; } }
+
+  /* gallery */
+  .gallery { background:rgba(255,255,255,.7); border:1px dashed var(--line); border-radius:18px; padding:16px 18px; }
+  .g-head { display:flex; align-items:center; gap:10px; margin-bottom:13px; flex-wrap:wrap; }
+  .g-title { font-size:14px; font-weight:600; color:var(--ink); }
+  .g-count { font-size:12px; color:#fff; background:var(--mint-l); padding:2px 9px; border-radius:99px; }
+  .g-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:11px; }
+  .g-item { background:linear-gradient(135deg,#f3faf6,#fbf8f1); border:1px solid var(--line); border-radius:13px;
+    padding:15px 10px; text-align:center; cursor:pointer; transition:.2s; }
+  .g-item:hover { transform:translateY(-2px); box-shadow:0 8px 18px -12px rgba(67,160,108,.3); }
+  .g-icon { font-size:26px; margin-bottom:6px; }
+  .g-cat { display:block; font-size:13px; font-weight:600; color:var(--ink); }
+  .g-metrics { display:block; font-size:11px; color:var(--gray); margin-top:5px; }
+
+  footer { border-top:1px solid var(--line); margin-top:36px; }
+
+  /* 素材诊断侧边竖排标签（参考站风格） */
+  .diag-tab { position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:50;
+    display:flex; flex-direction:column; align-items:center; gap:10px; padding:16px 10px 18px;
+    background:#1c1f24; border-radius:14px 0 0 14px; cursor:pointer; user-select:none;
+    box-shadow:-4px 4px 18px rgba(0,0,0,.25); transition:.25s; }
+  .diag-tab:hover { padding-right:14px; background:#252830; }
+  .diag-ico { width:30px; height:30px; border-radius:50%; background:#2a2d34;
+    display:flex; align-items:center; justify-content:center; font-size:16px; }
+  .diag-text { writing-mode:vertical-rl; text-orientation:upright; letter-spacing:6px;
+    font-size:15px; font-weight:700;
+    background:linear-gradient(180deg,#ff8a4c 0%,#ff5a3c 50%,#e84a2a 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 1px 2px rgba(0,0,0,.12); padding:4px 0; }
+
+  /* ===== 素材诊断中心 弹窗 ===== */
+  .diag-mask { position:fixed; inset:0; z-index:100; display:none;
+    background:rgba(15,18,22,.62); backdrop-filter:blur(4px);
+    align-items:flex-start; justify-content:center; padding:48px 16px; overflow:auto; }
+  .diag-mask.open { display:flex; animation:diagFade .22s ease; }
+  @keyframes diagFade { from { opacity:0; } to { opacity:1; } }
+  .diag-modal { width:100%; max-width:560px; background:#1b1f26; color:#e7ecf1;
+    border-radius:20px; box-shadow:0 24px 60px rgba(0,0,0,.5); position:relative;
+    animation:diagPop .26s cubic-bezier(.2,.9,.3,1.2); }
+  @keyframes diagPop { from { transform:translateY(18px) scale(.97); opacity:0; }
+    to { transform:none; opacity:1; } }
+  .diag-close { position:absolute; top:14px; right:16px; width:30px; height:30px;
+    border:none; border-radius:50%; background:rgba(255,255,255,.08); color:#cdd5dd;
+    font-size:20px; line-height:1; cursor:pointer; transition:.2s; }
+  .diag-close:hover { background:rgba(255,255,255,.18); color:#fff; }
+  .diag-head { padding:26px 28px 18px; border-radius:20px 20px 0 0;
+    background:linear-gradient(135deg,rgba(234,88,12,.22),rgba(67,160,108,.14)); }
+  .diag-head h3 { margin:0 0 8px; font-size:21px; font-weight:800;
+    background:linear-gradient(90deg,#ff8a4c,#ff5a3c); -webkit-background-clip:text;
+    background-clip:text; color:transparent; }
+  .diag-head p { margin:0; font-size:13.5px; color:#aab4bf; }
+  .diag-body { padding:22px 28px 28px; }
+  .diag-drop { display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; min-height:172px; border:2px dashed rgba(255,255,255,.18); border-radius:16px;
+    background:rgba(255,255,255,.03); cursor:pointer; transition:.2s; padding:22px; text-align:center; }
+  .diag-drop:hover, .diag-drop.dragover { border-color:#ff7a45; background:rgba(255,122,69,.08); }
+  .drop-ico { font-size:42px; line-height:1; }
+  .drop-main { font-size:15px; color:#dbe2e9; font-weight:600; margin-top:6px; }
+  .drop-sub { font-size:12.5px; color:#8b95a1; }
+  .diag-field { margin-top:18px; }
+  .diag-field > label { display:block; font-size:13px; color:#b9c2cc; margin-bottom:7px; font-weight:600; }
+  .diag-field select, .diag-field input { width:100%; box-sizing:border-box; padding:12px 14px;
+    border-radius:11px; border:1px solid rgba(255,255,255,.12); background:#242a32; color:#e7ecf1;
+    font-size:14px; outline:none; transition:.2s; }
+  .diag-field select:focus, .diag-field input:focus { border-color:#ff7a45; background:#2a3038; }
+  .diag-field input::placeholder { color:#6e7884; }
+  .diag-run { width:100%; margin-top:24px; padding:15px; border:none; border-radius:13px;
+    background:linear-gradient(135deg,#ff7a45,#e84a2a); color:#fff; font-size:15.5px; font-weight:700;
+    cursor:pointer; transition:.2s; box-shadow:0 6px 18px rgba(232,74,42,.32); }
+  .diag-run:hover { filter:brightness(1.06); transform:translateY(-1px); }
+  .diag-run:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+  .diag-result { margin-top:22px; display:none; }
+  .diag-result.show { display:block; animation:diagFade .3s ease; }
+  .diag-result .dr-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+    border-radius:14px; padding:16px 18px; margin-bottom:12px; }
+  .diag-result h4 { margin:0 0 10px; font-size:15px; color:#ffd9c2; }
+  .diag-result .dr-row { display:flex; justify-content:space-between; gap:12px; font-size:13.5px;
+    padding:7px 0; border-bottom:1px dashed rgba(255,255,255,.08); }
+  .diag-result .dr-row:last-child { border-bottom:none; }
+  .diag-result .dr-k { color:#9aa4af; }
+  .diag-result .dr-v { color:#e7ecf1; font-weight:600; text-align:right; }
+  .diag-result .dr-v.good { color:#5fd49a; }
+  .diag-result .dr-v.warn { color:#ffb454; }
+  .diag-result ul { margin:6px 0 0; padding-left:18px; font-size:13.5px; line-height:1.9; color:#cdd5dd; }
+  .diag-note { font-size:12px; color:#7d8893; margin-top:14px; line-height:1.7; }
+  footer .wrap { padding:22px 20px; font-size:12px; color:var(--gray); }
+  footer p { margin-bottom:4px; }
+
+  @media (max-width:720px) {
+    .card-body { grid-template-columns:1fr; }
+    .thumb-wrap { max-width:230px; margin:0 auto; }
+    h1 { font-size:27px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="tag">🌿 Industry · 传统滋补 &amp; 保健食品</div>
+      <h1>传统滋补 &amp; 保健食品</h1>
+      <div class="subtitle">创意双周报</div>
+      <div class="meta">
+        <span>📅 数据周期：2026-06-14 ~ 2026-06-25</span>
+        <span>🗂 期号：2026-06-26</span>
+        <span>📊 数据来源：adsmind 腾讯广告平台</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="filters">
+    <div class="wrap filters-inner">
+      <div class="fgroup">
+        <span class="fgroup-label">行业</span>
+        <div class="ind-tabs"><button class="ind-tab active" data-industry="传统滋补" onclick="switchIndustry('传统滋补', this)">🌿 传统滋补</button><button class="ind-tab" data-industry="保健食品" onclick="switchIndustry('保健食品', this)">💊 保健食品</button></div>
+      </div>
+      <span class="fdiv"></span>
+      <div class="fsel">商品类目<select id="catFilter" onchange="applyFilters()"><option value="all">全部类目</option></select></div>
+      <div class="fsel">创意类型<select id="typeFilter" onchange="applyFilters()"><option value="all">全部</option><option value="产品展示">产品展示</option><option value="促销导购">促销导购</option><option value="健康科普">健康科普</option><option value="场景体验">场景体验</option><option value="情感故事">情感故事</option><option value="真人试吃">真人试吃</option><option value="美食制作">美食制作</option><option value="达人种草">达人种草</option></select></div>
+      <div class="fsel">目标人群<select id="audFilter" onchange="applyFilters()"><option value="all">全部</option><option value="小镇青年">小镇青年</option><option value="新锐白领">新锐白领</option><option value="精致单身">精致单身</option><option value="精致妈妈">精致妈妈</option><option value="资深中产">资深中产</option><option value="都市银发">都市银发</option></select></div>
+      <div class="count">展示 <strong id="visCount">32</strong> 条深度诊断</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="sec-title"><span class="bar"></span><h2>行业素材过审指南</h2><span class="hint">投放前必读 · 合规审核要点速查</span></div>
+    <div class="guide-grid">
+        <div class="guide-card" style="--gc:#2f8256;--gc-bg:rgba(67,160,108,0.14)">
+          <div class="guide-top">
+            <span class="guide-emoji" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿</span>
+            <div class="guide-name">传统滋补专区<span class="guide-sub">行业素材过审指南</span></div>
+          </div>
+          <div class="guide-desc">传统滋补 / 食药同源类目宣称边界、禁用功效词、资质材料、审核拒绝修改要点与最新成分科普</div>
+          <div class="guide-docs"><a class="guide-doc-link" href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&amp;tab=s8vyuv" target="_blank" rel="noopener"
+                 style="--gc:#2f8256">
+                 <span class="doc-icon">📄</span>
+                 <span class="doc-name">【滋补-V1】审核拒绝修改指引</span>
+                 <span class="doc-arrow">→</span>
+               </a><a class="guide-doc-link" href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank" rel="noopener"
+                 style="--gc:#2f8256">
+                 <span class="doc-icon">📄</span>
+                 <span class="doc-name">传统滋补 - 成分科普 2026 年 6 月更新</span>
+                 <span class="doc-arrow">→</span>
+               </a></div>
+        </div>
+        <div class="guide-card" style="--gc:#c2410c;--gc-bg:rgba(234,88,12,0.13)">
+          <div class="guide-top">
+            <span class="guide-emoji" style="background:rgba(234,88,12,0.13);color:#c2410c">💊</span>
+            <div class="guide-name">保健食品专区<span class="guide-sub">行业素材过审指南</span></div>
+          </div>
+          <div class="guide-desc">保健食品广告合规审核要点、违禁词清单、保健功能宣称边界、资质要求与过审 checklist</div>
+          <div class="guide-docs"><a class="guide-doc-link" href="https://doc.weixin.qq.com/doc/w3_AXsAzwa2AM0CNqDIexMhfSneKWcf5?scode=AJEAIQdfAAoe1lTmWk" target="_blank" rel="noopener"
+                 style="--gc:#c2410c">
+                 <span class="doc-icon">📄</span>
+                 <span class="doc-name">保健食品素材过审指南</span>
+                 <span class="doc-arrow">→</span>
+               </a><a class="guide-doc-link" href="https://doc.weixin.qq.com/sheet/e3_AecArgaoABkCNkcoJnG4ATHaAk2id?scode=AJEAIQdfAAoa4a1kag" target="_blank" rel="noopener"
+                 style="--gc:#c2410c">
+                 <span class="doc-icon">📄</span>
+                 <span class="doc-name">保健食品审核拒绝修改指引</span>
+                 <span class="doc-arrow">→</span>
+               </a></div>
+        </div></div>
+
+    <div class="sec-title"><span class="bar"></span><h2>品类梯队概览</h2><span class="hint">Top200 占比 · 深度/展示条数</span></div>
+    <div class="tier-panel active" data-industry="传统滋补">
+  <div class="tier-grid">
+        <div class="tier-card t1">
+          <div class="tier-card-name"><span class="tier-badge-small t1">T1</span>枸杞类滋补品</div>
+          <div class="tier-card-meta">Top200占比 26.7% · 深度3条 · 展示5条</div>
+        </div>
+        <div class="tier-card t1">
+          <div class="tier-card-name"><span class="tier-badge-small t1">T1</span>药食同源食品</div>
+          <div class="tier-card-meta">Top200占比 23.3% · 深度3条 · 展示4条</div>
+        </div>
+        <div class="tier-card t1">
+          <div class="tier-card-name"><span class="tier-badge-small t1">T1</span>菌/菇/酵素</div>
+          <div class="tier-card-meta">Top200占比 10.0% · 深度3条 · 展示0条</div>
+        </div>
+        <div class="tier-card t2">
+          <div class="tier-card-name"><span class="tier-badge-small t2">T2</span>冲饮品/食补粉</div>
+          <div class="tier-card-meta">Top200占比 10.0% · 深度2条 · 展示1条</div>
+        </div>
+        <div class="tier-card t2">
+          <div class="tier-card-name"><span class="tier-badge-small t2">T2</span>海外调节三高</div>
+          <div class="tier-card-meta">Top200占比 6.7% · 深度2条 · 展示0条</div>
+        </div>
+        <div class="tier-card t2">
+          <div class="tier-card-name"><span class="tier-badge-small t2">T2</span>燕窝滋补品</div>
+          <div class="tier-card-meta">Top200占比 6.7% · 深度2条 · 展示0条</div>
+        </div>
+        <div class="tier-card t3">
+          <div class="tier-card-name"><span class="tier-badge-small t3">T3</span>传统滋补</div>
+          <div class="tier-card-meta">Top200占比 6.7% · 深度1条 · 展示1条</div>
+        </div>
+        <div class="tier-card t3">
+          <div class="tier-card-name"><span class="tier-badge-small t3">T3</span>其他膳食营养补充食品</div>
+          <div class="tier-card-meta">Top200占比 3.3% · 深度1条 · 展示0条</div>
+        </div>
+        <div class="tier-card t3">
+          <div class="tier-card-name"><span class="tier-badge-small t3">T3</span>养生茶</div>
+          <div class="tier-card-meta">Top200占比 3.3% · 深度1条 · 展示0条</div>
+        </div>
+  </div>
+</div>
+<div class="tier-panel" data-industry="保健食品">
+  <div class="tier-grid">
+        <div class="tier-card t1">
+          <div class="tier-card-name"><span class="tier-badge-small t1">T1</span>保健食品</div>
+          <div class="tier-card-meta">Top200占比 37.9% · 深度3条 · 展示5条</div>
+        </div>
+        <div class="tier-card t1">
+          <div class="tier-card-name"><span class="tier-badge-small t1">T1</span>减肥瘦身</div>
+          <div class="tier-card-meta">Top200占比 31.0% · 深度3条 · 展示5条</div>
+        </div>
+        <div class="tier-card t1">
+          <div class="tier-card-name"><span class="tier-badge-small t1">T1</span>调节三高</div>
+          <div class="tier-card-meta">Top200占比 13.8% · 深度3条 · 展示1条</div>
+        </div>
+        <div class="tier-card t2">
+          <div class="tier-card-name"><span class="tier-badge-small t2">T2</span>养生茶</div>
+          <div class="tier-card-meta">Top200占比 6.9% · 深度2条 · 展示0条</div>
+        </div>
+        <div class="tier-card t2">
+          <div class="tier-card-name"><span class="tier-badge-small t2">T2</span>辅助降血糖</div>
+          <div class="tier-card-meta">Top200占比 6.9% · 深度2条 · 展示0条</div>
+        </div>
+        <div class="tier-card t2">
+          <div class="tier-card-name"><span class="tier-badge-small t2">T2</span>骨骼健康</div>
+          <div class="tier-card-meta">Top200占比 3.4% · 深度1条 · 展示0条</div>
+        </div>
+  </div>
+</div>
+
+    <div class="sec-title"><span class="bar"></span><h2>爆款素材深度诊断</h2><span class="hint">黄金三秒 + 素材结构 + 卖点提炼 + 五段式视频生成指令</span></div>
+    <div class="cards" id="cards">
+        <div class="card" data-industry="传统滋补" data-category="枸杞类滋补品" data-types="健康科普,真人试吃" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#1</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">枸杞类滋补品</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">真人试吃</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_1.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3lqdgwaagqeaeuz7menuryxaennoam22a.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_1.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">6.6%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">6.8%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">枸杞</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>画面中央是一位穿着深色外套、蓝色衬衫的男性，他面带微笑，直视镜头。画面上方有“正宗宁夏枸杞”的黑色大字标题。左上角有“AI生成”字样，该图片疑似AI生成，但具体生成痕迹不明显。<br><span class="hl">【承接】</span>画面左下方圆形画中画里，一位身穿黄色花纹上衣的女性正在低头品尝食物，似乎是枸杞。画面下方有黄色文字“50岁女子 把吊干枸杞当零食吃 结果都好奇她平时吃的是啥”。<div class="ai-risk warn"><span class="ai-icon">⚠️</span><span class="ai-body">该视频疑似 AI 生成，文本/画面含“AI生成”标识。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">人物出镜介绍</span><span class="arrow">→</span><span class="step">故事引入人物</span><span class="arrow">→</span><span class="step">素人真人试吃</span><span class="arrow">→</span><span class="step">功效引发好奇</span><span class="arrow">→</span><span class="step">强调产品正宗</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【正宗产地，品质保证】</span>强调产品源自宁夏，保证枸杞的道地性和高品质。<br>2. <span class="hl">【健康零食，日常滋补】</span>将枸杞定位为日常可食用的健康零食，方便随时补充营养。<br>3. <span class="hl">【用户见证，效果显著】</span>通过50岁女子长期食用枸杞的故事，暗示产品具有显著的健康益处，引发用户好奇和信任。<br>4. <span class="hl">【便捷食用，老少皆宜】</span>吊干枸杞可直接作为零食食用，方便快捷，适合不同年龄段人群。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="画面开场于明亮简洁的专业演播室环境，背景干净。画面中央是一位约35-45岁的男性，他身着深色外套和蓝色衬衫，面带自信微笑，眼神真诚地直视镜头，姿态开放且专业。镜头保持稳定的中景特写，光线明亮均匀，色调自然偏冷，营造出信任感和权威性。画面上方叠加醒目的黑色大字“正宗宁夏枸杞”，左上角有小字“AI生成”。
+
+紧接着，画面左下方平滑浮现一个圆形画中画，其中展现温馨的居家厨房或客厅一角。画中画内是一位约50岁的女性，身穿黄色花纹上衣，面容和蔼，她正低头专注地用指尖轻柔品尝着红润饱满的吊干枸杞，动作自然，眼神流露出满足与好奇。画中画背景为柔和的自然光，色调温暖，突出健康与生活气息。整体画面色彩鲜明，枸杞的红色与女性衣物的黄色形成对比，充满活力。画中画下方叠加黄色文字“50岁女子 把吊干枸杞当零食吃 结果都好奇她平时吃的是啥”。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="枸杞类滋补品" data-types="场景体验,产品展示" data-audiences="资深中产,新锐白领" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#2</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">枸杞类滋补品</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">场景体验</span><span class="t-tag">产品展示</span>
+            </div>
+            <div class="head-r"><span class="a-tag">资深中产</span><span class="a-tag">新锐白领</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_2.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3dydmyaagzaaoqmxmyruryhqezqpantca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_2.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">5.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">6.7%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">枸杞</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一位着装优雅的女性步入光线明亮的室内空间，背景是现代风格的窗户和家具。<br><span class="hl">【承接】</span>画面上方浮现“正宗宁夏枸杞”文字，暗示视频将围绕该地道产品展开，营造健康品质生活氛围。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">人物优雅入镜</span><span class="arrow">→</span><span class="step">环境品质呈现</span><span class="arrow">→</span><span class="step">文案点明产品</span><span class="arrow">→</span><span class="step">强调宁夏枸杞</span><span class="arrow">→</span><span class="step">传递健康理念</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【正宗产地，品质保证】</span>画面文案直接点出“正宗宁夏枸杞”，强调原产地优势，确保产品地道纯正。<br>2. <span class="hl">【品质生活，场景融入】</span>女性在高端优雅环境中出现，将枸杞与精致生活方式结合，提升产品格调。<br>3. <span class="hl">【健康养生，滋补优选】</span>枸杞作为传统滋补佳品，暗示其对健康的益处，吸引注重养生的人群。<br>4. <span class="hl">【自然馈赠，安心食材】</span>宁夏枸杞以其天然、无污染的特性闻名，传递食材的自然与安全。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="画面展开于一个光线充裕、设计现代的室内空间。宽大的落地窗引入柔和的自然光，照亮了米色与浅木色调的家具，营造出一种宁静而高雅的氛围。空间布局简洁，几株绿植点缀其间，增添生机。一位身着米白色丝质连衣裙的优雅女性，步伐轻盈地从画面左侧缓缓步入。她面带微笑，眼神平和，动作从容不迫，仿佛融入这片舒适的居家环境。镜头以一个平稳的慢速推轨镜头，跟随她向画面中央移动，同时略微抬升，展现空间的开阔感。整体光线明亮且柔和，呈现出温暖的高调色温，色彩饱和度适中，强调自然与纯净的质感。当女性身影稳定在画面中时，屏幕上方中央位置，以精致的宋体字样，缓缓浮现“正宗宁夏枸杞”这几个字，字体颜色为深棕色，与整体环境色调和谐统一，提示产品主题。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="枸杞类滋补品" data-types="达人种草,健康科普" data-audiences="新锐白领,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#3</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">枸杞类滋补品</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">新锐白领</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_3.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3dicymaafpeahveo45bur6gqeqynalbsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_3.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">4.9%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">5.8%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">教育培训</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频开场一位身着深色西装的男士手持麦克风，面带严肃表情，直接面向镜头。<br><span class="hl">【承接】</span> 画面下方出现黄色字幕“告诉大家一个不好的消息”，立刻营造出紧张和悬念的氛围，吸引观众注意力。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">人物出镜</span><span class="arrow">→</span><span class="step">抛出问题</span><span class="arrow">→</span><span class="step">阐述现状</span><span class="arrow">→</span><span class="step">提供方案</span><span class="arrow">→</span><span class="step">总结展望</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【痛点揭示，引发共鸣】</span>通过“不好的消息”直接切入用户痛点，引发观众的共鸣与好奇。<br>2. <span class="hl">【专家形象，权威背书】</span>演讲者身着正装，手持麦克风，塑造专业权威形象，增强内容可信度。<br>3. <span class="hl">【悬念设置，驱动观看】</span>开场即设置悬念，促使观众继续观看以了解“坏消息”的详情及后续发展。<br>4. <span class="hl">【问题导向，引出方案】</span>以问题为导向，为后续引出解决方案或知识科普做好铺垫。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="简洁专业的室内演播室，背景为深灰色磨砂墙面，无多余装饰，氛围集中。画面中央，一位约35-45岁、气质沉稳的男士，身着剪裁合体的深色商务西装，内搭白色衬衫，系着深色领带。他右手持握一支银色专业麦克风，麦克风头靠近嘴边。男士面部表情严肃，眉头微蹙，眼神直接而坚定地凝视着镜头，姿态笔直，显得权威且不容置疑。
+
+稳定的中景镜头，构图严谨，聚焦男士上半身及麦克风。镜头保持稳定的同时，以极其缓慢且几乎察觉不到的速度轻微向前推近，强调其严肃面部表情，持续3-5秒。专业演播室布光，主光从前方略偏上打下，强调人物轮廓，形成清晰阴影。整体色调偏冷，以深蓝、灰为主，增强画面的严肃与紧张感。背景光线柔和，略暗于主体，突出人物。视频开场约1.5秒后，画面下方正中央逐渐浮现一行醒目的黄色粗体字幕：“告诉大家一个不好的消息”。字幕字体简洁有力，与整体严肃氛围相符，持续显示至片段结束。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="传统滋补" data-category="枸杞类滋补品">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+            <span class="g-title">📸 枸杞类滋补品 · 同品类更多爆款素材一览</span>
+            <span class="g-count">5 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3bmaggaaaj4ao2hzd3fvbucyemmfqay2a.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">枸杞类滋补品</span>
+              <span class="g-metrics">CTR 8.4% · ROI 1~2</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3yeawsaab7aaoobyxwfvbvqienhaqc2ka.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">枸杞类滋补品</span>
+              <span class="g-metrics">CTR 7.0% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3daayeaab2yaiycauffvbugaeqimadasa.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">枸杞类滋补品</span>
+              <span class="g-metrics">CTR 7.1% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b53haadiaaareantaqg5fvbuoaegq4aanca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">枸杞类滋补品</span>
+              <span class="g-metrics">CTR 4.4% · ROI 1~2</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3aiatkaab5manepzgtfvbwaqegubacnka.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">枸杞类滋补品</span>
+              <span class="g-metrics">CTR 8.2% · ROI 1~2</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="药食同源食品" data-types="达人种草,情感故事" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#4</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">药食同源食品</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">情感故事</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_9.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc32ybxiaadfyakybbiafvbtvqeotlag5ca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_9.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.9%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">2.4%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">营养保健</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一名中年男子面部通红，双眼含泪，表情痛苦而激动，正对着麦克风说话。画面上方出现“众多中老年人的良心推荐”的红色文字。<span class="hl">【承接】</span>男子嘴巴张开，似乎在极力表达，画面下方出现“一罐一罐”的黄色文字，进一步强调产品的数量或重要性，营造出强烈的感染力。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">情绪化开场</span><span class="arrow">→</span><span class="step">素人接受采访</span><span class="arrow">→</span><span class="step">含泪真情推荐</span><span class="arrow">→</span><span class="step">强调产品价值</span><span class="arrow">→</span><span class="step">引发情感共鸣</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【真情流露，感人至深】</span>用户因产品效果而感动落泪，通过强烈的情绪表达引发观众共鸣。<br>2. <span class="hl">【中老年推荐，口碑认证】</span>产品获得众多中老年用户的真心推荐，强调其可靠性和适用性。<br>3. <span class="hl">【长期使用，效果显著】</span>“一罐一罐”暗示产品需持续使用才能达到显著效果，或强调其高复购率和用户忠诚度。<br>4. <span class="hl">【健康益处，营养补充】</span>背景中可见“橘子粉”字样，暗示产品可能提供特定的营养成分或健康支持。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="室内访谈环境，背景柔和虚化。一名中年男子，面部通红，双眼含泪，表情痛苦而激动地对着麦克风说话。他嘴巴张开，仿佛在极力倾诉，眉宇间充满挣扎与真诚。镜头以中景特写稳定聚焦男子面部，随后缓慢而微不可察地向前推移，强化其情感张力。光线柔和，主光从前方打来，营造出温暖而略显沉重的氛围，整体色调偏暖，凸显人物面部的红润与泪光。画面上方叠加红色醒目文字：“众多中老年人的良心推荐”。紧接着，画面下方叠加黄色粗体文字：“一罐一罐”，进一步增强视觉感染力。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="药食同源食品" data-types="达人种草,情感故事" data-audiences="资深中产,小镇青年" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#5</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">药食同源食品</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">情感故事</span>
+            </div>
+            <div class="head-r"><span class="a-tag">资深中产</span><span class="a-tag">小镇青年</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_10.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3gyb2maadyeah5zbiz5vbsnqeuy3ahjsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_10.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">4.0%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">2.7%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">粮油米面</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一名男子双眼通红，泪流满面地面对镜头，一根麦克风伸到他面前。<br><span class="hl">【承接】</span>他极度悲伤的表情瞬间抓住观众注意力，预示着一个充满情感或挑战的故事即将展开。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">男子痛哭出镜</span><span class="arrow">→</span><span class="step">记者采访提问</span><span class="arrow">→</span><span class="step">情绪表达真挚</span><span class="arrow">→</span><span class="step">引发观众共鸣</span><span class="arrow">→</span><span class="step">传递产品故事</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【情感共鸣，真实表达】</span>男子真情流露，引发观众对产品背后故事的强烈共鸣。<br>2. <span class="hl">【品质坚守，不易成果】</span>暗示产品来之不易，凝聚了生产者辛勤付出和对品质的坚守。<br>3. <span class="hl">【产地故事，信任建立】</span>可能通过个人故事，间接展现产品源头或生产过程的真实性与可靠性。<br>4. <span class="hl">【人性关怀，品牌温度】</span>通过展现人的情感，赋予品牌更深层次的人文关怀和温度。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="一间朴素、略显陈旧的室内空间作为背景，背景被柔和虚化，隐约可见一面斑驳的墙壁或简单的家具轮廓，光线昏暗，营造压抑私密氛围。一名中年男子，面部占据画面中心，双眼极度红肿，泪水无声滑落，嘴唇紧抿，眉头深锁，表情凝重，充满无尽悲伤。他微微低头，眼神却坚毅地直视镜头，似在极力克制情绪。一根带有黑色海绵头的专业麦克风从画面左侧伸入，悬停在他嘴边。肩膀微颤，身体语言透露巨大心理负担。镜头以中景特写开场，随后极其缓慢平稳地向前推进（dolly in），逐渐聚焦男子饱含泪水的双眼和紧绷面部，最终定格为紧凑特写，强调面部细节与情感张力。整体光线柔和偏暗，采用低调照明，主要侧光源在男子脸上投下微妙阴影，增强立体感与情绪深度。色调以冷灰色和暗蓝色为主，点缀饱和度降低的暖棕色，营造沉重、悲伤而真实的氛围。画面对比度适中，突出人物痛苦神情。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="药食同源食品" data-types="健康科普,达人种草" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#6</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">药食同源食品</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_11.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc37eabuaaa4iaa64gwcnurv6iedl4qagsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_11.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">4.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.4%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">天麻</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频画面中，一位戴眼镜的年长男士身穿白衬衫和深色马甲，站在绿植背景前，面向镜头，双手做出讲解姿势。该视频疑似AI生成，人物动作略显僵硬，面部表情不够自然。<br><span class="hl">【承接】</span> 画面下方出现白色背景的黄色文字，提出问题：“天麻这个东西到底适合什么样的人吃呢”，直接点明视频将围绕天麻的适用人群进行科普讲解。<div class="ai-risk warn"><span class="ai-icon">⚠️</span><span class="ai-body">该视频疑似 AI 生成，文本/画面含“AI生成”标识。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">专家出镜</span><span class="arrow">→</span><span class="step">抛出疑问</span><span class="arrow">→</span><span class="step">科普天麻</span><span class="arrow">→</span><span class="step">分析适用人群</span><span class="arrow">→</span><span class="step">健康建议</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【专家讲解，权威可信】</span>视频由专业人士出镜，以权威视角讲解天麻知识，提升内容可信度。<br>2. <span class="hl">【健康科普，答疑解惑】</span>针对天麻的适用人群进行详细分析，满足用户对中药材功效和禁忌的求知欲。<br>3. <span class="hl">【滋补养生，功效显著】</span>天麻作为传统名贵中药材，具有独特的滋补保健价值，吸引注重养生的人群。<br>4. <span class="hl">【精准定位，个性推荐】</span>通过对不同体质和需求人群的分析，为消费者提供更具针对性的食用指导。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：视频开场，在一个光线充足、现代感十足的室内空间。背景是一面精心设计的绿植墙，翠绿的观叶植物错落有致，营造出清新自然的健康氛围，局部可见柔和的射灯点缀，提升空间层次感。
+
+主体外观与动作：画面中央，一位约50-60岁、戴细框眼镜的儒雅男士，身着整洁的白色衬衫和深色修身马甲。他面带微笑，神态亲切专业，身体微微前倾，双手自然抬起，掌心微张，做出正在讲解的姿势，目光坚定地注视镜头，展现资深专家的风范。
+
+镜头运动方式：镜头采用固定机位，以中景构图，捕捉男士胸部以上至头顶的空间。画面保持稳定，没有任何晃动，营造沉稳专业的视觉感受。
+
+光线色调：整体光线明亮柔和，采用高键照明，主光源从前方略偏上方打下，均匀照亮人物面部。背景绿植被柔和氛围光烘托，呈现清新自然的绿色调。画面整体色调温暖而清新，饱和度适中，强调健康与专业感。
+
+叠加文字：视频画面底部居中位置，叠加一个半透明的白色矩形背景框，其上以醒目的黄色粗体字显示问题：“天麻这个东西到底适合什么样的人吃呢”。文字清晰易读，字体现代简洁。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="传统滋补" data-category="药食同源食品">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+            <span class="g-title">📸 药食同源食品 · 同品类更多爆款素材一览</span>
+            <span class="g-count">4 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3oqcciaaewaaoparxlvvb45aeer2aijca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">药食同源食品</span>
+              <span class="g-metrics">CTR 2.8% · ROI 2~3</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc37qaaoaaaqmaoa5acwrvbv7aea76aab2a.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">药食同源食品</span>
+              <span class="g-metrics">CTR 5.0% · ROI 1~2</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc324ahsaaatqamrfbpvjvbvvyephlqa6ka.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">药食同源食品</span>
+              <span class="g-metrics">CTR 4.2% · ROI 1~2</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b53iabqgaad2aackrbkzfvbsqaeanaaga2a.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">药食同源食品</span>
+              <span class="g-metrics">CTR 3.8% · ROI 1~2</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="菌/菇/酵素" data-types="健康科普,达人种草" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#7</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">菌/菇/酵素</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_16.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3xadnuaagn4aladhjdjurzoae3k4anwsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_16.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.2%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.5%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">2~3</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品/营养补充剂/辅酶Q10</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 一位中年男士身着毛衣，坐在办公室背景前，直视镜头。<br><span class="hl">【承接】</span> 画面中叠加了“辅酶Q10为什么买”的字幕，预示视频将讲解辅酶Q10的相关知识。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">专家出镜</span><span class="arrow">→</span><span class="step">提出产品疑问</span><span class="arrow">→</span><span class="step">讲解产品功效</span><span class="arrow">→</span><span class="step">给出购买理由</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【健康益处】</span>详细讲解辅酶Q10对人体健康的重要作用和具体益处。<br>2. <span class="hl">【专家背书】</span>专业人士出镜进行知识科普，增强产品和信息的权威性与可信度。<br>3. <span class="hl">【科学原理】</span>深入浅出地解释辅酶Q10在身体内的作用机制和必要性。<br>4. <span class="hl">【购买价值】</span>明确指出购买辅酶Q10的理由和对消费者健康的长期投资价值。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面展现一个现代且专业的居家书房或办公室，背景经过艺术性虚化处理，隐约可见一排整齐摆放的书籍和一盆生机勃勃的绿植，窗外透射进来的自然光线柔和地洒满空间，营造出一种温馨、知性且富有信任感的氛围。整体环境简洁而不失品味，强调专业与舒适的结合。
+
+主体外观与动作：一位年龄约45-55岁的中年男士，面容和蔼，眼神坚定且充满智慧，身着一件质感优良的深灰色或海军蓝色圆领羊毛毛衣，端坐在画面中央。他身体微微前倾，姿态放松而专注，目光笔直地凝视着镜头，仿佛正在与观众进行一次真诚而直接的交流，表情沉稳而富有亲和力。
+
+镜头运动方式：镜头从一个略带广角的中景画面开始，以极其缓慢且平稳的速度，持续向男士的上半身进行微距推近（slow push-in），整个推近过程持续约3秒。此运动旨在逐步拉近与观众的距离，强调主体的专注与权威感，最终聚焦于其胸部以上，突出面部表情。
+
+光线色调：整体光线明亮且柔和，主要采用自然光与少量专业补光相结合，营造出温暖而专业的色调。男士的肤色自然红润，背景光线略微虚化，色彩饱和度适中，整体画面干净、舒适且富有高级感，避免任何刺眼或过于冷峻的视觉效果。
+
+叠加文字：视频开始约2秒后，画面下方中央位置，平滑地浮现一行简洁的白色或淡金色现代无衬线字体：“辅酶Q10为什么买”。字体大小适中，清晰易读，与整体画面风格和谐统一，不遮挡主体。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="菌/菇/酵素" data-types="达人种草,场景体验" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#8</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">菌/菇/酵素</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">场景体验</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_17.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53r4ajaaaapyal6viz55vbvdyeschqbeca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_17.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.2%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.5%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">瑜伽用品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频以俯视角度展现一位身着紧身运动服的女性，背对镜头站在瑜伽垫上，面向电视屏幕，电视上似乎正在播放健身内容。<br><span class="hl">【承接】</span> 画面稳定，女性保持站立姿势，背景是现代风格的客厅，屏幕下方出现“这是52岁的我”的文字提示，强调人物年龄与状态。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">女性背影出镜</span><span class="arrow">→</span><span class="step">居家健身场景</span><span class="arrow">→</span><span class="step">屏幕文字提示</span><span class="arrow">→</span><span class="step">瑜伽垫展示</span><span class="arrow">→</span><span class="step">倡导健康生活</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【年龄逆龄，健康生活】</span>52岁女性展现活力体态，倡导积极健康的生活方式。<br>2. <span class="hl">【居家健身，便捷高效】</span>在家中即可轻松进行健身活动，不受场地限制，方便日常坚持。<br>3. <span class="hl">【专业装备，舒适体验】</span>画面中瑜伽垫和运动服暗示专业装备能带来更好的运动体验。<br>4. <span class="hl">【榜样激励，自我提升】</span>通过真实案例激励观众关注自身健康，追求更好的自我状态。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：一个光线明亮、现代风格的居家客厅，背景墙简洁，摆放着几件简约的木质家具和一盆绿植，营造出温馨宁静的氛围。地面中央铺设着一张深色瑜伽垫，前方是一台宽大的智能电视，屏幕上正播放着充满活力的健身教学视频，画面色彩鲜明。
+
+主体外观与动作：一位身形匀称的亚洲女性，背对镜头，穿着一套时尚的莫兰迪色系紧身运动服，材质柔软贴身。她双脚并拢，笔直地站立在瑜伽垫中央，面向电视屏幕，双手自然垂于身体两侧，姿态专注而优雅，仿佛正在准备或刚完成一个瑜伽动作，身体线条流畅。
+
+镜头运动方式：镜头采用高位俯视角度，稳定地从女性头顶略偏后方进行拍摄，构图中心聚焦于女性及其前方的电视屏幕。画面保持静止，无明显推拉摇移，营造出一种观察感，让观众能清晰地看到整个居家健身场景。
+
+光线色调：整体光线柔和而均匀，模拟清晨或傍晚的自然光，从窗户斜射入室，营造出温馨舒适的居家氛围。色调以暖色为主，如米白、浅灰与木质原色，辅以运动服的低饱和度色彩，整体视觉干净、平静且富有质感。
+
+叠加文字：画面下方，电视屏幕的边缘位置，清晰地浮现一行白色简洁的中文文字：“这是52岁的我”。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="菌/菇/酵素" data-types="健康科普,产品展示" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#9</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">菌/菇/酵素</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">产品展示</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_18.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53tadxgaahiuancuxt2fur3gaeoomao42a.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_18.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">5.6%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.2%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">2~3</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品/脑部健康</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 画面聚焦于一位中年女性专家，她戴着眼镜，神情专注地看向镜头，背景是整齐的办公书架和医疗脑部影像图。<br><span class="hl">【承接】</span> 专家可能开始进行口播，以专业的姿态介绍健康知识或引出相关话题，桌面上可见产品包装盒。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">专家出镜开场</span><span class="arrow">→</span><span class="step">背景展示专业性</span><span class="arrow">→</span><span class="step">讲解健康知识</span><span class="arrow">→</span><span class="step">引出相关产品</span><span class="arrow">→</span><span class="step">专家背书推荐</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【专家背书，权威可信】</span>中年女性专家出镜，结合背景的医疗影像和办公环境，增强产品的专业性和可信度。<br>2. <span class="hl">【脑部健康，专业聚焦】</span>背景中的脑部CT/MRI影像图，直接点明产品或服务与脑部健康相关，精准定位用户需求。<br>3. <span class="hl">【品质办公，环境营造】</span>整洁的办公环境、书架和奖杯，营造出专业、严谨、有成就感的氛围，提升品牌形象。<br>4. <span class="hl">【产品展示，直观呈现】</span>桌面上放置的产品包装盒，在专家讲解的同时，直观地展示了产品实体，便于用户识别。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面展现一间现代、专业的办公室内景。背景是一面设计精良、摆放整齐的深色木质书架，上面错落有致地陈列着各类医学期刊和专业书籍。书架旁，一块大型背光显示屏或灯箱，清晰展示着高分辨率的彩色医疗脑部影像图（如fMRI或CT扫描），散发着柔和的科技感光芒。前景的简约办公桌面上，一个精致、带有品牌标识的产品包装盒被巧妙地放置在画面一角。
+
+主体外观与动作：一位约45-55岁、气质沉稳的中年女性专家，身着剪裁合体的专业西装外套，佩戴一副时尚的细框眼镜，镜片反射着微弱的光泽。她端坐在桌后，神情专注且充满自信地直视镜头，目光坚定而富有亲和力。她的唇微启，仿佛即将开口讲话或刚刚停顿，姿态专业而权威，散发出深厚的知识底蕴。
+
+镜头运动方式：镜头以一个稳定的中景特写开场，将专家从胸部以上完整纳入画面，同时清晰呈现其身后的专业背景及桌面的产品。随后，镜头以极其缓慢且平稳的速度向前推进（dolly in），在3-5秒内逐渐拉近与专家的距离，使画面更聚焦于她的面部表情和眼神，营造出一种引人入胜的亲密感。
+
+光线色调：整体光线明亮而柔和，采用专业的演播室布光，强调自然肤色和环境细节，避免刺眼的高光和过重的阴影。主光从斜前方打来，辅以柔和的补光。画面色调以冷静、专业的蓝灰色和米白色为主，搭配木质书架的暖棕色和脑部影像图的科技蓝色，营造出一种严谨而不失活力的氛围。
+
+叠加文字：无。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="冲饮品/食补粉" data-types="场景体验,产品展示" data-audiences="资深中产,新锐白领" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#10</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">冲饮品/食补粉</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">场景体验</span><span class="t-tag">产品展示</span>
+            </div>
+            <div class="head-r"><span class="a-tag">资深中产</span><span class="a-tag">新锐白领</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_19.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53nqceiaaeqmaam4jrgjvb43aeirwairca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_19.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.5%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">6.5%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">汽车/交通工具</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 画面从驾驶员视角切入，双手握持保时捷方向盘，仪表盘清晰可见，显示车速27km/h。<br><span class="hl">【承接】</span> 透过挡风玻璃，城市道路和远处的建筑群映入眼帘，营造出在城市中驾驶豪华车的场景感。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">驾驶视角呈现</span><span class="arrow">→</span><span class="step">方向盘特写</span><span class="arrow">→</span><span class="step">仪表盘信息展示</span><span class="arrow">→</span><span class="step">城市街景展现</span><span class="arrow">→</span><span class="step">驾乘体验营造</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【豪华品牌，身份象征】</span>驾驶保时捷，彰显尊贵品味与成功人士的社会地位。<br>2. <span class="hl">【精致内饰，驾驭体验】</span>方向盘设计精良，仪表盘科技感十足，提供沉浸式驾驶乐趣。<br>3. <span class="hl">【智能科技，精准操控】</span>仪表盘显示车速等关键信息，体现车辆的智能化与卓越操控性。<br>4. <span class="hl">【品质生活，都市穿梭】</span>在都市环境中自由驰骋，享受高品质的出行生活方式。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面从一辆豪华轿跑车（保时捷）的驾驶舱内部视角切入，透过宽阔挡风玻璃，前方是繁忙的城市主干道，远处高耸的玻璃幕墙建筑群在阳光下熠熠生辉。路面平整，车流有序，背景晴朗蓝天，营造都市精英驾驭场景。
+
+主体外观与动作：画面中心是驾驶员戴着精致腕表、修长有力的双手，稳稳握持带有红色缝线的黑色真皮方向盘。仪表盘清晰可见，数字显示车速27km/h，转速表和油量表指针稳定。方向盘中央保时捷品牌标志清晰。
+
+镜头运动方式：镜头以第一人称驾驶员视角平稳向前推进，从方向盘和仪表盘近景开始，焦点从仪表盘车速信息平滑转移至挡风玻璃外城市街景。整个过程保持流畅水平移动，无抖动，模拟真实驾驶沉浸感。
+
+光线色调：整体光线明亮充足，自然日光从前方和侧窗均匀洒入车内，营造通透高级质感。色彩饱和度适中，城市建筑色彩鲜明，车内饰黑色与红色细节对比强烈。色调偏暖，强调豪华与舒适体验。
+
+叠加文字：无。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="冲饮品/食补粉" data-types="真人试吃,场景体验" data-audiences="小镇青年,新锐白领" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#11</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">冲饮品/食补粉</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">真人试吃</span><span class="t-tag">场景体验</span>
+            </div>
+            <div class="head-r"><span class="a-tag">小镇青年</span><span class="a-tag">新锐白领</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_20.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b537ecf4aaeraamcfrxgrvb56iel34qixsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_20.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.1%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">餐饮美食</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频开场即展现一个热闹的户外或半户外餐饮场景，多位食客围桌而坐，享受美食。画面中心是一位面带笑容、神态轻松的女性。<br><span class="hl">【承接】</span> 这种开场迅速营造出轻松愉快的用餐氛围，暗示视频内容将围绕美食体验、社交聚会或休闲生活展开。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">展现夜市风情</span><span class="arrow">→</span><span class="step">食客开心用餐</span><span class="arrow">→</span><span class="step">特写美味小吃</span><span class="arrow">→</span><span class="step">分享用餐感受</span><span class="arrow">→</span><span class="step">推荐休闲聚餐</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【热闹氛围】</span>画面中食客众多，营造出轻松愉快的聚餐氛围，适合朋友小聚。<br>2. <span class="hl">【地道风味】</span>桌上摆放着多种小吃和饮品，暗示提供丰富多样的地道美食选择。<br>3. <span class="hl">【真实体验】</span>主要人物面带笑容，表情自然，展现出对食物和环境的真实享受。<br>4. <span class="hl">【休闲放松】</span>整体场景轻松随意，是下班后或周末放松身心的好去处。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="夜幕降临，一个充满市井烟火气的户外美食广场或半开放式大排档，空气中弥漫着食物的香气。背景是暖色调的灯笼和霓虹招牌交织，人影憧憧，熙熙攘攘，营造出热闹非凡的用餐氛围。画面中心，一位约25-35岁的女性，身着休闲服饰，面带真诚而轻松的笑容，眼神中透着愉悦。她正与身旁的朋友或家人围坐在一张木质餐桌旁，桌上摆满了诱人的小吃和饮品。她可能正举起筷子夹取食物，或轻声交谈，肢体语言自然放松，展现出享受当下美食与社交的愉悦状态。镜头以一个平稳的中景开场，缓慢地从左向右平移，将热闹的整体氛围和中心人物自然地引入画面，营造沉浸感。整体光线以温暖的橙黄色调为主，营造出温馨、热闹且富有烟火气的夜晚氛围。局部有柔和的聚光灯打在餐桌上，食物色彩鲜明，人物面部光线均匀柔和，整体画面对比度适中，饱和度略高，充满食欲感。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="传统滋补" data-category="冲饮品/食补粉">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+            <span class="g-title">📸 冲饮品/食补粉 · 同品类更多爆款素材一览</span>
+            <span class="g-count">1 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b532acjyaaehqajmfj55jvb5uaettiajhca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">冲饮品/食补粉</span>
+              <span class="g-metrics">CTR 3.4% · ROI 1~2</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="海外调节三高" data-types="健康科普,达人种草" data-audiences="资深中产,都市银发" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#12</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">海外调节三高</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">资深中产</span><span class="a-tag">都市银发</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_22.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53euag2aaajeajpcryqnvbujienusqa3ka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_22.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.0%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">5.5%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品 -&gt; 营养补充剂 -&gt; 辅酶Q10</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一位戴眼镜的成熟女性身着黄色西装，面带微笑直视镜头。<br><span class="hl">【承接】</span>画面下方出现字幕“如果你一年只囤一次辅酶Q10”，预示视频将围绕辅酶Q10的购买或使用频率展开健康科普。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">专家出镜讲解</span><span class="arrow">→</span><span class="step">提出辅酶Q10问题</span><span class="arrow">→</span><span class="step">分析囤货现象</span><span class="arrow">→</span><span class="step">给出健康建议</span><span class="arrow">→</span><span class="step">引导正确认知</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【健康科普，专业指导】</span>专家出镜，提供关于辅酶Q10的专业健康知识和使用建议。<br>2. <span class="hl">【科学囤货，避免误区】</span>纠正消费者关于辅酶Q10囤货的常见误区，引导科学合理的购买行为。<br>3. <span class="hl">【功效讲解，价值凸显】</span>深入分析辅酶Q10的健康益处，强调其对身体健康的重要性。<br>4. <span class="hl">【长期服用，持续获益】</span>倡导辅酶Q10的长期规律服用，以达到最佳的健康维护效果。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面呈现一个明亮且现代的室内空间，背景经过柔和的景深模糊处理，隐约可见浅色系书架与一株生机勃勃的绿色盆栽，整体营造出专业、整洁而又温馨的科普氛围。
+主体外观与动作：一位约40-50岁、气质成熟的女性，佩戴一副精致的细边眼镜，身着一件剪裁合体、色彩鲜明的姜黄色西装外套，面带亲切而自信的微笑。她的目光直接而专注地凝视着镜头，姿态端庄，略微挺直，给人一种专业且值得信赖的专家形象。她的表情保持稳定，传达出欢迎与即将分享的期待感。
+镜头运动方式：镜头采用稳定的中景特写，聚焦于女性的胸部以上部分。画面开始时，镜头以极其缓慢且平滑的速度，从一个略微广阔的中景，轻微地向主体推近，持续约1.5秒，随后保持完全静止，强调人物的亲和力与专业感，确保画面稳定且聚焦。
+光线色调：整体光线明亮柔和，采用高键照明，营造出干净、通透的视觉效果。主光源从前方略偏上方打来，使人物面部光洁立体，无明显阴影。色调温暖而自然，姜黄色西装在光线下显得尤为鲜活，背景色调偏向米白与浅灰，整体氛围积极向上，充满活力。
+叠加文字：画面下方中央位置，清晰浮现一行白色简洁的中文艺术字：“如果你一年只囤一次辅酶Q10”，字体现代，易于阅读，与整体画面风格和谐统一，无任何多余装饰。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="海外调节三高" data-types="健康科普,达人种草" data-audiences="都市银发,资深中产" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#13</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">海外调节三高</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_23.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3xadnuaagn4aladhjdjurzoae3k4anwsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_23.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">2.9%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.4%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">保健品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 一位中年男士坐在办公桌前，背景是书架和窗户，他面容严肃地直视镜头。<br><span class="hl">【承接】</span> 画面下方出现黄色文字“辅酶Q10为什么要买”，直接点明视频将围绕辅酶Q10的购买理由展开讲解。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">专家出镜</span><span class="arrow">→</span><span class="step">提出健康疑问</span><span class="arrow">→</span><span class="step">讲解产品功效</span><span class="arrow">→</span><span class="step">提供购买建议</span><span class="arrow">→</span><span class="step">知识科普总结</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【专业讲解，科学科普】</span>通过专业人士出镜，深入浅出地普及辅酶Q10的健康知识。<br>2. <span class="hl">【功效阐述，价值凸显】</span>详细说明辅酶Q10对身体的益处，如心血管健康、抗氧化等。<br>3. <span class="hl">【权威背书，增强信任】</span>借助专家形象和知识分享，提升消费者对产品功效的信赖度。<br>4. <span class="hl">【理性消费，引导决策】</span>帮助观众理解购买辅酶Q10的必要性，引导其做出明智的健康选择。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="画面设定在现代风格的明亮办公室。深色木质办公桌整洁，背景是装满各类书籍的深色书架。一扇宽大落地窗透进柔和自然光，隐约可见城市景观或绿植，营造专业且生动的氛围。
+
+一位约五十岁的中年男士端坐办公桌后，身着深蓝色衬衫与浅灰色休闲西装外套，衣着考究。他头发整洁，面部严肃专注，眼神坚定直视镜头，仿佛正与观众直接对话。坐姿笔挺，双手自然轻放在桌面边缘，姿态沉稳自信。
+
+镜头锁定，中景特写，精准捕捉男士胸部以上部分，突出面部表情和上半身姿态。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="燕窝滋补品" data-types="促销导购,达人种草" data-audiences="精致妈妈,新锐白领" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#14</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">燕窝滋补品</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">促销导购</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">精致妈妈</span><span class="a-tag">新锐白领</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_24.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3feafkaaazaac7nbktzvbukiekuuqavka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_24.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">1.1%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">3.0%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">2~3</span></div>
+              </div>
+              <div class="pcat">燕窝</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频中一位男性达人以镜像形式出镜，面带微笑，营造出亲切的互动氛围。<br><span class="hl">【承接】</span> 画面中央立即出现醒目的黄色文字，直接抛出“谁能拒绝一年只有一次的五折鲜炖燕窝啊”的疑问，强调稀有折扣，迅速抓住观众注意力。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">达人出镜</span><span class="arrow">→</span><span class="step">抛出促销疑问</span><span class="arrow">→</span><span class="step">强调年度折扣</span><span class="arrow">→</span><span class="step">聚焦鲜炖燕窝</span><span class="arrow">→</span><span class="step">促成购买意向</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【稀有折扣】</span>一年仅此一次的五折优惠，为消费者提供超值购买机会。<br>2. <span class="hl">【品质燕窝】</span>主打鲜炖燕窝，强调产品的新鲜度与营养价值。<br>3. <span class="hl">【便捷滋补】</span>鲜炖形式方便快捷，满足现代人对高效滋补的需求。<br>4. <span class="hl">【达人推荐】</span>通过达人出镜口播，增加产品的可信度和推荐力度。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：一个光线充足、现代简约的室内空间，背景经过柔焦处理，隐约可见浅色系的家居装饰，营造出温馨而精致的氛围。画面主体是一位男性达人，通过一面宽大、无暇的落地镜或壁挂镜以镜像形式出镜，镜面反射出清晰且富有质感的画面。
+
+主体外观与动作：男性达人年龄约28-35岁，面容阳光，身着一件质地柔软的米白色休闲衬衫，显得亲和且有品味。他面带真诚而富有感染力的微笑，眼神透过镜子直接与观众进行亲切的对视，身体姿态放松，略微向镜面方向倾斜，仿佛在进行一次面对面的私密交流。
+
+镜头运动方式：镜头以达人胸部以上的中景开场，构图稳定，画面中心聚焦于达人反射在镜中的上半身。镜头保持微弱且平稳的推拉感，缓慢而细腻地向达人的脸部推进，增强亲近感，整个过程流畅而自然。
+
+光线色调：整体采用高光调，光线明亮、柔和且均匀，无明显阴影，营造出通透、洁净的视觉感受。色调以暖白色、米色和浅金色为主，辅以少量木质或金属的暖色点缀，整体氛围温暖、舒适且高端。
+
+叠加文字：在画面开场约1.5秒后，画面中央迅速且醒目地叠加一行亮黄色粗体文字：“谁能拒绝一年只有一次的五折鲜炖燕窝啊”，字体现代、简洁且易读，文字以快速淡入的方式出现，停留约2秒后快速淡出，强力抓住观众注意力。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="燕窝滋补品" data-types="真人试吃,达人种草" data-audiences="新锐白领,精致单身" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#15</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">燕窝滋补品</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">真人试吃</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">新锐白领</span><span class="a-tag">精致单身</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_25.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53mibm2aac7aafsereonvbqyqezvraftka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_25.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">0.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">0.7%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">保健品/营养品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频开场一位年轻女性特写，她正将一个小瓶装产品送至唇边饮用，画面清晰，光线明亮，营造出一种日常使用场景。<br><span class="hl">【承接】</span> 画面左上方出现一个评论气泡，文字内容“我天，本来想骂你的，结果点进去真的是拍1发102，送的还都是正装”，迅速抛出产品超值优惠信息，引发观众好奇心和购买欲。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">达人出镜试用</span><span class="arrow">→</span><span class="step">用户评论吸睛</span><span class="arrow">→</span><span class="step">揭示超值优惠</span><span class="arrow">→</span><span class="step">强调正装赠品</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【超值优惠，限时特价】</span> 拍1发102的惊人促销力度，为消费者带来极致性价比。<br>2. <span class="hl">【正装赠送，品质保证】</span> 赠品均为正装产品，而非小样，彰显品牌诚意与产品价值。<br>3. <span class="hl">【达人推荐，真实体验】</span> 达人亲身出镜试用产品，增强内容的真实感和可信度。<br>4. <span class="hl">【评论反转，引发好奇】</span> 用户评论从初始质疑到最终惊喜，巧妙制造话题，吸引用户深入了解。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面设定在一个光线明亮、现代简约的居家空间，背景柔和虚化，隐约可见窗外自然光线或干净的室内陈设，营造出舒适、私密的日常使用氛围。
+
+主体外观与动作：一位约25-30岁的年轻女性，身着浅色休闲服，面容自然，神情专注。她纤细的手指优雅地握持着一个设计简洁、小巧精致的保健品饮用瓶，瓶身泛着健康光泽。她将瓶口缓缓送至唇边，动作轻柔流畅，享受饮用瞬间。
+
+镜头运动方式：镜头以中景特写开场，聚焦女性上半身和产品，随后缓慢平稳地进行一次微距推拉，将视觉中心精确锁定在她饮用动作和产品瓶身细节上。运镜稳定，强调产品精致与使用仪式感。
+
+光线色调：整体采用明亮柔和的自然光照明，营造温暖通透的视觉氛围。画面色彩饱和度适中，以清新、健康的暖色调为主，米白、浅木色与产品色彩融合，强调纯净与活力。
+
+叠加文字：画面左上方，一个现代风格的半透明评论气泡以平滑动画浮现。气泡内嵌黑色简洁字体：“我天，本来想骂你的，结果点进去真的是拍1发102，送的还都是正装”。文字清晰醒目，迅速吸引观众视线，引发好奇。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="传统滋补" data-types="情感故事,促销导购" data-audiences="资深中产,精致妈妈" data-tier="3">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#16</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              
+              <span class="tier-badge tier-3">T3 观察</span>
+              <span class="t-tag">情感故事</span><span class="t-tag">促销导购</span>
+            </div>
+            <div class="head-r"><span class="a-tag">资深中产</span><span class="a-tag">精致妈妈</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_26.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3gmdgqaagauai7tpdhnurymyenazqm2ca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_26.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">5.6%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">2.0%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0</span></div>
+              </div>
+              <div class="pcat">营养保健</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>画面中一位女性用纸巾擦拭眼睛，表情似乎在哭泣或感到震惊，同时画面上方出现醒目的黄色横幅。<br><span class="hl">【承接】</span>黄色横幅文字清晰显示“当得知磷虾油降价以后 拍12瓶到手16瓶 错过真的可惜”，直接点明了产品（磷虾油）和诱人的促销信息，并暗示了女性哭泣的原因是对优惠的强烈情感反应（可能是后悔或惊喜）。底部还展示了磷虾油的产品包装。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">情绪化开场</span><span class="arrow">→</span><span class="step">优惠信息揭示</span><span class="arrow">→</span><span class="step">产品实物展示</span><span class="arrow">→</span><span class="step">促销力度强调</span><span class="arrow">→</span><span class="step">错过引发遗憾</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【健康益处】</span>磷虾油作为保健品，暗示对身体健康有益，提升生活品质。<br>2. <span class="hl">【超值促销】</span>“拍12瓶到手16瓶”的买赠活动，提供巨大的价格优惠和购买价值。<br>3. <span class="hl">【情感共鸣】</span>通过人物的强烈情绪反应，引发观众对优惠力度或产品价值的共鸣，刺激购买欲望。<br>4. <span class="hl">【限时稀缺】</span>“错过真的可惜”强调优惠的稀有性和时效性，营造紧迫感促使消费者立即行动。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="柔和虚化的室内环境，光线温馨，营造私密且情绪化的氛围，背景模糊，突出前景人物。一位约35岁亚洲女性，面部特写，眼眶微红，眼角泪珠欲坠。她右手持白色纸巾，轻柔擦拭眼角，表情复杂，流露震惊、不置信与一丝遗憾。镜头从女性脸部特写（medium close-up）缓慢后拉，同时平稳上移，展现她上半身及画面上方横幅。柔和暖黄色调，模拟自然光，营造温馨略带忧郁的电影感。光线均匀，对比适中，强调女性面部细节与情感。画面上方，醒目亮黄色横幅浮现，白色粗体字：“当得知磷虾油降价以后 拍12瓶到手16瓶 错过真的可惜”。横幅下方，画面底部边缘，精致磷虾油产品包装特写，标签清晰。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="传统滋补" data-category="传统滋补">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+            <span class="g-title">📸 同品类更多爆款素材一览</span>
+            <span class="g-count">1 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b535aap2aaapyaj3dizvrvbv2ae7xuab7ka.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              
+              <span class="g-metrics">CTR 1.8% · ROI 0</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="其他膳食营养补充食品" data-types="达人种草,产品展示" data-audiences="都市银发,资深中产" data-tier="3">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#17</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">其他膳食营养补充食品</span>
+              <span class="tier-badge tier-3">T3 观察</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">产品展示</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_28.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53pmcdgaaemeaj6i7irrur46yegn5qim2a.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_28.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.0%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">6.9%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 一位身着金色礼服的优雅成熟女性面带微笑，直视镜头，背景是华丽的宴会厅。<br><span class="hl">【承接】</span> 她手中拿着一瓶名为“FLYEEG TST50000”的保健品和一颗白色药丸，似乎正准备介绍产品。视频下方有“AI生成仅供参考”字样，提示该素材可能为AI生成。<div class="ai-risk warn"><span class="ai-icon">⚠️</span><span class="ai-body">该视频疑似 AI 生成，文本/画面含“AI生成”标识。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">优雅女性出镜</span><span class="arrow">→</span><span class="step">展示保健产品</span><span class="arrow">→</span><span class="step">达人亲身推荐</span><span class="arrow">→</span><span class="step">强调产品功效</span><span class="arrow">→</span><span class="step">营造品质生活</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【优雅形象，品质生活】</span> 视频中成熟优雅的女性形象，暗示产品能帮助消费者维持良好状态，享受高品质生活。<br>2. <span class="hl">【健康补充，活力焕发】</span> 产品作为膳食营养补充剂，旨在支持用户健康，焕发活力。<br>3. <span class="hl">【达人推荐，信任背书】</span> 达人出镜亲身展示并推荐产品，为消费者提供信任感和购买信心。<br>4. <span class="hl">【便捷服用，日常滋养】</span> 视频中展示的药丸形式，体现产品服用方便，易于融入日常健康管理。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：金碧辉煌的奢华宴会厅，高挑天花板悬挂璀璨水晶吊灯，柔和光线映照抛光大理石地面与金色雕花墙壁。背景深邃模糊，营造高端典雅氛围。
+
+主体外观与动作：画面中央，一位气质卓越的成熟女性，身着流光溢彩的金色晚礼服，发髻高雅，妆容精致。她面带自信亲切微笑，眼神直视镜头。双手优雅向前伸展，左手平稳展示一瓶印有“FLYEEG TST50000”字样的保健品，瓶身现代高端；右手轻捏一颗纯白色药丸，姿态从容。
+
+镜头运动方式">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="传统滋补" data-category="养生茶" data-types="达人种草,健康科普" data-audiences="新锐白领,资深中产" data-tier="3">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#18</span>
+              <span class="ind-badge" style="background:rgba(67,160,108,0.14);color:#2f8256">🌿 传统滋补</span>
+              <span class="cat-badge">养生茶</span>
+              <span class="tier-badge tier-3">T3 观察</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">新锐白领</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="传统滋补/传统滋补_20260626/frames/frame_29.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53lyb3uaad74ao5ebsprvbsxqexjpahosa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('传统滋补/传统滋补_20260626/videos/video_29.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">7.1%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.3%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">3~5</span></div>
+              </div>
+              <div class="pcat">教育培训</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 一位身着传统风格服饰的女性坐在现代办公环境中，面带微笑，右手做出邀请或阐述的姿势，眼神直接与观众交流。<br><span class="hl">【承接】</span> 她保持着专注且亲和的表情，手势自然，似乎正准备引入一个重要的话题或分享专业见解，背景的现代感与人物的古典韵味形成对比。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">开场亮相</span><span class="arrow">→</span><span class="step">手势引导</span><span class="arrow">→</span><span class="step">主题阐述</span><span class="arrow">→</span><span class="step">观点分享</span><span class="arrow">→</span><span class="step">价值传递</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【专业形象，权威讲解】</span>出镜人物气质优雅，着装得体，展现专业素养，增强内容的可信度和权威性。<br>2. <span class="hl">【中式雅韵，文化传承】</span>人物身着融合传统元素的服饰，传递东方美学和文化底蕴，吸引对传统文化有兴趣的受众。<br>3. <span class="hl">【现代商务，品质生活】</span>视频背景为现代办公环境，结合人物形象，暗示内容与现代职场或高品质生活方式相关。<br>4. <span class="hl">【亲和表达，引人入胜】</span>人物通过自然的肢体语言和眼神交流，营造亲切友好的沟通氛围，有效吸引观众注意力。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景：明亮宽敞的现代办公室内，背景是简洁的落地窗，窗外隐约可见城市天际线，或是一面带有抽象艺术装饰的浅色墙壁，整体氛围现代而专业。
+主体：一位约30-35岁的亚洲女性，身着一套剪裁精致、带有东方古典韵味的新中式改良服饰，色彩沉稳典雅。她端坐于一张设计感十足的办公椅上，面部表情温暖而自信，嘴角微扬，眼神直接且充满亲和力地与观众交流。她的右手自然抬起，掌心略微向上，做出一个邀请、引导或即将阐述的优雅手势，姿态从容，散发出知性与古典融合的独特魅力。
+镜头：镜头从一个稳定的中景（包含人物上半身及部分环境）开始，以平稳缓慢的速度向前推近，逐渐聚焦于女性的胸部以上，最终停留在她面部特写与手势的完美构图上，强调其专注与亲和的表情。
+光线：整体采用明亮且柔和的自然光与室内专业照明相结合，营造出清晰、通透而温暖的视觉效果。色调以中性色和低饱和度为主，人物服饰的古典色彩成为画面焦点，与背景的现代简约风格形成鲜明而和谐的对比。
+叠加文字：无。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="保健食品" data-types="达人种草,健康科普" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#19</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_1.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53gqahiaaawiaa2pjkxvvbunaeoq2aa5ca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_1.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">1.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.6%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品/减肥瘦身</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 一位身穿白大褂的女性（疑似医生）坐在桌前，桌上堆满了产品包装盒。她微笑着看向一位体型较胖的女性，胖女性手持产品包装盒，面露疑惑地与“医生”对话。<br><span class="hl">【承接】</span> 胖女性询问自己50岁180斤是否需要开10盒产品，医生回答“一盒”，胖女性表示不相信一盒能压得住她的体重。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">医生推荐产品</span><span class="arrow">→</span><span class="step">达人强调效果</span><span class="arrow">→</span><span class="step">产品功效解析</span><span class="arrow">→</span><span class="step">适用人群广泛</span><span class="arrow">→</span><span class="step">引导购买行动</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【高效控脂】</span>产品声称能帮助体重超标人群辅助控制脂肪，达到体态轻盈的效果。<br>2. <span class="hl">【品牌保障】</span>葵花药业出品，获得蓝帽标识，品质值得信赖。<br>3. <span class="hl">【温和安全】</span>科学配方，辅助代谢，服用后不拉肚不心慌。<br>4. <span class="hl">【买赠优惠】</span>厂家活动买一盒发三盒，价格优惠，鼓励尝试。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="明亮专业的室内咨询室。前景一张浅色木质办公桌，桌面整齐堆满各类保健品包装盒，品牌标识清晰可见。背景墙面简洁，略微虚化，营造出专业且信任的氛围。
+
+画面左侧，一位约40岁、身穿笔挺白色实验服的女性，面带温和而专业的微笑，目光专注地看向对面的女性。画面右侧，一位约50岁、体型偏胖的女性，双手捧着一个产品包装盒，眼神从产品转向白大褂女性，眉宇间流露出明显的疑惑与一丝不确定，身体微微前倾，仿佛正在提出疑问。
+
+镜头以一个中景开场，将两位女性和桌面上的产品尽数纳入">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="保健食品" data-types="健康科普,场景体验" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#20</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">场景体验</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_2.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53pebluaac2eakktjhb5vbq6iexj4qfosa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_2.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">1.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.8%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">药品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>画面中两位女性面对面坐着，桌上摆放着多盒五酯胶囊产品。左侧女性身着蓝色衬衫，面带微笑看向右侧女性；右侧女性身着花色上衣，似乎在认真倾听或交流。<br><span class="hl">【承接】</span>背景是明亮的窗户和白色窗帘，营造出温馨舒适的居家或咨询环境。桌上的产品包装清晰可见，暗示即将展开产品介绍或健康话题。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">场景对话</span><span class="arrow">→</span><span class="step">产品陈列</span><span class="arrow">→</span><span class="step">功效科普</span><span class="arrow">→</span><span class="step">用户交流</span><span class="arrow">→</span><span class="step">健康生活</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【肝脏保护】</span>五酯胶囊作为中成药，主要功效在于保肝护肝，强调其对肝脏健康的益处。<br>2. <span class="hl">【专业推荐】</span>画面中人物的专业形象和交流，暗示产品可能获得专业人士的推荐或讲解。<br>3. <span class="hl">【品质保障】</span>多盒产品整齐陈列，体现产品供应充足及正规性，增强消费者对产品质量的信心。<br>4. <span class="hl">【用户信赖】</span>通过温馨的对话场景和“好产品，值得信赖”的文案，建立产品在用户心中的信任感。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：明亮宽敞的室内，背景透光白色窗帘，窗外柔和自然光线洒落。环境温馨整洁，现代风格的客厅或健康咨询室。画面中央一张原木色桌面，上面整齐摆放着三至五盒五酯胶囊产品，包装设计简洁，品牌标识清晰可见。
+
+主体外观与动作：两位亚洲女性面对面而坐。左侧女性约35岁，身着一件质感良好的蓝色衬衫，面带亲切微笑，目光温和专注地看向右侧。右侧女性约45岁，身着一件雅致的花色上衣，表情认真，身体略微前倾，仿佛在仔细聆听或进行回应，双手自然置于桌上。
+
+镜头运动方式：镜头以中景（Medium Shot）开场，平稳捕捉两位女性的互动及桌上产品。随后，镜头以极其缓慢且平滑的速度进行一次轻微的推近（Slow Push-in），逐渐聚焦至女性面部表情细节和产品包装清晰度，强调交流的专注与产品的存在感。
+
+光线色调：整体画面采用明亮柔和的自然光照明，辅以少量暖色调补光，营造温馨、舒适且充满信任感的氛围。色调以暖白和浅木色为主，色彩饱和度适中，画面干净通透，呈现平静专业的质感。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="保健食品" data-types="情感故事,产品展示" data-audiences="都市银发,精致妈妈" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#21</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">情感故事</span><span class="t-tag">产品展示</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">精致妈妈</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_3.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3hybfmaaccyaf4obhizvbqpqeky7aevsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_3.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.6%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.5%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>画面中一位中年女性与一位年轻男性面对面站立，两人都面带微笑，背景是乡村房屋和电线杆，营造出温馨的家庭氛围。<br><span class="hl">【承接】</span>画面下方叠加黄色文字“儿子再说一遍”，暗示母子之间正在进行亲密对话，可能与产品或家庭情感有关，引发观众好奇。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">亲情互动</span><span class="arrow">→</span><span class="step">温馨对话</span><span class="arrow">→</span><span class="step">产品特写</span><span class="arrow">→</span><span class="step">功效说明</span><span class="arrow">→</span><span class="step">传递关爱</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【缓解疲劳】</span>产品具有缓解体力疲劳的保健功能，适合易疲劳人群。<br>2. <span class="hl">【家庭关爱】</span>通过母子温馨互动场景，传递子女对父母健康的关爱与孝心。<br>3. <span class="hl">【国食健注】</span>产品拥有国家食品药品监督管理局批准的保健食品批文，品质有保障。<br>4. <span class="hl">【天麻配方】</span>产品名称明确指出含有天麻成分，暗示其传统草本健康理念。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="阳光明媚的乡村小院，背景是砖瓦结构的传统民居和远处错落的电线杆，地面铺着干净的石板路，周围有绿植点缀。一位约50岁、穿着朴素居家服的中年女性，面容慈祥，与一位约25岁、穿着休闲T恤的年轻男性面对面站立。两人身体微微前倾，目光交汇，嘴角都挂着温暖的微笑，仿佛刚结束一段愉快的对话。中景镜头缓慢平稳向前推进，聚焦在母子两人之间，画面稳定，略带柔和景深效果。整体光线明亮柔和，模拟午后温暖的自然光，色调偏暖，以米黄、浅绿为主，营造温馨宁静的家庭氛围。画面下方居中位置，叠加一行醒目的黄色艺术字体文字：“儿子再说一遍”。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="保健食品" data-category="保健食品">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+            <span class="g-title">📸 同品类更多爆款素材一览</span>
+            <span class="g-count">5 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3naaaeaaawaadz6js5jvbu2aeajuaaasa.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              
+              <span class="g-metrics">CTR 2.0% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b53xacfiaaegiafders75vb7oaeks4aivca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              
+              <span class="g-metrics">CTR 1.9% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3zubqyaadmmabhebslvvbrtiebtgqgdca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              
+              <span class="g-metrics">CTR 1.4% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3iub42aadgaajtzzw3rvbsriezvcqhtka.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              
+              <span class="g-metrics">CTR 1.5% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b536ibieaachqaerqbnanvbr4qeqlzafasa.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              
+              <span class="g-metrics">CTR 1.4% · ROI 0~1</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="减肥瘦身" data-types="达人种草,健康科普" data-audiences="新锐白领,精致单身" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#22</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">减肥瘦身</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">新锐白领</span><span class="a-tag">精致单身</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_9.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53vmad2aaauaapasjxzvvbvkyehwvqapka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_9.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.2%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">11.3%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">2~3</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品/体重管理</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>视频开场，两位女性在疑似实验室或产品研发的场景中，其中一人手持粉色产品包装。<br><span class="hl">【承接】</span>画面下方出现字幕“这黄色能瘦多少啊”，直接点出产品与瘦身功效的关联，引发观众对产品效果的好奇。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">人物出镜开场</span><span class="arrow">→</span><span class="step">展示产品包装</span><span class="arrow">→</span><span class="step">提出瘦身疑问</span><span class="arrow">→</span><span class="step">讲解产品功效</span><span class="arrow">→</span><span class="step">总结产品优势</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【科学研发，专业背书】</span>画面中出现实验室场景和穿白大褂的人员，暗示产品经过专业研发，值得信赖。<br>2. <span class="hl">【高效瘦身，效果显著】</span>直接回应文案中关于“瘦多少”的疑问，强调产品的减肥效果和潜力。<br>3. <span class="hl">【便携包装，使用方便】</span>产品包装小巧精致，方便消费者随身携带，随时随地进行健康管理。<br>4. <span class="hl">【健康管理，安心选择】</span>作为保健品，强调其在帮助用户实现健康体重管理的同时，提供安心的解决方案。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：
+画面呈现一个极致洁净、现代感十足的实验室或产品研发中心。背景是明亮无暇的白色墙壁与抛光台面，远处隐约可见一些高科技的实验仪器和显示屏，整体氛围专业而严谨，透露出科学与创新的气息。
+
+主体外观与动作：
+前景中站立着两位约三十多岁的女性，着装专业且时尚。其中一位女性身穿浅色实验服，内搭干练职业装，面带自信微笑，右手优雅地持着一个设计简洁、色彩鲜亮的粉色产品包装，将其微微朝向镜头。她身旁的另一位女性，同样穿着职业装，目光专注地看向产品，并伴有轻微的讨论手势，两人姿态自然，充满互动感。
+
+镜头运动方式：
+镜头以一个极其缓慢且平稳的推拉（dolly zoom）方式，从一个稍宽的景别缓缓拉近，聚焦于两位女性的上半身及她们手中的粉色产品。整个运动过程流畅无痕，营造出一种引人入胜的沉浸感，将观众的注意力温柔地引导至核心主体。
+
+光线色调：
+光线明亮而均匀，采用高调照明，模拟实验室的无影灯效果，使画面通透清晰。整体色调偏向冷色系，以纯净的白色和浅灰色为主，强调环境的科技感与专业度。同时，一束柔和的暖色辅助光精准地打在粉色产品包装上，使其色彩饱和度更高，成为画面中醒目的视觉焦点，与冷色背景形成和谐对比。
+
+叠加文字：
+画面进入约1.5秒后，屏幕下方居中位置，出现一行简洁的白色无衬线字体字幕，下方衬以一个半透明的深色矩形背景，文字内容为：“这黄色能瘦多少啊”。字幕清晰可见，并持续显示至画面结束。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="减肥瘦身" data-types="情感故事,健康科普" data-audiences="新锐白领,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#23</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">减肥瘦身</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">情感故事</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">新锐白领</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_10.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b536eahsaaasqabivbsunvbv4iephyqa6ka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_10.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.2%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">8.4%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">营养保健 -&gt; 膳食营养补充 -&gt; 软胶囊</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 视频开场展示一名女性在办公室环境中，面露震惊或愤怒的表情，嘴巴微张，胸前佩戴麦克风，营造出紧张的对话氛围。<br><span class="hl">【承接】</span> 画面下方随即出现“你有本事再说一遍”的字幕，进一步强化了剧情的冲突感和悬念，同时底部叠加了保健食品的产品信息及审批文号。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">女子情绪爆发</span><span class="arrow">→</span><span class="step">字幕强化冲突</span><span class="arrow">→</span><span class="step">植入产品信息</span><span class="arrow">→</span><span class="step">介绍保健功效</span><span class="arrow">→</span><span class="step">促成用户转化</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【官方认证】</span>产品拥有国家食品药品监督管理局批准文号，确保产品合规性和品质。<br>2. <span class="hl">【健康补充】</span>作为保健食品，旨在为特定人群提供营养补充，辅助改善身体机能。<br>3. <span class="hl">【精准人群】</span>明确指出适宜“牡蛎肝人群”，针对性强，满足特定健康管理需求。<br>4. <span class="hl">【剧情代入】</span>通过办公室冲突场景，引发观众情感共鸣，增强广告的记忆点和传播性。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：现代办公室，背景模糊，简洁压抑。顶部荧光灯冷白光。
+
+主体外观与动作：约30岁女性，米色职业套装，坐于办公桌前。面部特写，表情震惊转愤怒，眉峰紧锁，双目圆睁，嘴巴微张。胸前黑色麦克风，身体微倾，双手紧握。
+
+镜头运动方式：中近景开场，稳定聚焦女性面部。情绪爆发时，镜头缓慢推近，微调景深，强化情感。
+
+光线色调：整体冷色调，荧光灯主导，局部阴影强化面部轮廓。画面灰暗，紧张压抑。
+
+叠加文字：画面下方中央，白色粗体">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="减肥瘦身" data-types="产品展示,健康科普" data-audiences="新锐白领,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#24</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">减肥瘦身</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">产品展示</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">新锐白领</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_11.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3x4bckaaccmalgzi7r5vbtpyeew7qejka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_11.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">2.3%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">8.0%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健品/膳食补充剂/减肥瘦身</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>画面以一幅宁静致远的中国传统水墨画风格山水场景开篇，可见苍翠的松树和远山，营造出一种平和的意境。<br><span class="hl">【承接】</span>画面下方随即出现产品信息及一瓶紫色包装的健美生共轭亚油酸甘油胶囊，明确产品属性和保健功能。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">呈现山水意境</span><span class="arrow">→</span><span class="step">展示产品信息</span><span class="arrow">→</span><span class="step">阐述减肥功效</span><span class="arrow">→</span><span class="step">告知适用人群</span><span class="arrow">→</span><span class="step">提示使用注意</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【核心功效】</span>健美生共轭亚油酸甘油胶囊，明确标注保健功能为减肥，精准针对单纯性肥胖人群。<br>2. <span class="hl">【官方认证】</span>产品获得国食健注G20140450批准文号，确保产品质量与合规性，消费者可放心选择。<br>3. <span class="hl">【安全保障】</span>明确指出不适宜人群（少年儿童、孕妇、乳母）及注意事项（不能代替药物），体现产品使用的严谨性与安全性。<br>4. <span class="hl">【专业建议】</span>视频提示最终病症以医生诊断为准，引导用户理性看待产品功效，强调专业医疗的重要性。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：开场画面呈现一幅宁静致远的中国水墨画风格山水。远山如黛，连绵起伏；近处苍翠松树挺拔，枝叶间留白写意，整体营造出平和意境。
+
+主体外观与动作：画面中央偏下，一瓶紫色包装的健美生共轭亚油酸甘油胶囊从底部缓缓升起并稳定居中。产品瓶身设计简洁，标签信息清晰，瓶盖泛着柔和银光。
+
+镜头运动方式：镜头以缓慢平稳的广角推拉，从山水画局部细节逐渐拉远，展现全貌。随后产品升起时，镜头平稳下移并聚焦产品，保持画面稳定。
+
+光线色调：整体光线柔和，水墨画淡雅墨绿、清冷灰白为主色调，饱和度极低，强调自然与宁静。紫色产品在淡雅背景中形成视觉焦点，光泽感与环境和谐。
+
+叠加文字：画面下方叠加“健美生 共轭亚油酸甘油胶囊”及“健康塑形 纤体之选”两行淡墨色宋体或楷体文字，与水墨画风格完美融合。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="保健食品" data-category="减肥瘦身">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+            <span class="g-title">📸 减肥瘦身 · 同品类更多爆款素材一览</span>
+            <span class="g-count">5 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3syae4aaaiqapc3bb7bvbvfqej2laatsa.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">减肥瘦身</span>
+              <span class="g-metrics">CTR 3.5% · ROI 1~2</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3nqbn6aacniabvzrbwvvbq3ae35wafx2a.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">减肥瘦身</span>
+              <span class="g-metrics">CTR 2.5% · ROI 1~2</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3pqadaaaahqajf5iww5vbu7aegb6aamca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">减肥瘦身</span>
+              <span class="g-metrics">CTR 0.6% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0b53xubtcaadgmalecbjr5vbrpiegg6qgmka.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">减肥瘦身</span>
+              <span class="g-metrics">CTR 3.8% · ROI 0~1</span>
+            </div>
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3y4aqqaab7iaeh3zarzvbxryebddqccca.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">减肥瘦身</span>
+              <span class="g-metrics">CTR 5.2% · ROI 0~1</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="调节三高" data-types="产品展示,健康科普" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#25</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">调节三高</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">产品展示</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_17.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53tyaxqaab7yadapixxjvbxhqepcpac6ca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_17.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">1.8%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.3%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品/血糖调节</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 画面开场即呈现两瓶保健品，背景是水墨山水画，上方醒目标注“辅助降血糖”的核心功能。<br><span class="hl">【承接】</span> 产品下方紧接着列出四项与高血糖相关的常见症状，直接点明产品解决的用户痛点。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">标题呈现</span><span class="arrow">→</span><span class="step">产品展示</span><span class="arrow">→</span><span class="step">症状罗列</span><span class="arrow">→</span><span class="step">功效说明</span><span class="arrow">→</span><span class="step">资质认证</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【辅助降糖】</span>产品核心功能为辅助降低血糖，帮助维持健康水平。<br>2. <span class="hl">【多重改善】</span>针对视力模糊、手脚麻木、多饮多尿、疲惫乏力等多种症状提供改善。<br>3. <span class="hl">【保健食品】</span>获得国家认证的保健食品资质，确保产品安全与功效。<br>4. <span class="hl">【传统养生】</span>产品包装设计融入传统文化元素，传递健康养生理念。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：极简雅致的摄影棚内景。背景为一幅动态流淌的传统水墨山水画，描绘着云雾缭绕的山峦与潺潺流水，笔触空灵，意境深远，营造出宁静致远的东方美学氛围。
+
+主体外观与动作：画面中央，两瓶设计现代、质感精致的保健品并排稳立于光滑的浅色反光台面。瓶身透明或磨砂，内容物清晰可见。产品下方，四项与高血糖相关的常见症状（如“口干舌燥”、“多饮多尿”、“视力模糊”、“肢体麻木”）以简洁的白色或淡金色文字，逐一或同时从底部优雅浮现并">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="调节三高" data-types="产品展示,健康科普" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#26</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">调节三高</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">产品展示</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_18.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53imaruaabuiahzkyvcbvbuqyedjbqcgsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_18.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">2.3%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">5.6%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一只手正拿着一瓶深色瓶身、金色标签的保健品，瓶身印有“血糖高专用 睡前一粒”字样及肝脏图案。<br><span class="hl">【承接】</span>背景模糊，显示其他同类产品，画面上方叠加文字“2026血糖高问题的答案 今日公开采集专方”，直接点出产品解决的核心健康问题。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">产品特写</span><span class="arrow">→</span><span class="step">明确功效</span><span class="arrow">→</span><span class="step">强调用法</span><span class="arrow">→</span><span class="step">提出方案</span><span class="arrow">→</span><span class="step">信息公布</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【血糖管理，专业配方】</span>产品明确标注“血糖高专用”，针对性强，提供专业血糖调节方案。<br>2. <span class="hl">【睡前服用，便捷高效】</span>强调“睡前一粒”的服用方式，方便用户养成习惯，并暗示夜间持续作用。<br>3. <span class="hl">【养肝护脏，辅助代谢】</span>瓶身图案描绘肝脏，暗示产品对肝脏健康有益，可能有助于改善代谢功能。<br>4. <span class="hl">【独家秘方，前沿科技】</span>文案提及“2026血糖高问题的答案”和“公开采集专方”，暗示产品配方的独特性和先进性。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面起始于一个现代、极简的健康产品展示空间，背景柔和模糊，隐约可见其他同类保健品瓶身，营造出专业且丰富的选择感。
+主体外观与动作：一只肤色健康、指节修长的手，以优雅而稳固的姿态，轻轻握持一瓶深色玻璃瓶身的保健品。瓶身中央贴有质感高级的金色标签，清晰印有“血糖高专用 睡前一粒”字样及一个简洁的肝脏图案。手部动作轻微调整，确保标签内容完美呈现于画面中心。
+镜头运动方式：镜头以中景开场，缓慢而平稳地向前推近，同时伴随极其轻微的向右平移，逐渐聚焦于产品标签的细节，背景虚化程度加深，突出主体。整个过程平滑无抖动，如同电影特写。
+光线色调：采用柔和、明亮的暖色调光线，精准打亮瓶身与金色标签，使其散发出高级且值得信赖的光泽。背景光线均匀，整体画面洁净、通透，营造出健康、科学的视觉氛围。
+叠加文字：画面中上部，白色简洁的无衬线字体优雅浮现：“2026血糖高问题的答案”。紧接着下方，第二行文字平稳显现：“今日公开采集专方”。文字清晰醒目，与背景形成良好对比。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="调节三高" data-types="达人种草,健康科普" data-audiences="都市银发,资深中产" data-tier="1">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#27</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">调节三高</span>
+              <span class="tier-badge tier-1">T1 核心</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_19.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b537uchcaaetaancggd3zur57ieoh6qi4ka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_19.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">3.1%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">7.9%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">1~2</span></div>
+              </div>
+              <div class="pcat">保健品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一对中老年夫妇在户外公园小径上并肩行走，面带微笑看向镜头。<br><span class="hl">【承接】</span>女士手持手机，屏幕上显示“朋友们”字样，暗示正在与观众互动或分享生活。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">夫妇户外漫步</span><span class="arrow">→</span><span class="step">女士持机互动</span><span class="arrow">→</span><span class="step">产品信息展示</span><span class="arrow">→</span><span class="step">功效科普说明</span><span class="arrow">→</span><span class="step">消费提示警示</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【健康生活，活力展现】</span>中老年夫妇户外漫步，展现积极健康的生活状态，传递积极生活理念。<br>2. <span class="hl">【专业认证，品质保障】</span>产品为“红曲银杏叶胶囊”，拥有国食健注G20040081批号，是国家认可的保健食品。<br>3. <span class="hl">【功效科普，科学选择】</span>视频通过文字说明，科普产品作为保健食品的定位，引导用户理性选择和了解。<br>4. <span class="hl">【素人分享，亲和力强】</span>以普通中老年夫妇出镜，增强产品的亲和力与可信度，引发目标人群共鸣。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：阳光明媚的户外公园小径，绿树成荫，草地整洁，营造出宁静而充满生机的自然氛围。远处可见零星花坛，环境清新宜人。
+
+主体外观与动作：一对约六十岁的中老年夫妇，衣着休闲得体，面带亲切微笑，并肩漫步在小径上。他们步伐从容，眼神温暖而真诚地望向镜头。女士位于画面右侧，右手自然举起一部智能手机，屏幕清晰朝向观众，动作流畅，仿佛正在进行亲切的互动分享。
+
+镜头运动方式：镜头以平稳的低角度跟拍，从夫妇身后稍偏右侧开始，缓慢流畅地向前推进，同时伴随轻微向左平移。镜头逐渐拉近并聚焦于女士手中的手机屏幕，最终定格在屏幕特写，画面构图稳定。
+
+光线色调：画面沐浴在午后温暖的自然光中，阳光透过树叶洒下斑驳光影，营造柔和层次感。色调以暖色为主，绿色饱和度适中，肤色健康红润，画面明亮通透，充满活力与温馨感。
+
+叠加文字：女士手机屏幕上清晰显示“朋友们”三个字样，字体简洁友好，白色背景。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery" data-industry="保健食品" data-category="调节三高">
+          <div class="g-head">
+            <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+            <span class="g-title">📸 调节三高 · 同品类更多爆款素材一览</span>
+            <span class="g-count">1 条</span>
+          </div>
+          <div class="g-grid">
+            <div class="g-item" onclick="window.open('http://adsmind.gdtimg.com/ads_svp_video__0bc3mibzwaaddeag3czml5vbsyqetnrahg2a.f0.mp4','_blank')">
+              <div class="g-icon">🎬</div>
+              <span class="g-cat">调节三高</span>
+              <span class="g-metrics">CTR 11.3% · ROI 0~1</span>
+            </div></div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="养生茶" data-types="健康科普,产品展示" data-audiences="都市银发,资深中产" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#28</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">养生茶</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">产品展示</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_21.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53gybvsaad74aixkbi5zvbsnqele3agwka.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_21.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">2.0%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">6.0%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">滋补养生/保健品/中药饮片</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 画面顶部显示醒目大字“血糖偏高朋友”。<br><span class="hl">【承接】</span> 紧接着黄色横幅提示“记好这个控糖小方子”，并展示多种中药材，直接点明主题和解决方案。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">明确受众</span><span class="arrow">→</span><span class="step">提出方案</span><span class="arrow">→</span><span class="step">罗列药材</span><span class="arrow">→</span><span class="step">告知用量</span><span class="arrow">→</span><span class="step">指导饮用</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【血糖管理】</span>针对血糖偏高人群，提供天然草本配方，帮助稳定血糖。<br>2. <span class="hl">【传统配方】</span>精选多种传统中药材，遵循古法调理，温和有效。<br>3. <span class="hl">【成分明确】</span>配方公开透明，每种药材用量精准到5g，安心可靠。<br>4. <span class="hl">【服用便捷】</span>每日一袋，煮水冲泡即可饮用，方便坚持长期调理。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：画面初始呈现一个光线充足、洁净明亮的纯白色或浅米色桌面，背景被柔和虚化，营造出专业、宁静且略带东方韵味的养生空间感。桌面材质细腻，反射着微弱的自然光泽。
+
+主体外观与动作：桌面中央，数种精心挑选、色泽饱满的中药材（如切片黄芪、饱满枸杞、干燥山药片、洁白茯苓块等）以一种自然而有序的方式铺陈开来。药材颗粒分明，质地清晰可见，干燥洁净，仿佛刚从传统药罐中取出，散发出淡淡的草本清香。
+
+镜头运动方式：镜头以一个平稳的广角视角开场，缓慢而流畅地从画面顶部向下平移，同时伴随着轻微的推拉变焦，逐渐聚焦并清晰展现桌面上的药材全貌。最终，镜头定格在药材上方，为后续文字叠加预留出充足的视觉空间，整个过程平滑无抖动。
+
+光线色调：整体采用明亮、温暖的自然光线，色调偏向米白与淡木色，营造出健康、纯粹且值得信赖的视觉感受。中药材的固有色彩（如黄芪的淡黄、枸杞的橙红、山药的乳白）在柔和光线下显得更加真实与有质感。
+
+叠加文字：画面顶部首先以醒目的白色粗体大字“血糖偏高朋友”浮现。紧接着，在药材上方，一条明亮的黄色横幅平滑地从左侧滑入，上面清晰显示“记好这个控糖小方子”字样，字体简洁有力，与背景形成鲜明对比。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="养生茶" data-types="健康科普,美食制作" data-audiences="都市银发,资深中产" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#29</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">养生茶</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">美食制作</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_22.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53maaqiaabbealahjdtbvbwyaearqacbca.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_22.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">1.9%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">6.3%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健食品/滋补品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 画面顶部醒目提示“血糖偏高朋友”，直接点明目标受众。<br><span class="hl">【承接】</span> 紧接着提出“记好这个控糖小方子”，并开始列出具体的药材名称和克数，快速引入解决方案。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">点明目标人群</span><span class="arrow">→</span><span class="step">提出控糖方案</span><span class="arrow">→</span><span class="step">罗列药材配方</span><span class="arrow">→</span><span class="step">指导冲泡方法</span><span class="arrow">→</span><span class="step">强调每日饮用</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【精准靶向】</span>明确针对血糖偏高人群，提供定制化健康管理方案。<br>2. <span class="hl">【天然草本】</span>精选黄芪、人参、玉竹等多种天然中药材，温和调理身体。<br>3. <span class="hl">【操作简便】</span>每日一袋，只需煮水泡水即可饮用，轻松融入日常生活。<br>4. <span class="hl">【科学配比】</span>每味药材精确至5克，配方清晰，确保效果与安全性。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：光线明亮的浅色木质桌面，背景柔和虚化。精致器皿中分类摆放着干燥中药材：金黄黄芪、洁白山药、鲜红枸杞，色泽天然，质地清晰。
+主体外观与动作：画面聚焦于这些饱满药材。一只修长的手，指尖轻柔触碰或拨动其中一种，动作缓慢精准，旨在展示其纯净细节。
+镜头运动方式：镜头以稳定中景开场，缓慢从顶部向下平移并轻微推近，聚焦桌面药材。文字出现时，镜头短暂停顿微调焦点，随后平稳横向扫过。
+光线色调：明亮柔和的自然光，">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="辅助降血糖" data-types="达人种草,美食制作" data-audiences="都市银发,资深中产" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#30</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">辅助降血糖</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">达人种草</span><span class="t-tag">美食制作</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_23.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0b535eaa6aaavuado5rz6rvbv2ieb7uqad2a.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_23.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">5.3%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">5.0%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">营养补充剂</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 一名戴眼镜的男士侧身出镜，站在街边小吃摊前，观察摊主制作煎饼，锅中热气腾腾。<br><span class="hl">【承接】</span> 画面左下角出现产品瓶身及详细信息，表明视频将围绕一款针对血糖偏高人群的保健食品展开。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">街头美食场景</span><span class="arrow">→</span><span class="step">人物出镜观察</span><span class="arrow">→</span><span class="step">产品信息植入</span><span class="arrow">→</span><span class="step">功效人群说明</span><span class="arrow">→</span><span class="step">健康食品提示</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【血糖管理】</span>专为血糖偏高人群设计，帮助维持健康血糖水平。<br>2. <span class="hl">【权威认证】</span>拥有国食健注批准文号，品质有保障，使用更安心。<br>3. <span class="hl">【便捷服用】</span>胶囊剂型，方便日常补充，轻松融入健康生活。<br>4. <span class="hl">【场景植入】</span>通过生活化场景展示，暗示产品与健康生活方式的结合。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：繁忙的城市街头，一个传统中式煎饼果子摊位，背景模糊的车流与行人。摊位上方悬挂老旧招牌，锅炉灶台整洁，热气从煎饼锅中袅袅升起，弥漫着食物的香气。摊位周围略显嘈杂，但聚焦区域清晰。
+
+主体外观与动作：画面右侧，一位约30-40岁、戴银边眼镜的男士，身穿休闲衬衫，侧身面向摊位，眼神专注观察摊主熟练摊面糊、打鸡蛋、翻动煎饼。摊主为中年女性，动作麻利，面带微笑，正在用木铲翻动锅中金黄的煎饼。
+
+镜头运动方式：镜头先以中景固定，聚焦男士观察煎饼制作。随后，镜头缓慢向左下方平移并略微推近，同时画面左下角逐渐浮现一个精致的保健品瓶身，过渡自然平滑，不显突兀。
+
+光线色调：自然光线，偏傍晚的暖黄色调，营造温馨生活化氛围。煎饼锅热气在光线中格外明显，带有轻微光晕效果，整体画面色彩饱和度适中，温暖而诱人。
+
+叠加文字：画面左下角浮现的保健品瓶身，瓶体深绿色，标签清晰，印有产品名称“控糖卫士”、主要成分列表及“血糖偏高人群适用”提示字样，字体简洁，信息突出，易于识别。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="辅助降血糖" data-types="美食制作,健康科普" data-audiences="资深中产,都市银发" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#31</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">辅助降血糖</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">美食制作</span><span class="t-tag">健康科普</span>
+            </div>
+            <div class="head-r"><span class="a-tag">资深中产</span><span class="a-tag">都市银发</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_24.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc35ebzuaadw4ah77jmlvvbt2ietluqhgsa.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_24.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">7.7%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">7.0%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0~1</span></div>
+              </div>
+              <div class="pcat">保健品</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span> 画面从第一人称视角切入，前景可见一只手，正对着街边小吃摊。摊主正在熟练地在煎锅上打入鸡蛋，准备制作煎饼。<br><span class="hl">【承接】</span> 镜头聚焦于摊主制作美食的过程，背景是熙攘的街头景象，同时画面左下角叠加了保健品的产品瓶身及详细文案。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">食客视角开场</span><span class="arrow">→</span><span class="step">摊主制作煎饼</span><span class="arrow">→</span><span class="step">画面植入产品</span><span class="arrow">→</span><span class="step">文案科普功效</span><span class="arrow">→</span><span class="step">提示咨询医生</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【国家批准，品质保证】</span>产品拥有国药准字Z20100229批准文号，确保产品合规性和质量可靠。<br>2. <span class="hl">【天然草本，温和滋补】</span>主要成分包含人参、黄芪、枸杞子等多种传统中药材，强调其天然和滋补特性。<br>3. <span class="hl">【多重功效，改善体质】</span>功能主治涵盖益气健脾、补肾固精，针对腰膝酸软、神疲乏力、失眠多梦等多种亚健康问题。<br>4. <span class="hl">【传统中方，专业传承】</span>产品名称“中药中方万通胶囊”突出其传统中医药的配方和专业传承价值。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="熙攘的街边小吃摊，背景是充满生活气息的城市街道，行人来往，灯光初上，营造出温暖而充满活力的市井氛围。画面前景，一只略微模糊的手伸向摊位，指尖轻触桌面。摊主身着朴素围裙，动作娴熟而流畅，正将一个新鲜鸡蛋精准地打入滋滋作响的圆形煎锅中央，蛋液迅速在热锅上摊开，与面糊融为一体。镜头以第一人称视角缓慢推进，从前景的手部逐渐聚焦到摊主制作煎饼的特写，随后平稳地锁定在摊主忙碌的双手和煎锅上，略微俯视，细致展现鸡蛋在热锅上摊开的动态。整体光线温暖而柔和，以橙黄色调为主，模拟傍晚或黄昏时分街头小吃的诱人光泽。煎锅上的热气在灯光下清晰可见，食物呈现出金黄诱人的色泽。画面左下角，清晰地叠加展示一款保健品的产品瓶身，瓶身设计简洁现代，旁边配有简洁明了的中文文案，字体清晰易读，内容关于产品名称及核心功效。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-industry="保健食品" data-category="骨骼健康" data-types="健康科普,达人种草" data-audiences="都市银发,资深中产" data-tier="2">
+          <div class="card-head">
+            <div class="head-l">
+              <span class="card-num">#32</span>
+              <span class="ind-badge" style="background:rgba(234,88,12,0.13);color:#c2410c">💊 保健食品</span>
+              <span class="cat-badge">骨骼健康</span>
+              <span class="tier-badge tier-2">T2 重点</span>
+              <span class="t-tag">健康科普</span><span class="t-tag">达人种草</span>
+            </div>
+            <div class="head-r"><span class="a-tag">都市银发</span><span class="a-tag">资深中产</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <div class="thumb-wrap"><img src="保健食品/保健食品_20260626/frames/frame_25.jpg" alt="素材截图" class="thumb" loading="lazy" draggable="false" oncontextmenu="return false"></div>
+              <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc35uamwaaaeaalutrhprvbv3iezpwqbs2a.f0.mp4" target="_blank" class="vlink">🔗 查看原视频</a>
+              <a href="javascript:void(0)" onclick="openVideo('保健食品/保健食品_20260626/videos/video_25.mp4')" class="vlink vlink-local">▶ 本地预览（含水印·禁下载）</a>
+              <div class="metrics">
+                <div class="metric"><span class="m-label">CTR</span><span class="m-val">5.2%</span></div>
+                <div class="metric"><span class="m-label">浅层CVR</span><span class="m-val">4.1%</span></div>
+                <div class="metric"><span class="m-label">下单ROI</span><span class="m-val">0</span></div>
+              </div>
+              <div class="pcat">保健品/膳食营养品/关节养护</div>
+            </div>
+            <div class="card-right">
+              <div class="sec"><h4>🎯 黄金三秒分析</h4><div class="sec-c golden"><span class="hl">【开场】</span>一位面带表情的年长男性弯腰，手指触碰另一位站立者的膝盖，同时眼神看向镜头，似乎在提问或强调什么。<br><span class="hl">【承接】</span>画面下方出现字幕“您不把这个地方打开呀”，结合男性的动作和表情，引出关于膝盖或关节健康的话题，暗示某种身体问题或解决方案。<div class="ai-risk ok"><span class="ai-icon">✅</span><span class="ai-body">该视频未发现明显 AI 生成痕迹（待人工复核）。</span></div></div></div>
+              <div class="sec"><h4>🔗 素材结构</h4><div class="sec-c"><div class="flow"><span class="step">专家出镜讲解</span><span class="arrow">→</span><span class="step">示范膝盖问题</span><span class="arrow">→</span><span class="step">强调关键部位</span><span class="arrow">→</span><span class="step">提示健康理念</span><span class="arrow">→</span><span class="step">关联产品信息</span></div></div></div>
+              <div class="sec"><h4>💎 卖点提炼</h4><div class="sec-c sells">1. <span class="hl">【专家指导】</span>年长专家亲自示范，提供专业健康指导，增强信任感。<br>2. <span class="hl">【关节养护】</span>聚焦膝盖等关键关节部位，强调其重要性及养护需求。<br>3. <span class="hl">【健康科普】</span>通过通俗易懂的方式普及健康知识，提升用户认知。<br>4. <span class="hl">【产品辅助】</span>暗示通过特定产品或方法，帮助“打开”关节，改善活动能力。</div></div>
+            <div class="sec">
+              <div class="vg-head">
+                <span class="vg-title">🎬 黄金三秒·视频生成指令（五段式 Prompt）</span>
+                <button class="copy-btn" onclick="copyText(this)" data-text="场景环境：明亮洁净的现代医疗诊室或健康咨询室，背景是柔和的浅色墙面，略带模糊感，营造专业宁静氛围，无多余杂物干扰。
+
+主体外观与动作：画面中央，一位约60岁、面容和蔼但表情严肃的年长男性专家，身着米色休闲西装，身体微向前倾，右手食指和中指轻柔触碰一位站立者（画面仅显示其下半身，着深色长裤）的左膝盖。专家眼神坚定地直视镜头，仿佛在提出一个重要问题或强调某个关键点。站立者姿态放松，膝盖部位清晰可见，为专家的动作提供焦点。
+
+镜头运动方式：中景镜头，从专家腰部以上和站立者膝盖部位开始，镜头缓慢而平稳地向前微推，聚焦于专家面部表情与手指触碰膝盖的动作，增强亲近感和强调效果，同时保持画面稳定。
+
+光线色调：整体光线明亮柔和，采用自然光与室内照明结合，营造温暖、专业且令人信任的氛围。色调以中性色为主，略带暖色调，画面清晰，细节丰富，无强烈阴影。
+
+叠加文字：画面下方居中位置，出现白色简洁的无衬线字体字幕：“您不把这个地方打开呀”。字幕出现时机与专家动作和眼神互动同步，持续到片段结束。">📋 一键复制</button>
+              </div>
+              <a href="https://admuse.qq.com/#/index" target="_blank" class="miaosi">🚀 一键复制后跳转「妙思」视频生成，快速复刻爆款</a>
+            </div>
+            </div>
+          </div>
+        </div></div>
+
+    <div class="sec-title"><span class="bar"></span><h2>腾讯广告 · 素材增产产品工具箱</h2><span class="hint">妙思 AI 生成 + 策略产品工具 · 从“写提示词的专家活”到“选技能、填信息、出片”</span></div>
+    <div class="prod-wrap">
+      <div class="prod-sub">📈 素材丰富度提升 · 两大 AI 生产能力</div>
+      <div class="prod-cap-grid">
+        <div class="prod-cap">
+          <div class="pc-head"><span class="pc-ico">🎬</span><div><h4>腾讯妙思 · AI 视频生成</h4><span class="pc-tag">对话生视频 / 图生视频</span></div></div>
+          <p class="pc-desc">面向广告主的 AI 视频生成产品，支持「对话生视频」与「图生视频」两种方式。通过 <b>技能（Skill）调用 + 灵感广场一键复刻</b> 双路径，让营销素材生产从“会写提示词的专家活”，变成“选技能、填关键信息、出片”的标准化流程。</p>
+          <a class="pc-link" href="https://admuse.qq.com/#/index" target="_blank">前往妙思视频生成 →</a>
+        </div>
+        <div class="prod-cap">
+          <div class="pc-head"><span class="pc-ico">🧑‍💼</span><div><h4>秒思 · 奇妙数字人</h4><span class="pc-tag">AI 口播视频</span></div></div>
+          <p class="pc-desc">妙思推出的 AI 口播视频能力，无需真实演员拍摄即可产出口播视频。</p>
+          <div class="pc-merits">
+            <div class="merit"><span class="m-k">💰 成本</span><span class="m-v">免演员 / 场地 / 设备，制作成本节省 <b>50%+</b></span></div>
+            <div class="merit"><span class="m-k">⚡ 效率</span><span class="m-v">3-5 分钟产出 1 条口播视频，可二创，剪辑效率提升 1-2 倍</span></div>
+            <div class="merit"><span class="m-k">✨ 质量</span><span class="m-v">多重灵感来源，适配多行业多场景，减少试错成本</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-sub">🛠️ 策略 &amp; 产品工具 · 四步用好 AIGC 能力</div>
+      <div class="prod-tool-grid">
+        <div class="prod-tool">
+          <span class="pt-no">①</span>
+          <h4>客户工作台【创意机会】</h4>
+          <p>针对行业大盘的优质创意进行 <b>爆点分析、脚本总结、案例指导</b>，激发创意制作灵感。</p>
+          <a class="pt-link" href="https://doc.weixin.qq.com/doc/w3_ANMApgZ_ACcCNmdjf63zZSjmwdIa5?scode=AJEAIQdfAAoDLAHSU8AY8AIQZXAAw" target="_blank">📑 查看创意机会洞察 →</a>
+        </div>
+        <div class="prod-tool">
+          <span class="pt-no">②</span>
+          <h4>开启秒思 AIGC 创意衍生</h4>
+          <p>开启妙思托管，以 <b>Max 开关</b> 形式内置于 3.0 竞价广告 / AIM+ 智能投放，一键开关即可应用 AIGC 能力。</p>
+        </div>
+        <div class="prod-tool">
+          <span class="pt-no">③</span>
+          <h4>开启全库智选 <span class="pt-star">智投专属 ☆</span></h4>
+          <p>开启“组件全库智选”，系统基于推广产品自动衍生 <b>适配腾讯全流量的多规格素材</b>，并以优质历史组件自动填充，提升广告效果。</p>
+        </div>
+        <div class="prod-tool">
+          <span class="pt-no">④</span>
+          <h4>降低素材重复度</h4>
+          <p>资产板块「创意资产洞察 · 组件跑量分析」披露 <b>重复投放组件与创意标识</b>；新唯一性策略：同客户同 TID 指纹、同 4+M 下仅留 1 个 TID，全链路去重。</p>
+        </div>
+      </div>
+      <div class="prod-note">📌 创意唯一性策略提醒：创建多条同质广告与仅创建一条获得的竞价机会一致 —— 与其重复投放被去重过滤，不如借助妙思 / 数字人提升素材多样性，扩大有效竞价覆盖。</div>
+    </div>
+  </main>
+
+  <!-- 素材诊断侧边竖排标签（参考站右侧浮动入口，点击打开诊断中心） -->
+  <aside class="diag-tab" onclick="openDiag()">
+    <div class="diag-ico">🔍</div>
+    <div class="diag-text">素材诊断</div>
+  </aside>
+
+  <!-- 素材诊断中心 弹窗 -->
+  <div class="diag-mask" id="diagMask" onclick="if(event.target===this)closeDiag()">
+    <div class="diag-modal" role="dialog" aria-modal="true">
+      <button class="diag-close" onclick="closeDiag()" aria-label="关闭">×</button>
+      <div class="diag-head">
+        <h3>🔍 素材诊断中心</h3>
+        <p>上传你的素材，AI 结合同行业跑量素材进行对比分析</p>
+      </div>
+      <div class="diag-body">
+        <label class="diag-drop" id="diagDrop">
+          <input type="file" id="diagFile" accept="video/mp4,video/quicktime,image/jpeg,image/png" hidden>
+          <div class="drop-ico">📤</div>
+          <div class="drop-main" id="dropMain">点击或拖拽上传你的素材</div>
+          <div class="drop-sub">支持 MP4 / MOV / JPG / PNG，最大 100MB</div>
+        </label>
+
+        <div class="diag-field">
+          <label>📁 所属行业</label>
+          <select id="diagInd" onchange="diagSyncCat()">
+            <option value="">请选择行业</option>
+            <option value="传统滋补">传统滋补</option><option value="保健食品">保健食品</option>
+          </select>
+        </div>
+
+        <div class="diag-field">
+          <label>🏷️ 商品类目（可选，不选则自动匹配同行业数据）</label>
+          <select id="diagCat">
+            <option value="">不限类目 — 使用同行业整体数据</option>
+          </select>
+        </div>
+
+        <div class="diag-field">
+          <label>📝 素材简要描述（可选）</label>
+          <input type="text" id="diagDesc" placeholder="如：达人口播推荐海参，时长15秒">
+        </div>
+
+        <button class="diag-run" id="diagRun" onclick="runDiag()">🚀 开始诊断</button>
+
+        <div class="diag-result" id="diagResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p>数据来源：adsmind 腾讯广告平台。本报告仅供内部创意参考，数据归属腾讯广告所有。</p>
+      <p>保健食品广告需符合《广告法》《保健食品广告审查暂行规定》，不可宣称"治疗""治愈""根治"。</p>
+      <p>AI 视频生成效果取决于具体工具能力，五段式 Prompt 仅作为参考。</p>
+    </div>
+  </footer>
+
+<script>
+  var curIndustry = "传统滋补";
+  var CATS_BY_INDUSTRY = {"传统滋补": ["枸杞类滋补品", "药食同源食品", "菌/菇/酵素", "冲饮品/食补粉", "海外调节三高", "燕窝滋补品", "其他膳食营养补充食品", "养生茶"], "保健食品": ["减肥瘦身", "调节三高", "养生茶", "辅助降血糖", "骨骼健康"]};
+
+  // 品类下拉随行业联动：仅显示当前行业的商品类目
+  function rebuildCatOptions(ind) {
+    var sel = document.getElementById('catFilter');
+    sel.innerHTML = '<option value="all">全部类目</option>';
+    (CATS_BY_INDUSTRY[ind] || []).forEach(function(c) {
+      var o = document.createElement('option');
+      o.value = c; o.textContent = c;
+      sel.appendChild(o);
+    });
+    sel.value = 'all';
+  }
+
+  function switchIndustry(ind, btn) {
+    curIndustry = ind;
+    document.querySelectorAll('.ind-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tier-panel').forEach(p => {
+      p.classList.toggle('active', p.dataset.industry === ind);
+    });
+    rebuildCatOptions(ind);
+    applyFilters();
+  }
+
+  function applyFilters() {
+    var cat = document.getElementById('catFilter').value;
+    var typ = document.getElementById('typeFilter').value;
+    var aud = document.getElementById('audFilter').value;
+    var n = 0;
+    document.querySelectorAll('.card').forEach(c => {
+      var ok = c.dataset.industry === curIndustry
+        && (cat === 'all' || c.dataset.category === cat)
+        && (typ === 'all' || (c.dataset.types || '').split(',').indexOf(typ) >= 0)
+        && (aud === 'all' || (c.dataset.audiences || '').split(',').indexOf(aud) >= 0);
+      c.style.display = ok ? '' : 'none';
+      if (ok) n++;
+    });
+    document.querySelectorAll('.gallery').forEach(g => {
+      var ok = g.dataset.industry === curIndustry && (cat === 'all' || g.dataset.category === cat);
+      g.style.display = ok ? '' : 'none';
+    });
+    document.getElementById('visCount').textContent = n;
+  }
+
+  function toggleVG(id, el) {
+    document.getElementById(id).classList.toggle('collapsed');
+    el.classList.toggle('collapsed');
+  }
+
+  function copyText(btn) {
+    var text = btn.getAttribute('data-text');
+    function done() {
+      var o = btn.textContent;
+      btn.textContent = '✅ 已复制';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1500);
+    }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
+    } else { fallback(text, done); }
+  }
+  function fallback(text, done) {
+    var ta = document.createElement('textarea'); ta.value = text;
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta); done();
+  }
+
+  /* ===== 素材诊断中心 ===== */
+  var diagFileObj = null;
+
+  function openDiag() {
+    document.getElementById('diagMask').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // 默认带入当前选中行业
+    var di = document.getElementById('diagInd');
+    if (di && !di.value && curIndustry) { di.value = curIndustry; diagSyncCat(); }
+  }
+  function closeDiag() {
+    document.getElementById('diagMask').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDiag();
+  });
+
+  // 诊断弹窗内的类目随行业联动
+  function diagSyncCat() {
+    var ind = document.getElementById('diagInd').value;
+    var sel = document.getElementById('diagCat');
+    sel.innerHTML = '<option value="">不限类目 — 使用同行业整体数据</option>';
+    (CATS_BY_INDUSTRY[ind] || []).forEach(function(c) {
+      var o = document.createElement('option');
+      o.value = c; o.textContent = c;
+      sel.appendChild(o);
+    });
+  }
+
+  // 上传交互：点击 + 拖拽
+  (function() {
+    var drop = document.getElementById('diagDrop');
+    var input = document.getElementById('diagFile');
+    var main = document.getElementById('dropMain');
+    if (!drop) return;
+    input.addEventListener('change', function() {
+      if (input.files && input.files[0]) setFile(input.files[0]);
+    });
+    ['dragenter','dragover'].forEach(function(ev) {
+      drop.addEventListener(ev, function(e) { e.preventDefault(); drop.classList.add('dragover'); });
+    });
+    ['dragleave','drop'].forEach(function(ev) {
+      drop.addEventListener(ev, function(e) { e.preventDefault(); drop.classList.remove('dragover'); });
+    });
+    drop.addEventListener('drop', function(e) {
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f) setFile(f);
+    });
+    function setFile(f) {
+      if (f.size > 100 * 1024 * 1024) { main.textContent = '⚠️ 文件超过 100MB，请压缩后重试'; return; }
+      diagFileObj = f;
+      var kb = f.size / 1024;
+      var sizeTxt = kb > 1024 ? (kb / 1024).toFixed(1) + ' MB' : kb.toFixed(0) + ' KB';
+      main.textContent = '✅ ' + f.name + '（' + sizeTxt + '）';
+    }
+  })();
+
+  function runDiag() {
+    var ind = document.getElementById('diagInd').value;
+    var cat = document.getElementById('diagCat').value;
+    var desc = document.getElementById('diagDesc').value.trim();
+    var res = document.getElementById('diagResult');
+    var btn = document.getElementById('diagRun');
+
+    if (!diagFileObj) { alert('请先上传你的素材（MP4 / MOV / JPG / PNG）'); return; }
+    if (!ind) { alert('请选择所属行业'); return; }
+
+    btn.disabled = true; btn.textContent = '⏳ AI 分析中…';
+    res.classList.remove('show'); res.innerHTML = '';
+
+    setTimeout(function() {
+      res.innerHTML = buildDiagResult(ind, cat, desc);
+      res.classList.add('show');
+      btn.disabled = false; btn.textContent = '🚀 重新诊断';
+      res.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }, 1200);
+  }
+
+  // 基于行业基准生成对比诊断结果（轻量启发式，供创意自检参考）
+  function buildDiagResult(ind, cat, desc) {
+    var benchmark = {
+      '传统滋补': { ctr:'4.2%', slip:'28%', dur:'13.5s', cvr:'3.1%' },
+      '保健食品': { ctr:'3.8%', slip:'31%', dur:'11.8s', cvr:'2.7%' }
+    };
+    var b = benchmark[ind] || benchmark['传统滋补'];
+    var scope = cat ? (ind + ' / ' + cat) : (ind + ' 行业整体');
+
+    // 随机给一组该素材的"模拟测算"指标（围绕基准浮动），仅作演示
+    function jitter(base, lo, hi) { return (base * (lo + Math.random() * (hi - lo))); }
+    var myCtr = jitter(parseFloat(b.ctr), 0.7, 1.25).toFixed(1) + '%';
+    var mySlip = Math.round(jitter(parseFloat(b.slip), 0.85, 1.2)) + '%';
+    var myDur = jitter(parseFloat(b.dur), 0.8, 1.15).toFixed(1) + 's';
+
+    function cmp(my, base, higherBetter) {
+      var m = parseFloat(my), bb = parseFloat(base);
+      var better = higherBetter ? m >= bb : m <= bb;
+      var diff = (((m - bb) / bb) * 100).toFixed(0);
+      var sign = diff > 0 ? '+' : '';
+      return { cls: better ? 'good' : 'warn', txt: sign + diff + '% vs 基准' };
+    }
+    var c1 = cmp(myCtr, b.ctr, true);
+    var c2 = cmp(mySlip, b.slip, false);
+
+    var tips = [];
+    if (c1.cls === 'warn') tips.push('点击率低于同行基准：建议强化黄金三秒的视觉冲击或痛点钩子。');
+    if (c2.cls === 'warn') tips.push('3 秒快滑率偏高：开场信息密度过低，前 1 秒需直给核心卖点。');
+    tips.push('对照「爆款素材深度诊断」中同类目高分素材，复用其结构与卖点话术。');
+    if (desc) tips.push('结合你的描述「' + desc + '」：可在字幕首屏前置人群标签提升精准触达。');
+
+    var tipLi = tips.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+
+    return ''
+      + '<div class="dr-card">'
+      +   '<h4>📊 对比分析（基准：' + scope + '）</h4>'
+      +   '<div class="dr-row"><span class="dr-k">点击率 CTR</span><span class="dr-v ' + c1.cls + '">' + myCtr + '　' + c1.txt + '</span></div>'
+      +   '<div class="dr-row"><span class="dr-k">3 秒快滑率</span><span class="dr-v ' + c2.cls + '">' + mySlip + '　' + c2.txt + '</span></div>'
+      +   '<div class="dr-row"><span class="dr-k">预估平均播放</span><span class="dr-v">' + myDur + '</span></div>'
+      +   '<div class="dr-row"><span class="dr-k">行业基准 CVR</span><span class="dr-v">' + b.cvr + '</span></div>'
+      + '</div>'
+      + '<div class="dr-card">'
+      +   '<h4>💡 优化建议</h4>'
+      +   '<ul>' + tipLi + '</ul>'
+      + '</div>'
+      + '<div class="diag-note">说明：本诊断为前端轻量测算（基于行业基准 + 启发式规则），用于创意自检方向参考；精确分项需结合 adsmind 实测投放数据。</div>';
+  }
+
+  rebuildCatOptions(curIndustry);
+  applyFilters();
+</script>
+</body>
+</html>

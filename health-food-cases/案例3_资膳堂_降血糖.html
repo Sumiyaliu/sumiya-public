@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>资膳堂糖管理 · 辅助降血糖赛道案例纸</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#eef2f7;font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;color:#1f2937}
+  .page{width:1440px;min-height:900px;margin:24px auto;background:linear-gradient(180deg,#faf9ff 0%,#fff 40%);padding:28px 32px 32px;box-shadow:0 8px 30px rgba(30,58,138,.08);border-radius:18px;position:relative;overflow:hidden}
+  .page::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(142,132,253,.16),transparent 70%);border-radius:50%}
+  .page::after{content:"";position:absolute;bottom:-140px;left:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%);border-radius:50%}
+  .header{position:relative;background:linear-gradient(135deg,#5b21b6 0%,#8E84FD 55%,#a79ffe 100%);color:#fff;border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px rgba(142,132,253,.28);z-index:2;margin-bottom:16px}
+  .header .badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px)}
+  .header h1{font-size:23px;font-weight:800;letter-spacing:.5px;flex:1;line-height:1.35}
+  .header h1 .hl{color:#fde68a;text-shadow:0 1px 0 rgba(0,0,0,.1)}
+  .hero-highlight{margin-bottom:16px;border-radius:14px;padding:15px 22px;box-shadow:0 8px 22px rgba(30,58,138,.14);position:relative;z-index:2}
+  .hero-highlight .hero-label{color:#fff;font-size:14.5px;font-weight:800;margin-bottom:11px;letter-spacing:.5px}
+  .hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .hero-card{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);border-radius:10px;padding:12px 14px}
+  .hero-card .hc-num{font-size:27px;font-weight:800;color:#fff;line-height:1.1}
+  .hero-card .hc-num .u{font-size:14px;margin-left:2px}
+  .hero-card .hc-txt{font-size:12.5px;color:rgba(255,255,255,.94);margin-top:5px;line-height:1.45}
+  .hero-card .hc-tag{display:inline-block;background:#fde68a;color:#92400e;font-size:10px;font-weight:800;padding:1.5px 8px;border-radius:5px;margin-top:7px}
+  .main-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.04fr;gap:16px}
+  .left-col,.right-col{display:flex;flex-direction:column;gap:16px}
+  .block{background:#fff;border:1px solid #e9e5fb;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(124,58,237,.04);display:flex;flex-direction:column}
+  .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .sec-title .num{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#8E84FD,#5b21b6);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(142,132,253,.3);font-size:14px}
+  .sec-title h2{font-size:17px;color:#5b21b6;font-weight:800}
+  .sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,#c4b5fd,transparent)}
+  .intro-text{background:#f5f3ff;border-left:4px solid #8E84FD;padding:8px 12px;border-radius:8px;margin-bottom:10px;color:#5b21b6;font-size:13px;line-height:1.65}
+  .intro-text b{color:#dc2626}
+  .prod-card{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#f5f3ff,#faf5ff);border:1px solid #ddd6fe;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+  .prod-card .p-ico{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#8E84FD,#5b21b6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .prod-card .p-name{font-size:12.5px;color:#5b21b6;line-height:1.5;font-weight:600;flex:1}
+  .prod-card .p-price{font-size:17px;font-weight:800;color:#dc2626;white-space:nowrap;text-align:center}
+  .prod-card .p-price small{font-size:11px;color:#7c3aed;font-weight:500}
+  .vs-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .vs-item{border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #ddd6fe;background:#faf9ff}
+  .vs-item .v-num{font-size:16px;font-weight:800;color:#8E84FD}
+  .vs-item .v-lbl{font-size:10.5px;color:#6b7280;margin-top:2px}
+  .vs-item .v-cmp{font-size:9.5px;margin-top:2px;font-weight:700}
+  .up{color:#059669}.flat{color:#94a3b8}
+  .highlight-title{font-size:13.5px;font-weight:800;color:#5b21b6;display:flex;align-items:center;gap:8px;margin:8px 0 6px}
+  .highlight-title::before{content:"";width:4px;height:14px;background:linear-gradient(180deg,#8E84FD,#5b21b6);border-radius:3px}
+  .chart-card{background:#fff;border:1px solid #e9e5fb;border-radius:10px;padding:8px 12px 4px;margin-bottom:8px}
+  .chart-wrap{height:196px;position:relative}
+  .chart-note{font-size:11px;color:#16a34a;text-align:right;margin:0 4px 4px;font-weight:700}
+  .surge{display:inline-block;margin-left:6px;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:800;background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;vertical-align:middle}
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .kpi{background:linear-gradient(135deg,#fff,#f5f3ff);border:1px solid #ddd6fe;border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8E84FD,#a78bfa,#10b981)}
+  .kpi .num{font-size:19px;font-weight:800;color:#8E84FD;line-height:1.2}
+  .kpi .num .unit{font-size:12px;margin-left:2px}
+  .kpi .num.green{color:#059669}.kpi .num.orange{color:#ea580c}.kpi .num.blue{color:#2563eb}
+  .kpi .lbl{font-size:10.5px;color:#4b5563;margin-top:4px;line-height:1.4}
+  .peak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px}
+  .peak-item{text-align:center;background:linear-gradient(135deg,#f5f3ff,#faf5ff);border:1px solid #c4b5fd;border-radius:10px;padding:11px 5px}
+  .peak-item .pk-v{font-size:16px;font-weight:800;color:#7c3aed}
+  .peak-item .pk-l{font-size:10px;color:#6b7280;margin-top:3px}
+  .peak-item .pk-s{font-size:9px;color:#9ca3af;margin-top:1px}
+  .light-list{display:flex;flex-direction:column;gap:9px}
+  .light-item{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0;border-radius:10px;padding:10px 13px}
+  .light-item .li-ico{width:26px;height:26px;border-radius:7px;flex-shrink:0;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .light-item .li-t{font-size:13px;font-weight:800;color:#15803d;line-height:1.4}
+  .light-item .li-d{font-size:11.5px;color:#4b5563;margin-top:2px;line-height:1.5}
+  .light-item .li-d b{color:#dc2626}
+  .light-item.pack{background:linear-gradient(135deg,#f5f3ff,#faf5ff);border-color:#ddd6fe}
+  .light-item.pack .li-ico{background:linear-gradient(135deg,#8E84FD,#5b21b6)}
+  .light-item.pack .li-t{color:#5b21b6}
+  .force-list{display:flex;flex-direction:column;gap:10px}
+  .force-item{border-radius:10px;padding:11px 14px;border-left:4px solid #ccc}
+  .force-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+  .force-tag{font-size:13.5px;font-weight:800}
+  .force-sub{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;color:#fff}
+  .force-body{font-size:12px;color:#374151;line-height:1.6}
+  .force-body b{color:#dc2626}
+  .f-prod{border-left-color:#10b981;background:linear-gradient(135deg,#f0fdf4,#fff)}.f-prod .force-tag{color:#15803d}.f-prod .force-sub{background:#10b981}
+  .f-content{border-left-color:#06b6d4;background:linear-gradient(135deg,#ecfeff,#fff)}.f-content .force-tag{color:#0e7490}.f-content .force-sub{background:#06b6d4}
+  .f-oper{border-left-color:#f59e0b;background:linear-gradient(135deg,#fffbeb,#fff)}.f-oper .force-tag{color:#b45309}.f-oper .force-sub{background:#f59e0b}
+  .f-deliver{border-left-color:#7c3aed;background:linear-gradient(135deg,#f5f3ff,#fff)}.f-deliver .force-tag{color:#5b21b6}.f-deliver .force-sub{background:#7c3aed}
+  .ff-wrap{margin-top:9px;background:rgba(255,255,255,.7);border:1px solid rgba(124,58,237,.18);border-radius:8px;padding:8px 11px}
+  .ff-title{font-size:10.5px;font-weight:800;color:#5b21b6;margin-bottom:6px}
+  .ff-row{display:flex;align-items:center;gap:7px;margin:4px 0}
+  .ff-lbl{width:62px;font-size:10px;color:#6b7280;flex-shrink:0}
+  .ff-bar{height:18px;border-radius:4px;color:#fff;font-size:9.5px;font-weight:700;display:flex;align-items:center;padding-left:7px;white-space:nowrap;min-width:42px}
+  .live-block{margin-top:16px;position:relative;z-index:2}
+  .live-inner{display:flex;gap:16px;align-items:stretch;height:300px}
+  .live-shot{flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f8fafc,#fff);border:1px dashed #cbd5e1;border-radius:10px;padding:6px}
+  .live-shot img{height:100%;width:auto;border-radius:8px;object-fit:contain;box-shadow:0 6px 18px rgba(15,23,42,.16)}
+  .live-analysis{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .la-item{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:11px;background:#f8fafc;border:1px solid #e5edf7;border-radius:12px;padding:18px 18px}
+  .la-ico{width:46px;height:46px;border-radius:12px;flex-shrink:0;color:#fff;font-size:21px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0}
+  .la-item .la-t{font-size:15px;font-weight:800;line-height:1.4}
+  .la-item .la-d{font-size:12.5px;color:#4b5563;margin-top:5px;line-height:1.65}
+  .la-item .la-d b{color:#dc2626}
+  .la-p .la-ico{background:linear-gradient(135deg,#3E79F0,#1d4ed8)}.la-p .la-t{color:#1d4ed8}
+  .la-g .la-ico{background:linear-gradient(135deg,#22c55e,#16a34a)}.la-g .la-t{color:#15803d}
+  .la-s .la-ico{background:linear-gradient(135deg,#f59e0b,#ea580c)}.la-s .la-t{color:#b45309}
+  .footer{margin-top:14px;text-align:center;color:#94a3b8;font-size:12px}
+  .opportunity-banner{margin-bottom:14px;border-radius:14px;padding:14px 22px 15px;background:linear-gradient(135deg,#1e3a8a 0%,#5b21b6 55%,#7c3aed 100%);color:#fff;box-shadow:0 8px 22px rgba(76,29,149,.28);position:relative;z-index:2;overflow:hidden}
+  .opportunity-banner::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);border-radius:50%}
+  .opportunity-banner::after{content:"";position:absolute;bottom:-50px;left:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);border-radius:50%}
+  .oppo-label{color:rgba(255,255,255,.95);font-size:11.5px;font-weight:700;letter-spacing:.6px;margin-bottom:6px;display:flex;align-items:center;gap:6px;position:relative;z-index:1}
+  .oppo-label::before{content:"";display:inline-block;width:5px;height:5px;background:#fbbf24;border-radius:50%;box-shadow:0 0 8px #fbbf24}
+  .oppo-title{font-size:16px;font-weight:800;color:#fff;line-height:1.4;margin-bottom:11px;position:relative;z-index:1;letter-spacing:.3px}
+  .oppo-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1}
+  .oppo-card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:9px 12px;backdrop-filter:blur(4px)}
+  .oppo-card .oppo-num{font-size:20px;font-weight:800;color:#fff;line-height:1.15;letter-spacing:.2px}
+  .oppo-card .oppo-num .u{font-size:12px;margin-left:1px;opacity:.85}
+  .oppo-card .oppo-desc{font-size:11.5px;color:rgba(255,255,255,.92);margin-top:4px;line-height:1.4}
+  .oppo-tag{display:inline-block;background:#fbbf24;color:#78350f;font-size:9.5px;font-weight:800;padding:1.5px 7px;border-radius:4px;margin-top:5px;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="badge">辅助降血糖 · 闭环直播</div>
+    <h1>资膳堂糖管理：新赛道快速起量案例，CTR <span class="hl">4~5%</span>（优于大盘41%），618 大促冲量 <span class="hl">+131%</span></h1>
+    <div class="badge">NEW入局</div>
+  </div>
+
+  <div class="opportunity-banner">
+    <div class="oppo-label">赛道机会亮点 · 保健食品直播品类机会分析</div>
+    <div class="oppo-title">辅助降血糖：赛道少有的'直购护城河'，需通过组合形态入局</div>
+    <div class="oppo-cards">
+      <div class="oppo-card">
+        <div class="oppo-num">≈1.0<span class="u"> / 0.9</span></div>
+        <div class="oppo-desc">直购 ROI 略胜，单功能直播暂无优势</div>
+        <span class="oppo-tag">直购更优</span>
+      </div>
+      <div class="oppo-card">
+        <div class="oppo-num">组合品<span class="u">形态</span></div>
+        <div class="oppo-desc">搭配增强免疫力组合切入，而非单功能硬打</div>
+        <span class="oppo-tag">组合入局</span>
+      </div>
+      <div class="oppo-card">
+        <div class="oppo-num">0<span class="u">%</span></div>
+        <div class="oppo-desc">双链路胜出率，仍以直购为主阵地</div>
+        <span class="oppo-tag">稳态赛道</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-highlight" style="background:linear-gradient(135deg,#5b21b6,#8E84FD)">
+    <div class="hero-label">★ Case 亮点 · 新赛道快速起量，618 大促爆发直播间</div>
+    <div class="hero-cards">
+      <div class="hero-card"><div class="hc-num">+131<span class="u">%</span></div><div class="hc-txt">618 大促冲量，新赛道起量</div><span class="hc-tag">大促冲量王</span></div>
+      <div class="hero-card"><div class="hc-num">4~5<span class="u">%</span></div><div class="hc-txt">CTR 优秀，优于大盘 41%</div><span class="hc-tag">素材吸引力强</span></div>
+      <div class="hero-card"><div class="hc-num">71<span class="u">%</span></div><div class="hc-txt">智投渗透率，单链路深度渗透</div><span class="hc-tag">起量关键</span></div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="left-col">
+
+      <section class="block">
+        <div class="sec-title"><div class="num">1</div><h2>直播间概览 · 辅助降血糖</h2><div class="line"></div></div>
+        <div class="intro-text">辅助降血糖赛道<b>新入局快速起量案例</b>，西洋参葡萄籽铬酵母片调节血糖单品，凭借 <b>CTR 强吸引力</b>与多版位拓展，618 大促冲量 +131%。</div>
+        <div class="prod-card">
+          <div class="p-ico">🩸</div>
+          <div class="p-name">核心商品：[调节血糖] 资善堂能觉牌 · 西洋参葡萄籽铬酵母片 0.6g/片*10片/板*2板</div>
+          <div class="p-price">¥40~50<br/><small>客单价区间</small></div>
+        </div>
+        <div class="highlight-title">核心效率指标 vs 保健食品大盘</div>
+        <div class="vs-row">
+          <div class="vs-item"><div class="v-num">0.9~1.0</div><div class="v-lbl">ROI</div><div class="v-cmp flat">爬坡上行</div></div>
+          <div class="vs-item"><div class="v-num">5~6%</div><div class="v-lbl">CVR</div><div class="v-cmp up">↑转化扎实</div></div>
+          <div class="vs-item"><div class="v-num" style="color:#059669">4~5%</div><div class="v-lbl">CTR</div><div class="v-cmp up">↑优于41%</div></div>
+          <div class="vs-item"><div class="v-num">¥90~100</div><div class="v-lbl">CPM</div><div class="v-cmp flat">接近大盘</div></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="sec-title"><div class="num">2</div><h2>投放数据全景</h2><div class="line"></div></div>
+        <div class="highlight-title">近30天 日耗持续上涨趋势<span class="surge">起量冲刺 +131%</span></div>
+        <div class="chart-card"><div class="chart-wrap"><canvas id="trend"></canvas></div></div>
+        <div class="chart-note">↗ 起量冲刺 +131%，新赛道快速放量</div>
+      </section>
+
+    </div>
+
+    <div class="right-col">
+
+      <section class="block">
+        <div class="sec-title"><div class="num">3</div><h2>峰值冲量能力</h2><div class="line"></div></div>
+        <div class="peak-grid">
+          <div class="peak-item"><div class="pk-v">12~15万</div><div class="pk-l">历史峰值日耗</div><div class="pk-s">618 大促</div></div>
+          <div class="peak-item"><div class="pk-v">15~18万</div><div class="pk-l">冲量能力(+20%)</div><div class="pk-s">大促可冲量级</div></div>
+          <div class="peak-item"><div class="pk-v">5~10万</div><div class="pk-l">日常日耗</div><div class="pk-s">近30天日均</div></div>
+          <div class="peak-item"><div class="pk-v">2.4x</div><div class="pk-l">峰值/日常弹性</div><div class="pk-s">冲量弹性</div></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="sec-title"><div class="num">4</div><h2>Case 核心亮点 · 四力拆解</h2><div class="line"></div></div>
+        <div class="force-list">
+          <div class="force-item f-prod">
+            <div class="force-head"><span class="force-tag">🛒 商品力</span><span class="force-sub">从「有货」到「好卖」</span></div>
+            <div class="force-body">西洋参葡萄籽铬酵母片，<b>调节血糖</b>刚需场景；客单价区间 ¥40~50 大众价格带，入手门槛低</div>
+          </div>
+          <div class="force-item f-content">
+            <div class="force-head"><span class="force-tag">🎬 内容力</span><span class="force-sub">从「有素材」到「强互动」</span></div>
+            <div class="force-body"><b>CTR 4~5%</b>（优于大盘 41%），创意钩子精准击中控糖人群；CVR 5~6% 承接扎实，素材生态持续焕新</div>
+          </div>
+          <div class="force-item f-oper">
+            <div class="force-head"><span class="force-tag">📈 经营力</span><span class="force-sub">日销 × 大场 双轮驱动</span></div>
+            <div class="force-body"><b>618 大促冲量 +131%</b>、23 账户并行；历史峰值达日均 2.4 倍，可冲 15~18万/日</div>
+          </div>
+          <div class="force-item f-deliver">
+            <div class="force-head"><span class="force-tag">🚀 投放力</span><span class="force-sub">从「手动」到「智能」· 含直播漏斗</span></div>
+            <div class="force-body">智投渗透率 <b>71%</b>（单链路深度渗透）+ 多版位拓展拿量，是新赛道快速起量的关键杠杆</div>
+            <div class="ff-wrap">
+              <div class="ff-title">直播转化漏斗 · 进播 → 商品点击 → 下单</div>
+              <div class="ff-row"><span class="ff-lbl">进播率</span><div class="ff-bar" style="width:32%;background:#3E79F0">3.2%</div></div>
+              <div class="ff-row"><span class="ff-lbl">商品点击率</span><div class="ff-bar" style="width:64%;background:#76C84D">48.0% · 优于大盘 99%</div></div>
+              <div class="ff-row"><span class="ff-lbl">下单率</span><div class="ff-bar" style="width:38%;background:#FFAE19">12.1%</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="block live-block">
+    <div class="sec-title"><div class="num">★</div><h2>直播间画面 · 人货场三力</h2><div class="line"></div></div>
+    <div class="live-inner">
+      <div class="live-shot"><img src="保健食品品类直播间截图/资善堂.png" alt="资膳堂直播间实拍" /></div>
+      <div class="live-analysis">
+        <div class="la-item la-p"><div class="la-ico">人</div><div><div class="la-t">主播力 · 亲和可信</div><div class="la-d">女主播朴素亲和出镜、桌面摆放产品讲解，「严格降糖 · 放心之选」塑造真实可信的专业形象</div></div></div>
+        <div class="la-item la-g"><div class="la-ico">货</div><div><div class="la-t">货品力 · 破价钩子</div><div class="la-d">铬酵母片 <b>¥49/3盒 今日破价</b>，适用人群「三多一少 / 视线模糊 / 血糖值9以上」清单精准锁定控糖刚需</div></div></div>
+        <div class="la-item la-s"><div class="la-ico">场</div><div><div class="la-t">场景力 · 强证背书</div><div class="la-d">618 健康博览会福利专场氛围，<b>蓝帽认证 + 检验报告 + 奖杯证书</b> 多重背书，强化新赛道信任门槛</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="block" style="margin-top:16px;position:relative;z-index:2">
+    <div class="sec-title"><div class="num">5</div><h2>核心指标六维</h2><div class="line"></div></div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+      <div class="kpi"><div class="num orange">3~5<span class="unit">万/日</span></div><div class="lbl">日耗规模<br/>新赛道起量</div></div>
+      <div class="kpi"><div class="num">0.9~1.0</div><div class="lbl">下单 ROI<br/>持续爬坡</div></div>
+      <div class="kpi"><div class="num">5~6<span class="unit">%</span></div><div class="lbl">CVR 优秀<br/>转化扎实</div></div>
+      <div class="kpi"><div class="num green">4~5<span class="unit">%</span></div><div class="lbl">CTR 优秀<br/>优于大盘41%</div></div>
+      <div class="kpi"><div class="num">¥40~50</div><div class="lbl">客单价区间<br/>大众价格带</div></div>
+      <div class="kpi"><div class="num green">23</div><div class="lbl">投放账户数<br/>多账户并行</div></div>
+    </div>
+  </div>
+
+  <div class="footer">资膳堂糖管理 · 辅助降血糖赛道案例纸 · 数据周期近30天</div>
+</div>
+
+<script>
+const labels=["第1周初","","","","第1周末","","第2周","","","","第3周","","","","第3周末","","","","第4周","","","","近期"];
+// 案例3·资膳堂·降血糖：早期爆发尖刺 + 起量加速次峰 + 秋冬旺季次峰 + 冲量尖刺主峰（前段达峰后高位震荡）
+const cost=[12,20,32,48,42,58,78,95,120,165,140,128,150,138,156,142,158,148,160,150,162,155];
+const peaks=[{idx:9,label:'冲量尖刺',main:true},{idx:18,label:'秋冬旺季',main:false},{idx:6,label:'起量加速',main:false}];
+renderTrend('trend',labels,cost,'#8E84FD',peaks);
+function renderTrend(id,labels,cost,color,peaks){
+  const mainIdx=peaks.find(p=>p.main).idx;
+  const peakSet=peaks;
+  const ctx=document.getElementById(id).getContext('2d');
+  const peakPlugin={
+    id:'peakLabel',
+    afterDatasetsDraw(chart){
+      const meta=chart.getDatasetMeta(1);
+      peakSet.forEach(pk=>{
+        const p=meta.data[pk.idx];
+        if(!p)return;
+        const {x,y}=p;
+        ctx.save();
+        ctx.strokeStyle=pk.main?'#ef4444':'#f59e0b';
+        ctx.lineWidth=1.2;
+        ctx.setLineDash([3,2]);
+        ctx.beginPath();
+        ctx.moveTo(x, y+(pk.main?10:-10));
+        ctx.lineTo(x, y+(pk.main?26:-26));
+        ctx.stroke();
+        ctx.setLineDash([]);
+        const r=pk.main?6:4.5;
+        ctx.fillStyle=pk.main?'#ef4444':'#f59e0b';
+        ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle='#fff';ctx.lineWidth=1.5;
+        ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.stroke();
+        const tx=pk.label;
+        ctx.font=pk.main?'600 11px system-ui,-apple-system,sans-serif':'600 9.5px system-ui,-apple-system,sans-serif';
+        const w=ctx.measureText(tx).width+(pk.main?14:10);
+        const h=pk.main?18:15;
+        const ty=pk.main?y+30:y-32;
+        ctx.fillStyle=pk.main?'#ef4444':'#f59e0b';
+        roundRect(ctx,x-w/2,ty,w,h,3);ctx.fill();
+        ctx.fillStyle='#fff';
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(tx,x,ty+h/2);
+        ctx.restore();
+      });
+    }
+  };
+  function roundRect(c,x,y,w,h,r){
+    c.beginPath();c.moveTo(x+r,y);c.lineTo(x+w-r,y);c.quadraticCurveTo(x+w,y,x+w,y+r);
+    c.lineTo(x+w,y+h-r);c.quadraticCurveTo(x+w,y+h,x+w-r,y+h);c.lineTo(x+r,y+h);
+    c.quadraticCurveTo(x,y+h,x,y+h-r);c.lineTo(x,y+r);c.quadraticCurveTo(x,y,x+r,y);c.closePath();
+  }
+  new Chart(ctx,{data:{labels,datasets:[
+    {type:'bar',label:'日耗(相对%)',data:cost,
+      backgroundColor:cost.map((_,i)=>{
+        if(i===mainIdx) return '#ef4444';
+        if(peakSet.some(p=>!p.main && p.idx===i)) return '#f59e0b';
+        return color+'cc';
+      }),
+      borderRadius:4,yAxisID:'y',order:2},
+    {type:'line',label:'趋势',data:cost,borderColor:'#16a34a',backgroundColor:'#16a34a',borderWidth:2.5,
+      pointRadius:cost.map((_,i)=>{
+        if(i===mainIdx) return 6;
+        if(peakSet.some(p=>!p.main && p.idx===i)) return 4.5;
+        return 0;
+      }),
+      pointBackgroundColor:cost.map((_,i)=>{
+        if(i===mainIdx) return '#ef4444';
+        if(peakSet.some(p=>!p.main && p.idx===i)) return '#f59e0b';
+        return '#16a34a';
+      }),
+      pointBorderColor:cost.map((_,i)=>{
+        if(i===mainIdx||peakSet.some(p=>!p.main && p.idx===i)) return '#fff';
+        return '#16a34a';
+      }),
+      pointBorderWidth:cost.map((_,i)=>{
+        if(i===mainIdx) return 2;
+        if(peakSet.some(p=>!p.main && p.idx===i)) return 1.5;
+        return 0;
+      }),
+      tension:.4,yAxisID:'y',order:1}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{y:{position:'left',beginAtZero:true,title:{display:true,text:'日耗(相对%)',font:{size:9},color:'#9ca3af'},ticks:{color:'#9ca3af',font:{size:9}},grid:{color:'rgba(148,163,184,.15)'}},
+      x:{ticks:{color:'#6b7280',font:{size:9},maxRotation:0,autoSkip:false},grid:{display:false}}},
+    animation:{duration:800}},plugins:[peakPlugin]});
+}
+</script>
+</body>
+</html>
