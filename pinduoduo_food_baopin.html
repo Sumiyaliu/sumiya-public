@@ -4,18 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>拼多多爆品选品长图 - 食品饮料行业</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+    
     body {
+      font-family: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      padding: 20px 10px;
+      padding: 20px 0;
       background-color: #f3f7f4;
       background-image: 
         radial-gradient(at 0% 0%, hsla(143,32%,94%,1) 0px, transparent 50%),
         radial-gradient(at 100% 100%, hsla(150,30%,90%,1) 0px, transparent 50%);
     }
+
+    /* 拟物化文件夹凸起 Tab 样式 */
+    .folder-tab {
+      position: relative;
+      background: #ffffff;
+      border-radius: 12px 12px 0 0;
+      border: 1px solid rgba(27,61,34,0.1);
+      border-bottom: none;
+      white-space: nowrap;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 激活态文件夹 Tab */
+    .active-tab {
+      background: #1b3d22 !important;
+      color: #ffffff !important;
+      border-color: #1b3d22 !important;
+      box-shadow: 0 -4px 10px rgba(27,61,34,0.08);
+      z-index: 10;
+    }
+
+    /* 隐藏滚动条 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* 文件夹卡片主体过渡 */
+    .folder-content {
+      opacity: 0;
+      transform: translateY(10px) scale(0.99);
+      display: none;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .folder-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .text-forest { color: #1b3d22; }
+    .bg-forest { background-color: #1b3d22; }
+    .border-forest { border-color: #1b3d22; }
   </style>
 </head>
-<body>
+<body class="min-h-screen text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900 pb-16">
+
+  <!-- 继承原本的头部和仪表盘结构 -->
   <div style="max-width: 850px; margin: 0 auto; background-color: #fbfaf5; padding: 25px 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.06); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #2d2a26; line-height: 1.6;">
 
   <!-- 顶部视觉海报 -->
@@ -137,7 +190,67 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 粮油干货 ==================== -->
+  
+
+  <!-- ==================== 新增：拟物化品类 Tab 切换区域 ==================== -->
+  <div style="max-width: 850px; margin: 30px auto 0 auto; padding: 0 10px; box-sizing: border-box;">
+    
+    <!-- 品类选择 Tab 栏 (支持手机端丝滑横向滑动，隐藏滚动条) -->
+    <div class="flex items-end overflow-x-auto no-scrollbar gap-1.5 pl-2 select-none" id="category-tabs-container">
+      
+    <div id="tab-header-0" onclick="switchCategory(0)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 active-tab text-forest">
+      <span>🌾</span> 粮油干货
+    </div>
+    
+
+    <div id="tab-header-1" onclick="switchCategory(1)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🍵</span> 茶叶
+    </div>
+    
+
+    <div id="tab-header-2" onclick="switchCategory(2)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🍪</span> 休闲食品
+    </div>
+    
+
+    <div id="tab-header-3" onclick="switchCategory(3)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🍯</span> 传统滋补
+    </div>
+    
+
+    <div id="tab-header-4" onclick="switchCategory(4)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🥤</span> 水饮冲调
+    </div>
+    
+
+    <div id="tab-header-5" onclick="switchCategory(5)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🥟</span> 冷冻食品
+    </div>
+    
+
+    <div id="tab-header-6" onclick="switchCategory(6)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🍱</span> 其他食品饮料
+    </div>
+    
+
+    <div id="tab-header-7" onclick="switchCategory(7)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🍶</span> 酒类
+    </div>
+    
+
+    <div id="tab-header-8" onclick="switchCategory(8)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 text-slate-400 bg-transparent">
+      <span>🍓</span> 水果蔬菜
+    </div>
+    
+    </div>
+
+    <!-- 拟物化文件夹大内页 -->
+    <div class="bg-white border-2 border-emerald-900/10 rounded-2xl rounded-tl-none p-5 md:p-6 shadow-xl relative min-h-[400px]">
+      
+      <!-- 各品类列表内页 -->
+      
+    <div id="tab-content-0" class="folder-content active">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🌾</span> 粮油干货 
@@ -1508,7 +1621,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 茶叶 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-1" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🍵</span> 茶叶 
@@ -2120,7 +2238,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 休闲食品 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-2" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🍪</span> 休闲食品 
@@ -2732,7 +2855,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 传统滋补 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-3" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🍯</span> 传统滋补 
@@ -3080,7 +3208,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 水饮冲调 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-4" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🥤</span> 水饮冲调 
@@ -3305,7 +3438,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 冷冻食品 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-5" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🥟</span> 冷冻食品 
@@ -3467,7 +3605,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 其他食品饮料 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-6" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🍱</span> 其他食品饮料 
@@ -3578,7 +3721,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 酒类 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-7" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🍶</span> 酒类 
@@ -3680,7 +3828,12 @@
     </div>
   </div>
 
-  <!-- ==================== 品类: 水果蔬菜 ==================== -->
+  
+    </div>
+    
+
+    <div id="tab-content-8" class="folder-content ">
+      
   <div style="margin-top: 30px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eae7e0; padding-bottom: 8px;">
     <div style="font-size: 18px; font-weight: bold; color: #224332; display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 22px;">🍓</span> 水果蔬菜 
@@ -3732,5 +3885,46 @@
   </div>
 </div>
 
+    </div>
+    
+
+    </div>
+  </div>
+
+  <script>
+    // 品类切换核心 JavaScript
+    function switchCategory(idx) {
+      // 1. 隐藏所有品类容器
+      const contents = document.querySelectorAll('.folder-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      // 2. 显示选中的品类容器
+      const targetContent = document.getElementById('tab-content-' + idx);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+
+      // 3. 更新所有 Tab 样式为未选中
+      const tabs = document.querySelectorAll('.folder-tab');
+      tabs.forEach(tab => {
+        tab.classList.remove('active-tab', 'text-forest');
+        tab.classList.add('text-slate-400', 'bg-transparent');
+      });
+
+      // 4. 高亮选中的 Tab
+      const activeTab = document.getElementById('tab-header-' + idx);
+      if (activeTab) {
+        activeTab.classList.remove('text-slate-400', 'bg-transparent');
+        activeTab.classList.add('active-tab', 'text-forest');
+        
+        // 自动平滑滚动 Tab 栏到中心位置 (极佳的移动端体验)
+        activeTab.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+  </script>
 </body>
 </html>
