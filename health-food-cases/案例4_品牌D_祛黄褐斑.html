@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>资膳堂糖管理 · 辅助降血糖赛道案例纸</title>
+<title>品牌D保健品官方直播间 · 祛黄褐斑赛道案例纸</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#eef2f7;font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;color:#1f2937}
-  .page{width:1440px;min-height:900px;margin:24px auto;background:linear-gradient(180deg,#faf9ff 0%,#fff 40%);padding:28px 32px 32px;box-shadow:0 8px 30px rgba(30,58,138,.08);border-radius:18px;position:relative;overflow:hidden}
-  .page::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(142,132,253,.16),transparent 70%);border-radius:50%}
-  .page::after{content:"";position:absolute;bottom:-140px;left:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%);border-radius:50%}
-  .header{position:relative;background:linear-gradient(135deg,#5b21b6 0%,#8E84FD 55%,#a79ffe 100%);color:#fff;border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px rgba(142,132,253,.28);z-index:2;margin-bottom:16px}
+  .page{width:1440px;min-height:900px;margin:24px auto;background:linear-gradient(180deg,#f7fff9 0%,#fff 40%);padding:28px 32px 32px;box-shadow:0 8px 30px rgba(30,58,138,.08);border-radius:18px;position:relative;overflow:hidden}
+  .page::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(118,200,77,.16),transparent 70%);border-radius:50%}
+  .page::after{content:"";position:absolute;bottom:-140px;left:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(16,185,129,.12),transparent 70%);border-radius:50%}
+  .header{position:relative;background:linear-gradient(135deg,#15803d 0%,#76C84D 55%,#a3e635 100%);color:#fff;border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px rgba(118,200,77,.28);z-index:2;margin-bottom:16px}
   .header .badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px)}
   .header h1{font-size:23px;font-weight:800;letter-spacing:.5px;flex:1;line-height:1.35}
   .header h1 .hl{color:#fde68a;text-shadow:0 1px 0 rgba(0,0,0,.1)}
@@ -25,40 +25,39 @@
   .hero-card .hc-tag{display:inline-block;background:#fde68a;color:#92400e;font-size:10px;font-weight:800;padding:1.5px 8px;border-radius:5px;margin-top:7px}
   .main-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.04fr;gap:16px}
   .left-col,.right-col{display:flex;flex-direction:column;gap:16px}
-  .block{background:#fff;border:1px solid #e9e5fb;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(124,58,237,.04);display:flex;flex-direction:column}
+  .block{background:#fff;border:1px solid #dcf3e4;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(16,185,129,.04);display:flex;flex-direction:column}
   .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .sec-title .num{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#8E84FD,#5b21b6);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(142,132,253,.3);font-size:14px}
-  .sec-title h2{font-size:17px;color:#5b21b6;font-weight:800}
-  .sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,#c4b5fd,transparent)}
-  .intro-text{background:#f5f3ff;border-left:4px solid #8E84FD;padding:8px 12px;border-radius:8px;margin-bottom:10px;color:#5b21b6;font-size:13px;line-height:1.65}
+  .sec-title .num{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#76C84D,#15803d);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(118,200,77,.3);font-size:14px}
+  .sec-title h2{font-size:17px;color:#15803d;font-weight:800}
+  .sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,#86efac,transparent)}
+  .intro-text{background:#f0fdf4;border-left:4px solid #76C84D;padding:8px 12px;border-radius:8px;margin-bottom:10px;color:#15803d;font-size:13px;line-height:1.65}
   .intro-text b{color:#dc2626}
-  .prod-card{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#f5f3ff,#faf5ff);border:1px solid #ddd6fe;border-radius:10px;padding:10px 12px;margin-bottom:10px}
-  .prod-card .p-ico{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#8E84FD,#5b21b6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-  .prod-card .p-name{font-size:12.5px;color:#5b21b6;line-height:1.5;font-weight:600;flex:1}
+  .prod-card{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+  .prod-card .p-ico{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#76C84D,#15803d);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .prod-card .p-name{font-size:12.5px;color:#15803d;line-height:1.5;font-weight:600;flex:1}
   .prod-card .p-price{font-size:17px;font-weight:800;color:#dc2626;white-space:nowrap;text-align:center}
-  .prod-card .p-price small{font-size:11px;color:#7c3aed;font-weight:500}
+  .prod-card .p-price small{font-size:11px;color:#16a34a;font-weight:500}
   .vs-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-  .vs-item{border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #ddd6fe;background:#faf9ff}
-  .vs-item .v-num{font-size:16px;font-weight:800;color:#8E84FD}
+  .vs-item{border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #bbf7d0;background:#f7fff9}
+  .vs-item .v-num{font-size:16px;font-weight:800;color:#16a34a}
   .vs-item .v-lbl{font-size:10.5px;color:#6b7280;margin-top:2px}
   .vs-item .v-cmp{font-size:9.5px;margin-top:2px;font-weight:700}
   .up{color:#059669}.flat{color:#94a3b8}
-  .highlight-title{font-size:13.5px;font-weight:800;color:#5b21b6;display:flex;align-items:center;gap:8px;margin:8px 0 6px}
-  .highlight-title::before{content:"";width:4px;height:14px;background:linear-gradient(180deg,#8E84FD,#5b21b6);border-radius:3px}
-  .chart-card{background:#fff;border:1px solid #e9e5fb;border-radius:10px;padding:8px 12px 4px;margin-bottom:8px}
+  .highlight-title{font-size:13.5px;font-weight:800;color:#15803d;display:flex;align-items:center;gap:8px;margin:8px 0 6px}
+  .highlight-title::before{content:"";width:4px;height:14px;background:linear-gradient(180deg,#76C84D,#15803d);border-radius:3px}
+  .chart-card{background:#fff;border:1px solid #dcf3e4;border-radius:10px;padding:8px 12px 4px;margin-bottom:8px}
   .chart-wrap{height:196px;position:relative}
   .chart-note{font-size:11px;color:#16a34a;text-align:right;margin:0 4px 4px;font-weight:700}
-  .surge{display:inline-block;margin-left:6px;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:800;background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;vertical-align:middle}
   .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .kpi{background:linear-gradient(135deg,#fff,#f5f3ff);border:1px solid #ddd6fe;border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden}
-  .kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8E84FD,#a78bfa,#10b981)}
-  .kpi .num{font-size:19px;font-weight:800;color:#8E84FD;line-height:1.2}
+  .kpi{background:linear-gradient(135deg,#fff,#f0fdf4);border:1px solid #bbf7d0;border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#76C84D,#10b981,#06b6d4)}
+  .kpi .num{font-size:19px;font-weight:800;color:#16a34a;line-height:1.2}
   .kpi .num .unit{font-size:12px;margin-left:2px}
   .kpi .num.green{color:#059669}.kpi .num.orange{color:#ea580c}.kpi .num.blue{color:#2563eb}
   .kpi .lbl{font-size:10.5px;color:#4b5563;margin-top:4px;line-height:1.4}
   .peak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px}
-  .peak-item{text-align:center;background:linear-gradient(135deg,#f5f3ff,#faf5ff);border:1px solid #c4b5fd;border-radius:10px;padding:11px 5px}
-  .peak-item .pk-v{font-size:16px;font-weight:800;color:#7c3aed}
+  .peak-item{text-align:center;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #86efac;border-radius:10px;padding:11px 5px}
+  .peak-item .pk-v{font-size:16px;font-weight:800;color:#15803d}
   .peak-item .pk-l{font-size:10px;color:#6b7280;margin-top:3px}
   .peak-item .pk-s{font-size:9px;color:#9ca3af;margin-top:1px}
   .light-list{display:flex;flex-direction:column;gap:9px}
@@ -67,9 +66,9 @@
   .light-item .li-t{font-size:13px;font-weight:800;color:#15803d;line-height:1.4}
   .light-item .li-d{font-size:11.5px;color:#4b5563;margin-top:2px;line-height:1.5}
   .light-item .li-d b{color:#dc2626}
-  .light-item.pack{background:linear-gradient(135deg,#f5f3ff,#faf5ff);border-color:#ddd6fe}
-  .light-item.pack .li-ico{background:linear-gradient(135deg,#8E84FD,#5b21b6)}
-  .light-item.pack .li-t{color:#5b21b6}
+  .light-item.pack{background:linear-gradient(135deg,#ecfeff,#f0f9ff);border-color:#a5f3fc}
+  .light-item.pack .li-ico{background:linear-gradient(135deg,#0891b2,#0e7490)}
+  .light-item.pack .li-t{color:#0e7490}
   .force-list{display:flex;flex-direction:column;gap:10px}
   .force-item{border-radius:10px;padding:11px 14px;border-left:4px solid #ccc}
   .force-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
@@ -118,39 +117,39 @@
 <div class="page">
 
   <div class="header">
-    <div class="badge">辅助降血糖 · 闭环直播</div>
-    <h1>资膳堂糖管理：新赛道快速起量案例，CTR <span class="hl">4~5%</span>（优于大盘41%），618 大促冲量 <span class="hl">+131%</span></h1>
-    <div class="badge">NEW入局</div>
+    <div class="badge">祛黄褐斑+贫血 · 闭环直播</div>
+    <h1>品牌D保健品官方直播间：高 ROI 精准获客案例，ROI <span class="hl">1.3~1.4</span>（全场最高），进播率 <span class="hl">9.2%</span>，<span class="hl">320</span> 账户并行</h1>
+    <div class="badge">高ROI标杆</div>
   </div>
 
   <div class="opportunity-banner">
     <div class="oppo-label">赛道机会亮点 · 保健食品直播品类机会分析</div>
-    <div class="oppo-title">辅助降血糖：赛道少有的'直购护城河'，需通过组合形态入局</div>
+    <div class="oppo-title">祛黄褐斑+贫血：体量与效率双优的强机会品类，直播效率高 18%</div>
     <div class="oppo-cards">
       <div class="oppo-card">
-        <div class="oppo-num">≈1.0<span class="u"> / 0.9</span></div>
-        <div class="oppo-desc">直购 ROI 略胜，单功能直播暂无优势</div>
-        <span class="oppo-tag">直购更优</span>
+        <div class="oppo-num">+0.13</div>
+        <div class="oppo-desc">直播 vs 直购 ROI 差值，强机会品类</div>
+        <span class="oppo-tag">强机会</span>
       </div>
       <div class="oppo-card">
-        <div class="oppo-num">组合品<span class="u">形态</span></div>
-        <div class="oppo-desc">搭配增强免疫力组合切入，而非单功能硬打</div>
-        <span class="oppo-tag">组合入局</span>
+        <div class="oppo-num">百万级<span class="u">头部</span></div>
+        <div class="oppo-desc">直播消耗体量，强机会中规模最大</div>
+        <span class="oppo-tag">体量头部</span>
       </div>
       <div class="oppo-card">
-        <div class="oppo-num">0<span class="u">%</span></div>
-        <div class="oppo-desc">双链路胜出率，仍以直购为主阵地</div>
-        <span class="oppo-tag">稳态赛道</span>
+        <div class="oppo-num">100<span class="u">%</span></div>
+        <div class="oppo-desc">双链路客户胜出率，闭环确定性最强</div>
+        <span class="oppo-tag">确定性最高</span>
       </div>
     </div>
   </div>
 
-  <div class="hero-highlight" style="background:linear-gradient(135deg,#5b21b6,#8E84FD)">
-    <div class="hero-label">★ Case 亮点 · 新赛道快速起量，618 大促爆发直播间</div>
+  <div class="hero-highlight" style="background:linear-gradient(135deg,#15803d,#76C84D)">
+    <div class="hero-label">★ Case 亮点 · 高 ROI 精准获客，非遗认证差异化卖点</div>
     <div class="hero-cards">
-      <div class="hero-card"><div class="hc-num">+131<span class="u">%</span></div><div class="hc-txt">618 大促冲量，新赛道起量</div><span class="hc-tag">大促冲量王</span></div>
-      <div class="hero-card"><div class="hc-num">4~5<span class="u">%</span></div><div class="hc-txt">CTR 优秀，优于大盘 41%</div><span class="hc-tag">素材吸引力强</span></div>
-      <div class="hero-card"><div class="hc-num">71<span class="u">%</span></div><div class="hc-txt">智投渗透率，单链路深度渗透</div><span class="hc-tag">起量关键</span></div>
+      <div class="hero-card"><div class="hc-num">1.3~1.4</div><div class="hc-txt">下单 ROI，全场最高，优于大盘 18%</div><span class="hc-tag">全场 ROI 最高</span></div>
+      <div class="hero-card"><div class="hc-num">9.2<span class="u">%</span></div><div class="hc-txt">进播率高粘性 + CVR 优于大盘 16%</div><span class="hc-tag">精准获客</span></div>
+      <div class="hero-card"><div class="hc-num">320</div><div class="hc-txt">账户并行，基建规模行业领先</div><span class="hc-tag">基建领先</span></div>
     </div>
   </div>
 
@@ -158,27 +157,27 @@
     <div class="left-col">
 
       <section class="block">
-        <div class="sec-title"><div class="num">1</div><h2>直播间概览 · 辅助降血糖</h2><div class="line"></div></div>
-        <div class="intro-text">辅助降血糖赛道<b>新入局快速起量案例</b>，西洋参葡萄籽铬酵母片调节血糖单品，凭借 <b>CTR 强吸引力</b>与多版位拓展，618 大促冲量 +131%。</div>
+        <div class="sec-title"><div class="num">1</div><h2>直播间概览 · 祛黄褐斑+贫血</h2><div class="line"></div></div>
+        <div class="intro-text">祛黄褐斑+贫血赛道<b>高 ROI 精准获客案例</b>，非遗认证去黄褐斑口服液，以 <b>ROI 全场最高</b>、进播率 9.2% 高粘性，320 账户并行实现行业领先基建规模。</div>
         <div class="prod-card">
-          <div class="p-ico">🩸</div>
-          <div class="p-name">核心商品：[调节血糖] 资善堂能觉牌 · 西洋参葡萄籽铬酵母片 0.6g/片*10片/板*2板</div>
-          <div class="p-price">¥40~50<br/><small>客单价区间</small></div>
+          <div class="p-ico">🌸</div>
+          <div class="p-name">核心商品：【品牌D官方正品 · 非遗认证去黄褐斑】2026 新品品牌D口服液 · 好气色健康美</div>
+          <div class="p-price">¥120~150<br/><small>客单价区间</small></div>
         </div>
         <div class="highlight-title">核心效率指标 vs 保健食品大盘</div>
         <div class="vs-row">
-          <div class="vs-item"><div class="v-num">0.9~1.0</div><div class="v-lbl">ROI</div><div class="v-cmp flat">爬坡上行</div></div>
-          <div class="vs-item"><div class="v-num">5~6%</div><div class="v-lbl">CVR</div><div class="v-cmp up">↑转化扎实</div></div>
-          <div class="vs-item"><div class="v-num" style="color:#059669">4~5%</div><div class="v-lbl">CTR</div><div class="v-cmp up">↑优于41%</div></div>
-          <div class="vs-item"><div class="v-num">¥90~100</div><div class="v-lbl">CPM</div><div class="v-cmp flat">接近大盘</div></div>
+          <div class="vs-item"><div class="v-num">1.3~1.4</div><div class="v-lbl">ROI</div><div class="v-cmp up">↑优于18%</div></div>
+          <div class="vs-item"><div class="v-num" style="color:#059669">7~8%</div><div class="v-lbl">CVR</div><div class="v-cmp up">↑优于16%</div></div>
+          <div class="vs-item"><div class="v-num">1~2%</div><div class="v-lbl">CTR</div><div class="v-cmp flat">精准人群</div></div>
+          <div class="vs-item"><div class="v-num">¥80~90</div><div class="v-lbl">CPM</div><div class="v-cmp up">↑成本更优</div></div>
         </div>
       </section>
 
       <section class="block">
         <div class="sec-title"><div class="num">2</div><h2>投放数据全景</h2><div class="line"></div></div>
-        <div class="highlight-title">近30天 日耗持续上涨趋势<span class="surge">起量冲刺 +131%</span></div>
+        <div class="highlight-title">近30天 日耗持续上涨趋势</div>
         <div class="chart-card"><div class="chart-wrap"><canvas id="trend"></canvas></div></div>
-        <div class="chart-note">↗ 起量冲刺 +131%，新赛道快速放量</div>
+        <div class="chart-note">↗ 高 ROI 驱动，投放规模稳步上行</div>
       </section>
 
     </div>
@@ -188,10 +187,10 @@
       <section class="block">
         <div class="sec-title"><div class="num">3</div><h2>峰值冲量能力</h2><div class="line"></div></div>
         <div class="peak-grid">
-          <div class="peak-item"><div class="pk-v">12~15万</div><div class="pk-l">历史峰值日耗</div><div class="pk-s">618 大促</div></div>
-          <div class="peak-item"><div class="pk-v">15~18万</div><div class="pk-l">冲量能力(+20%)</div><div class="pk-s">大促可冲量级</div></div>
-          <div class="peak-item"><div class="pk-v">5~10万</div><div class="pk-l">日常日耗</div><div class="pk-s">近30天日均</div></div>
-          <div class="peak-item"><div class="pk-v">2.4x</div><div class="pk-l">峰值/日常弹性</div><div class="pk-s">冲量弹性</div></div>
+          <div class="peak-item"><div class="pk-v">3~5万</div><div class="pk-l">历史峰值日耗</div><div class="pk-s">大促单日</div></div>
+          <div class="peak-item"><div class="pk-v">5~8万</div><div class="pk-l">冲量能力(+20%)</div><div class="pk-s">大促可冲量级</div></div>
+          <div class="peak-item"><div class="pk-v">1~3万</div><div class="pk-l">日常日耗</div><div class="pk-s">近30天日均</div></div>
+          <div class="peak-item"><div class="pk-v">2.3x</div><div class="pk-l">峰值/日常弹性</div><div class="pk-s">冲量弹性</div></div>
         </div>
       </section>
 
@@ -200,24 +199,24 @@
         <div class="force-list">
           <div class="force-item f-prod">
             <div class="force-head"><span class="force-tag">🛒 商品力</span><span class="force-sub">从「有货」到「好卖」</span></div>
-            <div class="force-body">西洋参葡萄籽铬酵母片，<b>调节血糖</b>刚需场景；客单价区间 ¥40~50 大众价格带，入手门槛低</div>
+            <div class="force-body"><b>非遗认证</b>去黄褐斑口服液，差异化卖点强；客单价区间 ¥120~150 中端定位，气色护理刚需</div>
           </div>
           <div class="force-item f-content">
             <div class="force-head"><span class="force-tag">🎬 内容力</span><span class="force-sub">从「有素材」到「强互动」</span></div>
-            <div class="force-body"><b>CTR 4~5%</b>（优于大盘 41%），创意钩子精准击中控糖人群；CVR 5~6% 承接扎实，素材生态持续焕新</div>
+            <div class="force-body"><b>进播率 9.2%</b> 高粘性、停留互动强，非遗认证差异化吸睛；创意重复度 42% 健康，素材持续探索</div>
           </div>
           <div class="force-item f-oper">
             <div class="force-head"><span class="force-tag">📈 经营力</span><span class="force-sub">日销 × 大场 双轮驱动</span></div>
-            <div class="force-body"><b>618 大促冲量 +131%</b>、23 账户并行；历史峰值达日均 2.4 倍，可冲 15~18万/日</div>
+            <div class="force-body"><b>320 账户并行</b>基建行业领先，支撑精细化运营；历史峰值达日均 2.3 倍，可冲 5~8万/日</div>
           </div>
           <div class="force-item f-deliver">
             <div class="force-head"><span class="force-tag">🚀 投放力</span><span class="force-sub">从「手动」到「智能」· 含直播漏斗</span></div>
-            <div class="force-body">智投渗透率 <b>71%</b>（单链路深度渗透）+ 多版位拓展拿量，是新赛道快速起量的关键杠杆</div>
+            <div class="force-body"><b>ROI 1.3~1.4 全场最高</b>（优于大盘 18%）、CVR 7~8%；全域通直播链路 ROI 突出，智投渗透提升是放量抓手</div>
             <div class="ff-wrap">
               <div class="ff-title">直播转化漏斗 · 进播 → 商品点击 → 下单</div>
-              <div class="ff-row"><span class="ff-lbl">进播率</span><div class="ff-bar" style="width:32%;background:#3E79F0">3.2%</div></div>
-              <div class="ff-row"><span class="ff-lbl">商品点击率</span><div class="ff-bar" style="width:64%;background:#76C84D">48.0% · 优于大盘 99%</div></div>
-              <div class="ff-row"><span class="ff-lbl">下单率</span><div class="ff-bar" style="width:38%;background:#FFAE19">12.1%</div></div>
+              <div class="ff-row"><span class="ff-lbl">进播率</span><div class="ff-bar" style="width:62%;background:#3E79F0">9.2% · 高粘性</div></div>
+              <div class="ff-row"><span class="ff-lbl">商品点击率</span><div class="ff-bar" style="width:35%;background:#76C84D">7.8%</div></div>
+              <div class="ff-row"><span class="ff-lbl">下单率</span><div class="ff-bar" style="width:45%;background:#FFAE19">11.7%</div></div>
             </div>
           </div>
         </div>
@@ -228,11 +227,11 @@
   <section class="block live-block">
     <div class="sec-title"><div class="num">★</div><h2>直播间画面 · 人货场三力</h2><div class="line"></div></div>
     <div class="live-inner">
-      <div class="live-shot"><img src="保健食品品类直播间截图/资善堂.png" alt="资膳堂直播间实拍" /></div>
+      <div class="live-shot"><img src="保健食品品类直播间截图/品牌D.png" alt="品牌D直播间实拍" /></div>
       <div class="live-analysis">
-        <div class="la-item la-p"><div class="la-ico">人</div><div><div class="la-t">主播力 · 亲和可信</div><div class="la-d">女主播朴素亲和出镜、桌面摆放产品讲解，「严格降糖 · 放心之选」塑造真实可信的专业形象</div></div></div>
-        <div class="la-item la-g"><div class="la-ico">货</div><div><div class="la-t">货品力 · 破价钩子</div><div class="la-d">铬酵母片 <b>¥49/3盒 今日破价</b>，适用人群「三多一少 / 视线模糊 / 血糖值9以上」清单精准锁定控糖刚需</div></div></div>
-        <div class="la-item la-s"><div class="la-ico">场</div><div><div class="la-t">场景力 · 强证背书</div><div class="la-d">618 健康博览会福利专场氛围，<b>蓝帽认证 + 检验报告 + 奖杯证书</b> 多重背书，强化新赛道信任门槛</div></div></div>
+        <div class="la-item la-p"><div class="la-ico">人</div><div><div class="la-t">主播力 · 资质实证</div><div class="la-d">主播手持国产保健食品批准证书 + 放大镜近景展示，「官方正品」实证讲解，强化资质可信度</div></div></div>
+        <div class="la-item la-g"><div class="la-ico">货</div><div><div class="la-t">货品力 · 需求精准</div><div class="la-d">品牌D口服液 <b>¥69 起</b>，适用人群「黄褐斑 / 皮肤暗黄 / 营养性贫血 / 四肢乏力」清单精准戳中气血诉求</div></div></div>
+        <div class="la-item la-s"><div class="la-ico">场</div><div><div class="la-t">场景力 · 非遗背书</div><div class="la-d">非遗祛斑补血气专场氛围，<b>蓝帽 + 省级非遗代表性项目 + 销量第一</b> 三重背书，构筑差异化信任壁垒</div></div></div>
       </div>
     </div>
   </section>
@@ -240,24 +239,24 @@
   <div class="block" style="margin-top:16px;position:relative;z-index:2">
     <div class="sec-title"><div class="num">5</div><h2>核心指标六维</h2><div class="line"></div></div>
     <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
-      <div class="kpi"><div class="num orange">3~5<span class="unit">万/日</span></div><div class="lbl">日耗规模<br/>新赛道起量</div></div>
-      <div class="kpi"><div class="num">0.9~1.0</div><div class="lbl">下单 ROI<br/>持续爬坡</div></div>
-      <div class="kpi"><div class="num">5~6<span class="unit">%</span></div><div class="lbl">CVR 优秀<br/>转化扎实</div></div>
-      <div class="kpi"><div class="num green">4~5<span class="unit">%</span></div><div class="lbl">CTR 优秀<br/>优于大盘41%</div></div>
-      <div class="kpi"><div class="num">¥40~50</div><div class="lbl">客单价区间<br/>大众价格带</div></div>
-      <div class="kpi"><div class="num green">23</div><div class="lbl">投放账户数<br/>多账户并行</div></div>
+      <div class="kpi"><div class="num orange">1~3<span class="unit">万/日</span></div><div class="lbl">日耗规模<br/>精准获客</div></div>
+      <div class="kpi"><div class="num">1.3~1.4</div><div class="lbl">下单 ROI<br/>全场最高</div></div>
+      <div class="kpi"><div class="num green">7~8<span class="unit">%</span></div><div class="lbl">CVR 优秀<br/>优于大盘16%</div></div>
+      <div class="kpi"><div class="num blue">9.2<span class="unit">%</span></div><div class="lbl">进播率<br/>高粘性</div></div>
+      <div class="kpi"><div class="num">¥120~150</div><div class="lbl">客单价区间<br/>中端定位</div></div>
+      <div class="kpi"><div class="num green">320</div><div class="lbl">投放账户数<br/>行业领先</div></div>
     </div>
   </div>
 
-  <div class="footer">资膳堂糖管理 · 辅助降血糖赛道案例纸 · 数据周期近30天</div>
+  <div class="footer">品牌D保健品官方直播间 · 祛黄褐斑+贫血赛道案例纸 · 数据周期近30天</div>
 </div>
 
 <script>
 const labels=["第1周初","","","","第1周末","","第2周","","","","第3周","","","","第3周末","","","","第4周","","","","近期"];
-// 案例3·资膳堂·降血糖：早期爆发尖刺 + 起量加速次峰 + 秋冬旺季次峰 + 冲量尖刺主峰（前段达峰后高位震荡）
-const cost=[12,20,32,48,42,58,78,95,120,165,140,128,150,138,156,142,158,148,160,150,162,155];
-const peaks=[{idx:9,label:'冲量尖刺',main:true},{idx:18,label:'秋冬旺季',main:false},{idx:6,label:'起量加速',main:false}];
-renderTrend('trend',labels,cost,'#8E84FD',peaks);
+// 案例4·品牌D·祛黄褐斑：高ROI稳健波浪上行 + 妇女节次峰 + 夏季防晒季次峰 + 女神节主峰（中段达峰、峰值温和）
+const cost=[48,54,60,52,66,78,70,84,76,90,98,88,128,112,104,118,100,112,96,108,94,106];
+const peaks=[{idx:12,label:'女神节',main:true},{idx:5,label:'妇女节',main:false},{idx:17,label:'夏季防晒季',main:false}];
+renderTrend('trend',labels,cost,'#76C84D',peaks);
 function renderTrend(id,labels,cost,color,peaks){
   const mainIdx=peaks.find(p=>p.main).idx;
   const peakSet=peaks;

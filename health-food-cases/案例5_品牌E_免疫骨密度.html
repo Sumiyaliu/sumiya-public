@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>汤臣倍健官方甄选 · 辅助降血脂赛道案例纸</title>
+<title>品牌E官方直播间 · 增强免疫力+骨密度赛道案例纸</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#eef2f7;font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;color:#1f2937}
-  .page{width:1440px;min-height:900px;margin:24px auto;background:linear-gradient(180deg,#f8fbff 0%,#fff 40%);padding:28px 32px 32px;box-shadow:0 8px 30px rgba(30,58,138,.08);border-radius:18px;position:relative;overflow:hidden}
-  .page::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(62,121,240,.16),transparent 70%);border-radius:50%}
+  .page{width:1440px;min-height:900px;margin:24px auto;background:linear-gradient(180deg,#f5feff 0%,#fff 40%);padding:28px 32px 32px;box-shadow:0 8px 30px rgba(30,58,138,.08);border-radius:18px;position:relative;overflow:hidden}
+  .page::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(17,207,207,.16),transparent 70%);border-radius:50%}
   .page::after{content:"";position:absolute;bottom:-140px;left:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(6,182,212,.12),transparent 70%);border-radius:50%}
-  .header{position:relative;background:linear-gradient(135deg,#1e3a8a 0%,#3E79F0 55%,#06b6d4 100%);color:#fff;border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px rgba(62,121,240,.28);z-index:2;margin-bottom:16px}
+  .header{position:relative;background:linear-gradient(135deg,#0e7490 0%,#11CFCF 55%,#5eead4 100%);color:#fff;border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px rgba(17,207,207,.28);z-index:2;margin-bottom:16px}
   .header .badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px)}
   .header h1{font-size:23px;font-weight:800;letter-spacing:.5px;flex:1;line-height:1.35}
   .header h1 .hl{color:#fde68a;text-shadow:0 1px 0 rgba(0,0,0,.1)}
@@ -25,39 +25,39 @@
   .hero-card .hc-tag{display:inline-block;background:#fde68a;color:#92400e;font-size:10px;font-weight:800;padding:1.5px 8px;border-radius:5px;margin-top:7px}
   .main-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.04fr;gap:16px}
   .left-col,.right-col{display:flex;flex-direction:column;gap:16px}
-  .block{background:#fff;border:1px solid #e5edf7;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(30,58,138,.04);display:flex;flex-direction:column}
+  .block{background:#fff;border:1px solid #d5f5f5;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(6,182,212,.04);display:flex;flex-direction:column}
   .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .sec-title .num{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#3E79F0,#1e3a8a);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(62,121,240,.3);font-size:14px}
-  .sec-title h2{font-size:17px;color:#1e3a8a;font-weight:800}
-  .sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,#93c5fd,transparent)}
-  .intro-text{background:#f1f5ff;border-left:4px solid #3E79F0;padding:8px 12px;border-radius:8px;margin-bottom:10px;color:#1e3a8a;font-size:13px;line-height:1.65}
+  .sec-title .num{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#11CFCF,#0e7490);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(17,207,207,.3);font-size:14px}
+  .sec-title h2{font-size:17px;color:#0e7490;font-weight:800}
+  .sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,#5eead4,transparent)}
+  .intro-text{background:#ecfeff;border-left:4px solid #11CFCF;padding:8px 12px;border-radius:8px;margin-bottom:10px;color:#0e7490;font-size:13px;line-height:1.65}
   .intro-text b{color:#dc2626}
-  .prod-card{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#eff6ff,#ecfeff);border:1px solid #bae6fd;border-radius:10px;padding:10px 12px;margin-bottom:10px}
-  .prod-card .p-ico{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#3E79F0,#1e3a8a);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-  .prod-card .p-name{font-size:12.5px;color:#1e3a8a;line-height:1.5;font-weight:600;flex:1}
+  .prod-card{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#ecfeff,#cffafe);border:1px solid #a5f3fc;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+  .prod-card .p-ico{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#11CFCF,#0e7490);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .prod-card .p-name{font-size:12.5px;color:#0e7490;line-height:1.5;font-weight:600;flex:1}
   .prod-card .p-price{font-size:17px;font-weight:800;color:#dc2626;white-space:nowrap;text-align:center}
-  .prod-card .p-price small{font-size:11px;color:#2563eb;font-weight:500}
+  .prod-card .p-price small{font-size:11px;color:#0891b2;font-weight:500}
   .vs-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-  .vs-item{border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #bae6fd;background:#f8fbff}
-  .vs-item .v-num{font-size:16px;font-weight:800;color:#3E79F0}
+  .vs-item{border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #a5f3fc;background:#f5feff}
+  .vs-item .v-num{font-size:16px;font-weight:800;color:#0891b2}
   .vs-item .v-lbl{font-size:10.5px;color:#6b7280;margin-top:2px}
   .vs-item .v-cmp{font-size:9.5px;margin-top:2px;font-weight:700}
   .up{color:#059669}.flat{color:#94a3b8}
-  .highlight-title{font-size:13.5px;font-weight:800;color:#1e3a8a;display:flex;align-items:center;gap:8px;margin:8px 0 6px}
-  .highlight-title::before{content:"";width:4px;height:14px;background:linear-gradient(180deg,#3E79F0,#06b6d4);border-radius:3px}
-  .chart-card{background:#fff;border:1px solid #e5edf7;border-radius:10px;padding:8px 12px 4px;margin-bottom:8px}
+  .highlight-title{font-size:13.5px;font-weight:800;color:#0e7490;display:flex;align-items:center;gap:8px;margin:8px 0 6px}
+  .highlight-title::before{content:"";width:4px;height:14px;background:linear-gradient(180deg,#11CFCF,#0e7490);border-radius:3px}
+  .chart-card{background:#fff;border:1px solid #d5f5f5;border-radius:10px;padding:8px 12px 4px;margin-bottom:8px}
   .chart-wrap{height:196px;position:relative}
   .chart-note{font-size:11px;color:#16a34a;text-align:right;margin:0 4px 4px;font-weight:700}
   .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .kpi{background:linear-gradient(135deg,#fff,#f0f9ff);border:1px solid #bae6fd;border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden}
-  .kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3E79F0,#06b6d4,#10b981)}
-  .kpi .num{font-size:19px;font-weight:800;color:#3E79F0;line-height:1.2}
+  .kpi{background:linear-gradient(135deg,#fff,#ecfeff);border:1px solid #a5f3fc;border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#11CFCF,#06b6d4,#10b981)}
+  .kpi .num{font-size:19px;font-weight:800;color:#0891b2;line-height:1.2}
   .kpi .num .unit{font-size:12px;margin-left:2px}
   .kpi .num.green{color:#059669}.kpi .num.orange{color:#ea580c}.kpi .num.blue{color:#2563eb}
   .kpi .lbl{font-size:10.5px;color:#4b5563;margin-top:4px;line-height:1.4}
   .peak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px}
-  .peak-item{text-align:center;background:linear-gradient(135deg,#f0f9ff,#ecfeff);border:1px solid #93c5fd;border-radius:10px;padding:11px 5px}
-  .peak-item .pk-v{font-size:16px;font-weight:800;color:#2563eb}
+  .peak-item{text-align:center;background:linear-gradient(135deg,#ecfeff,#cffafe);border:1px solid #67e8f9;border-radius:10px;padding:11px 5px}
+  .peak-item .pk-v{font-size:16px;font-weight:800;color:#0e7490}
   .peak-item .pk-l{font-size:10px;color:#6b7280;margin-top:3px}
   .peak-item .pk-s{font-size:9px;color:#9ca3af;margin-top:1px}
   .light-list{display:flex;flex-direction:column;gap:9px}
@@ -66,9 +66,9 @@
   .light-item .li-t{font-size:13px;font-weight:800;color:#15803d;line-height:1.4}
   .light-item .li-d{font-size:11.5px;color:#4b5563;margin-top:2px;line-height:1.5}
   .light-item .li-d b{color:#dc2626}
-  .light-item.pack{background:linear-gradient(135deg,#eff6ff,#ecfeff);border-color:#bae6fd}
-  .light-item.pack .li-ico{background:linear-gradient(135deg,#3E79F0,#1e3a8a)}
-  .light-item.pack .li-t{color:#1e3a8a}
+  .light-item.pack{background:linear-gradient(135deg,#ecfeff,#cffafe);border-color:#a5f3fc}
+  .light-item.pack .li-ico{background:linear-gradient(135deg,#11CFCF,#0e7490)}
+  .light-item.pack .li-t{color:#0e7490}
   .force-list{display:flex;flex-direction:column;gap:10px}
   .force-item{border-radius:10px;padding:11px 14px;border-left:4px solid #ccc}
   .force-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
@@ -117,39 +117,39 @@
 <div class="page">
 
   <div class="header">
-    <div class="badge">辅助降血脂 · 闭环直播</div>
-    <h1>汤臣倍健官方甄选：高客单精准转化案例，ROI <span class="hl">1.2~1.3</span>（品类最高），客单价 <span class="hl">¥400~450</span>，日耗环比 <span class="hl">+76%</span></h1>
-    <div class="badge">高客单标杆</div>
+    <div class="badge">增强免疫力+骨密度 · 闭环直播</div>
+    <h1>品牌E官方直播间：品牌力驱动案例，创意重复度仅 <span class="hl">10%</span>（全场最低），峰值冲量 <span class="hl">GMV 膨胀率 3.8 倍</span></h1>
+    <div class="badge">品牌力标杆</div>
   </div>
 
   <div class="opportunity-banner">
     <div class="oppo-label">赛道机会亮点 · 保健食品直播品类机会分析</div>
-    <div class="oppo-title">三高赛道：双链路 66.7% 胜出率，闭环效率与品牌势能双重最高</div>
+    <div class="oppo-title">增强免疫力+护肝/骨密度：直播效率碾压直购，提升达两位数倍</div>
     <div class="oppo-cards">
       <div class="oppo-card">
-        <div class="oppo-num">+0.10</div>
-        <div class="oppo-desc">直播 vs 直购 ROI 差值，闭环可提效</div>
-        <span class="oppo-tag">略优级</span>
+        <div class="oppo-num">+0.88</div>
+        <div class="oppo-desc">直播 vs 直购 ROI 差值，效率提升两位数倍</div>
+        <span class="oppo-tag">强机会</span>
       </div>
       <div class="oppo-card">
-        <div class="oppo-num">66.7<span class="u">%</span></div>
-        <div class="oppo-desc">双链路客户胜出率，多客户验证可行</div>
-        <span class="oppo-tag">多客户验证</span>
+        <div class="oppo-num">100<span class="u">%</span></div>
+        <div class="oppo-desc">双链路客户胜出率，闭环路径已验证</div>
+        <span class="oppo-tag">胜出确定</span>
       </div>
       <div class="oppo-card">
-        <div class="oppo-num">¥400-450</div>
-        <div class="oppo-desc">客单价定位品牌升级，闭环效率最高赛道之一</div>
-        <span class="oppo-tag">高客单</span>
+        <div class="oppo-num">3.8<span class="u">x</span></div>
+        <div class="oppo-desc">峰值 GMV 膨胀率，赛道冲量爆发力领先</div>
+        <span class="oppo-tag">冲量标杆</span>
       </div>
     </div>
   </div>
 
-  <div class="hero-highlight" style="background:linear-gradient(135deg,#1e3a8a,#3E79F0)">
-    <div class="hero-label">★ Case 亮点 · 高客单精准转化，客单价区间 ¥400~450 高端定位</div>
+  <div class="hero-highlight" style="background:linear-gradient(135deg,#0e7490,#11CFCF)">
+    <div class="hero-label">★ Case 亮点 · 品牌力驱动，素材生态全场最健康</div>
     <div class="hero-cards">
-      <div class="hero-card"><div class="hc-num">1.2~1.3</div><div class="hc-txt">下单 ROI，品类最高，优于大盘 10%</div><span class="hc-tag">ROI 之王</span></div>
-      <div class="hero-card"><div class="hc-num">55.1<span class="u">%</span></div><div class="hc-txt">商品点击率，优于大盘 128%</div><span class="hc-tag">精准转化</span></div>
-      <div class="hero-card"><div class="hc-num">+76<span class="u">%</span></div><div class="hc-txt">日耗环比增长，规模快速提升</div><span class="hc-tag">增长强劲</span></div>
+      <div class="hero-card"><div class="hc-num">10<span class="u">%</span></div><div class="hc-txt">创意重复度，全场最低，素材极健康</div><span class="hc-tag">基建标杆</span></div>
+      <div class="hero-card"><div class="hc-num">3.8<span class="u">x</span></div><div class="hc-txt">峰值冲量 GMV 膨胀率，全场最高</div><span class="hc-tag">冲量膨胀王</span></div>
+      <div class="hero-card"><div class="hc-num">48.2<span class="u">%</span></div><div class="hc-txt">商品点击率，优于大盘 100%</div><span class="hc-tag">讲解力强</span></div>
     </div>
   </div>
 
@@ -157,19 +157,19 @@
     <div class="left-col">
 
       <section class="block">
-        <div class="sec-title"><div class="num">1</div><h2>直播间概览 · 辅助降血脂</h2><div class="line"></div></div>
-        <div class="intro-text">辅助降血脂赛道<b>高客单价精准转化案例</b>，主打长辈送礼场景，高纯度深海鱼油单品，以品牌力 + 短直双开智投实现 <b>ROI 品类最高</b>。</div>
+        <div class="sec-title"><div class="num">1</div><h2>直播间概览 · 增强免疫力+骨密度</h2><div class="line"></div></div>
+        <div class="intro-text">增强免疫力+骨密度赛道<b>品牌力驱动案例</b>，洋参牦牛骨粉中老年补品，创意重复度仅 <b>10% 全场最低</b>，素材生态极健康，峰值冲量 <b>GMV 膨胀率 3.8 倍</b>全场最高。</div>
         <div class="prod-card">
-          <div class="p-ico">🐟</div>
-          <div class="p-name">核心商品：[长辈送礼] 汤臣倍健旗舰 96 金装鱼油 · 高纯浓度 omega3 深海鱼油软胶囊</div>
-          <div class="p-price">¥400~450<br/><small>客单价区间</small></div>
+          <div class="p-ico">🦴</div>
+          <div class="p-name">核心商品：品牌E洋参牦牛骨粉 · 增强免疫力增加骨密度 · 中老年补品营养品</div>
+          <div class="p-price">¥200~250<br/><small>客单价区间</small></div>
         </div>
         <div class="highlight-title">核心效率指标 vs 保健食品大盘</div>
         <div class="vs-row">
-          <div class="vs-item"><div class="v-num" style="color:#059669">1.2~1.3</div><div class="v-lbl">ROI</div><div class="v-cmp up">↑优于10%</div></div>
-          <div class="vs-item"><div class="v-num">3~4%</div><div class="v-lbl">CVR</div><div class="v-cmp flat">高客单合理</div></div>
-          <div class="vs-item"><div class="v-num">1~2%</div><div class="v-lbl">CTR</div><div class="v-cmp flat">精准人群</div></div>
-          <div class="vs-item"><div class="v-num">¥160~180</div><div class="v-lbl">CPM</div><div class="v-cmp flat">高客单合理</div></div>
+          <div class="vs-item"><div class="v-num">1.2~1.3</div><div class="v-lbl">ROI</div><div class="v-cmp up">↑环比提升</div></div>
+          <div class="vs-item"><div class="v-num">3~4%</div><div class="v-lbl">CVR</div><div class="v-cmp flat">有提升空间</div></div>
+          <div class="vs-item"><div class="v-num">2~3%</div><div class="v-lbl">CTR</div><div class="v-cmp flat">接近大盘</div></div>
+          <div class="vs-item"><div class="v-num">¥150~170</div><div class="v-lbl">CPM</div><div class="v-cmp flat">品牌溢价</div></div>
         </div>
       </section>
 
@@ -177,7 +177,7 @@
         <div class="sec-title"><div class="num">2</div><h2>投放数据全景</h2><div class="line"></div></div>
         <div class="highlight-title">近30天 日耗持续上涨趋势</div>
         <div class="chart-card"><div class="chart-wrap"><canvas id="trend"></canvas></div></div>
-        <div class="chart-note">↗ 日耗环比 +76%，规模稳步上行</div>
+        <div class="chart-note">↗ 品牌力驱动，投放规模稳步上行</div>
       </section>
 
     </div>
@@ -187,10 +187,10 @@
       <section class="block">
         <div class="sec-title"><div class="num">3</div><h2>峰值冲量能力</h2><div class="line"></div></div>
         <div class="peak-grid">
-          <div class="peak-item"><div class="pk-v">10~12万</div><div class="pk-l">历史峰值日耗</div><div class="pk-s">大促单日</div></div>
-          <div class="peak-item"><div class="pk-v">12~15万</div><div class="pk-l">冲量能力(+20%)</div><div class="pk-s">大促可冲量级</div></div>
-          <div class="peak-item"><div class="pk-v">3~5万</div><div class="pk-l">日常日耗</div><div class="pk-s">近30天日均</div></div>
-          <div class="peak-item"><div class="pk-v">2.8x</div><div class="pk-l">峰值/日常弹性</div><div class="pk-s">冲量弹性</div></div>
+          <div class="peak-item"><div class="pk-v">5~8万</div><div class="pk-l">历史峰值日耗</div><div class="pk-s">大促单日</div></div>
+          <div class="peak-item"><div class="pk-v">8~10万</div><div class="pk-l">冲量能力(+20%)</div><div class="pk-s">大促可冲量级</div></div>
+          <div class="peak-item"><div class="pk-v">1~3万</div><div class="pk-l">日常日耗</div><div class="pk-s">近30天日均</div></div>
+          <div class="peak-item"><div class="pk-v">3.8x</div><div class="pk-l">GMV 膨胀率</div><div class="pk-s">全场最高</div></div>
         </div>
       </section>
 
@@ -199,25 +199,19 @@
         <div class="force-list">
           <div class="force-item f-prod">
             <div class="force-head"><span class="force-tag">🛒 商品力</span><span class="force-sub">从「有货」到「好卖」</span></div>
-            <div class="force-body">高纯浓度 omega3 深海鱼油，<b>长辈送礼</b>场景精准；客单价区间 ¥400~450 高端定位，品牌力降低决策门槛</div>
+            <div class="force-body">洋参牦牛骨粉中老年补品，<b>品牌E</b>认知强；客单价区间 ¥200~250 品牌定位，降低决策门槛</div>
           </div>
           <div class="force-item f-content">
             <div class="force-head"><span class="force-tag">🎬 内容力</span><span class="force-sub">从「有素材」到「强互动」</span></div>
-            <div class="force-body">高纯浓度卖点讲解专业到位、长辈送礼情感切入；<b>商品点击率 55.1%</b>（优于大盘 128%），高端人群承接力强</div>
+            <div class="force-body">创意重复度仅 <b>10%</b>（全场最低）素材生态极健康；商品点击率 48.2% 优于大盘 100%，讲解力强</div>
           </div>
           <div class="force-item f-oper">
             <div class="force-head"><span class="force-tag">📈 经营力</span><span class="force-sub">日销 × 大场 双轮驱动</span></div>
-            <div class="force-body">日耗环比 <b>+76%</b> 快速增长、18 账户并行；历史峰值达日均 2.8 倍，大促可冲 12~15万/日，高客单大场承接力足</div>
+            <div class="force-body">141 账户并行基建充足；历史峰值达日均 <b>3.8 倍</b>（全场最高），大促爆发力领先</div>
           </div>
           <div class="force-item f-deliver">
-            <div class="force-head"><span class="force-tag">🚀 投放力</span><span class="force-sub">从「手动」到「智能」· 含直播漏斗</span></div>
-            <div class="force-body">短直双开智投 <b>ROI 优于非智投</b>、智投渗透率 76%；下单 ROI 1.2~1.3 品类最高，高客单稳健变现</div>
-            <div class="ff-wrap">
-              <div class="ff-title">直播转化漏斗 · 进播 → 商品点击 → 下单</div>
-              <div class="ff-row"><span class="ff-lbl">进播率</span><div class="ff-bar" style="width:31%;background:#3E79F0">1.0%</div></div>
-              <div class="ff-row"><span class="ff-lbl">商品点击率</span><div class="ff-bar" style="width:69%;background:#76C84D">55.1% · 优于大盘 128%</div></div>
-              <div class="ff-row"><span class="ff-lbl">下单率</span><div class="ff-bar" style="width:37%;background:#FFAE19">9.3%</div></div>
-            </div>
+            <div class="force-head"><span class="force-tag">🚀 投放力</span><span class="force-sub">从「手动」到「智能」</span></div>
+            <div class="force-body">ROI 环比稳步提升；推直播链路<b>智投小试 ROI 亮眼</b>，接入智投可进一步拉升 CVR 与跑量效率</div>
           </div>
         </div>
       </section>
@@ -227,11 +221,11 @@
   <section class="block live-block">
     <div class="sec-title"><div class="num">★</div><h2>直播间画面 · 人货场三力</h2><div class="line"></div></div>
     <div class="live-inner">
-      <div class="live-shot"><img src="保健食品品类直播间截图/汤臣.png" alt="汤臣倍健直播间实拍" /></div>
+      <div class="live-shot"><img src="保健食品品类直播间截图/品牌E.jpg" alt="品牌E直播间实拍" /></div>
       <div class="live-analysis">
-        <div class="la-item la-p"><div class="la-ico">人</div><div><div class="la-t">主播力 · 科学讲解</div><div class="la-d">男主播戴镜专业出镜，手持鱼油 + 水杯实物演示，「高纯鱼油 · 科学守护」专业人设建立权威感</div></div></div>
-        <div class="la-item la-g"><div class="la-ico">货</div><div><div class="la-t">货品力 · 痛点精准</div><div class="la-d"><b>96% 高纯 Omega-3</b> 鱼油，买3/4瓶赠礼盒装组合提客单；适用人群「手麻脚麻 / 头晕 / 胸闷心悸」清单精准戳症</div></div></div>
-        <div class="la-item la-s"><div class="la-ico">场</div><div><div class="la-t">场景力 · 双认证背书</div><div class="la-d">618 返场大促氛围，<b>蓝帽认证 + IFOS 五星认证</b> 双背书，22道专利锁鲜 / 北纬87°极地深海强化高端信任</div></div></div>
+        <div class="la-item la-p"><div class="la-ico">人</div><div><div class="la-t">主播力 · 口碑实证</div><div class="la-d">手持手机展示用户真实好评截图，「5天试喝 · 不怕忽悠不怕骗」用真实反馈快速建立信任</div></div></div>
+        <div class="la-item la-g"><div class="la-ico">货</div><div><div class="la-t">货品力 · 组合让利</div><div class="la-d">洋参牦牛骨髓粉 <b>¥179 赠燕麦片 ¥58</b>，适用人群「40-100岁 / 关节僵麻 / 骨骼隐痛 / 免疫力低」精准锁定</div></div></div>
+        <div class="la-item la-s"><div class="la-ico">场</div><div><div class="la-t">场景力 · 产地溯源</div><div class="la-d">雪山牦牛草原产地实景溯源，骨痛人体图可视化痛点，<b>免费试喝 · 不满意退</b> 降低决策门槛</div></div></div>
       </div>
     </div>
   </section>
@@ -239,24 +233,24 @@
   <div class="block" style="margin-top:16px;position:relative;z-index:2">
     <div class="sec-title"><div class="num">5</div><h2>核心指标六维</h2><div class="line"></div></div>
     <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
-      <div class="kpi"><div class="num orange">3~5<span class="unit">万/日</span></div><div class="lbl">日耗规模<br/>环比 +76%</div></div>
-      <div class="kpi"><div class="num green">1.2~1.3</div><div class="lbl">下单 ROI<br/>品类最高</div></div>
-      <div class="kpi"><div class="num">3~4<span class="unit">%</span></div><div class="lbl">CVR<br/>高客单合理</div></div>
-      <div class="kpi"><div class="num blue">55.1<span class="unit">%</span></div><div class="lbl">商品点击率<br/>优于大盘128%</div></div>
-      <div class="kpi"><div class="num">¥400~450</div><div class="lbl">客单价区间<br/>高端定位</div></div>
-      <div class="kpi"><div class="num">18</div><div class="lbl">投放账户数<br/>基建规模充足</div></div>
+      <div class="kpi"><div class="num orange">1~3<span class="unit">万/日</span></div><div class="lbl">日耗规模<br/>品牌力驱动</div></div>
+      <div class="kpi"><div class="num">1.2~1.3</div><div class="lbl">下单 ROI<br/>环比提升</div></div>
+      <div class="kpi"><div class="num">3~4<span class="unit">%</span></div><div class="lbl">CVR<br/>有提升空间</div></div>
+      <div class="kpi"><div class="num blue">48.2<span class="unit">%</span></div><div class="lbl">商品点击率<br/>优于大盘100%</div></div>
+      <div class="kpi"><div class="num">¥200~250</div><div class="lbl">客单价区间<br/>品牌定位</div></div>
+      <div class="kpi"><div class="num green">10<span class="unit">%</span></div><div class="lbl">创意重复度<br/>全场最低·极健康</div></div>
     </div>
   </div>
 
-  <div class="footer">汤臣倍健官方甄选 · 辅助降血脂赛道案例纸 · 数据周期近30天</div>
+  <div class="footer">品牌E官方直播间 · 增强免疫力+骨密度赛道案例纸 · 数据周期近30天</div>
 </div>
 
 <script>
 const labels=["第1周初","","","","第1周末","","第2周","","","","第3周","","","","第3周末","","","","第4周","","","","近期"];
-// 案例2·汤臣倍健·降血脂：前期平缓后段加速放量 + 会员日次峰 + 换季加投次峰 + 品牌专场主峰（中后段达峰）
-const cost=[22,28,30,36,42,48,52,64,70,76,88,96,110,130,156,148,160,176,158,168,150,162];
-const peaks=[{idx:17,label:'品牌专场',main:true},{idx:14,label:'换季加投',main:false},{idx:10,label:'会员日',main:false}];
-renderTrend('trend',labels,cost,'#3E79F0',peaks);
+// 案例5·品牌E·免疫骨密度：双峰深谷结构 + 端午次峰 + 换季加投次峰 + 流感季主峰（尾段达峰）
+const cost=[22,30,26,40,56,48,70,88,76,104,124,108,96,120,142,158,140,128,150,166,182,172];
+const peaks=[{idx:20,label:'流感季',main:true},{idx:15,label:'换季加投',main:false},{idx:10,label:'端午',main:false}];
+renderTrend('trend',labels,cost,'#11CFCF',peaks);
 function renderTrend(id,labels,cost,color,peaks){
   const mainIdx=peaks.find(p=>p.main).idx;
   const peakSet=peaks;
