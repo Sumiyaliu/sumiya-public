@@ -40,12 +40,12 @@
     }
 
     /* 隐藏滚动条 */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
 
     /* 文件夹卡片主体过渡 */
@@ -68,7 +68,7 @@
 </head>
 <body class="min-h-screen text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900 pb-16">
 
-  <!-- 继承原本的头部和仪表盘结构 -->
+  <!-- 1. 顶部海报和分布看板 (保持最前) -->
   <div style="max-width: 850px; margin: 0 auto; background-color: #fbfaf5; padding: 25px 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.06); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #2d2a26; line-height: 1.6;">
 
   <!-- 顶部视觉海报 -->
@@ -154,48 +154,12 @@
     </div>
   </div>
 
-  <!-- 爆品文案与带货密码 -->
-  <div style="background-color: #ffffff; border-radius: 14px; padding: 22px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e9e7e0;">
-    <h3 style="margin: 0 0 15px 0; font-size: 15px; color: #426b50; font-weight: 700; display: flex; align-items: center; gap: 6px;">
-      💡 爆品创意黄金法则与高频词
-    </h3>
-    
-    <div style="margin-bottom: 18px;">
-      <div style="font-size: 12px; color: #73706c; font-weight: 600; margin-bottom: 8px;">🏷️ 爆品标题与卖点高频核心词云：</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">到手 (37次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">正宗铁棍 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">山药面非 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">油炸轻食 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">代餐粗粮 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">淮山方便 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">面饼免煮 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">冲泡袋装 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">多送 (12次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">正宗颗粒 (12次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">装五香卤 (12次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">料包炖肉 (12次)</span> 
-      </div>
-    </div>
-    
-    <div style="border-top: 1px dashed #eeebe3; padding-top: 15px;">
-      <div style="font-size: 12px; color: #73706c; font-weight: 600; margin-bottom: 10px;">🎯 爆款视频带货密码提炼：</div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
-        <div style="background-color: #fdfaf5; border-left: 3px solid #ff8c00; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
-          <strong style="color: #ff8c00; font-size: 13px;">1. 极致价格锚点轰炸 💣</strong><br>
-          文案多用“9.9到手40包”、“两位数买西洋参”、“拍1发8袋”，用低客单、多赠品制造强烈的“超值占便宜”心理，降低转化决策门槛。
-        </div>
-        <div style="background-color: #fafbf9; border-left: 3px solid #426b50; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
-          <strong style="color: #426b50; font-size: 13px;">2. 懒人即食 & 早餐场景代入 ⏰</strong><br>
-          围绕“免煮冲泡”、“开盖即食”、“早上来一碗，精神一整天”切入。针对高压、快节奏生活提供简单、美味且省时的代餐解决方案。
-        </div>
-        <div style="background-color: #fafbf9; border-left: 3px solid #6b8e23; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
-          <strong style="color: #6b8e23; font-size: 13px;">3. 绿色健康与低卡低糖轻食 🥗</strong><br>
-          高频主打“0蔗糖”、“桑叶苦瓜芹菜面对身体好”、“非油炸粗粮代餐”。切中现代人对三高、减脂、养生与配料表干净的极致追求。
-        </div>
-        <div style="background-color: #fdfaf5; border-left: 3px solid #d2691e; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
-          <strong style="color: #d2691e; font-size: 13px;">4. 厂家直销与零风险承诺 🛡️</strong><br>
-          文案打出“300年非遗匠心”、“古法农家土榨”、“厂家直销，不满意空盒也退”。通过极强的售后兜底，瞬间击穿消费者的信任防线。
-        </div>
-      </div>
-    </div>
-  </div>
-
   
 
-  <!-- ==================== 新增：拟物化品类 Tab 切换区域 ==================== -->
+  <!-- 2. 品类 Tab 切换区域 (紧接着分布看板，让页面极速展现核心爆品) -->
   <div style="max-width: 850px; margin: 30px auto 0 auto; padding: 0 10px; box-sizing: border-box;">
     
-    <!-- 品类选择 Tab 栏 (支持手机端丝滑横向滑动，隐藏滚动条) -->
+    <!-- 品类选择 Tab 栏 (支持横向滑动，隐藏滚动条) -->
     <div class="flex items-end overflow-x-auto no-scrollbar gap-1.5 pl-2 select-none" id="category-tabs-container">
       
     <div id="tab-header-0" onclick="switchCategory(0)" class="folder-tab px-5 py-3 text-xs md:text-sm font-black flex items-center gap-1.5 cursor-pointer select-none transition-all duration-300 active-tab text-forest">
@@ -3891,33 +3855,71 @@
     </div>
   </div>
 
+  <!-- 3. 爆品创意黄金法则与高频词 (成功挪动至最底部，起到了全局总结升华的作用) -->
+  <div style="max-width: 850px; margin: 30px auto 0 auto; padding: 0 10px; box-sizing: border-box;">
+    <!-- 爆品文案与带货密码 -->
+  <div style="background-color: #ffffff; border-radius: 14px; padding: 22px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e9e7e0;">
+    <h3 style="margin: 0 0 15px 0; font-size: 15px; color: #426b50; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+      💡 爆品创意黄金法则与高频词
+    </h3>
+    
+    <div style="margin-bottom: 18px;">
+      <div style="font-size: 12px; color: #73706c; font-weight: 600; margin-bottom: 8px;">🏷️ 爆品标题与卖点高频核心词云：</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">到手 (37次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">正宗铁棍 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">山药面非 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">油炸轻食 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">代餐粗粮 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">淮山方便 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">面饼免煮 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">冲泡袋装 (20次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">多送 (12次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">正宗颗粒 (12次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">装五香卤 (12次)</span> <span style="background-color: #f2f7f3; color: #426b50; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; border: 1px solid #dbe6e0; margin-bottom: 6px; white-space: nowrap;">料包炖肉 (12次)</span> 
+      </div>
+    </div>
+    
+    <div style="border-top: 1px dashed #eeebe3; padding-top: 15px;">
+      <div style="font-size: 12px; color: #73706c; font-weight: 600; margin-bottom: 10px;">🎯 爆款视频带货密码提炼：</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <div style="background-color: #fdfaf5; border-left: 3px solid #ff8c00; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
+          <strong style="color: #ff8c00; font-size: 13px;">1. 极致价格锚点轰炸 💣</strong><br>
+          文案多用“9.9到手40包”、“两位数买西洋参”、“拍1发8袋”，用低客单、多赠品制造强烈的“超值占便宜”心理，降低转化决策门槛。
+        </div>
+        <div style="background-color: #fafbf9; border-left: 3px solid #426b50; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
+          <strong style="color: #426b50; font-size: 13px;">2. 懒人即食 & 早餐场景代入 ⏰</strong><br>
+          围绕“免煮冲泡”、“开盖即食”、“早上来一碗，精神一整天”切入。针对高压、快节奏生活提供简单、美味且省时的代餐解决方案。
+        </div>
+        <div style="background-color: #fafbf9; border-left: 3px solid #6b8e23; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
+          <strong style="color: #6b8e23; font-size: 13px;">3. 绿色健康与低卡低糖轻食 🥗</strong><br>
+          高频主打“0蔗糖”、“桑叶苦瓜芹菜面对身体好”、“非油炸粗粮代餐”。切中现代人对三高、减脂、养生与配料表干净的极致追求。
+        </div>
+        <div style="background-color: #fdfaf5; border-left: 3px solid #d2691e; padding: 10px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
+          <strong style="color: #d2691e; font-size: 13px;">4. 厂家直销与零风险承诺 🛡️</strong><br>
+          文案打出“300年非遗匠心”、“古法农家土榨”、“厂家直销，不满意空盒也退”。通过极强的售后兜底，瞬间击穿消费者的信任防线。
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
   <script>
     // 品类切换核心 JavaScript
     function switchCategory(idx) {
-      // 1. 隐藏所有品类容器
+      // 隐藏所有
       const contents = document.querySelectorAll('.folder-content');
       contents.forEach(content => content.classList.remove('active'));
 
-      // 2. 显示选中的品类容器
+      // 显示选中
       const targetContent = document.getElementById('tab-content-' + idx);
       if (targetContent) {
         targetContent.classList.add('active');
       }
 
-      // 3. 更新所有 Tab 样式为未选中
+      // 更新选中 Tab 样式
       const tabs = document.querySelectorAll('.folder-tab');
       tabs.forEach(tab => {
         tab.classList.remove('active-tab', 'text-forest');
         tab.classList.add('text-slate-400', 'bg-transparent');
       });
 
-      // 4. 高亮选中的 Tab
       const activeTab = document.getElementById('tab-header-' + idx);
       if (activeTab) {
         activeTab.classList.remove('text-slate-400', 'bg-transparent');
         activeTab.classList.add('active-tab', 'text-forest');
         
-        // 自动平滑滚动 Tab 栏到中心位置 (极佳的移动端体验)
+        // 自动滚动到正中央
         activeTab.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
