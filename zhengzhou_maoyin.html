@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郑州袤垠 爆款素材全景创意与数据看板</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, 'SF Pro SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen">
+
+    <!-- 顶栏导航 -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-lg tracking-wider">M</div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900 tracking-tight">郑州袤垠 爆款素材全景看板</h1>
+                    <p class="text-xs text-slate-500 font-medium">数据与创意富媒体深度分析 • 生鲜酒水食品</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+                    数据已闭环
+                </span>
+                <span class="text-sm text-slate-500 font-medium">分析日期: 2026-07-15</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- SECTION 1: 核心数据大盘 -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">📊</span>
+                    <h2 class="text-xl font-bold text-slate-900">核心指标均值与素材气泡矩阵</h2>
+                </div>
+                <p class="text-sm text-slate-500">41 条高消耗（均为高效）素材视频的数据分布特征（气泡大小=平均播放时长）</p>
+            </div>
+
+            <!-- Plotly 均值柱状图 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 class="text-sm font-semibold text-slate-600 mb-4 uppercase tracking-wider">各消耗区间核心数据对比</h3>
+                <div class="w-full overflow-x-auto">
+                    <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="4e71e69f-414e-43e1-be88-cff3ab7df674" class="plotly-graph-div" style="height:320px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("4e71e69f-414e-43e1-be88-cff3ab7df674")) {                    Plotly.newPlot(                        "4e71e69f-414e-43e1-be88-cff3ab7df674",                        [{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"CTR(%)","showlegend":false,"text":{"dtype":"f8","bdata":"CtejcD0KFEDNzMzMzMwRQBSuR+F6FBZA"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"QDVeukkMFEDM57183ssRQPEWSFD8GBZA"},"type":"bar","xaxis":"x","yaxis":"y"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"3s快滑率(%)","showlegend":false,"text":{"dtype":"f8","bdata":"XI\u002fC9ShcKEBcj8L1KNwhQAAAAAAAAB9A"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"XI\u002fC9ShcKEDbN6x9w9ohQMqhRbbz\u002fR5A"},"type":"bar","xaxis":"x2","yaxis":"y2"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"平均播放时长(s)","showlegend":false,"text":{"dtype":"f8","bdata":"cT0K16NwNEBcj8L1KBw+QMP1KFyPwj9A"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"cT0K16NwNEAc1r5h7Rs+QN0kBoGVwz9A"},"type":"bar","xaxis":"x3","yaxis":"y3"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"CVR(%)","showlegend":false,"text":{"dtype":"f8","bdata":"PQrXo3A9HUA9CtejcL0jQOF6FK5H4SRA"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"PgrXo3A9HUDARvxrxL8jQN0CCYof4yRA"},"type":"bar","xaxis":"x4","yaxis":"y4"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.20500000000000002]},"yaxis":{"anchor":"x","domain":[0.0,1.0]},"xaxis2":{"anchor":"y2","domain":[0.265,0.47000000000000003]},"yaxis2":{"anchor":"x2","domain":[0.0,1.0]},"xaxis3":{"anchor":"y3","domain":[0.53,0.7350000000000001]},"yaxis3":{"anchor":"x3","domain":[0.0,1.0]},"xaxis4":{"anchor":"y4","domain":[0.7949999999999999,1.0]},"yaxis4":{"anchor":"x4","domain":[0.0,1.0]},"annotations":[{"font":{"size":16},"showarrow":false,"text":"平均 CTR (%)","x":0.10250000000000001,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 3s快滑 (%)","x":0.36750000000000005,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 播放时长 (s)","x":0.6325000000000001,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 CVR (%)","x":0.8975,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"margin":{"t":40,"b":30,"l":30,"r":30},"font":{"family":"微软雅黑, sans-serif","size":11},"height":320},                        {"responsive": true}                    )                };            </script>        </div>
+                </div>
+            </div>
+
+            <!-- Plotly 散点气泡分布图 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 class="text-sm font-semibold text-slate-600 mb-4 uppercase tracking-wider">素材指标矩阵 (横轴 CTR, 纵轴 CVR)</h3>
+                <div class="w-full overflow-x-auto">
+                    <div>                            <div id="d8ed280f-b4ea-45a9-897f-9419af0b6cbd" class="plotly-graph-div" style="height:450px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("d8ed280f-b4ea-45a9-897f-9419af0b6cbd")) {                    Plotly.newPlot(                        "d8ed280f-b4ea-45a9-897f-9419af0b6cbd",                        [{"customdata":{"dtype":"f8","bdata":"AAAAAAAAMUBmZmZmZuYzQM3MzMzMzAxAAAAAAACANEAzMzMzMzMmQM3MzMzMDEBAZmZmZmZmKECamZmZmZknQAAAAAAAADFAZmZmZmbmMUA=","shape":"5, 2"},"hovertemplate":"消耗区间=10万+\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"10万+","marker":{"color":"#FF4D4F","size":{"dtype":"f8","bdata":"ZmZmZmbmM0AAAAAAAIA0QM3MzMzMDEBAmpmZmZmZJ0BmZmZmZuYxQA=="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"10万+","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"w\u002fUoXI\u002fCE0CamZmZmZkXQAAAAAAAAAxA9ihcj8L1FkDsUbgehesTQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"MzMzMzMzHED2KFyPwvUdQClcj8L1KCFAw\u002fUoXI\u002fCG0D2KFyPwvUZQA=="},"yaxis":"y","type":"scatter"},{"customdata":{"dtype":"f8","bdata":"zczMzMzM7D9mZmZmZuY9QAAAAAAAAOA\u002fMzMzMzOzRkAAAAAAAAAAAAAAAAAAAC1AzczMzMzMN0BmZmZmZmY2QM3MzMzMzDtAZmZmZmZmJkAzMzMzMzMyQJqZmZmZGThAAAAAAAAAAAAzMzMzMzNPQAAAAAAAAClAAAAAAACANUAzMzMzMzMXQAAAAAAAQEFAMzMzMzMzIUDNzMzMzEw1QJqZmZmZmbk\u002fAAAAAAAARkA=","shape":"11, 2"},"hovertemplate":"消耗区间=5万~10万\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"5万~10万","marker":{"color":"#FF9C6E","size":{"dtype":"f8","bdata":"ZmZmZmbmPUAzMzMzM7NGQAAAAAAAAC1AZmZmZmZmNkBmZmZmZmYmQJqZmZmZGThAMzMzMzMzT0AAAAAAAIA1QAAAAAAAQEFAzczMzMxMNUAAAAAAAABGQA=="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"5万~10万","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"SOF6FK5HDUApXI\u002fC9SgRQBSuR+F6FBdAzczMzMzMDEBI4XoUrkcPQFK4HoXrURBAMzMzMzMzFUDD9Shcj8IRQEjhehSuRxNAMzMzMzMzEkAUrkfhehQSQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"KVyPwvUoJUDsUbgehWsgQGZmZmZm5iFAFK5H4XoUJUDD9Shcj0IlQI\u002fC9ShcDydA7FG4HoXrIkAzMzMzM7MlQHE9CtejcCNAPQrXo3A9IkCPwvUoXA8iQA=="},"yaxis":"y","type":"scatter"},{"customdata":{"dtype":"f8","bdata":"mpmZmZmZyT+amZmZmdlIQAAAAAAAAC1AzczMzMxMOECamZmZmZkTQM3MzMzMTD1AAAAAAAAAHECamZmZmZk\u002fQJqZmZmZmSJAMzMzMzMzK0CamZmZmZkNQGZmZmZm5kFAmpmZmZmZyT8zMzMzMzNCQAAAAAAAAPA\u002fAAAAAAAARkDNzMzMzMwQQJqZmZmZGUdAZmZmZmZmBkBmZmZmZuZEQGZmZmZm5jlAZmZmZmZmM0CamZmZmZm5PwAAAAAAQEdAAAAAAAAAMkDNzMzMzMwzQJqZmZmZmck\u002fAAAAAABATkAAAAAAAAAAAJqZmZmZGUJAZmZmZmZm5j+amZmZmdlLQJqZmZmZmck\u002fAAAAAAAAQUAzMzMzMzMtQGZmZmZmZjBAMzMzMzMzJEAAAAAAAIBAQAAAAAAAAAAAMzMzMzMzNEAAAAAAAAAAADMzMzMzszZAzczMzMxMOkAzMzMzMzMwQJqZmZmZmRNAZmZmZmZmOUBmZmZmZmY3QDMzMzMzMylAAAAAAACANUDNzMzMzMw2QA==","shape":"25, 2"},"hovertemplate":"消耗区间=1万~5万\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"1万~5万","marker":{"color":"#FFC069","size":{"dtype":"f8","bdata":"mpmZmZnZSEDNzMzMzEw4QM3MzMzMTD1AmpmZmZmZP0AzMzMzMzMrQGZmZmZm5kFAMzMzMzMzQkAAAAAAAABGQJqZmZmZGUdAZmZmZmbmREBmZmZmZmYzQAAAAAAAQEdAzczMzMzMM0AAAAAAAEBOQJqZmZmZGUJAmpmZmZnZS0AAAAAAAABBQGZmZmZmZjBAAAAAAACAQEAzMzMzMzM0QDMzMzMzszZAMzMzMzMzMEBmZmZmZmY5QDMzMzMzMylAzczMzMzMNkA="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"1万~5万","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"SOF6FK5HE0AUrkfhehQVQEjhehSuRxFAuB6F61G4E0DXo3A9CtcWQM3MzMzMzBlAFK5H4XoUDkDD9Shcj8IaQBSuR+F6lCFAKVyPwvUoFEBcj8L1KFwRQIXrUbgehRJAZmZmZmZmE0DhehSuR+ESQNejcD0K1xNA16NwPQrXFECF61G4HoUQQAAAAAAAgCBArkfhehSuE0BI4XoUrkccQNejcD0K1ydASOF6FK5HD0CamZmZmZkPQAAAAAAAABJA4XoUrkfhE0A="},"xaxis":"x","y":{"dtype":"f8","bdata":"w\u002fUoXI9CK0CuR+F6FC4wQOxRuB6FayFAFK5H4XqULkCuR+F6FK4dQJqZmZmZGSBA4XoUrkfhKUCF61G4HgUmQHE9CtejcBlAUrgehetRL0AUrkfhetQwQGZmZmZm5iFAPQrXo3A9IkAfhetRuJ4vQB+F61G4niJA7FG4HoVrLUDXo3A9CtcnQLgehetRuBZAcT0K16NwGUDD9Shcj8IXQD0K16NwPf4\u002f16NwPQrXI0D2KFyPwvUlQPYoXI\u002fC9R9AXI\u002fC9SjcJEA="},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"点击率 CTR (%)"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"转化率 CVR (%)"}},"legend":{"title":{"text":"消耗区间"},"tracegroupgap":0,"itemsizing":"constant"},"margin":{"t":20,"b":30,"l":30,"r":30},"font":{"family":"微软雅黑, sans-serif","size":11},"height":450},                        {"responsive": true}                    )                };            </script>        </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- SECTION 1.5: 素材生产方式与 AIGC 效果洞察 -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">⚡</span>
+                    <h2 class="text-xl font-bold text-slate-900">素材生产方式与 AIGC 应用效果洞察</h2>
+                </div>
+                <span class="text-xs bg-purple-100 text-purple-800 font-semibold px-2.5 py-1 rounded-full uppercase">
+                    AIGC 投放效能下钻看板
+                </span>
+            </div>
+
+            <!-- 数据总览与时间趋势网格 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- 卡片 1: 生产方式效果对比矩阵 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-bold text-slate-800">不同生产方式核心数据对比</h3>
+                            <span class="text-xs text-slate-400 font-medium">主视觉 × 整体双维度</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-slate-100 text-xs font-bold text-slate-400 tracking-wider">
+                                        <th class="pb-2">生产类型</th>
+                                        <th class="pb-2 text-right">消耗 (占比)</th>
+                                        <th class="pb-2 text-right">素材数</th>
+                                        <th class="pb-2 text-right">CTR</th>
+                                        <th class="pb-2 text-right">CVR</th>
+                                        <th class="pb-2 text-right">ROI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-xs divide-y divide-slate-50 font-medium text-slate-600">
+                                    <tr class="hover:bg-slate-50/50">
+                                        <td class="py-3 font-semibold text-slate-800 flex items-center space-x-1">
+                                            <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                            <span>纯人工</span>
+                                        </td>
+                                        <td class="py-3 text-right">560.0万 <span class="text-slate-400 font-normal">(66.4%)</span></td>
+                                        <td class="py-3 text-right">18,255</td>
+                                        <td class="py-3 text-right text-slate-900">4.20%</td>
+                                        <td class="py-3 text-right text-slate-900">8.50%</td>
+                                        <td class="py-3 text-right text-slate-900">1.699</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/50">
+                                        <td class="py-3 font-semibold text-slate-800 flex items-center space-x-1">
+                                            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                                            <span>纯AIGC</span>
+                                        </td>
+                                        <td class="py-3 text-right">197.2万 <span class="text-slate-400 font-normal">(23.4%)</span></td>
+                                        <td class="py-3 text-right">19,067</td>
+                                        <td class="py-3 text-right text-slate-900">2.31%</td>
+                                        <td class="py-3 text-right text-slate-900">6.87%</td>
+                                        <td class="py-3 text-right text-slate-900">1.677</td>
+                                    </tr>
+                                    <tr class="bg-blue-50/50 font-semibold border-y border-blue-100/50">
+                                        <td class="py-3 font-bold text-blue-700 flex items-center space-x-1">
+                                            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                                            <span>混合AIGC</span>
+                                        </td>
+                                        <td class="py-3 text-right text-blue-700">86.6万 <span class="text-blue-400 font-normal">(10.3%)</span></td>
+                                        <td class="py-3 text-right text-blue-700">3,074</td>
+                                        <td class="py-3 text-right text-blue-700">3.25%</td>
+                                        <td class="py-3 text-right text-blue-700">9.82%</td>
+                                        <td class="py-3 text-right text-blue-800 font-bold">1.859</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-blue-50/70 p-3.5 rounded-xl border border-blue-100 flex items-start space-x-2 text-xs">
+                        <span class="text-blue-500 font-bold">💡 关键发现:</span>
+                        <p class="text-blue-800 font-medium">混合AIGC素材（<strong class="text-blue-900">人工主视觉 + AIGC文案/组件</strong>）效率达到金字塔尖！其 <strong class="text-blue-900">CVR高达9.82%，C-ROI高达1.859</strong>，比纯人工高 9.4%，比纯AIGC高 10.9%。</p>
+                    </div>
+                </div>
+
+                <!-- 卡片 2: 日级趋势与阶段演进时间轴 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-base font-bold text-slate-800 mb-4">AIGC 消耗占比随爆量阶段演进</h3>
+                    
+                    <!-- 垂直时间轴 -->
+                    <div class="relative pl-6 border-l border-slate-100 space-y-4 text-xs font-medium text-slate-500">
+                        <!-- 节点 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[30px] top-0 bg-purple-100 text-purple-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">1</span>
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">6/22 冷启动期 (AIGC占绝对主导)</h4>
+                                    <p class="text-slate-500 mt-0.5">总消耗 15.7万 • AIGC消耗 9.08万 • <span class="text-purple-600 font-bold">占比高达 57.7%</span></p>
+                                </div>
+                                <span class="bg-purple-50 text-purple-600 border border-purple-100 px-2 py-0.5 rounded text-[10px]">智投冷启先锋</span>
+                            </div>
+                        </div>
+                        <!-- 节点 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[30px] top-0 bg-blue-100 text-blue-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">2</span>
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">6/24 首次放量 (AIGC协助规模化)</h4>
+                                    <p class="text-slate-500 mt-0.5">总消耗 41.8万 • AIGC消耗 16.28万 • <span class="text-blue-600 font-bold">占比 38.9%</span></p>
+                                </div>
+                                <span class="bg-blue-50 text-blue-600 border border-blue-100 px-2 py-0.5 rounded text-[10px]">批量填充素材</span>
+                            </div>
+                        </div>
+                        <!-- 节点 3 -->
+                        <div class="relative">
+                            <span class="absolute -left-[30px] top-0 bg-slate-100 text-slate-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">3</span>
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">6/29 放量高峰 (人工视觉全面接管)</h4>
+                                    <p class="text-slate-500 mt-0.5">总消耗 79.9万 • AIGC消耗 10.34万 • <span class="text-slate-600 font-bold">占比回落至 12.9%</span></p>
+                                </div>
+                                <span class="bg-slate-50 text-slate-500 border border-slate-100 px-2 py-0.5 rounded text-[10px]">优质人工接管</span>
+                            </div>
+                        </div>
+                        <!-- 节点 4 -->
+                        <div class="relative">
+                            <span class="absolute -left-[30px] top-0 bg-amber-100 text-amber-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">4</span>
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">7/02~7/03 峰值期 (AIGC二次补量)</h4>
+                                    <p class="text-slate-500 mt-0.5">总消耗 167.0万 • AIGC消耗 48.08万 • <span class="text-amber-600 font-bold">占比回升至 28.8%</span></p>
+                                </div>
+                                <span class="bg-amber-50 text-amber-600 border border-amber-100 px-2 py-0.5 rounded text-[10px]">合规大户放量</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- AIGC产品下钻与核心结论 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- 卡片 3: AIGC 产品能力与文案四象限分析 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5 hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-base font-bold text-slate-800 border-b border-slate-50 pb-2">AIGC 内部能力效能拆解</h3>
+                    
+                    <!-- 产品模块横向进度对比 -->
+                    <div class="space-y-4 text-xs font-semibold text-slate-600">
+                        <!-- 数字人 -->
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-800 flex items-center space-x-1">
+                                    <span class="text-emerald-500">🚀</span>
+                                    <span>单人数字人 (AIGC 效率金牌)</span>
+                                </span>
+                                <span class="text-emerald-600">C-ROI 1.753 (超越纯人工 1.700) • 消耗占比 36%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full rounded-full" style="width: 36.1%"></div>
+                            </div>
+                        </div>
+                        <!-- 警示语 -->
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-800 flex items-center space-x-1">
+                                    <span class="text-indigo-500">⚖️</span>
+                                    <span>警示语修复 (AIGC 消耗中坚)</span>
+                                </span>
+                                <span class="text-indigo-600">C-ROI 1.566 • CVR 偏低 • 消耗占比 53.5% (规模担当)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-indigo-500 h-full rounded-full" style="width: 53.5%"></div>
+                            </div>
+                        </div>
+                        <!-- 预设模板 -->
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-800 flex items-center space-x-1">
+                                    <span class="text-rose-500">⚠️</span>
+                                    <span>预设模板 (典型量多效弱)</span>
+                                </span>
+                                <span class="text-rose-600">素材数高达 11,591 (占AIGC 61%) • CTR仅 0.67% • 消耗占比 9.3%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-rose-400 h-full rounded-full" style="width: 9.3%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 四象限提炼 -->
+                    <div class="bg-slate-50/50 p-3.5 rounded-xl border border-slate-100/70 text-[11px] font-semibold text-slate-500 flex justify-between space-x-3">
+                        <div class="bg-white/80 p-2.5 rounded-lg border border-slate-100 text-center flex-1">
+                            <h4 class="text-slate-400 text-[10px] uppercase">主视觉</h4>
+                            <p class="text-slate-800 font-bold mt-1 text-xs">人工视觉拉高曝光</p>
+                            <p class="text-[9px] mt-0.5">人工主视觉 CTR 4.19%</p>
+                        </div>
+                        <div class="bg-white/80 p-2.5 rounded-lg border border-slate-100 text-center flex-1">
+                            <h4 class="text-slate-400 text-[10px] uppercase">组件/文案</h4>
+                            <p class="text-blue-600 font-bold mt-1 text-xs">AIGC文案暴增CVR</p>
+                            <p class="text-[9px] mt-0.5 text-blue-500">人工视觉+AIGC文案 ROI 1.856</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片 4: 爆量金牌分析与核心结论 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-base font-bold text-slate-800 border-b border-slate-50 pb-2">AIGC 爆量应用四大核心洞察</h3>
+                    <div class="space-y-3.5 text-xs font-medium text-slate-600 leading-relaxed mt-3">
+                        <div class="flex items-start space-x-2.5">
+                            <span class="bg-purple-100 text-purple-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">01</span>
+                            <p><strong class="text-slate-800">快速冷启的“绝对功臣”：</strong>AIGC素材在投放首日提供近 58% 的素材供给，快速填充素材池，协助智投系统以极低成本和闪电速度平稳度过冷启动期。</p>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="bg-blue-100 text-blue-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">02</span>
+                            <p><strong class="text-slate-800">起量发动机仍看人工视觉：</strong>人工素材在中后期消耗占比升至 87%，其点击率与转化率优势显著。大曝光和撑起基本盘的爆量引擎仍看优质的人工实拍主视觉。</p>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="bg-emerald-100 text-emerald-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">03</span>
+                            <p><strong class="text-slate-800">混合AIGC是最低成本提效器：</strong>人工主视觉（高CTR） + AIGC文案/组件（高CVR）四象限效率最优（ROI 1.856/1.859），文案AI化是提效性价比最高的杠杆。</p>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="bg-rose-100 text-rose-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">04</span>
+                            <p><strong class="text-slate-800">规避低质盲目堆量陷阱：</strong>必须警惕预设模板的量多效弱（1.1万个模板素材几乎不起量，CTR 0.67%）。应当提质减量，聚焦于高质量数字人和精细化文案的应用。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: 8大核心爆款富媒体分析墙 -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">🎬</span>
+                    <h2 class="text-xl font-bold text-slate-900">重点爆款素材多维创意卡片墙</h2>
+                </div>
+                <span class="text-xs bg-blue-100 text-blue-800 font-semibold px-2.5 py-1 rounded-full uppercase">
+                    Gemini 2.5 Flash 视觉深度解析
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- 素材卡片 [1] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">1</span>
+                                <span class="text-sm font-bold text-slate-500">10万+ 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 4.94%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 7.05%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 17.0%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">19.9s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_1_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_1_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">健康科普</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">达人种草</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">都市银发</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">资深中产</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】画面中一位中年女性正在接受采访，字幕提示“三伏天不要多吃”，引发用户对夏季饮食禁忌的好奇。<br>【承接】字幕进一步明确“这4种水果”，通过具体数字和品类预告，强化了信息的重要性，吸引用户继续观看以了解具体是哪4种水果。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    提出禁忌  <span class="text-blue-400 font-bold mx-1">→</span>  专家科普  <span class="text-blue-400 font-bold mx-1">→</span>  揭示品类  <span class="text-blue-400 font-bold mx-1">→</span>  强调健康  <span class="text-blue-400 font-bold mx-1">→</span>  引导关注
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【季节养生】</strong>针对三伏天这一特定时节，提供精准的饮食禁忌，帮助用户科学养生。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【专家解读】</strong>由专业人士出镜讲解，提升健康科普内容的权威性和可信度。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【避雷指南】</strong>明确指出不宜多吃的4种水果，帮助用户规避饮食误区，保护身体健康。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【健康管理】</strong>通过提供实用健康知识，引导用户关注日常饮食，提升自我健康管理能力。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '场景环境：设定于光线充足、现代简约的专业访谈区。背景虚化，隐约可见柔和米色墙面或少量绿植，营造专业舒适感。\n\n主体外观与动作：一位约45-55岁的中年女性，面容和蔼，气质专业。身着浅色衬衫或薄款西装外套，发型整齐。她端坐画面中央偏右，身体微侧，眼神专注看向画面外，仿佛认真回答问题。表情沉稳，嘴角微扬，偶尔伴随轻微点头或自然手势，展现专家访谈的专业与亲和力。\n\n镜头运动方式：中景特写，稳定聚焦女性上半身。画面开场静止，随后以极缓慢、平稳的推拉（dolly in）向主体靠近约1秒，再保持稳定，增强观众沉浸感。\n\n光线色调：明亮柔和的三点布光，确保人物面部光线均匀，无明显阴影，突出健康活力。整体色调偏暖，以米白、浅灰和少量自然绿为主，营造专业、温馨、可信赖的视觉感受。\n\n叠加文字：画面初始，屏幕下方居中显示白色字幕：“三伏天不要多吃”。字体现代醒目。约1.5秒后，该字幕平滑过渡为：“这4种水果”，强调数字“4”，引发观众好奇。')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            场景环境：设定于光线充足、现代简约的专业访谈区。背景虚化，隐约可见柔和米色墙面或少量绿植，营造专业舒适感。
+
+主体外观与动作：一位约45-55岁的中年女性，面容和蔼，气质专业。身着浅色衬衫或薄款西装外套，发型整齐。她端坐画面中央偏右，身体微侧，眼神专注看向画面外，仿佛认真回答问题。表情沉稳，嘴角微扬，偶尔伴随轻微点头或自然手势，展现专家访谈的专业与亲和力。
+
+镜头运动方式：中景特写，稳定聚焦女性上半身。画面开场静止，随后以极缓慢、平稳的推拉（dolly in）向主体靠近约1秒，再保持稳定，增强观众沉浸感。
+
+光线色调：明亮柔和的三点布光，确保人物面部光线均匀，无明显阴影，突出健康活力。整体色调偏暖，以米白、浅灰和少量自然绿为主，营造专业、温馨、可信赖的视觉感受。
+
+叠加文字：画面初始，屏幕下方居中显示白色字幕：“三伏天不要多吃”。字体现代醒目。约1.5秒后，该字幕平滑过渡为：“这4种水果”，强调数字“4”，引发观众好奇。
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [2] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">2</span>
+                                <span class="text-sm font-bold text-slate-500">10万+ 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 5.9%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 7.49%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 3.6%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">20.5s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_2_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_2_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">美食制作</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">产品展示</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">精致妈妈</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">新锐白领</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】第一帧画面展示了用大勺从锅中舀出浓稠液体到碗里的场景，营造出传统、新鲜、热腾腾的制作感，吸引用户对食物的原始魅力和制作过程产生兴趣。<br>【承接】第3秒画面迅速切换到将同样浓郁丝滑的液体从容器中倒入现代透明玻璃杯的场景，强调了产品细腻的质地和诱人的视觉效果，同时展现了产品在现代生活中的便捷享用方式，激发用户对品尝的欲望。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    传统制作  <span class="text-blue-400 font-bold mx-1">→</span>  丝滑呈现  <span class="text-blue-400 font-bold mx-1">→</span>  卖点提炼  <span class="text-blue-400 font-bold mx-1">→</span>  场景应用  <span class="text-blue-400 font-bold mx-1">→</span>  购买引导
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【传统制作】</strong>视频开场展示了类似手工或传统方式从大锅中舀取，暗示产品遵循传统工艺，味道纯正。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【质地浓郁】</strong>无论是从锅中舀出还是倒入杯中，液体都呈现出浓稠、丝滑的质感，视觉上强调了产品的醇厚口感。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【营养健康】</strong>作为豆浆类饮品，天然具有高蛋白、植物基等健康属性，符合现代人对健康饮食的追求。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【多场景享用】</strong>从传统碗到现代玻璃杯的切换，展现了产品既可作为传统早餐，也可作为时尚健康饮品，适应不同消费场景。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '在一个弥漫着古朴气息的传统厨房场景中，背景模糊可见蒸汽缭绕的灶台与斑驳的木质台面。画面中心，一只粗陶大碗静置，一只手持古铜色大勺，正从上方缓缓舀起金黄浓稠的豆浆。豆浆以缓慢厚重的瀑布状倾泻入碗，表面热气氤氲，可见其原始的微颗粒质地。镜头以柔和的慢速特写，略带俯视，跟随豆浆流动轨迹平稳下移，细致捕捉液体入碗瞬间，强调新鲜与手工制作感。整体光线为温暖的琥珀色调，侧面柔和光线勾勒出豆浆的饱满与热度，营造温馨生活气息。\n\n画面通过一个干净利落的硬切，迅速切换至极简主义的现代厨房环境。洁净的白色大理石台面为背景，远处绿植点缀。画面中央，一只晶莹剔透的现代玻璃杯静置，一只手优雅地持着设计感十足的白色容器。同样金黄色的豆浆，此刻呈现极致丝滑细腻，无颗粒感，如绸缎般流畅倾泻而下，精准注入玻璃杯中，液体表面光洁无暇。镜头保持稳定中景，从侧平视角度捕捉过程，突出豆浆的纯净与现代感。光线转变为明亮通透的自然光，整体色调清爽洁净，强调产品精致与便捷享用。')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            在一个弥漫着古朴气息的传统厨房场景中，背景模糊可见蒸汽缭绕的灶台与斑驳的木质台面。画面中心，一只粗陶大碗静置，一只手持古铜色大勺，正从上方缓缓舀起金黄浓稠的豆浆。豆浆以缓慢厚重的瀑布状倾泻入碗，表面热气氤氲，可见其原始的微颗粒质地。镜头以柔和的慢速特写，略带俯视，跟随豆浆流动轨迹平稳下移，细致捕捉液体入碗瞬间，强调新鲜与手工制作感。整体光线为温暖的琥珀色调，侧面柔和光线勾勒出豆浆的饱满与热度，营造温馨生活气息。
+
+画面通过一个干净利落的硬切，迅速切换至极简主义的现代厨房环境。洁净的白色大理石台面为背景，远处绿植点缀。画面中央，一只晶莹剔透的现代玻璃杯静置，一只手优雅地持着设计感十足的白色容器。同样金黄色的豆浆，此刻呈现极致丝滑细腻，无颗粒感，如绸缎般流畅倾泻而下，精准注入玻璃杯中，液体表面光洁无暇。镜头保持稳定中景，从侧平视角度捕捉过程，突出豆浆的纯净与现代感。光线转变为明亮通透的自然光，整体色调清爽洁净，强调产品精致与便捷享用。
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [3] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">3</span>
+                                <span class="text-sm font-bold text-slate-500">10万+ 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 3.5%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 8.58%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 11.1%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">32.1s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_3_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_3_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">达人种草</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">健康科普</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">精致妈妈</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】画面中人物表情认真，顶部展示产品名称“莲子百合山药粉”，下方黄色区域留白，引发观众好奇心。<br>【承接】黄色区域文字揭示“有4种零食一定要多吃”，直接给出健康饮食建议，与产品健康属性呼应，吸引目标用户继续观看以获取具体信息。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    专家开场  <span class="text-blue-400 font-bold mx-1">→</span>  抛出健康话题  <span class="text-blue-400 font-bold mx-1">→</span>  给出具体建议  <span class="text-blue-400 font-bold mx-1">→</span>  产品关联推荐
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【健康养生】</strong>产品成分天然，符合健康饮食趋势，助力身体调理。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【方便快捷】</strong>粉状冲调，食用方便，节省时间，适合快节奏生活。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【营养丰富】</strong>莲子、百合、山药均为传统滋补食材，提供多种营养元素。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【专家推荐】</strong>视频中人物形象专业，通过健康科普增加产品可信度。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '一个光线充足、极简风格的现代室内空间。背景是柔和的米色或浅灰色墙面，右侧角落隐约可见一株盆栽绿植，整体环境专业而宁静。一位三十岁左右的女性健康达人，身着剪裁合体的米色休闲西装，端庄地坐在画面中央。她表情严肃而专注，眼神坚定地凝视镜头，微蹙眉心，仿佛在深思熟虑后即将揭示重要秘密，姿态沉稳且富有感染力。镜头以一个稳定的中景特写开场，精确捕捉达人从胸部以上的画面。摄影机保持静止，或仅有极其细微、缓慢的推轨运动，旨在增强画面的沉浸感和人物的权威性。整个3-5秒内，镜头运动保持克制与平稳。画面采用高调柔和的自然光照明，光线均匀地洒落在人物与背景上，无明显阴影，营造出明亮、通透的视觉效果。整体色调以温暖的米白、浅灰和淡黄色为主，传递出健康、纯净且高度可信赖的专业氛围。画面顶部中央，以现代无衬线白色字体清晰显示产品名称“莲子百合山药粉”。画面底部，一个宽阔、醒目的矩形黄色区域，起初为空白状态，强烈吸引观众目光。随后，该黄色区域内文字平滑且快速地浮现出黑色粗体大字：“有4种零食一定要多吃”，直接抛出核心信息，引发强烈好奇与求知欲。')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            一个光线充足、极简风格的现代室内空间。背景是柔和的米色或浅灰色墙面，右侧角落隐约可见一株盆栽绿植，整体环境专业而宁静。一位三十岁左右的女性健康达人，身着剪裁合体的米色休闲西装，端庄地坐在画面中央。她表情严肃而专注，眼神坚定地凝视镜头，微蹙眉心，仿佛在深思熟虑后即将揭示重要秘密，姿态沉稳且富有感染力。镜头以一个稳定的中景特写开场，精确捕捉达人从胸部以上的画面。摄影机保持静止，或仅有极其细微、缓慢的推轨运动，旨在增强画面的沉浸感和人物的权威性。整个3-5秒内，镜头运动保持克制与平稳。画面采用高调柔和的自然光照明，光线均匀地洒落在人物与背景上，无明显阴影，营造出明亮、通透的视觉效果。整体色调以温暖的米白、浅灰和淡黄色为主，传递出健康、纯净且高度可信赖的专业氛围。画面顶部中央，以现代无衬线白色字体清晰显示产品名称“莲子百合山药粉”。画面底部，一个宽阔、醒目的矩形黄色区域，起初为空白状态，强烈吸引观众目光。随后，该黄色区域内文字平滑且快速地浮现出黑色粗体大字：“有4种零食一定要多吃”，直接抛出核心信息，引发强烈好奇与求知欲。
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [4] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">4</span>
+                                <span class="text-sm font-bold text-slate-500">10万+ 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 5.74%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 6.94%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 12.2%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">11.8s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_4_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_4_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">美食制作</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">产品展示</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">精致妈妈</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">新锐白领</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】画面展示了从大锅中盛出浓稠饮品至碗中，强调手工制作的温暖与新鲜感，引发用户对传统美味的兴趣。<br>【承接】画面迅速切换至将饮品倒入透明玻璃杯中，展现产品细腻顺滑的质地和诱人的色泽，突出其即饮的便捷性与现代感，进一步吸引用户关注产品品质。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    制作展示  <span class="text-blue-400 font-bold mx-1">→</span>  质地特写  <span class="text-blue-400 font-bold mx-1">→</span>  成品呈现  <span class="text-blue-400 font-bold mx-1">→</span>  卖点强调  <span class="text-blue-400 font-bold mx-1">→</span>  促购引导
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【浓郁醇厚】</strong>画面中液体质地浓稠，色泽诱人，展现产品料足味浓的特点。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【丝滑细腻】</strong>从倒出到入杯，液体流动顺畅无颗粒感，暗示产品口感极致丝滑。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【健康饮品】</strong>作为植物蛋白饮品，通常富含营养，适合追求健康生活的人群。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【便捷享用】</strong>无论是传统盛装还是现代倒杯，都体现了产品易于准备和享用的特点。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '场景环境：开场画面置身于一个充满烟火气的传统厨房，温暖木质台面与古朴陶器为背景，营造浓厚手工制作氛围。随后快速切换至光线充足、线条简洁的现代厨房，背景洁净无暇，强调产品的时尚与便捷。\n\n主体外观与动作：特写镜头聚焦一只手，用传统大勺从热气腾腾的深色陶锅中，舀出米褐色浓稠植物蛋白饮品，缓慢厚重地注入素雅陶瓷碗中，其粘稠感与升腾蒸汽清晰可见。画面快速剪辑，另一只手优雅倾斜透明玻璃瓶，将同款细腻顺滑饮品缓缓倒入晶莹剔透的玻璃杯，液体流淌时展现')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            场景环境：开场画面置身于一个充满烟火气的传统厨房，温暖木质台面与古朴陶器为背景，营造浓厚手工制作氛围。随后快速切换至光线充足、线条简洁的现代厨房，背景洁净无暇，强调产品的时尚与便捷。
+
+主体外观与动作：特写镜头聚焦一只手，用传统大勺从热气腾腾的深色陶锅中，舀出米褐色浓稠植物蛋白饮品，缓慢厚重地注入素雅陶瓷碗中，其粘稠感与升腾蒸汽清晰可见。画面快速剪辑，另一只手优雅倾斜透明玻璃瓶，将同款细腻顺滑饮品缓缓倒入晶莹剔透的玻璃杯，液体流淌时展现
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [5] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">5</span>
+                                <span class="text-sm font-bold text-slate-500">10万+ 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 4.98%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 6.49%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 17.0%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">17.9s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_5_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_5_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">达人种草</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">健康科普</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">都市银发</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】画面中一位中年女性在车内，字幕提示“三伏天不要多吃这4种水果”，直接抛出健康饮食禁忌，引发用户好奇心。<br>【承接】女性继续讲解并伴有手势，字幕内容不变，强化了健康科普的专业性和权威感，暗示即将揭示具体内容。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    抛出健康禁忌  <span class="text-blue-400 font-bold mx-1">→</span>  专家权威讲解  <span class="text-blue-400 font-bold mx-1">→</span>  细致分析原因  <span class="text-blue-400 font-bold mx-1">→</span>  给出健康建议  <span class="text-blue-400 font-bold mx-1">→</span>  引导产品转化
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【时令养生】</strong>针对三伏天特殊气候，提供符合季节特点的养生方案。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【专家背书】</strong>通过专业人士讲解，提升产品或方法的科学性和可信度。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【饮食指导】</strong>提供具体饮食建议，帮助用户规避健康风险。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【健康解决方案】</strong>暗示产品能有效解决夏季饮食不当带来的健康问题。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '现代轿车内部，背景虚化处理，隐约可见窗外城市街景。车内环境整洁，色调沉稳，营造专业且私密的讲解氛围。一位约45岁中年女性，面容亲和，眼神专注。她身着米色职业休闲装，佩戴简约耳饰，形象专业时尚。画面伊始，她表情略显严肃，直视镜头，右手食指轻微摇摆，做出“不”的否定手势。随后，她手掌微张，开始讲解，伴随自然有力的手势，动作流畅。镜头采用中景特写，稳定聚焦女性上半身。画面缓慢从胸部以上推近至肩部特写，增强亲近感。全程平稳')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            现代轿车内部，背景虚化处理，隐约可见窗外城市街景。车内环境整洁，色调沉稳，营造专业且私密的讲解氛围。一位约45岁中年女性，面容亲和，眼神专注。她身着米色职业休闲装，佩戴简约耳饰，形象专业时尚。画面伊始，她表情略显严肃，直视镜头，右手食指轻微摇摆，做出“不”的否定手势。随后，她手掌微张，开始讲解，伴随自然有力的手势，动作流畅。镜头采用中景特写，稳定聚焦女性上半身。画面缓慢从胸部以上推近至肩部特写，增强亲近感。全程平稳
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [6] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">6</span>
+                                <span class="text-sm font-bold text-slate-500">5万~10万 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 4.55%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 9.12%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 8.6%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">21.3s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_6_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_6_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">工厂实拍</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">促销导购</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">精致妈妈</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】通过“很遗憾的告诉大家”引入，直接抛出“莲子百合山药药粉库存告急”和“福利马上就要结束了”的重磅信息，制造稀缺感和紧迫性，吸引用户关注。<br>【承接】画面中人物的口语化表达“哎结束了”、“这个走完咱就结束了”进一步强化了福利即将终止、库存即将售罄的紧迫感和真实性，促使用户继续观看以了解详情或采取行动。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    制造稀缺  <span class="text-blue-400 font-bold mx-1">→</span>  告知福利  <span class="text-blue-400 font-bold mx-1">→</span>  强调告罄  <span class="text-blue-400 font-bold mx-1">→</span>  真人确认  <span class="text-blue-400 font-bold mx-1">→</span>  引导转化
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【健康滋补】</strong>莲子百合山药粉作为传统滋补品，主打养生保健功效。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【天然食材】</strong>产品名称直接体现由莲子、百合、山药等天然食材制成。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【源头直供】</strong>视频背景为工厂实拍，暗示产品从源头工厂直接发货，品质有保障。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【限时优惠】</strong>字幕明确提示“福利马上就要结束了”，强调当前购买可享优惠。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '在一个现代化、光线充足的食品加工工厂内部，背景是整齐堆叠的白色包装山药粉产品箱，部分不锈钢生产设备在远处隐约可见，整体环境洁净有序，透露出专业与高效。\n\n一位约30岁左右的女性，身着白色整洁的工作服，佩戴着专业发网，面容亲切但略带一丝遗憾与焦急。她面向镜头，眼神真诚而略显担忧，右手轻抚胸口，左手则指向身后堆叠的山药粉产品，仿佛在强调其数量。她的表情从开场的遗憾迅速转变为急切，嘴唇微张，仿佛在急促地传递重要信息。\n\n镜头以一个中景特写（medium close-up）开始，聚焦在女性的上半身及其手势。随后，镜头缓慢而平稳地向后拉，同时略微向右侧平移，将背景中更多的山药粉产品和部分工厂环境纳入画面，强调产品的真实存在和数量，营造出一种既广阔又略显紧张的视觉氛围。\n\n整体光线明亮而柔和，采用洁净的冷白光与少量辅助暖光混合，营造出专业、卫生的工业感。色调以白色和浅灰色为主，强调产品的纯净与健康。背景略微虚化，突出人物，但仍能清晰辨识出工厂环境的细节。整体氛围略带一丝紧张的暖色调，暗示信息的紧迫性。\n\n画面中央上方，清晰叠加白色粗体文字：“很遗憾地告诉大家”。紧接着，文字快速切换至：“莲子百合山药粉库存告急！”并伴随红色醒目字体闪烁，下方再叠加一行稍小文字：“福利马上就要结束了！”。文字停留约2秒，强化视觉冲击力与信息传达。')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            在一个现代化、光线充足的食品加工工厂内部，背景是整齐堆叠的白色包装山药粉产品箱，部分不锈钢生产设备在远处隐约可见，整体环境洁净有序，透露出专业与高效。
+
+一位约30岁左右的女性，身着白色整洁的工作服，佩戴着专业发网，面容亲切但略带一丝遗憾与焦急。她面向镜头，眼神真诚而略显担忧，右手轻抚胸口，左手则指向身后堆叠的山药粉产品，仿佛在强调其数量。她的表情从开场的遗憾迅速转变为急切，嘴唇微张，仿佛在急促地传递重要信息。
+
+镜头以一个中景特写（medium close-up）开始，聚焦在女性的上半身及其手势。随后，镜头缓慢而平稳地向后拉，同时略微向右侧平移，将背景中更多的山药粉产品和部分工厂环境纳入画面，强调产品的真实存在和数量，营造出一种既广阔又略显紧张的视觉氛围。
+
+整体光线明亮而柔和，采用洁净的冷白光与少量辅助暖光混合，营造出专业、卫生的工业感。色调以白色和浅灰色为主，强调产品的纯净与健康。背景略微虚化，突出人物，但仍能清晰辨识出工厂环境的细节。整体氛围略带一丝紧张的暖色调，暗示信息的紧迫性。
+
+画面中央上方，清晰叠加白色粗体文字：“很遗憾地告诉大家”。紧接着，文字快速切换至：“莲子百合山药粉库存告急！”并伴随红色醒目字体闪烁，下方再叠加一行稍小文字：“福利马上就要结束了！”。文字停留约2秒，强化视觉冲击力与信息传达。
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [7] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">7</span>
+                                <span class="text-sm font-bold text-slate-500">5万~10万 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 4.82%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 9.72%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 5.8%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">34.5s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_7_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_7_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">美食制作</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">产品展示</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">精致妈妈</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">新锐白领</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】画面中，热气腾腾的白色液体被盛入碗中，营造出温暖、新鲜、手工制作的诱人氛围，直接刺激用户的味蕾和好奇心。<br>【承接】画面一转，金黄色的浓稠饮品从容器中倾泻而下，注入透明玻璃杯，展现了产品丝滑的质地和诱人的色泽，强调其美味与即饮的便捷性。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    新鲜出锅  <span class="text-blue-400 font-bold mx-1">→</span>  丝滑入杯  <span class="text-blue-400 font-bold mx-1">→</span>  视觉诱惑  <span class="text-blue-400 font-bold mx-1">→</span>  品质呈现
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【新鲜制作】</strong>画面中热气腾腾的液体，暗示产品新鲜出炉，口感最佳。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【丝滑浓郁】</strong>从容器中倾泻而出的液体，展现其细腻顺滑、质地浓稠的特点。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【健康营养】</strong>作为植物蛋白饮品，通常富含蛋白质，提供健康能量。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【方便快捷】</strong>无论是自制还是即饮，都满足现代人对便捷生活的需求。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '画面起始于光线柔和的厨房台面，背景模糊，呈现温暖木质与米色调。随后无缝切换至极简白色背景前，桌面干净，仅透明玻璃杯为焦点。\n\n质朴陶瓷碗中，热气腾腾的乳白色浓稠液体正从手工勺中缓慢倾泻，蒸汽袅袅，营造新鲜出炉的诱人氛围。紧接着，晶莹剔透的玻璃高脚杯出现。金黄色的浓稠植物蛋白饮品，如融化琥珀般，从简洁玻璃容器口，以极致缓慢均匀的速度，丝滑倾泻而下，精准注入杯中，液体表面泛着诱人光泽，完美展现其醇厚质地与诱人色泽。')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            画面起始于光线柔和的厨房台面，背景模糊，呈现温暖木质与米色调。随后无缝切换至极简白色背景前，桌面干净，仅透明玻璃杯为焦点。
+
+质朴陶瓷碗中，热气腾腾的乳白色浓稠液体正从手工勺中缓慢倾泻，蒸汽袅袅，营造新鲜出炉的诱人氛围。紧接着，晶莹剔透的玻璃高脚杯出现。金黄色的浓稠植物蛋白饮品，如融化琥珀般，从简洁玻璃容器口，以极致缓慢均匀的速度，丝滑倾泻而下，精准注入杯中，液体表面泛着诱人光泽，完美展现其醇厚质地与诱人色泽。
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 素材卡片 [8] -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    
+                    <!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">8</span>
+                                <span class="text-sm font-bold text-slate-500">5万~10万 区间</span>
+                            </div>
+                            <!-- 数据药丸 -->
+                            <div class="flex space-x-1.5 text-xs font-semibold">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-100">CTR 4.44%</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-full border border-orange-100">CVR 10.85%</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-100">滑走 12.5%</span>
+                                <span class="px-2.5 py-1 bg-slate-50 text-slate-700 rounded-full border border-slate-100">21.5s 时长</span>
+                            </div>
+                        </div>
+
+                        <!-- 0s vs 3s 高清截图并排特写 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_8_0s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="0s开场">
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+                            </div>
+                            <div class="relative group rounded-lg overflow-hidden border border-slate-200">
+                                <img src="zhengzhou_frames/video_8_3s.jpg" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" alt="3s承接">
+                                <div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+                            </div>
+                        </div>
+
+                        <!-- 创意洞察核心文本 -->
+                        <div class="space-y-4 pt-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">工厂实拍</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">促销导购</span> 
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">精致妈妈</span> 
+                            </div>
+                            
+                            <!-- 黄金三秒分析 -->
+                            <div class="bg-slate-50 p-4 rounded-xl space-y-2 border border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                                    【开场】视频以“很遗憾的告诉大家”和“莲子百合山药药粉库存告急”、“福利马上就要结束了”的醒目字幕，结合主播略带无奈又亲切的笑容，迅速营造出产品稀缺和促销即将截止的紧迫感，吸引用户关注。<br>【承接】第3秒，主播通过口播“哎结束了”、“这个走完咱就结束了”，进一步强化了库存告急和福利即将终止的真实性与不可逆性，配合手势，直接促使用户产生“再不买就没了”的心理，有效留住用户。
+                                </p>
+                            </div>
+
+                            <!-- 素材结构 -->
+                            <div class="space-y-1.5">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+                                <div class="text-xs font-semibold text-slate-700 bg-blue-50/50 p-2.5 rounded-lg border border-blue-50 flex items-center space-x-1.5 flex-wrap">
+                                    稀缺开场  <span class="text-blue-400 font-bold mx-1">→</span>  福利预警  <span class="text-blue-400 font-bold mx-1">→</span>  产地实拍  <span class="text-blue-400 font-bold mx-1">→</span>  功效介绍  <span class="text-blue-400 font-bold mx-1">→</span>  催促下单
+                                </div>
+                            </div>
+
+                            <!-- 卖点提炼 -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+                                <div class="space-y-2 bg-emerald-50/20 p-4 rounded-xl border border-emerald-500/5">
+                                    
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【天然食材】</strong>精选莲子、百合、山药等天然道地食材，源头把控，品质保证。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【滋补养生】</strong>传统配方，温和滋补，有助于调理身体，改善体质，适合日常养生。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【便捷冲饮】</strong>粉末状设计，冲调方便快捷，随时随地享受健康，节省时间。</p>
+                </div>
+                <div class="flex items-start space-x-2 text-sm">
+                    <span class="text-emerald-500 font-bold mt-0.5">•</span>
+                    <p class="text-slate-600"><strong class="text-slate-800">【限时福利】</strong>库存告急，福利活动即将截止，抓住最后机会，享受超值优惠。</p>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片底部: AI 提示词与一键复制 -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-6 space-y-3 rounded-b-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+                            <button onclick="copyToClipboard(this, '现代简洁直播间。背景米白色墙面，右侧模糊可见“莲子百合山药粉”产品。光线明亮均匀，背景虚化，营造专业温馨电商直播氛围。\n\n画面中央，约30岁女性主播，身着浅色简约上衣，妆容精致。她先面带一丝遗憾的亲切微笑，眼神真诚。随后，缓慢抬起右手，掌心微张，做轻柔惋惜的示意动作，强调即将结束的珍贵机会。表情从遗憾转变为带有紧迫感的真诚劝导。\n\n镜头以中景稳定构图，从主播胸部以上位置，在3-5秒内平稳缓慢推近至其肩部特写。聚焦主播脸部表情')" class="text-xs font-bold bg-white text-blue-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1">
+                                <span>Copy Prompt</span>
+                            </button>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 max-h-24 overflow-y-auto text-xs text-slate-500 leading-relaxed font-medium">
+                            现代简洁直播间。背景米白色墙面，右侧模糊可见“莲子百合山药粉”产品。光线明亮均匀，背景虚化，营造专业温馨电商直播氛围。
+
+画面中央，约30岁女性主播，身着浅色简约上衣，妆容精致。她先面带一丝遗憾的亲切微笑，眼神真诚。随后，缓慢抬起右手，掌心微张，做轻柔惋惜的示意动作，强调即将结束的珍贵机会。表情从遗憾转变为带有紧迫感的真诚劝导。
+
+镜头以中景稳定构图，从主播胸部以上位置，在3-5秒内平稳缓慢推近至其肩部特写。聚焦主播脸部表情
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: 仅链接表格通道 -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">🔗</span>
+                    <h2 class="text-xl font-bold text-slate-900">同消耗区间更多爆款素材一览</h2>
+                </div>
+                <p class="text-sm text-slate-500">其余 33 条未进行深度解析的优秀高效爆款素材链接</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+                    <h3 class="text-base font-bold text-slate-800 flex items-center justify-between border-b border-slate-100 pb-2">
+                        <span>5万~10万 消耗区间链接一览</span>
+                        <span class="text-xs bg-slate-100 text-slate-500 font-semibold px-2 py-0.5 rounded-full">共 8 条</span>
+                    </h3>
+                    <div class="max-h-72 overflow-y-auto space-y-2.5 pr-2">
+        
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">1</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53miac4aaaliahbncixjvbuyqefzraalsa.f0.mp4?dis_k=029a91f4f33f6c4274ffa79c5471943b&dis_t=1783127679&m=251025dc4a5decd19f71efc9555e0de1&sha256=6486e51188136f4af323dbb23b39b40d21ef4d8844bb9225c2be7c3a70d1673d" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53miac4aaaliahbncixjvbuyqefzraalsa.f0.mp4?dis_k=029a91f4f33f6c4274ffa79c5471943b&dis_t=1783127679&m=251025dc4a5decd19f71efc9555e0de1&sha256=6486e51188136f4af323dbb23b39b40d21ef4d8844bb9225c2be7c3a70d1673d</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 5.3%</span>
+                                <span class="text-orange-600">CVR 9.46%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">2</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53xqbwaaadcyaltoj3dnvbtpaemc6agyca.f0.mp4?dis_k=a243bbfa04d8f74b25961c2afae832e5&dis_t=1782110644&m=8bf641f2741db70df6c47bb95ca37269&sha256=d7e0bd96b8196b216c36fb6731978058396a3458ce9bcda57e357deec336429a" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53xqbwaaadcyaltoj3dnvbtpaemc6agyca.f0.mp4?dis_k=a243bbfa04d8f74b25961c2afae832e5&dis_t=1782110644&m=8bf641f2741db70df6c47bb95ca37269&sha256=d7e0bd96b8196b216c36fb6731978058396a3458ce9bcda57e357deec336429a</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.52%</span>
+                                <span class="text-orange-600">CVR 9.03%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">3</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3yecooaaeimachprysbvb5qie47aqjz2a.f0.mp4?dis_k=38487f7036b1d89e98fdbf08cc9279ef&dis_t=1782898975&m=3b89ecc6e48bed0b97e96eadb45dcdb8&sha256=d2e934531f2cf9336f2e8b02b4f0929cfdac35288424eff727eddd1aa2aec137" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3yecooaaeimachprysbvb5qie47aqjz2a.f0.mp4?dis_k=38487f7036b1d89e98fdbf08cc9279ef&dis_t=1782898975&m=3b89ecc6e48bed0b97e96eadb45dcdb8&sha256=d2e934531f2cf9336f2e8b02b4f0929cfdac35288424eff727eddd1aa2aec137</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 3.91%</span>
+                                <span class="text-orange-600">CVR 10.63%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">4</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53haadmaaaxyannrj4gzvbuoaegy4aansa.f0.mp4?dis_k=51ec8225ed9a349d9622a9713d3ad748&dis_t=1782374539&m=924987470372a2658572352eeda3eb55&sha256=9b253bb5c386bc4cf7167ab01308f41d1ac1c9e0d9dbe795d8c8d8dcde09daf2" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53haadmaaaxyannrj4gzvbuoaegy4aansa.f0.mp4?dis_k=51ec8225ed9a349d9622a9713d3ad748&dis_t=1782374539&m=924987470372a2658572352eeda3eb55&sha256=9b253bb5c386bc4cf7167ab01308f41d1ac1c9e0d9dbe795d8c8d8dcde09daf2</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 3.6%</span>
+                                <span class="text-orange-600">CVR 10.54%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">5</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3w4aaeaaaxmaiffci5nvbvnyeak3qaasa.f0.mp4?dis_k=1b87dd44d7be4a61915d77ef0ef32ba1&dis_t=1783136346&m=91da460b5d88705656ef2598f9d30968&sha256=8d89926b6acb6032185af4a19b7e3b51c1f50440ace5bee02c96ef8c5dcc37e0" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3w4aaeaaaxmaiffci5nvbvnyeak3qaasa.f0.mp4?dis_k=1b87dd44d7be4a61915d77ef0ef32ba1&dis_t=1783136346&m=91da460b5d88705656ef2598f9d30968&sha256=8d89926b6acb6032185af4a19b7e3b51c1f50440ace5bee02c96ef8c5dcc37e0</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 5.77%</span>
+                                <span class="text-orange-600">CVR 8.95%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">6</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53haadmaaaxyannrj4gzvbuoaegy4aansa.f0.mp4?dis_k=51ec8225ed9a349d9622a9713d3ad748&dis_t=1782374539&m=924987470372a2658572352eeda3eb55&sha256=9b253bb5c386bc4cf7167ab01308f41d1ac1c9e0d9dbe795d8c8d8dcde09daf2" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53haadmaaaxyannrj4gzvbuoaegy4aansa.f0.mp4?dis_k=51ec8225ed9a349d9622a9713d3ad748&dis_t=1782374539&m=924987470372a2658572352eeda3eb55&sha256=9b253bb5c386bc4cf7167ab01308f41d1ac1c9e0d9dbe795d8c8d8dcde09daf2</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.08%</span>
+                                <span class="text-orange-600">CVR 11.53%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">7</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53leaasaaaoyaozxsekvvbuwiebfmqacka.f0.mp4?dis_k=d70b316c402f2bb8a21eda7604f0ec51&dis_t=1782900216&m=e04b8e82cc12ca48677360f01611892b&sha256=0633d1bbebb95292233b3f8b699617b7bdc9d0c3919667fe3e3054abed713149" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53leaasaaaoyaozxsekvvbuwiebfmqacka.f0.mp4?dis_k=d70b316c402f2bb8a21eda7604f0ec51&dis_t=1782900216&m=e04b8e82cc12ca48677360f01611892b&sha256=0633d1bbebb95292233b3f8b699617b7bdc9d0c3919667fe3e3054abed713149</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.29%</span>
+                                <span class="text-orange-600">CVR 8.21%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">8</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53qmcr4aaf5maaphshyrvb7ayed2bqkhsa.f0.mp4?dis_k=20aa05d4a45010568c11cd75c9109060&dis_t=1782716784&m=2f1792f6c77fcf3c5f0fed830f14b3c9&sha256=88df6c5fb2cb99d4330e068ba23c4df8d53b40c1638ce04e35381c48f4b7cdb2" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53qmcr4aaf5maaphshyrvb7ayed2bqkhsa.f0.mp4?dis_k=20aa05d4a45010568c11cd75c9109060&dis_t=1782716784&m=2f1792f6c77fcf3c5f0fed830f14b3c9&sha256=88df6c5fb2cb99d4330e068ba23c4df8d53b40c1638ce04e35381c48f4b7cdb2</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 3.66%</span>
+                                <span class="text-orange-600">CVR 10.58%</span>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+        
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+                    <h3 class="text-base font-bold text-slate-800 flex items-center justify-between border-b border-slate-100 pb-2">
+                        <span>1万~5万 消耗区间链接一览</span>
+                        <span class="text-xs bg-slate-100 text-slate-500 font-semibold px-2 py-0.5 rounded-full">共 25 条</span>
+                    </h3>
+                    <div class="max-h-72 overflow-y-auto space-y-2.5 pr-2">
+        
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">1</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53haadmaaaxyannrj4gzvbuoaegy4aansa.f0.mp4?dis_k=51ec8225ed9a349d9622a9713d3ad748&dis_t=1782374539&m=924987470372a2658572352eeda3eb55&sha256=9b253bb5c386bc4cf7167ab01308f41d1ac1c9e0d9dbe795d8c8d8dcde09daf2" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53haadmaaaxyannrj4gzvbuoaegy4aansa.f0.mp4?dis_k=51ec8225ed9a349d9622a9713d3ad748&dis_t=1782374539&m=924987470372a2658572352eeda3eb55&sha256=9b253bb5c386bc4cf7167ab01308f41d1ac1c9e0d9dbe795d8c8d8dcde09daf2</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 3.95%</span>
+                                <span class="text-orange-600">CVR 10.98%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">2</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3s4adoaaadaan5ezyynvbvfyeg6lqan2a.f0.mp4?dis_k=1585ff1ab08fd84f0aa5267540b8a326&dis_t=1782532350&m=5aff11edd5cf74658c33b8e73f838e27&sha256=e00b04f240a81a229228bebeb1b5e530cb36ba09154361494db1dbb23a021c0f" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3s4adoaaadaan5ezyynvbvfyeg6lqan2a.f0.mp4?dis_k=1585ff1ab08fd84f0aa5267540b8a326&dis_t=1782532350&m=5aff11edd5cf74658c33b8e73f838e27&sha256=e00b04f240a81a229228bebeb1b5e530cb36ba09154361494db1dbb23a021c0f</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 3.91%</span>
+                                <span class="text-orange-600">CVR 9.92%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">3</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53jyac4aaasyafknciqrvbutqefzhaalsa.f0.mp4?dis_k=7278685fe44426a53712a1ca907f493d&dis_t=1783135233&m=7437ad20264b5d8a22eccc7d549910b4&sha256=81f382cbfa0fd0a5647d988377a8335b9f714f4f599fe980f60316c100d57e18" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53jyac4aaasyafknciqrvbutqefzhaalsa.f0.mp4?dis_k=7278685fe44426a53712a1ca907f493d&dis_t=1783135233&m=7437ad20264b5d8a22eccc7d549910b4&sha256=81f382cbfa0fd0a5647d988377a8335b9f714f4f599fe980f60316c100d57e18</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 11.92%</span>
+                                <span class="text-orange-600">CVR 1.89%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">4</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53wqaaoaaanuabbiccgnvbvnaea62aab2a.f0.mp4?dis_k=9321536636a9af9bf237fb9e6c7124c9&dis_t=1782716780&m=67c7cff2dea4f8299c87cc331318eb75&sha256=359c86a1ec0417a2fcca850808da5539092e1109074b01a4dfca91e44c69b577" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53wqaaoaaanuabbiccgnvbvnaea62aab2a.f0.mp4?dis_k=9321536636a9af9bf237fb9e6c7124c9&dis_t=1782716780&m=67c7cff2dea4f8299c87cc331318eb75&sha256=359c86a1ec0417a2fcca850808da5539092e1109074b01a4dfca91e44c69b577</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 7.07%</span>
+                                <span class="text-orange-600">CVR 5.94%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">5</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53xqbwaaadcyaltoj3dnvbtpaemc6agyca.f0.mp4?dis_k=a243bbfa04d8f74b25961c2afae832e5&dis_t=1782110644&m=8bf641f2741db70df6c47bb95ca37269&sha256=d7e0bd96b8196b216c36fb6731978058396a3458ce9bcda57e357deec336429a" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53xqbwaaadcyaltoj3dnvbtpaemc6agyca.f0.mp4?dis_k=a243bbfa04d8f74b25961c2afae832e5&dis_t=1782110644&m=8bf641f2741db70df6c47bb95ca37269&sha256=d7e0bd96b8196b216c36fb6731978058396a3458ce9bcda57e357deec336429a</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.63%</span>
+                                <span class="text-orange-600">CVR 8.95%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">6</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53meadaaaa6uak5jryynvbuyiegbqqamca.f0.mp4?dis_k=9d9c0bf551c39a395004989ed8182a8d&dis_t=1782095514&m=07fd039010e850f123e0ab4f99947323&sha256=31c13d2da9db1666e70ada884a5d73750e20a9bc623171308886cfdae7f503b4" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53meadaaaa6uak5jryynvbuyiegbqqamca.f0.mp4?dis_k=9d9c0bf551c39a395004989ed8182a8d&dis_t=1782095514&m=07fd039010e850f123e0ab4f99947323&sha256=31c13d2da9db1666e70ada884a5d73750e20a9bc623171308886cfdae7f503b4</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 8.25%</span>
+                                <span class="text-orange-600">CVR 5.68%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">7</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3iucgcaaetaal35z4vfvb4riemfcqiyka.f0.mp4?dis_k=1d97e5dabf54d8c36451f5e11f3b8bff&dis_t=1782111456&m=eefde16dbf92519359742058c5c2627a" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3iucgcaaetaal35z4vfvb4riemfcqiyka.f0.mp4?dis_k=1d97e5dabf54d8c36451f5e11f3b8bff&dis_t=1782111456&m=eefde16dbf92519359742058c5c2627a</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.13%</span>
+                                <span class="text-orange-600">CVR 11.92%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">8</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b536yciyaaee4alckj2qnvb55qert3ajdca.f0.mp4?dis_k=3ab00391d4f3cfb178a4c53989db91c9&dis_t=1782463959&m=12200696dda748aeb91fe75d41b4c4b7" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b536yciyaaee4alckj2qnvb55qert3ajdca.f0.mp4?dis_k=3ab00391d4f3cfb178a4c53989db91c9&dis_t=1782463959&m=12200696dda748aeb91fe75d41b4c4b7</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 5.21%</span>
+                                <span class="text-orange-600">CVR 14.71%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">9</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b5374cn4aaedmamj4sgzzvb57ye337qjxsa.f0.mp4?dis_k=ff2aedc9c6bd49fddea3674dd15c41e3&dis_t=1782717182&m=da669aaef871dbeaac7883f3fd4e6df4&sha256=4ced97b2ade5f11e09612a5b86c105356a8cb4bac8296884edb87e63e5b2ba74" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b5374cn4aaedmamj4sgzzvb57ye337qjxsa.f0.mp4?dis_k=ff2aedc9c6bd49fddea3674dd15c41e3&dis_t=1782717182&m=da669aaef871dbeaac7883f3fd4e6df4&sha256=4ced97b2ade5f11e09612a5b86c105356a8cb4bac8296884edb87e63e5b2ba74</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.96%</span>
+                                <span class="text-orange-600">CVR 9.31%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">10</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53tecqgaafieahizb2w5vb7gieaomqka2a.f0.mp4?dis_k=5e28a6b0514e520820d8441a24a42ab5&dis_t=1782544358&m=c08a756455eec42f7e2e75a09ca80394&sha256=d816411d846a2909b6a86c1220dd801b249ce492c7dc84d0f21fc6973b172bdf" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53tecqgaafieahizb2w5vb7gieaomqka2a.f0.mp4?dis_k=5e28a6b0514e520820d8441a24a42ab5&dis_t=1782544358&m=c08a756455eec42f7e2e75a09ca80394&sha256=d816411d846a2909b6a86c1220dd801b249ce492c7dc84d0f21fc6973b172bdf</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.72%</span>
+                                <span class="text-orange-600">CVR 15.81%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">11</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53v4cpgaaeiean3xcg75vb5lye6oxqj42a.f0.mp4?dis_k=89b4ce017fcafa529f265c6f025f8f2b&dis_t=1782722322&m=ecb3029310c060f218b0891e9235f5c1&sha256=0bdae6dc62ac8cb002587e4f68a9d32b211607cc6a789ef3ec6280e6a08f1594" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53v4cpgaaeiean3xcg75vb5lye6oxqj42a.f0.mp4?dis_k=89b4ce017fcafa529f265c6f025f8f2b&dis_t=1782722322&m=ecb3029310c060f218b0891e9235f5c1&sha256=0bdae6dc62ac8cb002587e4f68a9d32b211607cc6a789ef3ec6280e6a08f1594</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.85%</span>
+                                <span class="text-orange-600">CVR 9.12%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">12</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3amckyaaehyamyvj6anvb4ayevqbqjlca.f0.mp4?dis_k=fbcdaa5ad82d7db5c8e31037178467ca&dis_t=1782210638&m=f7b288664c0ebf55aea519c69f53cf8e&sha256=fab93eb77467d66c20bd99754c057b0b5142cb30c9e9fea106884d2ead7b025a" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3amckyaaehyamyvj6anvb4ayevqbqjlca.f0.mp4?dis_k=fbcdaa5ad82d7db5c8e31037178467ca&dis_t=1782210638&m=f7b288664c0ebf55aea519c69f53cf8e&sha256=fab93eb77467d66c20bd99754c057b0b5142cb30c9e9fea106884d2ead7b025a</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.5%</span>
+                                <span class="text-orange-600">CVR 7.99%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">13</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53vqa4eaab5uafzzy3bfvbxlaeykwadqsa.f0.mp4?dis_k=991133587178f1d1ebc131287c127f59&dis_t=1780129347&m=0351579e0c605ce28a53954636634e42" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53vqa4eaab5uafzzy3bfvbxlaeykwadqsa.f0.mp4?dis_k=991133587178f1d1ebc131287c127f59&dis_t=1780129347&m=0351579e0c605ce28a53954636634e42</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.34%</span>
+                                <span class="text-orange-600">CVR 16.83%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">14</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b536yciyaaee4alckj2qnvb55qert3ajdca.f0.mp4?dis_k=3ab00391d4f3cfb178a4c53989db91c9&dis_t=1782463959&m=12200696dda748aeb91fe75d41b4c4b7" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b536yciyaaee4alckj2qnvb55qert3ajdca.f0.mp4?dis_k=3ab00391d4f3cfb178a4c53989db91c9&dis_t=1782463959&m=12200696dda748aeb91fe75d41b4c4b7</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.82%</span>
+                                <span class="text-orange-600">CVR 13.63%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">15</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3ema6waabxiakkli4gbvbwiye5mrqd22a.f0.mp4?dis_k=8c0552dc565c90ba743a8ba0689520d1&dis_t=1780305656&m=07a5175d9c999ec87843c4e4f96471e7&sha256=1c0917c8f7802920e176e21080b9510ce1abc2c7b3678db9444c5d4c3c64eeb1" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3ema6waabxiakkli4gbvbwiye5mrqd22a.f0.mp4?dis_k=8c0552dc565c90ba743a8ba0689520d1&dis_t=1780305656&m=07a5175d9c999ec87843c4e4f96471e7&sha256=1c0917c8f7802920e176e21080b9510ce1abc2c7b3678db9444c5d4c3c64eeb1</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 5.04%</span>
+                                <span class="text-orange-600">CVR 15.66%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">16</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53syaj6aaadmaimnsctzvbvfqet6labh2a.f0.mp4?dis_k=8c2dae90bfec3e9a198a2052f177ed85&dis_t=1782716823&m=b7e58bd4c23f3cf0c1dded15148db4dd&sha256=b7fc9f58246fa3a75aaaf5f4cee4402737ad4eced40d95d9e1195a2f513e25cb" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53syaj6aaadmaimnsctzvbvfqet6labh2a.f0.mp4?dis_k=8c2dae90bfec3e9a198a2052f177ed85&dis_t=1782716823&m=b7e58bd4c23f3cf0c1dded15148db4dd&sha256=b7fc9f58246fa3a75aaaf5f4cee4402737ad4eced40d95d9e1195a2f513e25cb</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 8.79%</span>
+                                <span class="text-orange-600">CVR 6.36%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">17</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3iacwkaafteannbj2g5vb6qaemvaakzka.f0.mp4?dis_k=a9839a1491ca4a4d482cad974a83925d&dis_t=1782559714&m=e7182842b05c028777f03065b2272f73&sha256=4e5ad376f876d5cee82d26c04b0cab5376ed3b9fbc9e7e4302834eb303b8822c" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3iacwkaafteannbj2g5vb6qaemvaakzka.f0.mp4?dis_k=a9839a1491ca4a4d482cad974a83925d&dis_t=1782559714&m=e7182842b05c028777f03065b2272f73&sha256=4e5ad376f876d5cee82d26c04b0cab5376ed3b9fbc9e7e4302834eb303b8822c</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 6.69%</span>
+                                <span class="text-orange-600">CVR 11.01%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">18</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc36iao4aaaneah3uis4bvbv4qe53zab3sa.f0.mp4?dis_k=8c53ea988c4e1c907afb0f4016063199&dis_t=1780567319&m=33ee453661af22d434f49e1f92e9511b&sha256=1d7ccca43f71fd78bda94d5d5e8d80738df7bd5935712b2fd7f5b95b852c72ec" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc36iao4aaaneah3uis4bvbv4qe53zab3sa.f0.mp4?dis_k=8c53ea988c4e1c907afb0f4016063199&dis_t=1780567319&m=33ee453661af22d434f49e1f92e9511b&sha256=1d7ccca43f71fd78bda94d5d5e8d80738df7bd5935712b2fd7f5b95b852c72ec</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 3.76%</span>
+                                <span class="text-orange-600">CVR 12.94%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">19</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53pubdaaack4anydz2rzvbq7iegb6qemca.f0.mp4?dis_k=d6b8480a47997adb74b32140268a90ec&dis_t=1782115372&m=57d6dd0838644889c27c5ae5f53686d3" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53pubdaaack4anydz2rzvbq7iegb6qemca.f0.mp4?dis_k=d6b8480a47997adb74b32140268a90ec&dis_t=1782115372&m=57d6dd0838644889c27c5ae5f53686d3</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 6.45%</span>
+                                <span class="text-orange-600">CVR 8.05%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">20</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53myaaeaaacaacogcgs5vbuzqeajtaaasa.f0.mp4?dis_k=fe4b2da75b7e28b45c949601be869690&dis_t=1782982009&m=1cb4ab0da2b4c3f9af00500e55da35b3" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53myaaeaaacaacogcgs5vbuzqeajtaaasa.f0.mp4?dis_k=fe4b2da75b7e28b45c949601be869690&dis_t=1782982009&m=1cb4ab0da2b4c3f9af00500e55da35b3</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 5.71%</span>
+                                <span class="text-orange-600">CVR 7.42%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">21</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3ema6waabxiakkli4gbvbwiye5mrqd22a.f0.mp4?dis_k=8c0552dc565c90ba743a8ba0689520d1&dis_t=1780305656&m=07a5175d9c999ec87843c4e4f96471e7&sha256=1c0917c8f7802920e176e21080b9510ce1abc2c7b3678db9444c5d4c3c64eeb1" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3ema6waabxiakkli4gbvbwiye5mrqd22a.f0.mp4?dis_k=8c0552dc565c90ba743a8ba0689520d1&dis_t=1780305656&m=07a5175d9c999ec87843c4e4f96471e7&sha256=1c0917c8f7802920e176e21080b9510ce1abc2c7b3678db9444c5d4c3c64eeb1</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.93%</span>
+                                <span class="text-orange-600">CVR 15.29%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">22</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53meadaaaa6uak5jryynvbuyiegbqqamca.f0.mp4?dis_k=9d9c0bf551c39a395004989ed8182a8d&dis_t=1782095514&m=07fd039010e850f123e0ab4f99947323&sha256=31c13d2da9db1666e70ada884a5d73750e20a9bc623171308886cfdae7f503b4" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53meadaaaa6uak5jryynvbuyiegbqqamca.f0.mp4?dis_k=9d9c0bf551c39a395004989ed8182a8d&dis_t=1782095514&m=07fd039010e850f123e0ab4f99947323&sha256=31c13d2da9db1666e70ada884a5d73750e20a9bc623171308886cfdae7f503b4</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.32%</span>
+                                <span class="text-orange-600">CVR 8.71%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">23</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3e4aymaabgeamwxiufrvbwjyeqytqdbsa.f0.mp4?dis_k=976f870a8f026ebaf7c9ee8c8ff58949&dis_t=1780214667&m=67a3de7619fcfa4c603ea43f1091c175&sha256=ef877f86f35e62b5164cf71d5649a9647b01de0a3d9c998e3830776ff627eda7" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0bc3e4aymaabgeamwxiufrvbwjyeqytqdbsa.f0.mp4?dis_k=976f870a8f026ebaf7c9ee8c8ff58949&dis_t=1780214667&m=67a3de7619fcfa4c603ea43f1091c175&sha256=ef877f86f35e62b5164cf71d5649a9647b01de0a3d9c998e3830776ff627eda7</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 5.27%</span>
+                                <span class="text-orange-600">CVR 16.18%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">24</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53suabkaaatmanmgj4cjvbvfiecwkqafka.f0.mp4?dis_k=5568d033083c6717c4df99e64c629b43&dis_t=1782986819&m=601edc95400de7c9ae3713b5c39f783d&sha256=4a30b6827fd6be8ea8c7e03ca5c5c3e2de03726bf518af7a7c92059aa44fe58c" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53suabkaaatmanmgj4cjvbvfiecwkqafka.f0.mp4?dis_k=5568d033083c6717c4df99e64c629b43&dis_t=1782986819&m=601edc95400de7c9ae3713b5c39f783d&sha256=4a30b6827fd6be8ea8c7e03ca5c5c3e2de03726bf518af7a7c92059aa44fe58c</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.92%</span>
+                                <span class="text-orange-600">CVR 6.36%</span>
+                            </div>
+                        </div>
+            
+                        <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100">
+                            <div class="flex items-center space-x-2 truncate mr-4">
+                                <span class="text-slate-400 font-semibold">25</span>
+                                <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53q4adcaaaseaeywrd6fvbvbyeggdqamka.f0.mp4?dis_k=42eb93c5595f39d3523dbeddf3705723&dis_t=1782800911&m=b519a6ace60ed8e534022c5866248415&sha256=831f7e2fb48aba4e831457a994ae50a0a9569ad213a8b802d1222dd337901d96" target="_blank" class="text-blue-600 hover:underline truncate font-medium">http://adsmind.gdtimg.com/ads_svp_video__0b53q4adcaaaseaeywrd6fvbvbyeggdqamka.f0.mp4?dis_k=42eb93c5595f39d3523dbeddf3705723&dis_t=1782800911&m=b519a6ace60ed8e534022c5866248415&sha256=831f7e2fb48aba4e831457a994ae50a0a9569ad213a8b802d1222dd337901d96</a>
+                            </div>
+                            <div class="flex space-x-1.5 font-bold flex-shrink-0 text-[10px]">
+                                <span class="text-red-600">CTR 4.97%</span>
+                                <span class="text-orange-600">CVR 10.43%</span>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部版权和标注 -->
+    <footer class="bg-white border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400 font-medium">
+        <p>© 2026 郑州袤垠 & 爆款创意批量分析工作流 • 全程由 Gemini 2.5 Flash 视觉深度解析支撑</p>
+        <p class="mt-1">由 EdgeOne Pages (EOP) 全球 CDN 托管。技术保障: CodeBuddy IDE</p>
+    </footer>
+
+    <!-- Toast 弹窗容器 -->
+    <div id="toast" class="fixed bottom-5 right-5 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300 bg-slate-900 text-white text-sm font-semibold px-4 py-3 rounded-xl shadow-lg flex items-center space-x-2 z-50">
+        <span class="text-emerald-400">✓</span>
+        <span>提示词已成功复制到剪贴板！</span>
+    </div>
+
+    <!-- 一键复制 JS 函数 -->
+    <script>
+        function copyToClipboard(button, text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // 按钮动效
+                const originalText = button.innerHTML;
+                button.innerHTML = '<span>Copied!</span>';
+                button.classList.add('bg-emerald-50', 'text-emerald-600', 'border-emerald-200');
+                
+                // 弹出 Toast
+                const toast = document.getElementById('toast');
+                toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-emerald-50', 'text-emerald-600', 'border-emerald-200');
+                    
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
+                }, 2000);
+            }).catch(function(err) {
+                alert('复制失败，请手动选择复制。');
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巧农婆(阿婆) · 郑州袤垠 | 食饮滋补行业深度爆量案例剖析与素材共享看板</title>
+<!-- 引入 Chart.js, ECharts, Plotly 和 Tailwind CSS -->
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root {
+  --bg: #0f172a; --card: #1e293b; --border: #334155;
+  --text: #e2e8f0; --text2: #94a3b8; --accent: #3b82f6;
+  --red: #ef4444; --green: #22c55e; --orange: #f97316;
+  --purple: #a855f7; --cyan: #06b6d4; --yellow: #eab308;
+  --pink: #ec4899;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'PingFang SC','Microsoft YaHei',sans-serif; line-height:1.6; padding-bottom:40px; }
+
+/* 顶部高级导航栏 */
+.navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  border-b: 1px solid var(--border);
+}
+
+/* 自定义卡片与结构 */
+.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+.card-title { font-size:16px; font-weight:600; color:var(--accent); margin-bottom:12px; }
+.kpi-row { display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.kpi { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; flex:1; min-width:140px; text-align:center; }
+.kpi-label { font-size:12px; color:var(--text2); margin-bottom:4px; }
+.kpi-value { font-size:22px; font-weight:700; }
+.kpi-sub { font-size:11px; color:var(--text2); margin-top:4px; }
+.chart-box { width:100%; height:320px; }
+.insight { background:#1e293b; border-left:3px solid var(--accent); padding:12px 16px; margin:12px 0; border-radius:0 8px 8px 0; font-size:13px; }
+.insight-warn { border-left-color:var(--orange); }
+.insight-good { border-left-color:var(--green); }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#1e293b; color:var(--text); padding:8px 10px; text-align:left; font-weight:600; border-bottom:1px solid var(--border); }
+td { padding:8px 10px; border-bottom:1px solid var(--border); }
+.num-red { color:var(--red); font-weight:600; }
+.num-green { color:var(--green); font-weight:600; }
+.section { margin-bottom:24px; }
+.section-title { font-size:18px; font-weight:700; margin-bottom:16px; padding-left:12px; }
+.section-人 { border-left:4px solid var(--pink); color:var(--pink); }
+.section-货 { border-left:4px solid var(--orange); color:var(--orange); }
+.section-场 { border-left:4px solid var(--cyan); color:var(--cyan); }
+.section-总 { border-left:4px solid var(--accent); color:var(--accent); }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; margin-right:4px; }
+.tag-red { background:#ef444433; color:var(--red); }
+.tag-green { background:#22c55e33; color:var(--green); }
+.tag-blue { background:#3b82f633; color:var(--accent); }
+.tag-orange { background:#f9731633; color:var(--orange); }
+.tag-purple { background:#a855f733; color:var(--purple); }
+.tag-pink { background:#ec489933; color:var(--pink); }
+.tag-cyan { background:#06b6d433; color:var(--cyan); }
+
+/* 爆量原因卡片样式 */
+.reason-card {
+  background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+  border-radius: 10px; padding: 16px; margin-bottom: 12px; transition: transform 0.2s;
+}
+.reason-card:hover { transform: translateY(-2px); }
+.reason-card.r1 { border-left-color: var(--red); }
+.reason-card.r2 { border-left-color: var(--purple); }
+.reason-card.r3 { border-left-color: var(--green); }
+.reason-card.r4 { border-left-color: var(--orange); }
+
+/* 妙思视频卡片特殊样式 */
+.grid-bj, .grid-zb { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px; }
+.media-area { position:relative; overflow:hidden; border-radius:12px 12px 0 0; }
+.badge { position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.7); color:#f1f5f9; padding:4px 10px; border-radius:8px; font-size:12px; z-index:10; }
+.type-badge { position:absolute; top:8px; right:8px; background:rgba(168,85,247,0.8); color:#fff; padding:4px 10px; border-radius:8px; font-size:12px; z-index:10; }
+.md5-line { font-size:13px; color:#94a3b8; margin-bottom:8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.md5-line a { color:#06b6d4; text-decoration:none; }
+.category-tag { background:rgba(6,182,212,0.12); color:#06b6d4; padding:2px 8px; border-radius:8px; font-size:11px; }
+.cost-bar { margin-bottom:12px; }
+.bar-label { display:flex; justify-content:space-between; font-size:12px; color:#94a3b8; margin-bottom:4px; }
+.bar-label span:last-child { color:#f1f5f9; font-weight:bold; }
+.bar-track { background:#334155; border-radius:4px; height:6px; }
+.bar-fill { background:linear-gradient(90deg,#06b6d4,#296BEF); border-radius:4px; height:6px; }
+.metrics { display:grid; gap:8px; }
+.metric-box { background:#0f172a; border-radius:8px; padding:8px 12px; text-align:center; }
+.metric-box .val { font-size:16px; font-weight:bold; }
+.metric-box .lbl { font-size:11px; color:#94a3b8; margin-top:2px; }
+.color-good { color:#76C84D }
+.color-mid { color:#FFAE19 }
+.color-bad { color:#FF6D5E }
+.color-blue { color:#296BEF }
+.color-dim { color:#999 }
+
+/* 选项卡激活样式 */
+.tab-btn.active {
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* 水印样式 */
+.__adata_wm__ {
+  position: fixed; inset: 0; pointer-events: none; z-index: 2147483647; background-repeat: repeat;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(255,255,255,0.02)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>");
+}
+</style>
+</head>
+<body>
+
+<!-- 水印 -->
+<div class="__adata_wm__" aria-hidden="true"></div>
+
+<!-- 顶部高级导航 -->
+<header class="navbar px-6 py-4">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center space-x-3">
+      <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xl tracking-wider shadow-lg">M</div>
+      <div>
+        <h1 class="text-xl font-bold text-slate-100 tracking-tight">巧农婆 · 郑州袤垠 | 食饮滋补行业深度爆量案例共享看板</h1>
+        <p class="text-xs text-slate-400 font-medium">人货场多维数据大屏 • AIGC爆款创意卡片 • 妙思素材案例库</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 text-xs">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-950 text-blue-400 border border-blue-800">
+        📊 数据统计周期：2026/06/22 - 07/05
+      </span>
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+        📅 2026-07-15 更新
+      </span>
+    </div>
+  </div>
+  
+  <!-- 选项卡切换 -->
+  <div class="max-w-7xl mx-auto mt-4 border-t border-slate-800 pt-3 flex flex-wrap gap-2 md:gap-6 justify-center md:justify-start">
+    <button class="tab-btn active px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors" onclick="switchTab('tab-zm')">📊 人货场多维剖析 (郑州袤垠)</button>
+    <button class="tab-btn px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors" onclick="switchTab('tab-apopo')">⚡ 巧农婆单日167万爆量因 (案例纸)</button>
+    <button class="tab-btn px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors" onclick="switchTab('tab-creative')">🎬 AIGC效能与8组黄金素材墙</button>
+    <button class="tab-btn px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors" onclick="switchTab('tab-miaosi')">🔋 妙思文生视频爆款素材库</button>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+  <!-- ==================== Tab 1: 郑州袤垠人货场剖析 ==================== -->
+  <div id="tab-zm" class="tab-content active space-y-8">
+    <div class="flex items-center space-x-2 border-b border-slate-800 pb-3">
+      <span class="text-2xl">🔍</span>
+      <h2 class="text-xl font-bold text-slate-100">郑州袤垠 · 人货场三维深度画像大屏</h2>
+    </div>
+    <div class="section">
+<div class="section-title section-总">📊 总览：人货场三维画像</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-label">👥 人·客群</div><div class="kpi-value" style="color:var(--pink)">中老年女性</div><div class="kpi-sub">女55+占50%+</div></div>
+<div class="kpi"><div class="kpi-label">🛒 货·商品</div><div class="kpi-value" style="color:var(--orange)">极度集中</div><div class="kpi-sub">山药粉占81%</div></div>
+<div class="kpi"><div class="kpi-label">📺 场·渠道</div><div class="kpi-value" style="color:var(--cyan)">智投主导</div><div class="kpi-sub">智投占比85%</div></div>
+<div class="kpi"><div class="kpi-label">💰 30天总消耗</div><div class="kpi-value num-red">1012万</div><div class="kpi-sub">ROI=1.808</div></div>
+</div>
+</div><div class="section">
+<div class="section-title section-人">👥 人：客群结构与获客效率</div>
+<div class="grid2">
+<div class="card"><div class="card-title">📊 新客老客消耗占比</div><div class="chart-box" id="chart_newcust"></div></div>
+<div class="card">
+<div class="card-title">📋 新客老客效果对比</div>
+<table>
+<tr><th>直播间</th><th>消耗(万)</th><th>新客占比</th><th>老客占比</th><th>ROI</th><th>新客UV</th><th>老客UV</th></tr>
+<tr><td>巧农婆滋补</td><td class="num-red">686.6</td><td class="num-red">44.8%</td><td>62.5%</td><td>1.694</td><td>50280</td><td>70079</td></tr>
+<tr><td>巧农婆食养馆</td><td class="num-red">69.1</td><td class="num-red">47.4%</td><td>56.8%</td><td>1.547</td><td>4719</td><td>5651</td></tr>
+<tr><td>农味滋养严选</td><td class="num-red">52.1</td><td class="num-red">67.7%</td><td>36.7%</td><td>1.884</td><td>15334</td><td>8298</td></tr>
+<tr><td>巧农婆食补</td><td class="num-red">37.6</td><td class="num-red">52.5%</td><td>53.5%</td><td>1.944</td><td>5128</td><td>5224</td></tr>
+<tr><td>巧农婆零食铺</td><td class="num-red">1.6</td><td class="num-red">61.4%</td><td>42.0%</td><td>2.052</td><td>355</td><td>243</td></tr>
+<tr><td>巧农婆红养堂</td><td class="num-red">0.2</td><td class="num-red">12.5%</td><td>87.5%</td><td>0.735</td><td>2</td><td>14</td></tr>
+</table>
+<div class="insight">💡 主直播间新客占比44.8%（最低），农味滋养严选新客占比67.7%（最高）→<b>新客占比越高的直播间ROI越高</b>（严选1.884 vs 主直播间1.694）</div>
+</div>
+</div>
+<div class="grid2">
+<div class="card">
+<div class="card-title">📋 人群画像TOP10</div>
+<table>
+<tr><th>人群(性别×年龄)</th><th>消耗(万)</th><th>占比</th><th>ROI</th><th>CVR</th></tr>
+<tr><td>女65+</td><td class="num-red">264.0</td><td>26.1%</td><td>1.737</td><td>7.39%</td></tr>
+<tr><td>女60-64</td><td class="num-red">153.3</td><td>15.2%</td><td>1.754</td><td>8.61%</td></tr>
+<tr><td>女55-59</td><td class="num-red">105.5</td><td>10.4%</td><td>1.741</td><td>9.13%</td></tr>
+<tr><td>女50-54</td><td class="num-red">58.1</td><td>5.7%</td><td>1.667</td><td>8.96%</td></tr>
+<tr><td>未知65+</td><td class="num-red">56.9</td><td>5.6%</td><td>1.686</td><td>8.79%</td></tr>
+<tr><td>未知60-64</td><td class="num-red">34.3</td><td>3.4%</td><td>1.721</td><td>10.15%</td></tr>
+<tr><td>未知55-59</td><td class="num-red">31.8</td><td>3.1%</td><td>1.781</td><td>10.63%</td></tr>
+<tr><td>男65+</td><td class="num-red">31.0</td><td>3.1%</td><td>1.579</td><td>5.47%</td></tr>
+<tr><td>女45-49</td><td class="num-red">21.9</td><td>2.2%</td><td>1.598</td><td>8.2%</td></tr>
+<tr><td>未知50-54</td><td class="num-red">21.5</td><td>2.1%</td><td>1.65</td><td>10.87%</td></tr>
+</table>
+</div>
+<div class="card">
+<div class="card-title">📋 直播漏斗分析</div>
+<table>
+<tr><th>直播间</th><th>消耗(万)</th><th>进播率</th><th>商品点击率</th><th>下单率</th></tr>
+</table>
+</div>
+</div>
+<div class="insight insight-good">✅ <b>人·核心结论</b>：中老年女性(55+岁)是核心客群，占消耗50%+。女65+消耗264万(26%)但CVR仅7.39%；未知55-59的CVR=10.63%最高。新客占比45.9%，农味滋养严选新客占比67.7%且ROI=1.884→<b>新客占比越高的直播间ROI越高</b></div>
+<div class="insight insight-warn">⚠️ <b>人·风险</b>：男65+ ROI=1.579最低，CVR仅5.47%。主直播间新客占比仅44.8%（老客占62.5%），老客ROI可能低于新客。需关注高CVR人群(未知55-59)的放量潜力</div>
+</div><div class="section">
+<div class="section-title section-货">🛒 货：商品结构与品类效率</div>
+<div class="grid2">
+<div class="card"><div class="card-title">📊 商品消耗分布</div><div class="chart-box" id="chart_product"></div></div>
+<div class="card">
+<div class="card-title">📋 商品效率对比</div>
+<table>
+<tr><th>商品</th><th>消耗(万)</th><th>占比</th><th>ROI</th><th>CTR</th><th>CVR</th></tr>
+<tr><td>[巧农婆]莲子百合山药粉粗粮营养代餐粉古法山药粉正</td><td class="num-red">621.3</td><td>61.4%</td><td class="num-green">1.701</td><td>3.44%</td><td>7.83%</td></tr>
+<tr><td>【巧农婆】莲子百合山药粉粗粮营养代餐粉古法山药粉正</td><td class="num-red">65.0</td><td>6.4%</td><td class="">1.595</td><td>4.98%</td><td>7.06%</td></tr>
+<tr><td>[巧农婆]芡实赤豆薏米粉即食五谷杂粮速食营养早餐饱</td><td class="num-red">51.0</td><td>5.0%</td><td class="">1.542</td><td>4.78%</td><td>8.36%</td></tr>
+<tr><td>爆浆酸奶疙瘩手工奶包子正宗原味奶醇休闲儿童零食奶制</td><td class="num-red">34.7</td><td>3.4%</td><td class="num-green">1.917</td><td>4.84%</td><td>10.99%</td></tr>
+<tr><td>巧农婆香辣卤味鸭胗不切片弹韧独立小包装追剧下酒休闲</td><td class="num-red">32.6</td><td>3.2%</td><td class="num-green">1.943</td><td>1.03%</td><td>11.94%</td></tr>
+<tr><td>【巧农婆】芡实赤豆薏米粉即食五谷杂粮速食营养早餐饱</td><td class="num-red">14.3</td><td>1.4%</td><td class="">1.506</td><td>4.01%</td><td>10.84%</td></tr>
+<tr><td>【巧农婆】爆浆奶疙瘩酸奶水果夹心真空包装营养休闲小</td><td class="num-red">12.4</td><td>1.2%</td><td class="num-green">1.800</td><td>6.36%</td><td>7.65%</td></tr>
+<tr><td>【巧农婆】大鸭胗整块鸭肫开袋即食香辣零食小吃下酒熟</td><td class="num-red">5.0</td><td>0.5%</td><td class="num-green">1.950</td><td>1.55%</td><td>12.15%</td></tr>
+</table>
+</div>
+</div>
+<div class="grid2">
+<div class="card">
+<div class="card-title">📋 直播间×商品效率矩阵</div>
+<table>
+<tr><th>直播间</th><th>消耗(万)</th><th>ROI</th><th>CVR</th><th>CPM</th><th>效率评级</th></tr>
+<tr><td>巧农婆滋补</td><td class="num-red">714.9</td><td class="">1.547</td><td>6.53%</td><td>136元</td><td><span class="tag tag-orange">中等</span></td></tr>
+<tr><td>巧农婆食补</td><td class="num-red">109.3</td><td class="num-green">1.989</td><td>10.19%</td><td>60元</td><td><span class="tag tag-green">⭐高效</span></td></tr>
+<tr><td>巧农婆食养馆</td><td class="num-red">98.7</td><td class="">1.487</td><td>10.23%</td><td>285元</td><td><span class="tag tag-red">低效</span></td></tr>
+<tr><td>农味滋养严选</td><td class="num-red">86.3</td><td class="num-green">1.820</td><td>10.30%</td><td>122元</td><td><span class="tag tag-green">⭐高效</span></td></tr>
+<tr><td>巧农婆零食铺</td><td class="num-red">2.0</td><td class="">1.281</td><td>9.99%</td><td>107元</td><td><span class="tag tag-red">低效</span></td></tr>
+</table>
+<div class="insight">💡 主直播间(巧农婆滋补)消耗占70%+但ROI=1.547最低；巧农婆食补ROI=1.989最高，CPM仅59元</div>
+</div>
+<div class="card">
+<div class="card-title">📋 品类集中度分析</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-label">主品山药粉</div><div class="kpi-value num-red">81%</div><div class="kpi-sub">极度集中</div></div>
+<div class="kpi"><div class="kpi-label">副品最高ROI</div><div class="kpi-value num-green">1.989</div><div class="kpi-sub">巧农婆食补</div></div>
+<div class="kpi"><div class="kpi-label">主品ROI</div><div class="kpi-value">1.547</div><div class="kpi-sub">最低</div></div>
+</div>
+<div class="insight insight-good">✅ 主品聚焦使模型学习速度极快，CVR从3%→10%仅用2天，是放量的<b>加速器</b></div>
+<div class="insight insight-warn">⚠️ 81%消耗集中在单一SKU，<b>品类拓展空间大</b>：鸭胗ROI=1.943、奶疙瘩ROI=1.917，均为高ROI副品</div>
+<div class="insight insight-warn">⚠️ 主直播间ROI=1.547是所有直播间最低，但消耗占70%+。<b>货场错配</b>：最高效的货（副品）没有分配到最大的场（主直播间）</div>
+</div>
+</div>
+<div class="insight insight-good">✅ <b>货·核心结论</b>：主品聚焦是双刃剑——加速模型学习但限制效率上限。山药粉ROI=1.547拉低整体ROI，副品ROI普遍&gt;1.8但消耗不足</div>
+</div><div class="section">
+<div class="section-title section-场">📺 场：渠道结构与流量效率</div>
+<div class="grid2">
+<div class="card"><div class="card-title">📊 版位消耗分布</div><div class="chart-box" id="chart_position"></div></div>
+<div class="card">
+<div class="card-title">📋 版位效率对比</div>
+<table>
+<tr><th>版位</th><th>消耗(万)</th><th>占比</th><th>ROI</th><th>CTR</th><th>CVR</th><th>CPM</th></tr>
+<tr><td>1030436212907001 (微信小程序-激励式广告-</td><td class="num-red">442.5</td><td>43.7%</td><td class="">1.760</td><td>4.10%</td><td>11.68%</td><td>216元</td></tr>
+<tr><td>4003158499171286 (视频号信息流)</td><td class="num-red">265.5</td><td>26.2%</td><td class="">1.775</td><td>3.40%</td><td>10.18%</td><td>138元</td></tr>
+<tr><td>0</td><td class="num-red">173.1</td><td>17.1%</td><td class="">1.633</td><td>3.24%</td><td>3.46%</td><td>67元</td></tr>
+<tr><td>4071202390577885 (微信小程序原生模板广告组</td><td class="num-red">89.8</td><td>8.9%</td><td class="num-green">1.805</td><td>1.98%</td><td>12.94%</td><td>115元</td></tr>
+<tr><td>9065030601338963 (订阅号盒内视频流)</td><td class="num-red">26.0</td><td>2.6%</td><td class="num-green">1.912</td><td>7.07%</td><td>12.21%</td><td>298元</td></tr>
+<tr><td>20141119 (微信-朋友圈feeds)</td><td class="num-red">1.9</td><td>0.2%</td><td class="">1.305</td><td>1.03%</td><td>2.65%</td><td>19元</td></tr>
+</table>
+</div>
+</div>
+<div class="grid2">
+<div class="card"><div class="card-title">📊 智投类型消耗堆叠</div><div class="chart-box" id="chart_smart"></div></div>
+<div class="card"><div class="card-title">📊 AIGC素材占比趋势</div><div class="chart-box" id="chart_aigc"></div></div>
+</div>
+<div class="grid3">
+<div class="dim-card dim-场">
+<div class="card-title">🎬 智投渠道</div>
+<table>
+<tr><th>类型</th><th>消耗(万)</th><th>ROI</th></tr>
+<tr><td>单链路智投</td><td class="num-red">604.1</td><td>1.672</td></tr>
+<tr><td>全域通直播</td><td>114.3</td><td class="num-green">1.836</td></tr>
+<tr><td>非智投</td><td>126.0</td><td>1.693</td></tr>
+</table>
+<div class="insight">💡 智投占比85%，全域通ROI最高</div>
+</div>
+<div class="dim-card dim-场">
+<div class="card-title">📱 版位结构</div>
+<table>
+<tr><th>版位</th><th>消耗(万)</th><th>ROI</th></tr>
+<tr><td>1030436212907001 (微信</td><td>442.5</td><td>1.760</td></tr>
+<tr><td>4003158499171286 (视频</td><td>265.5</td><td>1.775</td></tr>
+<tr><td>0</td><td>173.1</td><td>1.633</td></tr>
+<tr><td>4071202390577885 (微信</td><td>89.8</td><td>1.805</td></tr>
+</table>
+<div class="insight">💡 激励视频+信息流占80%+</div>
+</div>
+<div class="dim-card dim-场">
+<div class="card-title">🎨 AIGC素材</div>
+<table>
+<tr><th>类型</th><th>消耗(万)</th><th>ROI</th></tr>
+<tr><td>AIGC素材</td><td>196.7</td><td>1.676</td></tr>
+<tr><td>非AIGC素材</td><td>650.6</td><td class="num-green">1.732</td></tr>
+</table>
+<div class="insight">💡 AIGC冷启动填充，放量后人工接管</div>
+</div>
+</div>
+<div class="insight insight-good">✅ <b>场·核心结论</b>：智投+激励视频+信息流构成"铁三角"渠道。全域通ROI=1.836最高，是跨直播间放量的最优渠道。AIGC在冷启动期填充素材池，放量后被人工素材接管</div>
+<div class="insight insight-warn">⚠️ <b>场·风险</b>：版位集中度过高（激励视频44%+信息流27%），一旦核心版位竞争加剧或政策调整，获量能力将受冲击</div>
+</div><div class="section">
+<div class="section-title section-总">🔗 人×货×场：交叉洞察与行动建议</div>
+<div class="card">
+<div class="card-title">📊 人货场交叉诊断矩阵</div>
+<table>
+<tr><th>维度</th><th>现状</th><th>优势</th><th>风险</th><th>建议</th></tr>
+<tr>
+<td><span class="tag tag-pink">人</span> 客群</td>
+<td>新客占比&gt;70%</td>
+<td>拉新效率高，CVR从3%→10%</td>
+<td>复购率低，依赖持续拉新</td>
+<td>提升老客留存，降低获客成本依赖</td>
+</tr>
+<tr>
+<td><span class="tag tag-orange">货</span> 商品</td>
+<td>山药粉占81%</td>
+<td>模型学习快，聚焦放量</td>
+<td>主品ROI=1.547最低，品类单一</td>
+<td>拓展副品（鸭胗/奶疙瘩ROI&gt;1.9）</td>
+</tr>
+<tr>
+<td><span class="tag tag-cyan">场</span> 渠道</td>
+<td>智投85%，激励视频44%</td>
+<td>智投自动放量，全域通ROI最高</td>
+<td>版位集中，AIGC效率弱</td>
+<td>扩大全域通，优化AIGC文案组合</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<div class="card-title">📋 人货场交叉发现</div>
+<div class="flow-box">
+<div class="flow-step"><span class="flow-arrow" style="color:var(--pink)">①</span><span class="flow-text"><b>人×货</b>：新客对山药粉CVR极高(10%+)，但对副品CVR未知→<b>副品拉新效率可能不如主品</b>，需A/B测试验证</span></div>
+<div class="flow-step"><span class="flow-arrow" style="color:var(--orange)">②</span><span class="flow-text"><b>货×场</b>：主品(山药粉)在主直播间ROI=1.547最低，但副品在食补直播间ROI=1.989→<b>货场错配</b>，应将副品投放至食补直播间</span></div>
+<div class="flow-step"><span class="flow-arrow" style="color:var(--cyan)">③</span><span class="flow-text"><b>人×场</b>：新客在激励视频CVR=11.68%最高，信息流CVR=10.18%→<b>激励视频是新客转化的最优场</b></span></div>
+<div class="flow-step"><span class="flow-arrow" style="color:var(--accent)">④</span><span class="flow-text"><b>人×货×场</b>：新客+山药粉+激励视频=放量铁三角。打破铁三角需同时解决：副品拉新效率+副品直播间+副品版位适配</span></div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">📋 行动建议（按优先级）</div>
+<table>
+<tr><th>优先级</th><th>人货场</th><th>建议</th><th>预期效果</th></tr>
+<tr><td><span class="tag tag-red">P0</span></td><td><span class="tag tag-orange">货×场</span></td><td>将<b>副品(鸭胗/奶疙瘩)</b>投放至<b>巧农婆食补</b>直播间（ROI=1.989）</td><td>整体ROI提升约10%</td></tr>
+<tr><td><span class="tag tag-red">P0</span></td><td><span class="tag tag-cyan">场</span></td><td>推广<b>人工主视觉+AIGC文案</b>组合（ROI=1.856最高）</td><td>素材效率提升9.4%</td></tr>
+<tr><td><span class="tag tag-orange">P1</span></td><td><span class="tag tag-pink">人×场</span></td><td>加大<b>激励视频</b>新客投放（CVR=11.68%最高）</td><td>新客转化率提升</td></tr>
+<tr><td><span class="tag tag-orange">P1</span></td><td><span class="tag tag-cyan">场</span></td><td>扩大<b>全域通直播</b>覆盖（ROI=1.836最优）</td><td>突破单直播间天花板</td></tr>
+<tr><td><span class="tag tag-orange">P1</span></td><td><span class="tag tag-orange">货</span></td><td>减少<b>预设模版</b>素材（CTR仅0.67%），加大<b>单人数字人</b>（ROI=1.753）</td><td>AIGC素材ROI提升</td></tr>
+<tr><td><span class="tag tag-blue">P2</span></td><td><span class="tag tag-pink">人</span></td><td>建立<b>老客复购</b>机制，降低新客依赖</td><td>降低获客成本依赖</td></tr>
+<tr><td><span class="tag tag-blue">P2</span></td><td><span class="tag tag-cyan">场</span></td><td>拓展<b>小程序原生模板</b>版位（CVR=12.94%最高）</td><td>版位多元化，降低集中度风险</td></tr>
+</table>
+</div>
+</div>
+  </div>
+
+  <!-- ==================== Tab 2: apopo 案例纸 ==================== -->
+  <div id="tab-apopo" class="tab-content space-y-8">
+    <div class="flex items-center space-x-2 border-b border-slate-800 pb-3">
+      <span class="text-2xl">📖</span>
+      <h2 class="text-xl font-bold text-slate-100">食饮滋补客户单日消耗冲至 167万 爆量大盘复盘</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="card lg:col-span-2 space-y-4">
+        <div class="card-title">1. 爆量现状：13天消耗 847万，末周均值翻 4.5 倍</div>
+        <div class="intro-text bg-slate-900 border-l-4 border-blue-600 p-4 rounded text-slate-300">
+          统计周期 <b>2026/06/22 – 07/05</b>，累计消耗 <b>847万</b>、综合 GMV <b>792万</b>；日消耗由 06/22 的 15.7万 陡增至 07/03 峰值 <span class="text-red-500 font-bold">167万</span>，07/02–07/03 出现陡峭跃升，末周均值较首周 +4.5 倍，成本全程稳定。
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+          <div class="kpi"><div class="kpi-value text-red-500">167万</div><div class="kpi-sub">单日消耗峰值 @07/03</div></div>
+          <div class="kpi"><div class="kpi-value text-cyan-400">847万</div><div class="kpi-sub">累计消耗(13天)</div></div>
+          <div class="kpi"><div class="kpi-value text-purple-400">+10.6倍</div><div class="kpi-sub">峰值/起量首日</div></div>
+          <div class="kpi"><div class="kpi-value text-orange-400">135个</div><div class="kpi-sub">末周在投账户数</div></div>
+          <div class="kpi"><div class="kpi-value text-emerald-400">7977个</div><div class="kpi-sub">唯一性创意数 +125%</div></div>
+          <div class="kpi"><div class="kpi-value text-yellow-400">1.72</div><div class="kpi-sub">实际ROI 全程稳定</div></div>
+        </div>
+        
+        <div class="card-title mt-6">消耗趋势：大盘消耗与单链路智投同步爆发</div>
+        <div class="chart-box"><canvas id="chartTrend"></canvas></div>
+      </div>
+      
+      <div class="space-y-4">
+        <div class="card">
+          <div class="card-title">基建与智投爆发指标</div>
+          <div class="grid grid-cols-1 gap-4">
+            <div class="chart-box" style="height: 180px;"><canvas id="chartInfra"></canvas></div>
+            <div class="chart-box" style="height: 180px;"><canvas id="chartZhitou"></canvas></div>
+          </div>
+        </div>
+        <div class="card p-4 bg-slate-900 border border-slate-800 text-xs text-slate-400 space-y-2">
+          <div class="font-bold text-slate-300">💡 关键战略发现：</div>
+          <p>「多账户矩阵 + 1:1复制成功基建」能最大化唯一性创意，使模型有更多试错范围；「单链路智投（3002）」消耗占比达 71.3%，叠加下单优化是爆量核心引擎！</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 爆量四大因 -->
+    <div class="space-y-4">
+      <div class="section-title section-总">💡 巧农婆规模化爆量四大核心机制</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="reason-card r1">
+          <div class="font-bold text-red-400 mb-1">主因① 基建规模化 1:1 复制，唯一性创意翻倍</div>
+          <p class="text-xs text-slate-300">有消耗账户数由 90 增至 135 (+50%)，消耗创意唯一性 ID 由 3546 暴涨至 7977 (+125%)。消耗高度集中于单一主体「郑州旷丹商贸」（占 87%），通过多账户矩阵快速横向复制成功基建，打破流量触顶天花板。</p>
+        </div>
+        <div class="reason-card r2">
+          <div class="font-bold text-purple-400 mb-1">策略② 智投策略集中且高效：单链路智投 + 下单优化</div>
+          <p class="text-xs text-slate-300">单链路智投占比 71.3% (604万)，搭配“下单”优化目标构成主力（占56%）。另外，全域通直播（4001）消耗占 13.5%，虽然体量中等，但其 <b>ROI 最高达 1.84</b>，是跨账户抓取全域流量的重要突破口。</p>
+        </div>
+        <div class="reason-card r3">
+          <div class="font-bold text-green-400 mb-1">货品③ 头部爆品 + 直播间聚合，模型快速锁定人群</div>
+          <p class="text-xs text-slate-300">商品端极度聚焦：巧农婆滋补直播间「莲子百合山药粉」单 SKU 消耗 621万，占比达 73%。高浓度的单品投放能够极大加速算法模型的学习速度，2天内将转化率锁定在高成单的中老年女性客群。</p>
+        </div>
+        <div class="reason-card r4">
+          <div class="font-bold text-orange-400 mb-1">护栏④ 成本稳定正反馈，模型稳定持续推流</div>
+          <p class="text-xs text-slate-300">在消耗急速拉升 10 倍的过程中，ROI 全程稳守 1.66-1.79，CPM 稳定在 135 元上下，CPA 保持约 53 元。成本未因放量而恶化，模型因此判定为“极优质广告”，进入“起量-达标-推流”的螺旋式正反馈通道。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1:1 复制基建四步法 -->
+    <div class="card space-y-6">
+      <div class="card-title">⚙️ 可复制爆量方法论：1:1 复制基建四步法</div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+        <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+          <div class="text-amber-500 font-bold">步骤一 · 单主体多账户</div>
+          <p class="text-slate-400 leading-relaxed">以单一核心主体进行多账户裂变，通过横向 1:1 复制已经成功跑量的账户，使起量基建快速覆盖，摊薄流量试错成本。</p>
+        </div>
+        <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+          <div class="text-blue-400 font-bold">步骤二 · 唯一性创意规模化</div>
+          <p class="text-slate-400 leading-relaxed">对跑量视频素材进行批量混剪和差异化处理，保证唯一性 ID 翻倍（本案提升125%），为智投系统提供更广阔的机器学习空间。</p>
+        </div>
+        <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+          <div class="text-emerald-400 font-bold">步骤三 · 智投智能投放组合</div>
+          <p class="text-slate-400 leading-relaxed">以“单链路智投”为核心引擎承接放量，搭配少量“全域通直播”作为高 ROI 增量渠道，降低人工盯盘和调价的滞后性。</p>
+        </div>
+        <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+          <div class="text-pink-400 font-bold">步骤四 · 货场精准搭配</div>
+          <p class="text-slate-400 leading-relaxed">爆品（山药粉）直接导入高承载力直播间聚合放量，避免多品分流导致模型学习分散。利用爆款副品作为 ROI 提效器。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Tab 3: 8 组重点爆款素材全景创意墙 ==================== -->
+  <div id="tab-creative" class="tab-content space-y-8">
+    <div class="flex items-center space-x-2 border-b border-slate-800 pb-3">
+      <span class="text-2xl">🎬</span>
+      <h2 class="text-xl font-bold text-slate-100">8 组重点爆款素材全景剖析与 AIGC 提效洞察</h2>
+    </div>
+
+    <section class="space-y-6">
+<div class="flex items-center justify-between border-b border-slate-700 pb-3">
+<div class="flex items-center space-x-2">
+<span class="text-2xl">📊</span>
+<h2 class="text-xl font-bold text-slate-100">核心指标均值与素材气泡矩阵</h2>
+</div>
+<p class="text-sm text-slate-400">41 条高消耗（均为高效）素材视频的数据分布特征（气泡大小=平均播放时长）</p>
+</div>
+<!-- Plotly 均值柱状图 -->
+<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6">
+<h3 class="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wider">各消耗区间核心数据对比</h3>
+<div class="w-full overflow-x-auto">
+<div> <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+<script charset="utf-8" crossorigin="anonymous" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" src="https://cdn.plot.ly/plotly-3.4.0.min.js"></script> <div class="plotly-graph-div" id="f4a9aa32-914c-43d4-8b09-d9b23ea348c0" style="height:320px; width:100%;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("f4a9aa32-914c-43d4-8b09-d9b23ea348c0")) {                    Plotly.newPlot(                        "f4a9aa32-914c-43d4-8b09-d9b23ea348c0",                        [{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"CTR(%)","showlegend":false,"text":{"dtype":"f8","bdata":"CtejcD0KFEDNzMzMzMwRQBSuR+F6FBZA"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"QDVeukkMFEDM57183ssRQPEWSFD8GBZA"},"type":"bar","xaxis":"x","yaxis":"y"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"3s快滑率(%)","showlegend":false,"text":{"dtype":"f8","bdata":"XI\u002fC9ShcKEBcj8L1KNwhQAAAAAAAAB9A"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"XI\u002fC9ShcKEDbN6x9w9ohQMqhRbbz\u002fR5A"},"type":"bar","xaxis":"x2","yaxis":"y2"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"平均播放时长(s)","showlegend":false,"text":{"dtype":"f8","bdata":"cT0K16NwNEBcj8L1KBw+QMP1KFyPwj9A"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"cT0K16NwNEAc1r5h7Rs+QN0kBoGVwz9A"},"type":"bar","xaxis":"x3","yaxis":"y3"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"CVR(%)","showlegend":false,"text":{"dtype":"f8","bdata":"PQrXo3A9HUA9CtejcL0jQOF6FK5H4SRA"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"PgrXo3A9HUDARvxrxL8jQN0CCYof4yRA"},"type":"bar","xaxis":"x4","yaxis":"y4"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#e2e8f0"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"#1e293b","plot_bgcolor":"#1e293b","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.20500000000000002]},"yaxis":{"anchor":"x","domain":[0.0,1.0]},"xaxis2":{"anchor":"y2","domain":[0.265,0.47000000000000003]},"yaxis2":{"anchor":"x2","domain":[0.0,1.0]},"xaxis3":{"anchor":"y3","domain":[0.53,0.7350000000000001]},"yaxis3":{"anchor":"x3","domain":[0.0,1.0]},"xaxis4":{"anchor":"y4","domain":[0.7949999999999999,1.0]},"yaxis4":{"anchor":"x4","domain":[0.0,1.0]},"annotations":[{"font":{"size":16},"showarrow":false,"text":"平均 CTR (%)","x":0.10250000000000001,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 3s快滑 (%)","x":0.36750000000000005,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 播放时长 (s)","x":0.6325000000000001,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 CVR (%)","x":0.8975,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"margin":{"t":40,"b":30,"l":30,"r":30},"font":{"family":"微软雅黑, sans-serif","size":11},"height":320},                        {"responsive": true}                    )                };            </script> </div>
+</div>
+</div>
+<!-- Plotly 散点气泡分布图 -->
+<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6">
+<h3 class="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wider">素材指标矩阵 (横轴 CTR, 纵轴 CVR)</h3>
+<div class="w-full overflow-x-auto">
+<div> <div class="plotly-graph-div" id="f80d29f9-7d49-43fd-b43b-de86fe5420ca" style="height:450px; width:100%;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("f80d29f9-7d49-43fd-b43b-de86fe5420ca")) {                    Plotly.newPlot(                        "f80d29f9-7d49-43fd-b43b-de86fe5420ca",                        [{"customdata":{"dtype":"f8","bdata":"AAAAAAAAMUBmZmZmZuYzQM3MzMzMzAxAAAAAAACANEAzMzMzMzMmQM3MzMzMDEBAZmZmZmZmKECamZmZmZknQAAAAAAAADFAZmZmZmbmMUA=","shape":"5, 2"},"hovertemplate":"消耗区间=10万+\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"10万+","marker":{"color":"#FF4D4F","size":{"dtype":"f8","bdata":"ZmZmZmbmM0AAAAAAAIA0QM3MzMzMDEBAmpmZmZmZJ0BmZmZmZuYxQA=="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"10万+","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"w\u002fUoXI\u002fCE0CamZmZmZkXQAAAAAAAAAxA9ihcj8L1FkDsUbgehesTQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"MzMzMzMzHED2KFyPwvUdQClcj8L1KCFAw\u002fUoXI\u002fCG0D2KFyPwvUZQA=="},"yaxis":"y","type":"scatter"},{"customdata":{"dtype":"f8","bdata":"zczMzMzM7D9mZmZmZuY9QAAAAAAAAOA\u002fMzMzMzOzRkAAAAAAAAAAAAAAAAAAAC1AzczMzMzMN0BmZmZmZmY2QM3MzMzMzDtAZmZmZmZmJkAzMzMzMzMyQJqZmZmZGThAAAAAAAAAAAAzMzMzMzNPQAAAAAAAAClAAAAAAACANUAzMzMzMzMXQAAAAAAAQEFAMzMzMzMzIUDNzMzMzEw1QJqZmZmZmbk\u002fAAAAAAAARkA=","shape":"11, 2"},"hovertemplate":"消耗区间=5万~10万\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"5万~10万","marker":{"color":"#FF9C6E","size":{"dtype":"f8","bdata":"ZmZmZmbmPUAzMzMzM7NGQAAAAAAAAC1AZmZmZmZmNkBmZmZmZmYmQJqZmZmZGThAMzMzMzMzT0AAAAAAAIA1QAAAAAAAQEFAzczMzMxMNUAAAAAAAABGQA=="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"5万~10万","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"SOF6FK5HDUApXI\u002fC9SgRQBSuR+F6FBdAzczMzMzMDEBI4XoUrkcPQFK4HoXrURBAMzMzMzMzFUDD9Shcj8IRQEjhehSuRxNAMzMzMzMzEkAUrkfhehQSQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"KVyPwvUoJUDsUbgehWsgQGZmZmZm5iFAFK5H4XoUJUDD9Shcj0IlQI\u002fC9ShcDydA7FG4HoXrIkAzMzMzM7MlQHE9CtejcCNAPQrXo3A9IkCPwvUoXA8iQA=="},"yaxis":"y","type":"scatter"},{"customdata":{"dtype":"f8","bdata":"mpmZmZmZyT+amZmZmdlIQAAAAAAAAC1AzczMzMxMOECamZmZmZkTQM3MzMzMTD1AAAAAAAAAHECamZmZmZk\u002fQJqZmZmZmSJAMzMzMzMzK0CamZmZmZkNQGZmZmZm5kFAmpmZmZmZyT8zMzMzMzNCQAAAAAAAAPA\u002fAAAAAAAARkDNzMzMzMwQQJqZmZmZGUdAZmZmZmZmBkBmZmZmZuZEQGZmZmZm5jlAZmZmZmZmM0CamZmZmZm5PwAAAAAAQEdAAAAAAAAAMkDNzMzMzMwzQJqZmZmZmck\u002fAAAAAABATkAAAAAAAAAAAJqZmZmZGUJAZmZmZmZm5j+amZmZmdlLQJqZmZmZmck\u002fAAAAAAAAQUAzMzMzMzMtQGZmZmZmZjBAMzMzMzMzJEAAAAAAAIBAQAAAAAAAAAAAMzMzMzMzNEAAAAAAAAAAADMzMzMzszZAzczMzMxMOkAzMzMzMzMwQJqZmZmZmRNAZmZmZmZmOUBmZmZmZmY3QDMzMzMzMylAAAAAAACANUDNzMzMzMw2QA==","shape":"25, 2"},"hovertemplate":"消耗区间=1万~5万\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"1万~5万","marker":{"color":"#FFC069","size":{"dtype":"f8","bdata":"mpmZmZnZSEDNzMzMzEw4QM3MzMzMTD1AmpmZmZmZP0AzMzMzMzMrQGZmZmZm5kFAMzMzMzMzQkAAAAAAAABGQJqZmZmZGUdAZmZmZmbmREBmZmZmZmYzQAAAAAAAQEdAzczMzMzMM0AAAAAAAEBOQJqZmZmZGUJAmpmZmZnZS0AAAAAAAABBQGZmZmZmZjBAAAAAAACAQEAzMzMzMzM0QDMzMzMzszZAMzMzMzMzMEBmZmZmZmY5QDMzMzMzMylAzczMzMzMNkA="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"1万~5万","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"SOF6FK5HE0AUrkfhehQVQEjhehSuRxFAuB6F61G4E0DXo3A9CtcWQM3MzMzMzBlAFK5H4XoUDkDD9Shcj8IaQBSuR+F6lCFAKVyPwvUoFEBcj8L1KFwRQIXrUbgehRJAZmZmZmZmE0DhehSuR+ESQNejcD0K1xNA16NwPQrXFECF61G4HoUQQAAAAAAAgCBArkfhehSuE0BI4XoUrkccQNejcD0K1ydASOF6FK5HD0CamZmZmZkPQAAAAAAAABJA4XoUrkfhE0A="},"xaxis":"x","y":{"dtype":"f8","bdata":"w\u002fUoXI9CK0CuR+F6FC4wQOxRuB6FayFAFK5H4XqULkCuR+F6FK4dQJqZmZmZGSBA4XoUrkfhKUCF61G4HgUmQHE9CtejcBlAUrgehetRL0AUrkfhetQwQGZmZmZm5iFAPQrXo3A9IkAfhetRuJ4vQB+F61G4niJA7FG4HoVrLUDXo3A9CtcnQLgehetRuBZAcT0K16NwGUDD9Shcj8IXQD0K16NwPf4\u002f16NwPQrXI0D2KFyPwvUlQPYoXI\u002fC9R9AXI\u002fC9SjcJEA="},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#e2e8f0"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"#1e293b","plot_bgcolor":"#1e293b","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"点击率 CTR (%)"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"转化率 CVR (%)"}},"legend":{"title":{"text":"消耗区间"},"tracegroupgap":0,"itemsizing":"constant"},"margin":{"t":20,"b":30,"l":30,"r":30},"font":{"family":"微软雅黑, sans-serif","size":11},"height":450},                        {"responsive": true}                    )                };            </script> </div>
+</div>
+</div>
+</section>
+    <section class="space-y-6">
+<div class="flex items-center justify-between border-b border-slate-700 pb-3">
+<div class="flex items-center space-x-2">
+<span class="text-2xl">⚡</span>
+<h2 class="text-xl font-bold text-slate-100">素材生产方式与 AIGC 应用效果洞察</h2>
+</div>
+<span class="text-xs bg-purple-100 text-purple-800 font-semibold px-2.5 py-1 rounded-full uppercase">
+                    AIGC 投放效能下钻看板
+                </span>
+</div>
+<!-- 数据总览与时间趋势网格 -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- 卡片 1: 生产方式效果对比矩阵 -->
+<div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-base font-bold text-slate-200">不同生产方式核心数据对比</h3>
+<span class="text-xs text-slate-400 font-medium">主视觉 × 整体双维度</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-700 text-xs font-bold text-slate-400 tracking-wider">
+<th class="pb-2">生产类型</th>
+<th class="pb-2 text-right">消耗 (占比)</th>
+<th class="pb-2 text-right">素材数</th>
+<th class="pb-2 text-right">CTR</th>
+<th class="pb-2 text-right">CVR</th>
+<th class="pb-2 text-right">ROI</th>
+</tr>
+</thead>
+<tbody class="text-xs divide-y divide-slate-700 font-medium text-slate-300">
+<tr class="hover:bg-slate-900">
+<td class="py-3 font-semibold text-slate-200 flex items-center space-x-1">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span>纯人工</span>
+</td>
+<td class="py-3 text-right">560.0万 <span class="text-slate-400 font-normal">(66.4%)</span></td>
+<td class="py-3 text-right">18,255</td>
+<td class="py-3 text-right text-slate-100">4.20%</td>
+<td class="py-3 text-right text-slate-100">8.50%</td>
+<td class="py-3 text-right text-slate-100">1.699</td>
+</tr>
+<tr class="hover:bg-slate-900">
+<td class="py-3 font-semibold text-slate-200 flex items-center space-x-1">
+<span class="w-2 h-2 rounded-full bg-purple-400"></span>
+<span>纯AIGC</span>
+</td>
+<td class="py-3 text-right">197.2万 <span class="text-slate-400 font-normal">(23.4%)</span></td>
+<td class="py-3 text-right">19,067</td>
+<td class="py-3 text-right text-slate-100">2.31%</td>
+<td class="py-3 text-right text-slate-100">6.87%</td>
+<td class="py-3 text-right text-slate-100">1.677</td>
+</tr>
+<tr class="bg-blue-950/40 font-semibold border-y border-blue-900/50/50">
+<td class="py-3 font-bold text-blue-400 flex items-center space-x-1">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<span>混合AIGC</span>
+</td>
+<td class="py-3 text-right text-blue-400">86.6万 <span class="text-blue-400 font-normal">(10.3%)</span></td>
+<td class="py-3 text-right text-blue-400">3,074</td>
+<td class="py-3 text-right text-blue-400">3.25%</td>
+<td class="py-3 text-right text-blue-400">9.82%</td>
+<td class="py-3 text-right text-blue-300 font-bold">1.859</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-4 bg-blue-950/40 p-3.5 rounded-xl border border-blue-900/50 flex items-start space-x-2 text-xs">
+<span class="text-blue-500 font-bold">💡 关键发现:</span>
+<p class="text-blue-300 font-medium">混合AIGC素材（<strong class="text-blue-200">人工主视觉 + AIGC文案/组件</strong>）效率达到金字塔尖！其 <strong class="text-blue-200">CVR高达9.82%，C-ROI高达1.859</strong>，比纯人工高 9.4%，比纯AIGC高 10.9%。</p>
+</div>
+</div>
+<!-- 卡片 2: 日级趋势与阶段演进时间轴 -->
+<div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
+<h3 class="text-base font-bold text-slate-200 mb-4">AIGC 消耗占比随爆量阶段演进</h3>
+<!-- 垂直时间轴 -->
+<div class="relative pl-6 border-l border-slate-700 space-y-4 text-xs font-medium text-slate-400">
+<!-- 节点 1 -->
+<div class="relative">
+<span class="absolute -left-[30px] top-0 bg-purple-100 text-purple-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">1</span>
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-200 text-xs">6/22 冷启动期 (AIGC占绝对主导)</h4>
+<p class="text-slate-400 mt-0.5">总消耗 15.7万 • AIGC消耗 9.08万 • <span class="text-purple-600 font-bold">占比高达 57.7%</span></p>
+</div>
+<span class="bg-purple-50 text-purple-600 border border-purple-100 px-2 py-0.5 rounded text-[10px]">智投冷启先锋</span>
+</div>
+</div>
+<!-- 节点 2 -->
+<div class="relative">
+<span class="absolute -left-[30px] top-0 bg-blue-100 text-blue-400 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">2</span>
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-200 text-xs">6/24 首次放量 (AIGC协助规模化)</h4>
+<p class="text-slate-400 mt-0.5">总消耗 41.8万 • AIGC消耗 16.28万 • <span class="text-blue-600 font-bold">占比 38.9%</span></p>
+</div>
+<span class="bg-blue-50 text-blue-600 border border-blue-900/50 px-2 py-0.5 rounded text-[10px]">批量填充素材</span>
+</div>
+</div>
+<!-- 节点 3 -->
+<div class="relative">
+<span class="absolute -left-[30px] top-0 bg-slate-100 text-slate-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">3</span>
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-200 text-xs">6/29 放量高峰 (人工视觉全面接管)</h4>
+<p class="text-slate-400 mt-0.5">总消耗 79.9万 • AIGC消耗 10.34万 • <span class="text-slate-300 font-bold">占比回落至 12.9%</span></p>
+</div>
+<span class="bg-slate-50 text-slate-400 border border-slate-700 px-2 py-0.5 rounded text-[10px]">优质人工接管</span>
+</div>
+</div>
+<!-- 节点 4 -->
+<div class="relative">
+<span class="absolute -left-[30px] top-0 bg-amber-100 text-amber-700 w-5 h-5 rounded-full flex items-center justify-center font-bold text-[9px] border-2 border-white shadow">4</span>
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-200 text-xs">7/02~7/03 峰值期 (AIGC二次补量)</h4>
+<p class="text-slate-400 mt-0.5">总消耗 167.0万 • AIGC消耗 48.08万 • <span class="text-amber-600 font-bold">占比回升至 28.8%</span></p>
+</div>
+<span class="bg-amber-50 text-amber-600 border border-amber-100 px-2 py-0.5 rounded text-[10px]">合规大户放量</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- AIGC产品下钻与核心结论 -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- 卡片 3: AIGC 产品能力与文案四象限分析 -->
+<div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm p-6 space-y-5 hover:shadow-md transition-shadow duration-300">
+<h3 class="text-base font-bold text-slate-200 border-b border-slate-50 pb-2">AIGC 内部能力效能拆解</h3>
+<!-- 产品模块横向进度对比 -->
+<div class="space-y-4 text-xs font-semibold text-slate-300">
+<!-- 数字人 -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-200 flex items-center space-x-1">
+<span class="text-emerald-500">🚀</span>
+<span>单人数字人 (AIGC 效率金牌)</span>
+</span>
+<span class="text-emerald-600">C-ROI 1.753 (超越纯人工 1.700) • 消耗占比 36%</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 36.1%"></div>
+</div>
+</div>
+<!-- 警示语 -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-200 flex items-center space-x-1">
+<span class="text-indigo-500">⚖️</span>
+<span>警示语修复 (AIGC 消耗中坚)</span>
+</span>
+<span class="text-indigo-600">C-ROI 1.566 • CVR 偏低 • 消耗占比 53.5% (规模担当)</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-indigo-500 h-full rounded-full" style="width: 53.5%"></div>
+</div>
+</div>
+<!-- 预设模板 -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-200 flex items-center space-x-1">
+<span class="text-rose-500">⚠️</span>
+<span>预设模板 (典型量多效弱)</span>
+</span>
+<span class="text-rose-600">素材数高达 11,591 (占AIGC 61%) • CTR仅 0.67% • 消耗占比 9.3%</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-rose-400 h-full rounded-full" style="width: 9.3%"></div>
+</div>
+</div>
+</div>
+<!-- 四象限提炼 -->
+<div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700/70 text-[11px] font-semibold text-slate-400 flex justify-between space-x-3">
+<div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-center flex-1">
+<h4 class="text-slate-400 text-[10px] uppercase">主视觉</h4>
+<p class="text-slate-200 font-bold mt-1 text-xs">人工视觉拉高曝光</p>
+<p class="text-[9px] mt-0.5">人工主视觉 CTR 4.19%</p>
+</div>
+<div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-center flex-1">
+<h4 class="text-slate-400 text-[10px] uppercase">组件/文案</h4>
+<p class="text-blue-600 font-bold mt-1 text-xs">AIGC文案暴增CVR</p>
+<p class="text-[9px] mt-0.5 text-blue-500">人工视觉+AIGC文案 ROI 1.856</p>
+</div>
+</div>
+</div>
+<!-- 卡片 4: 爆量金牌分析与核心结论 -->
+<div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<h3 class="text-base font-bold text-slate-200 border-b border-slate-50 pb-2">AIGC 爆量应用四大核心洞察</h3>
+<div class="space-y-3.5 text-xs font-medium text-slate-300 leading-relaxed mt-3">
+<div class="flex items-start space-x-2.5">
+<span class="bg-purple-100 text-purple-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">01</span>
+<p><strong class="text-slate-200">快速冷启的“绝对功臣”：</strong>AIGC素材在投放首日提供近 58% 的素材供给，快速填充素材池，协助智投系统以极低成本和闪电速度平稳度过冷启动期。</p>
+</div>
+<div class="flex items-start space-x-2.5">
+<span class="bg-blue-100 text-blue-400 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">02</span>
+<p><strong class="text-slate-200">起量发动机仍看人工视觉：</strong>人工素材在中后期消耗占比升至 87%，其点击率与转化率优势显著。大曝光和撑起基本盘的爆量引擎仍看优质的人工实拍主视觉。</p>
+</div>
+<div class="flex items-start space-x-2.5">
+<span class="bg-emerald-100 text-emerald-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">03</span>
+<p><strong class="text-slate-200">混合AIGC是最低成本提效器：</strong>人工主视觉（高CTR） + AIGC文案/组件（高CVR）四象限效率最优（ROI 1.856/1.859），文案AI化是提效性价比最高的杠杆。</p>
+</div>
+<div class="flex items-start space-x-2.5">
+<span class="bg-rose-100 text-rose-700 w-5 h-5 rounded-md flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">04</span>
+<p><strong class="text-slate-200">规避低质盲目堆量陷阱：</strong>必须警惕预设模板的量多效弱（1.1万个模板素材几乎不起量，CTR 0.67%）。应当提质减量，聚焦于高质量数字人和精细化文案的应用。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+    <div class="space-y-4">
+      <div class="section-title section-总">🔥 8组高消耗重点跑量素材多维创意卡片墙</div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">1</span>
+<span class="text-sm font-bold text-slate-400">10万+ 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 4.94%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 7.05%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 17.0%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">19.9s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_1_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_1_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">健康科普</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">达人种草</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">都市银发</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">资深中产</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】画面中一位中年女性在车内，手持麦克风，字幕提示“三伏天不要多吃这4种水果”，直接点出夏季饮食禁忌，引发用户对健康和夏季养生的关注。<br/>【承接】第3秒画面保持一致，女性的姿态和表情略有变化，但核心信息“三伏天不要多吃这4种水果”依然醒目，强化了健康警示，促使用户期待具体内容，想知道是哪4种水果以及为什么不能多吃，从而继续观看。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    提出禁忌  <span class="text-blue-400 font-bold mx-1">→</span>  专家解读  <span class="text-blue-400 font-bold mx-1">→</span>  揭示危害  <span class="text-blue-400 font-bold mx-1">→</span>  给出方案  <span class="text-blue-400 font-bold mx-1">→</span>  引导转化
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【专业指导】</strong>提供权威、实用的夏季饮食健康建议。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【健康警示】</strong>揭示夏季水果食用误区，避免健康风险。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【专家背书】</strong>由专业人士出镜讲解，提升内容可信度。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【养生意识】</strong>激发用户对夏季养生的关注和需求。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '场景环境：现代私家车副驾驶座内，明亮自然光透过车窗，模糊城市街景作背景，营造日常移动感。车内整洁，背景虚化，突出人物主体。\n\n主体外观与动作：一位约45岁中年女性，面容温和，气质专业，身着浅色衬衫。她右手自然握持专业直播麦克风，左手轻搭，姿态放松。眼神亲切直视镜头，表情从开场略严肃提示，在第3秒转为微微颔首，流露温和引导。\n\n镜头运动方式：稳定的中景特写，聚焦女性上半身，构图平衡。镜头在3-5秒内平稳，仅极细微呼吸式')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            场景环境：现代私家车副驾驶座内，明亮自然光透过车窗，模糊城市街景作背景，营造日常移动感。车内整洁，背景虚化，突出人物主体。
+
+主体外观与动作：一位约45岁中年女性，面容温和，气质专业，身着浅色衬衫。她右手自然握持专业直播麦克风，左手轻搭，姿态放松。眼神亲切直视镜头，表情从开场略严肃提示，在第3秒转为微微颔首，流露温和引导。
+
+镜头运动方式：稳定的中景特写，聚焦女性上半身，构图平衡。镜头在3-5秒内平稳，仅极细微呼吸式
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">2</span>
+<span class="text-sm font-bold text-slate-400">10万+ 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 5.9%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 7.49%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 3.6%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">20.5s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_2_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_2_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">美食制作</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">产品展示</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">精致妈妈</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">新锐白领</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】画面展示了传统方式盛装浓稠的白色饮品，暗示手工制作和醇厚口感，引发用户对饮品品质的好奇。<br/>【承接】画面转为现代场景下，将金黄色的饮品倒入透明杯中，强调其顺滑质地和诱人色泽，进一步吸引用户关注产品的口感和便捷性。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    传统制作  <span class="text-blue-400 font-bold mx-1">→</span>  醇厚展现  <span class="text-blue-400 font-bold mx-1">→</span>  丝滑倾倒  <span class="text-blue-400 font-bold mx-1">→</span>  卖点提炼  <span class="text-blue-400 font-bold mx-1">→</span>  引导购买
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【传统工艺】</strong>画面展示传统制作或盛装方式，暗示产品遵循古法，保留原汁原味。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【醇厚口感】</strong>液体浓稠，无论是勺舀还是倾倒，都展现出其细腻顺滑、入口绵密的质地。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【健康营养】</strong>作为植物蛋白饮品，通常富含蛋白质，是健康早餐或日常补充能量的理想选择。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【便捷享用】</strong>从传统到现代的场景切换，暗示产品既有传统风味，又可方便快捷地享用。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '场景起始于光线柔和的古朴木质厨房台面，背景陶罐模糊。迅速切换至极简现代厨房，白色大理石台面在明亮自然光下洁净通透。一双粗糙的手，用木勺从深色陶罐中缓慢舀出浓稠米白色植物饮品，厚重液体缓缓注入古朴陶瓷碗。紧接着，一双优雅的手，倾斜现代透明瓶，将金黄色植物蛋白饮品极致顺滑地注入晶莹玻璃杯，液体形成完美弧线，色泽饱满诱人。初始中景特写聚焦传统舀取，镜头微下沉。快速剪辑后，转为平稳推拉镜头，流畅跟随金黄色饮品从')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            场景起始于光线柔和的古朴木质厨房台面，背景陶罐模糊。迅速切换至极简现代厨房，白色大理石台面在明亮自然光下洁净通透。一双粗糙的手，用木勺从深色陶罐中缓慢舀出浓稠米白色植物饮品，厚重液体缓缓注入古朴陶瓷碗。紧接着，一双优雅的手，倾斜现代透明瓶，将金黄色植物蛋白饮品极致顺滑地注入晶莹玻璃杯，液体形成完美弧线，色泽饱满诱人。初始中景特写聚焦传统舀取，镜头微下沉。快速剪辑后，转为平稳推拉镜头，流畅跟随金黄色饮品从
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">3</span>
+<span class="text-sm font-bold text-slate-400">10万+ 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 3.5%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 8.58%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 11.1%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">32.1s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_3_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_3_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">健康科普</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">达人种草</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">精致妈妈</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】画面中出现一位中年男士，上方提示产品名称“莲子百合山药粉”，下方一个空白的黄色矩形框引发观众好奇心。<br/>【承接】空白矩形框内填充文字“有4种零食一定要多吃”，直接点明视频主题，以健康零食推荐的利益点吸引目标用户继续观看。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    抛出健康建议  <span class="text-blue-400 font-bold mx-1">→</span>  揭示零食清单  <span class="text-blue-400 font-bold mx-1">→</span>  讲解产品卖点  <span class="text-blue-400 font-bold mx-1">→</span>  引导用户购买
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【健康零食】</strong>作为健康零食选择，满足日常营养需求，适合注重健康的人群。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【精选食材】</strong>采用莲子、百合、山药等天然优质食材，配方科学，营养均衡。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【方便冲饮】</strong>粉末状易于冲泡，快速便捷享用，节省时间，适合快节奏生活。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【滋补养生】</strong>传统食材组合，具有滋补养生功效，有助于调理身体，提升元气。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '场景环境：\n一个光线充足、极简风格的居家书房或开放式厨房一角。背景以柔和的米白、浅灰与原木色调为主，营造温馨、整洁的现代健康氛围。背景虚化，突出前景人物。\n\n主体外观与动作：\n一位约45-50岁、面容和蔼、气质儒雅的中年男士，身着浅色休闲衬衫，端坐画面中央偏右。他面带自信真诚的微笑，眼神亲和地望向镜头，一只手轻搭桌面，另一手微抬，姿态自然放松，仿佛准备开始讲解。\n\n镜头运动方式：\n镜头开场为平稳固定中景，随后以极其缓慢且')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            场景环境：
+一个光线充足、极简风格的居家书房或开放式厨房一角。背景以柔和的米白、浅灰与原木色调为主，营造温馨、整洁的现代健康氛围。背景虚化，突出前景人物。
+
+主体外观与动作：
+一位约45-50岁、面容和蔼、气质儒雅的中年男士，身着浅色休闲衬衫，端坐画面中央偏右。他面带自信真诚的微笑，眼神亲和地望向镜头，一只手轻搭桌面，另一手微抬，姿态自然放松，仿佛准备开始讲解。
+
+镜头运动方式：
+镜头开场为平稳固定中景，随后以极其缓慢且
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">4</span>
+<span class="text-sm font-bold text-slate-400">10万+ 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 5.74%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 6.94%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 12.2%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">11.8s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_4_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_4_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">美食制作</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">产品展示</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">精致妈妈</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">新锐白领</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】画面中，热气腾腾的白色浓稠液体被大勺舀起，倒入碗中，营造出新鲜、传统制作的温暖感和食欲。<br/>【承接】紧接着，金黄色、质地醇厚的饮品被缓缓倒入透明杯中，展现了产品诱人的色泽和顺滑的口感，进一步激发了用户的品尝欲望。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    吸睛开场  <span class="text-blue-400 font-bold mx-1">→</span>  制作过程展示  <span class="text-blue-400 font-bold mx-1">→</span>  成品诱人呈现  <span class="text-blue-400 font-bold mx-1">→</span>  卖点详细介绍  <span class="text-blue-400 font-bold mx-1">→</span>  促单购买
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【新鲜制作】</strong>画面呈现热气腾腾的制作过程，暗示产品新鲜出炉，口感更佳。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【口感醇厚】</strong>无论是0s的浓稠感还是3s的顺滑倾倒，都强调了饮品的醇厚质地。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【营养健康】</strong>作为豆浆或植物奶，通常被视为健康、营养的日常饮品选择。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【便捷美味】</strong>产品形态和呈现方式暗示其易于准备和享用，同时视觉上诱人。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '场景环境: 画面始于一个光线明亮、整洁温馨的厨房台面，背景虚化，隐约可见木质纹理和传统器皿，营造纯朴自然的制作氛围。\n\n主体外观与动作: 镜头特写，一只手持木质大勺，从冒着热气的锅中舀起乳白色、浓稠且带有细微气泡的豆浆。蒸汽袅袅上升，豆浆被缓慢倾倒入古朴陶碗，形成诱人白色漩涡。紧接着，画面无缝切换，晶莹剔透的玻璃杯置于光洁台面。另一只手从精致容器中，将色泽金黄、醇厚如丝的豆浆，以优雅姿态缓缓注入玻璃杯。金黄色液体顺滑流淌，在杯中逐渐升高，其诱人光泽与透明杯壁形成鲜明对比，展现极致醇厚与顺滑。\n\n镜头运动方式: 初始中景，缓慢推近至大勺舀起豆浆的特写，镜头稳定跟随豆浆注入陶碗，略带俯角。随后平滑剪辑，镜头切换至玻璃杯，采用略带俯角的稳定镜头，聚焦金黄色豆浆注入过程，伴随轻微垂直升降，最终定格半满玻璃杯。\n\n光线色调: 整体采用柔和暖色调自然光，模拟清晨阳光。高光部分明亮，强调豆浆表面光泽与蒸汽轻盈。阴影柔和，色彩饱和度适中，突出豆浆天然色泽和诱人质感，营造温暖、舒适、充满食欲的视觉体验。\n\n叠加文字: 无。')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            场景环境: 画面始于一个光线明亮、整洁温馨的厨房台面，背景虚化，隐约可见木质纹理和传统器皿，营造纯朴自然的制作氛围。
+
+主体外观与动作: 镜头特写，一只手持木质大勺，从冒着热气的锅中舀起乳白色、浓稠且带有细微气泡的豆浆。蒸汽袅袅上升，豆浆被缓慢倾倒入古朴陶碗，形成诱人白色漩涡。紧接着，画面无缝切换，晶莹剔透的玻璃杯置于光洁台面。另一只手从精致容器中，将色泽金黄、醇厚如丝的豆浆，以优雅姿态缓缓注入玻璃杯。金黄色液体顺滑流淌，在杯中逐渐升高，其诱人光泽与透明杯壁形成鲜明对比，展现极致醇厚与顺滑。
+
+镜头运动方式: 初始中景，缓慢推近至大勺舀起豆浆的特写，镜头稳定跟随豆浆注入陶碗，略带俯角。随后平滑剪辑，镜头切换至玻璃杯，采用略带俯角的稳定镜头，聚焦金黄色豆浆注入过程，伴随轻微垂直升降，最终定格半满玻璃杯。
+
+光线色调: 整体采用柔和暖色调自然光，模拟清晨阳光。高光部分明亮，强调豆浆表面光泽与蒸汽轻盈。阴影柔和，色彩饱和度适中，突出豆浆天然色泽和诱人质感，营造温暖、舒适、充满食欲的视觉体验。
+
+叠加文字: 无。
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">5</span>
+<span class="text-sm font-bold text-slate-400">10万+ 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 4.98%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 6.49%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 17.0%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">17.9s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_5_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_5_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">健康科普</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">达人种草</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">都市银发</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">资深中产</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】画面中一位中年女性在车内，字幕提示“三伏天不要多吃这4种水果”，直接抛出与季节和健康饮食相关的禁忌，引发用户好奇和关注。<br/>【承接】第3秒画面主体和字幕内容保持不变，强化了“三伏天饮食禁忌”这一主题，促使用户期待具体是哪4种水果以及背后的原因，从而继续观看。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    吸睛开场  <span class="text-blue-400 font-bold mx-1">→</span>  提出禁忌  <span class="text-blue-400 font-bold mx-1">→</span>  专家讲解  <span class="text-blue-400 font-bold mx-1">→</span>  健康科普  <span class="text-blue-400 font-bold mx-1">→</span>  引导关注
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【健康指导】</strong>提供季节性饮食建议，帮助用户避免夏季饮食误区。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【专家视角】</strong>由专业人士或经验丰富者讲解，增加内容的可信度和权威性。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【实用性强】</strong>直接给出具体水果种类，便于用户日常采纳和调整饮食习惯。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【引发好奇】</strong>通过“不要多吃”的禁忌，有效吸引用户探究详情，提高完播率。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '场景环境：一辆现代汽车的宽敞明亮内饰中，背景透过车窗模糊可见城市街景，阳光透过车窗柔和洒入，营造出日常而舒适的氛围。车内环境整洁，细节适度，不分散对主体的注意力。\n主体外观与动作：一位约45岁、面容亲切且略显专业的女性，身着浅色休闲衬衫，妆容精致得体。她眼神坚定而直接地望向镜头，表情略带严肃与提示意味，身体微微前倾，仿佛即将揭示重要信息，姿态自然放松。\n镜头运动方式：镜头以一个平稳、缓慢的推近（slow push-in）从胸部以上的中景特写逐渐聚焦到她的面部，持续约3-4秒。画面保持高度稳定，无晃动，营造出直接、亲密的对话感。\n光线色调：整体采用明亮、自然的日光照明，光线柔和均匀，无明显阴影。色调温暖而清新，略带夏日感，背景色彩饱和度适中并略微虚化，确保主体清晰突出，画面整体呈现健康、专业的氛围。\n叠加文字：画面下方居中位置，清晰显示白色粗体文字“三伏天不要多吃这4种水果”，文字平滑淡入，停留至画面结束。')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            场景环境：一辆现代汽车的宽敞明亮内饰中，背景透过车窗模糊可见城市街景，阳光透过车窗柔和洒入，营造出日常而舒适的氛围。车内环境整洁，细节适度，不分散对主体的注意力。
+主体外观与动作：一位约45岁、面容亲切且略显专业的女性，身着浅色休闲衬衫，妆容精致得体。她眼神坚定而直接地望向镜头，表情略带严肃与提示意味，身体微微前倾，仿佛即将揭示重要信息，姿态自然放松。
+镜头运动方式：镜头以一个平稳、缓慢的推近（slow push-in）从胸部以上的中景特写逐渐聚焦到她的面部，持续约3-4秒。画面保持高度稳定，无晃动，营造出直接、亲密的对话感。
+光线色调：整体采用明亮、自然的日光照明，光线柔和均匀，无明显阴影。色调温暖而清新，略带夏日感，背景色彩饱和度适中并略微虚化，确保主体清晰突出，画面整体呈现健康、专业的氛围。
+叠加文字：画面下方居中位置，清晰显示白色粗体文字“三伏天不要多吃这4种水果”，文字平滑淡入，停留至画面结束。
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">6</span>
+<span class="text-sm font-bold text-slate-400">5万~10万 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 4.55%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 9.12%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 8.6%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">21.3s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_6_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_6_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">工厂实拍</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">促销导购</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">精致妈妈</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】画面中男子在工厂背景下，字幕提示“莲子百合山药药粉库存告急，福利马上就要结束了”，制造紧迫感和稀缺性，吸引用户关注。<br/>【承接】男子继续口述“哎结束了”、“这个走完咱就结束了”，进一步强调促销的终结性，促使用户产生立即购买的冲动。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    稀缺预警  <span class="text-blue-400 font-bold mx-1">→</span>  福利告罄  <span class="text-blue-400 font-bold mx-1">→</span>  强调时限  <span class="text-blue-400 font-bold mx-1">→</span>  促发购买
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【限时福利】</strong>视频核心强调“福利马上就要结束了”，制造购买紧迫感。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【库存告急】</strong>明确指出“库存告急”，利用稀缺性刺激用户立即下单。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【健康养生】</strong>产品名称“莲子百合山药药粉”暗示其具有滋补养生功效。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【工厂直供】</strong>背景是工厂实拍，暗示产品源头可靠，品质有保障。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '镜头起始于一个现代化的食品加工工厂内部，背景是整洁明亮的生产线，不锈钢设备在柔和的工业灯光下泛着光泽，远处可见堆叠整齐的谷物粉成品包装箱，营造出高效、专业的生产氛围。一位身着干净、专业工作服的男子（约35岁）站在画面中央偏右，面部表情略显焦急而严肃。他先是快速扫视了一下身后的生产线，然后迅速转头面向镜头，眼神坚定，口型清晰地模拟出“哎结束了”、“这个走完咱就结束了”的急促话语，同时右手微微抬起，做出一个强调“即将告罄”的示意动作，肢体语言充满紧迫感。镜头以一个稳定的中景开场，缓慢而平稳地向前推移，聚焦于男子的上半身和面部特写，同时保持背景工厂环境的清晰可见。推拉过程中，镜头略微向上倾斜，强调男子的权威感和话语的重要性。整体光线明亮而均匀，采用高色温的冷白光，强调工厂的洁净与效率。光影对比适中，突出人物轮廓，营造出一种专业而略带紧张的氛围。画面下方实时叠加醒目的中文文字提示：“莲子百合山药药粉库存告急，福利马上就要结束了”，字体现代粗体，颜色对比鲜明，以红色或橙色高亮“告急”和“结束”字样，强化视觉冲击力和紧迫感。')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            镜头起始于一个现代化的食品加工工厂内部，背景是整洁明亮的生产线，不锈钢设备在柔和的工业灯光下泛着光泽，远处可见堆叠整齐的谷物粉成品包装箱，营造出高效、专业的生产氛围。一位身着干净、专业工作服的男子（约35岁）站在画面中央偏右，面部表情略显焦急而严肃。他先是快速扫视了一下身后的生产线，然后迅速转头面向镜头，眼神坚定，口型清晰地模拟出“哎结束了”、“这个走完咱就结束了”的急促话语，同时右手微微抬起，做出一个强调“即将告罄”的示意动作，肢体语言充满紧迫感。镜头以一个稳定的中景开场，缓慢而平稳地向前推移，聚焦于男子的上半身和面部特写，同时保持背景工厂环境的清晰可见。推拉过程中，镜头略微向上倾斜，强调男子的权威感和话语的重要性。整体光线明亮而均匀，采用高色温的冷白光，强调工厂的洁净与效率。光影对比适中，突出人物轮廓，营造出一种专业而略带紧张的氛围。画面下方实时叠加醒目的中文文字提示：“莲子百合山药药粉库存告急，福利马上就要结束了”，字体现代粗体，颜色对比鲜明，以红色或橙色高亮“告急”和“结束”字样，强化视觉冲击力和紧迫感。
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">7</span>
+<span class="text-sm font-bold text-slate-400">5万~10万 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 4.82%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 9.72%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 5.8%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">34.5s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_7_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_7_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">美食制作</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">产品展示</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">精致妈妈</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">新锐白领</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】热气腾腾的浓稠液体被勺子舀起，展现出新鲜制作的诱人画面，引发用户对美味饮品的期待。<br/>【承接】金黄色的浓郁饮品从容器中倾泻而下，流畅丝滑的质感和饱满的视觉冲击力，进一步强调了产品的醇厚和品质，激发用户品尝欲望。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    制作展示  <span class="text-blue-400 font-bold mx-1">→</span>  成品呈现  <span class="text-blue-400 font-bold mx-1">→</span>  质地诱惑  <span class="text-blue-400 font-bold mx-1">→</span>  卖点解析  <span class="text-blue-400 font-bold mx-1">→</span>  场景应用
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【口感浓郁】</strong>画面中饮品质地醇厚，视觉上带来浓郁丝滑的口感联想，令人垂涎。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【新鲜制作】</strong>从大锅中舀出的场景，暗示饮品新鲜出炉，热气腾腾，保证最佳风味。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【营养健康】</strong>作为豆浆类饮品，富含植物蛋白，是健康生活方式的理想选择。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【早餐优选】</strong>方便快捷的制作或享用方式，使其成为健康早餐或日常饮品的理想伴侣。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '画面起始于光线明亮、背景虚化的现代厨房台面。深色陶瓷容器内，热气腾腾的乳白偏淡黄浓稠豆浆泛着微光。随后场景无缝切换至光洁木质桌面，晶莹玻璃杯静置。\n\n精致木勺缓缓舀起容器中粘稠豆浆，蒸汽袅袅。豆浆在勺中饱满，缓慢滴落，展现醇厚质地。紧接着，手持简约玻璃壶，将金黄色、丝滑浓郁豆浆，优雅倾泻入透明玻璃杯。豆浆流畅注入，形成诱人漩涡，直至杯身被饱满液体填满，表面泛细腻光泽。\n\n镜头以中景特写开场，缓慢推近，聚焦勺子舀浆及蒸汽细节。随后快速平稳切换至略仰视特写，精准捕捉豆浆从壶中倾泻入杯，液体在杯中升腾过程，强调其丝滑与饱满。运镜流畅，节奏舒缓。\n\n整体光线采用柔和自然光或暖色调影视灯光，营造温馨、纯净、富有食欲的氛围。侧逆光处理流动的豆浆，突出其金黄色泽、晶莹质感及蒸汽效果。画面色彩饱和度适中，对比度高，呈现高端、健康的视觉风格。\n\n无。')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            画面起始于光线明亮、背景虚化的现代厨房台面。深色陶瓷容器内，热气腾腾的乳白偏淡黄浓稠豆浆泛着微光。随后场景无缝切换至光洁木质桌面，晶莹玻璃杯静置。
+
+精致木勺缓缓舀起容器中粘稠豆浆，蒸汽袅袅。豆浆在勺中饱满，缓慢滴落，展现醇厚质地。紧接着，手持简约玻璃壶，将金黄色、丝滑浓郁豆浆，优雅倾泻入透明玻璃杯。豆浆流畅注入，形成诱人漩涡，直至杯身被饱满液体填满，表面泛细腻光泽。
+
+镜头以中景特写开场，缓慢推近，聚焦勺子舀浆及蒸汽细节。随后快速平稳切换至略仰视特写，精准捕捉豆浆从壶中倾泻入杯，液体在杯中升腾过程，强调其丝滑与饱满。运镜流畅，节奏舒缓。
+
+整体光线采用柔和自然光或暖色调影视灯光，营造温馨、纯净、富有食欲的氛围。侧逆光处理流动的豆浆，突出其金黄色泽、晶莹质感及蒸汽效果。画面色彩饱和度适中，对比度高，呈现高端、健康的视觉风格。
+
+无。
+                        </div>
+</div>
+</div><div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+<!-- 卡片顶部: 数据指标 + 原生截图并排对比 -->
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">8</span>
+<span class="text-sm font-bold text-slate-400">5万~10万 区间</span>
+</div>
+<!-- 数据药丸 -->
+<div class="flex space-x-1.5 text-xs font-semibold">
+<span class="px-2.5 py-1 bg-red-950/40 text-red-300 rounded-full border border-red-900/50">CTR 4.44%</span>
+<span class="px-2.5 py-1 bg-orange-950/40 text-orange-300 rounded-full border border-orange-900/50">CVR 10.85%</span>
+<span class="px-2.5 py-1 bg-amber-950/40 text-amber-300 rounded-full border border-amber-900/50">滑走 12.5%</span>
+<span class="px-2.5 py-1 bg-slate-900 text-slate-200 rounded-full border border-slate-800">21.5s 时长</span>
+</div>
+</div>
+<!-- 0s vs 3s 高清截图并排特写 -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="0s开场" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_8_0s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">0s 开场吸睛</div>
+</div>
+<div class="relative group rounded-lg overflow-hidden border border-slate-700">
+<img alt="3s承接" class="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://sumiyaliu.github.io/sumiya-public/apopo_frames/video_8_3s.jpg"/>
+<div class="absolute bottom-2 left-2 bg-blue-600/95 text-white text-[10px] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">3s 卖点承接</div>
+</div>
+</div>
+<!-- 创意洞察核心文本 -->
+<div class="space-y-4 pt-1">
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">类型:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">工厂实拍</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">促销导购</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs text-slate-400 font-bold self-center mr-1">人群:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">资深中产</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700">精致妈妈</span>
+</div>
+<!-- 黄金三秒分析 -->
+<div class="bg-slate-900 p-4 rounded-xl space-y-2 border border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">黄金三秒深度分析</h4>
+<p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    【开场】通过“很遗憾的告诉大家”制造悬念，并立即抛出“莲子百合山药药粉库存告急，福利马上就要结束了”的稀缺性和紧迫感，吸引用户关注。<br/>【承接】画面中人物的口语化表达“哎结束了”、“这个走完咱就结束了”进一步强化了福利即将终止的氛围，加深了用户对错失良机的担忧，促使其继续观看。
+                                </p>
+</div>
+<!-- 素材结构 -->
+<div class="space-y-1.5">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">素材骨架结构</h4>
+<div class="text-xs font-semibold text-slate-200 bg-blue-950/40 p-2.5 rounded-lg border border-blue-900/50 flex items-center space-x-1.5 flex-wrap">
+                                    制造紧迫  <span class="text-blue-400 font-bold mx-1">→</span>  强调福利  <span class="text-blue-400 font-bold mx-1">→</span>  现场实拍  <span class="text-blue-400 font-bold mx-1">→</span>  催促下单
+                                </div>
+</div>
+<!-- 卖点提炼 -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">爆款卖点提炼</h4>
+<div class="space-y-2 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【天然食材】</strong>莲子百合山药等多种天然食材，营养丰富，健康滋补。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【品质保障】</strong>工厂实拍，生产环境透明，确保产品质量与安全。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【限时福利】</strong>当前库存紧张，优惠活动即将截止，购买即享超值福利。</p>
+</div>
+<div class="flex items-start space-x-2 text-sm">
+<span class="text-emerald-500 font-bold mt-0.5">•</span>
+<p class="text-slate-300"><strong class="text-slate-200">【便捷冲饮】</strong>粉状产品，方便快捷冲泡，轻松享受健康美味。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 卡片底部: AI 提示词与一键复制 -->
+<div class="bg-slate-900 border-t border-slate-700 p-6 space-y-3 rounded-b-2xl">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sora/Seedance AI 视频生成提示词</span>
+<button class="text-xs font-bold bg-slate-800 text-blue-600 border border-slate-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all active:scale-95 flex items-center space-x-1" onclick="copyToClipboard(this, '画面始于一个现代化的谷物加工厂内部，背景是整齐排列的自动化生产线，机器灯光闪烁，但前景货架上，莲子百合山药药粉的库存箱已明显稀疏，部分货架已空，营造出即将售罄的视觉暗示。环境整洁，略带工业感，聚焦于产品区域。一位年轻、专业的导购员（女性，约30岁，身着简洁的品牌工作服）出现在画面中央。她面带一丝遗憾与焦急，眼神直接望向镜头，右手轻抚着仅剩不多的产品包装箱，左手则做出一个“即将结束”的下压手势。她的表情从略带歉意转为强调紧迫。镜头以一个轻微的广角开场，迅速从生产线全景推拉至导购员的半身特写，然后缓慢向右平移，聚焦在她手边稀疏的库存上，同时保持轻微的晃动感，模拟手持拍摄的真实与紧迫。整体光线明亮，但色调偏向冷暖适中的工业白光，局部区域略有阴影，以突出库存的稀缺感。导购员面部光线柔和，但背景的空置货架则略显暗淡，强化“告急”氛围。画面上方逐渐浮现一行醒目的红色粗体字：“很遗憾地告诉大家...”，紧接着下方叠加另一行黄色文字：“莲子百合山药药粉库存告急！福利马上就要结束了！”')">
+<span>Copy Prompt</span>
+</button>
+</div>
+<div class="bg-slate-800 p-3 rounded-lg border border-slate-700 max-h-24 overflow-y-auto text-xs text-slate-400 leading-relaxed font-medium">
+                            画面始于一个现代化的谷物加工厂内部，背景是整齐排列的自动化生产线，机器灯光闪烁，但前景货架上，莲子百合山药药粉的库存箱已明显稀疏，部分货架已空，营造出即将售罄的视觉暗示。环境整洁，略带工业感，聚焦于产品区域。一位年轻、专业的导购员（女性，约30岁，身着简洁的品牌工作服）出现在画面中央。她面带一丝遗憾与焦急，眼神直接望向镜头，右手轻抚着仅剩不多的产品包装箱，左手则做出一个“即将结束”的下压手势。她的表情从略带歉意转为强调紧迫。镜头以一个轻微的广角开场，迅速从生产线全景推拉至导购员的半身特写，然后缓慢向右平移，聚焦在她手边稀疏的库存上，同时保持轻微的晃动感，模拟手持拍摄的真实与紧迫。整体光线明亮，但色调偏向冷暖适中的工业白光，局部区域略有阴影，以突出库存的稀缺感。导购员面部光线柔和，但背景的空置货架则略显暗淡，强化“告急”氛围。画面上方逐渐浮现一行醒目的红色粗体字：“很遗憾地告诉大家...”，紧接着下方叠加另一行黄色文字：“莲子百合山药药粉库存告急！福利马上就要结束了！”
+                        </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Tab 4: 妙思文生视频爆款素材库 ==================== -->
+  <div id="tab-miaosi" class="tab-content space-y-8">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-slate-800 pb-3 gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl">🔋</span>
+        <h2 class="text-xl font-bold text-slate-100">妙思文生视频爆款素材共享库 (保健食品+传统滋补)</h2>
+      </div>
+      <!-- 本地原网页快捷访问入口 -->
+      <div class="flex flex-wrap gap-2">
+        <a href="保健食品妙思文生视频爆款素材.html" target="_blank" class="px-3 py-1.5 bg-cyan-950 text-cyan-400 border border-cyan-800 hover:bg-cyan-900 rounded-lg text-xs font-semibold transition-colors">
+          🌐 访问《保健食品妙思素材原报告》
+        </a>
+        <a href="传统滋补妙思文生视频爆款素材.html" target="_blank" class="px-3 py-1.5 bg-purple-950 text-purple-400 border border-purple-800 hover:bg-purple-900 rounded-lg text-xs font-semibold transition-colors">
+          🌐 访问《传统滋补妙思素材原报告》
+        </a>
+      </div>
+    </div>
+
+    <!-- 数据表现卡片 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 保健食品看板 summary -->
+      <div class="card border-l-4 border-cyan-500 space-y-3">
+        <div class="card-title text-cyan-400 flex items-center justify-between">
+          <span>📦 保健食品 · 妙思大盘指标</span>
+          <span class="text-xs bg-cyan-950 px-2.5 py-0.5 rounded-full border border-cyan-800">在投素材：12 组</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+          <div class="bg-slate-900 p-2 rounded"><div class="text-cyan-400 font-bold text-sm">2.30%</div><div class="text-slate-400 mt-1">平均 CTR</div></div>
+          <div class="bg-slate-900 p-2 rounded"><div class="text-green-400 font-bold text-sm">9.15%</div><div class="text-slate-400 mt-1">3s快滑率</div></div>
+          <div class="bg-slate-900 p-2 rounded"><div class="text-emerald-400 font-bold text-sm">76.53%</div><div class="text-slate-400 mt-1">3s完播率</div></div>
+          <div class="bg-slate-900 p-2 rounded"><div class="text-blue-400 font-bold text-sm">32.7s</div><div class="text-slate-400 mt-1">平均播放时长</div></div>
+        </div>
+      </div>
+
+      <!-- 传统滋补看板 summary -->
+      <div class="card border-l-4 border-purple-500 space-y-3">
+        <div class="card-title text-purple-400 flex items-center justify-between">
+          <span>📦 传统滋补 · 妙思大盘指标</span>
+          <span class="text-xs bg-purple-950 px-2.5 py-0.5 rounded-full border border-purple-800">在投素材：2 组</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+          <div class="bg-slate-900 p-2 rounded"><div class="text-purple-400 font-bold text-sm">3.82%</div><div class="text-slate-400 mt-1">平均 CTR</div></div>
+          <div class="bg-slate-900 p-2 rounded"><div class="text-green-400 font-bold text-sm">9.00%</div><div class="text-slate-400 mt-1">3s快滑率</div></div>
+          <div class="bg-slate-900 p-2 rounded"><div class="text-emerald-400 font-bold text-sm">49.42%</div><div class="text-slate-400 mt-1">3s完播率</div></div>
+          <div class="bg-slate-900 p-2 rounded"><div class="text-blue-400 font-bold text-sm">10.0s</div><div class="text-slate-400 mt-1">平均播放时长</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 保健食品视频卡片墙 -->
+    <div class="space-y-4">
+      <div class="section-title section-场">🧴 保健食品 · 妙思文生视频爆款素材 (12个)</div>
+      <div class="grid-bj">
+        <div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b53ymcwsaaf6uair6sfbvvb7qyenhbqk2ka.f0.mp4?dis_k=3f05860dcf22ea4a5097e3471da671f6&amp;dis_t=1783310414&amp;m=8e807ff8f55461e77d760a33f7cb532b&amp;sha256=898cae1dc0f077cd34113a83e34a067ee4a87c91d9d1789848fcb9108b4f11a8" type="video/mp4"/>
+</video>
+<div class="badge">#1 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53ymcwsaaf6uair6sfbvvb7qyenhbqk2ka.f0.mp4?dis_k=3f05860dcf22ea4a5097e3471da671f6&amp;dis_t=1783310414&amp;m=8e807ff8f55461e77d760a33f7cb532b&amp;sha256=898cae1dc0f077cd34113a83e34a067ee4a87c91d9d1789848fcb9108b4f11a8" target="_blank">8e807ff8...</a>
+<span class="category-tag">📦 减肥瘦身</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>21万+</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">1.40%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.00%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">86.94%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">35.0s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b53kac3caafy4adizch6rvb4uaewfialmka.f0.mp4?dis_k=cf2413144b7fc1be7faad0feca304db4&amp;dis_t=1782744481&amp;m=855acaf8c33b87674d626cd1a97859c3" type="video/mp4"/>
+</video>
+<div class="badge">#2 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53kac3caafy4adizch6rvb4uaewfialmka.f0.mp4?dis_k=cf2413144b7fc1be7faad0feca304db4&amp;dis_t=1782744481&amp;m=855acaf8c33b87674d626cd1a97859c3" target="_blank">855acaf8...</a>
+<span class="category-tag">📦 减肥瘦身</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5万~10万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:29.5%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">1.62%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.00%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">75.77%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">37.8s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b53ruafkaaa5aabpvj6kvvbvdiekwgqavka.f0.mp4?dis_k=d8b083e2bb0492d96b64beb14973eccd&amp;dis_t=1782912948&amp;m=6c36d30b56f775358dc007bfd3a2a6a5&amp;sha256=0c83ab08e3805c1c144e96509ca4d290d7de4caca948dcf9d08370e60bb1dbc7" type="video/mp4"/>
+</video>
+<div class="badge">#3 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53ruafkaaa5aabpvj6kvvbvdiekwgqavka.f0.mp4?dis_k=d8b083e2bb0492d96b64beb14973eccd&amp;dis_t=1782912948&amp;m=6c36d30b56f775358dc007bfd3a2a6a5&amp;sha256=0c83ab08e3805c1c144e96509ca4d290d7de4caca948dcf9d08370e60bb1dbc7" target="_blank">6c36d30b...</a>
+<span class="category-tag">📦 未分类</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>1万~5万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:18.7%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">0.97%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.00%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">81.38%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">37.0s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b534ycaoaaek4ag5gjwojvb5zqea7taib2a.f0.mp4?dis_k=080608988c64fa36188a92798705c083&amp;dis_t=1781688761&amp;m=e20aef1b8b2adbc63a503c089e4c173f" type="video/mp4"/>
+</video>
+<div class="badge">#4 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b534ycaoaaek4ag5gjwojvb5zqea7taib2a.f0.mp4?dis_k=080608988c64fa36188a92798705c083&amp;dis_t=1781688761&amp;m=e20aef1b8b2adbc63a503c089e4c173f" target="_blank">e20aef1b...</a>
+<span class="category-tag">📦 未分类</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>1万~5万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:15.9%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">1.83%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.00%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">89.48%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">42.7s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0bc3y4aqqaab7iaeh3zarzvbxryebddqccca.f0.mp4?dis_k=531db60aa8216126d0d654daf1b90bf4&amp;dis_t=1781337719&amp;m=a6237bfb65eea27427aeb3c1420e7ba6&amp;sha256=4532762f512e8d460f25240f93b99cd49999af396c874c12f1de56f53c999653" type="video/mp4"/>
+</video>
+<div class="badge">#5 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3y4aqqaab7iaeh3zarzvbxryebddqccca.f0.mp4?dis_k=531db60aa8216126d0d654daf1b90bf4&amp;dis_t=1781337719&amp;m=a6237bfb65eea27427aeb3c1420e7ba6&amp;sha256=4532762f512e8d460f25240f93b99cd49999af396c874c12f1de56f53c999653" target="_blank">a6237bfb...</a>
+<span class="category-tag">📦 减肥瘦身</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>1万~5万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:13.5%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">5.37%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-mid">36.56%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">51.57%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">19.7s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b53pya3uaabdiadidbsarvbu7qexj7adosa.f0.mp4?dis_k=592c6095a9a0afa4dbfa81a6047745c3&amp;dis_t=1781763702&amp;m=23966ecdae6ffad520aafc1fe7354c59" type="video/mp4"/>
+</video>
+<div class="badge">#6 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53pya3uaabdiadidbsarvbu7qexj7adosa.f0.mp4?dis_k=592c6095a9a0afa4dbfa81a6047745c3&amp;dis_t=1781763702&amp;m=23966ecdae6ffad520aafc1fe7354c59" target="_blank">23966ecd...</a>
+<span class="category-tag">📦 调节三高</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>1万~5万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:6.6%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">2.42%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-mid">31.64%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">64.00%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-mid">11.8s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b53y4baoaac6eap6ub2yvvbtryea7dqeb2a.f0.mp4?dis_k=75b7e3de7c18021e2cf9421e3e1871b7&amp;dis_t=1782954719&amp;m=352e57089bd0e5bccde39f753d0d7c02&amp;sha256=1492d38670b6aac3140c07a65385f1adcbccaa6eefa61321276efd092e5c41ef" type="video/mp4"/>
+</video>
+<div class="badge">#7 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53y4baoaac6eap6ub2yvvbtryea7dqeb2a.f0.mp4?dis_k=75b7e3de7c18021e2cf9421e3e1871b7&amp;dis_t=1782954719&amp;m=352e57089bd0e5bccde39f753d0d7c02&amp;sha256=1492d38670b6aac3140c07a65385f1adcbccaa6eefa61321276efd092e5c41ef" target="_blank">352e5708...</a>
+<span class="category-tag">📦 未分类</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>1万~5万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:5.3%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">1.11%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.00%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">83.37%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">39.7s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b53s4caqaae6iab7azr2jvb5fyebclqicca.f0.mp4?dis_k=cc96b6b22aab42c1b4c0c77f79b8752f&amp;dis_t=1781864415&amp;m=d498673e4d450f29f6f693d2cf1d961d&amp;sha256=2b0b1239a7e568012e0364e41c2a4189523a43e087f0bbc03b1f5ef1e6586878" type="video/mp4"/>
+</video>
+<div class="badge">#8 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b53s4caqaae6iab7azr2jvb5fyebclqicca.f0.mp4?dis_k=cc96b6b22aab42c1b4c0c77f79b8752f&amp;dis_t=1781864415&amp;m=d498673e4d450f29f6f693d2cf1d961d&amp;sha256=2b0b1239a7e568012e0364e41c2a4189523a43e087f0bbc03b1f5ef1e6586878" target="_blank">d498673e...</a>
+<span class="category-tag">📦 调节三高</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5千~1万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:3.5%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">4.12%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">4.34%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">81.82%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">28.7s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0bc3hiao6aaajqaivhspx5vbwoqe545ab32a.f0.mp4?dis_k=97a414233d052cf698b55f53ec04f39a&amp;dis_t=1783588224&amp;m=4f37c6ee291dd9af431e385c3e708292" type="video/mp4"/>
+</video>
+<div class="badge">#9 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3hiao6aaajqaivhspx5vbwoqe545ab32a.f0.mp4?dis_k=97a414233d052cf698b55f53ec04f39a&amp;dis_t=1783588224&amp;m=4f37c6ee291dd9af431e385c3e708292" target="_blank">4f37c6ee...</a>
+<span class="category-tag">📦 未分类</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5千~1万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:3.0%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">2.28%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">1.49%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">81.02%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">38.2s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0b534yaokaaaiqac52zyhnvbxzqe4xtabzka.f0.mp4?dis_k=0e1a1228f88b4b62a6db4eedeea898c2&amp;dis_t=1782107060&amp;m=fe7d30d4dc4064165d8f47c411bf445e" type="video/mp4"/>
+</video>
+<div class="badge">#10 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0b534yaokaaaiqac52zyhnvbxzqe4xtabzka.f0.mp4?dis_k=0e1a1228f88b4b62a6db4eedeea898c2&amp;dis_t=1782107060&amp;m=fe7d30d4dc4064165d8f47c411bf445e" target="_blank">fe7d30d4...</a>
+<span class="category-tag">📦 调节三高</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5千~1万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:3.0%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">1.90%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-mid">35.14%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">60.61%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-mid">11.5s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0bc3geaikaaasmafursmefvbwmiequyqbbka.f0.mp4?dis_k=31feee27995c61bb5163409b3f33bdd8&amp;dis_t=1783422897&amp;m=e906e5d9048f548bbe6f1c870ee93df3" type="video/mp4"/>
+</video>
+<div class="badge">#11 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3geaikaaasmafursmefvbwmiequyqbbka.f0.mp4?dis_k=31feee27995c61bb5163409b3f33bdd8&amp;dis_t=1783422897&amp;m=e906e5d9048f548bbe6f1c870ee93df3" target="_blank">e906e5d9...</a>
+<span class="category-tag">📦 调节三高</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5千~1万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:3.0%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">1.73%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.66%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">76.76%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">40.9s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0bc3v4ae2aaalmabcsclv5vbxlyejwxqatka.f0.mp4?dis_k=2c1e2eb915aa4ea28ae2809073c8c5ea&amp;dis_t=1783323908&amp;m=9425f5763b7e9b483bad0a70b966e861" type="video/mp4"/>
+</video>
+<div class="badge">#12 · 保健食品</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3v4ae2aaalmabcsclv5vbxlyejwxqatka.f0.mp4?dis_k=2c1e2eb915aa4ea28ae2809073c8c5ea&amp;dis_t=1783323908&amp;m=9425f5763b7e9b483bad0a70b966e861" target="_blank">9425f576...</a>
+<span class="category-tag">📦 调节三高</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5千~1万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:2.9%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">2.85%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">0.01%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">85.66%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-good">49.8s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+
+    <!-- 传统滋补视频卡片墙 -->
+    <div class="space-y-4 pt-4">
+      <div class="section-title section-货">🍵 传统滋补 · 妙思文生视频爆款素材 (2个)</div>
+      <div class="grid-zb">
+        <div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0bc32ybxiaadfyakybbiafvbtvqeotlag5ca.f0.mp4?dis_k=a5dce42b56001a71de663eb41357c782&amp;dis_t=1781258500&amp;m=1a642b00386fab66336015efda1c3325&amp;sha256=7d4c33f0ef0e98daabeddd464afa332b9b336522d2eb55ef1cf8edea68a1721a" type="video/mp4"/>
+</video>
+<div class="badge">#1 · 传统滋补</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc32ybxiaadfyakybbiafvbtvqeotlag5ca.f0.mp4?dis_k=a5dce42b56001a71de663eb41357c782&amp;dis_t=1781258500&amp;m=1a642b00386fab66336015efda1c3325&amp;sha256=7d4c33f0ef0e98daabeddd464afa332b9b336522d2eb55ef1cf8edea68a1721a" target="_blank">1a642b00...</a>
+<span class="category-tag">📦 药食同源食品</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>10万+</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">4.37%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">4.86%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">49.33%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-mid">11.2s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div><div class="card">
+<div class="media-area" style="background:#111">
+<video controls="" muted="" preload="metadata" style="width:100%;background:#000;display:block;max-height:300px;">
+<source src="http://adsmind.gdtimg.com/ads_svp_video__0bc3gyb2maadyeah5zbiz5vbsnqeuy3ahjsa.f0.mp4?dis_k=b8885d1c1c2438e676dda246d8f2683f&amp;dis_t=1781258498&amp;m=2e1338fa114c2ebde96dada696b135f2&amp;sha256=0fbf9a4043de1606e1463b0722ec4f193ddfa7f151d0b4813e24763667491d96" type="video/mp4"/>
+</video>
+<div class="badge">#2 · 传统滋补</div>
+<div class="type-badge">🎬 妙思文生视频</div>
+</div>
+<div class="info">
+<div class="md5-line">
+          MD5: <a href="http://adsmind.gdtimg.com/ads_svp_video__0bc3gyb2maadyeah5zbiz5vbsnqeuy3ahjsa.f0.mp4?dis_k=b8885d1c1c2438e676dda246d8f2683f&amp;dis_t=1781258498&amp;m=2e1338fa114c2ebde96dada696b135f2&amp;sha256=0fbf9a4043de1606e1463b0722ec4f193ddfa7f151d0b4813e24763667491d96" target="_blank">2e1338fa...</a>
+<span class="category-tag">📦 药食同源食品</span>
+</div>
+<div class="cost-bar">
+<div class="bar-label"><span>消耗</span><span>5万~10万</span></div>
+<div class="bar-track"><div class="bar-fill" style="width:47.6%"></div></div>
+</div>
+<div class="metrics" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+<div class="metric-box"><div class="val color-blue">3.27%</div><div class="lbl">CTR</div></div>
+<div class="metric-box"><div class="val color-good">13.14%</div><div class="lbl">3秒快滑率</div></div>
+<div class="metric-box"><div class="val color-good">49.52%</div><div class="lbl">3秒完播率</div></div>
+<div class="metric-box"><div class="val color-mid">8.8s</div><div class="lbl">平均播放时长</div></div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-center py-8 text-slate-500 text-xs border-t border-slate-800 max-w-7xl mx-auto mt-12">
+  <p>© 2026 郑州袤垠 & 巧农婆(阿婆) 数据分析与素材库一站式共享中心 • 技术支持: CodeBuddy AI Pair Developer</p>
+  <p class="mt-2 text-slate-600">合并文件：郑州袤垠_人货场剖析报告.html | apopo.html | apopo_creative.html | 保健食品妙思素材 | 传统滋补妙思素材</p>
+</footer>
+
+<!-- JavaScript Tab 切换、Clipboard 复制和图表重绘 -->
+<script>
+function switchTab(tabId) {
+  // 隐藏所有 Tab
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  
+  // 显示并激活目标 Tab
+  document.getElementById(tabId).classList.add('active');
+  
+  // 激活对应按钮
+  event.currentTarget.classList.add('active');
+  
+  // ECharts、Plotly 重新调整尺寸，防止容器大小变化导致的渲染不正常
+  if (tabId === 'tab-zm') {
+    setTimeout(function() {
+      if (typeof chartNewcust !== 'undefined') chartNewcust.resize();
+      if (typeof chartProduct !== 'undefined') chartProduct.resize();
+      if (typeof chartPosition !== 'undefined') chartPosition.resize();
+      if (typeof chartSmart !== 'undefined') chartSmart.resize();
+      if (typeof chartAigc !== 'undefined') chartAigc.resize();
+    }, 50);
+  } else if (tabId === 'tab-apopo') {
+    setTimeout(function() {
+      window.dispatchEvent(new Event('resize'));
+    }, 50);
+  } else if (tabId === 'tab-creative') {
+    setTimeout(function() {
+      window.dispatchEvent(new Event('resize'));
+    }, 50);
+  }
+}
+
+// 复制提示词到剪贴板功能
+function copyToClipboard(button, text) {
+  navigator.clipboard.writeText(text).then(function() {
+    const originalText = button.innerHTML;
+    button.innerHTML = '<span>✓ 已成功复制!</span>';
+    button.classList.remove('text-blue-600', 'bg-white', 'border-slate-200');
+    button.classList.add('text-white', 'bg-emerald-600', 'border-emerald-500');
+    setTimeout(() => {
+      button.innerHTML = originalText;
+      button.classList.remove('text-white', 'bg-emerald-600', 'border-emerald-500');
+      button.classList.add('text-blue-600', 'bg-white', 'border-slate-200');
+    }, 2000);
+  }, function(err) {
+    console.error('无法复制代码: ', err);
+  });
+}
+</script>
+
+<!-- ECharts 初始化代码 (来自于郑州袤垠) -->
+<script>
+
+var chartNewcust = echarts.init(document.getElementById('chart_newcust'));
+chartNewcust.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['新客占比','日消耗'],top:10},
+  grid:{left:60,right:60,top:40,bottom:30},
+  xAxis:{type:'category',data:["2026/06/22", "2026/06/23", "2026/06/24", "2026/06/25", "2026/06/26", "2026/06/27", "2026/06/28", "2026/06/29", "2026/06/30", "2026/07/01", "2026/07/02", "2026/07/03", "2026/07/04", "2026/07/05"],axisLabel:{fontSize:10,rotate:30}},
+  yAxis:[
+    {type:'value',name:'新客占比(%)',max:100},
+    {type:'value',name:'消耗(万)',position:'right'}
+  ],
+  series:[
+    {name:'新客占比',type:'line',yAxisIndex:0,data:[93.1, 91.5, 94.8, 92.6, 93.9, 92.9, 91.9, 94.0, 49.0, 11.1, 8.4, 10.1, 10.0, 9.6],smooth:true,itemStyle:{color:'#ec4899'},areaStyle:{color:'rgba(236,72,153,0.1)'}},
+    {name:'日消耗',type:'bar',yAxisIndex:1,data:[16.04, 21.3, 41.55, 13.5, 19.92, 60.67, 43.97, 89.17, 74.87, 56.56, 114.79, 174.57, 54.96, 115.52],itemStyle:{color:'#3b82f6'}}
+  ]
+});
+
+var chartProduct = echarts.init(document.getElementById('chart_product'));
+var prodNames = ["[\u5de7\u519c\u5a46]\u83b2\u5b50\u767e\u5408\u5c71\u836f\u7c89\u7c97\u7cae\u8425", "\u3010\u5de7\u519c\u5a46\u3011\u83b2\u5b50\u767e\u5408\u5c71\u836f\u7c89\u7c97\u7cae\u8425", "[\u5de7\u519c\u5a46]\u82a1\u5b9e\u8d64\u8c46\u858f\u7c73\u7c89\u5373\u98df\u4e94", "\u7206\u6d46\u9178\u5976\u7599\u7629\u624b\u5de5\u5976\u5305\u5b50\u6b63\u5b97\u539f\u5473", "\u5de7\u519c\u5a46\u9999\u8fa3\u5364\u5473\u9e2d\u80d7\u4e0d\u5207\u7247\u5f39\u97e7\u72ec", "\u3010\u5de7\u519c\u5a46\u3011\u82a1\u5b9e\u8d64\u8c46\u858f\u7c73\u7c89\u5373\u98df\u4e94"];
+var prodCosts = [621.3, 65.0, 51.0, 34.7, 32.6, 14.3];
+var prodRois = [1.701, 1.595, 1.542, 1.917, 1.943, 1.506];
+chartProduct.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['消耗','ROI'],top:10},
+  grid:{left:60,right:60,top:40,bottom:30},
+  xAxis:{type:'category',data:prodNames,axisLabel:{fontSize:10}},
+  yAxis:[
+    {type:'value',name:'万'},
+    {type:'value',name:'ROI',position:'right'}
+  ],
+  series:[
+    {name:'消耗',type:'bar',data:prodCosts,itemStyle:{color:'#f97316'}},
+    {name:'ROI',type:'line',yAxisIndex:1,data:prodRois,itemStyle:{color:'#22c55e'},lineStyle:{width:2}}
+  ]
+});
+
+var chartPosition = echarts.init(document.getElementById('chart_position'));
+var posNames = ["1030436212907001 (\u5fae\u4fe1", "4003158499171286 (\u89c6\u9891", "0", "4071202390577885 (\u5fae\u4fe1", "9065030601338963 (\u8ba2\u9605", "20141119 (\u5fae\u4fe1-\u670b\u53cb\u5708feed"];
+var posCosts = [442.5, 265.5, 173.1, 89.8, 26.0, 1.9];
+var posRois = [1.76, 1.775, 1.633, 1.805, 1.912, 1.305];
+chartPosition.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['消耗','ROI'],top:10},
+  grid:{left:60,right:60,top:40,bottom:60},
+  xAxis:{type:'category',data:posNames,axisLabel:{fontSize:9,rotate:30}},
+  yAxis:[
+    {type:'value',name:'万'},
+    {type:'value',name:'ROI',position:'right'}
+  ],
+  series:[
+    {name:'消耗',type:'bar',data:posCosts,itemStyle:{color:'#06b6d4'}},
+    {name:'ROI',type:'line',yAxisIndex:1,data:posRois,itemStyle:{color:'#22c55e'},lineStyle:{width:2}}
+  ]
+});
+
+var chartSmart = echarts.init(document.getElementById('chart_smart'));
+chartSmart.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['单链路智投','全域通','非智投'],top:10},
+  grid:{left:60,right:30,top:40,bottom:30},
+  xAxis:{type:'category',data:["2026/06/22", "2026/06/23", "2026/06/24", "2026/06/25", "2026/06/26", "2026/06/27", "2026/06/28", "2026/06/29", "2026/06/30", "2026/07/01", "2026/07/02", "2026/07/03", "2026/07/04", "2026/07/05"],axisLabel:{fontSize:10,rotate:30}},
+  yAxis:{type:'value',name:'万'},
+  series:[
+    {name:'单链路智投',type:'bar',stack:'total',data:[8.08, 13.7, 25.57, 10.94, 14.05, 42.57, 30.27, 54.93, 40.23, 37.63, 87.6, 109.74, 34.58, 94.24],itemStyle:{color:'#3b82f6'}},
+    {name:'全域通',type:'bar',stack:'total',data:[1.24, 1.97, 4.69, 1.76, 2.56, 4.93, 3.04, 19.42, 22.44, 7.22, 18.76, 14.52, 3.94, 7.72],itemStyle:{color:'#a855f7'}},
+    {name:'非智投',type:'bar',stack:'total',data:[6.4, 3.5, 11.56, 1.05, 2.4, 8.52, 6.79, 5.49, 8.6, 4.09, 3.7, 42.7, 11.48, 9.75],itemStyle:{color:'#94a3b8'}}
+  ]
+});
+
+var chartAigc = echarts.init(document.getElementById('chart_aigc'));
+chartAigc.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['非AIGC','AIGC','AIGC占比'],top:10},
+  grid:{left:60,right:60,top:40,bottom:30},
+  xAxis:{type:'category',data:["2026/06/06", "2026/06/07", "2026/06/08", "2026/06/09", "2026/06/10", "2026/06/11", "2026/06/12", "2026/06/13", "2026/06/14", "2026/06/15", "2026/06/16", "2026/06/17", "2026/06/18", "2026/06/19", "2026/06/20", "2026/06/21", "2026/06/22", "2026/06/23", "2026/06/24", "2026/06/25", "2026/06/26", "2026/06/27", "2026/06/28", "2026/06/29", "2026/06/30", "2026/07/01", "2026/07/02", "2026/07/03", "2026/07/04", "2026/07/05"],axisLabel:{fontSize:10,rotate:30}},
+  yAxis:[
+    {type:'value',name:'万'},
+    {type:'value',name:'%',position:'right',max:100}
+  ],
+  series:[
+    {name:'非AIGC',type:'bar',stack:'cost',data:[11.83, 7.99, 9.09, 8.15, 12.12, 9.46, 3.56, 6.43, 7.7, 8.34, 7.23, 5.4, 5.5, 7.76, 11.51, 12.91, 6.65, 13.51, 25.54, 10.73, 15.03, 42.01, 33.27, 69.51, 61.33, 37.95, 76.8, 118.93, 38.8, 100.56],itemStyle:{color:'#3b82f6'}},
+    {name:'AIGC',type:'bar',stack:'cost',data:[1.56, 0.67, 0.51, 0.35, 0.4, 0.25, 0.2, 0.4, 0.36, 0.55, 0.59, 0.6, 0.73, 1.24, 2.04, 5.98, 9.08, 5.67, 16.28, 3.02, 3.98, 14.01, 6.83, 10.34, 9.94, 10.99, 33.26, 48.08, 11.21, 13.99],itemStyle:{color:'#a855f7'}},
+    {name:'AIGC占比',type:'line',yAxisIndex:1,data:[11.7, 7.8, 5.3, 4.2, 3.2, 2.6, 5.3, 5.9, 4.5, 6.2, 7.5, 10.0, 11.7, 13.7, 15.1, 31.6, 57.7, 29.6, 38.9, 22.0, 20.9, 25.0, 17.0, 12.9, 13.9, 22.5, 30.2, 28.8, 22.4, 12.2],itemStyle:{color:'#f97316'},lineStyle:{width:2}}
+  ]
+});
+
+window.addEventListener('resize', function(){
+  chartNewcust.resize(); chartProduct.resize(); chartPosition.resize();
+  chartSmart.resize(); chartAigc.resize();
+});
+
+</script>
+
+<!-- Chart.js 初始化代码 (来自于 apopo_temp.html) -->
+<script>
+// 这里将渲染 apopo 的日消耗趋势、基建账户数和智投类型柱状图
+// 我们需要在这里注入 apopo_temp 的图表配置
+
+function grad(ctx, c1, c2){
+  const g = ctx.createLinearGradient(0,0,0,170);
+  g.addColorStop(0, c1); g.addColorStop(1, c2); return g;
+}
+const dates = ['06/22','06/23','06/24','06/25','06/26','06/27','06/28','06/29','06/30','07/01','07/02','07/03','07/04','07/05'];
+
+(function(){
+  const c = document.getElementById('chartTrend');
+  const ctx = c.getContext('2d');
+  new Chart(ctx, {
+    type:'line',
+    data:{ labels: dates, datasets:[
+      { label:'总消耗（万元）', data:[15.7,19.2,41.8,13.7,19.0,56.0,40.1,79.8,71.3,48.9,110.1,167.0,50.0,114.4],
+        borderColor:'#2563eb', backgroundColor: grad(ctx,'rgba(37,99,235,0.35)','rgba(37,99,235,0.02)'),
+        borderWidth:2.5, tension:0.35, fill:true, pointBackgroundColor:'#fff', pointBorderColor:'#2563eb', pointBorderWidth:1.5, pointRadius:2.5, pointHoverRadius:5 },
+      { label:'单链路智投消耗（万元）', data:[8.1,13.7,25.6,10.9,14.0,42.6,30.3,54.9,40.2,37.6,87.6,109.7,34.6,94.2],
+        borderColor:'#10b981', backgroundColor: grad(ctx,'rgba(16,185,129,0.35)','rgba(16,185,129,0.02)'),
+        borderWidth:2.5, tension:0.35, fill:true, pointBackgroundColor:'#fff', pointBorderColor:'#10b981', pointBorderWidth:1.5, pointRadius:2.5, pointHoverRadius:5 }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false, layout:{padding:{top:10}},
+      plugins:{ legend:{ position:'top', align:'end', labels:{ usePointStyle:true, pointStyle:'circle', font:{size:10,weight:'600'}, color:'#1f2937', boxWidth:7, padding:6 } },
+        tooltip:{ backgroundColor:'rgba(30,58,138,0.95)', padding:8, callbacks:{ label:(x)=>`${x.dataset.label}: ${x.parsed.y} 万` } } },
+      scales:{ y:{ beginAtZero:true, ticks:{ color:'#6b7280', font:{size:9}, callback:(v)=>v+'万' }, grid:{ color:'rgba(148,163,184,0.18)' } },
+        x:{ ticks:{ color:'#374151', font:{weight:'600',size:9} }, grid:{display:false} } },
+      animation:{ duration:900 } },
+    plugins:[{ id:'dl', afterDatasetsDraw(chart){ const {ctx}=chart;
+      chart.data.datasets.forEach((ds,i)=>{ const m=chart.getDatasetMeta(i); m.data.forEach((pt,idx)=>{ const v=ds.data[idx];
+        if(idx===11||idx===10||idx===13){ ctx.save(); ctx.fillStyle=ds.borderColor; ctx.font='bold 9px PingFang SC'; ctx.textAlign='center'; ctx.fillText(v+'万', pt.x, pt.y-6); ctx.restore(); } }); }); } }]
+  });
+})();
+
+(function(){
+  const c = document.getElementById('chartInfra');
+  const ctx = c.getContext('2d');
+  new Chart(ctx, {
+    type:'line',
+    data:{ labels: dates, datasets:[
+      { label:'有消耗账户数', data:[90,95,94,96,95,107,110,117,119,125,127,127,131,135], yAxisID:'y',
+        borderColor:'#2563eb', backgroundColor:'rgba(37,99,235,0.12)', borderWidth:2, tension:0.35, fill:true, pointRadius:1.5 },
+      { label:'唯一性创意数', data:[3546,3579,3954,3415,3609,5208,5370,6951,6637,6912,6648,7985,7018,7977], yAxisID:'y1',
+        borderColor:'#7c3aed', backgroundColor:'rgba(124,58,237,0.10)', borderWidth:2, tension:0.35, fill:true, pointRadius:1.5 }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', align:'end', labels:{ usePointStyle:true, pointStyle:'circle', font:{size:9,weight:'600'}, color:'#1f2937', boxWidth:7, padding:5 } } },
+      scales:{ y:{ position:'left', beginAtZero:true, ticks:{ color:'#2563eb', font:{size:8} }, grid:{ color:'rgba(148,163,184,0.15)' } },
+        y1:{ position:'right', beginAtZero:true, ticks:{ color:'#7c3aed', font:{size:8} }, grid:{display:false} },
+        x:{ ticks:{ color:'#374151', font:{size:8} }, grid:{display:false} } }, animation:{duration:800} }
+  });
+})();
+
+(function(){
+  const c = document.getElementById('chartZhitou');
+  const ctx = c.getContext('2d');
+  new Chart(ctx, {
+    type:'doughnut',
+    data:{ labels:['单链路智投 3002','非智投广告','全域通直播 4001','短直双开 3001'],
+      datasets:[{ data:[71.3,14.9,13.5,0.3], backgroundColor:['#2563eb','#7c3aed','#10b981','#f59e0b'], borderWidth:2, borderColor:'#fff' }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'55%',
+      plugins:{ legend:{ position:'right', labels:{ usePointStyle:true, pointStyle:'circle', font:{size:10,weight:'600'}, color:'#1f2937', boxWidth:7, padding:6 } },
+        tooltip:{ backgroundColor:'rgba(30,58,138,0.95)', padding:8, callbacks:{ label:(x)=>`${x.label}: ${x.parsed}%` } } }, animation:{duration:800} }
+  });
+})();
+
+// 流量结构：横向柱状图 - 日均消耗占比 + ROI
+(function(){
+  const c = document.getElementById('chartTraffic');
+  const ctx = c.getContext('2d');
+  const labels = ['短剧-IAA','小游戏-其他','短剧-其他','小戏小程序-其他','小说/UAA','小程序'];
+  const spendPct = [82.69, 9.48, 3.19, 2.36, 1.55, 0.69];
+  const roiData = [1.69, 1.51, 1.68, 1.66, 1.58, 1.56];
+  const cpmData = [256.59, 121.67, 117.08, 245.44, 239.47, 130.75];
+  new Chart(ctx, {
+    type:'bar',
+    data:{ labels: labels, datasets:[
+      { label:'日均消耗占比(%)', data: spendPct, yAxisID:'y',
+        backgroundColor:['rgba(37,99,235,0.75)','rgba(16,185,129,0.65)','rgba(124,58,237,0.55)','rgba(245,158,11,0.5)','rgba(220,38,38,0.45)','rgba(148,163,184,0.35)'],
+        borderRadius:4, borderSkipped:false },
+      { label:'下单ROI', data: roiData, yAxisID:'y1', type:'line',
+        borderColor:'#dc2626', backgroundColor:'rgba(220,38,38,0.08)', borderWidth:2, tension:0.3,
+        pointRadius:3, pointBackgroundColor:'#fff', pointBorderColor:'#dc2626' }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', align:'end', labels:{ usePointStyle:true, pointStyle:'circle', font:{size:9,weight:'600'}, color:'#1f2937', boxWidth:6, padding:4 } },
+        tooltip:{ backgroundColor:'rgba(30,58,138,0.95)', padding:8, callbacks:{
+          label:(x)=> x.datasetIndex===0 ? `${x.label}: ${x.parsed.y}%` : `${x.label}: ROI ${x.parsed.y}` } } },
+      scales:{ y:{ position:'left', beginAtZero:true, max:100, ticks:{ color:'#2563eb', font:{size:9}, callback:(v)=>v+'%' }, grid:{ color:'rgba(148,163,184,0.15)' } },
+        y1:{ position:'right', beginAtZero:true, min:1.4, max:1.8, ticks:{ color:'#dc2626', font:{size:9}, stepSize:0.05 }, grid:{display:false} },
+        x:{ ticks:{ color:'#374151', font:{size:8.5} }, grid:{display:false} } }, animation:{duration:800} }
+  });
+})();
+
+// 人群画像：柱状图 - 各年龄段占比 + ROI
+(function(){
+  const c = document.getElementById('chartAudience');
+  const ctx = c.getContext('2d');
+  const labels = ['65+','60-64','55-59','50-54','45-49','40-44','35-39','30-34','0-13','19-24','25-29','14-18'];
+  const pctData = [43.39,22.34,16.67,9.97,4.30,1.67,0.73,0.36,0.23,0.16,0.20,0.12];
+  const roiData = [1.80,1.78,1.77,1.76,1.77,1.80,1.81,1.80,1.82,1.81,1.79,1.80];
+  const ctrData = [5.93,3.83,3.40,3.02,3.01,3.42,4.02,4.09,5.55,8.10,6.17,6.60];
+  new Chart(ctx, {
+    type:'bar',
+    data:{ labels: labels, datasets:[
+      { label:'消耗占比(%)', data: pctData, yAxisID:'y',
+        backgroundColor: pctData.map((v,i) => i < 4 ? 'rgba(37,99,235,'+(0.25+v/180)+')' : 'rgba(156,163,175,0.25)'),
+        borderRadius:3, borderSkipped:false },
+      { label:'ROI', data: roiData, yAxisID:'y1', type:'line',
+        borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.06)', borderWidth:2, tension:0.25,
+        pointRadius:pctData.map(v=> v>3 ? 3 : 1), pointBackgroundColor:'#10b981' }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', align:'end', labels:{ usePointStyle:true, pointStyle:'circle', font:{size:9,weight:'600'}, color:'#1f2937', boxWidth:6, padding:4 } },
+        tooltip:{ backgroundColor:'rgba(30,58,138,0.95)', padding:8, callbacks:{
+          label:(x)=> x.datasetIndex===0 ? `${x.label}: ${x.parsed.y}%` : `ROI: ${x.parsed.y}` } } },
+      scales:{ y:{ position:'left', beginAtZero:true, max:50, ticks:{ color:'#2563eb', font:{size:9}, callback:(v)=>v+'%' }, grid:{ color:'rgba(148,163,184,0.12)' } },
+        y1:{ position:'right', beginAtZero:false, min:1.70, max:1.85, ticks:{ color:'#10b981', font:{size:9}, stepSize:0.02 }, grid:{display:false} },
+        x:{ ticks:{ color:'#374151', font:{size:8.5} }, grid:{display:false} } }, animation:{duration:800} }
+  });
+})();
+
+</script>
+
+<!-- Plotly 初始化代码 (来自于 apopo_creative_temp) -->
+<script>
+// 这里将渲染 apopo_creative 的两个 Plotly 图表
+                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("f4a9aa32-914c-43d4-8b09-d9b23ea348c0")) {                    setTimeout(function() { Plotly.newPlot(                        "f4a9aa32-914c-43d4-8b09-d9b23ea348c0",                        [{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"CTR(%)","showlegend":false,"text":{"dtype":"f8","bdata":"CtejcD0KFEDNzMzMzMwRQBSuR+F6FBZA"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"QDVeukkMFEDM57183ssRQPEWSFD8GBZA"},"type":"bar","xaxis":"x","yaxis":"y"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"3s快滑率(%)","showlegend":false,"text":{"dtype":"f8","bdata":"XI\u002fC9ShcKEBcj8L1KNwhQAAAAAAAAB9A"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"XI\u002fC9ShcKEDbN6x9w9ohQMqhRbbz\u002fR5A"},"type":"bar","xaxis":"x2","yaxis":"y2"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"平均播放时长(s)","showlegend":false,"text":{"dtype":"f8","bdata":"cT0K16NwNEBcj8L1KBw+QMP1KFyPwj9A"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"cT0K16NwNEAc1r5h7Rs+QN0kBoGVwz9A"},"type":"bar","xaxis":"x3","yaxis":"y3"},{"marker":{"color":["#FF4D4F","#FF9C6E","#FFC069"]},"name":"CVR(%)","showlegend":false,"text":{"dtype":"f8","bdata":"PQrXo3A9HUA9CtejcL0jQOF6FK5H4SRA"},"textposition":"auto","x":["10万+","5万~10万","1万~5万"],"y":{"dtype":"f8","bdata":"PgrXo3A9HUDARvxrxL8jQN0CCYof4yRA"},"type":"bar","xaxis":"x4","yaxis":"y4"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#e2e8f0"},"error_y":{"color":"#e2e8f0"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#e2e8f0"},"geo":{"bgcolor":"#1e293b","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"#1e293b","plot_bgcolor":"#1e293b","polar":{"angularaxis":{"gridcolor":"#334155","linecolor":"#334155","ticks":""},"bgcolor":"#1e293b","radialaxis":{"gridcolor":"#334155","linecolor":"#334155","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#334155","showbackground":true,"ticks":"","zerolinecolor":"#334155"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#334155","showbackground":true,"ticks":"","zerolinecolor":"#334155"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#334155","showbackground":true,"ticks":"","zerolinecolor":"#334155"}},"shapedefaults":{"line":{"color":"#e2e8f0"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"#1e293b","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#334155","linecolor":"#334155","ticks":"","title":{"standoff":15},"zerolinecolor":"#334155","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#334155","linecolor":"#334155","ticks":"","title":{"standoff":15},"zerolinecolor":"#334155","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.20500000000000002]},"yaxis":{"anchor":"x","domain":[0.0,1.0]},"xaxis2":{"anchor":"y2","domain":[0.265,0.47000000000000003]},"yaxis2":{"anchor":"x2","domain":[0.0,1.0]},"xaxis3":{"anchor":"y3","domain":[0.53,0.7350000000000001]},"yaxis3":{"anchor":"x3","domain":[0.0,1.0]},"xaxis4":{"anchor":"y4","domain":[0.7949999999999999,1.0]},"yaxis4":{"anchor":"x4","domain":[0.0,1.0]},"annotations":[{"font":{"size":16},"showarrow":false,"text":"平均 CTR (%)","x":0.10250000000000001,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 3s快滑 (%)","x":0.36750000000000005,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 播放时长 (s)","x":0.6325000000000001,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"平均 CVR (%)","x":0.8975,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"margin":{"t":40,"b":30,"l":30,"r":30},"font":{"family":"微软雅黑, sans-serif","size":11},"height":320},                        {"responsive": true}                    )                };                            window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("f80d29f9-7d49-43fd-b43b-de86fe5420ca")) {                    setTimeout(function() { Plotly.newPlot(                        "f80d29f9-7d49-43fd-b43b-de86fe5420ca",                        [{"customdata":{"dtype":"f8","bdata":"AAAAAAAAMUBmZmZmZuYzQM3MzMzMzAxAAAAAAACANEAzMzMzMzMmQM3MzMzMDEBAZmZmZmZmKECamZmZmZknQAAAAAAAADFAZmZmZmbmMUA=","shape":"5, 2"},"hovertemplate":"消耗区间=10万+\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"10万+","marker":{"color":"#FF4D4F","size":{"dtype":"f8","bdata":"ZmZmZmbmM0AAAAAAAIA0QM3MzMzMDEBAmpmZmZmZJ0BmZmZmZuYxQA=="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"10万+","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"w\u002fUoXI\u002fCE0CamZmZmZkXQAAAAAAAAAxA9ihcj8L1FkDsUbgehesTQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"MzMzMzMzHED2KFyPwvUdQClcj8L1KCFAw\u002fUoXI\u002fCG0D2KFyPwvUZQA=="},"yaxis":"y","type":"scatter"},{"customdata":{"dtype":"f8","bdata":"zczMzMzM7D9mZmZmZuY9QAAAAAAAAOA\u002fMzMzMzOzRkAAAAAAAAAAAAAAAAAAAC1AzczMzMzMN0BmZmZmZmY2QM3MzMzMzDtAZmZmZmZmJkAzMzMzMzMyQJqZmZmZGThAAAAAAAAAAAAzMzMzMzNPQAAAAAAAAClAAAAAAACANUAzMzMzMzMXQAAAAAAAQEFAMzMzMzMzIUDNzMzMzEw1QJqZmZmZmbk\u002fAAAAAAAARkA=","shape":"11, 2"},"hovertemplate":"消耗区间=5万~10万\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"5万~10万","marker":{"color":"#FF9C6E","size":{"dtype":"f8","bdata":"ZmZmZmbmPUAzMzMzM7NGQAAAAAAAAC1AZmZmZmZmNkBmZmZmZmYmQJqZmZmZGThAMzMzMzMzT0AAAAAAAIA1QAAAAAAAQEFAzczMzMxMNUAAAAAAAABGQA=="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"5万~10万","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"SOF6FK5HDUApXI\u002fC9SgRQBSuR+F6FBdAzczMzMzMDEBI4XoUrkcPQFK4HoXrURBAMzMzMzMzFUDD9Shcj8IRQEjhehSuRxNAMzMzMzMzEkAUrkfhehQSQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"KVyPwvUoJUDsUbgehWsgQGZmZmZm5iFAFK5H4XoUJUDD9Shcj0IlQI\u002fC9ShcDydA7FG4HoXrIkAzMzMzM7MlQHE9CtejcCNAPQrXo3A9IkCPwvUoXA8iQA=="},"yaxis":"y","type":"scatter"},{"customdata":{"dtype":"f8","bdata":"mpmZmZmZyT+amZmZmdlIQAAAAAAAAC1AzczMzMxMOECamZmZmZkTQM3MzMzMTD1AAAAAAAAAHECamZmZmZk\u002fQJqZmZmZmSJAMzMzMzMzK0CamZmZmZkNQGZmZmZm5kFAmpmZmZmZyT8zMzMzMzNCQAAAAAAAAPA\u002fAAAAAAAARkDNzMzMzMwQQJqZmZmZGUdAZmZmZmZmBkBmZmZmZuZEQGZmZmZm5jlAZmZmZmZmM0CamZmZmZm5PwAAAAAAQEdAAAAAAAAAMkDNzMzMzMwzQJqZmZmZmck\u002fAAAAAABATkAAAAAAAAAAAJqZmZmZGUJAZmZmZmZm5j+amZmZmdlLQJqZmZmZmck\u002fAAAAAAAAQUAzMzMzMzMtQGZmZmZmZjBAMzMzMzMzJEAAAAAAAIBAQAAAAAAAAAAAMzMzMzMzNEAAAAAAAAAAADMzMzMzszZAzczMzMxMOkAzMzMzMzMwQJqZmZmZmRNAZmZmZmZmOUBmZmZmZmY3QDMzMzMzMylAAAAAAACANUDNzMzMzMw2QA==","shape":"25, 2"},"hovertemplate":"消耗区间=1万~5万\u003cbr\u003e点击率 CTR (%)=%{x}\u003cbr\u003e转化率 CVR (%)=%{y}\u003cbr\u003e平均播放时长(s)=%{customdata[1]}\u003cbr\u003e3s快滑率(%)=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"1万~5万","marker":{"color":"#FFC069","size":{"dtype":"f8","bdata":"mpmZmZnZSEDNzMzMzEw4QM3MzMzMTD1AmpmZmZmZP0AzMzMzMzMrQGZmZmZm5kFAMzMzMzMzQkAAAAAAAABGQJqZmZmZGUdAZmZmZmbmREBmZmZmZmYzQAAAAAAAQEdAzczMzMzMM0AAAAAAAEBOQJqZmZmZGUJAmpmZmZnZS0AAAAAAAABBQGZmZmZmZjBAAAAAAACAQEAzMzMzMzM0QDMzMzMzszZAMzMzMzMzMEBmZmZmZmY5QDMzMzMzMylAzczMzMzMNkA="},"sizemode":"area","sizeref":0.156,"symbol":"circle"},"mode":"markers","name":"1万~5万","orientation":"v","showlegend":true,"x":{"dtype":"f8","bdata":"SOF6FK5HE0AUrkfhehQVQEjhehSuRxFAuB6F61G4E0DXo3A9CtcWQM3MzMzMzBlAFK5H4XoUDkDD9Shcj8IaQBSuR+F6lCFAKVyPwvUoFEBcj8L1KFwRQIXrUbgehRJAZmZmZmZmE0DhehSuR+ESQNejcD0K1xNA16NwPQrXFECF61G4HoUQQAAAAAAAgCBArkfhehSuE0BI4XoUrkccQNejcD0K1ydASOF6FK5HD0CamZmZmZkPQAAAAAAAABJA4XoUrkfhE0A="},"xaxis":"x","y":{"dtype":"f8","bdata":"w\u002fUoXI9CK0CuR+F6FC4wQOxRuB6FayFAFK5H4XqULkCuR+F6FK4dQJqZmZmZGSBA4XoUrkfhKUCF61G4HgUmQHE9CtejcBlAUrgehetRL0AUrkfhetQwQGZmZmZm5iFAPQrXo3A9IkAfhetRuJ4vQB+F61G4niJA7FG4HoVrLUDXo3A9CtcnQLgehetRuBZAcT0K16NwGUDD9Shcj8IXQD0K16NwPf4\u002f16NwPQrXI0D2KFyPwvUlQPYoXI\u002fC9R9AXI\u002fC9SjcJEA="},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#e2e8f0"},"error_y":{"color":"#e2e8f0"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#e2e8f0"},"geo":{"bgcolor":"#1e293b","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"#1e293b","plot_bgcolor":"#1e293b","polar":{"angularaxis":{"gridcolor":"#334155","linecolor":"#334155","ticks":""},"bgcolor":"#1e293b","radialaxis":{"gridcolor":"#334155","linecolor":"#334155","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#334155","showbackground":true,"ticks":"","zerolinecolor":"#334155"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#334155","showbackground":true,"ticks":"","zerolinecolor":"#334155"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#334155","showbackground":true,"ticks":"","zerolinecolor":"#334155"}},"shapedefaults":{"line":{"color":"#e2e8f0"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"#1e293b","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#334155","linecolor":"#334155","ticks":"","title":{"standoff":15},"zerolinecolor":"#334155","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#334155","linecolor":"#334155","ticks":"","title":{"standoff":15},"zerolinecolor":"#334155","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"点击率 CTR (%)"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"转化率 CVR (%)"}},"legend":{"title":{"text":"消耗区间"},"tracegroupgap":0,"itemsizing":"constant"},"margin":{"t":20,"b":30,"l":30,"r":30},"font":{"family":"微软雅黑, sans-serif","size":11},"height":450},                        {"responsive": true}                    )                };            
+</script>
+
+</body>
+</html>

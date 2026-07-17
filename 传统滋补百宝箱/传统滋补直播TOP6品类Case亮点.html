@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>传统滋补直播链路TOP6品类头部直播间Case亮点</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:#F5F7FA;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:24px 16px}
+.header{background:linear-gradient(135deg,#8E84FD 0%,#B8A9FF 100%);color:white;padding:32px;border-radius:12px;margin-bottom:24px}
+.header h1{font-size:24px;font-weight:700;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:0.85}
+.case-card{background:white;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:5px solid #8E84FD}
+.case-card.highlight{border-left-color:#76C84D}
+.case-card.new-entry{border-left-color:#FFAE19}
+.case-title{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.case-title .cat-tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:700;color:white}
+.case-title h2{font-size:20px;font-weight:700;color:#1a1a1a}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.kpi-item{text-align:center;padding:12px 8px;background:#F8FAFF;border-radius:8px}
+.kpi-item .val{font-size:20px;font-weight:700;color:#8E84FD}
+.kpi-item .lbl{font-size:11px;color:#888;margin-top:2px}
+.kpi-item .cmp{font-size:10px;margin-top:2px}
+.highlight-box{background:#F0FFF4;border:1px solid #76C84D;border-radius:8px;padding:14px 18px;margin-top:12px}
+.highlight-box .title{font-weight:700;color:#2D8A4E;margin-bottom:6px;font-size:14px}
+.highlight-box ul{list-style:none;padding:0}
+.highlight-box ul li{padding:3px 0;font-size:13px;color:#333}
+.highlight-box ul li::before{content:'★';color:#FFAE19;margin-right:6px}
+.peak-box{background:linear-gradient(135deg,#FFF5F5,#FFF0E6);border:1px solid #FF6D5E;border-radius:10px;padding:16px 20px;margin-bottom:12px}
+.peak-box .p-title{font-weight:700;color:#DC2626;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.peak-box .p-title .fire{font-size:18px}
+.peak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.peak-item{text-align:center;padding:10px 6px;background:white;border-radius:8px;border:1px solid #FED7AA}
+.peak-item .p-val{font-size:18px;font-weight:700;color:#DC2626}
+.peak-item .p-lbl{font-size:10px;color:#888;margin-top:2px}
+.peak-item .p-sub{font-size:9px;color:#aaa;margin-top:1px}
+.peak-item .p-up{font-size:11px;color:#FF6D5E;font-weight:700;margin-top:2px}
+.surge-badge{display:inline-block;padding:4px 12px;border-radius:14px;font-size:13px;font-weight:700;background:linear-gradient(135deg,#FF6D5E,#FFAE19);color:white}
+.bench-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.bench-item{padding:10px;background:#FFF8F6;border-radius:6px;font-size:12px;text-align:center}
+.bench-item .b-val{font-size:16px;font-weight:700}
+.bench-item .b-lbl{color:#888;font-size:11px}
+.detail-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.detail-box{padding:12px;background:#F8FAFF;border-radius:6px;font-size:12px}
+.detail-box .d-title{font-weight:700;color:#8E84FD;margin-bottom:4px;font-size:13px}
+.funnel-bar{height:24px;border-radius:4px;margin:4px 0;display:flex;align-items:center;padding-left:8px;font-size:11px;color:white;font-weight:600}
+.section-intro{background:white;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+.section-intro h2{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
+.trend-chart{width:100%;height:200px;margin-top:8px}
+.smart-bar{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px}
+.smart-bar .bar{height:16px;border-radius:3px;min-width:2px}
+.infra-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin:2px}
+.infra-good{background:#F0FFF4;color:#2D8A4E}
+.infra-warn{background:#FFF8E6;color:#B8860B}
+.infra-bad{background:#FFF0F0;color:#FF6D5E}
+.nonwx-item{padding:6px 10px;background:#FFF8F6;border-radius:6px;margin:4px 0;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.desensitize-note{background:#FFF8E6;border:1px solid #FFAE19;border-radius:6px;padding:8px 12px;font-size:11px;color:#B8860B;margin-bottom:12px}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(3,1fr)}.bench-row{grid-template-columns:repeat(2,1fr)}.detail-row{grid-template-columns:1fr}.peak-grid{grid-template-columns:repeat(2,1fr)}}</style>
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>传统滋补直播链路 TOP6品类头部直播间 Case亮点</h1>
+    <div class="subtitle">数据周期：近30天 | 消耗口径：日耗(万/日) | 消耗数据已脱敏为区间 | 峰值冲量能力=历史峰值+20%</div>
+</div>
+
+<div class="desensitize-note">
+    ⚠️ 消耗数据已脱敏处理：日耗用区间表示（如"5~10万/日"），峰值数据用细粒度区间（如"12~15万"）突出冲量弹性。效率指标（ROI/CTR/CVR/CPM）保留真实值用于对比分析。冲量能力=历史峰值日耗×1.2，代表大促可冲击量级。
+</div>
+
+<div class="section-intro">
+    <h2>大盘基准（传统滋补直播全量）</h2>
+    <div class="bench-row">
+        <div class="bench-item"><div class="b-val" style="color:#8E84FD">1.89</div><div class="b-lbl">ROI</div></div>
+        <div class="bench-item"><div class="b-val" style="color:#8E84FD">2.78%</div><div class="b-lbl">CTR</div></div>
+        <div class="bench-item"><div class="b-val" style="color:#8E84FD">6.08%</div><div class="b-lbl">CVR</div></div>
+        <div class="bench-item"><div class="b-val" style="color:#8E84FD">82</div><div class="b-lbl">CPM</div></div>
+    </div>
+</div>
+
+<div class="case-card highlight">
+    <div class="case-title">
+        <span class="cat-tag" style="background:#FF6D5E">枸杞类滋补品</span>
+        <h2>鑫晨枸杞小秘坊</h2>
+        <span style="font-size:12px;color:#888">ID: 366580052</span>
+        
+    </div>
+    
+    
+<div class="peak-box">
+    <div class="p-title"><span class="fire">🔥</span> 峰值冲量能力 </div>
+    <div class="peak-grid">
+        <div class="peak-item">
+            <div class="p-val">20~22万</div>
+            <div class="p-lbl">历史峰值日耗</div>
+            <div class="p-sub">06/23</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">25~30万</div>
+            <div class="p-lbl">冲量能力(峰值+20%)</div>
+            <div class="p-up">↑ 大促可冲量级</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">10~20万/日</div>
+            <div class="p-lbl">日常日耗</div>
+            <div class="p-sub">近30天日均</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">2.0x</div>
+            <div class="p-lbl">峰值/日常倍数</div>
+            <div class="p-sub">冲量弹性</div>
+        </div>
+    </div>
+</div>
+    
+    <div class="kpi-grid">
+        <div class="kpi-item"><div class="val">10~20万/日</div><div class="lbl">日耗(万/日)</div><div class="cmp">上期 5~10万/日 <span style="color:#FF6D5E;font-weight:600">+58%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.16</div><div class="lbl">ROI (良好)</div><div class="cmp"><span style="color:#76C84D">+0.06</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#76C84D">6.2%</div><div class="lbl">CVR (优秀)</div><div class="cmp"><span style="color:#999">持平</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#76C84D">6.1%</div><div class="lbl">CTR (优秀)</div><div class="cmp"><span style="color:#76C84D">优于大盘119%</span></div></div>
+        <div class="kpi-item"><div class="val">5~10万/日</div><div class="lbl">GMV(万/日)</div><div class="cmp">5~10万/日</div></div>
+    </div>
+    
+    <div class="detail-box" style="margin-bottom:12px">
+        <div class="d-title">日耗趋势（近30天，相对日均=100%）</div>
+        <div id="chart_366580052" class="trend-chart"></div>
+    </div>
+    
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥218</div><div class="lbl">CPM</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥61</div><div class="lbl">CPA</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥71</div><div class="lbl">客单价</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">15</div><div class="lbl">账户数</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">15350</div><div class="lbl">唯一性ID</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px;color:#FFAE19">68%</div><div class="lbl">创意重复度</div></div>
+    </div>
+    
+    <div class="detail-row">
+        <div class="detail-box">
+            <div class="d-title">直播漏斗</div>
+            <div class="funnel-bar" style="width:29.80252948704288%;background:linear-gradient(90deg,#3E79F0,#5B8DEF)">进播率 4.5%</div>
+            <div class="funnel-bar" style="width:39.930772627490576%;background:linear-gradient(90deg,#76C84D,#8FD960)">商品点击率 31.9%</div>
+            <div class="funnel-bar" style="width:99.56202065042906%;background:linear-gradient(90deg,#FFAE19,#FFC44D)">下单率 24.9%</div>
+        </div>
+        <div class="detail-box">
+            <div class="d-title">智投基建</div>
+            <div class="smart-bar">
+                <span>智投渗透率: <strong style="color:#FFAE19">57%</strong></span>
+                <div style="flex:1;height:12px;background:#F0F0F0;border-radius:6px;overflow:hidden">
+                    <div style="width:57.29063777589729%;height:100%;background:#FFAE19;border-radius:6px"></div>
+                </div>
+            </div>
+            <div style="font-size:11px;color:#555;padding:2px 0">• 3002 (单链路智投): 5~10万/日 ROI1.13</div><div style="font-size:11px;color:#555;padding:2px 0">• 0 (非智投广告): 3~5万/日 ROI1.20</div>
+            <div class="d-title" style="margin-top:8px">基建诊断</div>
+            <span class="infra-tag infra-warn">创意重复度需关注</span><span class="infra-tag infra-bad">DCID/TID不足</span><span class="infra-tag infra-warn">智投中等渗透</span><span class="infra-tag infra-warn">账户数适中</span>
+            <div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 15个账户并行投放，基建规模充足</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 非微信版位有拿量，版位拓展意识强</div>
+        </div>
+    </div>
+    
+    <div class="detail-box" style="margin-top:12px">
+        <div class="d-title">非微信版位拿量 </div>
+        <div class="nonwx-item"><span>平台与内容广告: 50万+ ROI1.07 CTR6.8%</span></div><div class="nonwx-item"><span>搜索广告: 1~5万 ROI1.02 CTR3.1%</span></div><div class="nonwx-item"><span>微信搜一搜: <1万 ROI1.25 CTR7.8%</span></div>
+        <div style="font-size:11px;color:#76C84D;margin-top:4px">非微信版位日耗 1~3万/日，多版位拓展能力强</div>
+    </div>
+    
+    <div class="highlight-box">
+        <div class="title">Case亮点</div>
+        <ul><li>CVR 6.2% 优秀，<span style="color:#999">持平</span></li><li>CTR 6.1% 优秀，<span style="color:#76C84D">优于大盘119%</span></li><li>商品点击率 31.9%，<span style="color:#76C84D">优于大盘361%</span></li><li>下单率 24.9%，<span style="color:#76C84D">优于大盘109%</span></li><li>日耗环比+58%</li><li>GMV 5~10万/日</li><li>历史峰值日耗达日均2.0倍，冲量弹性强</li><li>非微信版位拿量 1~3万/日，多版位拓展</li></ul>
+    </div>
+</div>
+
+<div class="case-card highlight">
+    <div class="case-title">
+        <span class="cat-tag" style="background:#3E79F0">菌/菇/酵素</span>
+        <h2>华北益养优选</h2>
+        <span style="font-size:12px;color:#888">ID: 119724996</span>
+        
+    </div>
+    
+    
+<div class="peak-box">
+    <div class="p-title"><span class="fire">🔥</span> 峰值冲量能力 </div>
+    <div class="peak-grid">
+        <div class="peak-item">
+            <div class="p-val">7~8万</div>
+            <div class="p-lbl">历史峰值日耗</div>
+            <div class="p-sub">06/11</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">8~9万</div>
+            <div class="p-lbl">冲量能力(峰值+20%)</div>
+            <div class="p-up">↑ 大促可冲量级</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">3~5万/日</div>
+            <div class="p-lbl">日常日耗</div>
+            <div class="p-sub">近30天日均</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">1.8x</div>
+            <div class="p-lbl">峰值/日常倍数</div>
+            <div class="p-sub">冲量弹性</div>
+        </div>
+    </div>
+</div>
+    
+    <div class="kpi-grid">
+        <div class="kpi-item"><div class="val">3~5万/日</div><div class="lbl">日耗(万/日)</div><div class="cmp">上期 1~3万/日 <span style="color:#FF6D5E;font-weight:600">+39%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.63</div><div class="lbl">ROI (良好)</div><div class="cmp"><span style="color:#76C84D">+0.05</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">4.1%</div><div class="lbl">CVR (良好)</div><div class="cmp"><span style="color:#FF6D5E">低于大盘33%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.7%</div><div class="lbl">CTR (良好)</div><div class="cmp"><span style="color:#FF6D5E">低于大盘38%</span></div></div>
+        <div class="kpi-item"><div class="val">1~5万/日</div><div class="lbl">GMV(万/日)</div><div class="cmp">1~5万/日</div></div>
+    </div>
+    
+    <div class="detail-box" style="margin-bottom:12px">
+        <div class="d-title">日耗趋势（近30天，相对日均=100%）</div>
+        <div id="chart_119724996" class="trend-chart"></div>
+    </div>
+    
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥58</div><div class="lbl">CPM</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥92</div><div class="lbl">CPA</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥152</div><div class="lbl">客单价</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">6</div><div class="lbl">账户数</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">47963</div><div class="lbl">唯一性ID</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px;color:#FF6D5E">80%</div><div class="lbl">创意重复度</div></div>
+    </div>
+    
+    <div class="detail-row">
+        <div class="detail-box">
+            <div class="d-title">直播漏斗</div>
+            <div class="funnel-bar" style="width:8.373439709525735%;background:linear-gradient(90deg,#3E79F0,#5B8DEF)">进播率 1.3%</div>
+            <div class="funnel-bar" style="width:25.59238627940918%;background:linear-gradient(90deg,#76C84D,#8FD960)">商品点击率 20.5%</div>
+            <div class="funnel-bar" style="width:98.9848473538852%;background:linear-gradient(90deg,#FFAE19,#FFC44D)">下单率 24.7%</div>
+        </div>
+        <div class="detail-box">
+            <div class="d-title">智投基建</div>
+            <div class="smart-bar">
+                <span>智投渗透率: <strong style="color:#76C84D">85%</strong></span>
+                <div style="flex:1;height:12px;background:#F0F0F0;border-radius:6px;overflow:hidden">
+                    <div style="width:84.76180643881285%;height:100%;background:#76C84D;border-radius:6px"></div>
+                </div>
+            </div>
+            <div style="font-size:11px;color:#555;padding:2px 0">• 3002 (单链路智投): 3~5万/日 ROI1.62</div><div style="font-size:11px;color:#555;padding:2px 0">• 0 (非智投广告): <1万/日 ROI1.80</div><div style="font-size:11px;color:#555;padding:2px 0">• 4001 (全域通直播): <1万/日 ROInan</div>
+            <div class="d-title" style="margin-top:8px">基建诊断</div>
+            <span class="infra-tag infra-bad">创意重复度过高</span><span class="infra-tag infra-bad">DCID/TID不足</span><span class="infra-tag infra-good">智投深度渗透</span><span class="infra-tag infra-warn">账户数适中</span>
+            <div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 深度使用智投（单链路/短直双开），自动化投放成熟</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 非微信版位有拿量，版位拓展意识强</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 智投+ROI双优，闭环投放效率高</div>
+        </div>
+    </div>
+    
+    <div class="detail-box" style="margin-top:12px">
+        <div class="d-title">非微信版位拿量 </div>
+        <div class="nonwx-item"><span>平台与内容广告: 10~20万 ROI1.55 CTR4.7%</span></div><div class="nonwx-item"><span>搜索广告: <1万 ROI1.76 CTR2.3%</span></div><div class="nonwx-item"><span>微信搜一搜: <1万 ROI1.06 CTR11.1%</span></div>
+        <div style="font-size:11px;color:#76C84D;margin-top:4px">非微信版位日耗 <1万/日，多版位拓展能力强</div>
+    </div>
+    
+    <div class="highlight-box">
+        <div class="title">Case亮点</div>
+        <ul><li>ROI 1.63，<span style="color:#FF6D5E">低于大盘14%</span></li><li>下单率 24.7%，<span style="color:#76C84D">优于大盘108%</span></li><li>GMV 1~5万/日</li><li>历史峰值日耗达日均1.8倍，冲量弹性强</li><li>智投渗透率 85%，深度使用智投</li><li>非微信版位拿量 <1万/日，多版位拓展</li></ul>
+    </div>
+</div>
+
+<div class="case-card highlight">
+    <div class="case-title">
+        <span class="cat-tag" style="background:#76C84D">药食同源食品</span>
+        <h2>老班长葛根粉</h2>
+        <span style="font-size:12px;color:#888">ID: 70573785</span>
+        
+    </div>
+    
+    
+<div class="peak-box">
+    <div class="p-title"><span class="fire">🔥</span> 峰值冲量能力 <span class="surge-badge">618冲量+47%</span></div>
+    <div class="peak-grid">
+        <div class="peak-item">
+            <div class="p-val">12~14万</div>
+            <div class="p-lbl">历史峰值日耗</div>
+            <div class="p-sub">06/17</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">16~18万</div>
+            <div class="p-lbl">冲量能力(峰值+20%)</div>
+            <div class="p-up">↑ 大促可冲量级</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">3~5万/日</div>
+            <div class="p-lbl">日常日耗</div>
+            <div class="p-sub">近30天日均</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">3.8x</div>
+            <div class="p-lbl">峰值/日常倍数</div>
+            <div class="p-sub">冲量弹性</div>
+        </div>
+    </div>
+</div>
+    
+    <div class="kpi-grid">
+        <div class="kpi-item"><div class="val">3~5万/日</div><div class="lbl">日耗(万/日)</div><div class="cmp">上期 1~3万/日 <span style="color:#FF6D5E;font-weight:600">+34%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.13</div><div class="lbl">ROI (良好)</div><div class="cmp"><span style="color:#76C84D">+0.01</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#FF6D5E">2.0%</div><div class="lbl">CVR (需优化)</div><div class="cmp"><span style="color:#FF6D5E">低于大盘68%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#76C84D">3.8%</div><div class="lbl">CTR (优秀)</div><div class="cmp"><span style="color:#76C84D">优于大盘35%</span></div></div>
+        <div class="kpi-item"><div class="val">1~5万/日</div><div class="lbl">GMV(万/日)</div><div class="cmp">1~5万/日</div></div>
+    </div>
+    
+    <div class="detail-box" style="margin-bottom:12px">
+        <div class="d-title">日耗趋势（近30天，相对日均=100%）</div>
+        <div id="chart_70573785" class="trend-chart"></div>
+    </div>
+    
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥149</div><div class="lbl">CPM</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥211</div><div class="lbl">CPA</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥237</div><div class="lbl">客单价</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">1</div><div class="lbl">账户数</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">15035</div><div class="lbl">唯一性ID</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px;color:#FF6D5E">80%</div><div class="lbl">创意重复度</div></div>
+    </div>
+    
+    <div class="detail-row">
+        <div class="detail-box">
+            <div class="d-title">直播漏斗</div>
+            <div class="funnel-bar" style="width:14.211748160336535%;background:linear-gradient(90deg,#3E79F0,#5B8DEF)">进播率 2.1%</div>
+            <div class="funnel-bar" style="width:32.14173901132947%;background:linear-gradient(90deg,#76C84D,#8FD960)">商品点击率 25.7%</div>
+            <div class="funnel-bar" style="width:52.142150521269315%;background:linear-gradient(90deg,#FFAE19,#FFC44D)">下单率 13.0%</div>
+        </div>
+        <div class="detail-box">
+            <div class="d-title">智投基建</div>
+            <div class="smart-bar">
+                <span>智投渗透率: <strong style="color:#FF6D5E">12%</strong></span>
+                <div style="flex:1;height:12px;background:#F0F0F0;border-radius:6px;overflow:hidden">
+                    <div style="width:11.774799777101522%;height:100%;background:#FFAE19;border-radius:6px"></div>
+                </div>
+            </div>
+            <div style="font-size:11px;color:#555;padding:2px 0">• 0 (非智投广告): 3~5万/日 ROI1.10</div><div style="font-size:11px;color:#555;padding:2px 0">• 3004 (推直播): <1万/日 ROI1.46</div><div style="font-size:11px;color:#555;padding:2px 0">• 3001 (短直双开): <1万/日 ROI0.00</div>
+            <div class="d-title" style="margin-top:8px">基建诊断</div>
+            <span class="infra-tag infra-bad">创意重复度过高</span><span class="infra-tag infra-good">DCID/TID充分</span><span class="infra-tag infra-bad">智投渗透不足</span>
+            <div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ DCID/TID比值健康，创意差异化充分</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 非微信版位有拿量，版位拓展意识强</div>
+        </div>
+    </div>
+    
+    <div class="detail-box" style="margin-top:12px">
+        <div class="d-title">非微信版位拿量 </div>
+        <div class="nonwx-item"><span>平台与内容广告: 10~20万 ROI1.14 CTR5.3%</span></div><div class="nonwx-item"><span>搜索广告: <1万 ROI1.25 CTR3.7%</span></div><div class="nonwx-item"><span>微信搜一搜: <1万 ROI2.33 CTR8.0%</span></div>
+        <div style="font-size:11px;color:#76C84D;margin-top:4px">非微信版位日耗 <1万/日，多版位拓展能力强</div>
+    </div>
+    
+    <div class="highlight-box">
+        <div class="title">Case亮点</div>
+        <ul><li>CTR 3.8% 优秀，<span style="color:#76C84D">优于大盘35%</span></li><li>下单率 13.0%，<span style="color:#999">持平</span></li><li>GMV 1~5万/日</li><li>历史峰值日耗达日均3.8倍，冲量弹性强</li><li>618冲量+47%，大促拿量能力突出</li><li>非微信版位拿量 <1万/日，多版位拓展</li><li>DCID/TID比值 0.43，创意差异化充分</li></ul>
+    </div>
+</div>
+
+<div class="case-card new-entry">
+    <div class="case-title">
+        <span class="cat-tag" style="background:#8E84FD">冲饮品/食补粉</span>
+        <h2>Dr.郭-八珍饮首席研发师</h2>
+        <span style="font-size:12px;color:#888">ID: 703691657</span>
+        <span style="background:#FFF8E6;color:#FFAE19;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">NEW入局</span>
+    </div>
+    
+    
+<div class="peak-box">
+    <div class="p-title"><span class="fire">🔥</span> 峰值冲量能力 </div>
+    <div class="peak-grid">
+        <div class="peak-item">
+            <div class="p-val">14~16万</div>
+            <div class="p-lbl">历史峰值日耗</div>
+            <div class="p-sub">06/23</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">16~18万</div>
+            <div class="p-lbl">冲量能力(峰值+20%)</div>
+            <div class="p-up">↑ 大促可冲量级</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">10~20万/日</div>
+            <div class="p-lbl">日常日耗</div>
+            <div class="p-sub">近30天日均</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">1.3x</div>
+            <div class="p-lbl">峰值/日常倍数</div>
+            <div class="p-sub">冲量弹性</div>
+        </div>
+    </div>
+</div>
+    
+    <div class="kpi-grid">
+        <div class="kpi-item"><div class="val">1~3万/日</div><div class="lbl">日耗(万/日)</div><div class="cmp">上期 — <span style="color:#FFAE19;font-weight:700">NEW</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#999">—</div><div class="lbl">ROI (—)</div><div class="cmp">—</div></div>
+        <div class="kpi-item"><div class="val" style="color:#76C84D">6.4%</div><div class="lbl">CVR (优秀)</div><div class="cmp"><span style="color:#999">持平</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#76C84D">3.5%</div><div class="lbl">CTR (优秀)</div><div class="cmp"><span style="color:#76C84D">优于大盘27%</span></div></div>
+        <div class="kpi-item"><div class="val">1~5万/日</div><div class="lbl">GMV(万/日)</div><div class="cmp">1~5万/日</div></div>
+    </div>
+    
+    <div class="detail-box" style="margin-bottom:12px">
+        <div class="d-title">日耗趋势（近30天，相对日均=100%）</div>
+        <div id="chart_703691657" class="trend-chart"></div>
+    </div>
+    
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥131</div><div class="lbl">CPM</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥72</div><div class="lbl">CPA</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥97</div><div class="lbl">客单价</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">20</div><div class="lbl">账户数</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">552</div><div class="lbl">唯一性ID</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px;color:#FFAE19">69%</div><div class="lbl">创意重复度</div></div>
+    </div>
+    
+    <div class="detail-row">
+        <div class="detail-box">
+            <div class="d-title">直播漏斗</div>
+            <div class="funnel-bar" style="width:13.854365013725205%;background:linear-gradient(90deg,#3E79F0,#5B8DEF)">进播率 2.1%</div>
+            <div class="funnel-bar" style="width:100%;background:linear-gradient(90deg,#76C84D,#8FD960)">商品点击率 92.6%</div>
+            <div class="funnel-bar" style="width:37.93532948226317%;background:linear-gradient(90deg,#FFAE19,#FFC44D)">下单率 9.5%</div>
+        </div>
+        <div class="detail-box">
+            <div class="d-title">智投基建</div>
+            <div class="smart-bar">
+                <span>智投渗透率: <strong style="color:#76C84D">82%</strong></span>
+                <div style="flex:1;height:12px;background:#F0F0F0;border-radius:6px;overflow:hidden">
+                    <div style="width:82.20120165397466%;height:100%;background:#76C84D;border-radius:6px"></div>
+                </div>
+            </div>
+            <div style="font-size:11px;color:#555;padding:2px 0">• 3002 (单链路智投): 1~3万/日 ROInan</div><div style="font-size:11px;color:#555;padding:2px 0">• 0 (非智投广告): <1万/日 ROInan</div>
+            <div class="d-title" style="margin-top:8px">基建诊断</div>
+            <span class="infra-tag infra-warn">创意重复度需关注</span><span class="infra-tag infra-good">DCID/TID充分</span><span class="infra-tag infra-good">智投深度渗透</span><span class="infra-tag infra-good">多账户并行</span>
+            <div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 深度使用智投（单链路/短直双开），自动化投放成熟</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 20个账户并行投放，基建规模充足</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ DCID/TID比值健康，创意差异化充分</div>
+        </div>
+    </div>
+    
+    <div class="detail-box" style="margin-top:12px">
+        <div class="d-title">非微信版位拿量 </div>
+        <div class="nonwx-item"><span>平台与内容广告: 5~10万 ROInan CTR3.6%</span></div><div class="nonwx-item"><span>搜索广告: <1万 ROInan CTR2.7%</span></div><div class="nonwx-item"><span>微信搜一搜: <1万 ROInan CTR3.2%</span></div>
+        
+    </div>
+    
+    <div class="highlight-box">
+        <div class="title">Case亮点</div>
+        <ul><li>CVR 6.4% 优秀，<span style="color:#999">持平</span></li><li>CTR 3.5% 优秀，<span style="color:#76C84D">优于大盘27%</span></li><li>商品点击率 92.6%，<span style="color:#76C84D">优于大盘1237%</span></li><li>智投渗透率 82%，深度使用智投</li><li>DCID/TID比值 0.33，创意差异化充分</li></ul>
+    </div>
+</div>
+
+<div class="case-card ">
+    <div class="case-title">
+        <span class="cat-tag" style="background:#11CFCF">燕窝滋补品</span>
+        <h2>小仙炖鲜炖燕窝</h2>
+        <span style="font-size:12px;color:#888">ID: 484922</span>
+        
+    </div>
+    
+    
+<div class="peak-box">
+    <div class="p-title"><span class="fire">🔥</span> 峰值冲量能力 <span class="surge-badge">618冲量+37%</span></div>
+    <div class="peak-grid">
+        <div class="peak-item">
+            <div class="p-val">5~6万</div>
+            <div class="p-lbl">历史峰值日耗</div>
+            <div class="p-sub">06/18</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">6~7万</div>
+            <div class="p-lbl">冲量能力(峰值+20%)</div>
+            <div class="p-up">↑ 大促可冲量级</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">1~3万/日</div>
+            <div class="p-lbl">日常日耗</div>
+            <div class="p-sub">近30天日均</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">2.7x</div>
+            <div class="p-lbl">峰值/日常倍数</div>
+            <div class="p-sub">冲量弹性</div>
+        </div>
+    </div>
+</div>
+    
+    <div class="kpi-grid">
+        <div class="kpi-item"><div class="val">1~3万/日</div><div class="lbl">日耗(万/日)</div><div class="cmp">上期 1~3万/日 <span style="color:#FF6D5E;font-weight:600">+17%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.78</div><div class="lbl">ROI (良好)</div><div class="cmp"><span style="color:#76C84D">+0.16</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#FF6D5E">0.8%</div><div class="lbl">CVR (需优化)</div><div class="cmp"><span style="color:#FF6D5E">低于大盘87%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.4%</div><div class="lbl">CTR (良好)</div><div class="cmp"><span style="color:#FF6D5E">低于大盘51%</span></div></div>
+        <div class="kpi-item"><div class="val">1~5万/日</div><div class="lbl">GMV(万/日)</div><div class="cmp">1~5万/日</div></div>
+    </div>
+    
+    <div class="detail-box" style="margin-bottom:12px">
+        <div class="d-title">日耗趋势（近30天，相对日均=100%）</div>
+        <div id="chart_484922" class="trend-chart"></div>
+    </div>
+    
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥157</div><div class="lbl">CPM</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥1509</div><div class="lbl">CPA</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥2800</div><div class="lbl">客单价</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">4</div><div class="lbl">账户数</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">3848</div><div class="lbl">唯一性ID</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px;color:#FFAE19">63%</div><div class="lbl">创意重复度</div></div>
+    </div>
+    
+    <div class="detail-row">
+        <div class="detail-box">
+            <div class="d-title">直播漏斗</div>
+            <div class="funnel-bar" style="width:3.3542064757177172%;background:linear-gradient(90deg,#3E79F0,#5B8DEF)">进播率 0.5%</div>
+            <div class="funnel-bar" style="width:65.76808452993768%;background:linear-gradient(90deg,#76C84D,#8FD960)">商品点击率 52.6%</div>
+            <div class="funnel-bar" style="width:15.901132852729145%;background:linear-gradient(90deg,#FFAE19,#FFC44D)">下单率 4.0%</div>
+        </div>
+        <div class="detail-box">
+            <div class="d-title">智投基建</div>
+            <div class="smart-bar">
+                <span>智投渗透率: <strong style="color:#FF6D5E">12%</strong></span>
+                <div style="flex:1;height:12px;background:#F0F0F0;border-radius:6px;overflow:hidden">
+                    <div style="width:11.70440070018304%;height:100%;background:#FFAE19;border-radius:6px"></div>
+                </div>
+            </div>
+            <div style="font-size:11px;color:#555;padding:2px 0">• 0 (非智投广告): 1~3万/日 ROI1.91</div><div style="font-size:11px;color:#555;padding:2px 0">• 3004 (推直播): <1万/日 ROI0.98</div>
+            <div class="d-title" style="margin-top:8px">基建诊断</div>
+            <span class="infra-tag infra-warn">创意重复度需关注</span><span class="infra-tag infra-good">DCID/TID充分</span><span class="infra-tag infra-bad">智投渗透不足</span>
+            <div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ DCID/TID比值健康，创意差异化充分</div>
+        </div>
+    </div>
+    
+    <div class="detail-box" style="margin-top:12px">
+        <div class="d-title">非微信版位拿量 (该直播间非微信版位消耗较少)</div>
+        <div class="nonwx-item"><span>平台与内容广告: 1~5万 ROI0.84 CTR6.4%</span></div><div class="nonwx-item"><span>移动联盟: <1万 ROI0.00 CTR6.5%</span></div><div class="nonwx-item"><span>微信搜一搜: <1万 ROI0.00 CTR5.5%</span></div>
+        
+    </div>
+    
+    <div class="highlight-box">
+        <div class="title">Case亮点</div>
+        <ul><li>ROI 1.78，<span style="color:#999">持平</span></li><li>商品点击率 52.6%，<span style="color:#76C84D">优于大盘659%</span></li><li>ROI较上期提升+0.16</li><li>历史峰值日耗达日均2.7倍，冲量弹性强</li><li>618冲量+37%，大促拿量能力突出</li><li>DCID/TID比值 0.55，创意差异化充分</li></ul>
+    </div>
+</div>
+
+<div class="case-card ">
+    <div class="case-title">
+        <span class="cat-tag" style="background:#FFAE19">蜂类滋补品</span>
+        <h2>田野牧蜂蜂蜜号</h2>
+        <span style="font-size:12px;color:#888">ID: 5345046</span>
+        
+    </div>
+    
+    
+<div class="peak-box">
+    <div class="p-title"><span class="fire">🔥</span> 峰值冲量能力 </div>
+    <div class="peak-grid">
+        <div class="peak-item">
+            <div class="p-val">3~4万</div>
+            <div class="p-lbl">历史峰值日耗</div>
+            <div class="p-sub">05/31</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">4~5万</div>
+            <div class="p-lbl">冲量能力(峰值+20%)</div>
+            <div class="p-up">↑ 大促可冲量级</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">1~3万/日</div>
+            <div class="p-lbl">日常日耗</div>
+            <div class="p-sub">近30天日均</div>
+        </div>
+        <div class="peak-item">
+            <div class="p-val">2.6x</div>
+            <div class="p-lbl">峰值/日常倍数</div>
+            <div class="p-sub">冲量弹性</div>
+        </div>
+    </div>
+</div>
+    
+    <div class="kpi-grid">
+        <div class="kpi-item"><div class="val">1~3万/日</div><div class="lbl">日耗(万/日)</div><div class="cmp">上期 1~3万/日 <span style="color:#76C84D;font-weight:600">-54%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">1.48</div><div class="lbl">ROI (良好)</div><div class="cmp"><span style="color:#FF6D5E">-0.02</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#3E79F0">3.7%</div><div class="lbl">CVR (良好)</div><div class="cmp"><span style="color:#FF6D5E">低于大盘39%</span></div></div>
+        <div class="kpi-item"><div class="val" style="color:#76C84D">3.2%</div><div class="lbl">CTR (优秀)</div><div class="cmp"><span style="color:#76C84D">优于大盘17%</span></div></div>
+        <div class="kpi-item"><div class="val">1~5万/日</div><div class="lbl">GMV(万/日)</div><div class="cmp">1~5万/日</div></div>
+    </div>
+    
+    <div class="detail-box" style="margin-bottom:12px">
+        <div class="d-title">日耗趋势（近30天，相对日均=100%）</div>
+        <div id="chart_5345046" class="trend-chart"></div>
+    </div>
+    
+    <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥478</div><div class="lbl">CPM</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥427</div><div class="lbl">CPA</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">¥698</div><div class="lbl">客单价</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">3</div><div class="lbl">账户数</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px">745</div><div class="lbl">唯一性ID</div></div>
+        <div class="kpi-item"><div class="val" style="font-size:16px;color:#76C84D">44%</div><div class="lbl">创意重复度</div></div>
+    </div>
+    
+    <div class="detail-row">
+        <div class="detail-box">
+            <div class="d-title">直播漏斗</div>
+            <div class="funnel-bar" style="width:12.80125154271134%;background:linear-gradient(90deg,#3E79F0,#5B8DEF)">进播率 1.9%</div>
+            <div class="funnel-bar" style="width:70.46250547251235%;background:linear-gradient(90deg,#76C84D,#8FD960)">商品点击率 56.4%</div>
+            <div class="funnel-bar" style="width:41.36247642294464%;background:linear-gradient(90deg,#FFAE19,#FFC44D)">下单率 10.3%</div>
+        </div>
+        <div class="detail-box">
+            <div class="d-title">智投基建</div>
+            <div class="smart-bar">
+                <span>智投渗透率: <strong style="color:#FF6D5E">16%</strong></span>
+                <div style="flex:1;height:12px;background:#F0F0F0;border-radius:6px;overflow:hidden">
+                    <div style="width:16.31413544155071%;height:100%;background:#FFAE19;border-radius:6px"></div>
+                </div>
+            </div>
+            <div style="font-size:11px;color:#555;padding:2px 0">• 0 (非智投广告): 1~3万/日 ROI1.51</div><div style="font-size:11px;color:#555;padding:2px 0">• 3001 (短直双开): <1万/日 ROI1.37</div>
+            <div class="d-title" style="margin-top:8px">基建诊断</div>
+            <span class="infra-tag infra-good">创意重复度健康</span><span class="infra-tag infra-good">DCID/TID充分</span><span class="infra-tag infra-bad">智投渗透不足</span>
+            <div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ 创意重复度健康，素材差异化做得好</div><div style="font-size:11px;color:#2D8A4E;padding:2px 0;margin-top:4px">✓ DCID/TID比值健康，创意差异化充分</div>
+        </div>
+    </div>
+    
+    <div class="detail-box" style="margin-top:12px">
+        <div class="d-title">非微信版位拿量 </div>
+        <div class="nonwx-item"><span>平台与内容广告: 5~10万 ROI1.20 CTR6.5%</span></div><div class="nonwx-item"><span>搜索广告: <1万 ROI1.01 CTR2.1%</span></div><div class="nonwx-item"><span>移动联盟: <1万 ROI0.00 CTR8.8%</span></div>
+        
+    </div>
+    
+    <div class="highlight-box">
+        <div class="title">Case亮点</div>
+        <ul><li>ROI 1.48，<span style="color:#FF6D5E">低于大盘22%</span></li><li>CTR 3.2% 优秀，<span style="color:#76C84D">优于大盘17%</span></li><li>商品点击率 56.4%，<span style="color:#76C84D">优于大盘713%</span></li><li>下单率 10.3%，<span style="color:#FF6D5E">低于大盘13%</span></li><li>创意重复度 44% 健康</li><li>历史峰值日耗达日均2.6倍，冲量弹性强</li><li>DCID/TID比值 0.35，创意差异化充分</li></ul>
+    </div>
+</div>
+
+<div class="section-intro">
+    <h2>Case包装建议 & 闭环基建亮点</h2>
+    <p style="margin-top:8px;font-size:13px;line-height:2">
+        <strong style="color:#FF6D5E">鑫晨枸杞小秘坊</strong>：枸杞赛道绝对龙头，日耗10~20万/日，CTR 6.1%远超大盘120%，品类认知度高；智投渗透率57%单链路智投ROI 1.13；非微信版位日耗1~3万/日，平台与内容广告拿量能力强；峰值日耗20~22万，冲量能力25~30万，弹性2.0倍<br>
+        <strong style="color:#3E79F0">华北益养优选</strong>：菌菇酵素赛道ROI标杆，ROI 1.63全场最高，CPM 58元成本极低；智投渗透率81%深度使用单链路，ROI 1.62优于非智投；但创意重复度80%偏高，建议降重优化<br>
+        <strong style="color:#76C84D">老班长葛根粉</strong>：药食同源食品头部直播间，日耗3~5万/日，CTR 3.8%优秀；但CVR 2.0%偏低（低于大盘67%），下单率13%需提升；创意重复度80%偏高；峰值日耗12~14万，冲量能力16~18万<br>
+        <strong style="color:#8E84FD">Dr.郭-八珍饮首席研发师</strong>：冲饮品赛道差异化案例，CVR 6.4%全场最高，商品点击率92.6%极优秀；20个账户并行基建成熟；但ROI数据缺失需关注；峰值日耗14~16万，冲量能力16~18万<br>
+        <strong style="color:#11CFCF">小仙炖鲜炖燕窝</strong>：燕窝赛道高端品牌案例，ROI 1.78全场最高（含保健食品），品牌溢价能力强；商品点击率52.6%优秀；但CVR 0.8%极低，进播率0.5%需优化；峰值日耗5~6万，冲量能力6~7万<br>
+        <strong style="color:#FFAE19">田野牧蜂蜂蜜号</strong>：蜂类滋补品精准获客案例，ROI 1.48优秀，创意重复度44%健康；但CPM 478元极高（大盘6倍），成本压力大；峰值日耗3~4万，冲量能力4~5万
+    </p>
+    <h2 style="margin-top:16px">传统滋补闭环基建做得好的共性特征</h2>
+    <p style="margin-top:8px;font-size:13px;line-height:2">
+        ① <strong>智投深度渗透</strong>：华北益养优选(81%)、鑫晨枸杞(57%)深度使用智投，自动化投放成熟<br>
+        ② <strong>非微信版位拓展</strong>：鑫晨枸杞非微信版位日耗1~3万/日，平台与内容广告拿量是起量关键杠杆<br>
+        ③ <strong>多账户并行</strong>：Dr.郭20个账户、鑫晨枸杞15个账户，基建规模支撑大消耗<br>
+        ④ <strong>品类认知驱动CTR</strong>：鑫晨枸杞CTR 6.1%、老班长CTR 3.8%，品类品牌力强<br>
+        ⑤ <strong>峰值冲量弹性</strong>：鑫晨枸杞峰值达日均2.0倍、华北益养优选1.8倍，大促冲量能力突出<br>
+        ⑥ <strong>漏斗转化效率</strong>：Dr.郭商品点击率92.6%、华北益养优选下单率24.7%，直播运营能力强
+    </p>
+</div>
+
+</div>
+
+<script>
+
+
+var c_chart_366580052 = echarts.init(document.getElementById('chart_366580052'));
+c_chart_366580052.setOption({"tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}, "formatter": "function(params){var d=params[0].name;var bar=params[0];var line=params[1];return d+'<br/>日耗相对值:'+bar.value+'%<br/>ROI:'+line.value;}"}, "grid": {"left": "8%", "right": "8%", "top": "10%", "bottom": "15%"}, "xAxis": {"type": "category", "data": ["05/26", "05/27", "05/28", "05/29", "05/31", "06/01", "06/02", "06/03", "06/04", "06/05", "06/06", "06/07", "06/08", "06/09", "06/10", "06/11", "06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18", "06/19", "06/20", "06/21", "06/22", "06/23", "06/24"], "axisLabel": {"fontSize": 10, "rotate": 45}}, "yAxis": [{"type": "value", "name": "日耗(相对%)", "axisLabel": {"fontSize": 10}}, {"type": "value", "name": "ROI", "axisLabel": {"fontSize": 10}, "splitLine": {"show": false}}], "series": [{"name": "日耗(相对%)", "type": "bar", "data": [62.3, 17.4, 37.3, 0.0, 39.3, 31.5, 169.7, 128.9, 79.7, 81.0, 84.9, 73.8, 81.0, 127.9, 106.4, 168.9, 105.6, 172.6, 182.8, 71.8, 86.3, 95.5, 84.6, 108.2, 113.8, 112.9, 132.0, 200.8, 142.8], "itemStyle": {"color": "#FF6D5E"}, "yAxisIndex": 0}, {"name": "ROI", "type": "line", "data": [1.06, 1.21, 1.28, 0.0, 1.14, 1.22, 1.22, 1.2, 1.26, 1.21, 1.21, 1.13, 1.21, 1.15, 1.18, 0.97, 1.04, 1.19, 1.2, 1.21, 1.26, 1.15, 1.19, 1.14, 1.13, 1.11, 1.13, 1.18, 1.13], "yAxisIndex": 1, "lineStyle": {"color": "#FFAE19", "width": 2}, "itemStyle": {"color": "#FFAE19"}, "symbol": "circle", "symbolSize": 4}]});
+
+
+var c_chart_119724996 = echarts.init(document.getElementById('chart_119724996'));
+c_chart_119724996.setOption({"tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}, "formatter": "function(params){var d=params[0].name;var bar=params[0];var line=params[1];return d+'<br/>日耗相对值:'+bar.value+'%<br/>ROI:'+line.value;}"}, "grid": {"left": "8%", "right": "8%", "top": "10%", "bottom": "15%"}, "xAxis": {"type": "category", "data": ["05/26", "05/27", "05/28", "05/29", "05/30", "05/31", "06/01", "06/02", "06/03", "06/04", "06/05", "06/06", "06/07", "06/08", "06/09", "06/10", "06/11", "06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18", "06/19", "06/20", "06/21", "06/22", "06/23", "06/24"], "axisLabel": {"fontSize": 10, "rotate": 45}}, "yAxis": [{"type": "value", "name": "日耗(相对%)", "axisLabel": {"fontSize": 10}}, {"type": "value", "name": "ROI", "axisLabel": {"fontSize": 10}, "splitLine": {"show": false}}], "series": [{"name": "日耗(相对%)", "type": "bar", "data": [17.3, 22.0, 56.4, 71.5, 65.1, 56.7, 51.0, 98.7, 99.2, 101.0, 91.8, 123.7, 114.1, 89.8, 168.3, 156.4, 179.9, 98.5, 115.3, 115.3, 93.8, 80.2, 75.2, 117.3, 120.5, 114.8, 134.4, 142.0, 117.8, 111.9], "itemStyle": {"color": "#3E79F0"}, "yAxisIndex": 0}, {"name": "ROI", "type": "line", "data": [1.83, 1.43, 1.91, 1.74, 1.63, 1.74, 1.84, 1.72, 1.55, 1.63, 1.61, 1.65, 1.64, 1.64, 1.63, 1.57, 1.43, 1.59, 1.59, 1.78, 1.71, 1.6, 1.84, 2.06, 1.57, 1.62, 1.54, 1.59, 1.7, 1.91], "yAxisIndex": 1, "lineStyle": {"color": "#FFAE19", "width": 2}, "itemStyle": {"color": "#FFAE19"}, "symbol": "circle", "symbolSize": 4}]});
+
+
+var c_chart_70573785 = echarts.init(document.getElementById('chart_70573785'));
+c_chart_70573785.setOption({"tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}, "formatter": "function(params){var d=params[0].name;var bar=params[0];var line=params[1];return d+'<br/>日耗相对值:'+bar.value+'%<br/>ROI:'+line.value;}"}, "grid": {"left": "8%", "right": "8%", "top": "10%", "bottom": "15%"}, "xAxis": {"type": "category", "data": ["05/26", "05/27", "05/28", "05/29", "05/30", "05/31", "06/01", "06/02", "06/03", "06/04", "06/05", "06/06", "06/07", "06/08", "06/09", "06/10", "06/11", "06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18", "06/19", "06/20", "06/21", "06/22", "06/23", "06/24"], "axisLabel": {"fontSize": 10, "rotate": 45}}, "yAxis": [{"type": "value", "name": "日耗(相对%)", "axisLabel": {"fontSize": 10}}, {"type": "value", "name": "ROI", "axisLabel": {"fontSize": 10}, "splitLine": {"show": false}}], "series": [{"name": "日耗(相对%)", "type": "bar", "data": [95.5, 84.6, 83.2, 60.1, 25.1, 34.4, 0.0, 54.5, 30.4, 86.0, 156.7, 103.4, 0.0, 69.8, 15.9, 0.0, 86.9, 96.1, 87.2, 175.4, 146.1, 145.8, 376.0, 247.8, 0.6, 293.0, 231.0, 72.9, 78.5, 63.1], "itemStyle": {"color": "#76C84D"}, "yAxisIndex": 0}, {"name": "ROI", "type": "line", "data": [1.11, 1.11, 0.92, 1.1, 1.4, 1.15, 0.0, 1.14, 1.18, 0.93, 1.14, 0.95, 0.0, 1.2, 1.18, 0.0, 1.01, 1.01, 1.12, 1.23, 1.14, 1.21, 1.2, 1.15, 0.0, 1.18, 1.14, 0.98, 1.12, 1.18], "yAxisIndex": 1, "lineStyle": {"color": "#FFAE19", "width": 2}, "itemStyle": {"color": "#FFAE19"}, "symbol": "circle", "symbolSize": 4}]});
+
+
+var c_chart_703691657 = echarts.init(document.getElementById('chart_703691657'));
+c_chart_703691657.setOption({"tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}, "formatter": "function(params){var d=params[0].name;var bar=params[0];var line=params[1];return d+'<br/>日耗相对值:'+bar.value+'%<br/>ROI:'+line.value;}"}, "grid": {"left": "8%", "right": "8%", "top": "10%", "bottom": "15%"}, "xAxis": {"type": "category", "data": ["06/19", "06/20", "06/21", "06/22", "06/23", "06/24"], "axisLabel": {"fontSize": 10, "rotate": 45}}, "yAxis": [{"type": "value", "name": "日耗(相对%)", "axisLabel": {"fontSize": 10}}, {"type": "value", "name": "ROI", "axisLabel": {"fontSize": 10}, "splitLine": {"show": false}}], "series": [{"name": "日耗(相对%)", "type": "bar", "data": [50.8, 115.7, 116.0, 123.0, 126.4, 68.2], "itemStyle": {"color": "#8E84FD"}, "yAxisIndex": 0}, {"name": "ROI", "type": "line", "data": [NaN, NaN, NaN, NaN, NaN, NaN], "yAxisIndex": 1, "lineStyle": {"color": "#FFAE19", "width": 2}, "itemStyle": {"color": "#FFAE19"}, "symbol": "circle", "symbolSize": 4}]});
+
+
+var c_chart_484922 = echarts.init(document.getElementById('chart_484922'));
+c_chart_484922.setOption({"tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}, "formatter": "function(params){var d=params[0].name;var bar=params[0];var line=params[1];return d+'<br/>日耗相对值:'+bar.value+'%<br/>ROI:'+line.value;}"}, "grid": {"left": "8%", "right": "8%", "top": "10%", "bottom": "15%"}, "xAxis": {"type": "category", "data": ["05/26", "05/27", "05/28", "05/29", "05/30", "05/31", "06/01", "06/02", "06/03", "06/04", "06/05", "06/06", "06/07", "06/08", "06/09", "06/10", "06/11", "06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18", "06/19", "06/20", "06/21", "06/22", "06/23", "06/24"], "axisLabel": {"fontSize": 10, "rotate": 45}}, "yAxis": [{"type": "value", "name": "日耗(相对%)", "axisLabel": {"fontSize": 10}}, {"type": "value", "name": "ROI", "axisLabel": {"fontSize": 10}, "splitLine": {"show": false}}], "series": [{"name": "日耗(相对%)", "type": "bar", "data": [66.6, 54.1, 82.2, 112.4, 90.0, 60.9, 34.9, 67.1, 86.9, 101.5, 37.0, 149.4, 49.4, 98.9, 69.7, 85.4, 92.1, 87.4, 140.0, 176.4, 55.7, 146.8, 139.5, 273.8, 130.6, 187.4, 128.0, 63.5, 68.7, 63.5], "itemStyle": {"color": "#11CFCF"}, "yAxisIndex": 0}, {"name": "ROI", "type": "line", "data": [2.14, 1.48, 1.69, 1.23, 1.88, 0.0, 6.66, 1.03, 0.0, 0.0, 1.92, 1.78, 0.0, 1.81, 1.74, 1.55, 2.84, 0.88, 1.51, 2.18, 0.9, 2.26, 1.96, 2.13, 3.57, 2.0, 1.12, 1.23, 0.9, 1.43], "yAxisIndex": 1, "lineStyle": {"color": "#FFAE19", "width": 2}, "itemStyle": {"color": "#FFAE19"}, "symbol": "circle", "symbolSize": 4}]});
+
+
+var c_chart_5345046 = echarts.init(document.getElementById('chart_5345046'));
+c_chart_5345046.setOption({"tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}, "formatter": "function(params){var d=params[0].name;var bar=params[0];var line=params[1];return d+'<br/>日耗相对值:'+bar.value+'%<br/>ROI:'+line.value;}"}, "grid": {"left": "8%", "right": "8%", "top": "10%", "bottom": "15%"}, "xAxis": {"type": "category", "data": ["05/26", "05/27", "05/28", "05/29", "05/30", "05/31", "06/01", "06/02", "06/03", "06/04", "06/05", "06/06", "06/07", "06/08", "06/09", "06/10", "06/11", "06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18", "06/19", "06/20", "06/21", "06/22", "06/23"], "axisLabel": {"fontSize": 10, "rotate": 45}}, "yAxis": [{"type": "value", "name": "日耗(相对%)", "axisLabel": {"fontSize": 10}}, {"type": "value", "name": "ROI", "axisLabel": {"fontSize": 10}, "splitLine": {"show": false}}], "series": [{"name": "日耗(相对%)", "type": "bar", "data": [0.0, 182.3, 0.0, 159.7, 240.6, 261.1, 0.0, 260.3, 218.8, 126.2, 151.7, 121.0, 160.4, 0.0, 34.3, 115.2, 43.0, 83.9, 69.3, 86.0, 46.7, 0.0, 59.8, 107.9, 133.4, 83.9, 79.5, 75.1, 0.0], "itemStyle": {"color": "#FFAE19"}, "yAxisIndex": 0}, {"name": "ROI", "type": "line", "data": [0.0, 1.15, 821.43, 0.95, 2.41, 0.55, NaN, 2.39, 2.21, 1.48, 0.94, 2.23, 1.59, NaN, 0.32, 1.12, 2.54, 1.75, 0.62, 1.15, 0.88, 0.0, 0.74, 1.42, 1.7, 0.99, 2.11, 1.45, 0.0], "yAxisIndex": 1, "lineStyle": {"color": "#FFAE19", "width": 2}, "itemStyle": {"color": "#FFAE19"}, "symbol": "circle", "symbolSize": 4}]});
+
+
+window.addEventListener('resize', function() {
+
+    c_chart_366580052.resize();
+
+    c_chart_119724996.resize();
+
+    c_chart_70573785.resize();
+
+    c_chart_703691657.resize();
+
+    c_chart_484922.resize();
+
+    c_chart_5345046.resize();
+
+
+});
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>

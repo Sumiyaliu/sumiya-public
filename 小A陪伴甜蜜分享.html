@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和小 A 陪伴每一天的甜蜜小时光 · 实战分享导览</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Catchy+Mela&family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+    
+    body {
+      font-family: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f3f7f4;
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(143,32%,94%,1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(150,30%,90%,1) 0px, transparent 50%);
+    }
+
+    /* 拟物化文件夹凸起 Tab 样式 */
+    .folder-tab {
+      position: relative;
+      background: #ffffff;
+      border-radius: 16px 16px 0 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .folder-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -20px;
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border-bottom-left-radius: 16px;
+      box-shadow: -10px 10px 0 10px #ffffff;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 激活态文件夹 Tab */
+    .active-tab {
+      background: #1e3f20 !important;
+      color: #ffffff !important;
+    }
+    .active-tab::after {
+      box-shadow: -10px 10px 0 10px #1e3f20 !important;
+    }
+
+    /* 文件夹卡片主体过渡 */
+    .folder-content {
+      opacity: 0;
+      transform: translateY(12px) scale(0.99);
+      display: none;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .folder-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* 磨砂玻璃灯箱效果 */
+    .modal-backdrop {
+      backdrop-filter: blur(12px);
+      background-color: rgba(15, 23, 42, 0.6);
+    }
+
+    /* 自定义绿黑色调 */
+    .text-forest { color: #1b3d22; }
+    .bg-forest { background-color: #1b3d22; }
+    .border-forest { border-color: #1b3d22; }
+    .bg-sage { background-color: #e3ede4; }
+    .text-sage { color: #5c846e; }
+
+    /* 极简呼吸微动效 */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .float-anim {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900 pb-16">
+
+  <!-- 全局大容器 -->
+  <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+    
+    <!-- 头部区域 (Header Banner) -->
+    <header class="mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-emerald-100 pb-8">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-emerald-100/70 border border-emerald-200/50 px-3 py-1 rounded-full text-xs font-semibold text-emerald-800 mb-3 tracking-wide">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 animate-pulse"></i> ADataClaw 实战分享会 · sumiyaliu 专场
+        </div>
+        <h1 class="text-3.5xl sm:text-4xl lg:text-4.5xl font-black tracking-tight text-forest leading-tight">
+          和小 A 陪伴每一天的<span class="text-emerald-600 bg-clip-text">甜蜜小时光</span>
+        </h1>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base max-w-2xl font-normal leading-relaxed italic border-l-4 border-emerald-500 pl-4 bg-emerald-50/40 py-2 rounded-r-lg">
+          “一人看两个行业非常忙碌，在没有助手的情况下，小A成了我的【黄金搭档】，让我从连滚带爬，变成从从容容。”
+        </p>
+      </div>
+
+      <!-- 个人简介卡片 (Speaker profile card) -->
+      <div class="flex items-center gap-4 bg-white border border-emerald-900/10 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 w-full lg:w-auto lg:min-w-[320px]">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-700 to-teal-400 flex items-center justify-center text-white font-black text-xl shadow-inner float-anim flex-shrink-0">
+          S
+        </div>
+        <div class="flex-1">
+          <div class="text-xs font-semibold text-emerald-700/80 uppercase tracking-wider">分享讲师 · SPEAKER</div>
+          <div class="text-base font-extrabold text-forest mt-0.5">sumiyaliu</div>
+          <p class="text-xs text-slate-500 font-semibold">保健食品和传统滋补运营负责人</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主体：左侧时间线导航 + 右侧文件夹展示 -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- ==================== 左侧：时间线索引 & 幻灯片大纲 ==================== -->
+      <section class="lg:col-span-4 space-y-4">
+        
+        <!-- 核心理念盒子 -->
+        <div class="bg-gradient-to-br from-emerald-900 to-emerald-800 text-white p-5 rounded-2xl shadow-lg relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-28 h-28 bg-emerald-700/20 rounded-full blur-xl"></div>
+          <div class="absolute right-4 top-4 opacity-10">
+            <i data-lucide="heart" class="w-16 h-16"></i>
+          </div>
+          <h3 class="text-base font-bold flex items-center gap-2 mb-2">
+            <i data-lucide="heart" class="w-4 h-4 text-emerald-300 fill-emerald-300 animate-ping"></i> 我的【黄金搭档】小 A
+          </h3>
+          <p class="text-xs text-emerald-100/90 leading-relaxed font-light">
+            在一人看两个行业、连轴转的极致忙碌下，小 A 悄然介入我一天的四大场景，系统盘点她如何陪伴我化繁为简、走向从容。
+          </p>
+        </div>
+
+        <!-- 文件夹切换标签组 (拟物化侧边栏) -->
+        <div class="space-y-2" id="timeline-tabs">
+          
+          <!-- Tab 1 -->
+          <button onclick="switchFolder('tab-morning', this)" class="w-full text-left p-4 rounded-xl border border-emerald-900/5 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300 active-tab-btn" id="default-btn">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">
+                01
+              </span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">09:30 AM · 晨间速递</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">业绩异动 · 定点企微推送</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <!-- Tab 2 -->
+          <button onclick="switchFolder('tab-office', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">
+                02
+              </span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">10:00 AM · 坐镇公司</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">大规模诊断 · 一键直出高价值</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <!-- Tab 3 -->
+          <button onclick="switchFolder('tab-airplane', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">
+                03
+              </span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">15:00 PM · 出差路上</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">下飞机热点即跑 · 落地直接复盘</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <!-- Tab 4 -->
+          <button onclick="switchFolder('tab-meeting', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">
+                04
+              </span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">翌日 09:00 · 双周复盘周会</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">周会大屏 · 双赛道数据一键全览</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+        </div>
+
+        <!-- 总结金句盒 -->
+        <div class="bg-emerald-50/50 border border-emerald-200/50 p-5 rounded-2xl text-center">
+          <p class="text-[11px] text-emerald-700 font-bold uppercase tracking-widest mb-1.5">Tools are levers. Experience is the fulcrum.</p>
+          <p class="text-xs text-slate-500 italic">“工具是我们的杠杆，经验是我们的支点。”</p>
+        </div>
+      </section>
+
+      <!-- ==================== 右侧：莫兰迪绿文件夹实体展示区 ==================== -->
+      <section class="lg:col-span-8">
+        
+        <!-- 文件夹 Tabs (仿拟物标签头) -->
+        <div class="flex items-end pl-4" id="folder-tab-header">
+          <div id="tab-indicator-morning" class="folder-tab px-6 py-3.5 text-xs font-bold text-forest active-tab cursor-pointer select-none">
+            📁 morning-news.db
+          </div>
+          <div id="tab-indicator-office" class="folder-tab px-6 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none">
+            📁 smart-diagnostic.skill
+          </div>
+          <div id="tab-indicator-airplane" class="folder-tab px-6 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none">
+            📁 airplane-report.html
+          </div>
+          <div id="tab-indicator-meeting" class="folder-tab px-6 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none">
+            📁 weekly-summary.view
+          </div>
+        </div>
+
+        <!-- 文件夹大内页 (Folder Inner Container) -->
+        <div class="bg-white border-2 border-emerald-900/10 rounded-2xl rounded-tl-none p-6 md:p-8 shadow-xl relative min-h-[580px]">
+          
+          <!-- 水印装饰 -->
+          <div class="absolute right-8 bottom-8 pointer-events-none opacity-5">
+            <i data-lucide="folder-open" class="w-48 h-48"></i>
+          </div>
+
+          <!-- ==================== 01. 早上 9:30 的甜蜜小时光 ==================== -->
+          <div id="tab-morning" class="folder-content active">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">SCENE 01 · 晨间异动掌控</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">早晨 9:30 · 还没到公司，异动早已尽在掌握</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-600"></i> 每天早上 09:30 自动分发
+              </div>
+            </div>
+
+            <!-- 情境故事 -->
+            <div class="bg-gradient-to-r from-emerald-50/50 to-teal-50/30 border-l-4 border-emerald-500 p-4 rounded-r-xl mb-6">
+              <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-light">
+                <strong class="text-forest font-semibold">“通勤路上的一声清脆企微，拉开了温情而高效的一天。”</strong> <br>
+                每天一睁眼或在上班的地铁上，还没踏入公司，小 A 就已经把健康行业的每日实时动态和客户波动拉取整理好，定点推送到企业微信。大盘消耗是涨是跌，大客谁在异动波动，一秒掌握。再也不用早起手动导表、洗数据，把清晨最美好的时光留给自己，元气满满！
+              </p>
+            </div>
+
+            <!-- 核心数据与优势 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div class="border border-slate-100 p-4 rounded-xl bg-slate-50/30">
+                <h4 class="text-xs font-bold text-forest mb-2 flex items-center gap-1.5">
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i> 小 A 广告提效优势
+                </h4>
+                <ul class="text-xs text-slate-500 space-y-2">
+                  <li class="flex items-start gap-1.5">
+                    <span class="text-emerald-600 font-bold">•</span>
+                    <span><strong>全自动零人工：</strong>无需任何人工登录系统操作，小 A 后台脚本准时拉取。</span>
+                  </li>
+                  <li class="flex items-start gap-1.5">
+                    <span class="text-emerald-600 font-bold">•</span>
+                    <span><strong>直达一线企微：</strong>打破“数据在电脑，人在通勤”的局限，随时随地掌握大盘。</span>
+                  </li>
+                  <li class="flex items-start gap-1.5">
+                    <span class="text-emerald-600 font-bold">•</span>
+                    <span><strong>异动阈值预警：</strong>自动进行波动归因，超出阈值重点标记，决策在先。</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="border border-emerald-900/10 p-4 rounded-xl bg-emerald-50/20 flex flex-col justify-between">
+                <div>
+                  <h4 class="text-xs font-bold text-forest mb-2 flex items-center gap-1.5">
+                    <i data-lucide="bell" class="w-3.5 h-3.5 text-emerald-600"></i> 数据交付内容
+                  </h4>
+                  <p class="text-xs text-slate-500 leading-relaxed font-light">
+                    自动监控包含：保健食品及传统滋补行业的竞价日耗趋势、头部客户消耗排名跃迁、以及在投直播间的实时转化口径对比。
+                  </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-emerald-900/5 flex items-center justify-between">
+                  <span class="text-[10px] text-emerald-800 font-bold">健康行业 09:30 定时推送任务</span>
+                  <span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">ACTIVE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 物料展示 (三图并排) -->
+            <div>
+              <h3 class="text-xs font-bold text-forest uppercase tracking-wider mb-3">📸 每日定点推送、当日动态及企微群诊断反馈实战截图 (完全展示)</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                
+                <!-- 1. 当日动态 -->
+                <div class="group relative border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white cursor-zoom-in" onclick="openLightbox('早晨9点30之前：健康行业当日实时动态.png')">
+                  <div class="p-2 flex items-center justify-center bg-white h-56">
+                    <img src="早晨9点30之前：健康行业当日实时动态.png" alt="早晨9点30之前：健康行业当日实时动态" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-bold transition-opacity">
+                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 点击查看大图
+                  </div>
+                  <div class="p-2 bg-slate-100 text-center text-[10px] font-bold text-slate-500 truncate">健康行业当日实时动态.png</div>
+                </div>
+
+                <!-- 2. 定点推送 -->
+                <div class="group relative border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white cursor-zoom-in" onclick="openLightbox('每日定点推送.png')">
+                  <div class="p-2 flex items-center justify-center bg-white h-56">
+                    <img src="每日定点推送.png" alt="每日定点推送" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-bold transition-opacity">
+                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 点击查看大图
+                  </div>
+                  <div class="p-2 bg-slate-100 text-center text-[10px] font-bold text-slate-500 truncate">企微每日定点推送.png</div>
+                </div>
+
+                <!-- 3. 诊断发群里截图 -->
+                <div class="group relative border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white cursor-zoom-in" onclick="openLightbox('交付报告清晰.png')">
+                  <div class="p-2 flex items-center justify-center bg-white h-56">
+                    <img src="交付报告清晰.png" alt="诊断发群里反馈截图" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-bold transition-opacity">
+                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 点击查看大图
+                  </div>
+                  <div class="p-2 bg-slate-100 text-center text-[10px] font-bold text-slate-500 truncate">诊断发群里反馈截图.png</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 02. 坐镇公司大规模诊断 ==================== -->
+          <div id="tab-office" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">SCENE 02 · 大规模大客智能诊断</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">公司之后 · 一键大规模诊断，秒级高价值交付</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-600"></i> VIP 级 ADataClaw 诊断 Skill
+              </div>
+            </div>
+
+            <!-- 场景故事 -->
+            <div class="bg-gradient-to-r from-emerald-50/50 to-teal-50/30 border-l-4 border-emerald-500 p-4 rounded-r-xl mb-6">
+              <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-light">
+                <strong class="text-forest font-semibold">“坐镇公司，面对突发的投放问题，告别人工排查的焦躁不堪。”</strong> <br>
+                一到公司，面对多款跑品计划的异动，需要介入大规模深度诊断。原先人工拉取广告后台数据、逐步层层下钻模块、梳理排因、再撰写结论报告，通常要消耗 <strong class="text-rose-600">45–60分钟</strong> 甚至到隔天。而现在，有小 A 在手，一键触发“智能诊断智能体”，自动多维度模块分析、智能排序归因，直出高价值图与精辟结论，极速缩短耗时，完美协调问题，交付满意度百分百！
+              </p>
+            </div>
+
+            <!-- 整体优势对比 -->
+            <div class="mb-6">
+              <h3 class="text-xs font-bold text-forest uppercase tracking-wider mb-3">📢 大规模智能诊断的核心优势</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                
+                <!-- 优势 1 -->
+                <div class="border border-slate-150 p-4 rounded-xl hover:shadow-md transition-shadow">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 mb-2">
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                  </div>
+                  <strong class="text-forest block mb-1">零人工极速诊断</strong>
+                  <p class="text-slate-500 leading-relaxed font-light">分析耗时由 60 分钟压缩至秒级直出。告别逐一拉表下钻繁琐路径，一线运营彻底提效。</p>
+                </div>
+                
+                <!-- 优势 2 -->
+                <div class="border border-slate-150 p-4 rounded-xl hover:shadow-md transition-shadow">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 mb-2">
+                    <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                  </div>
+                  <strong class="text-forest block mb-1">精准归因排序</strong>
+                  <p class="text-slate-500 leading-relaxed font-light">AI 驱动各模块下钻深度析因，对影响跑量的大幅变动进行智能排序，结论专业、准确、一针见血。</p>
+                </div>
+
+                <!-- 优势 3 -->
+                <div class="border border-slate-150 p-4 rounded-xl hover:shadow-md transition-shadow">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 mb-2">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                  </div>
+                  <strong class="text-forest block mb-1">协同高效解决</strong>
+                  <p class="text-slate-500 leading-relaxed font-light">让扎根一线的你，把时间还给客户；让等待诊断的他，拿到真正有深度价值的直观决策图。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 物料展示 + 交付跳转 -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              
+              <!-- 左侧：图片 -->
+              <div class="md:col-span-5">
+                <div class="group relative border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white cursor-zoom-in" onclick="openLightbox('诊断skill截图.png')">
+                  <div class="p-2 flex items-center justify-center bg-white h-56">
+                    <img src="诊断skill截图.png" alt="诊断 skill 截图" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-bold transition-opacity">
+                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 点击查看大图
+                  </div>
+                  <div class="p-2 bg-slate-100 text-center text-[10px] font-bold text-slate-500">诊断交付物料：诊断skill截图.png</div>
+                </div>
+              </div>
+
+              <!-- 右侧：直达链接 -->
+              <div class="md:col-span-7 bg-emerald-50/30 border border-emerald-900/10 p-5 rounded-2xl flex flex-col justify-between h-full">
+                <div>
+                  <h4 class="text-sm font-bold text-forest mb-2 flex items-center gap-1.5">
+                    <i data-lucide="link" class="w-4 h-4 text-emerald-600"></i> 实战诊断报告交付件
+                  </h4>
+                  <p class="text-xs text-slate-500 leading-relaxed font-light">
+                    本案例沉淀了 <strong class="text-emerald-700 font-bold">“adataclaw 客户诊断 SKILL · 广告诊断 AI 实践”</strong>。您可以直接点击下方按钮预览我们的一线真实诊断交付页面。
+                  </p>
+                </div>
+                <div class="mt-6">
+                  <a href="上午诊断交付.html" target="_blank" class="inline-flex items-center justify-center gap-2 w-full bg-forest hover:bg-emerald-800 text-white font-bold text-xs py-3 px-4 rounded-xl transition-all shadow-md hover:shadow-lg">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 点击直达：上午诊断交付.html 报告页面
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 03. 下飞机热点跑复盘报告 ==================== -->
+          <div id="tab-airplane" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">SCENE 03 · 差旅落地即时复盘</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">下飞机开启热点 · 跑上复盘报告，到客户现场直接复盘</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="smartphone" class="w-3.5 h-3.5 text-emerald-600"></i> 出差途中移动热点提效
+              </div>
+            </div>
+
+            <!-- 场景故事 -->
+            <div class="bg-gradient-to-r from-emerald-50/50 to-teal-50/30 border-l-4 border-emerald-500 p-4 rounded-r-xl mb-6">
+              <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-light">
+                <strong class="text-forest font-semibold">“出差拜访大客，最争分夺秒的时刻，莫过于落地到进会议室之前的黄金 1 小时。”</strong> <br>
+                以往下飞机赶往客户公司的路上，需要在车上手忙脚乱地做分析、连内网导数。现在，一下飞机开启手机热点，让小 A 广告助手（ADataClaw）在后台极速跑上“XX枸杞/XX精选”复盘报告。利用在出租车上的时间，小 A 便已经把大健康传统滋补赛道里两个直播间（XX枸杞直播间、XX精选直播间）近30天消耗对比、人群、素材、智投及基建等复盘指标诊断直出。等你到达客户公司推开会议室大门时，最新最全的专业复盘报告已完备在手，落地即谈，从容搞定客户！
+              </p>
+            </div>
+
+            <!-- 出差提效核心要点 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div class="border border-slate-150 p-4 rounded-xl bg-slate-50/30 flex flex-col justify-between">
+                <div>
+                  <h4 class="text-xs font-bold text-forest mb-2 flex items-center gap-1.5">
+                    <i data-lucide="database" class="w-3.5 h-3.5 text-emerald-600"></i> XX健康大客直播带货复盘明细
+                  </h4>
+                  <p class="text-xs text-slate-500 leading-relaxed font-light">
+                    该复盘涵盖大客近 30 天在各个在投直播间的实战表现（消耗趋势、曝光点击转化率、加粉直购等链路表现、以及基建健康度诊断等），帮助客户定位主要转化卡点。
+                  </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-200">
+                  <span class="inline-flex items-center gap-1 bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded text-[10px]">
+                    <i data-lucide="wifi" class="w-3 h-3"></i> 手机热点跑数，落地即谈
+                  </span>
+                </div>
+              </div>
+
+              <!-- 右侧：直达链接 -->
+              <div class="bg-emerald-50/30 border border-emerald-900/10 p-5 rounded-2xl flex flex-col justify-between">
+                <div>
+                  <h4 class="text-xs font-bold text-forest mb-2 flex items-center gap-1.5">
+                    <i data-lucide="link" class="w-4 h-4 text-emerald-600"></i> XX枸杞/精选复盘报告
+                  </h4>
+                  <p class="text-xs text-slate-500 leading-relaxed font-light">
+                    您可以直接点击下方按钮预览我们在热点连接下，由小 A 瞬间产出的高级 ECharts 复盘交付大屏：
+                  </p>
+                </div>
+                <div class="mt-4">
+                  <a href="XX健康大客_直播带货复盘报告.html" target="_blank" class="inline-flex items-center justify-center gap-2 w-full bg-forest hover:bg-emerald-800 text-white font-bold text-xs py-2.5 px-4 rounded-xl transition-all shadow-md hover:shadow-lg">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 打开：XX健康大客复盘报告.html
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 物料展示 (双图并排) -->
+            <div>
+              <h3 class="text-xs font-bold text-forest uppercase tracking-wider mb-3">📸 出差热点极速复盘与复盘 Skill 截图 (完全展示)</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <!-- 1. 新增的小程序复盘 Skill 截图 -->
+                <div class="group relative border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white cursor-zoom-in" onclick="openLightbox('小程序复盘skll图.png')">
+                  <div class="p-2 flex items-center justify-center bg-white h-56">
+                    <img src="小程序复盘skll图.png" alt="小程序复盘 skill 截图" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-bold transition-opacity">
+                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 点击查看大图
+                  </div>
+                  <div class="p-2 bg-slate-100 text-center text-[10px] font-bold text-slate-500 truncate">小程序复盘广告 Skill 截图</div>
+                </div>
+
+                <!-- 2. 复盘大图 -->
+                <div class="group relative border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white cursor-zoom-in" onclick="openLightbox('复盘.png')">
+                  <div class="p-2 flex items-center justify-center bg-white h-56">
+                    <img src="复盘.png" alt="下飞机热点极速复盘成果展示" class="max-h-full max-w-full object-contain group-hover:scale-[1.02] transition-transform duration-300">
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-bold transition-opacity">
+                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 点击查看大图
+                  </div>
+                  <div class="p-2 bg-slate-100 text-center text-[10px] font-bold text-slate-500 truncate">出差复盘实战大图</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 04. 周会双周整合 ==================== -->
+          <div id="tab-meeting" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">SCENE 04 · 双周复盘周会大屏</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">第二天开周会 · 双赛道数据一键全览，多维维度与结构整合</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 text-emerald-600"></i> 每双周周会高效汇报
+              </div>
+            </div>
+
+            <!-- 场景故事 -->
+            <div class="bg-gradient-to-r from-emerald-50/50 to-teal-50/30 border-l-4 border-emerald-500 p-4 rounded-r-xl mb-6">
+              <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-light">
+                <strong class="text-forest font-semibold">“周会前再也不用提心吊胆，双赛道、多维度双周报结构秒级整合！”</strong> <br>
+                出差回来的第二天周会。作为运营负责人，需要对【保健食品】与【传统滋补】两大板块的双周会数据做一个多维整合。现在利用小 A 的时间线整合工作流，实现品类趋势纵向细分、品类×链路交叉热力图决策结构、以及客户生命周期的层级跃迁模型一屏掌握！摆脱了过去繁琐的 PPT 堆砌，在周会上用严谨、科学的分析结构和方法论维度大放异彩，汇报思路清晰得体，展现极效甜蜜流！
+              </p>
+            </div>
+
+            <!-- 关键整合指标呈现 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 p-4 rounded-xl border border-emerald-900/10 text-center">
+                <span class="text-[10px] font-bold text-emerald-700/80 uppercase block tracking-wider">核心维度一 · 品类纵向细分</span>
+                <strong class="text-lg font-black text-forest block mt-1">品类消耗趋势大盘</strong>
+                <span class="text-[10px] text-emerald-700 mt-0.5 block font-bold">纵向拆解：减肥、三高、睡眠赛道</span>
+              </div>
+              
+              <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 p-4 rounded-xl border border-emerald-900/10 text-center">
+                <span class="text-[10px] font-bold text-emerald-700/80 uppercase block tracking-wider">核心维度二 · 品类×链路交叉</span>
+                <strong class="text-lg font-black text-forest block mt-1">直购与加粉双驱模型</strong>
+                <span class="text-[10px] text-slate-500 mt-0.5 block">结构剖析：多链路占比及交叉热力图</span>
+              </div>
+
+              <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 p-4 rounded-xl border border-emerald-900/10 text-center">
+                <span class="text-[10px] font-bold text-emerald-700/80 uppercase block tracking-wider">核心维度三 · 客户层级跃迁</span>
+                <strong class="text-lg font-black text-forest block mt-1">真身全生命周期监控</strong>
+                <span class="text-[10px] text-emerald-700 mt-0.5 block font-bold">精细掌控：超头/头部/中腰部跃迁健康度</span>
+              </div>
+            </div>
+
+            <!-- 整合报告直达交付件 -->
+            <div class="border border-emerald-900/10 rounded-2xl p-5 bg-emerald-50/20 mb-6">
+              <h3 class="text-xs font-bold text-forest uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <i data-lucide="folders" class="w-4 h-4 text-emerald-600"></i> 双周会整合大盘 · HTML 实时大屏直达
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="保健食品_双周报_0608_0621_v3.html" target="_blank" class="flex items-center justify-between p-4 bg-white hover:bg-emerald-50/50 border border-slate-200 hover:border-emerald-500 rounded-xl group transition-all duration-300">
+                  <div class="flex items-center gap-3">
+                    <span class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">📁</span>
+                    <div>
+                      <span class="text-xs font-bold text-forest block group-hover:text-emerald-800">保健食品双周报_0608_0621.html</span>
+                      <span class="text-[10px] text-slate-400 block mt-0.5">点我打开本双周竞价口径报告</span>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-700 transition-colors"></i>
+                </a>
+                
+                <a href="传统滋补_双周报_0608_0621_v3.html" target="_blank" class="flex items-center justify-between p-4 bg-white hover:bg-emerald-50/50 border border-slate-200 hover:border-emerald-500 rounded-xl group transition-all duration-300">
+                  <div class="flex items-center gap-3">
+                    <span class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">📁</span>
+                    <div>
+                      <span class="text-xs font-bold text-forest block group-hover:text-emerald-800">传统滋补双周报_0608_0621.html</span>
+                      <span class="text-[10px] text-slate-400 block mt-0.5">点我打开本双周高潜赛道大屏</span>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-700 transition-colors"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="text-center py-2">
+              <p class="text-xs text-slate-400">
+                💡 双周大盘报告已自动根据“保健食品直播链路深度分析报告”和“传统滋补”两项指标深度融合。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="mt-16 pt-8 border-t border-emerald-100 text-center text-xs text-slate-400">
+      <p>和小 A 陪伴每一天的甜蜜小时光 © 2026 · ADataClaw 广告分享专场</p>
+      <p class="mt-1">将繁琐归于算法，把时间还给生活</p>
+    </footer>
+  </div>
+
+  <!-- ==================== 原生 JS 大图预览弹窗灯箱 (Lightbox Modal) ==================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeLightboxOutside(event)">
+    <!-- 关闭按钮 -->
+    <button onclick="closeLightbox()" class="absolute right-6 top-6 bg-slate-900/60 hover:bg-slate-900 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    
+    <!-- 图片容器 -->
+    <div class="max-w-4xl max-h-[85vh] overflow-hidden rounded-2xl bg-white border border-emerald-900/10 p-2 shadow-2xl relative" onclick="event.stopPropagation()">
+      <img id="lightbox-image" src="" alt="大图预览" class="max-w-full max-h-[80vh] object-contain rounded-xl">
+      <div id="lightbox-title" class="text-center text-xs font-bold text-slate-500 py-2.5 bg-slate-50 rounded-b-xl border-t border-slate-100"></div>
+    </div>
+  </div>
+
+  <script>
+    // 初始化 Lucide 矢量图标
+    lucide.createIcons();
+
+    // 选项卡切换逻辑 (时间线 Tab 与 文件夹 Tab 同步联动)
+    function switchFolder(folderId, tabElement) {
+      // 1. 隐藏所有文件夹内页内容
+      const contents = document.querySelectorAll('.folder-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      // 2. 显示对应文件夹内页内容
+      const targetContent = document.getElementById(folderId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+
+      // 3. 移除左侧时间线 Tab 的激活高亮样式
+      const leftTabs = document.querySelectorAll('#timeline-tabs button');
+      leftTabs.forEach(tab => {
+        tab.classList.remove('border-emerald-800', 'bg-emerald-50/70', 'shadow-md');
+        tab.classList.add('border-slate-200', 'bg-white');
+        tab.querySelector('span').classList.remove('bg-emerald-800', 'text-white');
+        tab.querySelector('span').classList.add('bg-emerald-100', 'text-emerald-800');
+      });
+
+      // 4. 高亮当前选中的左侧 Tab
+      tabElement.classList.remove('border-slate-200', 'bg-white');
+      tabElement.classList.add('border-emerald-800', 'bg-emerald-50/70', 'shadow-md');
+      tabElement.querySelector('span').classList.remove('bg-emerald-100', 'text-emerald-800');
+      tabElement.querySelector('span').classList.add('bg-emerald-800', 'text-white');
+
+      // 5. 同步更新右侧文件夹 Tab 的视觉效果
+      const rightTabs = document.querySelectorAll('#folder-tab-header .folder-tab');
+      rightTabs.forEach(rt => {
+        rt.classList.remove('active-tab', 'text-forest');
+        rt.classList.add('text-slate-400', 'bg-transparent');
+      });
+
+      // 匹配右侧 tab 标签
+      let rightTabId = '';
+      if (folderId === 'tab-morning') rightTabId = 'tab-indicator-morning';
+      else if (folderId === 'tab-office') rightTabId = 'tab-indicator-office';
+      else if (folderId === 'tab-airplane') rightTabId = 'tab-indicator-airplane';
+      else if (folderId === 'tab-meeting') rightTabId = 'tab-indicator-meeting';
+
+      const targetRightTab = document.getElementById(rightTabId);
+      if (targetRightTab) {
+        targetRightTab.classList.remove('text-slate-400', 'bg-transparent');
+        targetRightTab.classList.add('active-tab', 'text-forest');
+      }
+    }
+
+    // 初始化加载默认高亮左侧第一个按钮
+    document.addEventListener('DOMContentLoaded', () => {
+      const defaultBtn = document.getElementById('default-btn');
+      if (defaultBtn) {
+        defaultBtn.classList.remove('border-slate-200', 'bg-white');
+        defaultBtn.classList.add('border-emerald-800', 'bg-emerald-50/70', 'shadow-md');
+        defaultBtn.querySelector('span').classList.remove('bg-emerald-100', 'text-emerald-800');
+        defaultBtn.querySelector('span').classList.add('bg-emerald-800', 'text-white');
+      }
+    });
+
+    // 右侧模拟文件夹 Tab 头部点击直接关联切换左侧
+    document.getElementById('tab-indicator-morning').addEventListener('click', function() {
+      switchFolder('tab-morning', document.querySelector('#timeline-tabs button:nth-child(1)'));
+    });
+    document.getElementById('tab-indicator-office').addEventListener('click', function() {
+      switchFolder('tab-office', document.querySelector('#timeline-tabs button:nth-child(2)'));
+    });
+    document.getElementById('tab-indicator-airplane').addEventListener('click', function() {
+      switchFolder('tab-airplane', document.querySelector('#timeline-tabs button:nth-child(3)'));
+    });
+    document.getElementById('tab-indicator-meeting').addEventListener('click', function() {
+      switchFolder('tab-meeting', document.querySelector('#timeline-tabs button:nth-child(4)'));
+    });
+
+    // 原生大图弹窗 Modal 逻辑 (Lightbox)
+    function openLightbox(imageSrc) {
+      const modal = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      
+      lightboxImg.src = imageSrc;
+      lightboxTitle.textContent = imageSrc;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function closeLightboxOutside(event) {
+      closeLightbox();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传统滋补沟通 · 培训合集</title>
+<style>
+/* ================= 1. 变量与全局样式 ================= */
+:root {
+  /* 明亮模式 (Light Mode) 变量 */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-badge: #f1f5f9;
+  --bg-tab-inactive: #f1f5f9;
+  --bg-tab-active: #ffffff;
+  --bg-tag-hot: linear-gradient(135deg, #f59e0b, #ef4444);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent-color: #2563eb;
+  --accent-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #059669 100%);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.03), 0 2px 8px rgba(15, 23, 42, 0.02);
+  --shadow-hover: 0 20px 40px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-tabs: inset 0 2px 4px rgba(15, 23, 42, 0.03);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark {
+  /* 暗黑模式 (Dark Mode) 变量 */
+  --bg-primary: #0a0a0c;
+  --bg-secondary: #111115;
+  --bg-card: #16161a;
+  --bg-badge: rgba(255, 255, 255, 0.05);
+  --bg-tab-inactive: rgba(255, 255, 255, 0.03);
+  --bg-tab-active: #1e1e24;
+  --bg-tag-hot: linear-gradient(135deg, #f59e0b, #ef4444);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-color: #60a5fa;
+  --accent-gradient: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(96, 165, 250, 0.1);
+  --shadow-tabs: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ================= 2. 顶置主题切换与总容器 ================= */
+.theme-toggle-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+  border-color: var(--accent-color);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--text-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--transition-smooth);
+}
+
+body.dark .sun-icon {
+  display: block;
+}
+body.dark .moon-icon {
+  display: none;
+}
+body:not(.dark) .sun-icon {
+  display: none;
+}
+body:not(.dark) .moon-icon {
+  display: block;
+}
+
+.presentation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* ================= 3. Header 头部排版 ================= */
+.header-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 32px;
+}
+
+.meta-tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.main-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.intro-text {
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 850px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.author-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  margin-bottom: 36px;
+}
+
+.info-item {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.info-item strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* ================= 4. 亮点数据栏 (Highlights) ================= */
+.highlights-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.hl-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.hl-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.hl-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hl-lbl {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.hl-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* ================= 5. TAB 核心样式 ================= */
+.workspace-tabs-container {
+  margin-top: 20px;
+}
+
+/* Tab 按钮栏：胶囊药丸式，毛玻璃融合 */
+.tab-buttons-bar {
+  display: flex;
+  background-color: var(--bg-tab-inactive);
+  padding: 6px;
+  border-radius: 99px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-tabs);
+  margin-bottom: 32px;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox 隐藏滚动条 */
+}
+
+.tab-buttons-bar::-webkit-scrollbar {
+  display: none; /* Safari/Chrome 隐藏滚动条 */
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 24px;
+  border: none;
+  background: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 99px;
+  transition: var(--transition-smooth);
+  text-align: center;
+  white-space: nowrap;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 激活态 Tab 样式 */
+.tab-btn.active {
+  background-color: var(--bg-tab-active);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border-color);
+}
+
+/* Content 区域 */
+.tab-content-panel {
+  display: none;
+  animation: fadeScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.tab-content-panel.active {
+  display: block;
+}
+
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sub-title {
+  font-size: clamp(1.4rem, 3.2vw, 1.8rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 800px;
+}
+
+/* ================= 6. 统一卡片与网格 (Grid & Cards) ================= */
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* 统一的高端展示卡片 */
+.showcase-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 240px;
+}
+
+.showcase-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.card-top {
+  margin-bottom: 24px;
+}
+
+.card-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-num {
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: var(--accent-color);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.badge-pill-container {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge-pill {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background-color: var(--bg-badge);
+  color: var(--text-secondary);
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  text-transform: uppercase;
+}
+
+.badge-pill.hot-badge {
+  background: var(--bg-tag-hot);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+  margin-top: 12px;
+}
+
+.card-footer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-footer-tag {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background-color: rgba(255,255,255,0.01);
+  border-radius: 4px;
+  padding: 1px 0;
+  font-weight: 500;
+}
+
+.card-footer-tag::after {
+  content: " ·";
+}
+.card-footer-tag:last-child::after {
+  content: "";
+}
+
+.card-action-trigger {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition-smooth);
+}
+
+.showcase-card:hover .card-action-trigger {
+  transform: translateX(4px);
+}
+
+/* ================= 7. 创意素材卡片特定设计 (Takeaway Style) ================= */
+.takeaway-card {
+  border-top: 3px solid var(--accent-color);
+}
+.takeaway-card:nth-child(1) { --accent-color: #3b82f6; }
+.takeaway-card:nth-child(2) { --accent-color: #f59e0b; }
+.takeaway-card:nth-child(3) { --accent-color: #10b981; }
+.takeaway-card:nth-child(4) { --accent-color: #8b5cf6; }
+.takeaway-card:nth-child(5) { --accent-color: #ec4899; }
+.takeaway-card:nth-child(6) { --accent-color: #06b6d4; }
+
+.takeaway-icon-header {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+/* ================= 8. Footer 页脚与金句 ================= */
+.footer {
+  text-align: center;
+  padding: 80px 0 40px 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: 60px;
+}
+
+.gold-sentence {
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.footer-tip {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ================= 9. 响应式与手机适配 ================= */
+@media (max-width: 768px) {
+  .presentation-container {
+    padding: 20px 16px;
+  }
+  .author-info {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .theme-toggle-btn {
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+  }
+  .tab-buttons-bar {
+    border-radius: 12px;
+    padding: 4px;
+  }
+  .tab-btn {
+    min-width: 110px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+  .grid-3-cols {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .showcase-card {
+    min-height: auto;
+  }
+}
+</style>
+</head>
+<body class="dark"> <!-- 默认暗黑极客科技模式，带来极致视觉张力 -->
+
+<!-- 主题切换悬浮按钮 -->
+<button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
+  <svg class="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<div class="presentation-container">
+
+  <!-- ================= SECTION 01: 头部导览区 ================= -->
+  <header class="header-top-meta">
+    <span class="section-title">Traditional Tonic Hub · 传统滋补闭环建树</span>
+    <span class="slide-indicator">01 / 04 · Live Workdesk</span>
+  </header>
+  
+  <div class="content-wrapper">
+    <span class="meta-tag">Internal Sharing · 2026 H1</span>
+    <h1 class="main-title">传统滋补沟通 · <br><span class="gradient-text">三伏天培训合集</span></h1>
+    <p class="intro-text">
+      本工作台聚合了传统滋补品类的行业选品趋势洞察、多维链路与版位投放数据拆解。通过深度剖析九大品牌直播间及爆量创意，帮助项目组与客户无缝配合，在三伏天寻找生意的最强峰值爆发与长效弹性。
+    </p>
+    
+    <div class="author-info">
+      <div class="info-item"><strong>Speaker</strong> 食品饮料中心 · 滋补项目组</div>
+      <div class="info-item"><strong>Methodology</strong> 闭环与非闭环双轨基建迭代</div>
+      <div class="info-item"><strong>Version</strong> Workspace v1.4.0</div>
+    </div>
+  </div>
+  
+  <!-- 亮点数据摘录 -->
+  <div class="highlights-bar">
+    <div class="hl-card">
+      <div class="hl-val">6 大品类</div>
+      <div class="hl-lbl">TOP直播间案例纸<br><span class="hl-sub">枸杞/菌菇/药食/冲饮/燕窝/蜂蜜</span></div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-val">ROI 1.63</div>
+      <div class="hl-lbl">全场最高 · 华北益养优选<br><span class="hl-sub">CPM仅¥58，低于通用大盘29%</span></div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-val">CTR 6.1%</div>
+      <div class="hl-lbl">鑫晨枸杞 · 优于大盘119%<br><span class="hl-sub">日耗保持10~20万，环比增长+58%</span></div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-val">618冲量 +47%</div>
+      <div class="hl-lbl">老班长葛根粉 · 峰值3.8倍弹性<br><span class="hl-sub">大促爆发能力与获客效率双领先</span></div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION 02: TAB工作台选项卡 ================= -->
+  <div class="workspace-tabs-container">
+    
+    <!-- Tab 选项卡按钮栏 -->
+    <div class="tab-buttons-bar" role="tablist">
+      <button class="tab-btn active" data-tab="tab-insights" role="tab" aria-selected="true">
+        <span>📅 行业洞察</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-data" role="tab" aria-selected="false">
+        <span>📊 投放数据</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-cases" role="tab" aria-selected="false">
+        <span>🎬 案例复盘</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-resources" role="tab" aria-selected="false">
+        <span>🎨 创意资料</span>
+      </button>
+    </div>
+
+    <!-- Tab 1: 行业洞察 -->
+    <div id="tab-insights" class="tab-content-panel active" role="tabpanel">
+      <h2 class="sub-title">透视大盘趋势，重塑选品决策。</h2>
+      <p class="section-desc">结合 6 月大盘真实数据，针对传统滋补核心二级品类的趋势走向进行全面推演，并提供行业专属选品指南。</p>
+      
+      <div class="grid-3-cols">
+        <a class="showcase-card" href="传统滋补行业选品洞察报告_2026年6月 .html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">01 / 01</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">趋势策略</span>
+                <span class="badge-pill">HTML</span>
+              </div>
+            </div>
+            <h3 class="card-title">行业选品洞察报告（2026年6月）</h3>
+            <p class="card-desc">传统滋补行业 6 月选品整体趋势透视，覆盖品类、链路、版位与投放策略的综合性分析，提供明确的选品及买量指引。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">月度选品</span>
+              <span class="card-footer-tag">趋势指引</span>
+            </div>
+            <span class="card-action-trigger">查看报告 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tab 2: 投放数据 -->
+    <div id="tab-data" class="tab-content-panel" role="tabpanel">
+      <h2 class="sub-title">拆解多维链路，下钻爆款交易明细。</h2>
+      <p class="section-desc">穿透至版位、品类、下单 ROI 细节表现，解析小店大客 DPA 单品，为广告组及客户优化模型提供真实定量支撑。</p>
+      
+      <div class="grid-3-cols">
+        <!-- 链路 × 品类 × 版位表现 -->
+        <a class="showcase-card" href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">01 / 02</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">多维数据</span>
+                <span class="badge-pill">HTML</span>
+              </div>
+            </div>
+            <h3 class="card-title">链路 × 品类 × 版位多维拆解</h3>
+            <p class="card-desc">按直购 / 直播 / CID / 小店等多条链路，横向拆解各细分品类的消耗、CPM、CTR、CVR 与下单 ROI 区间表现。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">脱敏区间</span>
+              <span class="card-footer-tag">消耗版位</span>
+            </div>
+            <span class="card-action-trigger">查看报告 →</span>
+          </div>
+        </a>
+
+        <!-- 小店 TOP5 客户DPA -->
+        <a class="showcase-card" href="传统滋补小店TOP5客户DPA商品.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">02 / 02</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">小店链路</span>
+                <span class="badge-pill">HTML</span>
+              </div>
+            </div>
+            <h3 class="card-title">小店 TOP5 客户及最大 DPA 商品</h3>
+            <p class="card-desc">全景解构小店链路下 TOP5 核心客户。盘点各自14天消耗区间、下单 ROI，并向下穿透至爆款 DPA 单品明细。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">大客户真身</span>
+              <span class="card-footer-tag">DPA单品</span>
+            </div>
+            <span class="card-action-trigger">查看明细 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tab 3: 案例复盘 -->
+    <div id="tab-cases" class="tab-content-panel" role="tabpanel">
+      <h2 class="sub-title">九个硬核案例，九种爆量解法。</h2>
+      <p class="section-desc">萃取燕窝、枸杞、菌菇酵素、同源药食等多赛道龙头，在日常高活、大促爆量下的双轨实战经验纸。</p>
+      
+      <div class="grid-3-cols">
+        <!-- 案例 1: 湿谷方 -->
+        <a class="showcase-card" href="老字号湿谷方案例Showcase.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">01 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">老字号</span>
+                <span class="badge-pill">HTML</span>
+              </div>
+            </div>
+            <h3 class="card-title">老字号「湿谷方」品牌案例</h3>
+            <p class="card-desc">深度展现「湿谷方」的品牌成长与冷启动曲线。内含直播间高保真截图，详释其投放逻辑与创意高光点。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">品牌冷启动</span>
+              <span class="card-footer-tag">直播间截图</span>
+            </div>
+            <span class="card-action-trigger">查看案例 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 2: apopo -->
+        <a class="showcase-card" href="https://sumiyaliu.github.io/sumiya-public/apopo.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">02 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">冲调赛道</span>
+                <span class="badge-pill">Link</span>
+              </div>
+            </div>
+            <h3 class="card-title">冲调日耗百万级直播间案例</h3>
+            <p class="card-desc">apopo 冲调品类极客战绩。复盘日消耗冲高至百万级直播间的操盘路径，高度总结大场爆发的方法论与打法。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">日耗百万</span>
+              <span class="card-footer-tag">操盘复盘</span>
+            </div>
+            <span class="card-action-trigger">查看案例 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 3: 小仙炖 618 -->
+        <a class="showcase-card" href="case-xiaoxiandun-618.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">03 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">燕窝滋补</span>
+                <span class="badge-pill hot-badge">618 冲量</span>
+              </div>
+            </div>
+            <h3 class="card-title">小仙炖 618 直播专场案例</h3>
+            <p class="card-desc">利用“双直播间协同+用户预约”组合重磅打法。618当天 ROI 突破 2.50，较 520 专场飞跃增长 +28%。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">专场组合拳</span>
+              <span class="card-footer-tag">ROI 2.50</span>
+            </div>
+            <span class="card-action-trigger">查看案例 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 4: 鑫晨枸杞 -->
+        <a class="showcase-card" href="case-xinchen-goji.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">04 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">枸杞龙头</span>
+                <span class="badge-pill hot-badge">TOP 1</span>
+              </div>
+            </div>
+            <h3 class="card-title">鑫晨枸杞小秘坊 · 枸杞滋补</h3>
+            <p class="card-desc">枸杞细分赛道霸主。CTR 狂飙并跑赢大盘 119%，日常消耗环比提升 58%，爆发冲量弹性高达 2.0 倍。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">绝对龙头</span>
+              <span class="card-footer-tag">CTR+119%</span>
+            </div>
+            <span class="card-action-trigger">查看案例纸 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 5: 华北益养 -->
+        <a class="showcase-card" href="case-huabei-yiyang.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">05 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">菌菇酵素</span>
+                <span class="badge-pill hot-badge">ROI最高</span>
+              </div>
+            </div>
+            <h3 class="card-title">华北益养优选 · 菌菇酵素</h3>
+            <p class="card-desc">高 ROI 操盘神话。下单 ROI 高达 1.63，全场最高。CPM 仅 58 元，通过智投工具将智投渗透率推高至 85%。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">高ROI标杆</span>
+              <span class="card-footer-tag">低价CPM</span>
+            </div>
+            <span class="card-action-trigger">查看案例纸 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 6: 老班长 -->
+        <a class="showcase-card" href="case-laobanzhang-gegen.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">06 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">药食同源</span>
+                <span class="badge-pill hot-badge">大促爆发</span>
+              </div>
+            </div>
+            <h3 class="card-title">老班长葛根粉 · 药食同源</h3>
+            <p class="card-desc">药食同源赛道顶梁柱。CTR 强超大盘 35%，618 期间日耗大涨 +47%，拿量峰值弹性展现 3.8 倍的绝对韧性。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">葛根品类</span>
+              <span class="card-footer-tag">峰值3.8倍</span>
+            </div>
+            <span class="card-action-trigger">查看案例纸 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 7: Dr.郭 -->
+        <a class="showcase-card" href="case-drguo-bazhenyin.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">07 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">新锐入局</span>
+                <span class="badge-pill hot-badge">NEW</span>
+              </div>
+            </div>
+            <h3 class="card-title">Dr.郭-八珍饮 · 冲饮食补</h3>
+            <p class="card-desc">冲饮粉差异化突围冷启动。创下全场最高 6.4% 转化率（CVR），商品点击率高达 92.6%，转化效率绝佳。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">高转化CVR</span>
+              <span class="card-footer-tag">极速突破</span>
+            </div>
+            <span class="card-action-trigger">查看案例纸 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 8: 小仙炖鲜炖燕窝 -->
+        <a class="showcase-card" href="case-xiaoxiandun-top6.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">08 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">燕窝滋补</span>
+                <span class="badge-pill">HTML</span>
+              </div>
+            </div>
+            <h3 class="card-title">小仙炖鲜炖燕窝 · 燕窝滋补</h3>
+            <p class="card-desc">滋补高端品牌稳健增长底牌。全周期下单 ROI 1.78，拿量能力出类拔萃，618 冲量爆发录得 +37% 傲人成绩。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">高端客群</span>
+              <span class="card-footer-tag">ROI 1.78</span>
+            </div>
+            <span class="card-action-trigger">查看案例纸 →</span>
+          </div>
+        </a>
+
+        <!-- 案例 9: 田野牧蜂 -->
+        <a class="showcase-card" href="case-tianyemufeng.html" target="_blank">
+          <div class="card-top">
+            <div class="card-header-meta">
+              <span class="card-num">09 / 09</span>
+              <div class="badge-pill-container">
+                <span class="badge-pill">蜂类滋补</span>
+                <span class="badge-pill">HTML</span>
+              </div>
+            </div>
+            <h3 class="card-title">田野牧蜂蜂蜜号 · 蜂类滋补</h3>
+            <p class="card-desc">精准人群获客的教科书案例。创意重复度仅 44%，全场生态最健康。大促峰值拿量冲刺达 2.6 倍。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">健康素材</span>
+              <span class="card-footer-tag">弹性2.6倍</span>
+            </div>
+            <span class="card-action-trigger">查看案例纸 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tab 4: 创意资料 -->
+    <div id="tab-resources" class="tab-content-panel" role="tabpanel">
+      <h2 class="sub-title">素材提炼与百宝箱，护航合规爆量。</h2>
+      <p class="section-desc">沉淀广告创意的爆款底层逻辑，配备全量科普与合规实操指南，打通买量效率瓶颈。</p>
+      
+      <div class="grid-3-cols">
+        <!-- 资料 1: 保健滋补素材分析 -->
+        <a class="showcase-card takeaway-card" href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank">
+          <div class="card-top">
+            <div class="takeaway-icon-header">🎨</div>
+            <h3 class="card-title">保健 & 滋补素材大盘分析</h3>
+            <p class="card-desc">保健食品与传统滋补双品类广告素材双周报。汇聚核心高转化爆款视频规律，总结可直接复刻的创意黄金公式。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">素材双周报</span>
+              <span class="card-footer-tag">爆量指令</span>
+            </div>
+            <span class="card-action-trigger">查看报告 →</span>
+          </div>
+        </a>
+
+        <!-- 资料 2: 行业百宝箱 -->
+        <a class="showcase-card takeaway-card" href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank">
+          <div class="card-top">
+            <div class="takeaway-icon-header">📅</div>
+            <h3 class="card-title">滋补食品行业百宝箱 2.0</h3>
+            <p class="card-desc">最全行业百宝箱资料（持续更新迭代），收录行业前沿核心方法论、运营模板以及大健康创意资产底座。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">腾讯文档</span>
+              <span class="card-footer-tag">资产百宝箱</span>
+            </div>
+            <span class="card-action-trigger">打开文档 →</span>
+          </div>
+        </a>
+
+        <!-- 资料 3: 大健康创意周报 -->
+        <a class="showcase-card takeaway-card" href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank">
+          <div class="card-top">
+            <div class="takeaway-icon-header">⚡</div>
+            <h3 class="card-title">大健康创意周报 · CTR专项</h3>
+            <p class="card-desc">深度聚焦视频号大健康赛道。拆解爆量高 CTR 视频的黄金三秒结构、画面呈现、音效调性，助推点击效率质跃。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">企微文档</span>
+              <span class="card-footer-tag">CTR专项</span>
+            </div>
+            <span class="card-action-trigger">打开文档 →</span>
+          </div>
+        </a>
+
+        <!-- 资料 4: 成分科普 -->
+        <a class="showcase-card takeaway-card" href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank">
+          <div class="card-top">
+            <div class="takeaway-icon-header">📝</div>
+            <h3 class="card-title">传统滋补 - 核心成分科普</h3>
+            <p class="card-desc">传统滋补主流养生原料和科学活性成分的大百科。提供通俗易懂的卖点解析，助力打差异化和新奇特卖点。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">腾讯文档</span>
+              <span class="card-footer-tag">成分知识库</span>
+            </div>
+            <span class="card-action-trigger">打开文档 →</span>
+          </div>
+        </a>
+
+        <!-- 资料 5: 审核指引 -->
+        <a class="showcase-card takeaway-card" href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&tab=s8vyuv" target="_blank">
+          <div class="card-top">
+            <div class="takeaway-icon-header">🛡️</div>
+            <h3 class="card-title">【滋补-V1】审核拒绝整改指引</h3>
+            <p class="card-desc">传统滋补品类审核痛点大扫除。盘点常见的广告被拒原因，对症提供高通过率、安全且不流失卖点的修改模板。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">企微文档</span>
+              <span class="card-footer-tag">合规整改</span>
+            </div>
+            <span class="card-action-trigger">打开文档 →</span>
+          </div>
+        </a>
+
+        <!-- 资料 6: 违规行为解读 -->
+        <a class="showcase-card takeaway-card" href="https://docs.qq.com/doc/DSkpXdmVoblFZbFFQ" target="_blank">
+          <div class="card-top">
+            <div class="takeaway-icon-header">🔒</div>
+            <h3 class="card-title">视频号直播常见违规行为解读</h3>
+            <p class="card-desc">视频号官方带货违规行为红线大起底。总结雷区，帮助品牌直播间安全推流，有效规避突然断播和降权封禁。</p>
+          </div>
+          <div class="card-bottom">
+            <div class="card-footer-tags">
+              <span class="card-footer-tag">腾讯文档</span>
+              <span class="card-footer-tag">直播红线</span>
+            </div>
+            <span class="card-action-trigger">打开文档 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 结语 & 页脚 -->
+  <footer class="footer">
+    <div class="gold-sentence">"Data is the compass. Creativity is the sail. / 数据是罗盘，创意是风帆"</div>
+    <div class="footer-tip">本空间为内部沟通分享入口 · 点击任何卡片将在新标签页中打开对应报告、案例或文档</div>
+  </footer>
+
+</div>
+
+<script>
+// ================= 10. TAB 切换 JS 控制逻辑 =================
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-content-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetPanelId = tab.getAttribute('data-tab');
+
+      // 1. 清除所有 tab 按钮的激活状态
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+
+      // 2. 隐藏所有面板
+      panels.forEach(p => {
+        p.classList.remove('active');
+      });
+
+      // 3. 激活当前点击的 tab 与面板
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      
+      const targetPanel = document.getElementById(targetPanelId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+});
+
+// ================= 11. 明暗模式切换 JavaScript 极简逻辑 =================
+const themeToggleBtn = document.getElementById('themeToggle');
+const bodyElement = document.body;
+
+// 1. 初始化时检查本地缓存或默认暗色（暗色更具科技展示感）
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'dark') {
+  bodyElement.classList.add('dark');
+} else {
+  bodyElement.classList.remove('dark');
+}
+
+// 2. 点击触发平滑的主题切换
+themeToggleBtn.addEventListener('click', () => {
+  bodyElement.classList.toggle('dark');
+  const currentTheme = bodyElement.classList.contains('dark') ? 'dark' : 'light';
+  localStorage.setItem('theme', currentTheme);
+});
+</script>
+</body>
+</html>

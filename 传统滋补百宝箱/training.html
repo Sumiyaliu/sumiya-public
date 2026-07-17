@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传统滋补对客培训 - 一站式资料站 3.0</title>
+<!-- 引入 Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    herb: {
+                        50: '#f0f7f4',
+                        100: '#daebd5',
+                        200: '#b8d9c2',
+                        600: '#15803d', // 茶绿
+                        700: '#0f682c',
+                    },
+                    amber: {
+                        50: '#fdfbf7',
+                        700: '#b45309', // 蜜金
+                    },
+                    shasha: {
+                        50: '#fcfdfd', // 玉白
+                        100: '#f4f7f5', // 浅草灰 / 暖沙
+                        200: '#e2ede5',
+                    }
+                }
+            }
+        }
+    }
+</script>
+<style>
+/* 经典国潮毛玻璃 */
+.glass-header {
+    background: linear-gradient(135deg, rgba(21, 128, 61, 0.04) 0%, rgba(180, 83, 9, 0.04) 100%), #fcfdfd;
+    border-bottom: 1px solid #e2ede5;
+}
+
+/* 典雅卡片 */
+.card-doc {
+    background: #fcfdfd;
+    border: 1px solid #e2ede5;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(15, 80, 40, 0.01);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-doc:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(15, 80, 40, 0.04);
+    border-color: #b8d9c2;
+}
+
+.gradient-text-herb {
+    background: linear-gradient(135deg, #101d15 20%, #15803d 60%, #b45309 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+</style>
+</head>
+<body class="bg-shasha-100 text-slate-800 min-h-screen pb-24">
+
+<!-- ⛩️ 顶部国潮毛玻璃固定导航栏 -->
+<header class="glass-header sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <span class="p-1.5 bg-herb-50 rounded-lg border border-herb-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            </span>
+            <span class="font-extrabold text-sm tracking-widest text-slate-800 uppercase flex items-center gap-1.5">
+                对客培训培训站 <span class="bg-herb-600 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">V3.0</span>
+            </span>
+        </div>
+        <div>
+            <a href="index.html" class="text-xs font-bold text-herb-600 hover:text-herb-700 transition-colors flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" x2="5" y1="12" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                返回百宝箱门户
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="max-w-4xl mx-auto px-4 mt-8">
+
+    <!-- 🌟 头部区域 -->
+    <div class="text-center mb-10">
+        <h1 class="text-2xl md:text-3xl font-black gradient-text-herb mb-3 tracking-wide">传统滋补对客培训一站式资料站</h1>
+        <p class="text-xs text-slate-500 max-w-lg mx-auto">投放数据分析 · 案例复盘 · 创意素材 · 行业资料，面向核心客户沟通交付的一站式聚合白宝箱</p>
+        <div class="flex justify-center gap-2 mt-4 flex-wrap">
+            <span class="text-[10px] bg-white border border-slate-200 text-slate-500 px-2.5 py-1 rounded-full font-bold">近14天 / 竞价口径</span>
+            <span class="text-[10px] bg-white border border-slate-200 text-slate-500 px-2.5 py-1 rounded-full font-bold">商业区间脱敏</span>
+            <span class="text-[10px] bg-herb-50 border border-herb-200 text-herb-700 px-2.5 py-1 rounded-full font-bold">2026年夏季专属</span>
+        </div>
+    </div>
+
+    <!-- 📁 资料库大盘 -->
+    <div class="space-y-8">
+
+        <!-- 1. 行业月度洞察 -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-200/60">
+                <span class="p-1 bg-amber-50 text-amber-700 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
+                </span>
+                <h3 class="font-extrabold text-sm text-slate-800 tracking-wider">01. 行业月度大盘洞察</h3>
+                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 rounded-full font-bold ml-auto">1 篇</span>
+            </div>
+            <div class="grid grid-cols-1 gap-3">
+                <a href="传统滋补行业选品洞察报告_2026年6月 .html" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-sm font-bold shrink-0">HTML</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-herb-600 transition-colors">行业选品洞察报告 (2026年6月)</h4>
+                        <p class="text-xs text-slate-500 mt-1">深度剖析 6 月传统滋补视频号大盘，覆盖二级品类热度、高增长风口与高复购链路打法</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. 投放数据分析 -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-200/60">
+                <span class="p-1 bg-blue-50 text-blue-700 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg>
+                </span>
+                <h3 class="font-extrabold text-sm text-slate-800 tracking-wider">02. 投放数据分析与大盘指标</h3>
+                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 rounded-full font-bold ml-auto">2 篇</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-xs font-bold shrink-0">DATA</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-herb-600 transition-colors">链路 × 品类 × 版位深度分析</h4>
+                        <p class="text-xs text-slate-500 mt-1">朋友圈、视频号及加粉大盘消耗、CPM、CTR区间拆解</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-xs font-bold shrink-0">DPA</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-herb-600 transition-colors">小店 TOP5 客户及核心 DPA 商品</h4>
+                        <p class="text-xs text-slate-500 mt-1">梁山富海、纯耕红黑双饮等核心大店 DPA 消耗与 ROI 看板</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. 案例复盘 -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-200/60">
+                <span class="p-1 bg-purple-50 text-purple-700 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                </span>
+                <h3 class="font-extrabold text-sm text-slate-800 tracking-wider">03. 标杆客户案例与爆量实操复盘</h3>
+                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 rounded-full font-bold ml-auto">3 篇</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <a href="老字号御湿方案例Showcase.html" target="_blank" class="card-doc p-4 flex flex-col justify-between group h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded font-bold">老字号秀场</span>
+                            <span class="text-[9px] text-slate-400">自播飙升12倍</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">老字号御湿方案例 Showcase</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">非闭环到自播闭环，御湿方直播间高密成交金句与大图画面还原深度复盘</p>
+                    </div>
+                    <span class="text-[10px] text-herb-600 font-bold mt-4 block">立即打开 →</span>
+                </a>
+                <a href="https://sumiyaliu.github.io/sumiya-public/apopo.html" target="_blank" class="card-doc p-4 flex flex-col justify-between group h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded font-bold">冲调百万大单</span>
+                            <span class="text-[9px] text-slate-400">大曝光起盘</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">冲调日耗百万直播间案例</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">apopo 冲调品类日耗百万级直播大局观，还原冷启动期基建爆量实操</p>
+                    </div>
+                    <span class="text-[10px] text-herb-600 font-bold mt-4 block">立即打开 →</span>
+                </a>
+                <a href="case-xiaoxiandun-618.html" target="_blank" class="card-doc p-4 flex flex-col justify-between group h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded font-bold">直播高奢预约</span>
+                            <span class="text-[9px] text-slate-400">ROI 达 2.50</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">小仙炖 618 直播专场案例</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">双自播直播间+看播预约策略。季、年卡礼赠刺激，走播区极速拉满信任</p>
+                    </div>
+                    <span class="text-[10px] text-herb-600 font-bold mt-4 block">立即打开 →</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 4. 创意素材 & 行业资料 -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-200/60">
+                <span class="p-1 bg-herb-50 text-herb-700 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>
+                </span>
+                <h3 class="font-extrabold text-sm text-slate-800 tracking-wider">04. 创意素材工具、避坑指南与行业沉淀资料</h3>
+                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 rounded-full font-bold ml-auto">6 篇</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- 1 -->
+                <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-herb-50 text-herb-700 flex items-center justify-center text-xs font-bold shrink-0">REPORT</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">保健 & 传统滋补爆款创意双周报</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">提炼大盘最新视频镜头动作、爆款文案和AI视频复刻 prompt</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <!-- 2 -->
+                <a href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-herb-50 text-herb-700 flex items-center justify-center text-xs font-bold shrink-0">DOC</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">滋补食品行业资料百宝箱 2.0</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">起盘冷启动打法、直播承接话术、优质广告大盘大健康素材包</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <!-- 3 -->
+                <a href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-herb-50 text-herb-700 flex items-center justify-center text-xs font-bold shrink-0">CTR</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">大健康创意周报 · CTR 专项提升</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">剖析视频号公域最吸睛的大片剪辑节奏，击碎投中CTR低谷痛点</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <!-- 4 -->
+                <a href="https://docs.qq.com/sheet/DQnhyUnRjdkVUU3hx?tab=BB08J2" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-herb-50 text-herb-700 flex items-center justify-center text-xs font-bold shrink-0">TAB</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">传统滋补 - 核心成分科普宝库</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">药食同源药材典籍白皮书，科普投前起笔信任内容的首选背书</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <!-- 5 -->
+                <a href="https://doc.weixin.qq.com/sheet/e3_AB8AmAYIACgCNkAo3dDDQQHCoeEPv?scode=AJEAIQdfAAoNY1YdsWAB8AmAYIACg&tab=s8vyuv" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-herb-50 text-herb-700 flex items-center justify-center text-xs font-bold shrink-0">GUIDE</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">【滋补-V1】审核拒绝修改指引</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">官方审核拒绝代码自查修改对照表，提供白名单合规词包替换</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <!-- 6 -->
+                <a href="https://docs.qq.com/doc/DSkpXdmVoblFZbFFQ" target="_blank" class="card-doc p-4 flex items-center gap-4 group">
+                    <div class="w-10 h-10 rounded-xl bg-herb-50 text-herb-700 flex items-center justify-center text-xs font-bold shrink-0">SAFE</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-800 text-xs.5 group-hover:text-herb-600 transition-colors">视频号直播常见违规行为红线解读</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">防范扣分、禁播。保证直播间生命周期良性循环的必备防封宝典</p>
+                    </div>
+                    <div class="text-slate-400 group-hover:text-herb-600 transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 页脚说明 -->
+    <footer class="mt-16 text-center border-t border-slate-200/60 pt-8 text-xs text-slate-400">
+        <p class="mb-1">点击相应条目，可直接在新标签页中打开对应企微/腾讯文档或深度 HTML 分析报告</p>
+        <p>© 2026 传统滋补百宝箱项目组. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<!-- 引入 Lucide 图标并初始化 -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>

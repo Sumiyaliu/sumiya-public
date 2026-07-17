@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>直播间表达多品聚合新能力升级 · 案例纸</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #eef2f7; font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif; color: #1f2937; }
+  .page {
+    width: 1440px;
+    min-height: 900px;
+    margin: 24px auto;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 40%);
+    padding: 28px 32px 32px;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(59,130,246,0.18), transparent 70%);
+    border-radius: 50%;
+  }
+  .page::after {
+    content: "";
+    position: absolute;
+    bottom: -140px; left: -100px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* 标题 */
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 18px 26px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    z-index: 2;
+    margin-bottom: 18px;
+  }
+  .header .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+  }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    flex: 1;
+    line-height: 1.3;
+  }
+  .header h1 .hl {
+    color: #fde68a;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  }
+
+  /* 横版主网格：左列 + 右列 */
+  .main-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1.18fr;
+    gap: 16px;
+  }
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* 区块通用 */
+  .block {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .sec-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .sec-title .num {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+    font-size: 14px;
+  }
+  .sec-title h2 {
+    font-size: 17px;
+    color: #1e3a8a;
+    font-weight: 800;
+  }
+  .sec-title .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #93c5fd, transparent);
+  }
+
+  /* Section 1 */
+  .intro-text {
+    background: #f1f5ff;
+    border-left: 4px solid #2563eb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #1e3a8a;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .apply-text {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #78350f;
+    font-size: 13px;
+    line-height: 1.65;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .apply-text .apply-tag {
+    background: #f59e0b;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .apply-text b { color: #b45309; }
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .compare .col {
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #e5edf7;
+  }
+  .compare .before { background: #f7f8fa; border-color: #e5e7eb; }
+  .compare .after {
+    background: linear-gradient(135deg, #ecfeff, #eff6ff);
+    border-color: #bae6fd;
+  }
+  .compare .col .tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .compare .before .tag { background: #e5e7eb; color: #4b5563; }
+  .compare .after .tag { background: #2563eb; color: #fff; }
+  .compare .col p { font-size: 12.5px; line-height: 1.65; color: #374151; }
+  .compare .arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: #2563eb; font-size: 22px; font-weight: 800;
+  }
+  .alert {
+    margin-top: 10px;
+    background: #fffbeb;
+    border: 1px dashed #fbbf24;
+    color: #92400e;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+  }
+
+  /* Section 2 - 案例 */
+  .case-bg-row {
+    display: grid;
+    grid-template-columns: 92px 92px 92px 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: stretch;
+  }
+  .case-bg {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 210px;
+  }
+  .case-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .case-side {
+    display: flex; flex-direction: column; gap: 8px;
+    padding-left: 6px;
+    justify-content: center;
+  }
+  .pain-list {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #991b1b;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .pain-list b { color: #7f1d1d; }
+  .pain-list .pain-title {
+    font-weight: 800; color: #7f1d1d; margin-bottom: 4px;
+    display: block;
+  }
+  .pain-list .pain-item { display: block; margin: 2px 0; }
+
+  .highlight-title {
+    font-size: 13.5px; font-weight: 800; color: #1e3a8a;
+    display: flex; align-items: center; gap: 8px;
+    margin: 6px 0 6px;
+  }
+  .highlight-title::before {
+    content: ""; width: 4px; height: 14px;
+    background: linear-gradient(180deg, #2563eb, #06b6d4);
+    border-radius: 3px;
+  }
+
+  .chart-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    padding: 8px 12px 4px;
+    margin-bottom: 8px;
+  }
+  .chart-wrap {
+    height: 170px;
+    position: relative;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .kpi {
+    background: linear-gradient(135deg, #ffffff, #f0f9ff);
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981);
+  }
+  .kpi .num {
+    font-size: 20px;
+    font-weight: 800;
+    color: #2563eb;
+    line-height: 1.2;
+  }
+  .kpi .num .unit { font-size: 12px; color: inherit; margin-left: 2px; }
+  .kpi .num.red { color: #dc2626; }
+  .kpi .num.green { color: #059669; }
+  .kpi .num.orange { color: #ea580c; }
+  .kpi .num.purple { color: #7c3aed; }
+  .kpi .num.cyan { color: #0891b2; }
+  .kpi .lbl {
+    font-size: 11.5px;
+    color: #4b5563;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Section 3 - 搭建 */
+  .step-block { margin-bottom: 12px; display: flex; flex-direction: column; }
+  .step-block:last-child { margin-bottom: 0; }
+  .step-head {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .step-head .step-tag {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .step-head .step-tag.blue {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+  }
+  .step-head h3 {
+    font-size: 14px;
+    color: #1f2937;
+    font-weight: 700;
+  }
+  .step-head .focus {
+    background: #fee2e2; color: #b91c1c;
+    font-size: 11.5px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px;
+  }
+
+  .substeps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .substep {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: stretch;
+  }
+  .substep .ttl {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    color: #1e3a8a;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-right: 1px solid #e5edf7;
+    line-height: 1.5;
+    display: flex; align-items: center;
+  }
+  .substep .ttl b { color: #2563eb; margin-right: 4px; font-size: 14px; }
+  .substep .img-box {
+    background: #f9fafb;
+    padding: 6px 8px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 80px;
+    max-height: 110px;
+    overflow: hidden;
+  }
+  .substep .img-box img {
+    width: 100%;
+    max-height: 95px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .step2-info {
+    margin-bottom: 8px;
+  }
+  .step2-info ul { list-style: none; padding: 0; }
+  .step2-info li {
+    font-size: 12.5px;
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+    color: #374151;
+  }
+  .step2-info li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 0;
+    color: #2563eb; font-weight: 800;
+  }
+  .step2-info li b { color: #1e3a8a; }
+  .step2-info .note {
+    margin-top: 6px;
+    background: #f0fdf4;
+    border-left: 3px solid #10b981;
+    padding: 6px 10px;
+    color: #065f46;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .step2-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .step2-img-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .step2-img-card .ttl {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    color: #1e3a8a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-bottom: 1px solid #e5edf7;
+    text-align: center;
+  }
+  .step2-img-card .ttl b { color: #2563eb; }
+  .step2-img-card .img-box {
+    background: #f9fafb;
+    padding: 6px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 130px;
+    max-height: 170px;
+    flex: 1;
+  }
+  .step2-img-card .img-box img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Section 4 - 海量扶持 */
+  .support-block {
+    background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+    border: 1px solid #fcd34d;
+  }
+  .support-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+  }
+  .support-list {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .support-item {
+    background: rgba(255,255,255,0.8);
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #78350f;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .support-item .lbl {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 78px;
+    text-align: center;
+  }
+  .support-item b { color: #b45309; }
+
+  .qrcode-box {
+    background: #fff;
+    border: 2px solid #fcd34d;
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(245,158,11,0.15);
+  }
+  .qrcode-box img {
+    width: 96px; height: 96px;
+    display: block;
+    margin: 0 auto 4px;
+  }
+  .qrcode-box .qr-tip {
+    font-size: 11px;
+    color: #78350f;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .qrcode-box .qr-tip span { color: #dc2626; }
+
+  .footer {
+    margin-top: 14px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 标题 -->
+  <div class="header">
+    <div class="badge">能力升级 · 案例</div>
+    <h1>直播间表达多品聚合新能力升级，食品行业客户单广告消耗 <span class="hl">+4倍</span>！单直播间消耗增量 <span class="hl">+7.5万/天</span></h1>
+    <div class="badge">食饮茶叶行业</div>
+  </div>
+
+  <!-- 横版主网格 -->
+  <div class="main-grid">
+
+    <!-- 左列 -->
+    <div class="left-col">
+
+      <!-- Section 1 -->
+      <section class="block">
+        <div class="sec-title">
+          <div class="num">1</div>
+          <h2>什么是直播间表达多品聚合？</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="intro-text">
+          支持投放直播间基础上，进行<b>多个推广商品的投放表达</b>。
+        </div>
+        <div class="apply-text">
+          <span class="apply-tag">适用客户</span>直播间商品挂链数 <b>≥ 2</b> 即可，<b>已全量，无需加白</b>。
+        </div>
+
+        <div class="compare">
+          <div class="col before">
+            <span class="tag">升级前</span>
+            <p>仅表达直播间，<b>4+m 数量有限</b>。</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="col after">
+            <span class="tag">升级后</span>
+            <p>表达 <b>直播间 + 商品</b>，<b style="color:#dc2626;">1×N 增加唯一性创意数</b>；额外表达商品，模型预估更准确。</p>
+          </div>
+        </div>
+
+        <div class="alert">⚠️ 进播样式不变，仅广告创编时额外勾选商品即可。</div>
+      </section>
+
+      <!-- Section 2 - 案例 -->
+      <section class="block">
+        <div class="sec-title">
+          <div class="num">2</div>
+          <h2>食饮茶叶行业投放案例</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="case-bg-row">
+          <div class="case-bg">
+            <img src="images/img5.png" alt="茶垂类直播间-1" />
+          </div>
+          <div class="case-bg">
+            <img src="images/img6.png" alt="茶垂类直播间-2" />
+          </div>
+          <div class="case-bg">
+            <img src="images/img7.png" alt="茶垂类直播间-3" />
+          </div>
+          <div class="case-side">
+            <div style="font-size:12.5px;color:#374151;line-height:1.7;">
+              <b style="color:#1e3a8a;">背景：</b>茶垂类多品人设直播间，<b style="color:#dc2626;">单场 SKU 数 10+</b>
+            </div>
+            <div class="pain-list">
+              <span class="pain-title">痛点：</span>
+              <span class="pain-item">（1）直投直播为主，<b>差异化基建有限</b></span>
+              <span class="pain-item">（2）人设直播间，<b>易欠收导致不起量</b></span>
+              <span class="pain-item">（3）多 SKU 属性差异明显，<b>商品表达更刚需</b></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-title">增投亮点 ①：直播间多品聚合，2 天快速起量</div>
+        <div class="chart-card">
+          <div class="chart-wrap">
+            <canvas id="chart"></canvas>
+          </div>
+        </div>
+
+        <div class="highlight-title">增投亮点 ②：核心指标全面提升</div>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="num cyan">7.5<span class="unit"> 万/日</span></div>
+            <div class="lbl">直播多品聚合<br/>单日突破</div>
+          </div>
+          <div class="kpi">
+            <div class="num purple">7<span class="unit"> 个</span></div>
+            <div class="lbl">在投账户数</div>
+          </div>
+          <div class="kpi">
+            <div class="num">+350<span class="unit"> 个/天</span></div>
+            <div class="lbl">唯一性创意数</div>
+          </div>
+          <div class="kpi">
+            <div class="num red">+4<span class="unit"> 倍</span></div>
+            <div class="lbl">单广告消耗</div>
+          </div>
+          <div class="kpi">
+            <div class="num orange">≈ 1.0</div>
+            <div class="lbl">计价率稳定<br/>良好成本达成</div>
+          </div>
+          <div class="kpi">
+            <div class="num green">+10<span class="unit"> %</span></div>
+            <div class="lbl">CTR × CVR</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 右列 -->
+    <div class="right-col">
+
+      <!-- Section 3 - 搭建 -->
+      <section class="block">
+        <div class="sec-title">
+          <div class="num">3</div>
+          <h2>如何搭建直播多品聚合？</h2>
+          <div class="line"></div>
+        </div>
+
+        <!-- 步骤一 -->
+        <div class="step-block">
+          <div class="step-head">
+            <span class="step-tag">步骤一</span>
+            <h3>商品聚合页搭建</h3>
+            <span class="focus">重点！新增</span>
+          </div>
+          <div class="substeps">
+            <div class="substep">
+              <div class="ttl"><b>a.</b>客户工作台 → 管理 → 新增业务单元</div>
+              <div class="img-box"><img src="images/img1.png" alt="新增业务单元" /></div>
+            </div>
+            <div class="substep">
+              <div class="ttl"><b>b.</b>客户工作台 → 资产 → 切换至「业务单元」维度</div>
+              <div class="img-box"><img src="images/img2.png" alt="切换业务单元维度" /></div>
+            </div>
+            <div class="substep">
+              <div class="ttl"><b>c.</b>业务单元 → 推广产品 → 商品聚合页库 → 新建产品</div>
+              <div class="img-box"><img src="images/img3.png" alt="新建商品聚合页" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤二 -->
+        <div class="step-block">
+          <div class="step-head">
+            <span class="step-tag blue">步骤二</span>
+            <h3>直播账户勾选商品聚合页</h3>
+          </div>
+          <div class="step2-info">
+            <ul>
+              <li><b>推广产品：</b>商品聚合页 - 选定上一步业务单元内创编好的【微信小店商品组合】</li>
+              <li><b>营销场景：</b>"专场放量 / 日常销售"均可；<b>推广载体：</b>视频号直播间</li>
+              <li><b>转化方式：</b>当前主要出价组合均已支持，其余搭建同原直播投放保持不变</li>
+            </ul>
+          </div>
+          <div class="step2-imgs">
+            <div class="step2-img-card">
+              <div class="ttl"><b>智投</b>（小店单链路智投）</div>
+              <div class="img-box"><img src="images/img4a.png" alt="智投搭建" /></div>
+            </div>
+            <div class="step2-img-card">
+              <div class="ttl"><b>3.0 竞价</b></div>
+              <div class="img-box"><img src="images/img4b.png" alt="3.0 竞价搭建" /></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 - 海量扶持 -->
+      <section class="block support-block">
+        <div class="sec-title">
+          <div class="num" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">4</div>
+          <h2 style="color:#b45309;">海量扶持上线 🎁</h2>
+          <div class="line" style="background: linear-gradient(90deg, #fcd34d, transparent);"></div>
+        </div>
+
+        <div class="support-grid">
+          <div class="support-list">
+            <div class="support-item">
+              <span class="lbl">扶持时间</span>
+              <span>即日起 至 <b>6.30</b> 日</span>
+            </div>
+            <div class="support-item">
+              <span class="lbl">提报方式</span>
+              <span>提供「<b>主体名称</b>」、「<b>账户ID</b>」，行业经理申请</span>
+            </div>
+            <div class="support-item">
+              <span class="lbl">扶持要求</span>
+              <span>单账户内<b>直播表达多品聚合广告 &gt; 5 个</b></span>
+            </div>
+          </div>
+
+          <div class="qrcode-box">
+            <img src="images/qrcode.png" alt="二维码" />
+            <div class="qr-tip">产品具体实操&amp;QA<br/><span>扫码解锁</span></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+  <div class="footer">直播间表达多品聚合 · 案例纸 · Confidential</div>
+</div>
+
+<script>
+  const ctx = document.getElementById('chart').getContext('2d');
+
+  const grad1 = ctx.createLinearGradient(0, 0, 0, 170);
+  grad1.addColorStop(0, 'rgba(37, 99, 235, 0.35)');
+  grad1.addColorStop(1, 'rgba(37, 99, 235, 0.02)');
+
+  const grad2 = ctx.createLinearGradient(0, 0, 0, 170);
+  grad2.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
+  grad2.addColorStop(1, 'rgba(16, 185, 129, 0.02)');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['第 1 天', '第 2 天', '第 3 天'],
+      datasets: [
+        {
+          label: '总消耗（万元）',
+          data: [4.1, 10.5, 13.8],
+          borderColor: '#2563eb',
+          backgroundColor: grad1,
+          borderWidth: 3,
+          tension: 0.35,
+          fill: true,
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#2563eb',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        },
+        {
+          label: '"直播表达多品聚合"消耗（万元）',
+          data: [0.3, 6.7, 7.5],
+          borderColor: '#10b981',
+          backgroundColor: grad2,
+          borderWidth: 3,
+          tension: 0.35,
+          fill: true,
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#10b981',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 18 } },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'end',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            font: { size: 11, weight: '600' },
+            color: '#1f2937',
+            boxWidth: 8,
+            padding: 8
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(30,58,138,0.95)',
+          padding: 10,
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} 万`
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#6b7280',
+            font: { size: 10 },
+            callback: (v) => v + '万'
+          },
+          grid: { color: 'rgba(148,163,184,0.18)' }
+        },
+        x: {
+          ticks: { color: '#374151', font: { weight: '700', size: 11 } },
+          grid: { display: false }
+        }
+      },
+      animation: { duration: 900 }
+    },
+    plugins: [{
+      id: 'datalabels-lite',
+      afterDatasetsDraw(chart) {
+        const { ctx } = chart;
+        chart.data.datasets.forEach((ds, i) => {
+          const meta = chart.getDatasetMeta(i);
+          meta.data.forEach((pt, idx) => {
+            const v = ds.data[idx];
+            ctx.save();
+            ctx.fillStyle = ds.borderColor;
+            ctx.font = 'bold 11px PingFang SC, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(v + '万', pt.x, pt.y - 8);
+            ctx.restore();
+          });
+        });
+      }
+    }]
+  });
+</script>
+</body>
+</html>

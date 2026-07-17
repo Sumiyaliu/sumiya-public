@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保健食品行业直播链路深度分析报告</title>
+    <style>
+        :root {
+            --bg: #f5f4ee;
+            --paper: #ffffff;
+            --ink: #18212f;
+            --muted: #667085;
+            --line: #dde2da;
+            --brand: #0f766e;
+            --brand-2: #2563eb;
+            --warm: #d97706;
+            --positive: #15803d;
+            --negative: #b91c1c;
+            --soft: #eef5f3;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0; padding: 0;
+            color: var(--ink);
+            background: radial-gradient(circle at top left, rgba(15,118,110,0.08), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(217,119,6,0.06), transparent 50%),
+                        var(--bg);
+            font-family: 'WenQuanYi Micro Hei','Microsoft YaHei',-apple-system,sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            color: var(--muted);
+        }
+        .report-info {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 8px;
+        }
+        .section {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 18px rgba(15,23,42,0.04);
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--soft);
+        }
+        .overview-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .overview-card {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(221,226,218,0.85);
+            border-radius: 18px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(15,23,42,0.04);
+        }
+        .overview-label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .overview-value {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+        .overview-change {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .positive { color: var(--positive); }
+        .negative { color: var(--negative); }
+        .neutral { color: var(--muted); }
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .tier-card {
+            background: var(--soft);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+        }
+        .tier-label {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .tier-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--brand);
+        }
+        .tier-unit {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--muted);
+        }
+        .tier-change {
+            font-size: 12px;
+            margin: 4px 0;
+        }
+        .tier-detail {
+            font-size: 11px;
+            color: var(--muted);
+        }
+        .insight-box {
+            background: var(--soft);
+            border-left: 3px solid var(--brand);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .insight-box h4 {
+            margin: 0 0 6px;
+            font-size: 14px;
+            color: var(--brand);
+        }
+        .core-judgment {
+            background: linear-gradient(135deg, rgba(15,118,110,0.08), rgba(217,119,6,0.06));
+            border: 1px solid rgba(15,118,110,0.2);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .core-judgment strong {
+            color: var(--brand);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 12px 0;
+        }
+        th {
+            background: var(--brand);
+            color: #fff;
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid var(--line);
+            text-align: center;
+        }
+        tr:hover { background: rgba(15,118,110,0.03); }
+        .tag-up {
+            background: #dcfce7; color: #15803d;
+            padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+        }
+        .tag-down {
+            background: #fef2f2; color: #b91c1c;
+            padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+        }
+        .tag-new {
+            background: #eff6ff; color: #2563eb;
+            padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+        }
+        .tag-lost {
+            background: #f3f4f6; color: #667085;
+            padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 768px) {
+            .overview-section, .tier-grid { grid-template-columns: repeat(2, 1fr); }
+            .two-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>保健食品行业直播链路深度分析报告</h1>
+            <div class="subtitle">基于直播间消耗分层精简数据的结构化深度分析</div>
+            <div class="report-info">
+                数据周期：2026-06-08 ~ 2026-06-21（本双周）vs 2026-05-25 ~ 2026-06-07（上双周）<br>
+                口径说明：竞价消耗，按客户真身映射聚合，同一真身下多简称合并
+            </div>
+        </div>
+
+        <!-- 核心判断 -->
+        <div class="core-judgment">
+            <strong>核心判断：</strong>保健食品直播链路本双周日耗67.86万，环比+15.1%，增量主要由存量客户扩量驱动（双新+6.87万/日、健尔马+3.30万/日），新增直播间8家但规模偏小（仅多燕瘦保健自营达2.33万/日），头部客户申子辰下滑-4.45万/日是主要拖累。
+        </div>
+
+        <!-- 总览卡片 -->
+        <div class="overview-section">
+            <div class="overview-card">
+                <div class="overview-label">日均消耗</div>
+                <div class="overview-value">67.86万</div>
+                <div class="overview-change positive">+15.1%</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-label">活跃营销对象</div>
+                <div class="overview-value">33</div>
+                <div class="overview-change positive">较上期 +1</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-label">新增直播间</div>
+                <div class="overview-value" style="color:var(--brand-2)">8</div>
+                <div class="overview-change neutral">家</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-label">停投直播间</div>
+                <div class="overview-value" style="color:var(--warm)">7</div>
+                <div class="overview-change neutral">家</div>
+            </div>
+        </div>
+
+        <!-- 一、分层结构变化 -->
+        <div class="section">
+            <div class="section-title">一、分层结构变化</div>
+            <div class="tier-grid">
+                <div class="tier-card">
+        <div class="tier-label">超头（>50万/日）</div>
+        <div class="tier-value">0<span class="tier-unit">家</span></div>
+        <div class="tier-change">较上期持平</div>
+        <div class="tier-detail">日耗0.0万 · 占比0.0%</div>
+    </div><div class="tier-card">
+        <div class="tier-label">头部（≥10万/日）</div>
+        <div class="tier-value">1<span class="tier-unit">家</span></div>
+        <div class="tier-change">较上期 <span style="color:#b91c1c">-1家</span></div>
+        <div class="tier-detail">日耗26.78万 · 占比39.46%</div>
+    </div><div class="tier-card">
+        <div class="tier-label">腰部（≥1万/日）</div>
+        <div class="tier-value">12<span class="tier-unit">家</span></div>
+        <div class="tier-change">较上期 <span style="color:#15803d">+4家</span></div>
+        <div class="tier-detail">日耗38.13万 · 占比56.19%</div>
+    </div><div class="tier-card">
+        <div class="tier-label">尾部（<1万/日）</div>
+        <div class="tier-value">20<span class="tier-unit">家</span></div>
+        <div class="tier-change">较上期 <span style="color:#b91c1c">-2家</span></div>
+        <div class="tier-detail">日耗2.96万 · 占比4.36%</div>
+    </div>
+            </div>
+            <div class="insight-box">
+                <h4>结构变化洞察</h4>
+                头腰部占比从94.3%变为95.7%，腰部占比提升16.1pp至56.19%，承接主盘能力增强。<br>
+                头部客户从2家缩减至1家（申子辰降级），腰部从8家扩至12家（3家尾部升级+多燕瘦新客入场），尾部客户数从22家降至20家。整体呈现"头部收缩、腰部扩容"特征，中腰部客户池持续扩大。
+            </div>
+        </div>
+
+        <!-- 二、营销对象与层级迁移 -->
+        <div class="section">
+            <div class="section-title">二、营销对象与层级迁移</div>
+            
+            <div class="two-col">
+                <div>
+                    <h3 style="font-size:14px;color:var(--brand-2);margin-bottom:8px">🆕 新增直播间（8家）</h3>
+                    <table>
+                        <tr><th>客户真身</th><th>日耗</th><th>层级</th></tr>
+                        <tr>
+        <td>多燕瘦保健自营</td>
+        <td style="font-weight:700">2.33万</td>
+        <td><span style="background:#2563eb;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">腰部</span></td>
+    </tr><tr>
+        <td>广东森诺康网络科技有限公司</td>
+        <td style="font-weight:700">0.20万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>江湖传媒</td>
+        <td style="font-weight:700">0.18万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>尚呈</td>
+        <td style="font-weight:700">0.06万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>浩腾</td>
+        <td style="font-weight:700">0.04万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>临沂贰十壹宇智商贸有限公司</td>
+        <td style="font-weight:700">0.03万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>香丹清</td>
+        <td style="font-weight:700">0.00万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>ISDG</td>
+        <td style="font-weight:700">0.00万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3 style="font-size:14px;color:var(--warm);margin-bottom:8px">⏹ 停投直播间（7家）</h3>
+                    <table>
+                        <tr><th>客户真身</th><th>上期日耗</th><th>层级</th></tr>
+                        <tr>
+        <td>娇联</td>
+        <td style="font-weight:700">1.92万</td>
+        <td><span style="background:#2563eb;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">腰部</span></td>
+    </tr><tr>
+        <td>首儿</td>
+        <td style="font-weight:700">0.81万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>安琪纽特</td>
+        <td style="font-weight:700">0.15万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>百合康</td>
+        <td style="font-weight:700">0.02万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>广州辰泽生物科技有限公司</td>
+        <td style="font-weight:700">0.00万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>仁和tmall</td>
+        <td style="font-weight:700">0.00万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr><tr>
+        <td>永康市荧星艺术培训有限公司</td>
+        <td style="font-weight:700">0.00万</td>
+        <td><span style="background:#667085;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">尾部</span></td>
+    </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-col" style="margin-top:16px">
+                <div>
+                    <h3 style="font-size:14px;color:var(--positive);margin-bottom:8px">⬆ 升级客户（3家）</h3>
+                    <table>
+                        <tr><th>客户真身</th><th>跃迁</th><th>日耗</th></tr>
+                        <tr>
+        <td>佛山溢生堂健康管理有限公司</td>
+        <td>尾部→腰部</td>
+        <td style="font-weight:700">2.39万</td>
+    </tr><tr>
+        <td>广州泽铭锦承文化传播有限公司</td>
+        <td>尾部→腰部</td>
+        <td style="font-weight:700">1.08万</td>
+    </tr><tr>
+        <td>广州健朔健康管理有限公司</td>
+        <td>尾部→腰部</td>
+        <td style="font-weight:700">1.13万</td>
+    </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3 style="font-size:14px;color:var(--negative);margin-bottom:8px">⬇ 降级客户（1家）</h3>
+                    <table>
+                        <tr><th>客户真身</th><th>跃迁</th><th>日耗</th></tr>
+                        <tr>
+        <td>申子辰</td>
+        <td>头部→腰部</td>
+        <td style="font-weight:700">7.57万</td>
+    </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>迁移洞察</h4>
+                本双周3家客户升级（均为尾部→腰部），1家客户降级（申子辰头部→腰部）。新增8家直播间中仅多燕瘦保健自营达腰部规模（2.33万/日），其余7家均为尾部小客。停投7家中娇联（1.92万/日）为唯一腰部客户流失。
+            </div>
+        </div>
+
+        <!-- 三、集中度与核心承接点 -->
+        <div class="section">
+            <div class="section-title">三、集中度与核心承接点</div>
+            <table>
+                <tr><th>层级</th><th>本双周日耗(万/日)</th><th>占比</th><th>上双周占比</th><th>变化</th></tr>
+                <tr>
+                    <td><strong>头部</strong></td>
+                    <td>26.78</td>
+                    <td>39.46%</td>
+                    <td>54.15%</td>
+                    <td class="negative">-14.7pp</td>
+                </tr>
+                <tr>
+                    <td><strong>腰部</strong></td>
+                    <td>38.13</td>
+                    <td>56.19%</td>
+                    <td>40.13%</td>
+                    <td class="positive">+16.1pp</td>
+                </tr>
+                <tr>
+                    <td><strong>尾部</strong></td>
+                    <td>2.96</td>
+                    <td>4.36%</td>
+                    <td>5.72%</td>
+                    <td class="negative">-1.4pp</td>
+                </tr>
+            </table>
+            <div class="insight-box">
+                <h4>集中度洞察</h4>
+                头部集中度下降（从54.2%降至39.5%），主要因申子辰从12.03万/日降至7.57万/日（-37.1%）；腰部占比提升16.1pp至56.2%，承接主盘能力显著增强。核心增量承接点：双新（+6.87万/日）、健尔马（+3.30万/日）、汤臣倍健（+2.33万/日）。
+            </div>
+        </div>
+
+        <!-- 四、行业解读与动作建议 -->
+        <div class="section">
+            <div class="section-title">四、行业解读与动作建议</div>
+            
+            <div class="insight-box">
+                <h4>结构性积极信号</h4>
+                ① 腰部客户池从8家扩至12家，中坚力量持续壮大；<br>
+                ② 双新直播链路扩量+34.5%，减肥品类直播渗透加深；<br>
+                ③ 健尔马直播+187.7%，三高品类直播放量成功验证。
+            </div>
+            
+            <div class="insight-box">
+                <h4>结构性风险</h4>
+                ① 申子辰头部→腰部降级，祛黄褐斑品类直播收缩-34.8%；<br>
+                ② 修正自营直播-65.2%，减肥品类品牌客户投放波动大；<br>
+                ③ 娇联停投（1.92万/日腰部客户流失），通便+祛黄褐斑品类承压。
+            </div>
+
+            <div class="insight-box">
+                <h4>重点升级对象</h4>
+                ① 佛山溢生堂：尾部→腰部，日耗2.39万/日，减肥品类新客放量；<br>
+                ② 广州健朔：尾部→腰部，日耗1.13万/日，多燕瘦系客户；<br>
+                ③ 广州泽铭锦承：尾部→腰部，日耗1.08万/日。
+            </div>
+
+            <div class="insight-box">
+                <h4>重点降级对象</h4>
+                ① 申子辰：头部→腰部，日耗从12.03万降至7.57万/日（-37.1%），祛黄褐斑品类直播收缩，需关注是否为阶段性调整。
+            </div>
+
+            <div class="insight-box">
+                <h4>口径边界</h4>
+                本报告基于"营销对象×客户简称×直播间消耗"明细生成，仅覆盖消耗规模、结构、迁移和集中度，不包含ROI、CTR、CVR、类目与商品维度。客户真身映射基于ops更新版（261条，132条非自映射）。
+            </div>
+        </div>
+    </div>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>

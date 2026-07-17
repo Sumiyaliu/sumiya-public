@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>保健食品618非闭环（小程序直购/CID）基建提升指引｜腾讯广告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:#fff;color:#1e293b;font-size:28px;line-height:1.6;width:2760px;}
+.page{width:2760px;background:#fff;padding:60px 120px 80px;}
+h1{text-align:center;font-size:64px;font-weight:700;color:#1a1a2e;margin-bottom:16px;}
+.subtitle{text-align:center;font-size:26px;color:#64748b;margin-bottom:60px;}
+.mod{border-radius:20px;margin-bottom:40px;overflow:hidden;}
+.mod-h{padding:28px 48px;color:#fff;font-size:32px;font-weight:700;}
+.mod-body{padding:40px 48px;background:#f8fafc;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.tag-p0{display:inline-block;background:#dc2626;color:#fff;font-size:22px;font-weight:700;padding:4px 14px;border-radius:6px;margin-right:10px;}
+.tag-p1{display:inline-block;background:#2563eb;color:#fff;font-size:22px;font-weight:700;padding:4px 14px;border-radius:6px;margin-right:10px;}
+.lb-change{background:#fef2f2;border-left:6px solid #ef4444;padding:24px 32px;border-radius:0 12px 12px 0;margin-bottom:24px;}
+.lb-action{background:#eff6ff;border-left:6px solid #3b82f6;padding:24px 32px;border-radius:0 12px 12px 0;}
+.action-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-size:27px;}
+.section-label{font-size:24px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
+.func-table{width:100%;border-collapse:collapse;font-size:26px;}
+.func-table th{background:#e2e8f0;padding:16px 24px;text-align:left;font-weight:700;color:#475569;}
+.func-table td{padding:16px 24px;border-bottom:1px solid #e2e8f0;}
+.func-table tr:last-child td{border-bottom:none;}
+.status-ok{color:#16a34a;font-weight:700;}
+.status-partial{color:#f59e0b;font-weight:700;}
+.timeline{display:flex;align-items:flex-start;gap:0;padding:20px 0;}
+.step{flex:1;text-align:center;position:relative;}
+.step:not(:last-child)::after{content:'';position:absolute;top:22px;left:60%;width:80%;height:4px;background:#e2e8f0;}
+.step-dot{width:44px;height:44px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;position:relative;z-index:1;}
+.dot-red{background:#dc2626;}.dot-orange{background:#f59e0b;}.dot-green{background:#16a34a;}
+.step-title{font-size:26px;font-weight:700;margin-bottom:8px;}
+.step-desc{font-size:22px;color:#64748b;}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0;}
+.kpi-card{background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:24px;text-align:center;}
+.kpi-val{font-size:40px;font-weight:700;color:#1e293b;}
+.kpi-label{font-size:22px;color:#64748b;margin-top:6px;}
+.todo-box{background:#eff6ff;border-radius:12px;padding:24px 32px;}
+.todo-box h4{font-size:26px;font-weight:700;color:#1d4ed8;margin-bottom:12px;}
+.arrow-flow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:24px;color:#1e293b;}
+.arrow-flow span{background:#dbeafe;padding:8px 18px;border-radius:8px;}
+.arrow{color:#6366f1;font-size:28px;}
+.qr-card{background:#f1f5f9;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:20px;text-align:center;}
+.qr-card img{width:160px;height:160px;flex-shrink:0;}
+.qr-card-text .qr-title{font-size:22px;font-weight:700;color:#1e293b;margin-bottom:4px;}
+.qr-card-text .qr-desc{font-size:24px;color:#64748b;}
+.qr-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
+.do-box{background:#f0fdf4;border-radius:12px;padding:24px;}
+.dont-box{background:#fef2f2;border-radius:12px;padding:24px;}
+.do-box h4{color:#15803d;font-size:26px;font-weight:700;margin-bottom:12px;}
+.dont-box h4{color:#dc2626;font-size:26px;font-weight:700;margin-bottom:12px;}
+.rule-box{background:#f0fdf4;border:2px solid #16a34a;border-radius:12px;padding:28px 36px;margin-bottom:24px;}
+.rule-box h4{font-size:28px;font-weight:700;color:#15803d;margin-bottom:12px;}
+.vp-table{width:100%;border-collapse:collapse;font-size:25px;}
+.vp-table th{background:#f1f5f9;padding:14px 20px;text-align:center;font-weight:700;color:#475569;border-bottom:2px solid #e2e8f0;}
+.vp-table td{padding:14px 20px;text-align:center;border-bottom:1px solid #f1f5f9;}
+.vp-table tr.total{background:#f8fafc;font-weight:700;}
+.insight-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #f1f5f9;font-size:26px;}
+.insight-item:last-child{border-bottom:none;}
+.insight-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:10px;}
+footer{text-align:center;font-size:22px;color:#94a3b8;padding:40px 0 20px;border-top:1px solid #e2e8f0;margin-top:40px;}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>保健食品618非闭环（小程序直购/CID）基建提升指引</h1>
+  <div class="subtitle">腾讯广告 · 保健食品 · 小程序直购 &amp; CID链路 · 2026年6月</div>
+  <!-- 版位数据 -->
+  <div class="mod">
+    <div class="mod-h" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">保健食品近7天流量数据</div>
+    <div class="mod-body">
+      <table class="vp-table">
+        <thead><tr><th>版位（MP二级流量）</th><th>CPM（元）</th><th>CTR</th><th>CVR</th><th>下单ROI</th></tr></thead>
+        <tbody>
+          <tr class="total"><td>整体</td><td>80~100</td><td>2%~3%</td><td>6%~8%</td><td>1.5~2.0</td></tr>
+          <tr><td>微信搜一搜</td><td>150+</td><td>7%+</td><td>&lt;2%</td><td>1.0~1.5</td></tr>
+          <tr><td>微信小程序</td><td>100~150</td><td>2%~3%</td><td>6%~8%</td><td>1.0~1.5</td></tr>
+          <tr><td>微信视频号</td><td>80~100</td><td>3%~5%</td><td>8%+</td><td>1.5~2.0</td></tr>
+          <tr><td>微信公众号</td><td>40~60</td><td>2%~3%</td><td>6%~8%</td><td>1.5~2.0</td></tr>
+          <tr><td>微信朋友圈</td><td>&lt;40</td><td>1%~2%</td><td>2%~4%</td><td>1.5~2.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+  <!-- 模块1：策略升级 -->
+  <div class="mod">
+    <div class="mod-h" style="background:linear-gradient(135deg,#dc2626,#ef4444)">🔴 策略升级 · 非闭环客户高效起量</div>
+    <div class="mod-body">
+      <div class="two-col">
+        <div>
+          <div class="lb-change">
+            <div class="section-label">核心变化</div>
+            <p style="font-size:27px;margin-bottom:12px;">非闭环客户（小程序直购、CID）在智投能力上与闭环小店存在差异，平台提供<strong>商品智投组合方案</strong>帮助客户高效起量、高效拿量转化。</p>
+            <p style="font-size:26px;color:#64748b;">创意唯一性策略同样适用：<strong>广告维度多样性 × 素材指纹差异化</strong>是获取更多竞价机会的核心。</p>
+          </div>
+        </div>
+        <div>
+          <div class="lb-action">
+            <div class="section-label">行动建议</div>
+            <div class="action-item"><span class="tag-p0">P0</span><span><strong>启用冲量宝快速起量</strong></span></div>
+            <div class="action-item"><span class="tag-p0">P0</span><span><strong>丰富广告维度与素材指纹</strong></span></div>
+            <div class="action-item"><span class="tag-p1">P1</span><span>商品智投深度优化</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块2：两列 -->
+  <div class="two-col" style="margin-bottom:40px;">
+    <div class="mod" style="margin-bottom:0">
+      <div class="mod-h" style="background:linear-gradient(135deg,#2563eb,#3b82f6)">非闭环智投能力（小程序 &amp; CID）</div>
+      <div class="mod-body">
+        <p style="font-size:26px;color:#64748b;margin-bottom:20px;">保健食品属于「两品一械」分桶，非闭环场景下支持以下智投功能。</p>
+        <table class="func-table">
+          <thead><tr><th>功能名称</th><th>支持状态</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td>1018商品智投</td><td class="status-ok">✓ 支持</td><td></td></tr>
+            <tr><td>下单</td><td class="status-ok">✓ 支持</td><td></td></tr>
+            <tr><td>下单-下单ROI</td><td class="status-ok">✓ 支持</td><td>需提报开白，个人工商户不支持开白</td></tr>
+            <tr><td>下单-深辅</td><td class="status-ok">✓ 支持</td><td>需提报开白，个人工商户不支持开白</td></tr>
+            <tr><td>创意优投</td><td class="status-no" style="color:#dc2626;font-weight:700;">✗ 不支持</td><td></td></tr>
+            <tr><td>全库智选</td><td class="status-partial">△ 开白支持</td><td>需申请白名单</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:20px;background:#fff7ed;border:2px solid #f59e0b;border-radius:16px;padding:28px 36px;display:flex;align-items:flex-start;gap:28px;">
+          <div style="flex-shrink:0;width:72px;height:72px;background:#f59e0b;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:36px;">🛡️</div>
+          <div>
+            <p style="font-size:30px;font-weight:700;color:#92400e;margin-bottom:14px;">自动赔付保障</p>
+            <p style="font-size:26px;color:#78350f;line-height:1.7;">下单 / 下单-ROI（深度辅助）/ 下单-下单roi 均支持自动赔付。全量引流电商智投账户已生效，效果不达预期可获补偿。</p>
+          </div>
+        </div>
+        <div class="todo-box" style="margin-top:20px;">
+          <h4>商家 TODO</h4>
+          <div class="arrow-flow">
+            <span>确认链路为小程序/CID</span><span class="arrow">→</span>
+            <span>申请全库智选白名单</span><span class="arrow">→</span>
+            <span>开启商品智投</span><span class="arrow">→</span>
+            <span>设置下单-ROI或深辅目标</span><span class="arrow">→</span>
+            <span>开启冲量宝加速起量</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mod" style="margin-bottom:0">
+      <div class="mod-h" style="background:linear-gradient(135deg,#16a34a,#22c55e)">冲量宝 · 新营销快速起量</div>
+      <div class="mod-body">
+        <p style="font-size:26px;margin-bottom:20px;"><strong>产品能力：</strong>为智投项目单独配置冲量预算，系统在6小时内快速消耗预算，助力营销高效起量、快速拿转化。</p>
+        <p style="font-size:26px;font-weight:700;margin-bottom:16px;">适用场景</p>
+        <div style="background:#f0fdf4;border-radius:10px;padding:20px 28px;margin-bottom:20px;">
+          <p style="font-size:25px;margin-bottom:10px;">① 智投项目新投放初期，无法快速获取曝光量和转化量</p>
+          <p style="font-size:25px;margin-bottom:10px;">② 线索量级缺口较大，需在指定时段内快速补量</p>
+          <p style="font-size:25px;">③ 大促营销场景下，加速预算消耗</p>
+        </div>
+        <p style="font-size:26px;margin-bottom:12px;"><strong>使用方法：</strong>新建/编辑营销时开启冲量宝，设定冲量预算+成本上浮比例。</p>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-val" style="font-size:32px;">200~100000</div><div class="kpi-label">冲量预算（整数）</div></div>
+          <div class="kpi-card"><div class="kpi-val">20%~300%</div><div class="kpi-label">成本上浮比例</div></div>
+        </div>
+        <div class="todo-box" style="margin-bottom:16px;">
+          <h4>商家 TODO</h4>
+          <div class="arrow-flow" style="font-size:22px;">
+            <span>新建/编辑智投项目</span><span class="arrow">→</span>
+            <span>开启冲量宝</span><span class="arrow">→</span>
+            <span>设置冲量预算（建议浅层出价10倍）</span><span class="arrow">→</span>
+            <span>设置成本上限（建议≥20%）</span><span class="arrow">→</span>
+            <span>监控6小时消耗与转化</span>
+          </div>
+        </div>
+        <div style="background:#fef9c3;border-radius:10px;padding:16px 24px;font-size:24px;color:#92400e;">
+          💡 投放建议：初期可阶梯化设置预算测试；数据量充分可直接开启；数据量少建议积累3-5个转化后再开启。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二维码一行 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px;margin-bottom:40px;">
+    <div class="qr-card">
+      <img src="智投指南.png" alt="艾米智投对客说明">
+      <div class="qr-card-text"><div class="qr-title">艾米智投对客说明</div></div>
+    </div>
+    <div class="qr-card">
+      <img src="商品艾米.png" alt="商品艾米对客说明">
+      <div class="qr-card-text"><div class="qr-title">商品艾米对客说明</div></div>
+    </div>
+    <div class="qr-card">
+      <img src="产品功能加白.png" alt="产品功能加白申请">
+      <div class="qr-card-text"><div class="qr-title">产品功能加白申请</div></div>
+    </div>
+    <div class="qr-card">
+      <img src="冲量宝使用说明.png" alt="冲量宝使用指南">
+      <div class="qr-card-text"><div class="qr-title">冲量宝使用指南</div></div>
+    </div>
+  </div>
+
+  <!-- 模块3：创意唯一性 -->
+  <div class="mod">
+    <div class="mod-h" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#78350f;">创意重复度与唯一性说明</div>
+    <div class="mod-body">
+      <div class="rule-box" style="margin-bottom:24px;">
+        <h4>唯一性规则「4+m」</h4>
+        <p style="font-size:26px;color:#374151;">营销目的 + 推广产品 + 营销载体 + 优化目标 (4) 在 版位/定向/出价 (m) 都一致时，仅能创建1条广告。</p>
+      </div>
+      <div style="background:#fef9c3;border-radius:12px;padding:24px 32px;margin-bottom:24px;">
+        <p style="font-size:26px;font-weight:700;color:#92400e;margin-bottom:10px;">创意重复（雷同）判定标准</p>
+        <p style="font-size:25px;color:#78350f;">以下情况视为雷同：仅改封面/图logo/角标/文案；裁剪视频调整亮度/饱和度/背景色；仅改时长或稍替换背景音；混剪片段图像重复度高。<strong>警同授客户/主体雇判定，会损账户生效。</strong></p>
+      </div>
+      <div class="do-dont">
+        <div class="do-box"><h4>✅ DOs</h4><p style="font-size:25px;color:#374151;">同版位下完全相同创意仅用1次；同创意需要多版位/多规格：主坑受营期内大幅改文案+组件。</p></div>
+        <div class="dont-box"><h4>❌ DON'Ts</h4><p style="font-size:25px;color:#374151;">仅改封面/背景/部分文案/部分过渡片段；跨账户大量输出相同创意。</p></div>
+      </div>
+      <div class="todo-box">
+        <h4>商家 TODO</h4>
+        <div class="arrow-flow">
+          <span>多OG并行(下单/下单-ROI/下单-深辅)</span><span class="arrow">→</span>
+          <span>7天内TID≥150、重复度&lt;15%</span><span class="arrow">→</span>
+          <span>补充差异化素材</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块4：行动路线图 -->
+  <div class="mod">
+    <div class="mod-h" style="background:linear-gradient(135deg,#16a34a,#22c55e)">行动路线图</div>
+    <div class="mod-body">
+      <div class="timeline">
+        <div class="step">
+          <div class="step-dot dot-red">1</div>
+          <div class="step-title" style="color:#dc2626;">第一阶段 · 基建搭建</div>
+          <div class="step-desc">0-7天</div>
+          <div style="margin-top:12px;font-size:23px;color:#475569;text-align:left;padding:0 20px;">确认投放链路（小程序/CID）→ 申请全库智选白名单 → 补充创意素材TID≥150 → 开启商品智投</div>
+        </div>
+        <div class="step">
+          <div class="step-dot dot-orange">2</div>
+          <div class="step-title" style="color:#f59e0b;">第二阶段 · 加速起量</div>
+          <div class="step-desc">7-14天</div>
+          <div style="margin-top:12px;font-size:23px;color:#475569;text-align:left;padding:0 20px;">开启冲量宝快速拿量 → 多OG并行测试 → 监控成本与转化效率</div>
+        </div>
+        <div class="step">
+          <div class="step-dot dot-green">3</div>
+          <div class="step-title" style="color:#16a34a;">第三阶段 · 持续优化</div>
+          <div class="step-desc">持续</div>
+          <div style="margin-top:12px;font-size:23px;color:#475569;text-align:left;padding:0 20px;">筛选最优优化目标组合 → 核心素材持续迭代 → ROI稳定提升</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>腾讯广告 · 保健食品行业运营 · 2026.06 · 详细方案请联系对接运营</footer>
+</div>
+</body>
+</html>

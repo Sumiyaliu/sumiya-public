@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr.郭-八珍饮首席研发师：食补粉×科研成果转化×科研背书功效种草</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    accent: '#8e84fd',
+                    accentHover: '#7c3aed',
+                    accentText: '#6d28d9',
+                }
+            }
+        }
+    }
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #0f172a; font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif; color: #1e293b; }
+  .page {
+    width: 1440px;
+    min-height: 900px;
+    margin: 0 auto;
+    background: radial-gradient(1000px 400px at 100% 0%, rgba(59,130,246,0.06), transparent 60%), radial-gradient(800px 400px at 0% 100%, rgba(16,185,129,0.05), transparent 60%), #f4f6fb;
+    padding: 20px 24px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chart-wrap { height: 160px; position: relative; }
+</style>
+</head>
+<body>
+<div class="page shadow-2xl rounded-[18px]">
+  
+  <!-- 顶部通栏 Header -->
+  <div class="rounded-xl p-4 flex items-center justify-between mb-4 shadow-md text-white overflow-hidden relative" style="background: linear-gradient(90deg, #8e84fd, #7c3aed);">
+    <div class="flex items-center gap-3 relative z-10">
+      <span class="bg-white/20 border border-white/30 text-white text-xs px-3 py-1 rounded-full font-bold backdrop-blur-sm">
+        自播（类型一）
+      </span>
+      <span class="bg-white/20 border border-white/30 text-white text-xs px-3 py-1 rounded-full font-bold backdrop-blur-sm">
+        食补粉 · 八珍饮
+      </span>
+      <span class="bg-white/20 border border-white/30 text-white text-xs px-3 py-1 rounded-full font-bold backdrop-blur-sm">
+        无私域
+      </span>
+    </div>
+    <h1 class="text-xl font-black text-white text-center flex-1 relative z-10 truncate px-4">Dr.郭-八珍饮首席研发师：食补粉×科研成果转化×科研背书功效种草</h1>
+    <span class="bg-amber-400 text-slate-900 text-xs px-3.5 py-1.5 rounded-full font-black relative z-10 flex items-center gap-1 shadow-sm">
+      🏆 品类排名 TOP6
+    </span>
+  </div>
+
+  <!-- 赛道机会及亮点卡片 -->
+  <div class="bg-slate-900 text-white rounded-xl p-4 mb-4 border border-slate-800 shadow-lg relative overflow-hidden">
+    <div class="relative z-10 flex items-center justify-between gap-6">
+      <div class="flex-1">
+        <div class="text-xs text-amber-400 font-bold tracking-widest uppercase mb-1">🗺️ 赛道机会地图亮点</div>
+        <h2 class="text-base font-black text-white">食补粉赛道：科学家研发/科研转化身份切入，打破中老年功效信任壁垒</h2>
+      </div>
+      <div class="grid grid-cols-3 gap-3 flex-shrink-0" style="width: 70%;">
+        
+        <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-2.5 relative">
+          <div class="text-xl font-extrabold text-amber-400 mb-0.5">≈1.5 / 1.5</div>
+          <div class="text-[11px] text-slate-300 leading-tight mb-1">直播 ROI ≈ 直购 ROI，无菌车间实播高转化</div>
+          <span class="absolute right-2 top-2 bg-slate-700/80 text-[10px] text-slate-400 px-1.5 py-0.5 rounded font-semibold">持平级</span>
+        </div>
+        
+        <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-2.5 relative">
+          <div class="text-xl font-extrabold text-amber-400 mb-0.5">千万级 头部</div>
+          <div class="text-[11px] text-slate-300 leading-tight mb-1">直播消耗渗透传统大盘，规模化跑量强效承接</div>
+          <span class="absolute right-2 top-2 bg-slate-700/80 text-[10px] text-slate-400 px-1.5 py-0.5 rounded font-semibold">最大盘</span>
+        </div>
+        
+        <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-2.5 relative">
+          <div class="text-xl font-extrabold text-amber-400 mb-0.5">82%</div>
+          <div class="text-[11px] text-slate-300 leading-tight mb-1">微信小店单链路智投（3002）渗透率，极速冷启</div>
+          <span class="absolute right-2 top-2 bg-slate-700/80 text-[10px] text-slate-400 px-1.5 py-0.5 rounded font-semibold">多场景验证</span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Case亮点 Strip -->
+  <div class="rounded-xl p-4 mb-4 flex items-center justify-between gap-6 shadow-sm border" style="background: linear-gradient(135deg, #faf5ff, #f3e8ff); border-color: rgba(251, 191, 36, 0.25);">
+    <strong class="text-sm font-black text-slate-800 flex items-center gap-1.5" style="color: #6d28d9;">★ Dr.郭-八珍饮首席研发师 · 科研背书功效种草，NEW入局即跑量</strong>
+    <div class="grid grid-cols-3 gap-4" style="width: 70%;">
+      
+      <div class="bg-white/80 border rounded-xl p-2.5 flex items-center justify-between gap-2 shadow-sm" style="border-color: rgba(#8e84fd, 0.15);">
+        <div>
+          <div class="text-lg font-extrabold" style="color: #8e84fd;">6.4%</div>
+          <div class="text-[11px] text-slate-500 leading-tight">CVR优秀，全场最高转化率</div>
+        </div>
+        <span class="bg-slate-100 text-[10px] text-slate-500 px-2 py-1 rounded font-bold whitespace-nowrap">转化力强</span>
+      </div>
+      
+      <div class="bg-white/80 border rounded-xl p-2.5 flex items-center justify-between gap-2 shadow-sm" style="border-color: rgba(#8e84fd, 0.15);">
+        <div>
+          <div class="text-lg font-extrabold" style="color: #8e84fd;">92.6%</div>
+          <div class="text-[11px] text-slate-500 leading-tight">商品点击率，极度吸引中老年意向客群</div>
+        </div>
+        <span class="bg-slate-100 text-[10px] text-slate-500 px-2 py-1 rounded font-bold whitespace-nowrap">漏斗极健康</span>
+      </div>
+      
+      <div class="bg-white/80 border rounded-xl p-2.5 flex items-center justify-between gap-2 shadow-sm" style="border-color: rgba(#8e84fd, 0.15);">
+        <div>
+          <div class="text-lg font-extrabold" style="color: #8e84fd;">82%</div>
+          <div class="text-[11px] text-slate-500 leading-tight">智投渗透率，单链路智投实现高度自动化托管</div>
+        </div>
+        <span class="bg-slate-100 text-[10px] text-slate-500 px-2 py-1 rounded font-bold whitespace-nowrap">基建成熟</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- 主体 Grid -->
+  <div class="grid grid-cols-12 gap-4 items-stretch mb-4">
+    <!-- 左栏 (5列) -->
+    <div class="col-span-5 flex flex-col gap-4">
+      <!-- 1. 直播间概览 -->
+      <div class="bg-white border border-slate-200/60 rounded-xl p-4 flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center gap-1.5 mb-2.5">
+            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 font-extrabold text-xs flex items-center justify-center">1</span>
+            <h3 class="text-sm font-black text-slate-800">直播间概览·自播赛道</h3>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed bg-slate-50 border rounded-xl p-3 mb-3">科学家研发/科研转化身份切入。Dr.郭-八珍饮作为传统滋补<b>食补粉×科研成果转化（自播类型一）</b>代表，其信任来自「科研专家」的强身份背书，主推八珍饮汉方调理大单品，解决成分与安全品质痛点，商品点击率高达 <b>92.6%</b>。</p>
+          <div class="bg-amber-50/50 border border-amber-200/50 rounded-xl p-3 flex items-center justify-between mb-3 shadow-sm">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📦</span>
+              <strong class="text-xs font-bold text-slate-800">核心商品：中老年专属 · Dr.郭 八珍饮胶囊盒装</strong>
+            </div>
+            <span class="text-xs font-black text-amber-700 bg-amber-100/50 px-2.5 py-1 rounded">¥150~300 客单价区间</span>
+          </div>
+        </div>
+        
+        <div>
+          <div class="text-[11px] font-bold text-slate-400 mb-2">I 核心效率指标 vs 传统滋补大盘基准</div>
+          <div class="grid grid-cols-4 gap-2">
+            
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-2 text-center">
+              <div class="text-[10px] text-slate-400 mb-0.5">下单 ROI</div>
+              <div class="text-sm font-extrabold text-slate-800">—</div>
+              <div class="text-[9px] font-bold text-emerald-600 mt-0.5 truncate">数据缺失待观察</div>
+            </div>
+            
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-2 text-center">
+              <div class="text-[10px] text-slate-400 mb-0.5">CVR</div>
+              <div class="text-sm font-extrabold text-slate-800">6.4%</div>
+              <div class="text-[9px] font-bold text-emerald-600 mt-0.5 truncate">↑ 优于大盘 5%</div>
+            </div>
+            
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-2 text-center">
+              <div class="text-[10px] text-slate-400 mb-0.5">CTR</div>
+              <div class="text-sm font-extrabold text-slate-800">3.5%</div>
+              <div class="text-[9px] font-bold text-emerald-600 mt-0.5 truncate">↑ 优于大盘 27%</div>
+            </div>
+            
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-2 text-center">
+              <div class="text-[10px] text-slate-400 mb-0.5">CPM</div>
+              <div class="text-sm font-extrabold text-slate-800">¥131</div>
+              <div class="text-[9px] font-bold text-emerald-600 mt-0.5 truncate">高于大盘 60%</div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 投放数据全景 -->
+      <div class="bg-white border border-slate-200/60 rounded-xl p-4 shadow-sm flex-1 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-1.5 mb-2">
+            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 font-extrabold text-xs flex items-center justify-center">2</span>
+            <h3 class="text-sm font-black text-slate-800">投放数据全景</h3>
+          </div>
+          <div class="text-[11px] font-bold text-slate-400 mb-2">I 近30天 日耗及 ROI 相对变化趋势</div>
+          <div class="chart-card bg-slate-50 border rounded-xl p-2 mb-2"><div class="chart-wrap"><canvas id="chart"></canvas></div></div>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-lg p-2 text-center text-[11px] text-emerald-700 font-bold">
+          ✓ 投放规模相对波动稳定，自动算法冷启承接力强，大促放量弹性出色
+        </div>
+      </div>
+    </div>
+
+    <!-- 右栏 (7列) -->
+    <div class="col-span-7 flex flex-col gap-4">
+      <!-- 3. 峰值冲量能力 -->
+      <div class="bg-white border border-slate-200/60 rounded-xl p-4 shadow-sm">
+        <div class="flex items-center gap-1.5 mb-3">
+          <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 font-extrabold text-xs flex items-center justify-center">3</span>
+          <h3 class="text-sm font-black text-slate-800">峰值冲量能力</h3>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+          <div class="bg-orange-50/50 border border-orange-100 rounded-xl p-3 shadow-sm text-center">
+            <div class="text-base font-extrabold text-orange-600">14~16万</div>
+            <div class="text-[10px] text-slate-400 font-bold mt-1 leading-none">历史单日峰值日耗 (06/23)</div>
+          </div>
+          <div class="bg-orange-50/50 border border-orange-100 rounded-xl p-3 shadow-sm text-center">
+            <div class="text-base font-extrabold text-orange-600">16~18万</div>
+            <div class="text-[10px] text-slate-400 font-bold mt-1 leading-none">大场冲量能力 (+20%)</div>
+          </div>
+          <div class="bg-orange-50/50 border border-orange-100 rounded-xl p-3 shadow-sm text-center">
+            <div class="text-base font-extrabold text-slate-700">10~20万/日</div>
+            <div class="text-[10px] text-slate-400 font-bold mt-1 leading-none">日常日耗规模</div>
+          </div>
+          <div class="bg-amber-500 text-white rounded-xl p-3 shadow-sm text-center">
+            <div class="text-base font-black">1.3x</div>
+            <div class="text-[10px] text-white/90 font-bold mt-1 leading-none">峰值/日常弹性倍数</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Case 核心亮点 · 四力拆解 -->
+      <div class="bg-white border border-slate-200/60 rounded-xl p-4 shadow-sm flex-1 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-1.5 mb-3">
+            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 font-extrabold text-xs flex items-center justify-center">4</span>
+            <h3 class="text-sm font-black text-slate-800">Case 核心亮点 · 四力拆解</h3>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 relative hover:shadow-md transition-all">
+              <span class="absolute right-3 top-3 text-lg">📦</span>
+              <div class="text-xs font-extrabold text-emerald-600 mb-1">【商品力】从「有货」到「好货」</div>
+              <p class="text-[11.5px] text-slate-600 leading-normal"><b>核心客群:</b> 专家品质信赖受众 / 养生功效高知群体 (25-38岁备孕调理、产后宝妈)。<br><b>信任痛点:</b> 冲饮食补粉功效隐性不显，消费者对科学安全性有极深顾虑。<br><b>品类定位:</b> 科学家研发/科研转化身份切入，解决成分与安全品质痛点。</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 relative hover:shadow-md transition-all">
+              <span class="absolute right-3 top-3 text-lg">🎨</span>
+              <div class="text-xs font-extrabold text-cyan-600 mb-1">【内容力】从「有素材」到「强互动」</div>
+              <p class="text-[11.5px] text-slate-600 leading-normal"><b>背书方案:</b> <b>高校/专家背书科研实力</b>，穿白大褂进行实验室背景实播，天然获得公信力。<br><b>素材效率:</b> <b>CTR 3.5%</b> | <b>CVR 6.4%</b> 全场最高转化率。<br><b>创意场景:</b> 实验室展示/权威检测报告说明。</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 relative hover:shadow-md transition-all">
+              <span class="absolute right-3 top-3 text-lg">⚙️</span>
+              <div class="text-xs font-extrabold text-orange-600 mb-1">【经营力】日常 x 大促双轮驱动</div>
+              <p class="text-[11.5px] text-slate-600 leading-normal"><b>转化漏斗:</b> 进播 2.1% → 商击 92.6% (全场最高) → 下单 9.5%。<br><b>投产成效:</b> ROI — (观察期缺失) | 环比消耗维持平稳。<br><b>长效变现:</b> 无私域，主要以极优的 CVR (6.4%) 在公域强效收割，智投极速冷启。</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 relative hover:shadow-md transition-all">
+              <span class="absolute right-3 top-3 text-lg">🎯</span>
+              <div class="text-xs font-extrabold text-blue-600 mb-1">【投放力】从「手动」到「智能」</div>
+              <p class="text-[11.5px] text-slate-600 leading-normal"><b>智投打法:</b> 智投渗透率高达 <b>82.2%</b> (3002单链路托管为主，极速获取公域推荐)。<br><b>消耗弹性:</b> 20个账户并行投放，基建规模充足，DCID/TID比值健康。<br><b>版位布局:</b> 平台与内容广告 5~10万 CTR3.6% | 搜索 <1万 | 微信搜一搜 <1万。</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[11px] font-bold text-slate-400 mb-1.5">I 直观转化漏斗：进播 ➔ 商品点击 ➔ 下单</div>
+          <div class="bg-slate-50 border border-slate-100 rounded-xl p-2.5">
+            <div class="flex items-center justify-between text-[11px] text-slate-500 mb-1">
+              <span>进播率: <b>2.1%</b></span>
+              <span>商品点击率: <b>92.6%</b></span>
+              <span>下单转化率: <b>9.5%</b></span>
+            </div>
+            <div class="w-full h-4 bg-slate-200 rounded-full overflow-hidden flex">
+              <div class="bg-blue-500 h-full flex items-center justify-center text-[9px] text-white font-bold" style="width: 15%;">进播</div>
+              <div class="bg-emerald-500 h-full flex items-center justify-center text-[9px] text-white font-bold" style="width: 55%;">商品点击</div>
+              <div class="bg-amber-500 h-full flex items-center justify-center text-[9px] text-white font-bold" style="width: 30%;">下单</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 人货场三力 -->
+  <div class="bg-white border border-slate-200/60 rounded-xl p-4 shadow-md mb-4">
+    <div class="flex items-center gap-1.5 mb-3.5">
+      <span class="text-base text-amber-500">★</span>
+      <h3 class="text-sm font-black text-slate-800">直播间画面 · 人货场三力还原</h3>
+    </div>
+    <div class="grid grid-cols-12 gap-4 items-stretch">
+      <!-- 左侧拟真直播画面 -->
+      <div class="col-span-3 rounded-xl p-3 flex flex-col justify-between" style="min-height: 150px; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);">
+        <div class="flex items-center justify-between text-[9px] text-white/90 bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-md">
+          <div class="flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+            <span class="font-extrabold">LIVE</span>
+          </div>
+          <span>🔥 1.4w人气</span>
+        </div>
+        
+        <div class="text-center my-3">
+          <div class="w-12 h-14 rounded-full mx-auto flex items-center justify-center text-xl shadow-lg border-2 border-white/20 mb-1.5" style="background: linear-gradient(135deg, #8e84fd, #7c3aed);">
+            🔬
+          </div>
+          <div class="text-[11px] font-black text-white leading-tight">🧪 Dr.郭 · 研发科学家</div>
+          <div class="text-[8px] text-amber-300 font-bold scale-90 mt-0.5 truncate">国家重点实验室成果转化</div>
+        </div>
+
+        <div class="bg-white/95 border border-white/20 rounded-lg p-1.5 shadow-md flex items-center justify-between gap-1">
+          <div class="min-w-0 flex-1">
+            <div class="text-[9px] font-black text-slate-800 leading-tight truncate">科研配方 秘制八珍饮汉方冲饮</div>
+            <div class="text-[10px] font-extrabold text-red-600 mt-0.5">¥59.0</div>
+          </div>
+          <span class="bg-red-500 text-white text-[8px] font-black px-2 py-1 rounded">抢</span>
+        </div>
+      </div>
+      <!-- 右侧人货场三卡片 -->
+      <div class="col-span-9 grid grid-cols-3 gap-3">
+        <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-3 flex flex-col justify-between hover:shadow-md transition-all">
+          <div>
+            <div class="text-xs font-black text-blue-800 mb-1 flex items-center gap-1">👤 <span>人</span> 主播力 · 专业出镜</div>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">主研发师Dr.郭专业出镜讲解，身穿白大褂，手持八珍粉精细讲解成分与科学检测报告，极强公信力。</p>
+          </div>
+        </div>
+        <div class="bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 flex flex-col justify-between hover:shadow-md transition-all">
+          <div>
+            <div class="text-xs font-black text-emerald-800 mb-1 flex items-center gap-1">📦 <span>货</span> 货品力 · 价格钩子</div>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">八珍饮汉方调理大单品，价格 ¥59.0 亲民体验装，直击祛湿/补气色刚需。</p>
+          </div>
+        </div>
+        <div class="bg-amber-50/50 border border-amber-100 rounded-xl p-3 flex flex-col justify-between hover:shadow-md transition-all">
+          <div>
+            <div class="text-xs font-black text-amber-800 mb-1 flex items-center gap-1">🎪 <span>场</span> 场景力 · 场景氛围</div>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">模拟科研实验室实播场景，背后放满检测报告与专利证书，大屏幕滚动放映无菌车间生产画面，彻底消除怀疑。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 核心指标六维 -->
+  <div class="bg-emerald-50/30 border border-emerald-500/20 rounded-xl p-4 shadow-sm flex items-center justify-between gap-4">
+    <div class="flex-shrink-0" style="width: 15%;">
+      <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-extrabold text-xs flex items-center justify-center mb-1">5</span>
+      <h3 class="text-xs font-black text-slate-800">核心指标六维</h3>
+    </div>
+    <div class="grid grid-cols-6 gap-3 flex-1">
+      
+      <div class="bg-white border-b-2 rounded-xl p-2 text-center shadow-sm" style="border-color: #8e84fd;">
+        <div class="text-sm font-black" style="color: #6d28d9;">10~20万/日</div>
+        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">日耗规模</div>
+        <div class="text-[9px] text-slate-500 font-medium leading-none mt-1 scale-90">日常稳定消耗区</div>
+      </div>
+      
+      <div class="bg-white border-b-2 rounded-xl p-2 text-center shadow-sm" style="border-color: #8e84fd;">
+        <div class="text-sm font-black" style="color: #6d28d9;">—</div>
+        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">下单 ROI</div>
+        <div class="text-[9px] text-slate-500 font-medium leading-none mt-1 scale-90">测试期暂缺待观察</div>
+      </div>
+      
+      <div class="bg-white border-b-2 rounded-xl p-2 text-center shadow-sm" style="border-color: #8e84fd;">
+        <div class="text-sm font-black" style="color: #6d28d9;">6.4%</div>
+        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">CVR 优秀</div>
+        <div class="text-[9px] text-slate-500 font-medium leading-none mt-1 scale-90">全场最高转化率</div>
+      </div>
+      
+      <div class="bg-white border-b-2 rounded-xl p-2 text-center shadow-sm" style="border-color: #8e84fd;">
+        <div class="text-sm font-black" style="color: #6d28d9;">92.6%</div>
+        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">商品点击率</div>
+        <div class="text-[9px] text-slate-500 font-medium leading-none mt-1 scale-90">并列全场最高</div>
+      </div>
+      
+      <div class="bg-white border-b-2 rounded-xl p-2 text-center shadow-sm" style="border-color: #8e84fd;">
+        <div class="text-sm font-black" style="color: #6d28d9;">¥150~300</div>
+        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">客单价区间</div>
+        <div class="text-[9px] text-slate-500 font-medium leading-none mt-1 scale-90">中高溢价定位</div>
+      </div>
+      
+      <div class="bg-white border-b-2 rounded-xl p-2 text-center shadow-sm" style="border-color: #8e84fd;">
+        <div class="text-sm font-black" style="color: #6d28d9;">69%</div>
+        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">创意重复度</div>
+        <div class="text-[9px] text-slate-500 font-medium leading-none mt-1 scale-90">重复偏高需关注</div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+const grad2 = ctx.createLinearGradient(0,0,0,120); grad2.addColorStop(0,'rgba(16,185,129,0.3)'); grad2.addColorStop(1,'rgba(16,185,129,0.01)');
+new Chart(ctx, {
+  data: {
+    labels: ['06/19', '06/20', '06/21', '06/22', '06/23', '06/24'],
+    datasets: [
+      { type:'bar', label:'日耗相对值(%)', data:[50.8, 115.7, 116.0, 123.0, 126.4, 68.2], backgroundColor:'#3E79F0', borderRadius:3 },
+      { type:'line', label:'ROI', data:[0, 0, 0, 0, 0, 0], borderColor:'#FFAE19', backgroundColor:grad2, borderWidth:2, tension:0.35, yAxisID:'y2', pointRadius:2 }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ position:'top', align:'end', labels:{ font:{size:9,weight:'600'}, boxWidth:8, padding:4 } }, tooltip:{ backgroundColor:'rgba(30,58,138,0.95)' } },
+    scales:{
+      y:{ ticks:{ color:'#6b7280', font:{size:8} }, grid:{ color:'rgba(148,163,184,0.1)' } },
+      y2:{ position:'right', min:0, max:3, ticks:{ color:'#b45309', font:{size:8} }, grid:{display:false} },
+      x:{ ticks:{ color:'#374151', font:{size:8}, maxRotation:45 }, grid:{display:false} }
+    }
+  }
+});
+</script>
+</body>
+</html>

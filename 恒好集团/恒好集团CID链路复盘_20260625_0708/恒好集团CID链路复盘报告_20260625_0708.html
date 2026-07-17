@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恒好集团 CID链路投放复盘报告 | 2026.06.25-07.08</title>
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root {
+  --primary: #1a73e8; --bg: #f5f7fa; --card-bg: #ffffff; --text: #333; --text2: #666;
+  --border: #e0e0e0; --good: #0d904f; --bad: #d93025; --warn: #f9ab00; --neutral: #999;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+.container { max-width:1240px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#1a73e8,#4285f4); color:#fff; padding:30px; border-radius:12px; margin-bottom:24px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:.9; }
+.header .meta { font-size:12px; opacity:.75; margin-top:12px; }
+.card { background:var(--card-bg); border-radius:10px; padding:24px; margin-bottom:20px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.card h2 { font-size:18px; color:var(--primary); margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--primary); }
+.card h3 { font-size:15px; color:var(--text); margin:18px 0 10px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-bottom:8px; }
+.kpi-item { background:var(--bg); border-radius:8px; padding:14px; text-align:center; }
+.kpi-item .label { font-size:12px; color:var(--text2); margin-bottom:4px; }
+.kpi-item .value { font-size:20px; font-weight:700; color:var(--text); }
+.kpi-item .sub { font-size:11px; margin-top:4px; }
+.good { color:var(--good); } .bad { color:var(--bad); } .warn { color:var(--warn); } .neutral { color:var(--neutral); }
+table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+th { background:#f0f4f8; padding:10px 8px; text-align:center; font-weight:600; color:var(--text2); border-bottom:2px solid var(--border); white-space:nowrap; }
+td { padding:8px; text-align:center; border-bottom:1px solid #f0f0f0; }
+tr:hover { background:#fafbfc; }
+.hl { font-weight:600; font-size:14px; }
+.chart-container { width:100%; height:420px; margin:16px 0; }
+.finding { background:#fff8e1; border-left:4px solid var(--warn); padding:12px 16px; margin:10px 0; border-radius:0 6px 6px 0; font-size:13px; }
+.finding.good-f { background:#e8f5e9; border-left-color:var(--good); }
+.finding.bad-f { background:#fce4ec; border-left-color:var(--bad); }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; margin:0 2px; }
+.tag-good { background:#e8f5e9; color:var(--good); } .tag-bad { background:#fce4ec; color:var(--bad); } .tag-warn { background:#fff8e1; color:#e65100; }
+.action-list { list-style:none; padding:0; }
+.action-list li { padding:8px 12px; margin:6px 0; background:var(--bg); border-radius:6px; font-size:13px; }
+.action-list li .priority { font-weight:700; margin-right:8px; }
+.p0 { color:var(--bad); } .p1 { color:#e65100; } .p2 { color:var(--primary); }
+.note { font-size:12px; color:var(--text2); background:#eef3fb; border-radius:6px; padding:10px 14px; margin:8px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>恒好集团 CID链路投放复盘报告</h1>
+  <div class="subtitle">分析周期：2026.06.25 - 2026.07.08（近14天） vs 2026.06.11 - 2026.06.24（前14天）</div>
+  <div class="meta">KPI三级行业：保健食品 ｜ 消费链路：CID ｜ 广告主：广州鑫烨 / 广州圣宇禄达 / 广州壹达（共14个账户）</div>
+</div>
+
+<!-- 核心结论摘要 -->
+<div class="card">
+<h2>一、核心结论摘要</h2>
+<div class="kpi-grid">
+  <div class="kpi-item"><div class="label">14天消耗</div><div class="value">54.37万</div><div class="sub bad">环比 -28.6%</div></div>
+  <div class="kpi-item"><div class="label">ROI</div><div class="value">1.272</div><div class="sub bad">↓ 上期1.312 (-3.0%)</div></div>
+  <div class="kpi-item"><div class="label">CTR</div><div class="value">3.36%</div><div class="sub good">↑ 上期3.24%</div></div>
+  <div class="kpi-item"><div class="label">CVR</div><div class="value">2.44%</div><div class="sub bad">↓ 上期2.54%</div></div>
+  <div class="kpi-item"><div class="label">CPM</div><div class="value">40.0元</div><div class="sub">↑ 上期39.7元</div></div>
+  <div class="kpi-item"><div class="label">CPA</div><div class="value">56.9元</div><div class="sub good">↓ 上期57.4元</div></div>
+</div>
+<div class="finding bad-f">
+  <strong>核心问题：</strong>消耗环比下降 28.6%（-21.76万），由<strong>广州圣宇禄达3个账户大幅收缩</strong>主导（77329346 -76.1%、77329357 -85.2%、77329367 -31.9%），合计消耗由上期 22.02万 降至本期 7.28万（-67.0%）。
+</div>
+<div class="finding good-f">
+  <strong>亮点：</strong>CTR 3.36% 较上期提升 0.12pp；CPA 降至 56.9元；唯一性ID转化率 73.5% 起量能力优秀；66869178（ROI 5.85）与 77329155（ROI 3.95）为高ROI增长账户。
+</div>
+<div class="finding">
+  <strong>风险：</strong>最大账户 77329136 消耗 10.48万（占比 19.3%）但 ROI 仅 0.962，低于盈亏线；创意重复度 26.4% 偏高，素材同质化隐现；CPM 40元 流量成本显著高于普通链路。
+</div>
+</div>
+
+<!-- 二、整体表现 -->
+<div class="card">
+<h2>二、整体表现（环比）</h2>
+<table>
+<tr><th>指标</th><th>本期</th><th>上期</th><th>变化量</th><th>变化率</th></tr>
+<tr><td>整体消耗(元)</td><td class="hl">543,675.55</td><td>761,319.19</td><td class="bad">-217,643.64</td><td class="bad">-28.59%</td></tr>
+<tr><td>ROI</td><td class="hl">1.272</td><td>1.3117</td><td class="bad">-0.0397</td><td class="bad">-3.03%</td></tr>
+<tr><td>CTR(%)</td><td class="hl">3.362</td><td>3.2442</td><td class="good">+0.1178</td><td class="good">↑</td></tr>
+<tr><td>CVR(%)</td><td class="hl">2.4384</td><td>2.5399</td><td class="bad">-0.1015</td><td class="bad">↓</td></tr>
+<tr><td>CPM(元)</td><td class="hl">39.99</td><td>39.69</td><td class="bad">+0.31</td><td class="bad">↑</td></tr>
+<tr><td>CPA(元)</td><td class="hl">56.88</td><td>57.40</td><td class="good">-0.52</td><td class="good">↓</td></tr>
+</table>
+<div class="finding">
+  <strong>解读：</strong>消耗收缩但效率指标基本稳定——CTR 上行、CPA 微降，说明本期是<strong>主动/被动缩量</strong>而非效率崩塌。ROI 微降 3.0% 主要来自圣宇禄达掉量后账户结构变化。
+</div>
+<div class="note">说明：本文件夹仅含本期/上期环比数据，大盘对标口径未在 CSV 中提供，故本报告聚焦环比。如需与 CID 大盘对标请补充大盘文件。</div>
+</div>
+
+<!-- 三、日级趋势 -->
+<div class="card">
+<h2>三、日级趋势</h2>
+<div id="chart-daily" class="chart-container"></div>
+<table>
+<tr><th>日期</th><th>本期消耗(万)</th><th>上期消耗(万)</th><th>本期ROI</th><th>本期CTR(%)</th><th>本期CVR(%)</th><th>本期CPM</th></tr>
+<tr><td>06/25</td><td>3.24</td><td>6.34</td><td>1.402</td><td>3.31</td><td>2.64</td><td>40.15</td></tr>
+<tr><td>06/26</td><td>3.67</td><td>4.59</td><td>1.388</td><td>2.99</td><td>3.14</td><td>42.27</td></tr>
+<tr><td>06/27</td><td>3.64</td><td>3.93</td><td>1.273</td><td>3.12</td><td>2.92</td><td>41.31</td></tr>
+<tr><td>06/28</td><td>3.43</td><td>4.90</td><td>1.220</td><td>3.33</td><td>2.69</td><td>40.64</td></tr>
+<tr><td>06/29</td><td>2.62</td><td>6.62</td><td>1.354</td><td>3.66</td><td>2.05</td><td>36.02</td></tr>
+<tr><td>06/30</td><td>2.25</td><td>5.76</td><td>1.275</td><td>3.17</td><td>3.12</td><td>44.42</td></tr>
+<tr><td>07/01</td><td class="hl">5.58</td><td>5.08</td><td>1.272</td><td>3.11</td><td>2.99</td><td>44.07</td></tr>
+<tr><td>07/02</td><td>4.45</td><td>5.27</td><td>1.224</td><td>3.52</td><td>2.25</td><td>40.25</td></tr>
+<tr><td>07/03</td><td>3.92</td><td>5.60</td><td>1.243</td><td>3.34</td><td>2.68</td><td>43.34</td></tr>
+<tr><td>07/04</td><td>3.97</td><td>5.82</td><td>1.158</td><td>3.82</td><td>1.94</td><td>38.99</td></tr>
+<tr><td>07/05</td><td>4.10</td><td>6.04</td><td>1.316</td><td>3.22</td><td>2.49</td><td>39.41</td></tr>
+<tr><td>07/06</td><td>4.55</td><td>5.57</td><td>1.188</td><td>3.47</td><td>2.18</td><td>39.80</td></tr>
+<tr><td>07/07</td><td>4.33</td><td>5.22</td><td>1.227</td><td>3.95</td><td>1.66</td><td>35.76</td></tr>
+<tr><td>07/08</td><td>4.64</td><td>5.40</td><td>1.306</td><td>2.96</td><td>2.55</td><td>36.34</td></tr>
+</table>
+<div class="finding bad-f">
+  <strong>前半段缩量明显：</strong>6/25-6/30 消耗由 3.24万 跌至 2.25万，而同期上期消耗高达 5.76-6.62万；7/1 起回升至 4.3-5.6万区间，但始终低于上期同口径。本期消耗全周期低于上期。
+</div>
+<div class="finding">
+  <strong>ROI 窄幅波动：</strong>ROI 在 1.16-1.40 间波动，7/4（1.158）、7/6（1.188）为低点；CVR 在 7/4（1.94%）、7/7（1.66%）出现明显回落，需关注转化回传波动。
+</div>
+</div>
+
+<!-- 四、分账户诊断 -->
+<div class="card">
+<h2>四、分账户诊断</h2>
+<table>
+<tr><th>广告主ID</th><th>主体</th><th>本期消耗(万)</th><th>消耗占比</th><th>消耗环比</th><th>ROI</th><th>CTR(%)</th><th>CVR(%)</th><th>CPM</th><th>创意重复度</th><th>诊断</th></tr>
+<tr><td>77329136</td><td style="font-size:11px">鑫烨</td><td class="hl">10.48</td><td>19.3%</td><td class="warn">-5.1%</td><td class="bad">0.962</td><td>2.96</td><td>3.69</td><td>49</td><td>25.0%</td><td><span class="tag tag-bad">ROI&lt;1</span></td></tr>
+<tr><td>77329119</td><td style="font-size:11px">鑫烨</td><td class="hl">6.30</td><td>11.6%</td><td class="warn">-17.8%</td><td>1.218</td><td>2.69</td><td>3.38</td><td>44</td><td>12.2%</td><td></td></tr>
+<tr><td>66869178</td><td style="font-size:11px">鑫烨</td><td class="hl">6.14</td><td>11.3%</td><td class="good">+7.6%</td><td class="good">5.850</td><td>3.07</td><td>2.79</td><td>42</td><td>25.3%</td><td><span class="tag tag-good">高ROI</span></td></tr>
+<tr><td>77329155</td><td style="font-size:11px">鑫烨</td><td class="hl">4.96</td><td>9.1%</td><td class="good">+50.3%</td><td class="good">3.951</td><td>3.27</td><td>2.07</td><td>34</td><td>11.9%</td><td><span class="tag tag-good">高ROI</span></td></tr>
+<tr><td>77329367</td><td style="font-size:11px">圣宇禄达</td><td class="hl">3.99</td><td>7.3%</td><td class="bad">-31.9%</td><td>1.081</td><td>2.49</td><td>3.58</td><td>39</td><td>25.0%</td><td><span class="tag tag-warn">掉量</span></td></tr>
+<tr><td>77329145</td><td style="font-size:11px">鑫烨</td><td class="hl">3.94</td><td>7.3%</td><td class="bad">-24.3%</td><td>1.165</td><td>3.81</td><td>2.34</td><td>48</td><td>13.7%</td><td></td></tr>
+<tr><td>77135440</td><td style="font-size:11px">壹达</td><td class="hl">3.49</td><td>6.4%</td><td class="warn">-13.7%</td><td>1.309</td><td>4.18</td><td>2.13</td><td>41</td><td>11.0%</td><td></td></tr>
+<tr><td>77135455</td><td style="font-size:11px">壹达</td><td class="hl">2.79</td><td>5.1%</td><td class="bad">-26.5%</td><td>1.316</td><td>5.80</td><td>1.02</td><td>33</td><td>7.4%</td><td></td></tr>
+<tr><td>77135447</td><td style="font-size:11px">壹达</td><td class="hl">2.68</td><td>4.9%</td><td class="warn">-13.0%</td><td>1.241</td><td>3.17</td><td>2.08</td><td>29</td><td>8.0%</td><td></td></tr>
+<tr><td>77135451</td><td style="font-size:11px">壹达</td><td class="hl">2.60</td><td>4.8%</td><td class="bad">-41.9%</td><td>1.272</td><td>5.30</td><td>1.65</td><td>43</td><td>19.2%</td><td><span class="tag tag-warn">掉量</span></td></tr>
+<tr><td>77329346</td><td style="font-size:11px">圣宇禄达</td><td class="hl">2.35</td><td>4.3%</td><td class="bad">-76.1%</td><td>1.250</td><td>3.05</td><td>2.31</td><td>38</td><td>36.8%</td><td><span class="tag tag-bad">大幅掉量</span></td></tr>
+<tr><td>66902775</td><td style="font-size:11px">鑫烨</td><td class="hl">2.26</td><td>4.2%</td><td class="bad">-25.8%</td><td>1.227</td><td>3.04</td><td>1.96</td><td>33</td><td>12.5%</td><td></td></tr>
+<tr><td>66902787</td><td style="font-size:11px">鑫烨</td><td class="hl">1.45</td><td>2.7%</td><td class="bad">-47.2%</td><td>1.223</td><td>2.52</td><td>2.64</td><td>33</td><td>10.3%</td><td><span class="tag tag-warn">掉量</span></td></tr>
+<tr><td>77329357</td><td style="font-size:11px">圣宇禄达</td><td class="hl">0.94</td><td>1.7%</td><td class="bad">-85.2%</td><td>1.341</td><td>3.05</td><td>2.15</td><td>34</td><td>32.6%</td><td><span class="tag tag-bad">大幅掉量</span></td></tr>
+</table>
+
+<h3>4.1 分主体对比</h3>
+<table>
+<tr><th>主体</th><th>本期消耗(万)</th><th>上期消耗(万)</th><th>消耗环比</th><th>账户数</th></tr>
+<tr><td>广州鑫烨健康管理有限公司</td><td class="hl">35.53</td><td>38.71</td><td class="warn">-8.2%</td><td>8</td></tr>
+<tr><td>广州壹达网络信息科技有限公司</td><td class="hl">11.56</td><td>15.40</td><td class="bad">-24.9%</td><td>4</td></tr>
+<tr><td>广州圣宇禄达电商贸易有限公司</td><td class="hl">7.28</td><td>22.02</td><td class="bad">-67.0%</td><td>3</td></tr>
+</table>
+<div class="finding bad-f">
+  <strong>最大账户 77329136</strong>（消耗 10.48万，占比 19.3%）ROI 仅 0.962，是 14 个账户中唯一低于盈亏线的账户，直接拉低整体 ROI。
+</div>
+<div class="finding good-f">
+  <strong>66869178</strong>（6.14万，ROI 5.85，环比 +7.6%）与 <strong>77329155</strong>（4.96万，ROI 3.95，环比 +50.3%）为优质增长账户，是当前结构中的效率支柱。
+</div>
+<div class="finding bad-f">
+  <strong>圣宇禄达3账户</strong>合计消耗由上期 22.02万 降至本期 7.28万（-67.0%），是整体消耗下滑的最大单一贡献方，需优先排查掉量原因。
+</div>
+</div>
+
+<!-- 五、版位结构 -->
+<div class="card">
+<h2>五、版位结构</h2>
+<table>
+<tr><th>版位</th><th>本期消耗(万)</th><th>消耗占比</th><th>消耗环比</th><th>ROI</th><th>CTR(%)</th><th>CVR(%)</th><th>CPM</th></tr>
+<tr><td>微信视频号</td><td class="hl">51.59</td><td>94.9%</td><td class="bad">-29.2%</td><td>1.270</td><td>3.01</td><td>3.23</td><td>45</td></tr>
+<tr><td>微信公众号</td><td class="hl">1.77</td><td>3.3%</td><td class="bad">-24.0%</td><td class="good">1.439</td><td>4.86</td><td>2.96</td><td>60</td></tr>
+<tr><td>微信朋友圈</td><td class="hl">0.99</td><td>1.8%</td><td class="good">+9.3%</td><td>1.170</td><td>5.18</td><td class="bad">0.18</td><td>5</td></tr>
+<tr><td>微信搜一搜</td><td class="hl">0.02</td><td>0.0%</td><td class="bad">-44.6%</td><td>0.816</td><td>10.26</td><td>2.68</td><td>154</td></tr>
+<tr><td>搜狗</td><td class="hl">0.00</td><td>0.0%</td><td class="good">+390.2%</td><td>0.000</td><td>8.51</td><td>0.00</td><td>86</td></tr>
+</table>
+<div class="finding">
+  <strong>版位集中度极高：</strong>微信视频号占消耗 94.9%（51.59万），其环比 -29.2% 是整体消耗下滑的直接主因；公众号 3.3%、朋友圈 1.8% 为补充渠道。
+</div>
+<div class="finding good-f">
+  <strong>公众号 ROI 1.439</strong> 高于视频号 1.270，CTR 4.86% 亦高于视频号 3.01%，可作为增量版位小预算测试。
+</div>
+<div class="finding bad-f">
+  <strong>朋友圈 CVR 仅 0.18%</strong>，远低于视频号 3.23% 与公众号 2.96%，CID 链路下朋友圈转化效率极差，不建议放量。
+</div>
+</div>
+
+<!-- 六、起量素材 -->
+<div class="card">
+<h2>六、起量素材分析（消耗≥5000元，共26条）</h2>
+<div id="chart-quickrate" class="chart-container"></div>
+<table>
+<tr><th>TID</th><th>素材MD5(前8)</th><th>消耗(元)</th><th>CTR(%)</th><th>3s快滑率(%)</th><th>CVR(%)</th></tr>
+<tr><td>97312290634</td><td>d6fcca95</td><td class="hl">13673.20</td><td>3.51</td><td>43.02</td><td class="bad">1.65</td></tr>
+<tr><td>109735069124</td><td>c9e78988</td><td>11345.86</td><td>2.28</td><td>49.06</td><td>2.95</td></tr>
+<tr><td>102873982735</td><td>f074a1a5</td><td>9898.15</td><td>2.08</td><td>28.81</td><td>2.84</td></tr>
+<tr><td>107203997730</td><td>e30cde10</td><td>9503.73</td><td class="good">4.88</td><td class="good">10.17</td><td class="bad">1.17</td></tr>
+<tr><td>104308963588</td><td>60a78837</td><td>9193.35</td><td class="good">4.28</td><td>29.74</td><td>2.46</td></tr>
+<tr><td>102873985521</td><td>ed4dd6b6</td><td>8876.13</td><td>3.35</td><td>38.37</td><td class="good">4.61</td></tr>
+<tr><td>110871195266</td><td>406e9180</td><td>8390.88</td><td class="good">6.14</td><td class="good">17.14</td><td class="bad">1.37</td></tr>
+<tr><td>102873985156</td><td>7a1039fc</td><td>8259.95</td><td>3.56</td><td>36.58</td><td class="good">3.56</td></tr>
+<tr><td>114849648627</td><td>db48431a</td><td>8180.64</td><td>2.46</td><td>32.41</td><td>2.74</td></tr>
+<tr><td>109168880909</td><td>4ccb7bf7</td><td>8016.10</td><td>2.62</td><td>22.37</td><td>2.38</td></tr>
+<tr><td>102873982645</td><td>4dcf5b66</td><td>7738.44</td><td>3.71</td><td>36.67</td><td>2.58</td></tr>
+<tr><td>103290725230</td><td>d4d19be4</td><td>7451.71</td><td>3.60</td><td>39.08</td><td class="good">4.52</td></tr>
+<tr><td>108261022175</td><td>417e6a5c</td><td>6974.93</td><td class="bad">1.39</td><td class="bad">68.64</td><td class="good">5.40</td></tr>
+<tr><td>111393233241</td><td>f58a046e</td><td>6918.61</td><td>2.32</td><td>36.59</td><td class="good">3.36</td></tr>
+<tr><td>109735668065</td><td>c9e78988</td><td>6671.95</td><td>1.96</td><td class="bad">55.29</td><td class="good">4.41</td></tr>
+<tr><td>102873985350</td><td>7a1039fc</td><td>6357.20</td><td>3.42</td><td>39.56</td><td class="good">4.19</td></tr>
+<tr><td>97312358642</td><td>d6fcca95</td><td>6230.09</td><td>3.08</td><td class="bad">49.75</td><td>2.01</td></tr>
+<tr><td>102873988217</td><td>f074a1a5</td><td>6062.33</td><td>2.56</td><td class="bad">46.19</td><td class="good">4.37</td></tr>
+<tr><td>102873982196</td><td>f8e85dae</td><td>6045.83</td><td>2.20</td><td class="bad">57.19</td><td class="good">4.70</td></tr>
+<tr><td>114005394103</td><td>9fd9c864</td><td>5876.81</td><td>2.94</td><td class="bad">56.88</td><td>3.72</td></tr>
+<tr><td>102873984911</td><td>a130e8ae</td><td>5727.70</td><td>2.98</td><td>31.36</td><td class="good">3.48</td></tr>
+<tr><td>100354063787</td><td>417e6a5c</td><td>5548.50</td><td>2.13</td><td class="bad">62.15</td><td class="good">4.04</td></tr>
+<tr><td>102873985341</td><td>a130e8ae</td><td>5403.78</td><td>2.56</td><td>38.78</td><td class="good">4.35</td></tr>
+<tr><td>109736259533</td><td>c9e78988</td><td>5178.73</td><td>1.79</td><td class="bad">58.24</td><td class="good">5.06</td></tr>
+<tr><td>109705458852</td><td>0d63c0ee</td><td>5172.59</td><td>2.81</td><td>43.06</td><td class="good">4.14</td></tr>
+<tr><td>102873984442</td><td>14478243</td><td>5003.32</td><td>2.48</td><td>37.54</td><td>2.70</td></tr>
+</table>
+<div class="finding bad-f">
+  <strong>3s快滑率均值 40.9%</strong>，超过 40% 警戒线——26条素材中 11条（42%）快滑率 >40%，说明大量素材前3秒吸引力不足、用户快速滑走，曝光被浪费。
+</div>
+<div class="finding bad-f">
+  <strong>头部素材转化偏弱：</strong>消耗最高的 <strong>97312290634（d6fcca95，1.37万）</strong>CVR 仅 1.65%，且快滑率 43.0%；其镜像素材 97312358642 同样 CVR 2.01%。该系列素材消耗大但承接差，是优化重点。
+</div>
+<div class="finding good-f">
+  <strong>高CVR素材可复制：</strong>108261022175（CVR 5.40%）、102873982196（4.70%）、102873985521（4.61%）等快滑率偏高但转化强，可保留并优化前3秒钩子以扩大消耗。
+</div>
+<div class="finding">
+  <strong>素材复用现象：</strong>c9e78988、f074a1a5、7a1039fc、417e6a5c、a130e8ae、d6fcca95 等多个 MD5 跨不同 TID 重复出现，结合创意重复度 26.4%，存在跨账户同质化投放。
+</div>
+</div>
+
+<!-- 七、基建能力 -->
+<div class="card">
+<h2>七、基建能力评估</h2>
+<div class="kpi-grid">
+  <div class="kpi-item"><div class="label">TID数(合计)</div><div class="value">13,001</div><div class="sub">创意投放总量</div></div>
+  <div class="kpi-item"><div class="label">唯一性ID数(合计)</div><div class="value">9,567</div><div class="sub">去重后创意数</div></div>
+  <div class="kpi-item"><div class="label">创意重复度</div><div class="value warn">26.4%</div><div class="sub">偏高，需关注</div></div>
+  <div class="kpi-item"><div class="label">唯一ID转化率</div><div class="value good">73.5%</div><div class="sub">起量能力良好</div></div>
+  <div class="kpi-item"><div class="label">有消耗账户数</div><div class="value">14</div><div class="sub">与上期持平</div></div>
+  <div class="kpi-item"><div class="label">日均消耗</div><div class="value">3.88万</div><div class="sub">环比 -28.6%</div></div>
+</div>
+<div class="finding">
+  <strong>计算口径：</strong>创意重复度 = (TID数 - 唯一ID数) / TID数 = (13001 - 9567) / 13001 = 26.4%；唯一ID转化率 = 有消耗唯一ID / 唯一ID数（按账户汇总估算 73.5%）。
+</div>
+<div class="finding warn-f" style="background:#fff8e1;border-left-color:var(--warn)">
+  <strong>重复度偏高：</strong>26.4% 的创意为同质化复用，叠加 6 个 MD5 跨 TID 重复投放，素材多样性不足。一旦同质素材效果衰减，易出现批量掉量。
+</div>
+<div class="finding good-f">
+  <strong>起量能力良好：</strong>唯一ID转化率 73.5% 说明曝光创意多数能获得消耗，基建产能充足，瓶颈在素材质量而非数量。
+</div>
+</div>
+
+<!-- 八、问题归因与优先级 -->
+<div class="card">
+<h2>八、问题归因与优先级</h2>
+<table>
+<tr><th>优先级</th><th>问题</th><th>归因</th><th>影响</th></tr>
+<tr><td><span class="p0">P0</span></td><td>消耗环比 -28.6%</td><td>圣宇禄达3账户大幅收缩（-67.0%），77329346/77329357 合计减少约 13.19万</td><td>消耗规模直接受损</td></tr>
+<tr><td><span class="p0">P0</span></td><td>头部素材转化弱</td><td>最大消耗素材 97312290634 CVR 仅 1.65%，快滑率 43.0%</td><td>高消耗低产出，预算浪费</td></tr>
+<tr><td><span class="p1">P1</span></td><td>最大账户 ROI&lt;1</td><td>77329136（10.48万，占 19.3%）ROI 0.962</td><td>拉低整体 ROI</td></tr>
+<tr><td><span class="p1">P1</span></td><td>3s快滑率 40.9%</td><td>过半素材前3秒吸引力不足</td><td>曝光浪费，CTR 提升受限</td></tr>
+<tr><td><span class="p2">P2</span></td><td>创意重复度 26.4%</td><td>多 MD5 跨账户复用</td><td>素材多样性不足，长期竞争力下降</td></tr>
+<tr><td><span class="p2">P2</span></td><td>朋友圈 CVR 极低</td><td>朋友圈 CVR 0.18%，CID 链路下转化差</td><td>版位效率不均</td></tr>
+</table>
+</div>
+
+<!-- 九、行动计划 -->
+<div class="card">
+<h2>九、行动计划</h2>
+<ul class="action-list">
+  <li><span class="priority p0">P0</span><strong>排查圣宇禄达掉量原因</strong>：确认 77329346/77329357 是否主动降预算/暂停，还是系统侧流量分配问题，制定恢复方案（潜在恢复 ~15万/期 消耗）。</li>
+  <li><span class="priority p0">P0</span><strong>优化头部低效素材</strong>：暂停/重剪 97312290634 系列（CVR 1.65%），将其预算迁移至 66869178、77329155 的高ROI素材。</li>
+  <li><span class="priority p1">P1</span><strong>提升 77329136 账户 ROI</strong>：排查高消耗低转化 TID，调整出价/定向，测试新素材替换。</li>
+  <li><span class="priority p1">P1</span><strong>优化素材前3秒钩子</strong>：快滑率>40% 的素材（11条）重剪前3秒，目标快滑率<30%。</li>
+  <li><span class="priority p2">P2</span><strong>扩大高ROI账户预算</strong>：66869178（ROI 5.85）、77329155（ROI 3.95）增量空间大，复制优质素材。</li>
+  <li><span class="priority p2">P2</span><strong>测试公众号版位</strong>：公众号 ROI 1.439 高于视频号 1.270，CTR 4.86%，小预算放量验证。</li>
+  <li><span class="priority p2">P2</span><strong>降低创意重复度</strong>：目标 <15%，建立跨账户去重机制，增加原创素材比例。</li>
+</ul>
+</div>
+
+<!-- 十、风险提示与机会点 -->
+<div class="card">
+<h2>十、风险提示与机会点</h2>
+<div class="finding bad-f"><strong>圣宇禄达持续掉量风险：</strong>若3账户维持收缩，整体消耗或进一步下探。</div>
+<div class="finding bad-f"><strong>素材同质化风险：</strong>重复度 26.4% 叠加跨账户复用，同质素材衰减将引发批量掉量。</div>
+<div class="finding bad-f"><strong>CPM高企风险：</strong>CID链路 CPM 40元 显著高于普通链路，竞争加剧将挤压 ROI。</div>
+<div class="finding good-f"><strong>高ROI账户增长空间：</strong>66869178、77329155 仍具增量空间。</div>
+<div class="finding good-f"><strong>公众号版位增量：</strong>ROI/CTR 双高，可作增量渠道。</div>
+<div class="finding good-f"><strong>起量能力良好：</strong>唯一ID转化率 73.5%，只要提升素材质量，消耗规模可快速恢复。</div>
+</div>
+
+</div>
+
+<script>
+// 日级趋势图
+var chart1 = echarts.init(document.getElementById('chart-daily'));
+var dates = ["06/25","06/26","06/27","06/28","06/29","06/30","07/01","07/02","07/03","07/04","07/05","07/06","07/07","07/08"];
+var costs = [3.24,3.67,3.64,3.43,2.62,2.25,5.58,4.45,3.92,3.97,4.10,4.55,4.33,4.64];
+var prevCosts = [6.34,4.59,3.93,4.90,6.62,5.76,5.08,5.27,5.60,5.82,6.04,5.57,5.22,5.40];
+var rois = [1.402,1.388,1.273,1.220,1.354,1.275,1.272,1.224,1.243,1.158,1.316,1.188,1.227,1.306];
+var ctrs = [3.31,2.99,3.12,3.33,3.66,3.17,3.11,3.52,3.34,3.82,3.22,3.47,3.95,2.96];
+var cvrs = [2.64,3.14,2.92,2.69,2.05,3.12,2.99,2.25,2.68,1.94,2.49,2.18,1.66,2.55];
+chart1.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['本期消耗','上期消耗','ROI','CTR','CVR'],top:0},
+  grid:[{left:'8%',right:'52%',top:'15%',bottom:'10%'},{left:'58%',right:'5%',top:'15%',bottom:'10%'}],
+  xAxis:[{type:'category',data:dates,gridIndex:0,axisLabel:{rotate:30,fontSize:10}},
+         {type:'category',data:dates,gridIndex:1,axisLabel:{rotate:30,fontSize:10}}],
+  yAxis:[{type:'value',name:'消耗(万)',gridIndex:0},{type:'value',name:'效率指标',gridIndex:1}],
+  series:[
+    {name:'本期消耗',type:'bar',data:costs,xAxisIndex:0,yAxisIndex:0,itemStyle:{color:'#1a73e8'}},
+    {name:'上期消耗',type:'bar',data:prevCosts,xAxisIndex:0,yAxisIndex:0,itemStyle:{color:'#b0bec5'}},
+    {name:'ROI',type:'line',data:rois,xAxisIndex:1,yAxisIndex:1,itemStyle:{color:'#0d904f'}},
+    {name:'CTR',type:'line',data:ctrs,xAxisIndex:1,yAxisIndex:1,itemStyle:{color:'#f9ab00'}},
+    {name:'CVR',type:'line',data:cvrs,xAxisIndex:1,yAxisIndex:1,itemStyle:{color:'#d93025'}}
+  ]
+});
+
+// 快滑率 vs CVR 散点图（消耗≥5000，26条）
+var chart2 = echarts.init(document.getElementById('chart-quickrate'));
+var md = [
+ [43.02,1.65,13673.20,"97312290634"],[49.06,2.95,11345.86,"109735069124"],[28.81,2.84,9898.15,"102873982735"],
+ [10.17,1.17,9503.73,"107203997730"],[29.74,2.46,9193.35,"104308963588"],[38.37,4.61,8876.13,"102873985521"],
+ [17.14,1.37,8390.88,"110871195266"],[36.58,3.56,8259.95,"102873985156"],[32.41,2.74,8180.64,"114849648627"],
+ [22.37,2.38,8016.10,"109168880909"],[36.67,2.58,7738.44,"102873982645"],[39.08,4.52,7451.71,"103290725230"],
+ [68.64,5.40,6974.93,"108261022175"],[36.59,3.36,6918.61,"111393233241"],[55.29,4.41,6671.95,"109735668065"],
+ [39.56,4.19,6357.20,"102873985350"],[49.75,2.01,6230.09,"97312358642"],[46.19,4.37,6062.33,"102873988217"],
+ [57.19,4.70,6045.83,"102873982196"],[56.88,3.72,5876.81,"114005394103"],[31.36,3.48,5727.70,"102873984911"],
+ [62.15,4.04,5548.50,"100354063787"],[38.78,4.35,5403.78,"102873985341"],[58.24,5.06,5178.73,"109736259533"],
+ [43.06,4.14,5172.59,"109705458852"],[37.54,2.70,5003.32,"102873984442"]
+];
+chart2.setOption({
+  tooltip:{formatter:function(p){return 'TID: '+p.data[3]+'<br/>快滑率: '+p.data[0]+'%<br/>CVR: '+p.data[1]+'%<br/>消耗: '+(p.data[2]/10000).toFixed(2)+'万';}},
+  xAxis:{name:'3s快滑率(%)',min:0,max:80},
+  yAxis:{name:'CVR(%)',min:0},
+  series:[{type:'scatter',data:md,symbolSize:function(d){return Math.max(8,Math.min(30,d[2]/1000));},
+    itemStyle:{color:'#1a73e8',opacity:.7},
+    markLine:{data:[{xAxis:40,name:'快滑率40%警戒线',lineStyle:{color:'#d93025',type:'dashed'}}]}}]
+});
+window.addEventListener('resize',function(){chart1.resize();chart2.resize();});
+</script>
+</body>
+</html>
