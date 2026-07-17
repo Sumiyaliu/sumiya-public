@@ -247,10 +247,10 @@ html {
                         </div>
                     </div>
 
-                    <!-- 【链接留空】清凉节报名入口按钮 (预留，href="#" 配合点击友好提示) -->
-                    <a href="javascript:void(0)" onclick="alert('清凉节官方报名大客通道即将开通，请联系您的官方投放经理获取专属提报链接！')" class="inline-flex items-center gap-1.5 px-5 py-3 bg-amber-700 hover:bg-amber-600 text-white font-extrabold rounded-xl text-xs transition-colors shadow-md shadow-amber-700/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
-                        2026年夏季清凉节大客专属报名入口 (提报链接即将开通)
+                    <!-- 清凉节报名入口按钮 -->
+                    <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoASgAZwZPAMACNMzl63KB1f" target="_blank" class="inline-flex items-center gap-1.5 px-5 py-3 bg-amber-700 hover:bg-amber-600 text-white font-extrabold rounded-xl text-xs transition-colors shadow-md shadow-amber-700/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+                        2026年夏季清凉节大客专属报名入口 (已开通直达) ↗
                     </a>
                 </div>
                 
@@ -386,47 +386,125 @@ html {
             </span>
             <div>
                 <h2 class="text-xl font-bold text-slate-800">模块二：传统滋补 四大能力升级 ✕ 四大标杆案例（“四力四例”融屏专区）</h2>
-                <p class="text-xs text-slate-500">“四力 ✕ 四例”深度融入：商品力（九蒸黄精）、内容力（老班长葛根）、投放力（Dr.郭八珍饮）、经营力（湿谷方）全方位赋能</p>
+                <p class="text-xs text-slate-500">“四力 ✕ 四例”深度融入：商品力（九蒸黄精）、内容力（老班长葛根）、投放力（Dr.郭八珍饮）、经营力（御湿方）全方位赋能</p>
             </div>
         </div>
 
-        <!-- 🏆 四力全景视觉雷达引擎导览区 (极强视觉冲击力 + 点击联动 Tab 切换) -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div onclick="switchFourPowersTab(1); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-emerald-50/50 to-white border border-emerald-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-emerald-300 transition-all duration-300 cursor-pointer group">
-                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-emerald-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">01</div>
+        <!-- 🏆 新增：竞价广告核心公式与四力投放因子映射看板 -->
+        <div class="bg-gradient-to-br from-slate-50 via-white to-emerald-50/20 border border-emerald-100 rounded-2xl p-5 md:p-6 mb-8 text-slate-800 shadow-lg relative overflow-hidden">
+            <!-- 装饰背景 -->
+            <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
                 <div>
-                    <span class="text-[9.5px] font-extrabold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded border border-emerald-200">一、商品力 ✕ 黄精自播案</span>
-                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-emerald-700 transition-colors">选品、地图与标杆橱窗</h4>
-                    <p class="text-[10px] text-slate-400 leading-normal">非遗古法产区背书，定位中高端高客单极品，打消功效顾虑 ↗</p>
+                    <span class="text-[9px] font-bold tracking-wider uppercase text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full border border-emerald-200">投放底层逻辑</span>
+                    <h3 class="text-sm md:text-base font-black text-slate-800 mt-1 flex items-center gap-1.5">
+                        竞价广告核心公式 ✕ “四力飞轮”影响因子映射模型
+                    </h3>
                 </div>
-                <div class="h-1.5 w-10 bg-emerald-600 rounded-full mt-3"></div>
+                <div class="text-[10px] text-slate-500 leading-normal max-w-md">
+                    竞价展现胜出率取决于 <strong>eCPM</strong> 表达，智投链路作为表达层，决定了如何将底层三力（商品力、内容力、经营力）转化为竞价优势。点击下方因子卡片可联动切换底部详细案例。
+                </div>
             </div>
-            <div onclick="switchFourPowersTab(2); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-cyan-50/50 to-white border border-cyan-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-cyan-300 transition-all duration-300 cursor-pointer group">
-                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-cyan-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">02</div>
-                <div>
-                    <span class="text-[9.5px] font-extrabold text-cyan-800 bg-cyan-100/80 px-2 py-0.5 rounded border border-cyan-200">二、内容力 ✕ 葛根IP素材案</span>
-                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-cyan-700 transition-colors">痛点金句与防雷避坑</h4>
-                    <p class="text-[10px] text-slate-400 leading-normal">老农山货淳朴背书，首创妙思 AIGC 创意攻克高频衰退 ↗</p>
+
+            <!-- 公式展示区 -->
+            <div class="flex flex-col items-center justify-center py-6 bg-slate-50 rounded-xl border border-slate-100 mb-6 relative">
+                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2.5">竞价广告核心公式 (Bid & Match Equation)</div>
+                <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-lg md:text-2xl font-black font-mono">
+                    <span class="text-slate-800 font-sans">eCPM</span>
+                    <span class="text-slate-400 font-sans text-base">=</span>
+                    <span class="px-2.5 py-1 bg-cyan-100/50 border border-cyan-200 rounded-lg text-cyan-700 shadow-sm hover:scale-105 transition-transform" title="点击率 Click-Through Rate">CTR</span>
+                    <span class="text-slate-400 font-sans text-base">×</span>
+                    <span class="px-2.5 py-1 bg-emerald-100/50 border border-emerald-200 rounded-lg text-emerald-700 shadow-sm hover:scale-105 transition-transform" title="出价 Bid">BID</span>
+                    <span class="text-slate-400 font-sans text-base">×</span>
+                    <span class="px-2.5 py-1 bg-amber-100/50 border border-amber-200 rounded-lg text-amber-700 shadow-sm hover:scale-105 transition-transform" title="转化率 Conversion Rate">CVR</span>
+                    <span class="text-slate-400 font-sans text-base">×</span>
+                    <span class="text-slate-600">1000</span>
                 </div>
-                <div class="h-1.5 w-10 bg-cyan-600 rounded-full mt-3"></div>
             </div>
-            <div onclick="switchFourPowersTab(3); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-blue-50/50 to-white border border-blue-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-blue-300 transition-all duration-300 cursor-pointer group">
-                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-blue-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">03</div>
-                <div>
-                    <span class="text-[9.5px] font-extrabold text-blue-800 bg-blue-100/80 px-2 py-0.5 rounded border border-blue-200">三、投放力 ✕ 八珍饮智投案</span>
-                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-blue-700 transition-colors">双智投链路与抗同质</h4>
-                    <p class="text-[10px] text-slate-400 leading-normal">智投3002及多版位自动驾驶拓流，低成本突围冷启动 ↗</p>
+
+            <!-- 映射关系卡片 (对齐底部的 01-04 顺序，商品力提前，最新案例搭配) -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- 商品力 (01) -->
+                <div onclick="switchFourPowersTab(1); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-emerald-50/20 border border-emerald-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 hover:shadow-md hover:shadow-emerald-100 cursor-pointer transition-all">
+                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-emerald-500/10 select-none pointer-events-none font-mono">01</div>
+                    <div>
+                        <div class="flex items-center gap-1.5 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                            <span class="text-[10px] font-black text-emerald-700 uppercase tracking-wider">底层能力 · 01 基石</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
+                            🌿 商品力 (御湿方)
+                        </h4>
+                        <p class="text-[10px] text-slate-500 leading-normal">
+                            老字号药食同源极致货盘。主影响出价能力（BID），通过古法高溢价定位、现场倒杯吸水强品质和精准人群定位，同步拉动 CTR/CVR 提升。
+                        </p>
+                    </div>
+                    <div class="mt-3 text-[9px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded self-start">
+                        影响：BID ✕ 协同拉动 CTR/CVR ↗
+                    </div>
                 </div>
-                <div class="h-1.5 w-10 bg-blue-600 rounded-full mt-3"></div>
-            </div>
-            <div onclick="switchFourPowersTab(4); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-amber-50/50 to-white border border-amber-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-amber-300 transition-all duration-300 cursor-pointer group">
-                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-amber-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">04</div>
-                <div>
-                    <span class="text-[9.5px] font-extrabold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded border border-amber-200">四、经营力 ✕ 湿谷方自播案</span>
-                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-amber-700 transition-colors">实景专场走播与展播</h4>
-                    <p class="text-[10px] text-slate-400 leading-normal">现场高低粘稠度倒杯测试强互动，三伏大攻坚爆发 ↗</p>
+
+                <!-- 内容力 (02) -->
+                <div onclick="switchFourPowersTab(2); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-cyan-50/20 border border-cyan-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-cyan-300 hover:shadow-md hover:shadow-cyan-100 cursor-pointer transition-all">
+                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-cyan-500/10 select-none pointer-events-none font-mono">02</div>
+                    <div>
+                        <div class="flex items-center gap-1.5 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse"></span>
+                            <span class="text-[10px] font-black text-cyan-700 uppercase tracking-wider">底层能力 · 02 基石</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
+                            ⚡ 内容力 (老班长葛根粉)
+                        </h4>
+                        <p class="text-[10px] text-slate-500 leading-normal">
+                            山货淳朴背书、痛点金句与 AIGC 创意素材。直接影响点击率（CTR），攻克高频创意衰退，强效拉升前3秒用户停留。
+                        </p>
+                    </div>
+                    <div class="mt-3 text-[9px] font-bold text-cyan-700 bg-cyan-5 border border-cyan-200 px-2 py-0.5 rounded self-start">
+                        影响：CTR 点击率 ↗
+                    </div>
                 </div>
-                <div class="h-1.5 w-10 bg-amber-600 rounded-full mt-3"></div>
+
+                <!-- 投放力 (03) -->
+                <div onclick="switchFourPowersTab(3); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-blue-50/20 border border-blue-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 hover:shadow-md hover:shadow-blue-100 cursor-pointer transition-all">
+                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-blue-500/10 select-none pointer-events-none font-mono">03</div>
+                    <div>
+                        <div class="flex items-center gap-1.5 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                            <span class="text-[10px] font-black text-blue-700 uppercase tracking-wider">表达层 · 03 主战场</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
+                            🚀 投放力 (枸杞双链路)
+                        </h4>
+                        <p class="text-[10px] text-slate-500 leading-normal">
+                            多账户交叉与智投单链路 3002。作为表达层（L2主战场），决定整个竞价广告 eCPM 的对外展现跑量与无人驾驶冷启拓流。
+                        </p>
+                    </div>
+                    <div class="mt-3 text-[9px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded self-start">
+                        主导：eCPM 综合跑量表达 ↗
+                    </div>
+                </div>
+
+                <!-- 经营力 (04) -->
+                <div onclick="switchFourPowersTab(4); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-amber-50/20 border border-amber-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-amber-300 hover:shadow-md hover:shadow-amber-100 cursor-pointer transition-all">
+                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-amber-500/10 select-none pointer-events-none font-mono">04</div>
+                    <div>
+                        <div class="flex items-center gap-1.5 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
+                            <span class="text-[10px] font-black text-amber-700 uppercase tracking-wider">底层能力 · 04 基石</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
+                            🏠 经营力 (燕窝618)
+                        </h4>
+                        <p class="text-[10px] text-slate-500 leading-normal">
+                            大促发货仓爆款实景内容。直接影响转化率（CVR），提供无可替代的后链路多品类极致渲染、高交易黏性与高效转化。
+                        </p>
+                    </div>
+                    <div class="mt-3 text-[9px] font-bold text-amber-700 bg-amber-5 border border-amber-200 px-2 py-0.5 rounded self-start">
+                        影响：CVR 转化率 ↗
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -434,19 +512,19 @@ html {
         <div class="flex items-end pl-2 md:pl-4 overflow-x-auto scrollbar-none gap-1 -mb-[2px] relative z-15 select-none" id="folder-tab-header">
             <button id="tab-btn-1" onclick="switchFourPowersTab(1)" class="folder-tab active-tab px-5 md:px-7 py-3.5 text-xs font-black flex items-center gap-1.5 outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                01_商品力(黄精案).db
+                01_商品力(御湿方).db
             </button>
             <button id="tab-btn-2" onclick="switchFourPowersTab(2)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>
-                02_内容力(葛根案).skill
+                02_内容力(葛根粉).skill
             </button>
             <button id="tab-btn-3" onclick="switchFourPowersTab(3)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>
-                03_投放力(八珍饮).html
+                03_投放力(枸杞案).html
             </button>
             <button id="tab-btn-4" onclick="switchFourPowersTab(4)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-line-chart"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"></polyline><polyline points="17 6 23 6 23 11.5"></polyline></svg>
-                04_经营力(湿谷方).view
+                04_经营力(燕窝618).view
             </button>
         </div>
 
@@ -466,7 +544,7 @@ html {
                     <span class="p-1.5 bg-herb-50 text-herb-600 rounded-lg border border-herb-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">一、商品力 (货)：爆款选品大势、ADQ 品类地图与小店曝光爆品融合</strong>
+                    <strong class="text-sm text-slate-800">一、商品力 (货) ✕ 御湿方案例：老字号药食同源极致货盘定位</strong>
                 </div>
 
                 <!-- 商品力摘要三卡片大排布 -->
@@ -500,8 +578,8 @@ html {
                                 穿透大健康大盘带头品类（黄精、葛根、枸杞原浆）日耗消耗、男女比例、设备与联网方式透视。
                             </p>
                         </div>
-                        <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="w-full text-center py-2.5 bg-white text-cyan-700 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
-                            查看 ADQ 滋补带头品类与现状 (品类地图) ↗
+                        <a href="ADQ_传统滋补品类现状与目标人群_浅色版.html" target="_blank" class="w-full text-center py-2.5 bg-white text-cyan-700 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
+                            查看 ADQ 传统滋补品类现状与目标人群 ↗
                         </a>
                     </div>
 
@@ -517,8 +595,8 @@ html {
                                 伏天核心推荐茯苓祛湿茶、八珍饮气血双调、清热西洋参，随单附赠体验卡首播策略突围冷启动。
                             </p>
                         </div>
-                        <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="w-full text-center py-2 bg-white text-amber-800 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
-                            查看 小店 TOP5 客户及核心 DPA 商品 ↗
+                        <a href="【uu】滋补Q3节点选品进阶手册(4).html" target="_blank" class="w-full text-center py-2 bg-white text-amber-800 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
+                            查看 滋补「三伏滋养季」节点选品手册 ↗
                         </a>
                     </div>
                 </div>
@@ -1732,7 +1810,7 @@ html {
                     <span class="p-1.5 bg-cyan-50 text-cyan-600 rounded-lg border border-cyan-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">二、内容力：爆量视频前 3 秒痛点金句滚动与合规过审防雷指引</strong>
+                    <strong class="text-sm text-slate-800">二、内容力 (创意) ✕ 老班长葛根粉案例：老农淳朴背书与黄金3秒高黏创意攻坚</strong>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-5">
@@ -1920,11 +1998,11 @@ html {
                                 <a href="case-drguo-bazhenyin.html" target="_blank" class="text-[10px] text-purple-800 font-bold hover:underline">横版案例纸 →</a>
                             </div>
                         </div>
-                        <!-- 湿谷方 -->
+                        <!-- 御湿方 -->
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">三伏祛湿爆款</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号湿谷方自播案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号御湿方自播案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>内容力特色</strong>：百年医馆古朴视觉，黄金前3秒三伏吹冷空调、起不来床黏腻寒湿痛点痛快直击。
                                     <br>• <strong>黄金3秒</strong>：现场高低粘稠度两杯粉冲泡倒水对比，展现极高吸水膨胀与真材实料，震撼双眼。
@@ -1932,8 +2010,8 @@ html {
                                 </p>
                             </div>
                             <div class="flex items-center justify-between border-t border-slate-100 pt-2.5 mt-3">
-                                <a href="湿谷方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
-                                <a href="老字号湿谷方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
+                                <a href="御湿方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
+                                <a href="老字号御湿方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
                             </div>
                         </div>
                     </div>
@@ -1949,7 +2027,7 @@ html {
                     <span class="p-1.5 bg-blue-50 text-blue-600 rounded-lg border border-blue-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">三、投放力：高效率基建双链路冷启动突围与成本探索方案</strong>
+                    <strong class="text-sm text-slate-800">三、投放力 (流量) ✕ 枸杞双链路案例：双链路智投冷启动与全域通护航拓流</strong>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-5">
@@ -2037,20 +2115,20 @@ html {
                                 <a href="case-drguo-bazhenyin.html" target="_blank" class="text-[10px] text-purple-800 font-bold hover:underline">横版案例纸 →</a>
                             </div>
                         </div>
-                        <!-- 湿谷方 -->
+                        <!-- 御湿方 -->
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">爆发狂飙 12.2倍</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号湿谷方自播案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号御湿方自播案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>投放力策略</strong>：三伏天节点专项起爆，配合全域通与 AIM+ 智投双向开跑，人群精准度大拉升。
-                                    <br>• <strong>预算与冲量</strong>：爆发期单日消耗由常规 0.6w 突暴至 **7.89w** 完美放量。
+                                    <br>• <strong>预算与冲量</strong>：爆发期单日消耗突破至大数万级别（放量超 12 倍），实现爆发式完美放量。
                                     <br>• <strong>硬核数据</strong>：放量 12.2倍期间，ROI 依旧保持稳健大盘前列。
                                 </p>
                             </div>
                             <div class="flex items-center justify-between border-t border-slate-100 pt-2.5 mt-3">
-                                <a href="湿谷方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
-                                <a href="老字号湿谷方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
+                                <a href="御湿方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
+                                <a href="老字号御湿方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
                             </div>
                         </div>
                     </div>
@@ -2066,7 +2144,7 @@ html {
                     <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-line-chart"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"></polyline><polyline points="17 6 23 6 23 11.5"></polyline></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">四、经营力：实景直播专场与大促“展播/掌播”突围大单规划</strong>
+                    <strong class="text-sm text-slate-800">四、经营力 (转化) ✕ 燕窝618案例：大促爆款实景展播与后链路高转化承接</strong>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs mb-5">
@@ -2082,8 +2160,8 @@ html {
                                 <br>• <strong>高奢随单大赠送机制</strong>：随主推季套餐、半年卡套餐赠送高价值鲜榨粥 + 40g大包装经典礼盒 + 小仙炖定制骨瓷餐具，30分钟一次香奈儿大转盘，大客百万催付逼单。
                             </p>
                         </div>
-                        <a href="https://doc.weixin.qq.com/doc/w3_AY8AIQZXAAwCNlRoQLgXMQvyPlAoB?scode=AJEAIQdfAAoaa5SqIdAY8AIQZXAAw" target="_blank" class="w-full text-center py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold rounded-xl transition-colors inline-block mt-3 border border-amber-200/60">
-                            预留：近期展播活动报名入口直达 ↗
+                        <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoASgAZwZPAMACNMzl63KB1f" target="_blank" class="w-full text-center py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold rounded-xl transition-colors inline-block mt-3 border border-amber-200/60">
+                            近期展播与扶持活动报名入口 ↗
                         </a>
                     </div>
 
@@ -2160,11 +2238,11 @@ html {
                                 <a href="case-drguo-bazhenyin.html" target="_blank" class="text-[10px] text-purple-800 font-bold hover:underline">横版案例纸 →</a>
                             </div>
                         </div>
-                        <!-- 湿谷方 -->
+                        <!-- 御湿方 -->
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">三伏超级放量</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号湿谷方自播案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号御湿方自播案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>经营力模式</strong>：中医馆原场景古朴复刻。现场黏稠颗粒拉丝互动，主播现场解答三伏去湿排黏，大包装大赠礼限时大转盘逼单。
                                     <br>• <strong>转化承接</strong>：下单率高达 **13.85%**，大幅度拉长看播时长。
@@ -2172,8 +2250,8 @@ html {
                                 </p>
                             </div>
                             <div class="flex items-center justify-between border-t border-slate-100 pt-2.5 mt-3">
-                                <a href="湿谷方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
-                                <a href="老字号湿谷方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
+                                <a href="御湿方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
+                                <a href="老字号御湿方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
                             </div>
                         </div>
                     </div>
@@ -2249,8 +2327,12 @@ html {
                         <div class="bg-amber-700 h-full rounded-full" style="width: 82%"></div>
                     </div>
                     <div class="text-[10px] text-herb-100 font-bold">已抢占 31/38 席 (仅剩最后 7 席)</div>
-                    <button onclick="copyText('我已经准备好报名传统滋补【三伏天冲量官方扶持计划】，我的小店主打品类是：____，我报名的客户主体是_______请官方大客经理协助我一键审核资质并锁定【四大核心扶持权益】名额！', '已复制一键报名大客申请表模板')" class="w-full md:w-auto px-6 py-3.5 bg-amber-700 text-white hover:bg-amber-600 font-bold rounded-xl text-xs transition-all shadow-lg shadow-amber-900/25 flex items-center justify-center gap-1.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                    <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoASgAZwZPAMACNMzl63KB1f" target="_blank" class="w-full md:w-auto px-6 py-3.5 bg-amber-700 text-white hover:bg-amber-600 font-bold rounded-xl text-xs transition-all shadow-lg shadow-amber-900/25 flex items-center justify-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+                        在线直达提报表单 ↗
+                    </a>
+                    <button onclick="copyText('我已经准备好报名传统滋补【三伏天冲量官方扶持计划】，我的小店主打品类是：____，我报名的客户主体是_______请官方大客经理协助我一键审核资质并锁定【四大核心扶持权益】名额！', '已复制一键报名大客申请表模板')" class="w-full md:w-auto px-6 py-2 bg-herb-800 text-herb-200 hover:bg-herb-700 font-bold rounded-xl text-[11px] transition-all flex items-center justify-center gap-1.5 border border-herb-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
                         一键复制报名登记表
                     </button>
                 </div>
@@ -2352,9 +2434,9 @@ html {
             title: '直播大促 & 专属看播数据透视',
             desc: `<p>• <strong>大促消耗占比</strong>：618 及节气爆发期消耗占比飙升 47%，消耗高点弹性达常规自播 3.8 倍。</p>
                    <p>• <strong>效率大盘表现</strong>：下单 ROI 优秀，维持在 1.68~2.50。智投工作台全渗透 &gt;85%。</p>
-                   <p>• <strong>主力直播品类</strong>：高端鲜炖燕窝、药食同源湿谷方（起跑日消耗飙升 12 倍）。</p>`,
+                   <p>• <strong>主力直播品类</strong>：高端鲜炖燕窝、药食同源御湿方（起跑日消耗飙升 12 倍）。</p>`,
             list: `<div class="flex justify-between"><span>1. 小仙炖618直播专场</span> <span class="font-bold text-herb-600">618最高 ROI 2.50</span></div>
-                   <div class="flex justify-between"><span>2. 老字号「湿谷方」自播</span> <span class="font-bold text-herb-600">CVR高达 16.39%</span></div>
+                   <div class="flex justify-between"><span>2. 老字号「御湿方」自播</span> <span class="font-bold text-herb-600">CVR高达 16.39%</span></div>
                    <div class="flex justify-between"><span>3. apopo 冲调日耗百万直播间</span> <span class="font-bold text-herb-600">下单率优秀</span></div>`,
             btnClass: 'flex-1 py-2.5 rounded-xl text-xs font-bold text-herb-900 bg-white shadow-sm transition-all flex items-center justify-center gap-1'
         },

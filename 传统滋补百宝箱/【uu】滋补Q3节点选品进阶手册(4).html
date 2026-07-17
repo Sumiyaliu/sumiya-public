@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>滋补「三伏滋养季」节点选品手册</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{
+    --terra:#C2603A;      /* 暑·赤陶 */
+    --terra-d:#A84B2A;
+    --amber:#C99320;      /* 蜜·琥珀 */
+    --jade:#3E8C6E;       /* 荷·青翠 */
+    --jade-d:#2C6B52;
+    --clay:#8A5A3C;       /* 陶土棕 */
+    --ink:#3A2A20;        /* 暖墨 */
+    --ink-soft:#7A6555;
+    --cream:#FBF4E9;      /* 米奶油底 */
+    --cream-d:#F4E7D4;
+    --line:#E9D9C2;
+  }
+  body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(1200px 420px at 50% -120px, #FCE9CE 0%, rgba(252,233,206,0) 70%),
+      radial-gradient(900px 360px at 110% 8%, #E7F2EB 0%, rgba(231,242,235,0) 60%),
+      linear-gradient(180deg, #FBF4E9 0%, #F8EFE0 100%);
+    background-attachment: fixed;
+  }
+  .page { max-width: 1060px; margin: 0 auto; padding: 36px 26px 70px; }
+
+  /* ===== Header — 三伏滋养季 ===== */
+  .header {
+    position:relative; text-align: center; margin-bottom: 40px;
+    padding: 46px 28px 38px; border-radius: 26px; overflow:hidden;
+    background:
+      radial-gradient(420px 220px at 18% 0%, rgba(255,255,255,.45), rgba(255,255,255,0) 70%),
+      linear-gradient(135deg, #C2603A 0%, #D5793F 45%, #C99320 100%);
+    box-shadow: 0 18px 44px -16px rgba(168,75,42,.5);
+  }
+  .header::before{ content:"☀"; position:absolute; right:-10px; top:-14px; font-size:150px; color:rgba(255,255,255,.16); line-height:1; }
+  .header::after{ content:"🪷"; position:absolute; left:14px; bottom:-18px; font-size:96px; opacity:.18; line-height:1; }
+  .header .kicker{ position:relative; display:inline-block; font-size:12px; letter-spacing:4px; color:#fff;
+    background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:5px 16px; border-radius:30px; margin-bottom:16px; }
+  .header h1 { position:relative; font-family:'Noto Serif SC',serif; font-size: 34px; font-weight: 900; letter-spacing: 3px; color:#fff; margin-bottom: 10px; text-shadow:0 2px 10px rgba(120,50,20,.3); }
+  .header .sub { position:relative; font-size: 14.5px; color: rgba(255,255,255,.92); font-weight: 400; letter-spacing:.5px; }
+  .header .meta { position:relative; font-size: 12px; color: rgba(255,255,255,.78); margin-top: 14px; line-height:1.8; }
+
+  .section { margin-bottom: 46px; }
+  .section-title {
+    font-family:'Noto Serif SC',serif; font-size: 21px; font-weight: 700; margin-bottom: 10px;
+    padding: 4px 0 4px 16px; border-left: 5px solid var(--terra); line-height: 1.4; color:var(--ink);
+    position:relative;
+  }
+  .section-title::after{ content:""; display:block; width:42px; height:3px; border-radius:3px; background:linear-gradient(90deg,var(--terra),transparent); margin-top:8px; }
+  .section-title.teal { border-left-color: var(--jade); }
+  .section-title.teal::after{ background:linear-gradient(90deg,var(--jade),transparent); }
+  .section-title.amber { border-left-color: var(--amber); }
+  .section-title.amber::after{ background:linear-gradient(90deg,var(--amber),transparent); }
+  .section-title.blue { border-left-color: #4E7CB5; }
+  .section-title.blue::after{ background:linear-gradient(90deg,#4E7CB5,transparent); }
+  .section-title.purple { border-left-color: var(--clay); }
+  .section-title.purple::after{ background:linear-gradient(90deg,var(--clay),transparent); }
+  .section-desc { font-size: 14px; color: var(--ink-soft); margin: 8px 0 20px; padding-left: 16px; }
+
+  .card { background:rgba(255,255,255,.85); border-radius: 16px; padding: 24px; margin-bottom: 18px; border: 1px solid var(--line); box-shadow:0 6px 20px -14px rgba(138,90,60,.35); }
+
+  /* pain pill */
+  .pain-pill { display:inline-block; font-size:12px; font-weight:500; padding:3px 12px; border-radius:20px; color:#fff; }
+  .p-cool { background:var(--jade); }
+  .p-damp { background:var(--amber); }
+  .p-warm { background:var(--terra); }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; background:#fff; }
+  thead th { background: linear-gradient(135deg,var(--terra),var(--terra-d)); color:#fff; padding: 11px 10px; text-align: left; font-weight: 500; font-size:12.5px; letter-spacing:.3px; }
+  thead th.alt { background:linear-gradient(135deg,var(--clay),#6E4528); }
+  tbody td { padding: 10px 10px; border-bottom: 1px solid #F1E6D6; vertical-align: top; }
+  tbody tr:nth-child(even) td { background:#FCF6EC; }
+  tbody tr:hover td { background:#FBEFDD; }
+  .table-wrap { overflow-x:auto; border-radius:14px; border:1px solid var(--line); box-shadow:0 6px 20px -14px rgba(138,90,60,.35); }
+  td .heat { color:var(--terra); font-weight:700; }
+  td .price { color:var(--jade-d); font-weight:600; }
+  .src { display:inline-block; font-size:11px; padding:2px 8px; border-radius:10px; font-weight:600; white-space:nowrap; }
+  .src-dy { background:#F1E7D8; color:#8A6A48; }
+  .src-wx { background:#DCEFE6; color:var(--jade-d); }
+  .tag-cycle { display:inline-block; font-size:11px; padding:1px 8px; border-radius:10px; margin:1px; font-weight:500; }
+  .c-chu { background:#E3EEF3; color:#3D6B7E; }
+  .c-zhong { background:#FAEEDA; color:#A6791A; }
+  .c-mo { background:#DCEFE6; color:var(--jade-d); }
+
+  /* timeline */
+  .timeline { position: relative; padding-left: 28px; margin-top:10px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 2px; background: var(--line); }
+  .tl-item { position: relative; margin-bottom: 18px; background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 5px 16px -13px rgba(138,90,60,.4); }
+  .tl-item::before { content: ''; position: absolute; left: -24px; top: 22px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--terra); background: #FBE7D6; z-index: 1; }
+  .tl-item .tl-date { font-size: 12px; font-weight: 500; color: var(--amber); }
+  .tl-item .tl-title { font-family:'Noto Serif SC',serif; font-size: 16px; font-weight: 700; margin: 2px 0 4px; color:var(--ink); }
+  .tl-item .tl-theme { font-size: 13px; color: var(--clay); font-weight:500; margin-bottom:8px; }
+  .tl-row { font-size:13px; margin:3px 0; color:#4A3A2E; }
+  .tl-row b { color:var(--ink); }
+  .tl-tags { margin-top:6px; }
+  .tl-tags span { display:inline-block; font-size:12px; padding:2px 10px; border-radius:12px; background:#F3E7D6; color:#7A6047; margin:2px 4px 2px 0; }
+
+  /* heat bar list */
+  .heat-list { margin-top:8px; }
+  .heat-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:13px; }
+  .heat-row .hl-name { width:140px; flex:none; font-weight:500; }
+  .heat-row .hl-bar-wrap { flex:1; background:#F1E6D6; border-radius:6px; height:16px; overflow:hidden; }
+  .heat-row .hl-bar { height:100%; background:linear-gradient(90deg,var(--terra),#E89A5E); border-radius:6px; }
+  .heat-row .hl-val { width:70px; flex:none; text-align:right; color:var(--terra); font-weight:700; }
+
+  .note { background:#FDF3DF; border-left:3px solid var(--amber); padding:11px 15px; border-radius:0 10px 10px 0; font-size:13px; color:#7A5810; margin:12px 0; }
+  .insight { background:#F3EBDF; border-left:3px solid var(--clay); padding:11px 15px; border-radius:0 10px 10px 0; font-size:13px; color:#6E4528; margin:12px 0; }
+  .reco { background:#E2F1E9; border-left:3px solid var(--jade); padding:11px 15px; border-radius:0 10px 10px 0; font-size:13px; color:var(--jade-d); margin:12px 0; }
+
+  .divider { height: 1px; background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent); margin: 38px 0; position:relative; }
+  .divider::after{ content:"❀"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); background:#FBF4E9; padding:0 14px; color:var(--amber); font-size:14px; }
+  .sub-h { font-family:'Noto Serif SC',serif; font-size:16px; font-weight:700; margin:22px 0 10px; color:var(--ink); }
+  .footnote { font-size: 12px; color: var(--ink-soft); text-align: center; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); line-height:1.9; }
+  .legend { font-size:12px; color:var(--ink-soft); margin:6px 0 14px; }
+  .legend span { margin-right:14px; }
+
+  /* resource doc links */
+  .doc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:8px; }
+  .doc-link { display:flex; align-items:center; gap:14px; text-decoration:none; background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:14px; padding:16px 18px; transition:all .18s; }
+  .doc-link:hover { border-color:var(--terra); box-shadow:0 10px 24px -12px rgba(194,96,58,.4); transform:translateY(-2px); }
+  .doc-link .doc-ico { flex:none; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .doc-link .doc-txt { flex:1; min-width:0; }
+  .doc-link .doc-title { font-size:14px; font-weight:700; color:var(--ink); line-height:1.4; }
+  .doc-link .doc-sub { font-size:12px; color:var(--ink-soft); margin-top:3px; }
+  .doc-link .doc-arrow { flex:none; color:var(--terra); font-size:18px; }
+  @media (max-width:680px){ .doc-grid { grid-template-columns:1fr; } .header h1{ font-size:27px; } }
+
+  /* forbidden / compliance block */
+  .ban-warn { background:#FBE7E0; border:1px solid #ECC2B4; border-left:4px solid var(--terra-d); border-radius:0 12px 12px 0; padding:14px 18px; font-size:13.5px; color:#8A3A24; margin-bottom:18px; }
+  .ban-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .ban-card { background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:14px; padding:20px 22px; }
+  .ban-card .bc-head { font-size:15px; font-weight:700; margin-bottom:4px; display:flex; align-items:center; gap:8px; }
+  .ban-card .bc-sub { font-size:12.5px; color:var(--ink-soft); margin-bottom:14px; }
+  .ban-tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .ban-tags .bt { display:inline-block; font-size:13px; font-weight:500; padding:5px 13px; border-radius:8px; }
+  .bt-red { background:#FBE7E0; color:var(--terra-d); border:1px solid #ECC2B4; }
+  .bt-amber { background:#FAF0DB; color:#A6791A; border:1px solid #EAD8AE; }
+  .bt-grey { background:#F1EADF; color:#7A6855; border:1px solid #E0D2BE; }
+  .ban-note { background:#FAF0DB; border-left:3px solid var(--amber); padding:11px 15px; border-radius:0 10px 10px 0; font-size:13px; color:#7A5810; margin-top:14px; }
+  .ban-ok { background:#E2F1E9; border-left:3px solid var(--jade); padding:11px 15px; border-radius:0 10px 10px 0; font-size:13px; color:var(--jade-d); margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="kicker">☀ 盛夏三伏 · 滋养正当时</div>
+    <h1>滋补「三伏滋养季」节点选品手册</h1>
+    <div class="sub">清热润燥 · 祛湿养阳 · 温补理脏 ｜ 三大调养方向选品 × 各版位投放数据参考</div>
+    <div class="meta">尤丽琴 · 腾讯广告 · 滋补保健行业 ｜ 数据来源：抖音三伏选品参考 + 友望视频号滋补品类爆款分析（2026.05）+ 视频号 ADQ 药食同源准入清单</div>
+  </div>
+
+  <div class="note">
+    📌 这份手册聚焦 <b>滋补「三伏滋养季」</b>（7月中–8月中）一个核心节点，围绕「夏季养生」把三伏拆成 <b>清热润燥 / 祛湿养阳 / 温补理脏</b> 三个并行调养方向，告诉您每个方向下适合上哪些品、对标哪些爆款、参考什么价格带。<b>类目 / 成分</b> 一列已对照视频号《药食同源准入清单》归类，方便对照投放类目；表中标 <span style="color:#BA7517;">⚠准入</span> / <span style="color:#C0392B;">⛔禁投</span> 的商品请留意投放限制，落地前按自家配料表再核对一遍。后附 <b>各版位投放 Benchmark</b>、<b>禁投 / 限投成分自查清单</b> 与 <b>视频号爆款数据</b>，挑版位、避禁投、做选品交叉验证都能用。
+  </div>
+
+  <!-- ============ PART 0: H2 六大营销主题矩阵 ============ -->
+  <div class="section">
+    <div class="section-title purple">〇、H2 六大营销主题矩阵（节点整合速览）</div>
+    <div class="section-desc">来自原《滋补行业 H2 提收策略方案》。把散点节点整合为 6 大连续性主题，降低客户参与门槛、提升平台资源利用效率。<b>本部分仅作主题全景速览；后续第一、二部分只重点讲透其中体量最大的「三伏滋养季」一个主题，其余主题按本表自行参照即可。</b></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:110px;">主题</th><th style="width:110px;">时间窗口</th><th style="width:150px;">覆盖节点</th><th style="width:150px;">心智关键词</th><th>核心品类</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;color:#D85A30;">三伏滋养季</td>
+            <td>7月中-8月中</td>
+            <td>初伏、中伏、末伏</td>
+            <td>祛湿、养阳、冬病夏治</td>
+            <td>五指毛桃、祛湿茶/膏、薏米茯苓、姜枣茶</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#993556;">七夕礼赠季</td>
+            <td>8月上-8月中</td>
+            <td>七夕、立秋</td>
+            <td>滋补送礼、爱意表达</td>
+            <td>燕窝礼盒、花胶礼盒、阿胶糕礼盒</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#BA7517;">秋润养肺季</td>
+            <td>8月中-9月中</td>
+            <td>立秋、处暑、白露、中秋</td>
+            <td>润燥、养阴、团圆</td>
+            <td>银耳、百合、雪梨膏、燕窝、秋梨膏</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#0F6E56;">秋分平补季</td>
+            <td>9月中-10月中</td>
+            <td>秋分、寒露</td>
+            <td>平补、调和、滋阴</td>
+            <td>人参、黄芪、枸杞、红枣、山药</td>
+          </tr>
+          <tr style="opacity:.72;">
+            <td style="font-weight:700;color:#185FA5;">冬令进补季<br><span style="font-size:11px;font-weight:400;color:#999;">（Q4 备览）</span></td>
+            <td>10月中-12月中</td>
+            <td>霜降、立冬、小雪、大雪</td>
+            <td>御寒、进补、温补</td>
+            <td>冬虫夏草、人参、海参、阿胶 <span style="color:#C0392B;font-size:11px;">（鹿茸属禁投，已剔除）</span></td>
+          </tr>
+          <tr style="opacity:.72;">
+            <td style="font-weight:700;color:#534AB7;">年终滋补节<br><span style="font-size:11px;font-weight:400;color:#999;">（Q4 备览）</span></td>
+            <td>11月-12月</td>
+            <td>双11、双12、冬至</td>
+            <td>大促、回馈、年货</td>
+            <td>全品类（高客单走量+礼盒预售）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ PART 1: 三伏滋养季整体打法 ============ -->
+  <div class="section">
+    <div class="section-title">一、本期主题聚焦：「三伏滋养季」整体打法（7月中-8月中）</div>
+    <div class="section-desc">六大主题已在第〇部分全景列出，<b>本手册只重点讲透 Q3 体量最大的「三伏滋养季」</b>这一个主题。三伏在 Q3 是一个完整的趋势季，<b>这里不再拆初伏/中伏/末伏</b>——给您留足备货与素材准备时间。三伏滋养下分 <b>清热润燥 / 祛湿养阳 / 温补理脏</b> 三个并行方向——<b>这不是客单价高低之分，而是三种不同的调养思路</b>，三者之间没有绝对的客单价区隔。人群以视频号画像为准，<b>聚焦中老年与全年龄段</b>。颜色：<span class="pain-pill p-cool">清热润燥</span> <span class="pain-pill p-damp">祛湿养阳</span> <span class="pain-pill p-warm">温补理脏</span></div>
+
+    <div class="card" style="border:2px solid #BA7517;">
+      <div class="sub-h" style="color:#BA7517;">1.1 三伏滋养季 ｜ 三个调养方向一图速览</div>
+      <div class="legend"><b>读法：</b>三伏滋养季围绕「夏季养生」做主线，下分三个并行方向（沿用清热/祛湿/温补三套调养思路）。类目参考视频号《药食同源准入清单》归类，被清单明确收录的成分归入对应类目（绝大多数草本归「药食同源食品」），清单未单列对应关系的品类（如燕窝、阿胶）单独摘出。<b>建议在整个 7月中-8月中 不要只跑某一个方向，而是把多个方向结合起来铺货</b>，无需按伏天细拆。</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:120px;">调养方向</th>
+              <th style="width:200px;">心智 / 痛点</th>
+              <th>适配类目 / 成分</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pain-pill p-cool">清热润燥</span></td>
+              <td>暑热烦躁·口干舌燥·没胃口·秋燥初起</td>
+              <td>药食同源食品（山楂·金银花·乌梅·罗汉果·百合·化橘红等） · 养生膏 · 花草茶 / 袋泡茶 · 梨膏</td>
+            </tr>
+            <tr style="background:#FAEEDA;">
+              <td><span class="pain-pill p-damp">祛湿养阳</span></td>
+              <td>身体困重·出油虚胖·脾虚湿重·冬病夏治·虚寒气血不足</td>
+              <td>药食同源食品（茯苓·薏米·莲子·芡实·赤小豆·当归·黄芪等） · 袋泡茶 · 养生膏（姜枣） · 燕窝/花胶</td>
+            </tr>
+            <tr>
+              <td><span class="pain-pill p-warm">温补理脏</span></td>
+              <td>气血亏虚·脾胃失养·阳气当养·秋补起势（中老年滋补底盘）</td>
+              <td>阿胶 · 人参/西洋参 · 燕窝 · 石斛 · 药食同源食品（枸杞·三七·黑芝麻等） · 食补粉</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="reco">▶ 整季打法一句话：<b>三个方向不分主次、并行铺货——「清热润燥」承接暑热秋燥的日饮需求，「祛湿养阳」对应三伏冬病夏治的主线，「温补理脏」沉淀中老年滋补底盘，自然过渡到后面的七夕礼赠与秋润养肺。</b>建议在整个滋养季把多个方向结合起来跑，而不是只押一个方向；具体挑哪几类，按自家的货盘结构和已有类目来定。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ PART 2: 三伏滋养季三个方向选品 ============ -->
+  <div class="section">
+    <div class="section-title amber">二、「三伏滋养季」三个方向选品参考</div>
+    <div class="section-desc">三伏滋养下分三个并行方向——<span class="pain-pill p-cool">清热润燥</span> <span class="pain-pill p-damp">祛湿养阳</span> <span class="pain-pill p-warm">温补理脏</span>，列出每个方向下有哪些品可以推。<b>这三个方向不是客单价高低之分，建议多个方向结合着跑</b>；整季汇总、不拆初伏中伏末伏；默认目标人群即视频号中老年 / 全年龄段。<b>「类目 / 成分」一列参考视频号《药食同源准入清单》归类</b>：清单明确收录的成分归入对应类目（独立类目如石斛 / 人参·西洋参 / 灵芝·孢子粉 / 阿胶 / 燕窝等，其余草本统一归「药食同源食品」并把具体成分如茯苓标在后面）；清单里没有给出对应关系的品类（如燕窝、阿胶单算一类，五指毛桃等未收录成分），就单独摘出来标注，便于对照投放类目。<b>每个品同时标注两个数据源：</b><span class="src src-dy">抖音</span> 三伏选品方向 + <span class="src src-wx">视频号</span> 友望实测爆品，覆盖药食同源 / 枸杞 / 燕窝 / 参类 / 阿胶 / 石斛 / 三七等多品类。</div>
+
+    <!-- 2.1 清热润燥 -->
+    <div class="card">
+      <div class="sub-h">2.1 &nbsp;<span class="pain-pill p-cool">清热润燥</span> &nbsp;方向一：暑热口干 · 秋燥初起</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:165px;">类目 / 成分</th><th>推荐品 / 对标爆品</th><th style="width:130px;">主成分</th><th style="width:80px;">功效</th><th>卖点</th><th style="width:74px;">来源</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>养生膏<br><span style="font-size:11px;color:#888;">药食同源（山楂·鸡内金·沙棘）</span></td>
+              <td>李良济【山楂六物膏】中华老字号非遗熬制即食</td>
+              <td>山楂·鸡内金·沙棘</td>
+              <td>消暑·开胃</td>
+              <td>不添加·非遗膏方·古法熬制·独立小包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>花草茶 / 袋泡茶<br><span style="font-size:11px;color:#888;">药食同源（金银花）</span></td>
+              <td>夏季真材实料袋泡花草茶·高温户外解暑·柠檬薄荷金银花茶</td>
+              <td>金银花</td>
+              <td>消暑·清热</td>
+              <td>真材实料·独立茶包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>袋泡茶<br><span style="font-size:11px;color:#888;">药食同源（乌梅·山楂·茯苓·桑椹·橘皮）</span></td>
+              <td>乌梅汤2.0版·清爽口味·夏天冲饮山楂茯苓茶</td>
+              <td>乌梅·陈皮·玫瑰·山楂·茯苓·桑葚</td>
+              <td>消暑·生津止渴</td>
+              <td>酸甜可口·经典古方·地道食材·独立茶包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">龙血果<span style="color:#BA7517;">（不在准入清单·投放需自查）</span></span></td>
+              <td>云南深山龙血果·无熏硫·煮水泡茶干吃</td>
+              <td>龙血果</td>
+              <td>清热·生津</td>
+              <td>无熏硫·一果多吃·低门槛尝鲜</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">黄芪</span></td>
+              <td>甘肃岷县黄芪 5年原色无硫·泡茶煮水·手工切片 100g</td>
+              <td>黄芪</td>
+              <td>益气·固表</td>
+              <td>产地溯源·无硫·泡茶煮水皆宜</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">化橘红</span></td>
+              <td>广东化橘红 5年陈化胎果切片·地标有机 100g</td>
+              <td>化橘红</td>
+              <td>润肺·化痰·利咽</td>
+              <td>地标有机·陈化胎果·润燥护嗓</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#E6F4EA;">
+              <td>养生膏（中老年润燥重点）<br><span style="font-size:11px;color:#888;">药食同源（罗汉果·百合）</span></td>
+              <td>砀山秋梨膏·古法熬制清润不燥·泡水即饮（梨膏由儿童线转化为中老年润燥款）</td>
+              <td>梨·罗汉果·百合</td>
+              <td>清热·润肺·利咽</td>
+              <td>鲜果熬制·清润不燥·独立小包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">📊 选品要点：清热润燥是把祛湿流量拉进来的入场盘。<b>视频号实测验证</b>：龙血果、岷县黄芪、陈化化橘红在友望药食同源榜均跑出热度，且都是「泡水煮茶干吃」的低门槛日饮形态，正好承接中老年润燥护嗓需求。</div>
+      <div class="note">🔁 中老年转化思路：抖音里梨膏/金银花柚子汁是<b>儿童「不上火」</b>引流款，主成分（梨·金银花·罗汉果）本身就清热润肺。转化到视频号中老年人群，话术从「宝宝清润」改为「<b>润肺利咽·缓解秋燥干咳</b>」，规格从小桶改为<b>独立小包随冲</b>，更贴合中老年「泡水代茶」习惯。</div>
+    </div>
+
+    <!-- 2.2 祛湿养阳 -->
+    <div class="card">
+      <div class="sub-h">2.2 &nbsp;<span class="pain-pill p-damp">祛湿养阳</span> &nbsp;方向二：脾虚湿重 · 冬病夏治</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:165px;">类目 / 成分</th><th>推荐品 / 对标爆品</th><th style="width:130px;">主成分</th><th style="width:80px;">功效</th><th>卖点</th><th style="width:74px;">来源</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">莲子（视频号TOP1）</span></td>
+              <td>小茵姑娘 湘潭去芯莲子 500g·当季新货·免泡磨皮·煲汤煮粥</td>
+              <td>莲子</td>
+              <td>健脾·祛湿·安神</td>
+              <td>当季新货·免泡磨皮·煲汤煮粥皆宜（友望榜热度第一）</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">薏米（视频号TOP2）</span></td>
+              <td>美谷季 宁化糯薏米 720g·优质新米·软糯熬粥</td>
+              <td>薏米</td>
+              <td>祛湿·健脾</td>
+              <td>新米软糯·薏米莲子同煮·家庭复购盘</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr>
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">茯苓</span></td>
+              <td>云南正宗云茯苓生切生晒茯苓块·可搭配薏米芡实山药 500g</td>
+              <td>茯苓</td>
+              <td>祛湿·健脾</td>
+              <td>不添加·产地溯源</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">芡实</span></td>
+              <td>正宗苏州特产·新鲜鸡头米芡实大颗粒产地直销 1斤装</td>
+              <td>芡实</td>
+              <td>祛湿·健脾</td>
+              <td>新鲜现采·产地溯源</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>袋泡茶<br><span style="font-size:11px;color:#888;">药食同源（薏米·茯苓·赤小豆·芡实·橘皮）<span style="color:#BA7517;">；五指毛桃不在清单·需自查</span></span></td>
+              <td>五指毛桃土茯苓茶·芡实大麦红豆薏米茶（祛湿主力）</td>
+              <td>五指毛桃·薏仁·苦荞·茯苓·赤小豆·橘皮·芡实·栀子</td>
+              <td>祛湿</td>
+              <td>真材实料·无糖免煮·独立茶包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>花草茶<br><span style="font-size:11px;color:#888;">药食同源（赤小豆·橘皮·薏米·芡实）</span></td>
+              <td>【四季无湿】茶小唷·红豆薏米芡实茶·拒绝湿气</td>
+              <td>赤小豆·橘皮·红枣·薏仁·芡实</td>
+              <td>祛湿</td>
+              <td>天然原料·无添加·独立茶包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>燕窝 / 花胶<br><span style="font-size:11px;color:#888;">花胶·枸杞</span></td>
+              <td>海盏五红鲜炖花胶·开盖即食·红枣口味（即食碗）</td>
+              <td>花胶·红枣·花生·枸杞</td>
+              <td>补气血</td>
+              <td>营养代餐·甄选食材·独立碗状</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr style="background:#FAEEDA;">
+              <td>养生膏（姜枣）<br><span style="font-size:11px;color:#888;">药食同源（生姜·大枣）</span></td>
+              <td>云耕物作现熬姜枣膏·云南小黄姜·暖而不辣 360g/瓶</td>
+              <td>小黄姜·红枣·红糖</td>
+              <td>排寒·养阳·补气血</td>
+              <td>配方干净·古法熬制</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">当归·黑豆（视频号·女性养阳）</span></td>
+              <td>细初 当归黑豆膏·古法熬制免煮即食·女性营养（友望其他滋补品榜）</td>
+              <td>当归·黑豆</td>
+              <td>养血·养阳</td>
+              <td>古法熬制·免煮即食·女性自用复购</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">黑芝麻·枸杞等（视频号·中老年）</span></td>
+              <td>五宝粉·中老年必备·支持试吃（友望其他滋补品榜TOP1）</td>
+              <td>核桃·黑芝麻·黑豆·枸杞等五宝</td>
+              <td>健脾·益气·养血</td>
+              <td>买1斤送1斤·支持试吃·中老年早餐冲饮</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源 / 石斛 / 人参·西洋参<br><span style="font-size:11px;color:#888;">西洋参·石斛·麦冬·玉竹·橘皮（视频号·熬夜祛湿）</span></td>
+              <td>西洋参石斛麦冬玉竹橘皮煮水煲汤·熬夜汤料包（友望其他滋补品榜）</td>
+              <td>西洋参·石斛·麦冬·玉竹·橘皮</td>
+              <td>清热·生津·益气</td>
+              <td>药食同源配伍·煮水煲汤·熬夜调养</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">📊 选品要点：祛湿养阳是整个三伏季流量最集中的方向，也是<b>视频号实测最旺</b>的一类——友望药食同源榜 TOP1/TOP2 正是<b>莲子（热度383）、糯薏米（热度221）</b>，与抖音「薏仁·赤小豆·茯苓·芡实」五件套完全互相印证。主成分收敛在五件套 + 姜枣养阳线，卖点统一打「无糖免煮·独立茶包·暖而不辣」。货盘可由浅入深铺：日饮款（袋泡茶）→ 食材款（莲子/薏米/茯苓/芡实山货）→ 即食款（花胶碗 / 姜枣膏）。视频号侧再补「五宝粉/当归黑豆膏/熬夜汤料」这类中老年与女性的即食养阳款。<b>提醒客户：这只是祛湿养阳一个方向，建议同时结合清热润燥、温补理脏一起铺货。</b></div>
+    </div>
+
+    <!-- 2.3 温补理脏 -->
+    <div class="card">
+      <div class="sub-h">2.3 &nbsp;<span class="pain-pill p-warm">温补理脏</span> &nbsp;方向三：气血脾胃 · 中老年滋补底盘</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:165px;">类目 / 成分</th><th>推荐品 / 对标爆品</th><th style="width:130px;">主成分</th><th style="width:80px;">功效</th><th>卖点</th><th style="width:74px;">来源</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">枸杞（视频号高热·热度1462）</span></td>
+              <td>正宗宁夏中宁红枸杞 130g/罐·拍一发三（友望枸杞榜TOP1·热度381）</td>
+              <td>枸杞</td>
+              <td>滋补固元·明目</td>
+              <td>中宁产地·拍一发三·日饮复购盘</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">枸杞</span></td>
+              <td>李时珍 枸杞子纯甄大红果·零熏硫·泡水养生 100g</td>
+              <td>枸杞</td>
+              <td>滋补固元·明目</td>
+              <td>零熏硫·大红果·泡水代茶</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>燕窝<br><span style="font-size:11px;color:#888;">银耳·燕窝·坚果（视频号高热·热度1913）</span></td>
+              <td>京栀坊 燕窝坚果银耳羹 500g/罐·49.9送4罐（友望燕窝榜·热度209）</td>
+              <td>银耳·燕窝·坚果</td>
+              <td>补气血·润燥</td>
+              <td>即食免煮·组合装·女性代餐</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>燕窝 / 花胶<br><span style="font-size:11px;color:#888;">燕窝·花胶</span></td>
+              <td>燕大夫 燕窝牛乳花胶·即食胶原蛋白·女性代餐 0添加（友望燕窝榜·热度174）</td>
+              <td>燕窝·牛乳·花胶</td>
+              <td>补气血·养颜</td>
+              <td>开盖即食·0添加·女性早餐代餐</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr>
+              <td>食补粉<br><span style="font-size:11px;color:#888;">药食同源（莲子·芡实·山药·百合）；含阿胶</span></td>
+              <td>【国药药材认证专利】阿胶三白焕颜汤</td>
+              <td>杏仁·糙米·豆粉·莲子·芡实·山药·百合等</td>
+              <td>补气血·养颜</td>
+              <td>甄选原料·草本植物饮·独立包装</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>养生膏<br><span style="font-size:11px;color:#888;">阿胶 / 药食同源（桑椹·肉桂·茯苓）</span></td>
+              <td>【十二味御颜膏】古法熬制·养生茶 1瓶/300克</td>
+              <td>桑葚·肉桂·茯苓·阿胶·玫瑰等</td>
+              <td>补气血·滋阴养颜</td>
+              <td>真材实料·古法熬制</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>阿胶<br><span style="font-size:11px;color:#888;">阿胶·黄芪（视频号·热度277）</span></td>
+              <td>喜纯黄芪鲜阿胶膏·即食小鲜胶·阿胶添加55%（友望阿胶榜TOP1·自有客户）</td>
+              <td>阿胶·黄芪·驴胶</td>
+              <td>补气血·滋阴养颜</td>
+              <td>即食小鲜胶·送长辈送对象·自有客户</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>阿胶<br><span style="font-size:11px;color:#888;">阿胶·黑芝麻·核桃</span></td>
+              <td>御清颜东阿手工阿胶糕·黑芝麻核桃·精美铁盒（友望阿胶榜·中秋送礼）</td>
+              <td>阿胶·黑芝麻·核桃·红枣</td>
+              <td>补气血·滋阴养颜</td>
+              <td>手工熬制·铁盒礼装·中秋送礼</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>人参 / 西洋参<br><span style="font-size:11px;color:#888;">人参（视频号·热度503）</span></td>
+              <td>户小亚 长白山鲜人参蜜片·即食便携随身养（友望参类榜TOP1·热度82）</td>
+              <td>人参</td>
+              <td>补气升阳·益气</td>
+              <td>即食蜜片·便携随身·厂家直发尝鲜</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr>
+              <td>人参 / 西洋参<br><span style="font-size:11px;color:#888;">红参（人参）</span></td>
+              <td>精品特级9年高丽老红参·老人煲汤泡水·无硫优质</td>
+              <td>红参（人参皂苷）</td>
+              <td>补气升阳</td>
+              <td>无熏无硫·精品手选·高客单礼赠</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>石斛<br><span style="font-size:11px;color:#888;">铁皮石斛（视频号·中老年）</span></td>
+              <td>福林堂铁皮石斛粉（友望石斛榜TOP1·热度30）</td>
+              <td>铁皮石斛</td>
+              <td>生津·益气·养胃</td>
+              <td>细粉冲泡·低门槛尝鲜·中老年养护</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">三七<span style="color:#BA7517;">（成分已收录·商品形态需自查）</span>（视频号·中老年）</span></td>
+              <td>蒿药师 云南文山三七超细粉·磨研冲泡（友望三七榜）</td>
+              <td>三七</td>
+              <td>活血·养护</td>
+              <td>文山产地·超细粉易吸收·中老年日常养护</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#EAF4FB;">
+              <td>冬虫夏草<br><span style="font-size:11px;color:#888;">冬虫夏草（视频号高客单礼赠）</span></td>
+              <td>藏区高海拔新鲜冬虫夏草·真空锁鲜·整条（友望虫草榜）</td>
+              <td>冬虫夏草</td>
+              <td>补虚·益气</td>
+              <td>产地溯源·真空锁鲜·高端礼赠探索池</td>
+              <td><span class="src src-wx">视频号</span></td>
+            </tr>
+            <tr style="background:#FDEDE7;">
+              <td>药食同源食品<br><span style="font-size:11px;color:#888;">鸡内金·山楂·山药（中老年理脏重点）</span></td>
+              <td>牛脾肽鸡内金·健脾养胃营养品（由儿童「呵护脾胃」线转化为中老年健脾理脏款）</td>
+              <td>鸡内金·山楂·山药</td>
+              <td>健脾养胃·助消化</td>
+              <td>成分搭配·草本配方·独立小包</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr style="background:#FDEDE7;">
+              <td>阿胶 / 药食同源<br><span style="font-size:11px;color:#888;">阿胶·枸杞·大枣（中老年理脏重点）</span></td>
+              <td>阿胶枸杞红枣软糖·补铁补气血（由儿童/孕妈软糖转化为中老年便携气血款）</td>
+              <td>阿胶·枸杞·红枣（血红素铁）</td>
+              <td>补气血·补铁</td>
+              <td>不添加·Q弹好吃·便携</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+            <tr>
+              <td>袋泡茶<br><span style="font-size:11px;color:#888;">药食同源（黄芪·党参·麦冬） / 西洋参</span></td>
+              <td>【元气四宝茶】100小包·黄芪党参泡茶养生</td>
+              <td>黄芪·党参·西洋参·麦冬</td>
+              <td>补气升阳</td>
+              <td>甄选原料·无添加·产地溯源·独立包装</td>
+              <td><span class="src src-dy">抖音</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">📊 选品要点：温补理脏是中老年滋补底盘，也是<b>视频号品类覆盖最广</b>的一块——友望榜上枸杞（1462）、燕窝（1913）、参类（503）、阿胶（277）、石斛、三七、冬虫夏草全部在跑，远不止三大核心品类。<b>女性线</b>主打阿胶/御颜膏/即食燕窝花胶「补气血·滋阴养颜」；<b>中老年男性线</b>主打参类蜜片/枸杞/三七/石斛粉「补气升阳·滋补固元」。价格带跨度最大，适合礼赠+自用双轨，自然过渡到七夕、中秋礼赠。<b>注意：</b>视频号枸杞、燕窝即食羹、人参蜜片均已被实测验证为高复购日常款，建议优先铺货。</div>
+      <div class="note">🔁 中老年转化思路：抖音里「富铁软糖（儿童孕妈）」「牛脾肽鸡内金（儿童健脾）」是儿童线滋补品，但其内核——<b>补铁补气血、健脾养胃助消化</b>——恰恰是中老年的高频需求。举一反三可推：① 软糖形态转「<b>中老年便携气血软糖</b>」（牙口友好、随身带）；② 鸡内金/山楂健脾品转「<b>中老年助消化健脾款</b>」（饭后泡饮）。形态和功效不变，只换人群话术与卖点，即可承接已验证的爆款货盘。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ PART 3: ADQ 版位投放 Benchmark ============ -->
+  <div class="section">
+    <div class="section-title teal">三、滋补行业 ADQ 各版位投放 Benchmark（投放数据参考）</div>
+    <div class="section-desc">滋补行业在 ADQ 大盘上各二级流量版位的实测均值，给您挑版位、定预期用——<b>ctr 高的负责拉点击、cvr/ROI 高的负责拿转化、CPM 低的负责走量</b>，按自家货盘客单价和目标对号入座。</div>
+
+    <div class="card">
+      <div class="legend"><b>读法：</b><span style="color:#534AB7;font-weight:700;">第一行「整体」是大盘基准线</span>，下面每个版位都和它对比着看。<span style="color:#D85A30;font-weight:700;">橙色</span>=该列里的高点击/高客单，<span style="color:#0F6E56;font-weight:700;">绿色</span>=高转化/低成本，<span style="color:#C0392B;font-weight:700;">红色</span>=成本偏高需注意。<span style="color:#999;">（仅拆分 MP）</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:150px;">二级流量（仅拆分 MP）</th>
+              <th style="width:90px;">ctr (%)</th>
+              <th style="width:100px;">浅层 cvr (%)</th>
+              <th style="width:90px;">下单 ROI</th>
+              <th style="width:110px;">下单单价 (元)</th>
+              <th style="width:110px;">竞价 CPM (元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#EEEDFE;font-weight:700;">
+              <td>整体（大盘基准）</td>
+              <td>3.96</td>
+              <td>2.49</td>
+              <td>1.05</td>
+              <td>¥136.99</td>
+              <td>¥75.24</td>
+            </tr>
+            <tr>
+              <td>微信公众号</td>
+              <td><b style="color:#D85A30;">5.33</b></td>
+              <td>0.73</td>
+              <td>0.64</td>
+              <td>¥187.60</td>
+              <td>¥87.01</td>
+            </tr>
+            <tr>
+              <td>微信视频号</td>
+              <td>2.21</td>
+              <td><b style="color:#0F6E56;">6.13</b></td>
+              <td><b style="color:#0F6E56;">1.81</b></td>
+              <td>¥122.35</td>
+              <td>¥78.94</td>
+            </tr>
+            <tr>
+              <td>微信小程序</td>
+              <td>4.55</td>
+              <td><b style="color:#0F6E56;">7.23</b></td>
+              <td>1.06</td>
+              <td>¥101.95</td>
+              <td>¥105.66</td>
+            </tr>
+            <tr>
+              <td>平台与内容广告</td>
+              <td>5.30</td>
+              <td>1.27</td>
+              <td>0.61</td>
+              <td>¥155.69</td>
+              <td>¥56.57</td>
+            </tr>
+            <tr>
+              <td>微信朋友圈</td>
+              <td>1.54</td>
+              <td>2.83</td>
+              <td>1.25</td>
+              <td>¥208.19</td>
+              <td><b style="color:#0F6E56;">¥42.58</b></td>
+            </tr>
+            <tr>
+              <td>微信搜一搜</td>
+              <td><b style="color:#D85A30;">6.87</b></td>
+              <td>1.74</td>
+              <td><b style="color:#0F6E56;">2.02</b></td>
+              <td><b style="color:#D85A30;">¥321.40</b></td>
+              <td><b style="color:#C0392B;">¥173.10</b></td>
+            </tr>
+            <tr>
+              <td>移动联盟</td>
+              <td>4.09</td>
+              <td>0.22</td>
+              <td>0.47</td>
+              <td>¥145.80</td>
+              <td><b style="color:#0F6E56;">¥10.84</b></td>
+            </tr>
+            <tr>
+              <td>搜索广告</td>
+              <td>2.97</td>
+              <td>0.69</td>
+              <td>0.66</td>
+              <td>¥139.72</td>
+              <td>¥21.71</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">📊 版位怎么挑：<br>
+        ① <b>视频号 + 小程序 = 转化主战场</b>——浅层 cvr 6.13% / 7.23%、视频号下单 ROI 1.81 全场最高，客单 ¥101-122 适配药食同源/枸杞/即食羹这类日常复购盘，<b>想要量和 ROI 优先压这俩</b>；<br>
+        ② <b>公众号 / 搜一搜 = 高客单 + 高意向</b>——搜一搜 ctr 6.87%、ROI 2.02、下单单价 ¥321 全场最高（人群带搜索意图、最精准），但 CPM ¥173 也最贵，适合阿胶/燕窝/参类<b>高客单礼赠</b>小预算精投；公众号 ctr 5.33% 拉点击强但 cvr 偏低，适合做种草引流；<br>
+        ③ <b>朋友圈 / 移动联盟 = 低 CPM 走量</b>——CPM 仅 ¥42.58 / ¥10.84，拉新铺量成本低，朋友圈下单单价 ¥208 还能承接高客单，移动联盟 cvr 低需配合优质素材筛人群。<br>
+        <b>一句话总结：</b>没有"最好的版位"，只有"和货盘客单价、投放目标（拉新 / 转化 / 礼赠）匹配的版位"，建议<b>视频号 + 小程序打底盘，搜一搜 + 公众号补高客单意向人群</b>，多版位组合跑。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ PART 4: 滋补行业禁投/限投成分自查清单 ============ -->
+  <div class="section">
+    <div class="section-title" style="border-left-color:#C0392B;">四、ADQ 滋补禁止准入成分自查清单（投放前务必规避）</div>
+    <div class="section-desc">以下为 ADQ 滋补行业明确的禁止准入成分及品类准入更新，<b>请按配料表维度自查</b>。</div>
+
+    <table style="margin-top:6px;">
+      <tbody>
+        <tr>
+          <td style="width:200px;background:#FDECEA;font-style:italic;color:#8A2417;font-weight:600;vertical-align:middle;">ADQ 滋补禁止准入成分<br>〔配料表维度，<span style="color:#C0392B;font-weight:700;">请自查</span>〕</td>
+          <td>
+            <div style="text-decoration:underline;margin-bottom:8px;">涉及壮阳类食品禁投：</div>
+            <div style="line-height:2;margin-bottom:16px;">韭菜籽、海马、杜仲、女贞子、补骨脂狗脊、附子、淫羊藿、<b>肉苁蓉</b>、菟丝子巴戟天、锁阳、玛咖、<b>蛹虫草</b>、锁阳茶、东革阿里、五青钱柳及其制品、<b>鹿相关制品</b>，<b>牡蛎膏</b>、雪莲宝茶、<b>参鹿片</b>、黄精〔单一品支持，复合及制品不支持，可沟通销售〕、牡蛎压片糖果</div>
+            <div style="text-decoration:underline;margin-bottom:8px;">涉及到保健食品禁用：</div>
+            <div style="line-height:2;">八角莲、八里麻、千金子、土青木香、山黄岩、川乌、广防己、马桑叶、马钱子、六角莲、天仙子、巴豆、水银、长春花、甘遂、牛天南星、牛半夏、牛白附子、牛狼毒、白峰丹、石蒜、关木，农吉痢、夹竹桃、朱砂、米壳〔罂粟壳〕、红升丹、红豆杉、红茴香、红粉、羊角物、羊陇躅、丽江山慈姑、京大戟、昆明山海棠、河豚、闹羊花、青娘虫、鱼藤、洋地黄、洋金花、牵牛子、砒石〔白砒、红砒、砒草乌、香加皮〔杠柳皮〕、骆驼蓬、鬼臼、莽草、铁棒槌、铃兰、雪上一枝蒿、黄花夹竹桃、斑蝥、硫磺、雄黄、雷公藤、颠茄、藜芦、蟾酥、灵芝孢子粉〔食品级计划放开中〕。</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#fff;color:#C0392B;font-weight:700;vertical-align:middle;">品类准入更新</td>
+          <td>
+            <div style="line-height:2.2;">黄精，单一品支持，复合以及制品不支持</div>
+            <div style="line-height:2.2;">冬虫夏草支持</div>
+            <div style="line-height:2.2;">灵芝孢子粉〔食品级〕已支持</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ PART 5: 友望视频号爆款数据 ============ -->
+  <div class="section">
+    <div class="section-title blue">五、友望视频号滋补爆款数据（2026.05 · 交叉验证）</div>
+    <div class="section-desc">数据来源：友望视频号带货平台·2026年5月·共分析 500 个 TOP 商品 / 9 个二级品类。热度 = 销量 / 100。用于验证抖音选品方向、补充燕窝/枸杞/参类等品类的具体爆品与价格带。</div>
+
+    <!-- 3.1 品类热度榜 -->
+    <div class="card">
+      <div class="sub-h">5.1 二级品类热度排行（TOP3 合计约占 75.7% 总热度）</div>
+      <div class="heat-list">
+        <div class="heat-row"><div class="hl-name">药食同源食品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:100%;"></div></div><div class="hl-val">4,085.5</div></div>
+        <div class="heat-row"><div class="hl-name">燕窝滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:46.8%;"></div></div><div class="hl-val">1,913.1</div></div>
+        <div class="heat-row"><div class="hl-name">枸杞类滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:35.8%;"></div></div><div class="hl-val">1,461.9</div></div>
+        <div class="heat-row"><div class="hl-name">其他滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:35.1%;"></div></div><div class="hl-val">1,433.1</div></div>
+        <div class="heat-row"><div class="hl-name">参类滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:12.3%;"></div></div><div class="hl-val">502.9</div></div>
+        <div class="heat-row"><div class="hl-name">阿胶类滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:6.8%;"></div></div><div class="hl-val">276.8</div></div>
+        <div class="heat-row"><div class="hl-name">冬虫夏草滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:2.2%;"></div></div><div class="hl-val">90.2</div></div>
+        <div class="heat-row"><div class="hl-name">石斛/枫斗滋补品</div><div class="hl-bar-wrap"><div class="hl-bar" style="width:1.9%;"></div></div><div class="hl-val">75.7</div></div>
+      </div>
+      <div class="insight">📊 货盘分工建议：用 <b>莲子/枸杞/薏米</b> 等日常食材做复购（呼应三伏滋养主成分），用 <b>燕窝/花胶/银耳羹</b> 抬高客单（呼应中秋/七夕礼赠），参类/阿胶/虫草作为客单提升或新品探索池。主品类放首页和直播间主推位，辅助品类做组合购/加价购。</div>
+    </div>
+
+    <!-- 3.2 三大核心品类 Top 带货商品 -->
+    <div class="card">
+      <div class="sub-h">5.2 三大核心品类 Top 带货商品</div>
+
+      <div style="margin-bottom:6px;font-weight:700;color:#185FA5;">① 药食同源食品（229款 · 热度 4,085.5）</div>
+      <div class="table-wrap" style="margin-bottom:18px;">
+        <table>
+          <thead><tr><th style="width:40px;">#</th><th>代表商品（SPU）</th><th style="width:120px;">价格区间/客单</th><th style="width:70px;">热度</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>小茵姑娘 湘潭去芯莲子 500g 当季新货·免泡磨皮·煲汤煮粥</td><td><span class="price">¥39.9</span></td><td><span class="heat">383.5</span></td></tr>
+            <tr><td>2</td><td>美谷季 宁化糯薏米 720g 优质新米杂粮·软糯熬粥</td><td><span class="price">¥49.9</span></td><td><span class="heat">220.6</span></td></tr>
+            <tr style="background:#FFF8E6;"><td>3</td><td>原臻 九蒸九制黄精·软糯即食·泡水泡茶 250g <span style="color:#BA7517;font-weight:700;">⚠准入</span><br><span style="font-size:11px;color:#BA7517;">黄精 ADQ 仅单一品支持，"九蒸九制"为复合/制品形态暂不支持；如投放需改用黄精单品（原色切片煮水），或走沟通销售</span></td><td><span class="price">¥99</span></td><td><span class="heat">130.3</span></td></tr>
+            <tr><td>4</td><td>甘肃岷县黄芪 5年原色无硫·泡茶煮水·手工切片</td><td><span class="price">¥25.8</span></td><td><span class="heat">89.3</span></td></tr>
+            <tr style="background:#FFF8E6;"><td>5</td><td>贤慧堂 九蒸九晒黄精果·有机九制 200g <span style="color:#BA7517;font-weight:700;">⚠准入</span><br><span style="font-size:11px;color:#BA7517;">同上：黄精仅单品支持，"九蒸九晒果"属制品暂不支持，需改单品或沟通销售</span></td><td><span class="price">¥98</span></td><td><span class="heat">84.0</span></td></tr>
+            <tr><td>7</td><td>云南深山龙血果·无熏硫·煮水泡茶干吃</td><td><span class="price">¥9.99-13.88</span></td><td><span class="heat">76.3</span></td></tr>
+            <tr><td>9</td><td>广东化橘红 5年陈化胎果切片·地标有机 100g</td><td><span class="price">¥99</span></td><td><span class="heat">64.0</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-bottom:6px;font-weight:700;color:#185FA5;">② 燕窝滋补品（61款 · 热度 1,913.1）</div>
+      <div class="table-wrap" style="margin-bottom:18px;">
+        <table>
+          <thead><tr><th style="width:40px;">#</th><th>代表商品（SPU）</th><th style="width:120px;">价格区间/客单</th><th style="width:70px;">热度</th></tr></thead>
+          <tbody>
+            <tr style="background:#FDEDEC;"><td>1</td><td>汉方爷爷 蛹虫草鲜炖燕窝 75g/瓶·国宾伴手礼 <span style="color:#C0392B;font-weight:700;">⛔禁投</span><br><span style="font-size:11px;color:#C0392B;">蛹虫草属 ADQ 壮阳类禁投成分，此爆品不可投。高端礼赠位改用纯燕窝单品（如下方燕春语/鲜珥家）承接</span></td><td>未标价（高端礼赠）</td><td><span class="heat">360.4</span></td></tr>
+            <tr><td>2</td><td>京栀坊 燕窝坚果银耳羹 500g/罐（49.9/4罐送杯勺）</td><td><span class="price">¥49.9</span></td><td><span class="heat">209.0</span></td></tr>
+            <tr><td>3</td><td>燕大夫 燕窝牛乳花胶·即食胶原蛋白·女性代餐 0添加</td><td>未标价</td><td><span class="heat">174.1</span></td></tr>
+            <tr><td>5</td><td>燕春语 一路生花·燕窝花胶粥 180g/碗（399到手3箱）</td><td><span class="price">¥399</span></td><td><span class="heat">105.4</span></td></tr>
+            <tr><td>8</td><td>鲜炖燕窝 70g*7瓶·免煮高档即食礼盒·冰糖燕窝</td><td><span class="price">¥39.9</span></td><td><span class="heat">49.3</span></td></tr>
+            <tr><td>9</td><td>鲜珥家 燕窝银耳羹礼盒 15g*6包·冲泡60s即食·开袋免煮</td><td><span class="price">¥89.9</span></td><td><span class="heat">39.9</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-bottom:6px;font-weight:700;color:#185FA5;">③ 枸杞类滋补品（59款 · 热度 1,461.9）</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:40px;">#</th><th>代表商品（SPU）</th><th style="width:120px;">价格区间/客单</th><th style="width:70px;">热度</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>正宗宁夏中宁红枸杞 130g/罐（拍一发三）·滋补养生</td><td><span class="price">¥59.9-69.9</span></td><td><span class="heat">381.6</span></td></tr>
+            <tr><td>2</td><td>大熊书记严选 宁夏中宁枸杞特优级大果·干泡茶酒</td><td><span class="price">¥26.9</span></td><td><span class="heat">154.3</span></td></tr>
+            <tr><td>3</td><td>李时珍 枸杞子纯甄大红果·零熏硫·泡水养生 100g</td><td><span class="price">¥39.9</span></td><td><span class="heat">76.0</span></td></tr>
+            <tr><td>4</td><td>宁夏中宁头茬枸杞·自然晾晒无熏硫大果·产地直发 250g</td><td><span class="price">¥85</span></td><td><span class="heat">72.5</span></td></tr>
+            <tr><td>6</td><td>宁夏中宁枸杞·特优大果头茬（国家地理标志）手工精选</td><td><span class="price">¥69.9</span></td><td><span class="heat">59.2</span></td></tr>
+            <tr><td>7</td><td>西域皇后 无硫熏新疆精河红枸杞大果·泡茶干吃</td><td><span class="price">¥28</span></td><td><span class="heat">41.0</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">补充品类爆品速记：<b>参类</b>——户小亚长白山鲜人参蜜片 ¥99.9（热度82）、韩国九蒸九晒高丽参 ¥268-398；<b>阿胶</b>——喜纯黄芪鲜阿胶膏 ¥99（热度47.6，自有客户）、御清颜东阿手工阿胶糕 ¥39.9；<b>石斛</b>——福林堂铁皮石斛粉 ¥19.9、霍山双石斛原浆精华版 ¥1338-1899（高端）。</div>
+    </div>
+
+    <!-- 3.3 关键词增长趋势 -->
+    <div class="card">
+      <div class="sub-h">5.3 高增长关键词 TOP10（环比增速）</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:40px;">#</th><th style="width:130px;">关键词</th><th style="width:90px;">维度</th><th style="width:80px;">当月热度</th><th>环比增速 / 关联产品</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><b>花胶</b></td><td>成分原材料</td><td>381.3</td><td><span class="heat">↑558.32%</span> · 关联 燕窝/花胶/牛乳（蓝海爆发，小盘试投）</td></tr>
+            <tr><td>2</td><td><b>宁夏枸杞</b></td><td>产地</td><td>257.8</td><td><span class="heat">↑434.04%</span> · 产地背书拉动</td></tr>
+            <tr><td>3</td><td><b>日常养生</b></td><td>适用场景</td><td>970.3</td><td><span class="heat">↑398.99%</span> · 日常可坚持食养</td></tr>
+            <tr><td>4</td><td><b>膏方</b></td><td>成分原材料</td><td>608.6</td><td><span class="heat">↑338.35%</span> · 呼应养生膏/姜枣膏</td></tr>
+            <tr><td>5</td><td><b>枸杞</b></td><td>成分原材料</td><td>1,424.6</td><td><span class="heat">↑240.05%</span> · 高热承接日饮复购</td></tr>
+            <tr><td>7</td><td><b>中老年</b></td><td>适用人群</td><td>146.3</td><td><span class="heat">↑206.17%</span> · 银发主力人群</td></tr>
+            <tr><td>8</td><td><b>银耳</b></td><td>成分原材料</td><td>608.7</td><td><span class="heat">↑175.56%</span> · 即食羹品（润燥/立秋节点）</td></tr>
+            <tr><td>10</td><td><b>九蒸九晒</b></td><td>工艺</td><td>1,167.3</td><td><span class="heat">↑126.12%</span> · 工艺背书溢价（黄精<b style="color:#BA7517;">单品</b>可投，制品需沟通销售）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">📊 工艺维度「即食化」热度 2,192（最高，关联黄精/燕窝/花胶）；场景维度「泡水代茶」2,162、「煲汤」1,638、「节庆送礼」989（呼应中秋）；功效维度「送礼养生」855 居首，「祛湿除湿」环比回落（三伏前布局正当时）。标题公式 = <b>关键词 × 产品形态 × 核心卖点</b>。</div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ PART 6: 配套文档资源 ============ -->
+  <div class="section">
+    <div class="section-title purple">六、配套文档资源（点击直达）</div>
+    <div class="section-desc">选品 + 投放落地时配套用的几份官方资料，点开即可跳转最新文档。</div>
+    <div class="doc-grid">
+      <a class="doc-link" href="https://docs.qq.com/doc/DQkJpanFKdnh0UUJv" target="_blank" rel="noopener">
+        <div class="doc-ico" style="background:#E6F0FB;">🧰</div>
+        <div class="doc-txt">
+          <div class="doc-title">滋补食品行业百宝箱 2.0</div>
+          <div class="doc-sub">腾讯文档 · 行业选品与投放总纲</div>
+        </div>
+        <div class="doc-arrow">↗</div>
+      </a>
+      <a class="doc-link" href="https://doc.weixin.qq.com/doc/w3_AY8AIQZXAAwGWLcwWT4Q4ypkDBbFr?scode=AJEAIQdfAAoHxC0S6cASgAZwZPAMA" target="_blank" rel="noopener">
+        <div class="doc-ico" style="background:#E1F5EE;">📺</div>
+        <div class="doc-txt">
+          <div class="doc-title">食饮行业直播百宝箱 2.0</div>
+          <div class="doc-sub">微信文档 · 直播带货打法参考</div>
+        </div>
+        <div class="doc-arrow">↗</div>
+      </a>
+      <a class="doc-link" href="https://doc.weixin.qq.com/doc/w3_AM0A_AZiACICNuzpSLaQWQP6fQzQC?scode=AJEAIQdfAAowxg9Z2LASgAZwZPAMA" target="_blank" rel="noopener">
+        <div class="doc-ico" style="background:#FAEEDA;">🎬</div>
+        <div class="doc-txt">
+          <div class="doc-title">食品行业跑量素材创意双周报</div>
+          <div class="doc-sub">微信文档 · 其他子行业跑量素材参考</div>
+        </div>
+        <div class="doc-arrow">↗</div>
+      </a>
+      <a class="doc-link" href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACN0w4lyM9bTm2xWolQ?scode=AJEAIQdfAAo6nzZ9XmASgAZwZPAMA" target="_blank" rel="noopener">
+        <div class="doc-ico" style="background:#FAECE7;">🎯</div>
+        <div class="doc-txt">
+          <div class="doc-title">爆款开头类型参考 · CTR 专项</div>
+          <div class="doc-sub">微信文档 · 短视频前 3 秒提点击专项</div>
+        </div>
+        <div class="doc-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footnote">滋补「三伏滋养季」节点选品手册 · 腾讯广告 · 2026.06 ｜ 数据：抖音三伏选品参考 + 友望视频号滋补品类爆款分析（2026.05）+ ADQ 滋补行业版位 Benchmark</div>
+</div>
+</body>
+</html>
