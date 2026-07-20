@@ -134,6 +134,21 @@ html {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
+
+/* ===== 模块卡片底部对齐：网格内卡片等高，末尾 CTA / 内容贴底 ===== */
+[class*="grid-cols"] {
+    align-items: stretch;
+}
+[class*="grid-cols"] > .card-herb,
+[class*="grid-cols"] > [class*="border"][class*="rounded"] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+[class*="grid-cols"] > .card-herb > :last-child,
+[class*="grid-cols"] > [class*="border"][class*="rounded"] > :last-child {
+    margin-top: auto;
+}
 </style>
 </head>
 <body class="bg-shasha-100 text-slate-800 min-height-screen pb-24">
@@ -247,10 +262,10 @@ html {
                         </div>
                     </div>
 
-                    <!-- 清凉节报名入口按钮 -->
-                    <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoASgAZwZPAMACNMzl63KB1f" target="_blank" class="inline-flex items-center gap-1.5 px-5 py-3 bg-amber-700 hover:bg-amber-600 text-white font-extrabold rounded-xl text-xs transition-colors shadow-md shadow-amber-700/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
-                        2026年夏季清凉节大客专属报名入口 (已开通直达) ↗
+                    <!-- 【链接留空】清凉节报名入口按钮 (预留，href="#" 配合点击友好提示) -->
+                    <a href="javascript:void(0)" onclick="alert('清凉节官方报名大客通道即将开通，请联系您的官方投放经理获取专属提报链接！')" class="inline-flex items-center gap-1.5 px-5 py-3 bg-amber-700 hover:bg-amber-600 text-white font-extrabold rounded-xl text-xs transition-colors shadow-md shadow-amber-700/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                        2026年夏季清凉节大客专属报名入口 (提报链接即将开通)
                     </a>
                 </div>
                 
@@ -386,125 +401,47 @@ html {
             </span>
             <div>
                 <h2 class="text-xl font-bold text-slate-800">模块二：传统滋补 四大能力升级 ✕ 四大标杆案例（“四力四例”融屏专区）</h2>
-                <p class="text-xs text-slate-500">“四力 ✕ 四例”深度融入：商品力（九蒸黄精）、内容力（老班长葛根）、投放力（Dr.郭八珍饮）、经营力（御湿方）全方位赋能</p>
+                <p class="text-xs text-slate-500">“四力 ✕ 四例”深度融入：商品力（九蒸黄精）、内容力（某人设IP葛根）、投放力（某科研专家八珍饮）、经营力（湿谷方）全方位赋能</p>
             </div>
         </div>
 
-        <!-- 🏆 新增：竞价广告核心公式与四力投放因子映射看板 -->
-        <div class="bg-gradient-to-br from-slate-50 via-white to-emerald-50/20 border border-emerald-100 rounded-2xl p-5 md:p-6 mb-8 text-slate-800 shadow-lg relative overflow-hidden">
-            <!-- 装饰背景 -->
-            <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
-            <div class="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none"></div>
-            
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
+        <!-- 🏆 四力全景视觉雷达引擎导览区 (极强视觉冲击力 + 点击联动 Tab 切换) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div onclick="switchFourPowersTab(1); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-emerald-50/50 to-white border border-emerald-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-emerald-300 transition-all duration-300 cursor-pointer group">
+                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-emerald-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">01</div>
                 <div>
-                    <span class="text-[9px] font-bold tracking-wider uppercase text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full border border-emerald-200">投放底层逻辑</span>
-                    <h3 class="text-sm md:text-base font-black text-slate-800 mt-1 flex items-center gap-1.5">
-                        竞价广告核心公式 ✕ “四力飞轮”影响因子映射模型
-                    </h3>
+                    <span class="text-[9.5px] font-extrabold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded border border-emerald-200">一、商品力 ✕ 黄精自播案</span>
+                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-emerald-700 transition-colors">选品、地图与标杆橱窗</h4>
+                    <p class="text-[10px] text-slate-400 leading-normal">非遗古法产区背书，定位中高端高客单极品，打消功效顾虑 ↗</p>
                 </div>
-                <div class="text-[10px] text-slate-500 leading-normal max-w-md">
-                    竞价展现胜出率取决于 <strong>eCPM</strong> 表达，智投链路作为表达层，决定了如何将底层三力（商品力、内容力、经营力）转化为竞价优势。点击下方因子卡片可联动切换底部详细案例。
-                </div>
+                <div class="h-1.5 w-10 bg-emerald-600 rounded-full mt-3"></div>
             </div>
-
-            <!-- 公式展示区 -->
-            <div class="flex flex-col items-center justify-center py-6 bg-slate-50 rounded-xl border border-slate-100 mb-6 relative">
-                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2.5">竞价广告核心公式 (Bid & Match Equation)</div>
-                <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-lg md:text-2xl font-black font-mono">
-                    <span class="text-slate-800 font-sans">eCPM</span>
-                    <span class="text-slate-400 font-sans text-base">=</span>
-                    <span class="px-2.5 py-1 bg-cyan-100/50 border border-cyan-200 rounded-lg text-cyan-700 shadow-sm hover:scale-105 transition-transform" title="点击率 Click-Through Rate">CTR</span>
-                    <span class="text-slate-400 font-sans text-base">×</span>
-                    <span class="px-2.5 py-1 bg-emerald-100/50 border border-emerald-200 rounded-lg text-emerald-700 shadow-sm hover:scale-105 transition-transform" title="出价 Bid">BID</span>
-                    <span class="text-slate-400 font-sans text-base">×</span>
-                    <span class="px-2.5 py-1 bg-amber-100/50 border border-amber-200 rounded-lg text-amber-700 shadow-sm hover:scale-105 transition-transform" title="转化率 Conversion Rate">CVR</span>
-                    <span class="text-slate-400 font-sans text-base">×</span>
-                    <span class="text-slate-600">1000</span>
+            <div onclick="switchFourPowersTab(2); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-cyan-50/50 to-white border border-cyan-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-cyan-300 transition-all duration-300 cursor-pointer group">
+                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-cyan-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">02</div>
+                <div>
+                    <span class="text-[9.5px] font-extrabold text-cyan-800 bg-cyan-100/80 px-2 py-0.5 rounded border border-cyan-200">二、内容力 ✕ 葛根IP素材案</span>
+                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-cyan-700 transition-colors">痛点金句与防雷避坑</h4>
+                    <p class="text-[10px] text-slate-400 leading-normal">老农山货淳朴背书，首创妙思 AIGC 创意攻克高频衰退 ↗</p>
                 </div>
+                <div class="h-1.5 w-10 bg-cyan-600 rounded-full mt-3"></div>
             </div>
-
-            <!-- 映射关系卡片 (对齐底部的 01-04 顺序，商品力提前，最新案例搭配) -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <!-- 商品力 (01) -->
-                <div onclick="switchFourPowersTab(1); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-emerald-50/20 border border-emerald-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 hover:shadow-md hover:shadow-emerald-100 cursor-pointer transition-all">
-                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-emerald-500/10 select-none pointer-events-none font-mono">01</div>
-                    <div>
-                        <div class="flex items-center gap-1.5 mb-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                            <span class="text-[10px] font-black text-emerald-700 uppercase tracking-wider">底层能力 · 01 基石</span>
-                        </div>
-                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
-                            🌿 商品力 (御湿方)
-                        </h4>
-                        <p class="text-[10px] text-slate-500 leading-normal">
-                            老字号药食同源极致货盘。主影响出价能力（BID），通过古法高溢价定位、现场倒杯吸水强品质和精准人群定位，同步拉动 CTR/CVR 提升。
-                        </p>
-                    </div>
-                    <div class="mt-3 text-[9px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded self-start">
-                        影响：BID ✕ 协同拉动 CTR/CVR ↗
-                    </div>
+            <div onclick="switchFourPowersTab(3); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-blue-50/50 to-white border border-blue-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-blue-300 transition-all duration-300 cursor-pointer group">
+                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-blue-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">03</div>
+                <div>
+                    <span class="text-[9.5px] font-extrabold text-blue-800 bg-blue-100/80 px-2 py-0.5 rounded border border-blue-200">三、投放力 ✕ 八珍饮智投案</span>
+                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-blue-700 transition-colors">双智投链路与抗同质</h4>
+                    <p class="text-[10px] text-slate-400 leading-normal">智投3002及多版位自动驾驶拓流，低成本突围冷启动 ↗</p>
                 </div>
-
-                <!-- 内容力 (02) -->
-                <div onclick="switchFourPowersTab(2); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-cyan-50/20 border border-cyan-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-cyan-300 hover:shadow-md hover:shadow-cyan-100 cursor-pointer transition-all">
-                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-cyan-500/10 select-none pointer-events-none font-mono">02</div>
-                    <div>
-                        <div class="flex items-center gap-1.5 mb-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse"></span>
-                            <span class="text-[10px] font-black text-cyan-700 uppercase tracking-wider">底层能力 · 02 基石</span>
-                        </div>
-                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
-                            ⚡ 内容力 (老班长葛根粉)
-                        </h4>
-                        <p class="text-[10px] text-slate-500 leading-normal">
-                            山货淳朴背书、痛点金句与 AIGC 创意素材。直接影响点击率（CTR），攻克高频创意衰退，强效拉升前3秒用户停留。
-                        </p>
-                    </div>
-                    <div class="mt-3 text-[9px] font-bold text-cyan-700 bg-cyan-5 border border-cyan-200 px-2 py-0.5 rounded self-start">
-                        影响：CTR 点击率 ↗
-                    </div>
+                <div class="h-1.5 w-10 bg-blue-600 rounded-full mt-3"></div>
+            </div>
+            <div onclick="switchFourPowersTab(4); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="relative overflow-hidden p-4.5 bg-gradient-to-br from-amber-50/50 to-white border border-amber-200/70 rounded-2xl flex flex-col justify-between hover:shadow-md hover:border-amber-300 transition-all duration-300 cursor-pointer group">
+                <div class="absolute -right-3 -bottom-5 text-7xl font-black text-amber-100/40 italic font-mono pointer-events-none select-none group-hover:scale-105 transition-transform">04</div>
+                <div>
+                    <span class="text-[9.5px] font-extrabold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded border border-amber-200">四、经营力 ✕ 湿谷方自播案</span>
+                    <h4 class="font-extrabold text-slate-800 text-xs mt-3 mb-1 group-hover:text-amber-700 transition-colors">实景专场走播与展播</h4>
+                    <p class="text-[10px] text-slate-400 leading-normal">现场高低粘稠度倒杯测试强互动，三伏大攻坚爆发 ↗</p>
                 </div>
-
-                <!-- 投放力 (03) -->
-                <div onclick="switchFourPowersTab(3); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-blue-50/20 border border-blue-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 hover:shadow-md hover:shadow-blue-100 cursor-pointer transition-all">
-                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-blue-500/10 select-none pointer-events-none font-mono">03</div>
-                    <div>
-                        <div class="flex items-center gap-1.5 mb-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
-                            <span class="text-[10px] font-black text-blue-700 uppercase tracking-wider">表达层 · 03 主战场</span>
-                        </div>
-                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
-                            🚀 投放力 (枸杞双链路)
-                        </h4>
-                        <p class="text-[10px] text-slate-500 leading-normal">
-                            多账户交叉与智投单链路 3002。作为表达层（L2主战场），决定整个竞价广告 eCPM 的对外展现跑量与无人驾驶冷启拓流。
-                        </p>
-                    </div>
-                    <div class="mt-3 text-[9px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded self-start">
-                        主导：eCPM 综合跑量表达 ↗
-                    </div>
-                </div>
-
-                <!-- 经营力 (04) -->
-                <div onclick="switchFourPowersTab(4); document.getElementById('folder-tab-header').scrollIntoView({behavior: 'smooth'})" class="p-3.5 bg-amber-50/20 border border-amber-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-amber-300 hover:shadow-md hover:shadow-amber-100 cursor-pointer transition-all">
-                    <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-amber-500/10 select-none pointer-events-none font-mono">04</div>
-                    <div>
-                        <div class="flex items-center gap-1.5 mb-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
-                            <span class="text-[10px] font-black text-amber-700 uppercase tracking-wider">底层能力 · 04 基石</span>
-                        </div>
-                        <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">
-                            🏠 经营力 (燕窝618)
-                        </h4>
-                        <p class="text-[10px] text-slate-500 leading-normal">
-                            大促发货仓爆款实景内容。直接影响转化率（CVR），提供无可替代的后链路多品类极致渲染、高交易黏性与高效转化。
-                        </p>
-                    </div>
-                    <div class="mt-3 text-[9px] font-bold text-amber-700 bg-amber-5 border border-amber-200 px-2 py-0.5 rounded self-start">
-                        影响：CVR 转化率 ↗
-                    </div>
-                </div>
+                <div class="h-1.5 w-10 bg-amber-600 rounded-full mt-3"></div>
             </div>
         </div>
 
@@ -512,19 +449,19 @@ html {
         <div class="flex items-end pl-2 md:pl-4 overflow-x-auto scrollbar-none gap-1 -mb-[2px] relative z-15 select-none" id="folder-tab-header">
             <button id="tab-btn-1" onclick="switchFourPowersTab(1)" class="folder-tab active-tab px-5 md:px-7 py-3.5 text-xs font-black flex items-center gap-1.5 outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                01_商品力(御湿方).db
+                01_商品力(黄精案).db
             </button>
             <button id="tab-btn-2" onclick="switchFourPowersTab(2)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>
-                02_内容力(葛根粉).skill
+                02_内容力(葛根案).skill
             </button>
             <button id="tab-btn-3" onclick="switchFourPowersTab(3)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>
-                03_投放力(枸杞案).html
+                03_投放力(八珍饮).html
             </button>
             <button id="tab-btn-4" onclick="switchFourPowersTab(4)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-line-chart"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"></polyline><polyline points="17 6 23 6 23 11.5"></polyline></svg>
-                04_经营力(燕窝618).view
+                04_经营力(湿谷方).view
             </button>
         </div>
 
@@ -544,7 +481,7 @@ html {
                     <span class="p-1.5 bg-herb-50 text-herb-600 rounded-lg border border-herb-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">一、商品力 (货) ✕ 御湿方案例：老字号药食同源极致货盘定位</strong>
+                    <strong class="text-sm text-slate-800">一、商品力 (货)：爆款选品大势、ADQ 品类地图与小店曝光爆品融合</strong>
                 </div>
 
                 <!-- 商品力摘要三卡片大排布 -->
@@ -578,8 +515,8 @@ html {
                                 穿透大健康大盘带头品类（黄精、葛根、枸杞原浆）日耗消耗、男女比例、设备与联网方式透视。
                             </p>
                         </div>
-                        <a href="adq-category-audience.html" target="_blank" class="w-full text-center py-2.5 bg-white text-cyan-700 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
-                            查看 ADQ 传统滋补品类现状与目标人群 ↗
+                        <a href="传统滋补_链路X品类X版位_区间脱敏.html" target="_blank" class="w-full text-center py-2.5 bg-white text-cyan-700 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
+                            查看 ADQ 滋补带头品类与现状 (品类地图) ↗
                         </a>
                     </div>
 
@@ -595,8 +532,8 @@ html {
                                 伏天核心推荐茯苓祛湿茶、八珍饮气血双调、清热西洋参，随单附赠体验卡首播策略突围冷启动。
                             </p>
                         </div>
-                        <a href="q3-selection-manual.html" target="_blank" class="w-full text-center py-2 bg-white text-amber-800 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
-                            查看 滋补「三伏滋养季」节点选品手册 ↗
+                        <a href="传统滋补小店TOP5客户DPA商品.html" target="_blank" class="w-full text-center py-2 bg-white text-amber-800 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">
+                            查看 小店 TOP5 客户及核心 DPA 商品 ↗
                         </a>
                     </div>
                 </div>
@@ -612,7 +549,7 @@ html {
                                 <strong class="text-xs text-slate-800 font-bold block flex items-center gap-1.5">
                                     🏆 传统滋补三链路月度爆款清单 (小店/直播/直购)
                                 </strong>
-                                <span class="text-[10px] text-slate-400 block mt-0.5">数据周期：2026-06-17 ~ 2026-07-15 | 各链路核心爆款与代表性 DPA 商品 | 销售金额已做区间脱敏</span>
+                                <span class="text-[10px] text-slate-400 block mt-0.5">数据周期：2026-06-17 ~ 2026-07-15 | 各链路核心爆款与代表性 DPA 商品 | Top3 DPA / 单价 / CTR / CVR</span>
                             </div>
                         </div>
                         <!-- Tab 切换按钮组 -->
@@ -631,242 +568,208 @@ html {
 
                     <!-- Tab 1: 小店链路爆品 -->
                     <div id="tonic-tab-content-store" class="block transition-all duration-300">
-                        <div class="overflow-x-auto">
+                                                <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
                                 <thead>
                                     <tr class="border-b border-slate-100 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 45px;">排名</th>
                                         <th class="py-2 pb-2.5 font-semibold text-slate-600" style="width: 120px;">品类 (内部SPU)</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-slate-600" style="min-width: 280px;">核心代表爆款 DPA 商品</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">月消耗区间</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 90px;">日均消耗</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 90px;">近7日日均</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 80px;">周环比</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-slate-600" style="min-width: 220px;">核心代表爆款 DPA 商品 (Top3)</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 70px;">下单单价</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 55px;">CTR</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 65px;">浅层CVR</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 70px;">周环比</th>
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">趋势(Sparkline)</th>
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">趋势判断</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100/60 text-[11.5px] text-slate-600">
+<tbody class="divide-y divide-slate-100/60 text-[11.5px] text-slate-600">
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-amber-100 text-amber-800 font-extrabold">1</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-yellow-400 to-orange-500 text-white font-extrabold">1</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">药食同源食品</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：抢!到手500g优邮严选九蒸九晒熟地黄营养健康直接吃煮水煲汤
-备推2：【★古方玉灵膏】西洋参龙眼桂圆肉玉灵膏双补蒸制古方膏过节送礼好物
-备推3：【抢!到手500g】九蒸九晒熟地黄整块无硫熏阳光晾晒拒绝切片泡水代茶饮">抢!到手500g优邮严选九蒸九晒熟地黄营养健...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：抢!到手500g优邮严选九蒸九晒熟地黄营养健康直接吃煮水煲汤
-备推2：【★古方玉灵膏】西洋参龙眼桂圆肉玉灵膏双补蒸制古方膏过节送礼好物
-备推3：【抢!到手500g】九蒸九晒熟地黄整块无硫熏阳光晾晒拒绝切片泡水代茶饮"> 关联: 【★古方玉灵膏】西洋参龙... | 【抢!到手500g】九蒸...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="抢!到手500g优邮严选九蒸九晒熟地黄营养健康直接吃煮水煲汤">抢!到手500g优邮严选九蒸九晒熟地黄营养健康直接吃煮水煲汤</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【*古方玉灵膏】西洋参龙眼桂圆肉玉灵膏双补蒸制古方膏过节送礼好物">&lt;div&gt;【*古方玉灵膏】西洋参龙眼桂圆肉玉灵膏双补蒸制古方膏过节送礼好物&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【抢!到手500g】九蒸九晒熟地黄整块无硫熏阳光晾晒拒绝切片泡水代茶饮">&lt;div&gt;【抢!到手500g】九蒸九晒熟地黄整块无硫熏阳光晾晒拒绝切片...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">70~80万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1~1.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~1.0万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">87.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.1</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">8.46</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-22.0%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,24.1 4.0,26.8 6.1,24.0 8.1,22.8 10.1,22.2 12.2,25.3 14.2,26.7 16.2,5.0 18.3,9.4 20.3,25.3 22.4,14.7 24.4,25.3 26.4,25.7 28.5,15.2 30.5,26.7 32.5,4.9 34.6,26.9 36.6,4.0 38.6,26.9 40.7,11.1 42.7,26.9 44.7,15.5 46.8,19.6 48.8,26.9 50.8,27.3 52.9,22.5 54.9,21.9 56.9,27.4 59.0,22.5 61.0,26.9 63.1,27.1 65.1,25.1 67.1,27.6 69.2,22.2 71.2,25.2 73.2,27.6 75.3,25.2 77.3,27.1 79.3,27.3 81.4,24.1 83.4,26.9 85.4,20.0 87.5,27.8 89.5,23.4 91.5,28.0 93.6,24.5 95.6,27.9 97.6,23.5 99.7,27.5 101.7,23.8 103.8,26.3 105.8,27.7 107.8,27.6 109.9,25.5 111.9,25.9 113.9,27.2 116.0,24.9 118.0,26.9 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,24.1 4.0,26.8 6.1,24.0 8.1,22.8 10.1,22.2 12.2,25.3 14.2,26.7 16.2,5.0 18.3,9.4 20.3,25.3 22.4,14.7 24.4,25.3 26.4,25.7 28.5,15.2 30.5,26.7 32.5,4.9 34.6,26.9 36.6,4.0 38.6,26.9 40.7,11.1 42.7,26.9 44.7,15.5 46.8,19.6 48.8,26.9 50.8,27.3 52.9,22.5 54.9,21.9 56.9,27.4 59.0,22.5 61.0,26.9 63.1,27.1 65.1,25.1 67.1,27.6 69.2,22.2 71.2,25.2 73.2,27.6 75.3,25.2 77.3,27.1 79.3,27.3 81.4,24.1 83.4,26.9 85.4,20.0 87.5,27.8 89.5,23.4 91.5,28.0 93.6,24.5 95.6,27.9 97.6,23.5 99.7,27.5 101.7,23.8 103.8,26.3 105.8,27.7 107.8,27.6 109.9,25.5 111.9,25.9 113.9,27.2 116.0,24.9 118.0,26.9" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,24.1 4.0,26.8 6.1,24.0 8.1,22.8 10.1,22.2 12.2,25.3 14.2,26.7 16.2,5.0 18.3,9.4 20.3,25.3 22.4,14.7 24.4,25.3 26.4,25.7 28.5,15.2 30.5,26.7 32.5,4.9 34.6,26.9 36.6,4.0 38.6,26.9 40.7,11.1 42.7,26.9 44.7,15.5 46.8,19.6 48.8,26.9 50.8,27.3 52.9,22.5 54.9,21.9 56.9,27.4 59.0,22.5 61.0,26.9 63.1,27.1 65.1,25.1 67.1,27.6 69.2,22.2 71.2,25.2 73.2,27.6 75.3,25.2 77.3,27.1 79.3,27.3 81.4,24.1 83.4,26.9 85.4,20.0 87.5,27.8 89.5,23.4 91.5,28.0 93.6,24.5 95.6,27.9 97.6,23.5 99.7,27.5 101.7,23.8 103.8,26.3 105.8,27.7 107.8,27.6 109.9,25.5 111.9,25.9 113.9,27.2 116.0,24.9 118.0,26.9 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,24.1 4.0,26.8 6.1,24.0 8.1,22.8 10.1,22.2 12.2,25.3 14.2,26.7 16.2,5.0 18.3,9.4 20.3,25.3 22.4,14.7 24.4,25.3 26.4,25.7 28.5,15.2 30.5,26.7 32.5,4.9 34.6,26.9 36.6,4.0 38.6,26.9 40.7,11.1 42.7,26.9 44.7,15.5 46.8,19.6 48.8,26.9 50.8,27.3 52.9,22.5 54.9,21.9 56.9,27.4 59.0,22.5 61.0,26.9 63.1,27.1 65.1,25.1 67.1,27.6 69.2,22.2 71.2,25.2 73.2,27.6 75.3,25.2 77.3,27.1 79.3,27.3 81.4,24.1 83.4,26.9 85.4,20.0 87.5,27.8 89.5,23.4 91.5,28.0 93.6,24.5 95.6,27.9 97.6,23.5 99.7,27.5 101.7,23.8 103.8,26.3 105.8,27.7 107.8,27.6 109.9,25.5 111.9,25.9 113.9,27.2 116.0,24.9 118.0,26.9" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-50 text-blue-700">📉前期爆发后走弱</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-200 text-slate-800 font-extrabold">2</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★罐装红豆薏米茶</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-gray-300 to-gray-400 text-white font-extrabold">2</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*罐装红豆薏米茶</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：三伏天三蒸三晒炒熟芡实赤小豆薏米茶茯苓茶养生茶泡水茶包湿煮茶
-备推2：三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装
-备推3：【芡实赤豆薏湿茶】三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装">三伏天三蒸三晒炒熟芡实赤小豆薏米茶茯苓茶养生...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：三伏天三蒸三晒炒熟芡实赤小豆薏米茶茯苓茶养生茶泡水茶包湿煮茶
-备推2：三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装
-备推3：【芡实赤豆薏湿茶】三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装"> 关联: 三蒸三晒炒熟整料不碎芡实... | 【芡实赤豆薏湿茶】三蒸三...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="三伏天三蒸三晒炒熟芡实赤小豆薏米茶茯苓茶养生茶泡水茶包湿煮茶">三伏天三蒸三晒炒熟芡实赤小豆薏米茶茯苓茶养生茶泡水茶包湿煮茶</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装">&lt;div&gt;三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【芡实赤豆薏湿茶】三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯湿茶罐装">&lt;div&gt;【芡实赤豆薏湿茶】三蒸三晒炒熟整料不碎芡实赤小豆薏米茯苓茶茯...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">30~40万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1~1.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.0~1.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">44.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.65</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">11.7</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-25.6%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,27.9 6.1,28.0 10.3,26.4 14.4,25.0 18.6,22.2 22.7,26.2 26.9,26.8 31.0,27.3 35.1,26.2 39.3,22.8 43.4,20.2 47.6,17.3 51.7,22.9 55.9,25.1 60.0,18.6 64.1,18.3 68.3,17.7 72.4,19.2 76.6,17.5 80.7,23.0 84.9,4.0 89.0,16.0 93.1,18.7 97.3,20.9 101.4,19.3 105.6,19.0 109.7,15.3 113.9,26.6 118.0,16.6 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,27.9 6.1,28.0 10.3,26.4 14.4,25.0 18.6,22.2 22.7,26.2 26.9,26.8 31.0,27.3 35.1,26.2 39.3,22.8 43.4,20.2 47.6,17.3 51.7,22.9 55.9,25.1 60.0,18.6 64.1,18.3 68.3,17.7 72.4,19.2 76.6,17.5 80.7,23.0 84.9,4.0 89.0,16.0 93.1,18.7 97.3,20.9 101.4,19.3 105.6,19.0 109.7,15.3 113.9,26.6 118.0,16.6" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,27.9 6.1,28.0 10.3,26.4 14.4,25.0 18.6,22.2 22.7,26.2 26.9,26.8 31.0,27.3 35.1,26.2 39.3,22.8 43.4,20.2 47.6,17.3 51.7,22.9 55.9,25.1 60.0,18.6 64.1,18.3 68.3,17.7 72.4,19.2 76.6,17.5 80.7,23.0 84.9,4.0 89.0,16.0 93.1,18.7 97.3,20.9 101.4,19.3 105.6,19.0 109.7,15.3 113.9,26.6 118.0,16.6 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,27.9 6.1,28.0 10.3,26.4 14.4,25.0 18.6,22.2 22.7,26.2 26.9,26.8 31.0,27.3 35.1,26.2 39.3,22.8 43.4,20.2 47.6,17.3 51.7,22.9 55.9,25.1 60.0,18.6 64.1,18.3 68.3,17.7 72.4,19.2 76.6,17.5 80.7,23.0 84.9,4.0 89.0,16.0 93.1,18.7 97.3,20.9 101.4,19.3 105.6,19.0 109.7,15.3 113.9,26.6 118.0,16.6" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-amber-50 text-amber-700 font-extrabold">3</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★枸杞原浆</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-amber-600 to-amber-700 text-white font-extrabold">3</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*枸杞原浆</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[黑红双饮]★红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋
-备推2：[滋补组合]★红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋
-备推3：[六味地黄枸杞原浆饮]★六味地黄浓缩枸杞原浆草本植物饮品99到手90袋">[黑红双饮]★红黑枸杞原浆组合早黑晚红科学搭...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：[黑红双饮]★红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋
-备推2：[滋补组合]★红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋
-备推3：[六味地黄枸杞原浆饮]★六味地黄浓缩枸杞原浆草本植物饮品99到手90袋"> 关联: [滋补组合]★红黑枸杞原... | [六味地黄枸杞原浆饮]★...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[黑红双饮]*红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋">[黑红双饮]*红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[滋补组合]*红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋">&lt;div&gt;[滋补组合]*红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[六味地黄枸杞原浆饮]*六味地黄浓缩枸杞原浆草本植物饮品99到手90袋">&lt;div&gt;[六味地黄枸杞原浆饮]*六味地黄浓缩枸杞原浆草本植物饮品99...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">15~20万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~0.8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~1.0万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">85.4</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.77</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">6.99</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+4.9%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,20.4 6.1,27.6 10.3,27.2 14.4,28.0 18.6,24.0 22.7,23.6 26.9,8.0 31.0,19.6 35.1,11.2 39.3,28.0 43.4,7.6 47.6,14.0 51.7,23.2 55.9,18.0 60.0,23.6 64.1,17.2 68.3,20.8 72.4,9.2 76.6,7.6 80.7,8.4 84.9,19.6 89.0,6.0 93.1,17.6 97.3,11.2 101.4,4.0 105.6,12.0 109.7,12.0 113.9,15.2 118.0,7.2 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,20.4 6.1,27.6 10.3,27.2 14.4,28.0 18.6,24.0 22.7,23.6 26.9,8.0 31.0,19.6 35.1,11.2 39.3,28.0 43.4,7.6 47.6,14.0 51.7,23.2 55.9,18.0 60.0,23.6 64.1,17.2 68.3,20.8 72.4,9.2 76.6,7.6 80.7,8.4 84.9,19.6 89.0,6.0 93.1,17.6 97.3,11.2 101.4,4.0 105.6,12.0 109.7,12.0 113.9,15.2 118.0,7.2" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,20.4 6.1,27.6 10.3,27.2 14.4,28.0 18.6,24.0 22.7,23.6 26.9,8.0 31.0,19.6 35.1,11.2 39.3,28.0 43.4,7.6 47.6,14.0 51.7,23.2 55.9,18.0 60.0,23.6 64.1,17.2 68.3,20.8 72.4,9.2 76.6,7.6 80.7,8.4 84.9,19.6 89.0,6.0 93.1,17.6 97.3,11.2 101.4,4.0 105.6,12.0 109.7,12.0 113.9,15.2 118.0,7.2 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,20.4 6.1,27.6 10.3,27.2 14.4,28.0 18.6,24.0 22.7,23.6 26.9,8.0 31.0,19.6 35.1,11.2 39.3,28.0 43.4,7.6 47.6,14.0 51.7,23.2 55.9,18.0 60.0,23.6 64.1,17.2 68.3,20.8 72.4,9.2 76.6,7.6 80.7,8.4 84.9,19.6 89.0,6.0 93.1,17.6 97.3,11.2 101.4,4.0 105.6,12.0 109.7,12.0 113.9,15.2 118.0,7.2" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📊趋势较好</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">4</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★即食燕窝</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">4</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*即食燕窝</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：【品牌直营｜买二送一】★鲜炖燕窝40g6瓶 萱草·归燕礼盒 滋补长辈送礼即食滋养礼盒tg印尼燕窝原料孕期 健康礼品
-备推2：★ 萱草·归燕鲜炖燕窝礼盒40g★30瓶  礼盒滋补自食送礼伴手礼正品 自食备孕送人送礼送长辈送家人推荐rc">【品牌直营｜买二送一】★鲜炖燕窝40g6瓶 ...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：【品牌直营｜买二送一】★鲜炖燕窝40g6瓶 萱草·归燕礼盒 滋补长辈送礼即食滋养礼盒tg印尼燕窝原料孕期 健康礼品
-备推2：★ 萱草·归燕鲜炖燕窝礼盒40g★30瓶  礼盒滋补自食送礼伴手礼正品 自食备孕送人送礼送长辈送家人推荐rc"> 关联: ★ 萱草·归燕鲜炖燕窝礼...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="【品牌直营｜买二送一】*鲜炖燕窝40g6瓶 萱草·归燕礼盒 滋补长辈送礼即食滋养礼盒tg印尼燕窝原料孕期 健康礼品">【品牌直营｜买二送一】*鲜炖燕窝40g6瓶 萱草·归燕礼盒 滋补长辈送...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="* 萱草·归燕鲜炖燕窝礼盒40g*30瓶  礼盒滋补自食送礼伴手礼正品 自食备孕送人送礼送长辈送家人推荐rc">&lt;div&gt;* 萱草·归燕鲜炖燕窝礼盒40g*30瓶  礼盒滋补自食送礼...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">10~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~0.8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">846.0</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.48</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.42</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+1.0%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,17.8 6.1,4.0 10.3,16.8 14.4,16.5 18.6,6.2 22.7,28.0 26.9,6.2 31.0,17.8 35.1,9.8 39.3,16.8 43.4,16.8 47.6,20.0 51.7,22.2 55.9,15.2 60.0,17.1 64.1,19.0 68.3,19.7 72.4,21.0 76.6,16.8 80.7,5.6 84.9,14.9 89.0,23.5 93.1,24.8 97.3,21.0 101.4,14.2 105.6,17.1 109.7,5.6 113.9,18.7 118.0,18.1 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,17.8 6.1,4.0 10.3,16.8 14.4,16.5 18.6,6.2 22.7,28.0 26.9,6.2 31.0,17.8 35.1,9.8 39.3,16.8 43.4,16.8 47.6,20.0 51.7,22.2 55.9,15.2 60.0,17.1 64.1,19.0 68.3,19.7 72.4,21.0 76.6,16.8 80.7,5.6 84.9,14.9 89.0,23.5 93.1,24.8 97.3,21.0 101.4,14.2 105.6,17.1 109.7,5.6 113.9,18.7 118.0,18.1" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,17.8 6.1,4.0 10.3,16.8 14.4,16.5 18.6,6.2 22.7,28.0 26.9,6.2 31.0,17.8 35.1,9.8 39.3,16.8 43.4,16.8 47.6,20.0 51.7,22.2 55.9,15.2 60.0,17.1 64.1,19.0 68.3,19.7 72.4,21.0 76.6,16.8 80.7,5.6 84.9,14.9 89.0,23.5 93.1,24.8 97.3,21.0 101.4,14.2 105.6,17.1 109.7,5.6 113.9,18.7 118.0,18.1 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,17.8 6.1,4.0 10.3,16.8 14.4,16.5 18.6,6.2 22.7,28.0 26.9,6.2 31.0,17.8 35.1,9.8 39.3,16.8 43.4,16.8 47.6,20.0 51.7,22.2 55.9,15.2 60.0,17.1 64.1,19.0 68.3,19.7 72.4,21.0 76.6,16.8 80.7,5.6 84.9,14.9 89.0,23.5 93.1,24.8 97.3,21.0 101.4,14.2 105.6,17.1 109.7,5.6 113.9,18.7 118.0,18.1" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">5</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">5</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">枸杞</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞滋补养生120g/罐
-备推2：[拍一发三]正宗宁夏红枸杞，绝无熏硫无亚钠 [国药御品] 滋补养生，适合亚健康
-备推3：【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞甄选滋补养生120g/罐">【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞滋...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞滋补养生120g/罐
-备推2：[拍一发三]正宗宁夏红枸杞，绝无熏硫无亚钠 [国药御品] 滋补养生，适合亚健康
-备推3：【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞甄选滋补养生120g/罐"> 关联: [拍一发三]正宗宁夏红枸... | 【拍一发三】正宗宁夏红枸...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞滋补养生120g/罐">【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞滋补养生120g/罐</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[拍一发三]正宗宁夏红枸杞，绝无熏硫无亚钠 [国药御品] 滋补养生，适合亚健康">&lt;div&gt;[拍一发三]正宗宁夏红枸杞，绝无熏硫无亚钠 [国药御品] 滋...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞甄选滋补养生120g/罐">&lt;div&gt;【拍一发三】正宗宁夏红枸杞中宁特大野生枸杞甄选滋补养生120g/罐&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">10~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~0.8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.0~1.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">67.2</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">4.03</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.64</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+179.4%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,27.9 6.5,28.0 10.9,28.0 15.4,28.0 19.8,28.0 24.3,28.0 28.8,27.9 33.2,28.0 37.7,28.0 42.2,28.0 46.6,28.0 51.1,28.0 55.5,28.0 60.0,27.8 64.5,28.0 68.9,28.0 73.4,28.0 77.8,27.8 82.3,27.6 86.8,13.9 91.2,4.0 95.7,22.9 100.2,24.6 104.6,23.8 109.1,24.0 113.5,27.6 118.0,27.5 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,27.9 6.5,28.0 10.9,28.0 15.4,28.0 19.8,28.0 24.3,28.0 28.8,27.9 33.2,28.0 37.7,28.0 42.2,28.0 46.6,28.0 51.1,28.0 55.5,28.0 60.0,27.8 64.5,28.0 68.9,28.0 73.4,28.0 77.8,27.8 82.3,27.6 86.8,13.9 91.2,4.0 95.7,22.9 100.2,24.6 104.6,23.8 109.1,24.0 113.5,27.6 118.0,27.5" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,27.9 6.5,28.0 10.9,28.0 15.4,28.0 19.8,28.0 24.3,28.0 28.8,27.9 33.2,28.0 37.7,28.0 42.2,28.0 46.6,28.0 51.1,28.0 55.5,28.0 60.0,27.8 64.5,28.0 68.9,28.0 73.4,28.0 77.8,27.8 82.3,27.6 86.8,13.9 91.2,4.0 95.7,22.9 100.2,24.6 104.6,23.8 109.1,24.0 113.5,27.6 118.0,27.5 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,27.9 6.5,28.0 10.9,28.0 15.4,28.0 19.8,28.0 24.3,28.0 28.8,27.9 33.2,28.0 37.7,28.0 42.2,28.0 46.6,28.0 51.1,28.0 55.5,28.0 60.0,27.8 64.5,28.0 68.9,28.0 73.4,28.0 77.8,27.8 82.3,27.6 86.8,13.9 91.2,4.0 95.7,22.9 100.2,24.6 104.6,23.8 109.1,24.0 113.5,27.6 118.0,27.5" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">6</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★蜂类滋补品</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">6</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*蜂类滋补品</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 纯营养好吸收 中老年随身带着就能吃
-备推2：[金奖品质-中老年优质营养]★鲜蜂王浆片 藏区3000米蜂初乳 高蛋白40.2g 王浆酸5400mg 营养全吸收快
-备推3：[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米直采 纯营养好吸收 中老年随身带着就能吃">[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 纯营养好吸收 中老年随身带着就能吃
-备推2：[金奖品质-中老年优质营养]★鲜蜂王浆片 藏区3000米蜂初乳 高蛋白40.2g 王浆酸5400mg 营养全吸收快
-备推3：[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米直采 纯营养好吸收 中老年随身带着就能吃"> 关联: [金奖品质-中老年优质营... | [热销口碑]金奖蜂王浆冻...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 纯营养好吸收 中老年随身带着就能吃">[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 ...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[金奖品质-中老年优质营养]*鲜蜂王浆片 藏区3000米蜂初乳 高蛋白40.2g 王浆酸5400mg 营养全吸收快">&lt;div&gt;[金奖品质-中老年优质营养]*鲜蜂王浆片 藏区3000米蜂初...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米直采 纯营养好吸收 中老年随身带着就能吃">&lt;div&gt;[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">10~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">664.1</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.15</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.59</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-4.1%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,18.2 6.1,17.2 10.3,4.0 14.4,20.6 18.6,17.9 22.7,18.5 26.9,22.6 31.0,27.0 35.1,18.2 39.3,14.5 43.4,18.2 47.6,23.3 51.7,25.0 55.9,18.9 60.0,20.9 64.1,22.9 68.3,16.8 72.4,16.2 76.6,22.9 80.7,23.3 84.9,21.2 89.0,17.2 93.1,11.1 97.3,20.2 101.4,21.6 105.6,22.9 109.7,28.0 113.9,18.2 118.0,22.9 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,18.2 6.1,17.2 10.3,4.0 14.4,20.6 18.6,17.9 22.7,18.5 26.9,22.6 31.0,27.0 35.1,18.2 39.3,14.5 43.4,18.2 47.6,23.3 51.7,25.0 55.9,18.9 60.0,20.9 64.1,22.9 68.3,16.8 72.4,16.2 76.6,22.9 80.7,23.3 84.9,21.2 89.0,17.2 93.1,11.1 97.3,20.2 101.4,21.6 105.6,22.9 109.7,28.0 113.9,18.2 118.0,22.9" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,18.2 6.1,17.2 10.3,4.0 14.4,20.6 18.6,17.9 22.7,18.5 26.9,22.6 31.0,27.0 35.1,18.2 39.3,14.5 43.4,18.2 47.6,23.3 51.7,25.0 55.9,18.9 60.0,20.9 64.1,22.9 68.3,16.8 72.4,16.2 76.6,22.9 80.7,23.3 84.9,21.2 89.0,17.2 93.1,11.1 97.3,20.2 101.4,21.6 105.6,22.9 109.7,28.0 113.9,18.2 118.0,22.9 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,18.2 6.1,17.2 10.3,4.0 14.4,20.6 18.6,17.9 22.7,18.5 26.9,22.6 31.0,27.0 35.1,18.2 39.3,14.5 43.4,18.2 47.6,23.3 51.7,25.0 55.9,18.9 60.0,20.9 64.1,22.9 68.3,16.8 72.4,16.2 76.6,22.9 80.7,23.3 84.9,21.2 89.0,17.2 93.1,11.1 97.3,20.2 101.4,21.6 105.6,22.9 109.7,28.0 113.9,18.2 118.0,22.9" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">7</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">7</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">茶活力凉茶</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：茶活力甘草百合枇杷草本饮料  夏季清凉甘甜植物草本茶饮  310ml★12罐整箱装  LeC2
-备推2：茶活力甘草百合枇杷草本饮料  310ml★12罐整箱装  春夏清凉甘甜植物茶饮  CS
-备推3：茶活力甘草百合枇杷草本饮料  310ml★12罐整箱装  春夏清凉甘甜植物茶饮  LC">茶活力甘草百合枇杷草本饮料  夏季清凉甘甜植...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：茶活力甘草百合枇杷草本饮料  夏季清凉甘甜植物草本茶饮  310ml★12罐整箱装  LeC2
-备推2：茶活力甘草百合枇杷草本饮料  310ml★12罐整箱装  春夏清凉甘甜植物茶饮  CS
-备推3：茶活力甘草百合枇杷草本饮料  310ml★12罐整箱装  春夏清凉甘甜植物茶饮  LC"> 关联: 茶活力甘草百合枇杷草本饮... | 茶活力甘草百合枇杷草本饮...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="茶活力甘草百合枇杷草本饮料  夏季清凉甘甜植物草本茶饮  310ml*12罐整箱装  LeC2">茶活力甘草百合枇杷草本饮料  夏季清凉甘甜植物草本茶饮  310ml*...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="茶活力甘草百合枇杷草本饮料  310ml*12罐整箱装  春夏清凉甘甜植物茶饮  CS">&lt;div&gt;茶活力甘草百合枇杷草本饮料  310ml*12罐整箱装  春...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="茶活力甘草百合枇杷草本饮料  310ml*12罐整箱装  春夏清凉甘甜植物茶饮  LC">&lt;div&gt;茶活力甘草百合枇杷草本饮料  310ml*12罐整箱装  春...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">10~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~1.0万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">54.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.24</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">7.66</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+59.1%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,15.8 6.1,20.2 10.3,23.3 14.4,28.0 18.6,26.1 22.7,20.5 26.9,14.9 31.0,8.1 35.1,19.6 39.3,22.1 43.4,24.9 47.6,27.4 51.7,15.8 55.9,15.5 60.0,17.4 64.1,19.9 68.3,18.6 72.4,17.7 76.6,23.9 80.7,23.3 84.9,25.2 89.0,10.5 93.1,15.8 97.3,12.4 101.4,4.0 105.6,15.2 109.7,19.3 113.9,11.5 118.0,11.5 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,15.8 6.1,20.2 10.3,23.3 14.4,28.0 18.6,26.1 22.7,20.5 26.9,14.9 31.0,8.1 35.1,19.6 39.3,22.1 43.4,24.9 47.6,27.4 51.7,15.8 55.9,15.5 60.0,17.4 64.1,19.9 68.3,18.6 72.4,17.7 76.6,23.9 80.7,23.3 84.9,25.2 89.0,10.5 93.1,15.8 97.3,12.4 101.4,4.0 105.6,15.2 109.7,19.3 113.9,11.5 118.0,11.5" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,15.8 6.1,20.2 10.3,23.3 14.4,28.0 18.6,26.1 22.7,20.5 26.9,14.9 31.0,8.1 35.1,19.6 39.3,22.1 43.4,24.9 47.6,27.4 51.7,15.8 55.9,15.5 60.0,17.4 64.1,19.9 68.3,18.6 72.4,17.7 76.6,23.9 80.7,23.3 84.9,25.2 89.0,10.5 93.1,15.8 97.3,12.4 101.4,4.0 105.6,15.2 109.7,19.3 113.9,11.5 118.0,11.5 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,15.8 6.1,20.2 10.3,23.3 14.4,28.0 18.6,26.1 22.7,20.5 26.9,14.9 31.0,8.1 35.1,19.6 39.3,22.1 43.4,24.9 47.6,27.4 51.7,15.8 55.9,15.5 60.0,17.4 64.1,19.9 68.3,18.6 72.4,17.7 76.6,23.9 80.7,23.3 84.9,25.2 89.0,10.5 93.1,15.8 97.3,12.4 101.4,4.0 105.6,15.2 109.7,19.3 113.9,11.5 118.0,11.5" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">8</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">8</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">黄精</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：【青城道家九制黄精】道家古法九蒸九晒黄精 药食同源 可即食
-备推2：九华山8年沉淀玫养九蒸九晒九润九露有机多花黄精
-备推3：[大头溯源] 九华黄精 九制黄精 独立包装九蒸九晒泡茶即食250克/罐">【青城道家九制黄精】道家古法九蒸九晒黄精 药...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：【青城道家九制黄精】道家古法九蒸九晒黄精 药食同源 可即食
-备推2：九华山8年沉淀玫养九蒸九晒九润九露有机多花黄精
-备推3：[大头溯源] 九华黄精 九制黄精 独立包装九蒸九晒泡茶即食250克/罐"> 关联: 九华山8年沉淀玫养九蒸九... | [大头溯源] 九华黄精 ...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="【青城道家九制黄精】道家古法九蒸九晒黄精 药食同源 可即食">【青城道家九制黄精】道家古法九蒸九晒黄精 药食同源 可即食</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="九华山8年沉淀玫养九蒸九晒九润九露有机多花黄精">&lt;div&gt;九华山8年沉淀玫养九蒸九晒九润九露有机多花黄精&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[大头溯源] 九华黄精 九制黄精 独立包装九蒸九晒泡茶即食250克/罐">&lt;div&gt;[大头溯源] 九华黄精 九制黄精 独立包装九蒸九晒泡茶即食2...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">10~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">165.0</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.88</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.0</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+66.3%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,25.9 6.1,23.0 10.3,25.9 14.4,21.5 18.6,26.7 22.7,23.5 26.9,27.7 31.0,11.6 35.1,4.0 39.3,19.1 43.4,14.9 47.6,17.3 51.7,21.4 55.9,26.5 60.0,26.9 64.1,27.2 68.3,27.7 72.4,27.5 76.6,22.0 80.7,26.9 84.9,28.0 89.0,27.4 93.1,23.3 97.3,23.9 101.4,22.6 105.6,25.9 109.7,23.3 113.9,27.0 118.0,26.1 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,25.9 6.1,23.0 10.3,25.9 14.4,21.5 18.6,26.7 22.7,23.5 26.9,27.7 31.0,11.6 35.1,4.0 39.3,19.1 43.4,14.9 47.6,17.3 51.7,21.4 55.9,26.5 60.0,26.9 64.1,27.2 68.3,27.7 72.4,27.5 76.6,22.0 80.7,26.9 84.9,28.0 89.0,27.4 93.1,23.3 97.3,23.9 101.4,22.6 105.6,25.9 109.7,23.3 113.9,27.0 118.0,26.1" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,25.9 6.1,23.0 10.3,25.9 14.4,21.5 18.6,26.7 22.7,23.5 26.9,27.7 31.0,11.6 35.1,4.0 39.3,19.1 43.4,14.9 47.6,17.3 51.7,21.4 55.9,26.5 60.0,26.9 64.1,27.2 68.3,27.7 72.4,27.5 76.6,22.0 80.7,26.9 84.9,28.0 89.0,27.4 93.1,23.3 97.3,23.9 101.4,22.6 105.6,25.9 109.7,23.3 113.9,27.0 118.0,26.1 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,25.9 6.1,23.0 10.3,25.9 14.4,21.5 18.6,26.7 22.7,23.5 26.9,27.7 31.0,11.6 35.1,4.0 39.3,19.1 43.4,14.9 47.6,17.3 51.7,21.4 55.9,26.5 60.0,26.9 64.1,27.2 68.3,27.7 72.4,27.5 76.6,22.0 80.7,26.9 84.9,28.0 89.0,27.4 93.1,23.3 97.3,23.9 101.4,22.6 105.6,25.9 109.7,23.3 113.9,27.0 118.0,26.1" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-50 text-amber-700">〰️波动中</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">9</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★果蔬汁饮料</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">9</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*果蔬汁饮料</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[枸杞滋补组合]★红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋ZB">[枸杞滋补组合]★红黑枸杞原浆组合早黑晚红科...</div>
-                                            
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[枸杞滋补组合]*红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋ZB">[枸杞滋补组合]*红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋ZB</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">10~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">100.2</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.07</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.56</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-8.7%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,28.0 6.1,18.3 10.3,16.6 14.4,23.4 18.6,27.4 22.7,24.6 26.9,27.4 31.0,11.4 35.1,24.0 39.3,24.6 43.4,9.7 47.6,20.6 51.7,20.6 55.9,23.4 60.0,14.3 64.1,16.0 68.3,18.9 72.4,10.9 76.6,21.7 80.7,20.6 84.9,18.3 89.0,15.4 93.1,21.1 97.3,24.0 101.4,24.6 105.6,17.7 109.7,21.1 113.9,22.9 118.0,4.0 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,28.0 6.1,18.3 10.3,16.6 14.4,23.4 18.6,27.4 22.7,24.6 26.9,27.4 31.0,11.4 35.1,24.0 39.3,24.6 43.4,9.7 47.6,20.6 51.7,20.6 55.9,23.4 60.0,14.3 64.1,16.0 68.3,18.9 72.4,10.9 76.6,21.7 80.7,20.6 84.9,18.3 89.0,15.4 93.1,21.1 97.3,24.0 101.4,24.6 105.6,17.7 109.7,21.1 113.9,22.9 118.0,4.0" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,28.0 6.1,18.3 10.3,16.6 14.4,23.4 18.6,27.4 22.7,24.6 26.9,27.4 31.0,11.4 35.1,24.0 39.3,24.6 43.4,9.7 47.6,20.6 51.7,20.6 55.9,23.4 60.0,14.3 64.1,16.0 68.3,18.9 72.4,10.9 76.6,21.7 80.7,20.6 84.9,18.3 89.0,15.4 93.1,21.1 97.3,24.0 101.4,24.6 105.6,17.7 109.7,21.1 113.9,22.9 118.0,4.0 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,28.0 6.1,18.3 10.3,16.6 14.4,23.4 18.6,27.4 22.7,24.6 26.9,27.4 31.0,11.4 35.1,24.0 39.3,24.6 43.4,9.7 47.6,20.6 51.7,20.6 55.9,23.4 60.0,14.3 64.1,16.0 68.3,18.9 72.4,10.9 76.6,21.7 80.7,20.6 84.9,18.3 89.0,15.4 93.1,21.1 97.3,24.0 101.4,24.6 105.6,17.7 109.7,21.1 113.9,22.9 118.0,4.0" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">10</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">10</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">艾灸贴</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：【郑州市中心医院】中焦轻舒贴 热敷贴身轻抽湿 消肚通中焦 暖腹暖宫贴 轻盈肠胃调理轻盈贴 艾草肉桂干姜等道地甄选
-备推2：【郑州市中心医院】中焦轻舒贴 热敷贴消肚通中焦 暖腹暖宫贴 轻盈肠胃调理轻盈贴 艾草肉桂干姜等道地甄选
-备推3：【八髎暖身贴】郑州市中心医院研发呵护女性八髎暖身贴姨妈痛经期久坐腰部热敷18味草本四步暖腰臀南阳艾草">【郑州市中心医院】中焦轻舒贴 热敷贴身轻抽湿...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：【郑州市中心医院】中焦轻舒贴 热敷贴身轻抽湿 消肚通中焦 暖腹暖宫贴 轻盈肠胃调理轻盈贴 艾草肉桂干姜等道地甄选
-备推2：【郑州市中心医院】中焦轻舒贴 热敷贴消肚通中焦 暖腹暖宫贴 轻盈肠胃调理轻盈贴 艾草肉桂干姜等道地甄选
-备推3：【八髎暖身贴】郑州市中心医院研发呵护女性八髎暖身贴姨妈痛经期久坐腰部热敷18味草本四步暖腰臀南阳艾草"> 关联: 【郑州市中心医院】中焦轻... | 【八髎暖身贴】郑州市中心...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="【郑州市中心医院】中焦轻舒贴 热敷贴身轻抽湿 消肚通中焦 暖腹暖宫贴 轻盈肠胃调理轻盈贴 艾草肉桂干姜等道地甄选">【郑州市中心医院】中焦轻舒贴 热敷贴身轻抽湿 消肚通中焦 暖腹暖宫贴 ...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【郑州市中心医院】中焦轻舒贴 热敷贴消肚通中焦 暖腹暖宫贴 轻盈肠胃调理轻盈贴 艾草肉桂干姜等道地甄选">&lt;div&gt;【郑州市中心医院】中焦轻舒贴 热敷贴消肚通中焦 暖腹暖宫贴 ...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【八髎暖身贴】郑州市中心医院研发呵护女性八髎暖身贴姨妈痛经期久坐腰部热敷18味草本四步暖腰臀南阳艾草">&lt;div&gt;【八髎暖身贴】郑州市中心医院研发呵护女性八髎暖身贴姨妈痛经期...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">5~10万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.3~0.5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.1~0.3万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">97.0</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.12</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">6.92</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+38.6%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#1890ff15" points="2.0,25.3 6.1,8.4 10.3,24.0 14.4,26.4 18.6,27.8 22.7,24.2 26.9,4.0 31.0,24.2 35.1,23.1 39.3,25.8 43.4,21.8 47.6,15.2 51.7,13.7 55.9,21.2 60.0,25.8 64.1,25.1 68.3,22.7 72.4,28.0 76.6,25.1 80.7,23.2 84.9,26.0 89.0,25.6 93.1,23.8 97.3,21.6 101.4,26.7 105.6,26.4 109.7,22.9 113.9,18.7 118.0,27.1 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,25.3 6.1,8.4 10.3,24.0 14.4,26.4 18.6,27.8 22.7,24.2 26.9,4.0 31.0,24.2 35.1,23.1 39.3,25.8 43.4,21.8 47.6,15.2 51.7,13.7 55.9,21.2 60.0,25.8 64.1,25.1 68.3,22.7 72.4,28.0 76.6,25.1 80.7,23.2 84.9,26.0 89.0,25.6 93.1,23.8 97.3,21.6 101.4,26.7 105.6,26.4 109.7,22.9 113.9,18.7 118.0,27.1" stroke="#1890ff" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,25.3 6.1,8.4 10.3,24.0 14.4,26.4 18.6,27.8 22.7,24.2 26.9,4.0 31.0,24.2 35.1,23.1 39.3,25.8 43.4,21.8 47.6,15.2 51.7,13.7 55.9,21.2 60.0,25.8 64.1,25.1 68.3,22.7 72.4,28.0 76.6,25.1 80.7,23.2 84.9,26.0 89.0,25.6 93.1,23.8 97.3,21.6 101.4,26.7 105.6,26.4 109.7,22.9 113.9,18.7 118.0,27.1 118.0,30 2,30" fill="#1890ff15"/><polyline points="2.0,25.3 6.1,8.4 10.3,24.0 14.4,26.4 18.6,27.8 22.7,24.2 26.9,4.0 31.0,24.2 35.1,23.1 39.3,25.8 43.4,21.8 47.6,15.2 51.7,13.7 55.9,21.2 60.0,25.8 64.1,25.1 68.3,22.7 72.4,28.0 76.6,25.1 80.7,23.2 84.9,26.0 89.0,25.6 93.1,23.8 97.3,21.6 101.4,26.7 105.6,26.4 109.7,22.9 113.9,18.7 118.0,27.1" fill="none" stroke="#1890ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-50 text-amber-700">〰️波动中</span></td>
@@ -878,246 +781,208 @@ html {
 
                     <!-- Tab 2: 直播链路爆品 -->
                     <div id="tonic-tab-content-live" class="hidden transition-all duration-300">
-                        <div class="overflow-x-auto">
+                                                <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
                                 <thead>
                                     <tr class="border-b border-slate-100 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 45px;">排名</th>
                                         <th class="py-2 pb-2.5 font-semibold text-slate-600" style="width: 120px;">品类 (内部SPU)</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-slate-600" style="min-width: 280px;">核心代表爆款 DPA 商品</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">月消耗区间</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 90px;">日均消耗</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 90px;">近7日日均</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 80px;">周环比</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-slate-600" style="min-width: 220px;">核心代表爆款 DPA 商品 (Top3)</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 70px;">下单单价</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 55px;">CTR</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 65px;">浅层CVR</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 70px;">周环比</th>
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">趋势(Sparkline)</th>
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">趋势判断</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100/60 text-[11.5px] text-slate-600">
+<tbody class="divide-y divide-slate-100/60 text-[11.5px] text-slate-600">
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-amber-100 text-amber-800 font-extrabold">1</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-yellow-400 to-orange-500 text-white font-extrabold">1</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">枸杞</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：【拍一发三】正宗宁夏红枸杞滋补养生免洗正品无硫130g/罐
-备推2：【冠军推荐拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐
-备推3：【拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐">【拍一发三】正宗宁夏红枸杞滋补养生免洗正品无...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：【拍一发三】正宗宁夏红枸杞滋补养生免洗正品无硫130g/罐
-备推2：【冠军推荐拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐
-备推3：【拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐"> 关联: 【冠军推荐拍一发三】正宗... | 【拍一发三】正宗宁夏红枸...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="【拍一发三】正宗宁夏红枸杞滋补养生免洗正品无硫130g/罐">【拍一发三】正宗宁夏红枸杞滋补养生免洗正品无硫130g/罐</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【冠军推荐拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐">&lt;div&gt;【冠军推荐拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐">&lt;div&gt;【拍一发三】正宗宁夏红枸杞滋补养生正宗宁夏中宁枸杞子130g/罐&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">450~500万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">15~20万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">25~30万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">70.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.09</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.04</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+216.6%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,23.7 6.1,24.3 10.3,23.0 14.4,22.6 18.6,22.6 22.7,21.6 26.9,17.6 31.0,21.1 35.1,21.2 39.3,23.8 43.4,24.0 47.6,20.1 51.7,22.1 55.9,20.7 60.0,23.9 64.1,21.9 68.3,24.6 72.4,23.1 76.6,24.6 80.7,27.4 84.9,28.0 89.0,21.9 93.1,4.0 97.3,5.4 101.4,6.4 105.6,20.6 109.7,22.8 113.9,20.2 118.0,20.8 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,23.7 6.1,24.3 10.3,23.0 14.4,22.6 18.6,22.6 22.7,21.6 26.9,17.6 31.0,21.1 35.1,21.2 39.3,23.8 43.4,24.0 47.6,20.1 51.7,22.1 55.9,20.7 60.0,23.9 64.1,21.9 68.3,24.6 72.4,23.1 76.6,24.6 80.7,27.4 84.9,28.0 89.0,21.9 93.1,4.0 97.3,5.4 101.4,6.4 105.6,20.6 109.7,22.8 113.9,20.2 118.0,20.8" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,23.7 6.1,24.3 10.3,23.0 14.4,22.6 18.6,22.6 22.7,21.6 26.9,17.6 31.0,21.1 35.1,21.2 39.3,23.8 43.4,24.0 47.6,20.1 51.7,22.1 55.9,20.7 60.0,23.9 64.1,21.9 68.3,24.6 72.4,23.1 76.6,24.6 80.7,27.4 84.9,28.0 89.0,21.9 93.1,4.0 97.3,5.4 101.4,6.4 105.6,20.6 109.7,22.8 113.9,20.2 118.0,20.8 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,23.7 6.1,24.3 10.3,23.0 14.4,22.6 18.6,22.6 22.7,21.6 26.9,17.6 31.0,21.1 35.1,21.2 39.3,23.8 43.4,24.0 47.6,20.1 51.7,22.1 55.9,20.7 60.0,23.9 64.1,21.9 68.3,24.6 72.4,23.1 76.6,24.6 80.7,27.4 84.9,28.0 89.0,21.9 93.1,4.0 97.3,5.4 101.4,6.4 105.6,20.6 109.7,22.8 113.9,20.2 118.0,20.8" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-200 text-slate-800 font-extrabold">2</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-gray-300 to-gray-400 text-white font-extrabold">2</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">黄精</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[新华网健康大讲堂推荐]九蒸九晒古法炮制 九华黄精  独立包装开袋即食好吃养生送礼
-备推2：【有机九华黄精】九制多花黄精 古法炮制  独立包装泡茶煲汤开袋即食
-备推3：九华黄精 仙人余粮 九蒸九晒 古法炮制 独立包装 开袋即食 新华网健康大讲堂推荐">[新华网健康大讲堂推荐]九蒸九晒古法炮制 九...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：[新华网健康大讲堂推荐]九蒸九晒古法炮制 九华黄精  独立包装开袋即食好吃养生送礼
-备推2：【有机九华黄精】九制多花黄精 古法炮制  独立包装泡茶煲汤开袋即食
-备推3：九华黄精 仙人余粮 九蒸九晒 古法炮制 独立包装 开袋即食 新华网健康大讲堂推荐"> 关联: 【有机九华黄精】九制多花... | 九华黄精 仙人余粮 九蒸...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[新华网健康大讲堂推荐]九蒸九晒古法炮制 九华黄精  独立包装开袋即食好吃养生送礼">[新华网健康大讲堂推荐]九蒸九晒古法炮制 九华黄精  独立包装开袋即食...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【有机九华黄精】九制多花黄精 古法炮制  独立包装泡茶煲汤开袋即食">&lt;div&gt;【有机九华黄精】九制多花黄精 古法炮制  独立包装泡茶煲汤开袋即食&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="九华黄精 仙人余粮 九蒸九晒 古法炮制 独立包装 开袋即食 新华网健康大讲堂推荐">&lt;div&gt;九华黄精 仙人余粮 九蒸九晒 古法炮制 独立包装 开袋即食 ...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">150~180万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">234.1</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.19</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.62</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+14.4%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,25.2 6.1,25.0 10.3,25.5 14.4,23.3 18.6,22.6 22.7,26.8 26.9,21.8 31.0,24.9 35.1,25.4 39.3,23.0 43.4,13.9 47.6,12.5 51.7,24.9 55.9,20.5 60.0,22.7 64.1,25.6 68.3,16.7 72.4,22.2 76.6,12.9 80.7,20.8 84.9,15.4 89.0,9.6 93.1,13.4 97.3,14.6 101.4,10.2 105.6,4.0 109.7,24.6 113.9,28.0 118.0,17.3 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,25.2 6.1,25.0 10.3,25.5 14.4,23.3 18.6,22.6 22.7,26.8 26.9,21.8 31.0,24.9 35.1,25.4 39.3,23.0 43.4,13.9 47.6,12.5 51.7,24.9 55.9,20.5 60.0,22.7 64.1,25.6 68.3,16.7 72.4,22.2 76.6,12.9 80.7,20.8 84.9,15.4 89.0,9.6 93.1,13.4 97.3,14.6 101.4,10.2 105.6,4.0 109.7,24.6 113.9,28.0 118.0,17.3" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,25.2 6.1,25.0 10.3,25.5 14.4,23.3 18.6,22.6 22.7,26.8 26.9,21.8 31.0,24.9 35.1,25.4 39.3,23.0 43.4,13.9 47.6,12.5 51.7,24.9 55.9,20.5 60.0,22.7 64.1,25.6 68.3,16.7 72.4,22.2 76.6,12.9 80.7,20.8 84.9,15.4 89.0,9.6 93.1,13.4 97.3,14.6 101.4,10.2 105.6,4.0 109.7,24.6 113.9,28.0 118.0,17.3 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,25.2 6.1,25.0 10.3,25.5 14.4,23.3 18.6,22.6 22.7,26.8 26.9,21.8 31.0,24.9 35.1,25.4 39.3,23.0 43.4,13.9 47.6,12.5 51.7,24.9 55.9,20.5 60.0,22.7 64.1,25.6 68.3,16.7 72.4,22.2 76.6,12.9 80.7,20.8 84.9,15.4 89.0,9.6 93.1,13.4 97.3,14.6 101.4,10.2 105.6,4.0 109.7,24.6 113.9,28.0 118.0,17.3" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-amber-50 text-amber-700 font-extrabold">3</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-amber-600 to-amber-700 text-white font-extrabold">3</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">代餐粉/谷物粉</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：郭博士成果落地★白诗黎轻元八珍饮安化黑茶轻断食代餐独立小袋固体饮料
-备推2：白诗黎轻元八珍饮0糖0反式脂肪八味原料独立小袋即冲代餐养生茶
-备推3：【现磨【湿不再来】四神汤升级版/五指毛桃赤小豆薏仁茯苓芡实山药粉">郭博士成果落地★白诗黎轻元八珍饮安化黑茶轻断...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：郭博士成果落地★白诗黎轻元八珍饮安化黑茶轻断食代餐独立小袋固体饮料
-备推2：白诗黎轻元八珍饮0糖0反式脂肪八味原料独立小袋即冲代餐养生茶
-备推3：【现磨【湿不再来】四神汤升级版/五指毛桃赤小豆薏仁茯苓芡实山药粉"> 关联: 白诗黎轻元八珍饮0糖0反... | 【现磨【湿不再来】四神汤...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="郭博士成果落地*白诗黎轻元八珍饮安化黑茶轻断食代餐独立小袋固体饮料">郭博士成果落地*白诗黎轻元八珍饮安化黑茶轻断食代餐独立小袋固体饮料</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="白诗黎轻元八珍饮0糖0反式脂肪八味原料独立小袋即冲代餐养生茶">&lt;div&gt;白诗黎轻元八珍饮0糖0反式脂肪八味原料独立小袋即冲代餐养生茶&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【现磨【湿不再来】四神汤升级版/五指毛桃赤小豆薏仁茯苓芡实山药粉">&lt;div&gt;【现磨【湿不再来】四神汤升级版/五指毛桃赤小豆薏仁茯苓芡实山药粉&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">120~150万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.5~2.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">96.1</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.99</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.58</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-78.2%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,6.9 7.3,5.7 12.5,16.0 17.8,13.4 23.1,17.0 28.4,27.4 33.6,27.4 38.9,27.8 44.2,27.8 49.5,27.9 54.7,27.9 60.0,28.0 65.3,11.8 70.5,6.6 75.8,4.2 81.1,4.0 86.4,12.4 91.6,14.1 96.9,28.0 102.2,28.0 107.5,26.7 112.7,25.6 118.0,26.8 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,6.9 7.3,5.7 12.5,16.0 17.8,13.4 23.1,17.0 28.4,27.4 33.6,27.4 38.9,27.8 44.2,27.8 49.5,27.9 54.7,27.9 60.0,28.0 65.3,11.8 70.5,6.6 75.8,4.2 81.1,4.0 86.4,12.4 91.6,14.1 96.9,28.0 102.2,28.0 107.5,26.7 112.7,25.6 118.0,26.8" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,6.9 7.3,5.7 12.5,16.0 17.8,13.4 23.1,17.0 28.4,27.4 33.6,27.4 38.9,27.8 44.2,27.8 49.5,27.9 54.7,27.9 60.0,28.0 65.3,11.8 70.5,6.6 75.8,4.2 81.1,4.0 86.4,12.4 91.6,14.1 96.9,28.0 102.2,28.0 107.5,26.7 112.7,25.6 118.0,26.8 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,6.9 7.3,5.7 12.5,16.0 17.8,13.4 23.1,17.0 28.4,27.4 33.6,27.4 38.9,27.8 44.2,27.8 49.5,27.9 54.7,27.9 60.0,28.0 65.3,11.8 70.5,6.6 75.8,4.2 81.1,4.0 86.4,12.4 91.6,14.1 96.9,28.0 102.2,28.0 107.5,26.7 112.7,25.6 118.0,26.8" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-50 text-blue-700">📉前期爆发后走弱</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">4</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">4</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">中式养生冲饮</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：【淄博中医医院白番茄杏仁七白饮】全新配方科学配比七白饮
-备推2：Dr.郭-白诗黎轻元八珍饮安化黑茶代餐轻养养生茶
-备推3：白诗黎轻元八珍饮八味原料独立小袋即冲养生饮品">【淄博中医医院白番茄杏仁七白饮】全新配方科学...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：【淄博中医医院白番茄杏仁七白饮】全新配方科学配比七白饮
-备推2：Dr.郭-白诗黎轻元八珍饮安化黑茶代餐轻养养生茶
-备推3：白诗黎轻元八珍饮八味原料独立小袋即冲养生饮品"> 关联: Dr.郭-白诗黎轻元八珍... | 白诗黎轻元八珍饮八味原料...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="【淄博中医医院白番茄杏仁七白饮】全新配方科学配比七白饮">【淄博中医医院白番茄杏仁七白饮】全新配方科学配比七白饮</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="某科研专家-白诗黎轻元八珍饮安化黑茶代餐轻养养生茶">&lt;div&gt;某科研专家-白诗黎轻元八珍饮安化黑茶代餐轻养养生茶&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="白诗黎轻元八珍饮八味原料独立小袋即冲养生饮品">&lt;div&gt;白诗黎轻元八珍饮八味原料独立小袋即冲养生饮品&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">120~150万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">4~5万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">8~10万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">99.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.56</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.96</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+169.3%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,20.3 6.5,10.5 10.9,10.5 15.4,27.2 19.8,27.7 24.3,27.8 28.8,27.7 33.2,27.9 37.7,28.0 42.2,27.8 46.6,27.5 51.1,27.5 55.5,28.0 60.0,28.0 64.5,27.9 68.9,28.0 73.4,26.8 77.8,20.5 82.3,16.1 86.8,16.5 91.2,19.6 95.7,17.8 100.2,9.4 104.6,4.0 109.1,17.7 113.5,18.4 118.0,22.3 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,20.3 6.5,10.5 10.9,10.5 15.4,27.2 19.8,27.7 24.3,27.8 28.8,27.7 33.2,27.9 37.7,28.0 42.2,27.8 46.6,27.5 51.1,27.5 55.5,28.0 60.0,28.0 64.5,27.9 68.9,28.0 73.4,26.8 77.8,20.5 82.3,16.1 86.8,16.5 91.2,19.6 95.7,17.8 100.2,9.4 104.6,4.0 109.1,17.7 113.5,18.4 118.0,22.3" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,20.3 6.5,10.5 10.9,10.5 15.4,27.2 19.8,27.7 24.3,27.8 28.8,27.7 33.2,27.9 37.7,28.0 42.2,27.8 46.6,27.5 51.1,27.5 55.5,28.0 60.0,28.0 64.5,27.9 68.9,28.0 73.4,26.8 77.8,20.5 82.3,16.1 86.8,16.5 91.2,19.6 95.7,17.8 100.2,9.4 104.6,4.0 109.1,17.7 113.5,18.4 118.0,22.3 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,20.3 6.5,10.5 10.9,10.5 15.4,27.2 19.8,27.7 24.3,27.8 28.8,27.7 33.2,27.9 37.7,28.0 42.2,27.8 46.6,27.5 51.1,27.5 55.5,28.0 60.0,28.0 64.5,27.9 68.9,28.0 73.4,26.8 77.8,20.5 82.3,16.1 86.8,16.5 91.2,19.6 95.7,17.8 100.2,9.4 104.6,4.0 109.1,17.7 113.5,18.4 118.0,22.3" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">5</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★/★代餐粉</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">5</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*/*代餐粉</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：★七日膳食套餐营养固体饮料套餐
-备推2：★7日膳食套餐营养固体饮料套餐
-备推3：【七色膳食】★七日膳食套餐营养代餐粉固体饮料">★七日膳食套餐营养固体饮料套餐</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：★七日膳食套餐营养固体饮料套餐
-备推2：★7日膳食套餐营养固体饮料套餐
-备推3：【七色膳食】★七日膳食套餐营养代餐粉固体饮料"> 关联: ★7日膳食套餐营养固体饮... | 【七色膳食】★七日膳食套...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="*七日食补套餐营养固体饮料套餐">*七日食补套餐营养固体饮料套餐</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="*7日食补套餐营养固体饮料套餐">&lt;div&gt;*7日食补套餐营养固体饮料套餐&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【七色食补】*七日食补套餐营养代餐粉固体饮料">&lt;div&gt;【七色食补】*七日食补套餐营养代餐粉固体饮料&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">100~120万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3~4万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">12~15万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">263.8</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.78</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">4.51</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+1838.1%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,27.8 6.1,27.7 10.3,27.6 14.4,27.6 18.6,27.8 22.7,27.9 26.9,27.8 31.0,27.8 35.1,28.0 39.3,28.0 43.4,27.9 47.6,27.9 51.7,27.9 55.9,27.6 60.0,27.6 64.1,27.7 68.3,28.0 72.4,27.8 76.6,27.5 80.7,27.4 84.9,27.5 89.0,27.2 93.1,23.6 97.3,24.3 101.4,25.2 105.6,4.0 109.7,10.9 113.9,21.0 118.0,19.3 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,27.8 6.1,27.7 10.3,27.6 14.4,27.6 18.6,27.8 22.7,27.9 26.9,27.8 31.0,27.8 35.1,28.0 39.3,28.0 43.4,27.9 47.6,27.9 51.7,27.9 55.9,27.6 60.0,27.6 64.1,27.7 68.3,28.0 72.4,27.8 76.6,27.5 80.7,27.4 84.9,27.5 89.0,27.2 93.1,23.6 97.3,24.3 101.4,25.2 105.6,4.0 109.7,10.9 113.9,21.0 118.0,19.3" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,27.8 6.1,27.7 10.3,27.6 14.4,27.6 18.6,27.8 22.7,27.9 26.9,27.8 31.0,27.8 35.1,28.0 39.3,28.0 43.4,27.9 47.6,27.9 51.7,27.9 55.9,27.6 60.0,27.6 64.1,27.7 68.3,28.0 72.4,27.8 76.6,27.5 80.7,27.4 84.9,27.5 89.0,27.2 93.1,23.6 97.3,24.3 101.4,25.2 105.6,4.0 109.7,10.9 113.9,21.0 118.0,19.3 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,27.8 6.1,27.7 10.3,27.6 14.4,27.6 18.6,27.8 22.7,27.9 26.9,27.8 31.0,27.8 35.1,28.0 39.3,28.0 43.4,27.9 47.6,27.9 51.7,27.9 55.9,27.6 60.0,27.6 64.1,27.7 68.3,28.0 72.4,27.8 76.6,27.5 80.7,27.4 84.9,27.5 89.0,27.2 93.1,23.6 97.3,24.3 101.4,25.2 105.6,4.0 109.7,10.9 113.9,21.0 118.0,19.3" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">6</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">6</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">天麻粉</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：农家手工研磨-云南昭通天麻超细产地直销原味无添加(正装免费试吃一罐)
-备推2：[正宗云南昭通天麻粉]纯天麻粉新鲜云南天麻粉超细粉
-备推3：【到手3斤6罐】云南高山昭通小草坝天麻粉250g/罐（正装免费试吃一瓶）">农家手工研磨-云南昭通天麻超细产地直销原味无...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：农家手工研磨-云南昭通天麻超细产地直销原味无添加(正装免费试吃一罐)
-备推2：[正宗云南昭通天麻粉]纯天麻粉新鲜云南天麻粉超细粉
-备推3：【到手3斤6罐】云南高山昭通小草坝天麻粉250g/罐（正装免费试吃一瓶）"> 关联: [正宗云南昭通天麻粉]纯... | 【到手3斤6罐】云南高山...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="农家手工研磨-云南昭通天麻超细产地直销原味无添加(正装免费试吃一罐)">农家手工研磨-云南昭通天麻超细产地直销原味无添加(正装免费试吃一罐)</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[正宗云南昭通天麻粉]纯天麻粉新鲜云南天麻粉超细粉">&lt;div&gt;[正宗云南昭通天麻粉]纯天麻粉新鲜云南天麻粉超细粉&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【到手3斤6罐】云南高山昭通小草坝天麻粉250g/罐（正装免费试吃一瓶）">&lt;div&gt;【到手3斤6罐】云南高山昭通小草坝天麻粉250g/罐（正装免...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">100~120万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3~4万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">198.5</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">4.22</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.67</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+315.8%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,16.2 6.1,4.2 10.3,8.5 14.4,12.2 18.6,12.5 22.7,27.7 26.9,27.0 31.0,27.5 35.1,28.0 39.3,27.5 43.4,26.9 47.6,26.1 51.7,27.3 55.9,27.2 60.0,26.8 64.1,23.9 68.3,24.6 72.4,26.6 76.6,26.3 80.7,26.9 84.9,27.9 89.0,14.5 93.1,4.3 97.3,8.2 101.4,4.0 105.6,6.1 109.7,7.7 113.9,13.0 118.0,23.1 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,16.2 6.1,4.2 10.3,8.5 14.4,12.2 18.6,12.5 22.7,27.7 26.9,27.0 31.0,27.5 35.1,28.0 39.3,27.5 43.4,26.9 47.6,26.1 51.7,27.3 55.9,27.2 60.0,26.8 64.1,23.9 68.3,24.6 72.4,26.6 76.6,26.3 80.7,26.9 84.9,27.9 89.0,14.5 93.1,4.3 97.3,8.2 101.4,4.0 105.6,6.1 109.7,7.7 113.9,13.0 118.0,23.1" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,16.2 6.1,4.2 10.3,8.5 14.4,12.2 18.6,12.5 22.7,27.7 26.9,27.0 31.0,27.5 35.1,28.0 39.3,27.5 43.4,26.9 47.6,26.1 51.7,27.3 55.9,27.2 60.0,26.8 64.1,23.9 68.3,24.6 72.4,26.6 76.6,26.3 80.7,26.9 84.9,27.9 89.0,14.5 93.1,4.3 97.3,8.2 101.4,4.0 105.6,6.1 109.7,7.7 113.9,13.0 118.0,23.1 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,16.2 6.1,4.2 10.3,8.5 14.4,12.2 18.6,12.5 22.7,27.7 26.9,27.0 31.0,27.5 35.1,28.0 39.3,27.5 43.4,26.9 47.6,26.1 51.7,27.3 55.9,27.2 60.0,26.8 64.1,23.9 68.3,24.6 72.4,26.6 76.6,26.3 80.7,26.9 84.9,27.9 89.0,14.5 93.1,4.3 97.3,8.2 101.4,4.0 105.6,6.1 109.7,7.7 113.9,13.0 118.0,23.1" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">7</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">7</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">华北制药/NCPC成人粉剂益生菌</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[73周年限时购]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG
-备推2：【店庆限时购】华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG
-备推3：[73年店庆福利]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG">[73周年限时购]华北制药活性益生菌便携装2...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：[73周年限时购]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG
-备推2：【店庆限时购】华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG
-备推3：[73年店庆福利]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG"> 关联: 【店庆限时购】华北制药活... | [73年店庆福利]华北制...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[73周年限时购]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG">[73周年限时购]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="【店庆限时购】华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG">&lt;div&gt;【店庆限时购】华北制药活性益生菌便携装21种专利菌株含免疫球...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[73年店庆福利]华北制药活性益生菌便携装21种专利菌株含免疫球蛋白菌群冲饮6盒装ZG">&lt;div&gt;[73年店庆福利]华北制药活性益生菌便携装21种专利菌株含免...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">100~120万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3~4万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.5~2.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">151.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.8</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.75</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-37.0%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,16.1 6.1,8.3 10.3,8.1 14.4,8.4 18.6,6.0 22.7,4.0 26.9,9.4 31.0,10.3 35.1,9.1 39.3,13.2 43.4,14.7 47.6,10.8 51.7,8.8 55.9,10.7 60.0,14.2 64.1,15.1 68.3,15.0 72.4,17.6 76.6,13.4 80.7,19.5 84.9,27.8 89.0,19.5 93.1,21.0 97.3,15.2 101.4,22.9 105.6,25.6 109.7,28.0 113.9,25.6 118.0,23.2 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,16.1 6.1,8.3 10.3,8.1 14.4,8.4 18.6,6.0 22.7,4.0 26.9,9.4 31.0,10.3 35.1,9.1 39.3,13.2 43.4,14.7 47.6,10.8 51.7,8.8 55.9,10.7 60.0,14.2 64.1,15.1 68.3,15.0 72.4,17.6 76.6,13.4 80.7,19.5 84.9,27.8 89.0,19.5 93.1,21.0 97.3,15.2 101.4,22.9 105.6,25.6 109.7,28.0 113.9,25.6 118.0,23.2" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,16.1 6.1,8.3 10.3,8.1 14.4,8.4 18.6,6.0 22.7,4.0 26.9,9.4 31.0,10.3 35.1,9.1 39.3,13.2 43.4,14.7 47.6,10.8 51.7,8.8 55.9,10.7 60.0,14.2 64.1,15.1 68.3,15.0 72.4,17.6 76.6,13.4 80.7,19.5 84.9,27.8 89.0,19.5 93.1,21.0 97.3,15.2 101.4,22.9 105.6,25.6 109.7,28.0 113.9,25.6 118.0,23.2 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,16.1 6.1,8.3 10.3,8.1 14.4,8.4 18.6,6.0 22.7,4.0 26.9,9.4 31.0,10.3 35.1,9.1 39.3,13.2 43.4,14.7 47.6,10.8 51.7,8.8 55.9,10.7 60.0,14.2 64.1,15.1 68.3,15.0 72.4,17.6 76.6,13.4 80.7,19.5 84.9,27.8 89.0,19.5 93.1,21.0 97.3,15.2 101.4,22.9 105.6,25.6 109.7,28.0 113.9,25.6 118.0,23.2" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-50 text-blue-700">📉前期爆发后走弱</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">8</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">8</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">葛根粉</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[感恩回馈]小丽家湖北钟祥深山有机野生柴葛根粉葛粉之乡500克★5罐
-备推2：（回馈新老粉丝)老班长自己挖深山手工葛根粉营养代餐500克/罐★5支持试吃
-备推3：[618大促]深山有机野生柴葛根粉葛粉之乡湖北钟祥小丽家500克★5罐">[感恩回馈]小丽家湖北钟祥深山有机野生柴葛根...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：[感恩回馈]小丽家湖北钟祥深山有机野生柴葛根粉葛粉之乡500克★5罐
-备推2：（回馈新老粉丝)老班长自己挖深山手工葛根粉营养代餐500克/罐★5支持试吃
-备推3：[618大促]深山有机野生柴葛根粉葛粉之乡湖北钟祥小丽家500克★5罐"> 关联: （回馈新老粉丝)老班长自... | [618大促]深山有机野...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[感恩回馈]小丽家湖北钟祥深山有机野生柴葛根粉葛粉之乡500克*5罐">[感恩回馈]小丽家湖北钟祥深山有机野生柴葛根粉葛粉之乡500克*5罐</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="（回馈新老粉丝)某人设IP自己挖深山手工葛根粉营养代餐500克/罐*5支持试吃">&lt;div&gt;（回馈新老粉丝)某人设IP自己挖深山手工葛根粉营养代餐500克/...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[618大促]深山有机野生柴葛根粉葛粉之乡湖北钟祥小丽家500克*5罐">&lt;div&gt;[618大促]深山有机野生柴葛根粉葛粉之乡湖北钟祥小丽家50...&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">80~100万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3~4万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">249.8</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.14</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.73</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+84.0%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,23.1 6.1,20.2 10.3,18.8 14.4,19.3 18.6,27.9 22.7,18.8 26.9,11.5 31.0,21.9 35.1,17.5 39.3,21.6 43.4,21.7 47.6,28.0 51.7,18.6 55.9,14.4 60.0,19.0 64.1,20.1 68.3,18.7 72.4,27.9 76.6,27.8 80.7,15.5 84.9,15.0 89.0,6.4 93.1,11.8 97.3,4.0 101.4,7.2 105.6,20.3 109.7,6.1 113.9,8.3 118.0,19.4 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,23.1 6.1,20.2 10.3,18.8 14.4,19.3 18.6,27.9 22.7,18.8 26.9,11.5 31.0,21.9 35.1,17.5 39.3,21.6 43.4,21.7 47.6,28.0 51.7,18.6 55.9,14.4 60.0,19.0 64.1,20.1 68.3,18.7 72.4,27.9 76.6,27.8 80.7,15.5 84.9,15.0 89.0,6.4 93.1,11.8 97.3,4.0 101.4,7.2 105.6,20.3 109.7,6.1 113.9,8.3 118.0,19.4" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,23.1 6.1,20.2 10.3,18.8 14.4,19.3 18.6,27.9 22.7,18.8 26.9,11.5 31.0,21.9 35.1,17.5 39.3,21.6 43.4,21.7 47.6,28.0 51.7,18.6 55.9,14.4 60.0,19.0 64.1,20.1 68.3,18.7 72.4,27.9 76.6,27.8 80.7,15.5 84.9,15.0 89.0,6.4 93.1,11.8 97.3,4.0 101.4,7.2 105.6,20.3 109.7,6.1 113.9,8.3 118.0,19.4 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,23.1 6.1,20.2 10.3,18.8 14.4,19.3 18.6,27.9 22.7,18.8 26.9,11.5 31.0,21.9 35.1,17.5 39.3,21.6 43.4,21.7 47.6,28.0 51.7,18.6 55.9,14.4 60.0,19.0 64.1,20.1 68.3,18.7 72.4,27.9 76.6,27.8 80.7,15.5 84.9,15.0 89.0,6.4 93.1,11.8 97.3,4.0 101.4,7.2 105.6,20.3 109.7,6.1 113.9,8.3 118.0,19.4" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">9</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">9</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">灵芝类滋补品</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：（老班长精选）农家灵芝孢子粉支持试吃
-备推2：农户新收 灵芝孢子粉
-备推3：农户新收 灵芝孢子粉 [毛孩]">（老班长精选）农家灵芝孢子粉支持试吃</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：（老班长精选）农家灵芝孢子粉支持试吃
-备推2：农户新收 灵芝孢子粉
-备推3：农户新收 灵芝孢子粉 [毛孩]"> 关联: 农户新收 灵芝孢子粉 | 农户新收 灵芝孢子粉 [...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="（某人设IP精选）农家灵芝孢子粉支持试吃">（某人设IP精选）农家灵芝孢子粉支持试吃</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="农户新收 灵芝孢子粉">&lt;div&gt;农户新收 灵芝孢子粉&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="农户新收 灵芝孢子粉 [毛孩]">&lt;div&gt;农户新收 灵芝孢子粉 [毛孩]&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">60~70万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2~3万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.5~1.0万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">96.6</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.31</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.58</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+12.2%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,4.0 6.1,12.8 10.3,24.9 14.4,11.1 18.6,14.6 22.7,20.5 26.9,26.6 31.0,23.9 35.1,26.3 39.3,28.0 43.4,26.1 47.6,27.8 51.7,25.4 55.9,26.5 60.0,25.0 64.1,26.4 68.3,27.7 72.4,27.9 76.6,26.5 80.7,26.3 84.9,26.7 89.0,26.9 93.1,26.9 97.3,27.4 101.4,27.4 105.6,26.0 109.7,25.7 113.9,28.0 118.0,26.2 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,4.0 6.1,12.8 10.3,24.9 14.4,11.1 18.6,14.6 22.7,20.5 26.9,26.6 31.0,23.9 35.1,26.3 39.3,28.0 43.4,26.1 47.6,27.8 51.7,25.4 55.9,26.5 60.0,25.0 64.1,26.4 68.3,27.7 72.4,27.9 76.6,26.5 80.7,26.3 84.9,26.7 89.0,26.9 93.1,26.9 97.3,27.4 101.4,27.4 105.6,26.0 109.7,25.7 113.9,28.0 118.0,26.2" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,4.0 6.1,12.8 10.3,24.9 14.4,11.1 18.6,14.6 22.7,20.5 26.9,26.6 31.0,23.9 35.1,26.3 39.3,28.0 43.4,26.1 47.6,27.8 51.7,25.4 55.9,26.5 60.0,25.0 64.1,26.4 68.3,27.7 72.4,27.9 76.6,26.5 80.7,26.3 84.9,26.7 89.0,26.9 93.1,26.9 97.3,27.4 101.4,27.4 105.6,26.0 109.7,25.7 113.9,28.0 118.0,26.2 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,4.0 6.1,12.8 10.3,24.9 14.4,11.1 18.6,14.6 22.7,20.5 26.9,26.6 31.0,23.9 35.1,26.3 39.3,28.0 43.4,26.1 47.6,27.8 51.7,25.4 55.9,26.5 60.0,25.0 64.1,26.4 68.3,27.7 72.4,27.9 76.6,26.5 80.7,26.3 84.9,26.7 89.0,26.9 93.1,26.9 97.3,27.4 101.4,27.4 105.6,26.0 109.7,25.7 113.9,28.0 118.0,26.2" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-50 text-amber-700">〰️波动中</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">10</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">★蜂类滋补品</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">10</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">*蜂类滋补品</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 纯营养好吸收 中老年随身带着就能吃
-备推2：[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米直采 纯营养好吸收 中老年随身带着就能吃">[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压...</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 纯营养好吸收 中老年随身带着就能吃
-备推2：[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米直采 纯营养好吸收 中老年随身带着就能吃"> 关联: [热销口碑]金奖蜂王浆冻...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 纯营养好吸收 中老年随身带着就能吃">[热销口碑]金奖蜂王浆冻干片 优等品鲜王浆压片 藏区3500米蜂初乳 ...</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米直采 纯营养好吸收 中老年随身带着就能吃">&lt;div&gt;[热销口碑]金奖蜂王浆冻干片 正宗头茬蜂初乳 藏区3500米...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">60~70万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2~3万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.5~2.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">655.3</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2.64</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">4.27</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-20.5%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#ff4d4f15" points="2.0,19.3 6.6,15.7 11.3,8.3 15.9,8.9 20.6,9.3 25.2,13.4 29.8,28.0 34.5,13.8 39.1,15.4 43.8,4.0 48.4,12.7 53.0,15.3 57.7,27.8 62.3,15.8 67.0,19.9 71.6,15.0 76.2,28.0 80.9,14.1 85.5,14.1 90.2,18.5 94.8,21.5 99.4,17.0 104.1,15.9 108.7,28.0 113.4,16.7 118.0,23.9 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,19.3 6.6,15.7 11.3,8.3 15.9,8.9 20.6,9.3 25.2,13.4 29.8,28.0 34.5,13.8 39.1,15.4 43.8,4.0 48.4,12.7 53.0,15.3 57.7,27.8 62.3,15.8 67.0,19.9 71.6,15.0 76.2,28.0 80.9,14.1 85.5,14.1 90.2,18.5 94.8,21.5 99.4,17.0 104.1,15.9 108.7,28.0 113.4,16.7 118.0,23.9" stroke="#ff4d4f" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,19.3 6.6,15.7 11.3,8.3 15.9,8.9 20.6,9.3 25.2,13.4 29.8,28.0 34.5,13.8 39.1,15.4 43.8,4.0 48.4,12.7 53.0,15.3 57.7,27.8 62.3,15.8 67.0,19.9 71.6,15.0 76.2,28.0 80.9,14.1 85.5,14.1 90.2,18.5 94.8,21.5 99.4,17.0 104.1,15.9 108.7,28.0 113.4,16.7 118.0,23.9 118.0,30 2,30" fill="#ff4d4f15"/><polyline points="2.0,19.3 6.6,15.7 11.3,8.3 15.9,8.9 20.6,9.3 25.2,13.4 29.8,28.0 34.5,13.8 39.1,15.4 43.8,4.0 48.4,12.7 53.0,15.3 57.7,27.8 62.3,15.8 67.0,19.9 71.6,15.0 76.2,28.0 80.9,14.1 85.5,14.1 90.2,18.5 94.8,21.5 99.4,17.0 104.1,15.9 108.7,28.0 113.4,16.7 118.0,23.9" fill="none" stroke="#ff4d4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-50 text-blue-700">📉趋势下行</span></td>
@@ -1129,236 +994,208 @@ html {
 
                     <!-- Tab 3: 直购链路爆品 -->
                     <div id="tonic-tab-content-direct" class="hidden transition-all duration-300">
-                        <div class="overflow-x-auto">
+                                                <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
                                 <thead>
                                     <tr class="border-b border-slate-100 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 45px;">排名</th>
                                         <th class="py-2 pb-2.5 font-semibold text-slate-600" style="width: 120px;">品类 (内部SPU)</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-slate-600" style="min-width: 280px;">核心代表爆款 DPA 商品</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">月消耗区间</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 90px;">日均消耗</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 90px;">近7日日均</th>
-                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 80px;">周环比</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-slate-600" style="min-width: 220px;">核心代表爆款 DPA 商品 (Top3)</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 70px;">下单单价</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 55px;">CTR</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 65px;">浅层CVR</th>
+                                        <th class="py-2 pb-2.5 font-semibold text-center" style="width: 70px;">周环比</th>
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">趋势(Sparkline)</th>
                                         <th class="py-2 pb-2.5 font-semibold text-center" style="width: 100px;">趋势判断</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100/60 text-[11.5px] text-slate-600">
+<tbody class="divide-y divide-slate-100/60 text-[11.5px] text-slate-600">
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-amber-100 text-amber-800 font-extrabold">1</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">养生茶</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-yellow-400 to-orange-500 text-white font-extrabold">1</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">滋补养生茶</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：五指毛桃苹果茯湿茶
-备推2：五指毛桃茯苓茶、产品售价399，https://store.weixin.qq.com/shop/a/XJdjUmEjNKAzD9w
-备推3：五指毛桃茯苓茶">五指毛桃苹果茯湿茶</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：五指毛桃苹果茯湿茶
-备推2：五指毛桃茯苓茶、产品售价399，https://store.weixin.qq.com/shop/a/XJdjUmEjNKAzD9w
-备推3：五指毛桃茯苓茶"> 关联: 五指毛桃茯苓茶、产品售价... | 五指毛桃茯苓茶</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="五指毛桃苹果茯湿茶">五指毛桃苹果茯湿茶</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="五指毛桃茯苓茶、产品售价399，https://store.weixin.qq.com/shop/a/XJdjUmEjNKAzD9w">&lt;div&gt;五指毛桃茯苓茶、产品售价399，https://store....&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="五指毛桃茯苓茶">&lt;div&gt;五指毛桃茯苓茶&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">450~500万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">15~20万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">12~15万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">175.6</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.66</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.48</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-50.3%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,12.3 6.1,7.8 10.3,17.3 14.4,24.6 18.6,19.8 22.7,20.7 26.9,19.7 31.0,20.2 35.1,22.7 39.3,22.1 43.4,22.8 47.6,22.7 51.7,21.3 55.9,27.1 60.0,26.6 64.1,19.3 68.3,14.4 72.4,18.8 76.6,20.3 80.7,16.2 84.9,13.9 89.0,4.0 93.1,10.6 97.3,20.6 101.4,23.6 105.6,28.0 109.7,24.0 113.9,23.6 118.0,21.4 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,12.3 6.1,7.8 10.3,17.3 14.4,24.6 18.6,19.8 22.7,20.7 26.9,19.7 31.0,20.2 35.1,22.7 39.3,22.1 43.4,22.8 47.6,22.7 51.7,21.3 55.9,27.1 60.0,26.6 64.1,19.3 68.3,14.4 72.4,18.8 76.6,20.3 80.7,16.2 84.9,13.9 89.0,4.0 93.1,10.6 97.3,20.6 101.4,23.6 105.6,28.0 109.7,24.0 113.9,23.6 118.0,21.4" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,12.3 6.1,7.8 10.3,17.3 14.4,24.6 18.6,19.8 22.7,20.7 26.9,19.7 31.0,20.2 35.1,22.7 39.3,22.1 43.4,22.8 47.6,22.7 51.7,21.3 55.9,27.1 60.0,26.6 64.1,19.3 68.3,14.4 72.4,18.8 76.6,20.3 80.7,16.2 84.9,13.9 89.0,4.0 93.1,10.6 97.3,20.6 101.4,23.6 105.6,28.0 109.7,24.0 113.9,23.6 118.0,21.4 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,12.3 6.1,7.8 10.3,17.3 14.4,24.6 18.6,19.8 22.7,20.7 26.9,19.7 31.0,20.2 35.1,22.7 39.3,22.1 43.4,22.8 47.6,22.7 51.7,21.3 55.9,27.1 60.0,26.6 64.1,19.3 68.3,14.4 72.4,18.8 76.6,20.3 80.7,16.2 84.9,13.9 89.0,4.0 93.1,10.6 97.3,20.6 101.4,23.6 105.6,28.0 109.7,24.0 113.9,23.6 118.0,21.4" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-50 text-blue-700">📉趋势下行</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-200 text-slate-800 font-extrabold">2</span></td>
-                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">通用粉剂普通膳食营养食品</td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-gray-300 to-gray-400 text-white font-extrabold">2</span></td>
+                                        <td class="py-2.5 font-bold text-slate-800 text-[12px]">药食同源食补粉</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：谷物膳食粉健康好吸收
-备推2：膳食纤维益生元菊粉水苏糖溶膳食纤维粉
-备推3：谷物膳食粉健康0添加">谷物膳食粉健康好吸收</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：谷物膳食粉健康好吸收
-备推2：膳食纤维益生元菊粉水苏糖溶膳食纤维粉
-备推3：谷物膳食粉健康0添加"> 关联: 膳食纤维益生元菊粉水苏糖... | 谷物膳食粉健康0添加</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="谷物食补粉健康好吸收">谷物食补粉健康好吸收</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="食补粉益生元菊粉水苏糖溶食补粉粉">&lt;div&gt;食补粉益生元菊粉水苏糖溶食补粉粉&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="谷物食补粉健康0添加">&lt;div&gt;谷物食补粉健康0添加&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">450~500万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">15~20万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">20~25万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">292.6</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">6.2</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.41</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+1.3%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,19.3 6.1,19.0 10.3,19.9 14.4,16.6 18.6,15.3 22.7,12.4 26.9,14.8 31.0,19.3 35.1,22.4 39.3,25.1 43.4,23.0 47.6,21.4 51.7,22.8 55.9,21.6 60.0,28.0 64.1,24.9 68.3,16.4 72.4,15.6 76.6,13.9 80.7,14.2 84.9,10.8 89.0,4.0 93.1,13.4 97.3,15.6 101.4,8.8 105.6,24.8 109.7,11.3 113.9,14.4 118.0,10.3 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,19.3 6.1,19.0 10.3,19.9 14.4,16.6 18.6,15.3 22.7,12.4 26.9,14.8 31.0,19.3 35.1,22.4 39.3,25.1 43.4,23.0 47.6,21.4 51.7,22.8 55.9,21.6 60.0,28.0 64.1,24.9 68.3,16.4 72.4,15.6 76.6,13.9 80.7,14.2 84.9,10.8 89.0,4.0 93.1,13.4 97.3,15.6 101.4,8.8 105.6,24.8 109.7,11.3 113.9,14.4 118.0,10.3" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,19.3 6.1,19.0 10.3,19.9 14.4,16.6 18.6,15.3 22.7,12.4 26.9,14.8 31.0,19.3 35.1,22.4 39.3,25.1 43.4,23.0 47.6,21.4 51.7,22.8 55.9,21.6 60.0,28.0 64.1,24.9 68.3,16.4 72.4,15.6 76.6,13.9 80.7,14.2 84.9,10.8 89.0,4.0 93.1,13.4 97.3,15.6 101.4,8.8 105.6,24.8 109.7,11.3 113.9,14.4 118.0,10.3 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,19.3 6.1,19.0 10.3,19.9 14.4,16.6 18.6,15.3 22.7,12.4 26.9,14.8 31.0,19.3 35.1,22.4 39.3,25.1 43.4,23.0 47.6,21.4 51.7,22.8 55.9,21.6 60.0,28.0 64.1,24.9 68.3,16.4 72.4,15.6 76.6,13.9 80.7,14.2 84.9,10.8 89.0,4.0 93.1,13.4 97.3,15.6 101.4,8.8 105.6,24.8 109.7,11.3 113.9,14.4 118.0,10.3" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📊趋势较好</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-amber-50 text-amber-700 font-extrabold">3</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-gradient-to-br from-amber-600 to-amber-700 text-white font-extrabold">3</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">药食同源食品</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：五指毛桃苹果茯湿茶饮
-备推2：膳食纤维益生元菊粉水苏糖溶膳食纤维粉
-备推3：零糖五黑芝麻乳">五指毛桃苹果茯湿茶饮</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：五指毛桃苹果茯湿茶饮
-备推2：膳食纤维益生元菊粉水苏糖溶膳食纤维粉
-备推3：零糖五黑芝麻乳"> 关联: 膳食纤维益生元菊粉水苏糖... | 零糖五黑芝麻乳</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="五指毛桃苹果茯湿茶饮">五指毛桃苹果茯湿茶饮</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="食补粉益生元菊粉水苏糖溶食补粉粉">&lt;div&gt;食补粉益生元菊粉水苏糖溶食补粉粉&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="零糖五黑芝麻乳">&lt;div&gt;零糖五黑芝麻乳&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">400~450万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">12~15万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">25~30万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">196.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.93</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.35</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+875.5%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,24.9 6.1,21.6 10.3,28.0 14.4,20.6 18.6,21.9 22.7,26.8 26.9,26.2 31.0,24.6 35.1,21.9 39.3,21.5 43.4,16.4 47.6,18.4 51.7,18.6 55.9,17.5 60.0,16.3 64.1,26.6 68.3,26.2 72.4,26.9 76.6,27.6 80.7,26.7 84.9,25.8 89.0,26.1 93.1,23.3 97.3,14.2 101.4,8.5 105.6,22.7 109.7,7.2 113.9,4.0 118.0,11.1 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,24.9 6.1,21.6 10.3,28.0 14.4,20.6 18.6,21.9 22.7,26.8 26.9,26.2 31.0,24.6 35.1,21.9 39.3,21.5 43.4,16.4 47.6,18.4 51.7,18.6 55.9,17.5 60.0,16.3 64.1,26.6 68.3,26.2 72.4,26.9 76.6,27.6 80.7,26.7 84.9,25.8 89.0,26.1 93.1,23.3 97.3,14.2 101.4,8.5 105.6,22.7 109.7,7.2 113.9,4.0 118.0,11.1" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,24.9 6.1,21.6 10.3,28.0 14.4,20.6 18.6,21.9 22.7,26.8 26.9,26.2 31.0,24.6 35.1,21.9 39.3,21.5 43.4,16.4 47.6,18.4 51.7,18.6 55.9,17.5 60.0,16.3 64.1,26.6 68.3,26.2 72.4,26.9 76.6,27.6 80.7,26.7 84.9,25.8 89.0,26.1 93.1,23.3 97.3,14.2 101.4,8.5 105.6,22.7 109.7,7.2 113.9,4.0 118.0,11.1 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,24.9 6.1,21.6 10.3,28.0 14.4,20.6 18.6,21.9 22.7,26.8 26.9,26.2 31.0,24.6 35.1,21.9 39.3,21.5 43.4,16.4 47.6,18.4 51.7,18.6 55.9,17.5 60.0,16.3 64.1,26.6 68.3,26.2 72.4,26.9 76.6,27.6 80.7,26.7 84.9,25.8 89.0,26.1 93.1,23.3 97.3,14.2 101.4,8.5 105.6,22.7 109.7,7.2 113.9,4.0 118.0,11.1" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">4</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">4</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">五指毛桃茯苓茶组合型养生茶</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：五指毛桃苹果茯湿茶
-备推2：五指毛桃茯苓茶、产品售价399，https://store.weixin.qq.com/shop/a/XJdjUmEjNKAzD9w">五指毛桃苹果茯湿茶</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：五指毛桃苹果茯湿茶
-备推2：五指毛桃茯苓茶、产品售价399，https://store.weixin.qq.com/shop/a/XJdjUmEjNKAzD9w"> 关联: 五指毛桃茯苓茶、产品售价...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="五指毛桃苹果茯湿茶">五指毛桃苹果茯湿茶</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="五指毛桃茯苓茶、产品售价399，https://store.weixin.qq.com/shop/a/XJdjUmEjNKAzD9w">&lt;div&gt;五指毛桃茯苓茶、产品售价399，https://store....&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">250~300万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">15~20万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.1~0.3万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">218.9</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5.61</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.38</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-99.6%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,21.8 9.7,16.7 17.5,12.5 25.2,4.8 32.9,4.3 40.7,5.5 48.4,4.0 56.1,8.7 63.9,26.3 71.6,27.5 79.3,28.0 87.1,28.0 94.8,28.0 102.5,28.0 110.3,28.0 118.0,28.0 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,21.8 9.7,16.7 17.5,12.5 25.2,4.8 32.9,4.3 40.7,5.5 48.4,4.0 56.1,8.7 63.9,26.3 71.6,27.5 79.3,28.0 87.1,28.0 94.8,28.0 102.5,28.0 110.3,28.0 118.0,28.0" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,21.8 9.7,16.7 17.5,12.5 25.2,4.8 32.9,4.3 40.7,5.5 48.4,4.0 56.1,8.7 63.9,26.3 71.6,27.5 79.3,28.0 87.1,28.0 94.8,28.0 102.5,28.0 110.3,28.0 118.0,28.0 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,21.8 9.7,16.7 17.5,12.5 25.2,4.8 32.9,4.3 40.7,5.5 48.4,4.0 56.1,8.7 63.9,26.3 71.6,27.5 79.3,28.0 87.1,28.0 94.8,28.0 102.5,28.0 110.3,28.0 118.0,28.0" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-50 text-blue-700">📉前期爆发后走弱</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">5</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">5</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">西洋参</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：圣回堂红参提取浓缩液
-备推2：适合老年人的西洋参
-备推3：适合中老年人的西洋参">圣回堂红参提取浓缩液</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：圣回堂红参提取浓缩液
-备推2：适合老年人的西洋参
-备推3：适合中老年人的西洋参"> 关联: 适合老年人的西洋参 | 适合中老年人的西洋参</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="圣回堂红参提取浓缩液">圣回堂红参提取浓缩液</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="适合老年人的西洋参">&lt;div&gt;适合老年人的西洋参&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="适合中老年人的西洋参">&lt;div&gt;适合中老年人的西洋参&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">250~300万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">170.6</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">6.78</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.49</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-35.9%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,26.1 4.9,26.4 7.8,26.8 10.7,27.4 13.6,26.8 16.5,26.5 19.4,24.9 22.3,25.9 25.2,27.2 28.1,26.7 31.0,26.6 33.9,27.2 36.8,27.2 39.7,25.5 42.6,26.4 45.5,22.6 48.4,19.7 51.3,27.2 54.2,18.8 57.1,26.3 60.0,26.8 62.9,15.1 65.8,12.9 68.7,26.7 71.6,26.5 74.5,11.5 77.4,27.1 80.3,4.0 83.2,27.1 86.1,16.7 89.0,14.6 91.9,27.3 94.8,27.2 97.7,28.0 100.6,27.1 103.5,26.3 106.4,24.0 109.3,25.7 112.2,22.5 115.1,20.1 118.0,18.3 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,26.1 4.9,26.4 7.8,26.8 10.7,27.4 13.6,26.8 16.5,26.5 19.4,24.9 22.3,25.9 25.2,27.2 28.1,26.7 31.0,26.6 33.9,27.2 36.8,27.2 39.7,25.5 42.6,26.4 45.5,22.6 48.4,19.7 51.3,27.2 54.2,18.8 57.1,26.3 60.0,26.8 62.9,15.1 65.8,12.9 68.7,26.7 71.6,26.5 74.5,11.5 77.4,27.1 80.3,4.0 83.2,27.1 86.1,16.7 89.0,14.6 91.9,27.3 94.8,27.2 97.7,28.0 100.6,27.1 103.5,26.3 106.4,24.0 109.3,25.7 112.2,22.5 115.1,20.1 118.0,18.3" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,26.1 4.9,26.4 7.8,26.8 10.7,27.4 13.6,26.8 16.5,26.5 19.4,24.9 22.3,25.9 25.2,27.2 28.1,26.7 31.0,26.6 33.9,27.2 36.8,27.2 39.7,25.5 42.6,26.4 45.5,22.6 48.4,19.7 51.3,27.2 54.2,18.8 57.1,26.3 60.0,26.8 62.9,15.1 65.8,12.9 68.7,26.7 71.6,26.5 74.5,11.5 77.4,27.1 80.3,4.0 83.2,27.1 86.1,16.7 89.0,14.6 91.9,27.3 94.8,27.2 97.7,28.0 100.6,27.1 103.5,26.3 106.4,24.0 109.3,25.7 112.2,22.5 115.1,20.1 118.0,18.3 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,26.1 4.9,26.4 7.8,26.8 10.7,27.4 13.6,26.8 16.5,26.5 19.4,24.9 22.3,25.9 25.2,27.2 28.1,26.7 31.0,26.6 33.9,27.2 36.8,27.2 39.7,25.5 42.6,26.4 45.5,22.6 48.4,19.7 51.3,27.2 54.2,18.8 57.1,26.3 60.0,26.8 62.9,15.1 65.8,12.9 68.7,26.7 71.6,26.5 74.5,11.5 77.4,27.1 80.3,4.0 83.2,27.1 86.1,16.7 89.0,14.6 91.9,27.3 94.8,27.2 97.7,28.0 100.6,27.1 103.5,26.3 106.4,24.0 109.3,25.7 112.2,22.5 115.1,20.1 118.0,18.3" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">6</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">6</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">枸杞</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：枸杞枸杞枸杞枸杞5
-备推2：2026枸杞枸杞枸杞
-备推3：2026爆枸杞枸杞枸杞">枸杞枸杞枸杞枸杞5</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：枸杞枸杞枸杞枸杞5
-备推2：2026枸杞枸杞枸杞
-备推3：2026爆枸杞枸杞枸杞"> 关联: 2026枸杞枸杞枸杞 | 2026爆枸杞枸杞枸杞</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="枸杞枸杞枸杞枸杞5">枸杞枸杞枸杞枸杞5</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="2026枸杞枸杞枸杞">&lt;div&gt;2026枸杞枸杞枸杞&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="2026爆枸杞枸杞枸杞">&lt;div&gt;2026爆枸杞枸杞枸杞&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">200~250万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">5~8万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">66.5</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.72</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3.29</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-blue-600">-19.4%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,16.9 6.1,18.8 10.3,23.8 14.4,19.9 18.6,22.4 22.7,22.4 26.9,19.0 31.0,18.1 35.1,22.5 39.3,25.3 43.4,19.6 47.6,15.9 51.7,13.8 55.9,15.8 60.0,17.4 64.1,18.0 68.3,18.2 72.4,4.0 76.6,12.4 80.7,16.8 84.9,22.8 89.0,11.8 93.1,7.0 97.3,7.5 101.4,20.7 105.6,21.5 109.7,22.4 113.9,25.8 118.0,28.0 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,16.9 6.1,18.8 10.3,23.8 14.4,19.9 18.6,22.4 22.7,22.4 26.9,19.0 31.0,18.1 35.1,22.5 39.3,25.3 43.4,19.6 47.6,15.9 51.7,13.8 55.9,15.8 60.0,17.4 64.1,18.0 68.3,18.2 72.4,4.0 76.6,12.4 80.7,16.8 84.9,22.8 89.0,11.8 93.1,7.0 97.3,7.5 101.4,20.7 105.6,21.5 109.7,22.4 113.9,25.8 118.0,28.0" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,16.9 6.1,18.8 10.3,23.8 14.4,19.9 18.6,22.4 22.7,22.4 26.9,19.0 31.0,18.1 35.1,22.5 39.3,25.3 43.4,19.6 47.6,15.9 51.7,13.8 55.9,15.8 60.0,17.4 64.1,18.0 68.3,18.2 72.4,4.0 76.6,12.4 80.7,16.8 84.9,22.8 89.0,11.8 93.1,7.0 97.3,7.5 101.4,20.7 105.6,21.5 109.7,22.4 113.9,25.8 118.0,28.0 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,16.9 6.1,18.8 10.3,23.8 14.4,19.9 18.6,22.4 22.7,22.4 26.9,19.0 31.0,18.1 35.1,22.5 39.3,25.3 43.4,19.6 47.6,15.9 51.7,13.8 55.9,15.8 60.0,17.4 64.1,18.0 68.3,18.2 72.4,4.0 76.6,12.4 80.7,16.8 84.9,22.8 89.0,11.8 93.1,7.0 97.3,7.5 101.4,20.7 105.6,21.5 109.7,22.4 113.9,25.8 118.0,28.0" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">7</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">7</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">人参口服液</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：圣回堂红参提取浓缩液">圣回堂红参提取浓缩液</div>
-                                            
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="圣回堂红参提取浓缩液">圣回堂红参提取浓缩液</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">180~200万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">10~12万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">20~25万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">180.0</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">6.32</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.48</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+1041.2%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,25.0 9.7,26.9 17.5,26.4 25.2,26.6 32.9,27.6 40.7,27.2 48.4,27.6 56.1,28.0 63.9,24.2 71.6,21.7 79.3,19.8 87.1,13.0 94.8,4.0 102.5,13.9 110.3,6.1 118.0,7.2 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,25.0 9.7,26.9 17.5,26.4 25.2,26.6 32.9,27.6 40.7,27.2 48.4,27.6 56.1,28.0 63.9,24.2 71.6,21.7 79.3,19.8 87.1,13.0 94.8,4.0 102.5,13.9 110.3,6.1 118.0,7.2" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,25.0 9.7,26.9 17.5,26.4 25.2,26.6 32.9,27.6 40.7,27.2 48.4,27.6 56.1,28.0 63.9,24.2 71.6,21.7 79.3,19.8 87.1,13.0 94.8,4.0 102.5,13.9 110.3,6.1 118.0,7.2 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,25.0 9.7,26.9 17.5,26.4 25.2,26.6 32.9,27.6 40.7,27.2 48.4,27.6 56.1,28.0 63.9,24.2 71.6,21.7 79.3,19.8 87.1,13.0 94.8,4.0 102.5,13.9 110.3,6.1 118.0,7.2" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">8</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">8</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">红参</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：圣回堂红参提取浓缩液">圣回堂红参提取浓缩液</div>
-                                            
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="圣回堂红参提取浓缩液">圣回堂红参提取浓缩液</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">80~100万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3~4万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">8~10万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">180.0</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">8.38</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.64</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+776.7%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,7.3 7.0,20.8 12.1,27.8 17.1,28.0 22.2,28.0 27.2,27.6 32.3,28.0 37.3,28.0 42.3,27.7 47.4,28.0 52.4,17.3 57.5,20.1 62.5,17.1 67.6,21.6 72.6,24.5 77.7,28.0 82.7,24.0 87.7,4.0 92.8,9.9 97.8,6.8 102.9,11.1 107.9,6.9 113.0,6.2 118.0,28.0 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,7.3 7.0,20.8 12.1,27.8 17.1,28.0 22.2,28.0 27.2,27.6 32.3,28.0 37.3,28.0 42.3,27.7 47.4,28.0 52.4,17.3 57.5,20.1 62.5,17.1 67.6,21.6 72.6,24.5 77.7,28.0 82.7,24.0 87.7,4.0 92.8,9.9 97.8,6.8 102.9,11.1 107.9,6.9 113.0,6.2 118.0,28.0" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,7.3 7.0,20.8 12.1,27.8 17.1,28.0 22.2,28.0 27.2,27.6 32.3,28.0 37.3,28.0 42.3,27.7 47.4,28.0 52.4,17.3 57.5,20.1 62.5,17.1 67.6,21.6 72.6,24.5 77.7,28.0 82.7,24.0 87.7,4.0 92.8,9.9 97.8,6.8 102.9,11.1 107.9,6.9 113.0,6.2 118.0,28.0 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,7.3 7.0,20.8 12.1,27.8 17.1,28.0 22.2,28.0 27.2,27.6 32.3,28.0 37.3,28.0 42.3,27.7 47.4,28.0 52.4,17.3 57.5,20.1 62.5,17.1 67.6,21.6 72.6,24.5 77.7,28.0 82.7,24.0 87.7,4.0 92.8,9.9 97.8,6.8 102.9,11.1 107.9,6.9 113.0,6.2 118.0,28.0" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-50 text-emerald-700 font-semibold">📈近期正当时</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">9</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">9</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">中老年粉剂普通膳食营养食品</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：谷物膳食粉健康0添加
-备推2：浪渔岛海参肽益生菌粉丨萃取辽刺参精华丨小分子肽易吸收丨肠胃菌群平衡丨老年营养礼盒">谷物膳食粉健康0添加</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：谷物膳食粉健康0添加
-备推2：浪渔岛海参肽益生菌粉丨萃取辽刺参精华丨小分子肽易吸收丨肠胃菌群平衡丨老年营养礼盒"> 关联: 浪渔岛海参肽益生菌粉丨萃...</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="谷物食补粉健康0添加">谷物食补粉健康0添加</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="浪渔岛海参肽益生菌粉丨萃取辽刺参精华丨小分子肽易吸收丨肠胃菌群平衡丨老年营养礼盒">&lt;div&gt;浪渔岛海参肽益生菌粉丨萃取辽刺参精华丨小分子肽易吸收丨肠胃菌...&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="-">&lt;div style=&quot;color:#ccc;font-size:11px&quot;&gt;-&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">70~80万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">3~4万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]"><0.1万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">238.0</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">4.83</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.86</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+230.1%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,27.7 7.0,28.0 12.1,28.0 17.1,14.2 22.2,4.0 27.2,10.3 32.3,9.6 37.3,7.7 42.3,4.3 47.4,8.6 52.4,28.0 57.5,27.9 62.5,28.0 67.6,28.0 72.6,27.9 77.7,27.9 82.7,28.0 87.7,27.8 92.8,27.9 97.8,27.9 102.9,27.9 107.9,27.9 113.0,27.7 118.0,27.9 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,27.7 7.0,28.0 12.1,28.0 17.1,14.2 22.2,4.0 27.2,10.3 32.3,9.6 37.3,7.7 42.3,4.3 47.4,8.6 52.4,28.0 57.5,27.9 62.5,28.0 67.6,28.0 72.6,27.9 77.7,27.9 82.7,28.0 87.7,27.8 92.8,27.9 97.8,27.9 102.9,27.9 107.9,27.9 113.0,27.7 118.0,27.9" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,27.7 7.0,28.0 12.1,28.0 17.1,14.2 22.2,4.0 27.2,10.3 32.3,9.6 37.3,7.7 42.3,4.3 47.4,8.6 52.4,28.0 57.5,27.9 62.5,28.0 67.6,28.0 72.6,27.9 77.7,27.9 82.7,28.0 87.7,27.8 92.8,27.9 97.8,27.9 102.9,27.9 107.9,27.9 113.0,27.7 118.0,27.9 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,27.7 7.0,28.0 12.1,28.0 17.1,14.2 22.2,4.0 27.2,10.3 32.3,9.6 37.3,7.7 42.3,4.3 47.4,8.6 52.4,28.0 57.5,27.9 62.5,28.0 67.6,28.0 72.6,27.9 77.7,27.9 82.7,28.0 87.7,27.8 92.8,27.9 97.8,27.9 102.9,27.9 107.9,27.9 113.0,27.7 118.0,27.9" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-50 text-amber-700">〰️波动中</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/40 transition-all duration-150">
-                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600">10</span></td>
+                                        <td class="py-2.5 text-center"><span class="inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] bg-slate-100 text-slate-600 font-extrabold">10</span></td>
                                         <td class="py-2.5 font-bold text-slate-800 text-[12px]">灵芝</td>
                                         <td class="py-2.5 pr-4">
-                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[280px]" title="主推：鲜灵芝精萃液。。
-备推2：适合中老年人的灵芝
-备推3：鲜灵芝精华精粹液">鲜灵芝精萃液。。</div>
-                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[280px]" title="主推：鲜灵芝精萃液。。
-备推2：适合中老年人的灵芝
-备推3：鲜灵芝精华精粹液"> 关联: 适合中老年人的灵芝 | 鲜灵芝精华精粹液</div>
+                                            <div class="font-semibold text-slate-700 leading-tight truncate max-w-[200px]" title="鲜灵芝精萃液。。">鲜灵芝精萃液。。</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="适合中老年人的灵芝">&lt;div&gt;适合中老年人的灵芝&lt;/div&gt;</div>
+                                            <div class="text-[9.5px] text-slate-400 mt-0.5 truncate max-w-[200px]" title="鲜灵芝精华精粹液">&lt;div&gt;鲜灵芝精华精粹液&lt;/div&gt;</div>
                                         </td>
-                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">60~70万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">2~3万</td>
-                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">1.5~2.5万</td>
+                                        <td class="py-2.5 text-center font-bold text-slate-700 text-[11.5px]">96.3</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">10.64</td>
+                                        <td class="py-2.5 text-center text-slate-500 text-[11px]">0.52</td>
                                         <td class="py-2.5 text-center text-[11.5px] text-rose-600 font-semibold">+5.3%</td>
                                         <td class="py-2.5 text-center">
-                                            <svg class="mx-auto opacity-80" height="20" viewbox="0 0 120 32" width="80">
-<polygon fill="#52c41a15" points="2.0,23.5 6.5,28.0 10.9,4.0 15.4,7.3 19.8,10.2 24.3,23.9 28.8,21.1 33.2,16.9 37.7,20.1 42.2,28.0 46.6,14.4 51.1,20.7 55.5,10.7 60.0,19.1 64.5,24.3 68.9,28.0 73.4,17.1 77.8,28.0 82.3,9.3 86.8,12.6 91.2,16.6 95.7,15.6 100.2,24.2 104.6,23.7 109.1,26.5 113.5,23.5 118.0,5.2 118,30 2,30"></polygon>
-<polyline fill="none" points="2.0,23.5 6.5,28.0 10.9,4.0 15.4,7.3 19.8,10.2 24.3,23.9 28.8,21.1 33.2,16.9 37.7,20.1 42.2,28.0 46.6,14.4 51.1,20.7 55.5,10.7 60.0,19.1 64.5,24.3 68.9,28.0 73.4,17.1 77.8,28.0 82.3,9.3 86.8,12.6 91.2,16.6 95.7,15.6 100.2,24.2 104.6,23.7 109.1,26.5 113.5,23.5 118.0,5.2" stroke="#52c41a" stroke-linejoin="round" stroke-width="1.5"></polyline>
+                                            <svg class="mx-auto opacity-80" height="20" viewBox="0 0 120 32" width="80">
+<svg width="120" height="32" viewBox="0 0 120 32" style="display:block"><polygon points="2.0,23.5 6.5,28.0 10.9,4.0 15.4,7.3 19.8,10.2 24.3,23.9 28.8,21.1 33.2,16.9 37.7,20.1 42.2,28.0 46.6,14.4 51.1,20.7 55.5,10.7 60.0,19.1 64.5,24.3 68.9,28.0 73.4,17.1 77.8,28.0 82.3,9.3 86.8,12.6 91.2,16.6 95.7,15.6 100.2,24.2 104.6,23.7 109.1,26.5 113.5,23.5 118.0,5.2 118.0,30 2,30" fill="#52c41a15"/><polyline points="2.0,23.5 6.5,28.0 10.9,4.0 15.4,7.3 19.8,10.2 24.3,23.9 28.8,21.1 33.2,16.9 37.7,20.1 42.2,28.0 46.6,14.4 51.1,20.7 55.5,10.7 60.0,19.1 64.5,24.3 68.9,28.0 73.4,17.1 77.8,28.0 82.3,9.3 86.8,12.6 91.2,16.6 95.7,15.6 100.2,24.2 104.6,23.7 109.1,26.5 113.5,23.5 118.0,5.2" fill="none" stroke="#52c41a" stroke-width="1.5" stroke-linejoin="round"/></svg>
 </svg>
                                         </td>
                                         <td class="py-2.5 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-50 text-slate-600">➡️相对稳定</span></td>
@@ -1471,7 +1308,7 @@ html {
                             <div class="border-t border-slate-150/60 pt-3 space-y-2 text-xs mb-4">
                                 <div class="text-[11px] text-slate-600 leading-normal flex items-start gap-1.5">
                                     <span class="font-bold text-emerald-800 bg-emerald-100/60 px-1.5 py-0.5 rounded text-[9px] flex-shrink-0">商品力</span>
-                                    <div>葛根粉冲调，客单 ¥50~150。单品温和养生，依靠老班长山货背书克服品质真伪痛点。</div>
+                                    <div>葛根粉冲调，客单 ¥50~150。单品温和养生，依靠某人设IP山货背书克服品质真伪痛点。</div>
                                 </div>
                                 <div class="text-[11px] text-slate-600 leading-normal flex items-start gap-1.5">
                                     <span class="font-bold text-cyan-800 bg-cyan-100/60 px-1.5 py-0.5 rounded text-[9px] flex-shrink-0">内容力</span>
@@ -1582,7 +1419,7 @@ html {
                             <div class="bg-emerald-50/40 border-l-4 border-emerald-500 rounded-r-xl p-2.5 mb-4">
                                 <span class="text-[10px] font-bold text-emerald-800 block mb-0.5">🗺️ 服务商四力破局亮点</span>
                                 <p class="text-[11px] text-slate-600 leading-normal">
-                                    Dr.郭首席科研专家背书树立行业标杆，商击率92.6%全场瞩目，转化CVR 6.4%极优。
+                                    某科研专家首席科研专家背书树立行业标杆，商击率92.6%全场瞩目，转化CVR 6.4%极优。
                                 </p>
                             </div>
 
@@ -1593,7 +1430,7 @@ html {
                                 </div>
                                 <div class="text-[11px] text-slate-600 leading-normal flex items-start gap-1.5">
                                     <span class="font-bold text-cyan-800 bg-cyan-100/60 px-1.5 py-0.5 rounded text-[9px] flex-shrink-0">内容力</span>
-                                    <div><b>Dr.郭首席研发白大褂专家解答</b>；科研车间场景自播；<b>CVR 6.4% 全场前列</b>，商品点击92.6%。</div>
+                                    <div><b>某科研专家首席研发白大褂专家解答</b>；科研车间场景自播；<b>CVR 6.4% 全场前列</b>，商品点击92.6%。</div>
                                 </div>
                                 <div class="text-[11px] text-slate-600 leading-normal flex items-start gap-1.5">
                                     <span class="font-bold text-blue-800 bg-blue-100/60 px-1.5 py-0.5 rounded text-[9px] flex-shrink-0">投放力</span>
@@ -1752,7 +1589,7 @@ html {
                             <div class="md:col-span-7">
                                 <div class="flex justify-between items-center mb-3">
                                     <span class="text-[10px] font-bold text-emerald-900 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-300">燕窝赛道 (殿堂级大促标杆)</span>
-                                    <span class="text-[10px] text-herb-800 font-bold">小仙炖 618 总裁特批案</span>
+                                    <span class="text-[10px] text-herb-800 font-bold">某燕窝品牌 618 总裁特批案</span>
                                 </div>
                                 <h4 class="font-black text-slate-800 text-base mb-1">燕窝类极奢单品直播间</h4>
                                 <p class="text-xs text-herb-800 font-semibold mb-3">实景走播动线 × 高奢大单促成机制</p>
@@ -1810,7 +1647,7 @@ html {
                     <span class="p-1.5 bg-cyan-50 text-cyan-600 rounded-lg border border-cyan-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">二、内容力 (创意) ✕ 老班长葛根粉案例：老农淳朴背书与黄金3秒高黏创意攻坚</strong>
+                    <strong class="text-sm text-slate-800">二、内容力：爆量视频前 3 秒痛点金句滚动与合规过审防雷指引</strong>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-5">
@@ -1970,7 +1807,7 @@ html {
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded">老农IP × AIGC</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老班长古法葛根案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">某人设IP古法葛根案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>内容力特色</strong>：淳朴大山老农人设深度绑定情绪，引入妙思文生视频突破剪辑高频换素材衰退瓶颈。
                                     <br>• <strong>黄金3秒</strong>：老山货背书老头口播特写，搭配古法冲调拉丝视觉钩子，留存暴涨。
@@ -1986,10 +1823,10 @@ html {
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">科学严谨背书</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">Dr.郭八珍饮科研案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">某科研专家八珍饮科研案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>内容力特色</strong>：白大褂首席研发专家严谨解答，科研无尘净化车间实况走播建立绝对科技信任。
-                                    <br>• <strong>黄金3秒</strong>：Dr.郭现场解答三伏祛寒养气血，配以科学分子配方剖析，破除虚假暗示。
+                                    <br>• <strong>黄金3秒</strong>：某科研专家现场解答三伏祛寒养气血，配以科学分子配方剖析，破除虚假暗示。
                                     <br>• <strong>数据表现</strong>：转化 CVR 高达 <strong>6.4%</strong>，商击率 <strong>92.6%</strong> 全场第一。
                                 </p>
                             </div>
@@ -1998,11 +1835,11 @@ html {
                                 <a href="case-drguo-bazhenyin.html" target="_blank" class="text-[10px] text-purple-800 font-bold hover:underline">横版案例纸 →</a>
                             </div>
                         </div>
-                        <!-- 御湿方 -->
+                        <!-- 湿谷方 -->
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">三伏祛湿爆款</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号御湿方自播案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号湿谷方自播案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>内容力特色</strong>：百年医馆古朴视觉，黄金前3秒三伏吹冷空调、起不来床黏腻寒湿痛点痛快直击。
                                     <br>• <strong>黄金3秒</strong>：现场高低粘稠度两杯粉冲泡倒水对比，展现极高吸水膨胀与真材实料，震撼双眼。
@@ -2010,8 +1847,8 @@ html {
                                 </p>
                             </div>
                             <div class="flex items-center justify-between border-t border-slate-100 pt-2.5 mt-3">
-                                <a href="御湿方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
-                                <a href="老字号御湿方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
+                                <a href="湿谷方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
+                                <a href="老字号湿谷方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
                             </div>
                         </div>
                     </div>
@@ -2027,7 +1864,7 @@ html {
                     <span class="p-1.5 bg-blue-50 text-blue-600 rounded-lg border border-blue-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">三、投放力 (流量) ✕ 枸杞双链路案例：双链路智投冷启动与全域通护航拓流</strong>
+                    <strong class="text-sm text-slate-800">三、投放力：高效率基建双链路冷启动突围与成本探索方案</strong>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-5">
@@ -2087,7 +1924,7 @@ html {
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded">预算弹性王 3.8x</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老班长古法葛根案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">某人设IP古法葛根案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>投放力策略</strong>：多账户矩阵错峰拿量，外投痛点大片定向中老年女性客群。
                                     <br>• <strong>预算与冲量</strong>：日常日耗 3-4w，节点通过增加促销活动变量极速提升单日扩量至 16-18w。
@@ -2103,7 +1940,7 @@ html {
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">极致渗透 82.2%</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">Dr.郭八珍饮科研案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">某科研专家八珍饮科研案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>投放力策略</strong>：智投工作台全方位高阶渗透，通过多账户交叉出价保障，极速拓流。
                                     <br>• <strong>预算与冲量</strong>：日常日耗 2-3w 精准引流，节点放量单日消耗突破 17-19w。
@@ -2115,20 +1952,20 @@ html {
                                 <a href="case-drguo-bazhenyin.html" target="_blank" class="text-[10px] text-purple-800 font-bold hover:underline">横版案例纸 →</a>
                             </div>
                         </div>
-                        <!-- 御湿方 -->
+                        <!-- 湿谷方 -->
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">爆发狂飙 12.2倍</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号御湿方自播案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号湿谷方自播案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>投放力策略</strong>：三伏天节点专项起爆，配合全域通与 AIM+ 智投双向开跑，人群精准度大拉升。
-                                    <br>• <strong>预算与冲量</strong>：爆发期单日消耗突破至大数万级别（放量超 12 倍），实现爆发式完美放量。
+                                    <br>• <strong>预算与冲量</strong>：爆发期单日消耗由常规 0.6w 突暴至 **7.89w** 完美放量。
                                     <br>• <strong>硬核数据</strong>：放量 12.2倍期间，ROI 依旧保持稳健大盘前列。
                                 </p>
                             </div>
                             <div class="flex items-center justify-between border-t border-slate-100 pt-2.5 mt-3">
-                                <a href="御湿方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
-                                <a href="老字号御湿方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
+                                <a href="湿谷方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
+                                <a href="老字号湿谷方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
                             </div>
                         </div>
                     </div>
@@ -2144,7 +1981,7 @@ html {
                     <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-line-chart"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"></polyline><polyline points="17 6 23 6 23 11.5"></polyline></svg>
                     </span>
-                    <strong class="text-sm text-slate-800">四、经营力 (转化) ✕ 燕窝618案例：大促爆款实景展播与后链路高转化承接</strong>
+                    <strong class="text-sm text-slate-800">四、经营力：实景直播专场与大促“展播/掌播”突围大单规划</strong>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs mb-5">
@@ -2157,11 +1994,11 @@ html {
                             </h4>
                             <p class="text-slate-500 leading-relaxed mb-3">
                                 利用大平台展播、掌播大促势能与多阶高奢随单礼赠大转盘机制，刺激百万高单价货品起曝光转化。
-                                <br>• <strong>高奢随单大赠送机制</strong>：随主推季套餐、半年卡套餐赠送高价值鲜榨粥 + 40g大包装经典礼盒 + 小仙炖定制骨瓷餐具，30分钟一次香奈儿大转盘，大客百万催付逼单。
+                                <br>• <strong>高奢随单大赠送机制</strong>：随主推季套餐、半年卡套餐赠送高价值鲜榨粥 + 40g大包装经典礼盒 + 某燕窝品牌定制骨瓷餐具，30分钟一次香奈儿大转盘，大客百万催付逼单。
                             </p>
                         </div>
-                        <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoASgAZwZPAMACNMzl63KB1f" target="_blank" class="w-full text-center py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold rounded-xl transition-colors inline-block mt-3 border border-amber-200/60">
-                            近期展播与扶持活动报名入口 ↗
+                        <a href="https://doc.weixin.qq.com/doc/w3_AY8AIQZXAAwCNlRoQLgXMQvyPlAoB?scode=AJEAIQdfAAoAsXQZnDAY8AIQZXAAw" target="_blank" class="w-full text-center py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold rounded-xl transition-colors inline-block mt-3 border border-amber-200/60">
+                            近期展播活动报名入口直达 ↗
                         </a>
                     </div>
 
@@ -2210,7 +2047,7 @@ html {
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded">高粘性私域复购</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老班长古法葛根案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">某人设IP古法葛根案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>经营力模式</strong>：大山淳朴老农人设强交互，自播间高频实景演示冲调（不加一粒沙糖），随单附带山珍体验卡高额黏粉。
                                     <br>• <strong>转化承接</strong>：进播率 2.1%，下单率高达 **13.0%**，常态 ROI 稳步上行。
@@ -2226,7 +2063,7 @@ html {
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">尖端汉方闭环</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">Dr.郭八珍饮科研案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">某科研专家八珍饮科研案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>经营力模式</strong>：白大褂现场连线科学分析配方，科学净化车间高奢动线实播，大仓极速发货现场，全闭环直购转化，无售后顾虑。
                                     <br>• <strong>转化承接</strong>：看播至商品点击比达 92.6%，下单率 **9.5%** 极高闭环。
@@ -2238,11 +2075,11 @@ html {
                                 <a href="case-drguo-bazhenyin.html" target="_blank" class="text-[10px] text-purple-800 font-bold hover:underline">横版案例纸 →</a>
                             </div>
                         </div>
-                        <!-- 御湿方 -->
+                        <!-- 湿谷方 -->
                         <div class="bg-white p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all">
                             <div>
                                 <span class="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">三伏超级放量</span>
-                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号御湿方自播案</h5>
+                                <h5 class="font-bold text-slate-800 mt-1.5 mb-1 text-[11.5px]">老字号湿谷方自播案</h5>
                                 <p class="text-slate-500 text-[10.5px] leading-relaxed">
                                     • <strong>经营力模式</strong>：中医馆原场景古朴复刻。现场黏稠颗粒拉丝互动，主播现场解答三伏去湿排黏，大包装大赠礼限时大转盘逼单。
                                     <br>• <strong>转化承接</strong>：下单率高达 **13.85%**，大幅度拉长看播时长。
@@ -2250,8 +2087,8 @@ html {
                                 </p>
                             </div>
                             <div class="flex items-center justify-between border-t border-slate-100 pt-2.5 mt-3">
-                                <a href="御湿方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
-                                <a href="老字号御湿方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
+                                <a href="湿谷方直播间截图.png" target="_blank" class="text-[10px] text-slate-400 hover:text-herb-700 font-bold transition-colors">现场截图 ↗</a>
+                                <a href="老字号湿谷方案例Showcase.html" target="_blank" class="text-[10px] text-amber-800 font-bold hover:underline">展示案例秀 →</a>
                             </div>
                         </div>
                     </div>
@@ -2327,12 +2164,8 @@ html {
                         <div class="bg-amber-700 h-full rounded-full" style="width: 82%"></div>
                     </div>
                     <div class="text-[10px] text-herb-100 font-bold">已抢占 31/38 席 (仅剩最后 7 席)</div>
-                    <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoASgAZwZPAMACNMzl63KB1f" target="_blank" class="w-full md:w-auto px-6 py-3.5 bg-amber-700 text-white hover:bg-amber-600 font-bold rounded-xl text-xs transition-all shadow-lg shadow-amber-900/25 flex items-center justify-center gap-1.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
-                        在线直达提报表单 ↗
-                    </a>
-                    <button onclick="copyText('我已经准备好报名传统滋补【三伏天冲量官方扶持计划】，我的小店主打品类是：____，我报名的客户主体是_______请官方大客经理协助我一键审核资质并锁定【四大核心扶持权益】名额！', '已复制一键报名大客申请表模板')" class="w-full md:w-auto px-6 py-2 bg-herb-800 text-herb-200 hover:bg-herb-700 font-bold rounded-xl text-[11px] transition-all flex items-center justify-center gap-1.5 border border-herb-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                    <button onclick="copyText('我已经准备好报名传统滋补【三伏天冲量官方扶持计划】，我的小店主打品类是：____，我报名的客户主体是_______请官方大客经理协助我一键审核资质并锁定【四大核心扶持权益】名额！', '已复制一键报名大客申请表模板')" class="w-full md:w-auto px-6 py-3.5 bg-amber-700 text-white hover:bg-amber-600 font-bold rounded-xl text-xs transition-all shadow-lg shadow-amber-900/25 flex items-center justify-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
                         一键复制报名登记表
                     </button>
                 </div>
@@ -2434,9 +2267,9 @@ html {
             title: '直播大促 & 专属看播数据透视',
             desc: `<p>• <strong>大促消耗占比</strong>：618 及节气爆发期消耗占比飙升 47%，消耗高点弹性达常规自播 3.8 倍。</p>
                    <p>• <strong>效率大盘表现</strong>：下单 ROI 优秀，维持在 1.68~2.50。智投工作台全渗透 &gt;85%。</p>
-                   <p>• <strong>主力直播品类</strong>：高端鲜炖燕窝、药食同源御湿方（起跑日消耗飙升 12 倍）。</p>`,
-            list: `<div class="flex justify-between"><span>1. 小仙炖618直播专场</span> <span class="font-bold text-herb-600">618最高 ROI 2.50</span></div>
-                   <div class="flex justify-between"><span>2. 老字号「御湿方」自播</span> <span class="font-bold text-herb-600">CVR高达 16.39%</span></div>
+                   <p>• <strong>主力直播品类</strong>：高端鲜炖燕窝、药食同源湿谷方（起跑日消耗飙升 12 倍）。</p>`,
+            list: `<div class="flex justify-between"><span>1. 某燕窝品牌618直播专场</span> <span class="font-bold text-herb-600">618最高 ROI 2.50</span></div>
+                   <div class="flex justify-between"><span>2. 老字号「湿谷方」自播</span> <span class="font-bold text-herb-600">CVR高达 16.39%</span></div>
                    <div class="flex justify-between"><span>3. apopo 冲调日耗百万直播间</span> <span class="font-bold text-herb-600">下单率优秀</span></div>`,
             btnClass: 'flex-1 py-2.5 rounded-xl text-xs font-bold text-herb-900 bg-white shadow-sm transition-all flex items-center justify-center gap-1'
         },
@@ -2446,9 +2279,9 @@ html {
             desc: `<p>• <strong>垂直人群粘性</strong>：中老年及55-59岁女性，多依靠垂直细分自播，日常复购率达 35%。</p>
                    <p>• <strong>创意高度差异</strong>：素材重复率 44% 极净。多计划精细自播，定向成本极低。</p>
                    <p>• <strong>主力垂直品类</strong>：高端蜂产品王浆、整块九蒸九晒熟地黄、葛根粉。</p>`,
-            list: `<div class="flex justify-between"><span>1. 田野牧蜂蜂蜜 (客单 698元)</span> <span class="font-bold text-herb-600">ROI 1.48 (重复率44%)</span></div>
-                   <div class="flex justify-between"><span>2. 老班长葛根粉自播</span> <span class="font-bold text-herb-600">大促爆量 3.8倍</span></div>
-                   <div class="flex justify-between"><span>3. 小仙炖高端燕窝自播</span> <span class="font-bold text-herb-600">ROI 1.78</span></div>`,
+            list: `<div class="flex justify-between"><span>1. 某蜂类品牌蜂蜜 (客单 698元)</span> <span class="font-bold text-herb-600">ROI 1.48 (重复率44%)</span></div>
+                   <div class="flex justify-between"><span>2. 某人设IP葛根粉自播</span> <span class="font-bold text-herb-600">大促爆量 3.8倍</span></div>
+                   <div class="flex justify-between"><span>3. 某燕窝品牌高端燕窝自播</span> <span class="font-bold text-herb-600">ROI 1.78</span></div>`,
             btnClass: 'flex-1 py-2.5 rounded-xl text-xs font-bold text-herb-900 bg-white shadow-sm transition-all flex items-center justify-center gap-1'
         }
     };
