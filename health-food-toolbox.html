@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保健食品投放百宝箱 - 2026年官方投放实操手册</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { theme: { extend: { colors: {
+        herb: { 50: '#f0f7f4', 100: '#daebd5', 200: '#b8d9c2', 600: '#15803d', 700: '#0f682c', 800: '#0d5124', 900: '#0a3d1d' },
+        amber: { 50: '#fdfbf7', 100: '#fef3c7', 200: '#fde68a', 500: '#f59e0b', 700: '#b45309' },
+        shasha: { 50: '#fcfdfd', 100: '#f4f7f5', 200: '#e2ede5' }
+    } } } };
+</script>
+<style>
+.glass-nav { background: rgba(252,253,253,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(218,235,213,0.5); }
+.card-herb { background: #fcfdfd; border: 1px solid #e2ede5; border-radius: 20px; box-shadow: 0 4px 20px rgba(15,80,40,0.012); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+.card-herb:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(15,80,40,0.04); border-color: #b8d9c2; }
+.gold-glow { border: 1.5px solid rgba(180,83,9,0.2); box-shadow: 0 0 25px rgba(180,83,9,0.02); }
+.gold-glow:hover { border-color: rgba(180,83,9,0.4); box-shadow: 0 8px 30px rgba(180,83,9,0.05); }
+.gradient-text-herb { background: linear-gradient(135deg,#101d15 20%,#15803d 60%,#b45309 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gradient-bg-hero { background: radial-gradient(circle at top right, rgba(218,235,213,0.35) 0%, rgba(252,253,253,0) 70%), radial-gradient(circle at bottom left, rgba(254,243,231,0.25) 0%, rgba(252,253,253,0) 65%); }
+html { scroll-behavior: smooth; }
+.folder-tab { position: relative; background: #f1f5f9; color: #475569; border-radius: 14px 14px 0 0; border: 1px solid rgba(30,63,32,0.12); border-bottom: none; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+.folder-tab::after { content: ''; position: absolute; bottom: 0; right: -20px; width: 20px; height: 20px; background: transparent; border-bottom-left-radius: 14px; box-shadow: -10px 10px 0 10px #f1f5f9; pointer-events: none; }
+.active-tab { background: #1e3f20 !important; color: #ffffff !important; border-color: #1e3f20 !important; }
+.active-tab::after { box-shadow: -10px 10px 0 10px #1e3f20 !important; }
+.folder-content { opacity: 0; transform: translateY(8px) scale(0.995); display: none; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.folder-content.active { display: block; opacity: 1; transform: translateY(0) scale(1); }
+</style>
+</head>
+<body class="bg-shasha-100 text-slate-800 min-height-screen pb-24">
+
+<header class="glass-nav sticky top-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="p-1.5 bg-herb-50 rounded-lg border border-herb-100 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-13.9.2"></path><path d="M9 22v-4h4"></path></svg>
+      </span>
+      <span class="font-extrabold text-sm tracking-widest text-slate-800 uppercase flex items-center gap-1.5">保健食品投放百宝箱 <span class="bg-herb-600 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">V1.0</span></span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 text-xs font-bold text-slate-500">
+      <a href="#module-sprint" class="hover:text-herb-600 transition-colors">单季冲刺</a>
+      <a href="#module-avoid" class="hover:text-herb-600 transition-colors">避坑门槛</a>
+      <a href="#module-four-powers" class="hover:text-herb-600 transition-colors">四大能力升级 × 标杆案例</a>
+      <a href="#module-four-powers" class="hover:text-herb-600 transition-colors">商品力 · 标杆案例集</a>
+      <a href="#module-vip" class="hover:text-herb-600 transition-colors">大客权益</a>
+    </nav>
+    <div><span class="text-[10px] border border-herb-200/60 bg-herb-50/50 text-herb-700 px-3 py-1.5 rounded-full font-bold">2026 大健康特辑 · 火热中</span></div>
+  </div>
+</header>
+
+<div class="max-w-6xl mx-auto px-4 mt-8">
+
+  <div class="relative overflow-hidden card-herb gradient-bg-hero p-8 md:p-12 mb-8 border-herb-100">
+    <div class="absolute -top-12 -right-12 w-64 h-64 bg-herb-100/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-amber-100/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="bg-herb-100 text-herb-800 font-bold px-2.5 py-0.5 rounded-full text-[10px] tracking-wider uppercase flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+          官方投放实操手册
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-4.5xl font-black tracking-tight mb-4 gradient-text-herb leading-tight">保健食品投放百宝箱</h1>
+      <p class="text-slate-600 text-sm leading-relaxed mb-6">保健食品（蓝帽子保健功能食品 / 膳食营养补充剂）赛道具有高复购、高客单、强信任转化与高生命周期价值特征。本手册一站式收录行业最新选品指南、六大功能赛道机会地图、雷区合规平替、千万级标杆实战动作与闭环直播基建双方案，为您打通大健康在投爆量闭环，创造确定性生意跃升。</p>
+      <div class="flex flex-wrap gap-3.5">
+        <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-herb-700 to-herb-600 hover:from-herb-800 hover:to-herb-700 text-white font-extrabold rounded-xl text-xs shadow-md shadow-herb-700/10 transition-all transform hover:-translate-y-0.5 group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+          直通 保健食品闭环直播 · 标杆案例集 ➜
+        </a>
+        <a href="https://doc.weixin.qq.com/doc/w3_AXsAzwa2AM0CNqDIexMhfSneKWcf5?scode=AJEAIQdfAAo3i4LDtlAY8AIQZXAAw" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-800 hover:to-amber-700 text-white font-extrabold rounded-xl text-xs shadow-md shadow-amber-700/10 transition-all transform hover:-translate-y-0.5 group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+          打开 投前资料文档 ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section id="module-sprint" class="mb-12 scroll-mt-20">
+    <div class="card-herb gold-glow p-6 md:p-8 relative overflow-hidden bg-gradient-to-br from-white to-amber-50/10">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-100 text-amber-800 font-bold px-2.5 py-0.5 rounded-full text-[10px] tracking-wider uppercase flex items-center gap-1">🔥 当季冲刺重点 FOCUS</span>
+            <span class="text-amber-800 font-medium text-xs flex items-center gap-1">入夏三伏减肥季 (7月 · 8月 · 三伏天)</span>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-2">入夏三伏减肥季：保健食品减肥视频号版位准入政策</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-5">入夏三伏是减肥品类全年最强需求窗口，但保健食品减肥赛道在视频号版位执行严格准入。0624 最新规则明确：<strong>不再区分直播、直购等链路</strong>，统一按"择优客户 + 敏感品类评估"双条件准入；待减肥负反馈数据优化好后平台再争取放宽。建议商户提前自查热招品牌资质与复审拒绝率，规避准出红线，稳健拿量。</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-5">
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 leading-relaxed">
+              <strong class="text-amber-800 block mb-1 flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                准入双条件（0624更新）
+              </strong>
+              <p class="text-slate-500">• <strong>条件1 择优客户</strong>：ams品牌 / 小店热招品牌，需校验是否热招品牌（<a href="https://store.weixin.qq.com/chengzhang/forest/zhaoshang/search" target="_blank" class="text-amber-700 underline decoration-dotted">点此查询 ↗</a>）。<br>• <strong>条件2 品类规则</strong>：依视频号敏感品类准入准出规则评估，链路不再区分直播/直购。</p>
+            </div>
+            <div class="bg-emerald-50/30 p-3.5 rounded-xl border border-emerald-100/50 leading-relaxed">
+              <strong class="text-emerald-800 block mb-1 flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+                准出规则与重大违规
+              </strong>
+              <p class="text-slate-500">• <strong>准出①</strong>：当前处罚拒绝率高于品械均值 150%。<br>• <strong>准出②</strong>：涉壮阳、色情、涉政等重大违规 → 双周预警、双周处置，剔除视频号版位。<br>• <strong>放宽信号</strong>：减肥负反馈数据优化好后，争取放宽准入。</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 bg-amber-500/5 rounded-2xl border border-amber-500/15 min-w-[200px] text-center shrink-0">
+          <div class="text-sm text-amber-800 font-semibold mb-1">政策更新节点</div>
+          <div class="text-3xl font-extrabold text-amber-700 tracking-tight my-1">0624</div>
+          <div class="text-xs text-amber-600/80 leading-normal">视频号版位准入规则更新<br>负反馈优化后再争取放宽</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12 scroll-mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <a href="https://doc.weixin.qq.com/doc/w3_AXsAzwa2AM0CNqDIexMhfSneKWcf5?scode=AJEAIQdfAAo3i4LDtlAY8AIQZXAAw" target="_blank" class="block card-herb gold-glow p-6 md:p-7 relative overflow-hidden bg-gradient-to-r from-amber-50 to-white group">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
+          <div class="flex items-center gap-3">
+            <span class="p-2.5 bg-amber-700 text-white rounded-xl flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+            </span>
+            <div>
+              <div class="text-[10px] font-extrabold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full tracking-wider uppercase inline-block mb-1">投前必读 · PRE-INVESTMENT</div>
+              <h3 class="text-lg font-bold text-slate-800">保健食品赛道投前自查文档</h3>
+              <p class="text-xs text-slate-500 mt-0.5">入局前请先查阅官方投前资料，对齐类目归属、合规边界与招商权益。</p>
+            </div>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-5 py-3 bg-amber-700 text-white font-extrabold rounded-xl text-xs shadow-md shadow-amber-700/10 transition-all transform group-hover:-translate-y-0.5 shrink-0">打开投前文档 ↗</span>
+        </div>
+      </a>
+      <a href="https://doc.weixin.qq.com/sheet/e3_AW0ARAYrABACNT9W7QZ8LRq014mg1?scode=AJEAIQdfAAoZHsg8lkAY8AIQZXAAw&tab=l00toi" target="_blank" class="block card-herb gold-glow p-6 md:p-7 relative overflow-hidden bg-gradient-to-r from-emerald-50 to-white group">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
+          <div class="flex items-center gap-3">
+            <span class="p-2.5 bg-herb-700 text-white rounded-xl flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+            </span>
+            <div>
+              <div class="text-[10px] font-extrabold text-herb-800 bg-herb-100 px-2.5 py-0.5 rounded-full tracking-wider uppercase inline-block mb-1">功效自查 · 医典卡</div>
+              <h3 class="text-lg font-bold text-slate-800">投前功效自查 · 医典卡</h3>
+              <p class="text-xs text-slate-500 mt-0.5">投放前对照保健功能医典，核对外规功效声称边界，避开违规宣称。</p>
+            </div>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-5 py-3 bg-herb-700 text-white font-extrabold rounded-xl text-xs shadow-md shadow-herb-700/10 transition-all transform group-hover:-translate-y-0.5 shrink-0">打开医典卡 ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="module-avoid" class="mb-12 scroll-mt-20">
+    <div class="flex items-center gap-2.5 mb-6">
+      <span class="p-2 bg-red-50 text-red-700 rounded-xl border border-red-200 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+      </span>
+      <div>
+        <h2 class="text-xl font-bold text-slate-800">入局自查：保健食品开户、合规与避坑全通指南</h2>
+        <p class="text-xs text-slate-500">官方运营倾力提炼：找准定位 · 死磕合规 · 规范操作 · 避坑少走十万弯路</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-4 bg-gradient-to-br from-red-50/50 to-white border border-red-100 rounded-2xl p-5 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-extrabold text-red-800 bg-red-100 px-2.5 py-0.5 rounded-full tracking-wider uppercase">务实建议 SPECIAL TIPS</span>
+          <h3 class="text-base font-black text-slate-800 mt-3 mb-3">保健食品行业销售负责人建议：</h3>
+          <p class="text-xs text-slate-600 leading-relaxed italic bg-white/40 border border-slate-100 rounded-xl p-3.5 shadow-sm">"做保健食品的生意，<b>'稳就是快'</b>。前期把蓝帽子批文、SC证、质检报告这些'基建'打牢，把保健功能声称的'雷'排掉。咱们利用好现在'视频号小店免4W保证金'的政策红利，用专户专投的模式去测品。只要合规这道坎迈过去了，剩下的就是用好内容去撬动大健康的高净值大盘流量了！"</p>
+        </div>
+        <div class="pt-4 border-t border-red-100/60 text-[10.5px] text-red-800 font-bold flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+          理清资质成分，稳赚大盘红利
+        </div>
+      </div>
+      <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="card-herb p-5 flex flex-col justify-between border-emerald-100">
+          <div>
+            <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">第一步</span><span class="text-[10px] text-slate-400">类目开户不迷路</span></div>
+            <h4 class="font-bold text-slate-800 text-xs mb-2">🟢 找准定位 —— 行业定义与类目划分</h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed mb-3">开户第一关，必须将保健食品统一归属在<b>「食品饮料 - 营养及健康 / 保健食品」</b>下。</p>
+            <div class="space-y-2 text-[10.5px] text-slate-600">
+              <div class="p-2 bg-slate-50/60 rounded-lg border border-slate-100"><strong>• 原则 A：单一营养素补充剂</strong> (钙片/维生素/鱼油等)<br><span class="text-[10px] text-slate-400 block mt-1">⚠️ 避坑: 需具备《SC 许可证》或蓝帽子批文，纯"普通食品"不可宣称保健功能。</span></div>
+              <div class="p-2 bg-slate-50/60 rounded-lg border border-slate-100"><strong>• 原则 B：复合 / 功能型保健品</strong> (降脂/降糖/通便等)<br><span class="text-[10px] text-slate-400 block mt-1">⚠️ 避坑: 功能声称必须对应已获批的保健功能，落"营养及健康"下，否则判二级违规。</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-herb p-5 flex flex-col justify-between border-red-100">
+          <div>
+            <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-red-800 bg-red-50 border border-red-200 px-2 py-0.5 rounded">第二步</span><span class="text-[10px] text-red-600 font-bold">成分合规与禁区</span></div>
+            <h4 class="font-bold text-slate-800 text-xs mb-2">🔴 死磕成分 —— 准入规范与合规红线</h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed mb-3">再有创意的素材，成分违规也是白搭。务必严格排查配料表与功效宣称：</p>
+            <div class="space-y-2 text-[10.5px] text-slate-600">
+              <div class="p-2 bg-red-50/20 rounded-lg border border-red-100/30"><strong>❌ 绝对禁投红线区</strong><br><span class="text-[10px] text-red-800/80 leading-normal block mt-1">• 违禁添加：西布曲明、芬氟拉明、酚酞等减肥/泻药违禁成分。<br>• 宣称禁忌：严禁暗示"治疗、根治、降血糖、溶栓"等医疗疗效，触碰下架封号。</span></div>
+              <div class="p-2 bg-emerald-50/20 rounded-lg border border-emerald-100/30"><strong>🎉 合规功能可投利好</strong><br><span class="text-[10px] text-emerald-800/80 leading-normal block mt-1">• 已获批保健功能（辅助降血脂/血糖、减肥、祛黄褐斑、增强免疫力、通便等）合规可投。<br><span class="text-[9.5px] text-slate-400 block mt-1">※ 须持蓝帽子批文，宣称与批文一致。</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-herb p-5 flex flex-col justify-between border-amber-100">
+          <div>
+            <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">第三步</span><span class="text-[10px] text-amber-700 font-bold">账户安全与搞钱规则</span></div>
+            <h4 class="font-bold text-slate-800 text-xs mb-2">🟡 规范操作 —— 开户与保证金政策</h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed mb-3">搞定合规，最后一步是扎实的账户与资金政策：</p>
+            <div class="space-y-2 text-[10.5px] text-slate-600">
+              <div class="p-2 bg-slate-50/60 rounded-lg border border-slate-100"><strong>💰 1. 赛道保证金与豁免</strong><br><span class="text-[10px] text-slate-500 block mt-1">常规需前置缴 4W 保证金。<b>【2026年4月23日起豁免】：</b>只要仅投微信小店/视频号/直链直播间，直接免缴！老客户可退回。</span></div>
+              <div class="p-2 bg-slate-50/60 rounded-lg border border-slate-100"><strong>🔒 2. 专户专投铁律</strong><br><span class="text-[10px] text-slate-500 block mt-1">提报商品必须与实际投放完全一致。严禁"挂羊头卖狗肉"或账户多品混投。有利于系统模型精准建模，跑量更稳！</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="module-four-powers" class="mb-12 scroll-mt-20">
+    <div class="flex items-center gap-2.5 mb-6">
+      <span class="p-2 bg-herb-100 text-herb-600 rounded-xl border border-herb-200 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>
+      </span>
+      <div><h2 class="text-xl font-bold text-slate-800">模块二：保健食品 26年四力升级</h2></div>
+    </div>
+    <div class="bg-gradient-to-br from-slate-50 via-white to-emerald-50/20 border border-emerald-100 rounded-2xl p-5 md:p-6 mb-8 text-slate-800 shadow-lg relative overflow-hidden">
+      <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none"></div>
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
+        <div>
+          <span class="text-[9px] font-bold tracking-wider uppercase text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full border border-emerald-200">投放底层逻辑</span>
+          <h3 class="text-sm md:text-base font-black text-slate-800 mt-1 flex items-center gap-1.5">竞价广告核心公式 ✕ "四力飞轮"影响因子映射模型</h3>
+        </div>
+        <div class="text-[10px] text-slate-500 leading-normal max-w-md">竞价展现胜出率取决于 <strong>eCPM</strong> 表达，智投链路作为表达层，决定了如何将底层三力（商品力、内容力、经营力）转化为竞价优势。点击下方因子卡片可联动切换底部详细案例。</div>
+      </div>
+      <div class="flex flex-col items-center justify-center py-6 bg-slate-50 rounded-xl border border-slate-100 mb-6 relative">
+        <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2.5">竞价广告核心公式 (Bid &amp; Match Equation)</div>
+        <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-lg md:text-2xl font-black font-mono">
+          <span class="text-slate-800 font-sans">eCPM</span><span class="text-slate-400 font-sans text-base">=</span>
+          <span class="px-2.5 py-1 bg-cyan-100/50 border border-cyan-200 rounded-lg text-cyan-700 shadow-sm hover:scale-105 transition-transform" title="CTR">CTR</span>
+          <span class="text-slate-400 font-sans text-base">×</span>
+          <span class="px-2.5 py-1 bg-emerald-100/50 border border-emerald-200 rounded-lg text-emerald-700 shadow-sm hover:scale-105 transition-transform" title="BID">BID</span>
+          <span class="text-slate-400 font-sans text-base">×</span>
+          <span class="px-2.5 py-1 bg-amber-100/50 border border-amber-200 rounded-lg text-amber-700 shadow-sm hover:scale-105 transition-transform" title="CVR">CVR</span>
+          <span class="text-slate-400 font-sans text-base">×</span>
+          <span class="text-slate-600">1000</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div onclick="switchFourPowersTab(1); document.getElementById('folder-tab-header').scrollIntoView({behavior:'smooth'})" class="p-3.5 bg-emerald-50/20 border border-emerald-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 hover:shadow-md hover:shadow-emerald-100 cursor-pointer transition-all">
+          <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-emerald-500/10 select-none pointer-events-none font-mono">01</div>
+          <div><div class="flex items-center gap-1.5 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span><span class="text-[10px] font-black text-emerald-700 uppercase tracking-wider">底层能力 · 01 基石</span></div>
+          <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">🌿 商品力 (深海鱼油标杆)</h4>
+          <p class="text-[10px] text-slate-500 leading-normal">高纯度功能货盘极致定位。主影响出价能力（BID），通过长辈送礼高客单、品牌力与精准人群定位，同步拉动 CTR/CVR 提升。</p></div>
+          <div class="mt-3 text-[9px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded self-start">影响：BID ✕ 协同拉动 CTR/CVR ↗</div>
+        </div>
+        <div onclick="switchFourPowersTab(2); document.getElementById('folder-tab-header').scrollIntoView({behavior:'smooth'})" class="p-3.5 bg-cyan-50/20 border border-cyan-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-cyan-300 hover:shadow-md hover:shadow-cyan-100 cursor-pointer transition-all">
+          <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-cyan-500/10 select-none pointer-events-none font-mono">02</div>
+          <div><div class="flex items-center gap-1.5 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse"></span><span class="text-[10px] font-black text-cyan-700 uppercase tracking-wider">底层能力 · 02 基石</span></div>
+          <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">⚡ 内容力 (洋参牦牛骨粉)</h4>
+          <p class="text-[10px] text-slate-500 leading-normal">品牌力背书、痛点金句与 AIGC 创意素材。直接影响点击率（CTR），创意重复度全场最低 10%，攻克高频创意衰退。</p></div>
+          <div class="mt-3 text-[9px] font-bold text-cyan-700 bg-cyan-50 border border-cyan-200 px-2 py-0.5 rounded self-start">影响：CTR 点击率 ↗</div>
+        </div>
+        <div onclick="switchFourPowersTab(3); document.getElementById('folder-tab-header').scrollIntoView({behavior:'smooth'})" class="p-3.5 bg-blue-50/20 border border-blue-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 hover:shadow-md hover:shadow-blue-100 cursor-pointer transition-all">
+          <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-blue-500/10 select-none pointer-events-none font-mono">03</div>
+          <div><div class="flex items-center gap-1.5 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span><span class="text-[10px] font-black text-blue-700 uppercase tracking-wider">表达层 · 03 主战场</span></div>
+          <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">🚀 投放力 (减肥规模化)</h4>
+          <p class="text-[10px] text-slate-500 leading-normal">多账户交叉与智投单链路 3002。作为表达层（L2主战场），决定整个竞价广告 eCPM 的对外展现跑量与无人驾驶冷启拓流。</p></div>
+          <div class="mt-3 text-[9px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded self-start">主导：eCPM 综合跑量表达 ↗</div>
+        </div>
+        <div onclick="switchFourPowersTab(4); document.getElementById('folder-tab-header').scrollIntoView({behavior:'smooth'})" class="p-3.5 bg-amber-50/20 border border-amber-100 rounded-xl flex flex-col justify-between relative overflow-hidden group hover:border-amber-300 hover:shadow-md hover:shadow-amber-100 cursor-pointer transition-all">
+          <div class="absolute -right-2 -bottom-2 text-4xl font-extrabold text-amber-500/10 select-none pointer-events-none font-mono">04</div>
+          <div><div class="flex items-center gap-1.5 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span><span class="text-[10px] font-black text-amber-700 uppercase tracking-wider">底层能力 · 04 基石</span></div>
+          <h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1">🏠 经营力 (通便高转化)</h4>
+          <p class="text-[10px] text-slate-500 leading-normal">高转化直播闭环内容。直接影响转化率（CVR），CVR 13~14% 全场最高，提供无可替代的后链路高效转化与强交易黏性。</p></div>
+          <div class="mt-3 text-[9px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded self-start">影响：CVR 转化率 ↗</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-end pl-2 md:pl-4 overflow-x-auto scrollbar-none gap-1 -mb-[2px] relative z-15 select-none" id="folder-tab-header">
+      <button id="tab-btn-1" onclick="switchFourPowersTab(1)" class="folder-tab active-tab px-5 md:px-7 py-3.5 text-xs font-black flex items-center gap-1.5 outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>商品力
+      </button>
+      <button id="tab-btn-2" onclick="switchFourPowersTab(2)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>内容力
+      </button>
+      <button id="tab-btn-3" onclick="switchFourPowersTab(3)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>投放力
+      </button>
+      <button id="tab-btn-4" onclick="switchFourPowersTab(4)" class="folder-tab px-5 md:px-7 py-3.5 text-xs font-bold flex items-center gap-1.5 outline-none text-slate-500 hover:text-slate-800 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-line-chart"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"></polyline><polyline points="17 6 23 6 23 11.5"></polyline></svg>经营力
+      </button>
+    </div>
+
+    <div class="bg-white border-2 border-[#1e3f20]/20 rounded-2xl rounded-tl-none p-5 md:p-8 shadow-xl relative min-h-[580px] z-10">
+      <div class="absolute right-8 bottom-8 pointer-events-none opacity-[0.015]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="lucide lucide-folder-open"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"></path></svg>
+      </div>
+
+      <div id="four-panel-1" class="folder-content active relative">
+        <div class="absolute right-0 top-0 text-7xl font-black text-emerald-100/35 pointer-events-none italic font-mono select-none">01</div>
+        <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3 relative z-10">
+          <span class="p-1.5 bg-herb-50 text-herb-600 rounded-lg border border-herb-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </span>
+          <strong class="text-sm text-slate-800">一、商品力 (货) ✕ 视频号全域选品洞察双模块</strong>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+          <div class="card-herb p-5 border-emerald-100 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">选品洞察 · 模块一</span><span class="text-[10px] text-slate-400">2026年6月</span></div>
+              <h4 class="font-bold text-slate-800 text-sm mb-2">📊 6月视频号全域选品洞察</h4>
+              <p class="text-xs text-slate-500 leading-relaxed mb-3">覆盖视频号全域保健食品选品趋势、功能赛道热度与货盘结构，为商品力搭建提供最新市场依据。点击直达完整洞察报告。</p>
+            </div>
+            <a href="https://sumiyaliu.github.io/sumiya-public/%E4%BF%9D%E5%81%A5%E9%A3%9F%E5%93%81%E8%A1%8C%E4%B8%9A%E9%80%89%E5%93%81%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A_2026%E5%B9%B46%E6%9C%88.html" target="_blank" class="w-full text-center py-2.5 bg-herb-700 text-white hover:bg-herb-800 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">查看6月选品洞察报告 ↗</a>
+          </div>
+          <div class="card-herb p-5 border-slate-200 flex flex-col justify-between opacity-90">
+            <div>
+              <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">选品洞察 · 模块二</span><span class="text-[10px] text-amber-600 font-bold">链接待补充</span></div>
+              <h4 class="font-bold text-slate-800 text-sm mb-2">📈 下一份选品洞察报告</h4>
+              <p class="text-xs text-slate-500 leading-relaxed mb-3">第二份选品洞察模块链接待补充，将于近期更新。可先参考模块一（6月视频号全域选品洞察）进行商品力规划。</p>
+            </div>
+            <span class="w-full text-center py-2.5 bg-slate-100 text-slate-400 font-bold rounded-xl text-xs mt-4 inline-block cursor-not-allowed">链接待补充 · 稍后更新</span>
+          </div>
+        </div>
+        <!-- ===== 标杆案例集 · 赛道机会亮点（与案例集内部对齐） ===== -->
+        <div class="relative z-10 mt-7 pt-5 border-t border-dashed border-slate-200">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="p-1.5 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+            </span>
+            <div>
+              <h4 class="text-sm font-bold text-slate-800 flex items-center gap-2">保健食品闭环直播 · 标杆案例集 <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">赛道机会亮点</span></h4>
+              <p class="text-[11px] text-slate-500">7 品牌案例 × 6 功能赛道 · 30 天数据周期 · 直播 vs 直购 双链路胜出率（亮点与案例集内部一致）</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- 案例1 减肥赛道 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B1_%E5%93%81%E7%89%8CA_%E5%87%8F%E8%82%A5.html" target="_blank" class="card-herb p-4 border-emerald-100 group hover:border-emerald-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">减肥赛道</span><span class="text-[10px] text-slate-400 font-bold">品牌A</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">直播 ROI 跑平直购，赛道天花板已被验证</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-emerald-600 min-w-[48px] text-right">≈0.9</span><span class="text-[10px] text-slate-500 leading-tight">直播 ROI ≈ 直购 ROI，头部品类已跑通 <em class="text-emerald-700 font-bold not-italic">持平级</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-emerald-600 min-w-[48px] text-right">千万级</span><span class="text-[10px] text-slate-500 leading-tight">直播消耗赛道最大盘，规模化跑通期 <em class="text-emerald-700 font-bold not-italic">最大盘</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-emerald-600 min-w-[48px] text-right">50%</span><span class="text-[10px] text-slate-500 leading-tight">6 个双链路客户中胜出率 <em class="text-emerald-700 font-bold not-italic">多客户验证</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-emerald-700 font-bold group-hover:translate-x-0.5 transition-transform">进入完整案例 ↗</span>
+            </a>
+            <!-- 案例2 降血脂 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B2_%E5%93%81%E7%89%8CB_%E9%99%8D%E8%A1%80%E8%84%82.html" target="_blank" class="card-herb p-4 border-cyan-100 group hover:border-cyan-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-cyan-800 bg-cyan-50 border border-cyan-200 px-2 py-0.5 rounded">辅助降血脂</span><span class="text-[10px] text-slate-400 font-bold">品牌B</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">双链路 66.7% 胜出率，闭环效率与品牌势能双重最高</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-cyan-600 min-w-[48px] text-right">+0.10</span><span class="text-[10px] text-slate-500 leading-tight">直播 vs 直购 ROI 差值，闭环可提效 <em class="text-cyan-700 font-bold not-italic">略优级</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-cyan-600 min-w-[48px] text-right">66.7%</span><span class="text-[10px] text-slate-500 leading-tight">双链路客户胜出率，多客户验证可行 <em class="text-cyan-700 font-bold not-italic">多客户验证</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-cyan-600 min-w-[48px] text-right">¥400-450</span><span class="text-[10px] text-slate-500 leading-tight">客单价定位品牌升级，闭环效率最高赛道之一 <em class="text-cyan-700 font-bold not-italic">高客单</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-cyan-700 font-bold group-hover:translate-x-0.5 transition-transform">进入完整案例 ↗</span>
+            </a>
+            <!-- 案例3 降血糖 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B3_%E5%93%81%E7%89%8CC_%E9%99%8D%E8%A1%80%E7%B3%96.html" target="_blank" class="card-herb p-4 border-blue-100 group hover:border-blue-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded">辅助降血糖</span><span class="text-[10px] text-slate-400 font-bold">品牌C</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">赛道少有的"直购护城河"，需通过组合形态入局</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-blue-600 min-w-[48px] text-right">≈1.0</span><span class="text-[10px] text-slate-500 leading-tight">直购 ROI 略胜，单功能直播暂无优势 <em class="text-blue-700 font-bold not-italic">直购更优</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-blue-600 min-w-[48px] text-right">组合品</span><span class="text-[10px] text-slate-500 leading-tight">搭配增强免疫力组合切入，而非单功能硬打 <em class="text-blue-700 font-bold not-italic">组合入局</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-blue-600 min-w-[48px] text-right">0%</span><span class="text-[10px] text-slate-500 leading-tight">双链路胜出率，仍以直购为主阵地 <em class="text-blue-700 font-bold not-italic">稳态赛道</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-blue-700 font-bold group-hover:translate-x-0.5 transition-transform">进入完整案例 ↗</span>
+            </a>
+            <!-- 案例4 祛黄褐斑 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B4_%E5%93%81%E7%89%8CD_%E7%A5%9B%E9%BB%84%E8%A4%90%E6%96%91.html" target="_blank" class="card-herb p-4 border-amber-100 group hover:border-amber-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">祛黄褐斑+贫血</span><span class="text-[10px] text-slate-400 font-bold">品牌D</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">体量与效率双优的强机会品类，直播效率高 18%</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-amber-600 min-w-[48px] text-right">+0.13</span><span class="text-[10px] text-slate-500 leading-tight">直播 vs 直购 ROI 差值，强机会品类 <em class="text-amber-700 font-bold not-italic">强机会</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-amber-600 min-w-[48px] text-right">百万级</span><span class="text-[10px] text-slate-500 leading-tight">直播消耗体量，强机会中规模最大 <em class="text-amber-700 font-bold not-italic">体量头部</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-amber-600 min-w-[48px] text-right">100%</span><span class="text-[10px] text-slate-500 leading-tight">双链路客户胜出率，闭环确定性最强 <em class="text-amber-700 font-bold not-italic">确定性最高</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-amber-700 font-bold group-hover:translate-x-0.5 transition-transform">进入完整案例 ↗</span>
+            </a>
+            <!-- 案例5 免疫骨密度 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B5_%E5%93%81%E7%89%8CE_%E5%85%8D%E7%96%AB%E9%AA%A8%E5%AF%86%E5%BA%A6.html" target="_blank" class="card-herb p-4 border-purple-100 group hover:border-purple-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-purple-800 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded">增强免疫+骨密度</span><span class="text-[10px] text-slate-400 font-bold">品牌E</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">直播效率碾压直购，提升达两位数倍</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-purple-600 min-w-[48px] text-right">+0.88</span><span class="text-[10px] text-slate-500 leading-tight">直播 vs 直购 ROI 差值，效率提升两位数倍 <em class="text-purple-700 font-bold not-italic">强机会</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-purple-600 min-w-[48px] text-right">100%</span><span class="text-[10px] text-slate-500 leading-tight">双链路客户胜出率，闭环路径已验证 <em class="text-purple-700 font-bold not-italic">胜出确定</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-purple-600 min-w-[48px] text-right">3.8x</span><span class="text-[10px] text-slate-500 leading-tight">峰值 GMV 膨胀率，赛道冲量爆发力领先 <em class="text-purple-700 font-bold not-italic">冲量标杆</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-purple-700 font-bold group-hover:translate-x-0.5 transition-transform">进入完整案例 ↗</span>
+            </a>
+            <!-- 案例6 通便 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B6_%E5%93%81%E7%89%8CF_%E9%80%9A%E4%BE%BF.html" target="_blank" class="card-herb p-4 border-rose-100 group hover:border-rose-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-rose-800 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded">通便功能</span><span class="text-[10px] text-slate-400 font-bold">品牌F</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">直播闭环效率提升最大，直购近乎失效下的增量承接赛道</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-rose-600 min-w-[48px] text-right">+0.90</span><span class="text-[10px] text-slate-500 leading-tight">直播 vs 直购 ROI 差值，赛道第一 <em class="text-rose-700 font-bold not-italic">强机会·最强</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-rose-600 min-w-[48px] text-right">100%</span><span class="text-[10px] text-slate-500 leading-tight">双链路客户胜出率，闭环确定性最强 <em class="text-rose-700 font-bold not-italic">确定性最高</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-rose-600 min-w-[48px] text-right">13-14%</span><span class="text-[10px] text-slate-500 leading-tight">CVR 全场最高，直播承接全部增量 <em class="text-rose-700 font-bold not-italic">转化之王</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-rose-700 font-bold group-hover:translate-x-0.5 transition-transform">进入完整案例 ↗</span>
+            </a>
+            <!-- 案例7 方法论 -->
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B7_%E4%BF%9D%E5%81%A5%E9%A3%9F%E5%93%81%E9%97%AD%E7%8E%AF%E5%9F%BA%E5%BB%BA%E6%8F%90%E5%8D%87%E6%8C%87%E5%BC%95.html" target="_blank" class="card-herb gold-glow p-4 border-amber-200 group hover:border-amber-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2"><span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">方法论体系</span><span class="text-[10px] text-slate-400 font-bold">案例7</span></div>
+                <h5 class="text-xs font-bold text-slate-800 mb-2 leading-snug">保健食品闭环（直播小店）基建提升指引</h5>
+                <div class="space-y-1.5">
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-amber-600 min-w-[48px] text-right">2.0</span><span class="text-[10px] text-slate-500 leading-tight">方法论体系，覆盖核心政策到创意生态五大模块 <em class="text-amber-700 font-bold not-italic">方法论</em></span></div>
+                  <div class="flex items-baseline gap-2"><span class="text-[13px] font-extrabold text-amber-600 min-w-[48px] text-right">全链路</span><span class="text-[10px] text-slate-500 leading-tight">从 0 到 1 搭建闭环直播间基建，配套 7 大案例对标 <em class="text-amber-700 font-bold not-italic">基建</em></span></div>
+                </div>
+              </div>
+              <span class="mt-3 text-[10px] text-amber-700 font-bold group-hover:translate-x-0.5 transition-transform">查看方法论文档 ↗</span>
+            </a>
+          </div>
+        </div>
+        <div class="mt-5 bg-emerald-50/30 border border-emerald-100 rounded-xl p-4 text-xs text-slate-600 leading-relaxed relative z-10">
+          <strong class="text-emerald-800">🏆 商品力金句：</strong> 选品洞察决定货盘天花板，标杆案例验证闭环确定性。先吃透视频号全域选品趋势把"人"和"场景"钉死，再对照上方 6 大赛道机会亮点，把"货"和"闭环路径"锁死，让 BID 有底气。
+          <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/" target="_blank" class="ml-2 text-herb-700 font-bold underline decoration-dotted">打开完整标杆案例集 ↗</a>
+        </div>
+      </div>
+
+      <div id="four-panel-2" class="folder-content relative">
+        <div class="absolute right-0 top-0 text-7xl font-black text-cyan-100/40 pointer-events-none italic font-mono select-none">02</div>
+        <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3 relative z-10">
+          <span class="p-1.5 bg-cyan-50 text-cyan-600 rounded-lg border border-cyan-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34771 19.5 5.25055 20.3541 4.79375 20.8586C4.43714 21.2525 3.91891 21.3659 3.44754 21.1444C2.51869 20.7077 1.83838 20.0833 1.45892 19.2618C1.16839 18.6331 1 17.9154 1 17.1538C1 12.0984 5.03456 8 10.0118 8C14.989 8 19.0236 12.0984 19.0236 17.1538C19.0236 19.8308 15.879 22 12 22Z"></path></svg>
+          </span>
+          <strong class="text-sm text-slate-800">二、内容力 (创意) ✕ 品牌E洋参牦牛骨粉：素材生态最健康</strong>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+          <div class="card-herb p-5 border-cyan-100">
+            <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-cyan-800 bg-cyan-50 border border-cyan-100 px-2 py-0.5 rounded">内容力拆解</span><span class="text-[10px] text-slate-400">品牌E官方直播间</span></div>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">🦴 洋参牦牛骨粉 · 中老年补品</h4>
+            <p class="text-xs text-slate-500 leading-relaxed mb-3">品牌力驱动，创意重复度仅 10%（全场最低），素材生态最健康。商品点击率 48.2%，直播效率碾压直购，峰值 GMV 膨胀率 3.8x 冲量爆发力领先。</p>
+            <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">创意重复度</div><div class="font-extrabold text-cyan-600">10%</div></div>
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">GMV膨胀</div><div class="font-extrabold text-emerald-600">3.8x</div></div>
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">商品点击率</div><div class="font-extrabold text-slate-700">48.2%</div></div>
+            </div>
+          </div>
+          <div class="card-herb p-5 border-cyan-100 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-cyan-800 bg-cyan-50 border border-cyan-100 px-2 py-0.5 rounded">黄金前3秒痛点金句</span><span class="text-[10px] text-slate-400">可一键复制</span></div>
+              <div id="hf-sentence-1" class="bg-slate-50 rounded-xl p-3.5 text-xs text-slate-600 leading-relaxed border border-slate-100">[画面：父母关节酸痛扶墙] 话术："上了年纪走路咔咔响？不是缺钙是缺'骨本'！洋参牦牛骨粉，中老年人补骨养身一杯到底。"</div>
+              <div id="hf-sentence-2" class="hidden bg-slate-50 rounded-xl p-3.5 text-xs text-slate-600 leading-relaxed border border-slate-100">[画面：体重秤数字居高不下] 话术："中年发福减不下来？不是你不努力，是代谢慢了。左旋肉碱胶囊，帮中老年把脂肪'搬'起来。"</div>
+              <div id="hf-sentence-3" class="hidden bg-slate-50 rounded-xl p-3.5 text-xs text-slate-600 leading-relaxed border border-slate-100">[画面：肠道不畅腹胀表情] 话术："三天不顺畅？蓝帽黄芪麦冬膏，肠道养护润而不泻，每天一杯轻轻松松。"</div>
+              <div id="hf-sentence-4" class="hidden bg-slate-50 rounded-xl p-3.5 text-xs text-slate-600 leading-relaxed border border-slate-100">[画面：体检报告血脂箭头] 话术："指标飘红别慌，高纯度深海鱼油，长辈送礼更送健康，给家人一份安心。"</div>
+            </div>
+            <div class="flex items-center gap-2 mt-4">
+              <button onclick="hfPrev()" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50">‹ 上一条</button>
+              <button onclick="hfNext()" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50">下一条 ›</button>
+              <button onclick="hfCopy()" class="flex-1 px-3 py-1.5 bg-cyan-600 text-white rounded-lg text-xs font-bold hover:bg-cyan-700">一键复制脚本</button>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10 mt-6">
+          <a href="https://doc.weixin.qq.com/doc/w3_ASgAZwZPAMACNVDepeVikSL0rltyI?scode=AJEAIQdfAAoZglMZbDASgAZwZPAMA" target="_blank" class="card-herb p-4 border-cyan-100 group hover:border-cyan-300 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded bg-cyan-100 text-cyan-800 flex items-center justify-center font-bold text-[10px]">CTR</span>
+                <span class="text-[10px] text-slate-400 font-bold">企微文档 · 与传统滋补共用</span>
+              </div>
+              <h5 class="text-xs font-bold text-slate-800 mb-1">大健康创意周报 CTR 专项</h5>
+              <p class="text-[10px] text-slate-500 leading-normal">了解视频号爆量素材结构 + 风格，突破 CTR 低谷。</p>
+            </div>
+            <span class="text-[9.5px] text-cyan-700 font-bold mt-3 group-hover:translate-x-0.5 transition-transform">立即查看 ↗</span>
+          </a>
+          <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report.html" target="_blank" class="card-herb p-4 border-cyan-100 group hover:border-cyan-300 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-[10px]">REP</span>
+                <span class="text-[10px] text-slate-400 font-bold">HTML 报告 · 与传统滋补共用</span>
+              </div>
+              <h5 class="text-xs font-bold text-slate-800 mb-1">保健 &amp; 滋补素材分析</h5>
+              <p class="text-[10px] text-slate-500 leading-normal">素材大片拆解，提取爆款创意规律与视频生成指令。</p>
+            </div>
+            <span class="text-[9.5px] text-amber-700 font-bold mt-3 group-hover:translate-x-0.5 transition-transform">立即打开 ↗</span>
+          </a>
+          <a href="https://doc.weixin.qq.com/sheet/e3_AW0ARAYrABACNT9W7QZ8LRq014mg1?scode=AJEAIQdfAAoZHsg8lkAY8AIQZXAAw&tab=l00toi" target="_blank" class="card-herb p-4 border-herb-100 group hover:border-herb-300 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded bg-herb-100 text-herb-800 flex items-center justify-center font-bold text-[10px]">医典</span>
+                <span class="text-[10px] text-slate-400 font-bold">功效自查 · 保健食品专用</span>
+              </div>
+              <h5 class="text-xs font-bold text-slate-800 mb-1">投前功效自查 · 医典卡</h5>
+              <p class="text-[10px] text-slate-500 leading-normal">对照保健功能医典，核对功效声称边界，避开违规宣称。</p>
+            </div>
+            <span class="text-[9.5px] text-herb-700 font-bold mt-3 group-hover:translate-x-0.5 transition-transform">打开医典卡 ↗</span>
+          </a>
+        </div>
+        <div class="mt-5 bg-cyan-50/30 border border-cyan-100 rounded-xl p-4 text-xs text-slate-600 leading-relaxed relative z-10">
+          <strong class="text-cyan-800">⚡ 内容力金句：</strong> 品牌E把创意重复度压到全场最低 10%，素材生态健康才有持续跑量。内容力的命门，是用差异化素材对抗同质化唯一性过滤。内容力材料与传统滋补共用，功效边界务必先过「医典卡」自查。
+          <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B5_%E5%93%81%E7%89%8CE_%E5%85%8D%E7%96%AB%E9%AA%A8%E5%AF%86%E5%BA%A6.html" target="_blank" class="ml-2 text-cyan-700 font-bold underline decoration-dotted">看品牌E完整案例 ↗</a>
+        </div>
+      </div>
+
+      <div id="four-panel-3" class="folder-content relative">
+        <div class="absolute right-0 top-0 text-7xl font-black text-blue-100/40 pointer-events-none italic font-mono select-none">03</div>
+        <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3 relative z-10">
+          <span class="p-1.5 bg-blue-50 text-blue-600 rounded-lg border border-blue-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg>
+          </span>
+          <strong class="text-sm text-slate-800">三、投放力 (流量) ✕ 品牌A减肥：规模化跑量标杆</strong>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+          <div class="card-herb p-5 border-blue-100">
+            <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-blue-800 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded">投放力拆解</span><span class="text-[10px] text-slate-400">品牌A品牌自营店</span></div>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">💊 左旋肉碱胶囊 · 中老年减脂</h4>
+            <p class="text-xs text-slate-500 leading-relaxed mb-3">NEW 入局即跑量，以中老年减脂人群为核心单品打爆，闭环投放效率与基建规模双优。日耗 20-40 万/日，规模化标杆。</p>
+            <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">日耗</div><div class="font-extrabold text-blue-600">20-40万</div></div>
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">CVR</div><div class="font-extrabold text-emerald-600">8-9%</div></div>
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">CTR</div><div class="font-extrabold text-slate-700">3-4%</div></div>
+            </div>
+          </div>
+          <div class="card-herb p-5 border-blue-100 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-blue-800 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded">闭环投放优化</span><span class="text-[10px] text-slate-400">双链路</span></div>
+              <ul class="text-xs text-slate-600 leading-relaxed space-y-2">
+                <li>• <strong>智投单链路 3002</strong>：作为表达层主导 eCPM 综合跑量表达，无人驾驶冷启拓流。</li>
+                <li>• <strong>多账户交叉</strong>：规模化账户矩阵摊薄单账户衰退，支撑日耗 20-40 万稳定跑量。</li>
+                <li>• <strong>多版位拓展</strong>：参考品牌C以 CTR 强吸引力 + 多版位覆盖，新赛道快速起量。</li>
+              </ul>
+            </div>
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B1_%E5%93%81%E7%89%8CA_%E5%87%8F%E8%82%A5.html" target="_blank" class="w-full text-center py-2.5 bg-white text-blue-700 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">看品牌A完整案例 ↗</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10 mb-4">
+          <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E4%BF%9D%E5%81%A5%E9%A3%9F%E5%93%81%E9%9D%9E%E9%97%AD%E7%8E%AF%E5%9F%BA%E5%BB%BA%E6%8F%90%E5%8D%87%E6%8C%87%E5%BC%95.html" target="_blank" class="card-herb p-4 flex items-center justify-between gap-4 border-blue-100 group hover:border-blue-300 transition-all">
+            <div class="flex items-center gap-3">
+              <span class="p-2 bg-blue-700 text-white rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+              </span>
+              <div>
+                <div class="text-[10px] font-extrabold text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block mb-1">投放基建 · 非闭环</div>
+                <h4 class="text-sm font-bold text-slate-800 leading-tight">保健食品非闭环（小程序直购/CID）基建提升指引</h4>
+              </div>
+            </div>
+            <span class="shrink-0 text-blue-700 font-bold text-xs group-hover:translate-x-0.5 transition-transform">查看 ↗</span>
+          </a>
+          <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E4%BC%A0%E7%BB%9F%E6%BB%8B%E8%A1%A5%E9%97%AD%E7%8E%AF%E5%9F%BA%E5%BB%BA%E6%8F%90%E5%8D%87%E6%8C%87%E5%BC%95.html" target="_blank" class="card-herb p-4 flex items-center justify-between gap-4 border-blue-100 group hover:border-blue-300 transition-all">
+            <div class="flex items-center gap-3">
+              <span class="p-2 bg-violet-700 text-white rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+              </span>
+              <div>
+                <div class="text-[10px] font-extrabold text-violet-800 bg-violet-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block mb-1">投放基建 · 闭环</div>
+                <h4 class="text-sm font-bold text-slate-800 leading-tight">传统滋补闭环（直播小店）基建提升指引</h4>
+              </div>
+            </div>
+            <span class="shrink-0 text-violet-700 font-bold text-xs group-hover:translate-x-0.5 transition-transform">查看 ↗</span>
+          </a>
+        </div>
+        <div class="mt-5 bg-blue-50/30 border border-blue-100 rounded-xl p-4 text-xs text-slate-600 leading-relaxed relative z-10">
+          <strong class="text-blue-800">🚀 投放力金句：</strong> 品牌A用"中老年减脂"单品 + 规模化账户矩阵，把日耗顶到 20-40 万。投放力的本质，是让表达层 eCPM 足够稳，系统才敢持续放量。两链路基建差异详见上方「投放基建」双指引。
+        </div>
+      </div>
+
+      <div id="four-panel-4" class="folder-content relative">
+        <div class="absolute right-0 top-0 text-7xl font-black text-amber-100/40 pointer-events-none italic font-mono select-none">04</div>
+        <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3 relative z-10">
+          <span class="p-1.5 bg-amber-50 text-amber-600 rounded-lg border border-amber-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-line-chart"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"></polyline><polyline points="17 6 23 6 23 11.5"></polyline></svg>
+          </span>
+          <strong class="text-sm text-slate-800">四、经营力 (转化) ✕ 品牌F通便：高转化直播闭环</strong>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+          <div class="card-herb p-5 border-amber-100">
+            <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">经营力拆解</span><span class="text-[10px] text-slate-400">品牌F健康研究所</span></div>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">🌿 蓝帽黄芪麦冬膏 · 肠道养护</h4>
+            <p class="text-xs text-slate-500 leading-relaxed mb-3">高转化率直播带货，直播闭环效率提升最大，直购近乎失效下的增量承接赛道。CVR 13-14% 全场最高，下单率 13.4%。</p>
+            <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">CVR</div><div class="font-extrabold text-amber-600">13-14%</div></div>
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">下单率</div><div class="font-extrabold text-emerald-600">13.4%</div></div>
+              <div class="bg-slate-50 rounded-lg py-2"><div class="text-slate-400 text-[9px]">客单价</div><div class="font-extrabold text-slate-700">¥70-90</div></div>
+            </div>
+          </div>
+          <div class="card-herb p-5 border-amber-100 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">后链路经营</span><span class="text-[10px] text-slate-400">直播闭环</span></div>
+              <ul class="text-xs text-slate-600 leading-relaxed space-y-2">
+                <li>• <strong>直播强机会</strong>：通便赛道直播 vs 直购 ROI 差值 +0.90（全场最强），双链路胜出率 100%。</li>
+                <li>• <strong>增量承接</strong>：直购近乎失效时，直播闭环承接增量，CVR 优于大盘 111%。</li>
+                <li>• <strong>蓝帽背书</strong>：持蓝帽子资质建立信任，拉升下单转化与复购黏性。</li>
+              </ul>
+            </div>
+            <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/%E6%A1%88%E4%BE%8B6_%E5%93%81%E7%89%8CF_%E9%80%9A%E4%BE%BF.html" target="_blank" class="w-full text-center py-2.5 bg-white text-amber-700 border border-slate-200 hover:bg-slate-50 font-bold rounded-xl text-xs transition-colors mt-4 inline-block">看品牌F完整案例 ↗</a>
+          </div>
+        </div>
+        <div class="mt-5 bg-amber-50/30 border border-amber-100 rounded-xl p-4 text-xs text-slate-600 leading-relaxed relative z-10">
+          <strong class="text-amber-800">🏠 经营力金句：</strong> 品牌F用直播闭环把 CVR 拉到全场最高 13-14%，在直购失效时稳稳承接增量。经营力的终局，是后链路转化效率的碾压。
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="module-vip" class="mb-12 scroll-mt-20">
+    <div class="flex items-center gap-2.5 mb-6">
+      <span class="p-2 bg-herb-100 text-herb-600 rounded-xl border border-herb-200 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gift"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 21v-4a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v4"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"></path></svg>
+      </span>
+      <div>
+        <h2 class="text-xl font-bold text-slate-800">模块四：保健食品大客专项扶持权益</h2>
+        <p class="text-xs text-slate-500">官方运营倾力提炼：人群包 · 机制品扶持 · 爆款支持 · 直播诊断</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div class="card-herb p-5 relative overflow-hidden bg-gradient-to-br from-white to-herb-50/20">
+        <span class="absolute top-0 right-0 text-[9px] bg-herb-600 text-white font-extrabold px-2 py-0.5 rounded-bl-lg uppercase">限额 15 家</span>
+        <strong class="text-herb-800 text-[12.5px] block mb-2 font-bold">1. 精准人群包定向扶持</strong>
+        <p class="text-slate-500 leading-relaxed text-[11px]">官方提供保健食品高净值人群包（中老年、慢病管理、送礼人群），冷启动即锁定精准流量。</p>
+      </div>
+      <div class="card-herb p-5 relative overflow-hidden bg-gradient-to-br from-white to-emerald-50/20">
+        <span class="absolute top-0 right-0 text-[9px] bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded-bl-lg uppercase">限额 12 家</span>
+        <strong class="text-emerald-800 text-[12.5px] block mb-2 font-bold">2. 机制品爆款扶持</strong>
+        <p class="text-slate-500 leading-relaxed text-[11px]">针对蓝帽子功能品 / 高复购货盘，提供专项流量油门与机制品冷启动展现保护。</p>
+      </div>
+      <div class="card-herb p-5 relative overflow-hidden bg-gradient-to-br from-white to-cyan-50/20">
+        <span class="absolute top-0 right-0 text-[9px] bg-cyan-600 text-white font-extrabold px-2 py-0.5 rounded-bl-lg uppercase">限额 10 家</span>
+        <strong class="text-cyan-800 text-[12.5px] block mb-2 font-bold">3. 爆款内容支持</strong>
+        <p class="text-slate-500 leading-relaxed text-[11px]">官方素材策划团队 1对1 帮重写视频前 3 秒场景，结合 AI prompt 粉碎同质化唯一性过滤。</p>
+      </div>
+      <div class="card-herb p-5 relative overflow-hidden bg-gradient-to-br from-white to-amber-50/20">
+        <span class="absolute top-0 right-0 text-[9px] bg-amber-700 text-white font-extrabold px-2 py-0.5 rounded-bl-lg uppercase">限额 8 家</span>
+        <strong class="text-amber-800 text-[12.5px] block mb-2 font-bold">4. 直播间诊断经营能力开放</strong>
+        <p class="text-slate-500 leading-relaxed text-[11px]">官方核心大客专家 1对1 针对走播工厂实景动线、季卡多阶礼赠、转盘催付大单等机制上门诊断陪跑。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-16 text-center border-t border-slate-200/60 pt-8 text-xs text-slate-400">
+    <p class="mb-2 flex items-center justify-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+      注意：本手册包含内部脱敏商业机密，数据口径为在投大盘，请妥善保管 and 分享。
+    </p>
+    <p>© 2026 保健食品百宝箱项目组. 保留所有权利.</p>
+  </footer>
+</div>
+
+<div id="toast-el" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 translate-y-24 bg-slate-900 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-xl transition-all duration-300 opacity-0 z-50 flex items-center gap-1.5 border border-slate-800">
+  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+  <span id="toast-text">已成功复制</span>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+  let hfIdx = 1; const hfTotal = 4;
+  function hfShow(idx) { for (let i = 1; i <= hfTotal; i++) { const c = document.getElementById('hf-sentence-' + i); if (i === idx) c.classList.remove('hidden'); else c.classList.add('hidden'); } }
+  function hfPrev() { hfIdx = hfIdx === 1 ? hfTotal : hfIdx - 1; hfShow(hfIdx); }
+  function hfNext() { hfIdx = hfIdx === hfTotal ? 1 : hfIdx + 1; hfShow(hfIdx); }
+  function hfCopy() {
+    const map = {
+      1: "[画面：父母关节酸痛扶墙] 话术：'上了年纪走路咔咔响？不是缺钙是缺骨本！洋参牦牛骨粉，中老年人补骨养身一杯到底。'",
+      2: "[画面：体重秤数字居高不下] 话术：'中年发福减不下来？不是你不努力，是代谢慢了。左旋肉碱胶囊，帮中老年把脂肪搬起来。'",
+      3: "[画面：肠道不畅腹胀表情] 话术：'三天不顺畅？蓝帽黄芪麦冬膏，肠道养护润而不泻，每天一杯轻轻松松。'",
+      4: "[画面：体检报告血脂箭头] 话术：'指标飘红别慌，高纯度深海鱼油，长辈送礼更送健康，给家人一份安心。'"
+    };
+    copyText(map[hfIdx], '已成功复制金句 ' + hfIdx + ' 脚本模板');
+  }
+  function copyText(text, successMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ showToast(successMsg || '复制成功！'); }).catch(function(){ fallbackCopy(text, successMsg); });
+    } else { fallbackCopy(text, successMsg); }
+  }
+  function fallbackCopy(text, successMsg) {
+    const textArea = document.createElement('textarea'); textArea.value = text; textArea.style.position = 'fixed'; document.body.appendChild(textArea); textArea.focus(); textArea.select();
+    try { document.execCommand('copy'); showToast(successMsg || '复制成功！'); } catch (err) { showToast('复制失败，请手动选择复制'); }
+    document.body.removeChild(textArea);
+  }
+  function showToast(msg) {
+    const toast = document.getElementById('toast-el'); const text = document.getElementById('toast-text'); text.innerText = msg;
+    toast.classList.remove('translate-y-24', 'opacity-0'); toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(function(){ toast.classList.remove('translate-y-0', 'opacity-100'); toast.classList.add('translate-y-24', 'opacity-0'); }, 2200);
+  }
+  function switchFourPowersTab(idx) {
+    for (let i = 1; i <= 4; i++) {
+      const btn = document.getElementById('tab-btn-' + i);
+      if (btn) { btn.classList.remove('active-tab', 'text-white', 'font-black'); btn.classList.add('text-slate-500', 'font-bold'); }
+    }
+    const activeBtn = document.getElementById('tab-btn-' + idx);
+    if (activeBtn) { activeBtn.classList.remove('text-slate-500', 'font-bold'); activeBtn.classList.add('active-tab', 'text-white', 'font-black'); }
+    for (let i = 1; i <= 4; i++) { const panel = document.getElementById('four-panel-' + i); if (panel) panel.classList.remove('active'); }
+    const activePanel = document.getElementById('four-panel-' + idx); if (activePanel) activePanel.classList.add('active');
+  }
+</script>
+</body>
+</html>

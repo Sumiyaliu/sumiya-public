@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>保健食品行业选品洞察报告 · 2026年6月</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f7f4ef;
+    --cream: #ede9e0;
+    --gold: #c9973a;
+    --gold-light: #f0d898;
+    --rust: #b84b2a;
+    --sage: #4a6741;
+    --sky: #2d6b8a;
+    --muted: #7a7060;
+    --border: #d4cfc5;
+    --card-bg: #ffffff;
+    --shadow: 0 2px 16px rgba(15,14,12,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 40px,
+      rgba(201,151,58,0.06) 40px, rgba(201,151,58,0.06) 41px
+    );
+  }
+  .cover-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+  }
+  .cover-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .cover-title span { color: var(--gold); }
+  .cover-sub {
+    font-size: 15px;
+    color: rgba(247,244,239,0.65);
+    margin-bottom: 36px;
+  }
+  .cover-meta {
+    display: flex; gap: 40px;
+    border-top: 1px solid rgba(247,244,239,0.15);
+    padding-top: 24px;
+  }
+  .cover-meta-item { font-size: 12px; color: rgba(247,244,239,0.5); }
+  .cover-meta-item strong { display: block; color: var(--paper); font-size: 14px; margin-top: 2px; }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1200px; margin: 0 auto; padding: 0 40px 60px; }
+
+  /* ── SECTION HEADER ── */
+  .section { margin-top: 60px; }
+  .section-header {
+    display: flex; align-items: flex-end; gap: 20px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 12px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .section-desc {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+    padding-bottom: 4px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  /* tighter card title inside attr panel */
+  .attr-panel .card .card-title {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    font-size: 12px;
+  }
+  .attr-panel .attr-rank-row.header {
+    padding-bottom: 5px;
+  }
+
+
+  /* ── SECTION 1: CATEGORY ── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .cat-rank-list { list-style: none; }
+  .cat-rank-item {
+    display: grid;
+    grid-template-columns: 28px 110px 1fr 80px;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--cream);
+  }
+  .cat-rank-item.header {
+    font-size: 11px; color: var(--muted);
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .cat-rank-item:last-child { border-bottom: none; }
+  .rank-no {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--border);
+    text-align: center;
+  }
+  .rank-no.top3 { color: var(--gold); }
+  .cat-name { font-weight: 500; font-size: 13px; }
+  .cat-bar-wrap {
+    background: var(--cream);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .cat-bar {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+  }
+  .cat-heat {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+    color: var(--rust);
+  }
+
+  /* PIE CHART */
+  .pie-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px 0;
+  }
+  .pie-svg { width: 220px; height: 220px; }
+  .pie-legend {
+    display: flex; flex-wrap: wrap; gap: 8px 16px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .pie-legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--ink);
+  }
+  .pie-dot {
+    width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+  }
+
+  /* ── SECTION 2: TOP PRODUCTS ── */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(15,14,12,0.12);
+  }
+  .product-rank { position: relative; }
+  .product-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    background: var(--cream);
+  }
+  .product-img-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--border) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+  .product-badge {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+  .product-badge.top3 {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .product-info { padding: 12px; }
+  .product-name {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 8px;
+    min-height: 36px;
+  }
+  .product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .product-price {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--cream);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .product-heat {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--rust);
+  }
+  .product-cat-tag {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-top: 6px;
+    display: inline-block;
+    color: #fff;
+  }
+
+  /* ── SECTION 3: BRANDS ── */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .brand-row {
+    display: grid;
+    grid-template-columns: 28px 90px 1fr 70px 50px 55px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cream);
+    font-size: 13px;
+  }
+  .brand-row:last-child { border-bottom: none; }
+  .brand-row.header {
+    font-size: 11px; color: var(--muted);
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .brand-row .brand-no { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--border); }
+  .brand-row .brand-no.gold { color: var(--gold); }
+  .brand-heat-bar { background: var(--cream); height: 5px; border-radius: 2px; overflow: hidden; }
+  .brand-heat-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--sky), var(--gold)); }
+
+  .efficiency-row {
+    display: grid;
+    grid-template-columns: 28px 90px 1fr 70px 50px 70px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cream);
+    font-size: 13px;
+  }
+  .efficiency-row:last-child { border-bottom: none; }
+  .efficiency-row.header {
+    font-size: 11px; color: var(--muted);
+    font-weight: 700; text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .eff-badge {
+    display: inline-block;
+    background: var(--gold-light);
+    color: #7a5a10;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 10px;
+  }
+
+  /* ── SECTION 4: KEYWORD TREND ── */
+  .kw-trend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .kw-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .kw-header { padding: 16px 16px 0; }
+  .kw-rank-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .kw-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .kw-stats { display: flex; gap: 16px; margin-bottom: 14px; }
+  .kw-stat { text-align: center; }
+  .kw-stat-val { font-size: 15px; font-weight: 700; color: var(--rust); }
+  .kw-stat-lbl { font-size: 10px; color: var(--muted); }
+  .kw-products {
+    display: flex; gap: 6px; padding: 12px 16px 16px;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+  .kw-prod-img {
+    width: 56px; height: 56px;
+    border-radius: 4px;
+    object-fit: cover;
+    background: var(--border);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .kw-prod-placeholder {
+    width: 56px; height: 56px;
+    border-radius: 4px;
+    background: var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .kw-growth-badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    background: #fff4e0;
+    color: var(--gold);
+    font-size: 12px; font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--gold-light);
+    margin-bottom: 10px;
+  }
+
+  /* ── SECTION 5: KEYWORD ATTRIBUTES ── */
+  .attr-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .attr-tab {
+    padding: 8px 18px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    cursor: pointer;
+    background: var(--card-bg);
+    color: var(--muted);
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  .attr-tab.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .attr-panel { display: none; }
+  .attr-panel.active { display: block; }
+
+  .attr-main-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .attr-rank-row {
+    display: grid;
+    grid-template-columns: 22px 1fr 52px 52px 70px;
+    gap: 6px;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--cream);
+    font-size: 11.5px;
+  }
+  .attr-rank-row.header {
+    font-size: 10px; color: var(--muted);
+    font-weight: 700; text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 7px;
+  }
+  .attr-rank-row:last-child { border-bottom: none; }
+  .attr-no { font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: var(--border); }
+  .attr-no.top { color: var(--gold); }
+
+  .signal-box {
+    padding: 16px 20px;
+    border-radius: 6px;
+    border-left: 3px solid;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .signal-red { background: #fff5f5; border-color: #e05454; color: #7a1c1c; }
+  .signal-blue { background: #f0f6ff; border-color: var(--sky); color: #163a52; }
+  .signal-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .signal-red .signal-label { color: #e05454; }
+  .signal-blue .signal-label { color: var(--sky); }
+
+  .redblue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .trend-up { color: #c0392b; font-weight: 700; }
+  .trend-down { color: var(--sky); font-weight: 700; }
+  .trend-flat { color: var(--muted); }
+
+  /* ── SECTION 6: STRATEGY ── */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .strategy-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .strategy-cat-header {
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .strategy-cat-icon { font-size: 24px; }
+  .strategy-cat-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .strategy-cat-heat {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--paper);
+    background: rgba(0,0,0,0.25);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .strategy-body {
+    padding: 16px 20px 20px;
+    background: #fff;
+  }
+  .strategy-point {
+    display: flex; gap: 10px; margin-bottom: 10px; font-size: 13px;
+    line-height: 1.7;
+  }
+  .strategy-point::before {
+    content: '▸';
+    color: var(--gold);
+    font-size: 12px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .strategy-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .strategy-tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 10px;
+    border: 1px solid;
+    font-weight: 500;
+  }
+
+  /* color palette */
+  .bg-red    { background: linear-gradient(135deg, #b84b2a, #8a2810); color: #fff; }
+  .bg-blue   { background: linear-gradient(135deg, #2d6b8a, #1a4460); color: #fff; }
+  .bg-green  { background: linear-gradient(135deg, #4a6741, #2d4427); color: #fff; }
+  .bg-gold   { background: linear-gradient(135deg, #c9973a, #9a6d1e); color: #fff; }
+  .bg-purple { background: linear-gradient(135deg, #6b4a8a, #3d2260); color: #fff; }
+  .bg-teal   { background: linear-gradient(135deg, #3a8a7a, #1e5548); color: #fff; }
+  .bg-brown  { background: linear-gradient(135deg, #8a6a3a, #5a4020); color: #fff; }
+  .bg-navy   { background: linear-gradient(135deg, #2d3a6b, #141a38); color: #fff; }
+
+  .tag-red { border-color: #e05454; color: #c0392b; background: #fff5f5; }
+  .tag-blue { border-color: var(--sky); color: var(--sky); background: #f0f6ff; }
+  .tag-gold { border-color: var(--gold); color: var(--gold); background: #fff9ec; }
+  .tag-green { border-color: var(--sage); color: var(--sage); background: #f0f5ef; }
+
+  .insight-chips {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; margin-bottom: 20px;
+  }
+  .insight-chip {
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .insight-chip.gold { background: var(--gold); color: var(--ink); }
+  .insight-chip.muted { background: var(--cream); color: var(--ink); border: 1px solid var(--border); }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 60px;
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--muted);
+    max-width: 1200px; margin-left: auto; margin-right: auto;
+  }
+  .footer strong { color: var(--ink); }
+
+  .inline-heat { font-size: 12px; font-weight: 700; color: var(--rust); }
+  .text-muted { color: var(--muted); font-size: 12px; }
+  .mt-16 { margin-top: 16px; }
+
+  .summary-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .summary-box strong { color: var(--gold); }
+
+  /* ── SPU LIST (Section 2) ── */
+  .product-section .section-desc { max-width: 760px; }
+  .product-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 16px;
+  }
+  .product-tab {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 8px 12px;
+    min-height: 44px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: background .18s, color .18s, border-color .18s;
+  }
+  .product-tab span {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .product-tab small {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.1;
+  }
+  .product-tab.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+  .product-tab.active small { color: rgba(255,255,255,.72); }
+  .product-panel { display: none; }
+  .product-panel.active { display: block; }
+  .product-panel-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 10px;
+    padding-left: 2px;
+  }
+  .spu-list { display: flex; flex-direction: column; gap: 12px; }
+  .spu-row {
+    display: grid;
+    grid-template-columns: 50px 90px 1.7fr 100px 90px 90px 100px;
+    align-items: center;
+    gap: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .spu-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15,14,12,0.1);
+  }
+  .spu-row.header {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 4px 18px;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+  }
+  .spu-row.header:hover { transform: none; box-shadow: none; }
+  .spu-rank {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--border);
+    text-align: center;
+  }
+  .spu-rank.top3 { color: var(--gold); }
+  .spu-rank.first { color: var(--rust); }
+  .spu-thumb {
+    width: 76px; height: 76px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background: var(--cream);
+  }
+  .spu-thumb-placeholder {
+    width: 76px; height: 76px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--cream), var(--border));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .spu-info { min-width: 0; }
+  .spu-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .spu-title {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .spu-cat-pill {
+    display: inline-block;
+    font-size: 10px;
+    color: #fff;
+    padding: 1px 7px;
+    border-radius: 8px;
+    margin-top: 4px;
+  }
+  .spu-price-range {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: center;
+  }
+  .spu-price-range small {
+    display: block; font-size: 10px; color: var(--muted); font-weight: 400; margin-top: 2px;
+  }
+  .spu-avg-price {
+    text-align: center;
+  }
+  .spu-avg-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .spu-avg-lbl {
+    font-size: 10px; color: var(--muted); margin-top: 2px;
+  }
+  .spu-sku-count {
+    text-align: center;
+  }
+  .spu-sku-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .spu-sku-lbl {
+    font-size: 10px; color: var(--muted); margin-top: 2px;
+  }
+  .spu-heat-cell {
+    text-align: right;
+  }
+  .spu-heat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--rust);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .spu-heat-lbl {
+    font-size: 10px; color: var(--muted); margin-top: 4px;
+  }
+
+
+  /* ── KEYWORD LIST (Section 4) ── */
+  .kw-list { display: flex; flex-direction: column; gap: 12px; }
+  .kw-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 110px 110px 240px;
+    align-items: center;
+    gap: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .kw-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15,14,12,0.1);
+  }
+  .kw-row.header {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 4px 18px;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+  }
+  .kw-row.header:hover { transform: none; box-shadow: none; }
+  .kw-row-rank {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--border);
+    text-align: center;
+  }
+  .kw-row-rank.first { color: var(--rust); }
+  .kw-row-rank.top3 { color: var(--gold); }
+  .kw-row-keyword {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+  }
+  .kw-row-keyword .kw-name-text {
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .kw-row-keyword .kw-cat-tag {
+    display: inline-block;
+    font-size: 10px;
+    color: var(--muted);
+    background: var(--cream);
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-top: 4px;
+    font-weight: 500;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .kw-row-bar-wrap {
+    background: var(--cream);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .kw-row-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+    border-radius: 4px;
+  }
+  .kw-row-stats {
+    text-align: center;
+  }
+  .kw-row-stat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .kw-row-stat-val.rust { color: var(--rust); }
+  .kw-row-stat-val.muted { color: var(--muted); }
+  .kw-row-stat-lbl {
+    font-size: 10px; color: var(--muted); margin-top: 3px;
+  }
+  .kw-row-products {
+    display: flex; gap: 6px; align-items: center;
+  }
+  .kw-row-thumb {
+    width: 48px; height: 48px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    flex-shrink: 0;
+  }
+  .kw-row-thumb-placeholder {
+    width: 48px; height: 48px;
+    border-radius: 4px;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+
+  /* ── RED/BLUE BAR CHART (Section 5) ── */
+  .rb-chart {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .rb-chart-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rb-legend {
+    display: flex; gap: 12px; font-size: 11px; font-weight: 500;
+  }
+  .rb-legend-item { display: flex; align-items: center; gap: 4px; color: var(--ink); }
+  .rb-legend-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+  }
+  .rb-dot-red { background: #e05454; }
+  .rb-dot-blue { background: #2d6b8a; }
+  .rb-bar-list { display: flex; flex-direction: column; gap: 8px; }
+  .rb-bar-item {
+    display: grid;
+    grid-template-columns: 70px 1fr 60px;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .rb-bar-name { font-weight: 500; color: var(--ink); }
+  .rb-bar-wrap {
+    background: var(--cream);
+    height: 18px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  .rb-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    transition: width 0.4s ease;
+  }
+  .rb-bar-fill.red { background: linear-gradient(90deg, #e05454, #8a2810); }
+  .rb-bar-fill.blue { background: linear-gradient(90deg, #2d6b8a, #1a4460); }
+  .rb-bar-fill.neutral { background: linear-gradient(90deg, #c9973a, #9a6d1e); }
+  .rb-bar-growth {
+    font-size: 11px;
+    font-weight: 700;
+    text-align: right;
+  }
+  .rb-bar-growth.red { color: #c0392b; }
+  .rb-bar-growth.blue { color: var(--sky); }
+  .rb-bar-growth.neutral { color: var(--gold); }
+  .rb-divider {
+    border-top: 1px dashed var(--border);
+    margin: 12px 0 10px;
+    position: relative;
+    text-align: center;
+  }
+  .rb-divider-label {
+    background: var(--card-bg);
+    padding: 0 10px;
+    font-size: 10px;
+    color: var(--muted);
+    position: relative;
+    top: -7px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── STRATEGY GRID (Section 6) ── */
+  .strategy-10-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .strategy-10-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .strategy-10-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(15,14,12,0.12);
+  }
+  .strategy-10-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--gold);
+  }
+  .strategy-10-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+  }
+  .strategy-10-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+    width: 36px;
+    text-align: center;
+  }
+  .strategy-10-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.4;
+  }
+  .strategy-10-formula {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .strategy-10-formula strong { color: var(--rust); }
+  .strategy-10-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .strategy-10-tags {
+    display: flex; flex-wrap: wrap; gap: 5px;
+  }
+  .strategy-10-tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 8px;
+    border: 1px solid;
+    font-weight: 500;
+  }
+  .strategy-10-meta {
+    display: flex; gap: 14px; align-items: center;
+    margin-bottom: 10px;
+    padding: 6px 0;
+    border-top: 1px solid var(--cream);
+    border-bottom: 1px solid var(--cream);
+    font-size: 11px;
+  }
+  .strategy-10-meta-item {
+    display: flex; flex-direction: column;
+  }
+  .strategy-10-meta-lbl {
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .strategy-10-meta-val {
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 1px;
+  }
+
+
+  /* clickable item enhancements */
+  .spu-thumb-link, .kw-thumb-link {
+    display: contents;
+    cursor: pointer;
+  }
+  a.spu-thumb-link, a.kw-thumb-link {
+    display: inline-block;
+    text-decoration: none;
+    flex-shrink: 0;
+    line-height: 0;
+  }
+  a.spu-thumb-link img.spu-thumb, a.kw-thumb-link img.kw-row-thumb {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  a.spu-thumb-link:hover img.spu-thumb,
+  a.kw-thumb-link:hover img.kw-row-thumb {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(15,14,12,0.15);
+  }
+  a.spu-name-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  a.spu-name-link:hover .spu-name { color: var(--rust); text-decoration: underline; }
+
+
+  /* ── BUBBLE CHART (Section 5) ── */
+  .bubble-chart {
+    position: relative;
+    background: linear-gradient(135deg, #fafafa 0%, #f3efe6 100%);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px 16px;
+    box-shadow: var(--shadow);
+    min-height: 460px;
+  }
+  .bubble-chart-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+  .bubble-svg {
+    width: 100%;
+    height: 420px;
+    display: block;
+  }
+  .bubble-axis-label {
+    font-size: 10px;
+    fill: var(--muted);
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .bubble-grid {
+    stroke: var(--cream);
+    stroke-width: 1;
+    stroke-dasharray: 2,3;
+  }
+  .bubble-quad-label {
+    font-size: 10px;
+    fill: var(--muted);
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.5px;
+    opacity: 0.55;
+  }
+  .bubble-circle {
+    cursor: pointer;
+    transition: opacity 0.2s, stroke-width 0.2s;
+  }
+  .bubble-circle:hover {
+    stroke-width: 3 !important;
+  }
+  .bubble-label {
+    font-size: 10px;
+    fill: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 600;
+    pointer-events: none;
+  }
+  .bubble-divider-line {
+    stroke: var(--ink);
+    stroke-width: 1;
+    stroke-dasharray: 4,3;
+    opacity: 0.3;
+  }
+
+  /* ── 3-card summary (热度霸主/爆发黑马/隐形潜力) ── */
+  .conclusion-3card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .conclusion-card {
+    background: #fffbf2;
+    border: 1px solid #f0d898;
+    border-left: 4px solid;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+  .conclusion-card.ruler { border-left-color: #b84b2a; }
+  .conclusion-card.darkhorse { border-left-color: #c9973a; }
+  .conclusion-card.hidden { border-left-color: #2d6b8a; }
+  .conclusion-card-header {
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .conclusion-card.ruler .conclusion-card-header { color: #b84b2a; }
+  .conclusion-card.darkhorse .conclusion-card-header { color: #c9973a; }
+  .conclusion-card.hidden .conclusion-card-header { color: #2d6b8a; }
+  .conclusion-card-icon {
+    font-size: 15px;
+  }
+  .conclusion-card-tag {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+  .conclusion-card-body {
+    color: var(--ink);
+  }
+  .conclusion-card-body strong {
+    color: inherit;
+  }
+
+  /* Conclusion section header (above 3 cards) */
+  .conclusion-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-left: 10px;
+    border-left: 3px solid var(--gold);
+  }
+
+
+  /* ── SCATTER MATRIX (Section 5) ── */
+  .scatter-svg { width: 100%; height: 440px; display: block; }
+  .scatter-grid { stroke: var(--cream); stroke-width: 1; stroke-dasharray: 2,3; }
+  .scatter-mid { stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 5,4; opacity: 0.28; }
+  .scatter-axis-label { fill: var(--muted); font-family: 'Noto Sans SC', sans-serif; }
+  .scatter-quad {
+    font-size: 12px;
+    fill: var(--muted);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 700;
+    opacity: 0.65;
+  }
+  .scatter-dot {
+    cursor: pointer;
+    transition: r 0.15s, fill-opacity 0.15s;
+  }
+  .scatter-dot:hover { fill-opacity: 0.85 !important; }
+  .scatter-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+
+  /* ── FOUR-QUADRANT MATRIX (Section 5) ── */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    position: relative;
+    padding: 14px 14px 14px 24px;
+    min-height: 420px;
+  }
+  .matrix-axis-y {
+    position: absolute;
+    left: -2px; top: 50%;
+    transform: rotate(-90deg) translateX(50%);
+    transform-origin: left center;
+    font-size: 10px; color: var(--muted); font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .matrix-axis-x {
+    position: absolute;
+    bottom: -8px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; color: var(--muted); font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .matrix-quad {
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+  }
+  .matrix-quad.ruler    { background: linear-gradient(135deg,#fdf3ef,#fae9e2); border-color:#e3b8a8; }
+  .matrix-quad.darkhorse{ background: linear-gradient(135deg,#fdf8ec,#f8edd2); border-color:#e0c98a; }
+  .matrix-quad.hidden   { background: linear-gradient(135deg,#eef4f8,#e2eef4); border-color:#a9cad9; }
+  .matrix-quad.mature   { background: linear-gradient(135deg,#f6f5f2,#edebe5); border-color:#d0ccc2; }
+  .matrix-quad-head {
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .matrix-quad-icon { font-size: 16px; }
+  .matrix-quad-title {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700; font-size: 14px; color: var(--ink);
+  }
+  .matrix-quad-sub { font-size: 10px; color: var(--muted); }
+  .matrix-chips {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    align-content: flex-start;
+  }
+  .matrix-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 3px 9px;
+    font-size: 11px;
+  }
+  .matrix-chip .chip-name { font-weight: 600; color: var(--ink); }
+  .matrix-chip .chip-heat {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--rust);
+  }
+  .matrix-chip .chip-growth { font-size: 10px; }
+  .matrix-chip.up .chip-growth { color: #c0392b; font-weight: 700; }
+  .matrix-chip.down .chip-growth { color: var(--sky); }
+  .matrix-chip.flat .chip-growth { color: var(--muted); }
+  .matrix-empty {
+    font-size: 11px; color: var(--muted); opacity: 0.6;
+    padding: 8px 0;
+  }
+
+  /* chip-growth for product count style */
+  .matrix-chip .chip-growth.count { color: var(--muted); font-weight: 600; }
+  /* the right-side container needs to allow matrix instead of fixed bubble height */
+  .bubble-chart.matrix-mode {
+    min-height: 480px;
+    padding: 16px 18px;
+  }
+
+
+  /* Customer-facing no-image placeholder */
+  .product-img-placeholder,
+  .kw-prod-placeholder,
+  .spu-thumb-placeholder,
+  .kw-row-thumb-placeholder {
+    background: #f4f1ea !important;
+    border: 1px dashed #d4cfc5 !important;
+    color: #8a8173 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-family: 'Noto Sans SC', sans-serif !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0 !important;
+    box-sizing: border-box !important;
+    padding: 6px !important;
+    white-space: nowrap !important;
+  }
+  .product-img-placeholder { font-size: 13px !important; }
+  .spu-thumb-placeholder { font-size: 11px !important; }
+  .kw-prod-placeholder,
+  .kw-row-thumb-placeholder { font-size: 8px !important; padding: 2px !important; }
+
+</style>
+</head>
+<body>
+
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">行业洞察报告 · Industry Selection Insight</div>
+  <div class="cover-title">保健食品行业<br><span>选品洞察报告</span></div>
+  <div class="cover-sub">2026年6月 · 基于微信视频号带货数据分析</div>
+  <div class="cover-meta"><div class="cover-meta-item">数据周期<strong>2026.06.01 — 06.30</strong></div></div>
+</div>
+<div class="page">
+<!-- ===== SECTION 1 ===== -->
+<div class="section"><div class="section-header"><div class="section-num">01</div><div class="section-title">品类热度趋势</div><div class="section-desc">二级品类热度排行 · 总体分布占比</div></div>
+  <div class="cat-grid"><div class="card"><div class="card-title">热度排行榜</div><ul class="cat-rank-list"><li class="cat-rank-item header"><span>排名</span><span>品类</span><span></span><span style="text-align:right;">热度</span></li>
+        <li class="cat-rank-item"><span class="rank-no top3">1</span><span class="cat-name">减肥塑身</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:100.0%"></div></div></div><span class="cat-heat">5,860.8</span></li>
+        <li class="cat-rank-item"><span class="rank-no top3">2</span><span class="cat-name">调节三高</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:7.3%"></div></div></div><span class="cat-heat">429.8</span></li>
+        <li class="cat-rank-item"><span class="rank-no top3">3</span><span class="cat-name">补充营养素</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:1.6%"></div></div></div><span class="cat-heat">93.2</span></li>
+        <li class="cat-rank-item"><span class="rank-no">4</span><span class="cat-name">增强免疫</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:1.5%"></div></div></div><span class="cat-heat">90.1</span></li>
+        <li class="cat-rank-item"><span class="rank-no">5</span><span class="cat-name">改善睡眠</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:0.9%"></div></div></div><span class="cat-heat">52.4</span></li>
+        <li class="cat-rank-item"><span class="rank-no">6</span><span class="cat-name">美白抗氧化</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:0.8%"></div></div></div><span class="cat-heat">48.2</span></li>
+        <li class="cat-rank-item"><span class="rank-no">7</span><span class="cat-name">改善贫血</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:0.7%"></div></div></div><span class="cat-heat">43.2</span></li>
+        <li class="cat-rank-item"><span class="rank-no">8</span><span class="cat-name">骨骼健康</span><div><div class="cat-bar-wrap"><div class="cat-bar" style="width:0.7%"></div></div></div><span class="cat-heat">40.9</span></li>
+      </ul></div><div class="card"><div class="card-title">热度分布占比图</div><div class="pie-wrap"><svg class="pie-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><path d="M110 110 L110.00 10.00 A100 100 0 1 1 40.81 37.80 Z" fill="#b84b2a"/>
+<path d="M110 110 L40.81 37.80 A100 100 0 0 1 74.84 16.39 Z" fill="#c9973a"/>
+<path d="M110 110 L74.84 16.39 A100 100 0 0 1 83.18 13.66 Z" fill="#4a6741"/>
+<path d="M110 110 L83.18 13.66 A100 100 0 0 1 91.44 11.74 Z" fill="#2d6b8a"/>
+<path d="M110 110 L91.44 11.74 A100 100 0 0 1 96.31 10.94 Z" fill="#6b4a8a"/>
+<path d="M110 110 L96.31 10.94 A100 100 0 0 1 110.00 10.00 Z" fill="#aaaaaa"/><circle cx="110" cy="110" r="55" fill="#fff"/><text x="110" y="105" text-anchor="middle" font-family="Noto Serif SC" font-size="18" font-weight="bold" fill="#0f0e0c">87.8%</text><text x="110" y="125" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#7a7060">减肥塑身</text></svg><div class="pie-legend"><div class="pie-legend-item"><span class="pie-dot" style="background:#b84b2a"></span>减肥塑身 87.8%</div>
+<div class="pie-legend-item"><span class="pie-dot" style="background:#c9973a"></span>调节三高 6.4%</div>
+<div class="pie-legend-item"><span class="pie-dot" style="background:#4a6741"></span>补充营养素 1.4%</div>
+<div class="pie-legend-item"><span class="pie-dot" style="background:#2d6b8a"></span>增强免疫 1.4%</div>
+<div class="pie-legend-item"><span class="pie-dot" style="background:#6b4a8a"></span>改善睡眠 0.8%</div>
+<div class="pie-legend-item"><span class="pie-dot" style="background:#aaaaaa"></span>其他合计 2.2%</div></div></div></div></div>
+  <div class="summary-box" style="margin-top:20px;"><strong>品类趋势总结：</strong>保健食品6月高度集中在减肥塑身，热度5860.8、SKU171个，远高于调节三高、补充营养素、增强免疫、改善睡眠等类目。这说明短期成交主要来自体重管理焦虑，但第二梯队类目提供了更稳的人群延展：调节三高面向中老年，营养素补充和增强免疫面向日常健康，睡眠与美白抗氧化面向细分需求。客户决策上不能只追减肥胶囊热度，应把减肥塑身作为流量入口，同时配置三高、免疫、睡眠等低风险延展款，降低单一功效和合规表达压力。 这类结构对客户的启示是，减肥塑身可以带来短期流量，但不能作为唯一增长来源；需要用调节三高、免疫、睡眠等品类分散合规风险，并用不同人群承接复购。</div></div>
+<!-- ===== SECTION 2 ===== -->
+<div class="section product-section"><div class="section-header"><div class="section-num">02</div><div class="section-title">TOP 带货商品</div><div class="section-desc">商品标题聚合 TOP10 SPU · 支持按二级分类切换排行 · 点击图片或标题查看商品详情</div></div>
+  <div class="product-tabs" id="productTabs"><button class="product-tab active" onclick="switchProductTab(0)"><span>全部</span><small>75 SPU</small></button><button class="product-tab" onclick="switchProductTab(1)"><span>减肥塑身</span><small>52 SPU</small></button><button class="product-tab" onclick="switchProductTab(2)"><span>调节三高</span><small>4 SPU</small></button><button class="product-tab" onclick="switchProductTab(3)"><span>补充营养素</span><small>3 SPU</small></button><button class="product-tab" onclick="switchProductTab(4)"><span>增强免疫</span><small>5 SPU</small></button><button class="product-tab" onclick="switchProductTab(5)"><span>改善睡眠</span><small>3 SPU</small></button><button class="product-tab" onclick="switchProductTab(6)"><span>美白抗氧化</span><small>2 SPU</small></button><button class="product-tab" onclick="switchProductTab(7)"><span>改善贫血</span><small>2 SPU</small></button><button class="product-tab" onclick="switchProductTab(8)"><span>骨骼健康</span><small>2 SPU</small></button><button class="product-tab" onclick="switchProductTab(9)"><span>肠胃养护</span><small>2 SPU</small></button></div>
+  <div class="product-panels"><div class="product-panel active" id="productPanel0">
+  <div class="product-panel-meta">全部已标注商品 · 200款 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">黄金搭档碧生康减肥塑身好方软胶囊</div><div class="spu-title">肥胖人群选择II黄金搭档碧生康减肥塑身好方软胶囊S</div><div><span class="spu-cat-pill bg-red">减肥塑身</span></div></div></a><div class="spu-price-range">¥49<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">9</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">1,237.3</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000883418751" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0ffbf700044d801a6e1f79ec1e7d15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000883418751" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">仁和碧生康牌好方软胶囊</div><div class="spu-title">【加强版】人仁和碧生康牌好方软胶囊运动燃脂排油成人男女健康体态官方正品 0.6g/粒*10粒 - zxgSW-ZZ</div><div><span class="spu-cat-pill bg-gold">减肥塑身</span></div></div></a><div class="spu-price-range">¥59.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">36</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">736.2</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">03</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924969454" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1d3fb90008cfda2b0001d5f2351f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924969454" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">葵花中老年人</div><div class="spu-title">【直播专享】中老年人专属 | 葵花药业 左旋肉碱胶囊ZBXV1</div><div><span class="spu-cat-pill bg-green">减肥塑身</span></div></div></a><div class="spu-price-range">¥59<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">5</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">685.6</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">04</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0aa0350002ca832a10d251e58cb01e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">资善堂能觉牌西洋参葡萄籽铬酵母片</div><div class="spu-title">[调节血糖]资善堂能觉牌西洋参葡萄籽铬酵母片0.6g/片*10片/板*2板</div><div><span class="spu-cat-pill bg-blue">调节三高</span></div></div></a><div class="spu-price-range">¥49<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">306.3</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">05</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001051543916" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a3e584600097b89ae10c3e50996dc17000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001051543916" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">汇仁药业减肥胶囊</div><div class="spu-title">[8.0升级版] 汇仁药业减肥胶囊 更适合中老年体质</div><div><span class="spu-cat-pill bg-purple">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">12</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">301.2</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">06</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912224977" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a389b6b000bcf741bf3b0d8fb6e2d1e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912224977" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">修正茯苓泽泻胶囊</div><div class="spu-title">修正茯苓泽泻胶囊[蓝帽认证：有助于控制体内脂肪]</div><div><span class="spu-cat-pill bg-red">减肥塑身</span></div></div></a><div class="spu-price-range">¥59.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">3</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">282.2</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">07</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a38fb9e0000bee22b5e4c7ede521b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">多燕瘦左旋肉碱泽泻胶囊</div><div class="spu-title">多燕瘦 左旋肉碱泽泻胶囊健康减肥塑形</div><div><span class="spu-cat-pill bg-gold">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">250.9</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">08</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001017662177" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a351c9400043e932b8720948f408b0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001017662177" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">金杞茯苓泽泻胶囊</div><div class="spu-title">金杞茯苓泽泻胶囊【身材管理:日燃夜排轻盈曲线】</div><div><span class="spu-cat-pill bg-green">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">3</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">238.5</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">09</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000933037080" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a1fdcb200028b660a9436712c93bb0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000933037080" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">九芝堂左旋肉碱茶多酚胶囊</div><div class="spu-title">[减肥加强版]九芝堂左旋肉碱茶多酚胶囊小肚子赘肉肥胖蓝帽认证减肥40粒/瓶</div><div><span class="spu-cat-pill bg-blue">减肥塑身</span></div></div></a><div class="spu-price-range">¥39.9–¥59.9<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥41.4385</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">13</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">230.1</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">10</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001040038109" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a153f940006df212cc5e3b125d51515000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001040038109" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">云南白药千草美姿维清丸</div><div class="spu-title">云南白药千草美姿维清丸减肥丸减脂瘦身63g/盒</div><div><span class="spu-cat-pill bg-purple">减肥塑身</span></div></div></a><div class="spu-price-range">¥99<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥99</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">4</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">227.3</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel1">
+  <div class="product-panel-meta">减肥塑身 · 171款 · 热度 5,860.8 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">黄金搭档碧生康减肥塑身好方软胶囊</div><div class="spu-title">肥胖人群选择II黄金搭档碧生康减肥塑身好方软胶囊S</div><div><span class="spu-cat-pill bg-gold">减肥塑身</span></div></div></a><div class="spu-price-range">¥49<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">9</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">1,237.3</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000883418751" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0ffbf700044d801a6e1f79ec1e7d15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000883418751" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">仁和碧生康牌好方软胶囊</div><div class="spu-title">【加强版】人仁和碧生康牌好方软胶囊运动燃脂排油成人男女健康体态官方正品 0.6g/粒*10粒 - zxgSW-ZZ</div><div><span class="spu-cat-pill bg-green">减肥塑身</span></div></div></a><div class="spu-price-range">¥59.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">36</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">736.2</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">03</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924969454" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1d3fb90008cfda2b0001d5f2351f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924969454" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">葵花中老年人</div><div class="spu-title">【直播专享】中老年人专属 | 葵花药业 左旋肉碱胶囊ZBXV1</div><div><span class="spu-cat-pill bg-blue">减肥塑身</span></div></div></a><div class="spu-price-range">¥59<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">5</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">685.6</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">04</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001051543916" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a3e584600097b89ae10c3e50996dc17000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001051543916" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">汇仁药业减肥胶囊</div><div class="spu-title">[8.0升级版] 汇仁药业减肥胶囊 更适合中老年体质</div><div><span class="spu-cat-pill bg-purple">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">12</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">301.2</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">05</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912224977" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a389b6b000bcf741bf3b0d8fb6e2d1e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912224977" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">修正茯苓泽泻胶囊</div><div class="spu-title">修正茯苓泽泻胶囊[蓝帽认证：有助于控制体内脂肪]</div><div><span class="spu-cat-pill bg-red">减肥塑身</span></div></div></a><div class="spu-price-range">¥59.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">3</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">282.2</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">06</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a38fb9e0000bee22b5e4c7ede521b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">多燕瘦左旋肉碱泽泻胶囊</div><div class="spu-title">多燕瘦 左旋肉碱泽泻胶囊健康减肥塑形</div><div><span class="spu-cat-pill bg-gold">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">250.9</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">07</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001017662177" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a351c9400043e932b8720948f408b0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001017662177" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">金杞茯苓泽泻胶囊</div><div class="spu-title">金杞茯苓泽泻胶囊【身材管理:日燃夜排轻盈曲线】</div><div><span class="spu-cat-pill bg-green">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">3</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">238.5</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">08</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000933037080" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a1fdcb200028b660a9436712c93bb0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000933037080" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">九芝堂左旋肉碱茶多酚胶囊</div><div class="spu-title">[减肥加强版]九芝堂左旋肉碱茶多酚胶囊小肚子赘肉肥胖蓝帽认证减肥40粒/瓶</div><div><span class="spu-cat-pill bg-blue">减肥塑身</span></div></div></a><div class="spu-price-range">¥39.9–¥59.9<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥41.4385</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">13</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">230.1</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">09</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001040038109" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a153f940006df212cc5e3b125d51515000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001040038109" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">云南白药千草美姿维清丸</div><div class="spu-title">云南白药千草美姿维清丸减肥丸减脂瘦身63g/盒</div><div><span class="spu-cat-pill bg-purple">减肥塑身</span></div></div></a><div class="spu-price-range">¥99<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥99</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">4</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">227.3</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank">10</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000945692456" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a3166f8000b89930b2d383866b61b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000945692456" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">妙艾堂减肥胶囊</div><div class="spu-title">[8.0加强版] 妙艾堂减肥胶囊 国货老品牌更适合中老年体质</div><div><span class="spu-cat-pill bg-red">减肥塑身</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">13</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">190.1</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel2">
+  <div class="product-panel-meta">调节三高 · 4款 · 热度 429.8 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0aa0350002ca832a10d251e58cb01e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">资善堂能觉牌西洋参葡萄籽铬酵母片</div><div class="spu-title">[调节血糖]资善堂能觉牌西洋参葡萄籽铬酵母片0.6g/片*10片/板*2板</div><div><span class="spu-cat-pill bg-green">调节三高</span></div></div></a><div class="spu-price-range">¥49<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">306.3</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000245396034" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a0c00f90007c0cb07160eb9c9ae311e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000245396034" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">汤臣倍健旗舰96金装鱼油高纯浓度omega3成人DH</div><div class="spu-title">[长辈送礼]汤臣倍健旗舰96金装鱼油高纯浓度omega3成人DHA深海鱼油软胶囊EPA</div><div><span class="spu-cat-pill bg-blue">调节三高</span></div></div></a><div class="spu-price-range">¥168–¥407<small>跨度大</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥287.5</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">51.0</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">03</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000998263527" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a2f96990008b99123a941d2156aeace000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000998263527" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">优尚麦金利牌西洋参苦瓜铬胶囊</div><div class="spu-title">【拍一发三】健利优尚 ｜麦金利牌西洋参苦瓜铬胶囊 更适合中老年体质-zr</div><div><span class="spu-cat-pill bg-purple">调节三高</span></div></div></a><div class="spu-price-range">¥49.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥49.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">49.7</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">04</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000931740391" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a2ad4d50005a2ba0f1fbb2962cd1515000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000931740391" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">雅博人添然牌糖</div><div class="spu-title">雅博人添然牌糖脂乐片官方正品蓝帽视频同款辅助调节血糖血脂调节</div><div><span class="spu-cat-pill bg-red">调节三高</span></div></div></a><div class="spu-price-range">¥59<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥59</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">22.8</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel3">
+  <div class="product-panel-meta">补充营养素 · 3款 · 热度 93.2 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000218145085" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a388f44000cf74a0c165a7ae2c31715000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000218145085" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">哈药小蓝瓶钙铁锌口服液补钙补铁补锌好吸收</div><div class="spu-title">哈药小蓝瓶钙铁锌口服液补钙补铁补锌好吸收</div><div><span class="spu-cat-pill bg-blue">补充营养素</span></div></div></a><div class="spu-price-range">¥152.15–¥179<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥165.575</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">59.1</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000246730813" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a0d2d470003618a0aae3754097c4315000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000246730813" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">汤臣倍健瞬闪钙维生素D维生素K软胶囊</div><div class="spu-title">[长辈送礼]汤臣倍健瞬闪钙维生素D维生素K软胶囊液体钙DK胶囊补钙维生素成人中老年孕妇钙片官方</div><div><span class="spu-cat-pill bg-purple">补充营养素</span></div></div></a><div class="spu-price-range">¥89–¥239<small>跨度大</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥164</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">30.5</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">03</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000663319030" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/69b278d5000bb7482a2abf98450d7615000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000663319030" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">紫一牌多种B族维生素咀嚼片</div><div class="spu-title">紫一牌多种B族维生素咀嚼片维生素b族片 补充多种男女复合维生素-竹子</div><div><span class="spu-cat-pill bg-red">补充营养素</span></div></div></a><div class="spu-price-range">¥9.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥9.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">3.6</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel4">
+  <div class="product-panel-meta">增强免疫 · 6款 · 热度 90.1 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912988780" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a194b61000bc580b248c51b0b87d6c5000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912988780" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">Mr.DIL.OO推荐葡萄籽芦荟软胶囊</div><div class="spu-title">(Mr.DIL.OO推荐)葡萄籽芦荟软胶囊</div><div><span class="spu-cat-pill bg-purple">增强免疫</span></div></div></a><div class="spu-price-range">¥13.14–¥25<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥19.07</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">2</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">61.6</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000820741299" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69df521f000158750bc67937506c2a1e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000820741299" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">Mr.DIL.OO莹睿辅酶Q10软胶囊</div><div class="spu-title">（康康家）Mr.DIL.OO莹睿辅酶Q10软胶囊</div><div><span class="spu-cat-pill bg-red">增强免疫</span></div></div></a><div class="spu-price-range">—<small>未标价</small></div><div class="spu-avg-price"><div class="spu-avg-val">—</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">7.9</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">03</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000917027937" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a2265e800063993805afa030b950ccf000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000917027937" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">莱特维健美心诺99.8高纯度辅酶Q10软胶囊</div><div class="spu-title">[莱特维健]美心诺99.8%高纯度辅酶Q10软胶囊增强免疫力抗氧化中老年60粒 直播专享</div><div><span class="spu-cat-pill bg-gold">增强免疫</span></div></div></a><div class="spu-price-range">¥75–¥99<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥87</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">7.5</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">04</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000801439817" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69f402270009796a0d90a7cede5e8b0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000801439817" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">华北制药辅酶Q10胶囊</div><div class="spu-title">华北制药辅酶Q10胶囊</div><div><span class="spu-cat-pill bg-green">增强免疫</span></div></div></a><div class="spu-price-range">¥149<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥149</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">6.8</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">05</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000867937516" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a351bf3000e46872b7f4d136f311f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000867937516" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">汤臣倍健卓瑞蛋白粉礼盒</div><div class="spu-title">汤臣倍健卓瑞蛋白粉600g礼盒 成人中老年增强免疫力</div><div><span class="spu-cat-pill bg-blue">增强免疫</span></div></div></a><div class="spu-price-range">¥208–¥238<small>跨度大</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥223</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">6.3</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel5">
+  <div class="product-panel-meta">改善睡眠 · 5款 · 热度 52.4 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000584959233" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6940f294000de13e299df6b1d2a51b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000584959233" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">百合康牌褪黑素胶囊</div><div class="spu-title">A（失眠加强版）百合康牌褪黑素胶囊 0.15g/粒</div><div><span class="spu-cat-pill bg-red">改善睡眠</span></div></div></a><div class="spu-price-range">¥39.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥39.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">2</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">36.9</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000830066262" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69ef416900038e021db36fcc706d2d1e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000830066262" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">仁和巨榕牌酸枣仁茯苓珍珠粉</div><div class="spu-title">【改善睡眠】仁和 巨榕牌酸枣仁茯苓珍珠粉片 官方正品 -zyz</div><div><span class="spu-cat-pill bg-gold">改善睡眠</span></div></div></a><div class="spu-price-range">¥59.9–¥79.9<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥69.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">2</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">12.1</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank top3">03</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000899523637" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a152dfa0009e00d1b4340fcfb6e2d1e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000899523637" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">仁和褪黑素胶囊</div><div class="spu-title">【失眠 加强版】人仁和褪黑素胶囊助眠官方正品改善睡眠0.2g/粒*40粒-zxgSW</div><div><span class="spu-cat-pill bg-green">改善睡眠</span></div></div></a><div class="spu-price-range">¥79.9<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥79.9</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">3.4</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel6">
+  <div class="product-panel-meta">美白抗氧化 · 3款 · 热度 48.2 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000889060178" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a3a4eec000009802c2e1e47d1598b0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000889060178" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">红桃K祛斑终点站贞好牌祛斑胶囊</div><div class="spu-title">红桃K【祛斑终点站】贞好牌祛斑胶囊 不反弹不反黑 官方正品 蓝帽认证 内调外养 口服祛黄褐斑 -20</div><div><span class="spu-cat-pill bg-gold">美白抗氧化</span></div></div></a><div class="spu-price-range">¥69.9–¥149.9<small>跨度大</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥102.175</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">2</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">35.9</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001045693985" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a3a053b000628b60ddf5bb791fc1515000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001045693985" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">康恩贝芦荟玫瑰花胶囊</div><div class="spu-title">康恩贝芦荟玫瑰花胶囊蓝帽认证内调祛斑黄褐斑</div><div><span class="spu-cat-pill bg-green">美白抗氧化</span></div></div></a><div class="spu-price-range">¥69–¥99<small>跨度大</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥84</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">12.3</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel7">
+  <div class="product-panel-meta">改善贫血 · 3款 · 热度 43.2 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000413980915" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a1118930004e1231bbaed7f097c4315000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000413980915" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">美媛春口服液好气色健康美祛黄褐斑改善贫血</div><div class="spu-title">【美媛春官方正品  非遗认证去黄褐斑】2026新品美媛春口服液好气色健康美祛黄褐斑改善贫血FH2</div><div><span class="spu-cat-pill bg-green">改善贫血</span></div></div></a><div class="spu-price-range">¥69<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥69</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">27.4</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000640290773" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69ca1683000641102a6be52db2e11b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000640290773" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">美媛春口服液祛黄褐斑改善贫血喝好气色健康美</div><div class="spu-title">【官方正品 蓝帽非遗认证】美媛春口服液祛黄褐斑改善贫血 喝好气色健康美官方正品SD</div><div><span class="spu-cat-pill bg-blue">改善贫血</span></div></div></a><div class="spu-price-range">¥69<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥69</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">2</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">15.8</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel8">
+  <div class="product-panel-meta">骨骼健康 · 3款 · 热度 40.9 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001003546394" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69d72022000e85ab0ada9ac985c79609000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001003546394" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">Mr.DIL.OO优一氨糖硫酸软骨素钙胶囊</div><div class="spu-title">（文总专属）Mr.DIL.OO优一®氨糖硫酸软骨素钙胶囊</div><div><span class="spu-cat-pill bg-blue">骨骼健康</span></div></div></a><div class="spu-price-range">¥30<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥30</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">2</div><div class="spu-sku-lbl">SKUs</div></div><div class="spu-heat-cell"><div class="spu-heat-val">29.1</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000234326760" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a3d55010007215eaa452c9e156aeaa9000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000234326760" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">健力多氨糖</div><div class="spu-title">[30岁以上护关节]健力多氨糖软骨素钙片中老年关节补钙汤臣倍健草本复配氨糖40片/瓶</div><div><span class="spu-cat-pill bg-purple">骨骼健康</span></div></div></a><div class="spu-price-range">¥89<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥89</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">11.8</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div>
+<div class="product-panel" id="productPanel9">
+  <div class="product-panel-meta">肠胃养护 · 2款 · 热度 13.5 · 展示 TOP10 SPU，排序逻辑与总榜一致</div>
+  <div class="spu-list"><div class="spu-row header"><span style="text-align:center;">排名</span><span>商品图</span><span>SPU 名称 / 代表标题</span><span style="text-align:center;">价格区间</span><span style="text-align:center;">平均客单</span><span style="text-align:center;">SKU 数</span><span style="text-align:right;">热度</span></div>
+<div class="spu-row"><div class="spu-rank first">01</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000657353182" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69cf79cb0007f1ac1a26f5143a428b0b000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000657353182" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">万秘堂黄芪麦冬膏</div><div class="spu-title">(拍一发二+赠3条装)万秘堂黄芪麦冬膏蓝帽认证改善便秘润肠通便温和滋补养护肠道10g/袋</div><div><span class="spu-cat-pill bg-purple">肠胃养护</span></div></div></a><div class="spu-price-range">¥66<small>统一价</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥66</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">7.7</div><div class="spu-heat-lbl">热度</div></div></div>
+<div class="spu-row"><div class="spu-rank first">02</div><a class="spu-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000218490160" target="_blank" rel="noopener"><img class="spu-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a38a8f80009fb2e0b7a1e410c1e7d15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="spu-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="spu-name-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000218490160" target="_blank" rel="noopener"><div class="spu-info"><div class="spu-name">山楂鸡内金药食同源支</div><div class="spu-title">[哈药消食化积口服液]山楂鸡内金 药食同源（10ml*30支 ）</div><div><span class="spu-cat-pill bg-red">肠胃养护</span></div></div></a><div class="spu-price-range">¥151.3–¥178<small>中跨度</small></div><div class="spu-avg-price"><div class="spu-avg-val">¥164.65</div><div class="spu-avg-lbl">AVG</div></div><div class="spu-sku-count"><div class="spu-sku-val">1</div><div class="spu-sku-lbl">SKU</div></div><div class="spu-heat-cell"><div class="spu-heat-val">5.8</div><div class="spu-heat-lbl">热度</div></div></div></div>
+</div></div>
+  <div class="summary-box" style="margin-top:20px;"><strong>商品榜单洞察：</strong>黄金搭档碧生康、仁和碧生康、汇仁药业减肥胶囊、修正茯苓泽泻胶囊等集中在¥49-¥59.9，说明体重管理成交依赖低门槛客单、熟悉品牌和成分路径；资善堂西洋参葡萄籽铬酵母片热度306.3，则代表中老年三高管理的复配机会。头部商品不是简单卖“瘦”，而是用左旋肉碱、泽泻、茯苓、茶多酚、葡萄籽、西洋参等成分建立解释。客户应把商品拆成运动辅助、草本代谢、消化支持和中老年健康管理，避免所有商品都用减肥话术。 决策时要优先筛掉功效表达不清或资质弱的商品；同样是体重管理，左旋肉碱适合运动辅助，茯苓泽泻适合草本代谢，茶多酚适合控脂叙事，三高复配则应独立成线。</div></div>
+<!-- ===== SECTION 3 ===== -->
+<div class="section"><div class="section-header"><div class="section-num">03</div><div class="section-title">行业品牌格局</div><div class="section-desc">TOP10 品牌热度榜 · 品牌效率榜</div></div><div class="brand-grid"><div class="card"><div class="card-title">品牌热度 TOP10</div><div class="brand-row header"><span>排名</span><span>品牌</span><span>热度分布</span><span>热度</span><span>商品数</span><span>占比</span></div><div class="brand-row"><span class="brand-no gold">1</span><strong>黄金搭档</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:100.0%"></div></div><span class="inline-heat">1,237.3</span><span>9款</span><span class="text-muted">18.7%</span></div>
+<div class="brand-row"><span class="brand-no gold">2</span><strong>葵花</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:71.9%"></div></div><span class="inline-heat">889.6</span><span>9款</span><span class="text-muted">13.5%</span></div>
+<div class="brand-row"><span class="brand-no gold">3</span><strong>仁和</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:62.3%"></div></div><span class="inline-heat">770.4</span><span>38款</span><span class="text-muted">11.7%</span></div>
+<div class="brand-row"><span class="brand-no">4</span><strong>云南白药</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:36.9%"></div></div><span class="inline-heat">456.2</span><span>9款</span><span class="text-muted">6.9%</span></div>
+<div class="brand-row"><span class="brand-no">5</span><strong>修正</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:26.0%"></div></div><span class="inline-heat">322.3</span><span>5款</span><span class="text-muted">4.9%</span></div>
+<div class="brand-row"><span class="brand-no">6</span><strong>资膳堂</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:25.0%"></div></div><span class="inline-heat">309.6</span><span>2款</span><span class="text-muted">4.7%</span></div>
+<div class="brand-row"><span class="brand-no">7</span><strong>汇仁药业</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:24.3%"></div></div><span class="inline-heat">301.2</span><span>12款</span><span class="text-muted">4.6%</span></div>
+<div class="brand-row"><span class="brand-no">8</span><strong>金杞</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:20.3%"></div></div><span class="inline-heat">251.0</span><span>5款</span><span class="text-muted">3.8%</span></div>
+<div class="brand-row"><span class="brand-no">9</span><strong>多燕瘦</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:20.3%"></div></div><span class="inline-heat">250.9</span><span>1款</span><span class="text-muted">3.8%</span></div>
+<div class="brand-row"><span class="brand-no">10</span><strong>九芝堂</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:18.6%"></div></div><span class="inline-heat">230.1</span><span>13款</span><span class="text-muted">3.5%</span></div></div><div class="card"><div class="card-title">品牌效率榜（人均热度 = 总热度 ÷ 商品数）</div><div class="efficiency-row header"><span>排名</span><span>品牌</span><span>效率分布</span><span>总热度</span><span>商品数</span><span>效率值</span></div><div class="efficiency-row"><span class="attr-no top">1</span><strong>多燕瘦</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:100.0%"></div></div><span class="text-muted">250.9</span><span>1款</span><span class="eff-badge">250.9</span></div>
+<div class="efficiency-row"><span class="attr-no top">2</span><strong>资膳堂</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:61.7%"></div></div><span class="text-muted">309.6</span><span>2款</span><span class="eff-badge">154.8</span></div>
+<div class="efficiency-row"><span class="attr-no top">3</span><strong>黄金搭档</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:54.8%"></div></div><span class="text-muted">1,237.3</span><span>9款</span><span class="eff-badge">137.5</span></div>
+<div class="efficiency-row"><span class="attr-no">4</span><strong>葵花</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:39.4%"></div></div><span class="text-muted">889.6</span><span>9款</span><span class="eff-badge">98.8</span></div>
+<div class="efficiency-row"><span class="attr-no">5</span><strong>修正</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:25.7%"></div></div><span class="text-muted">322.3</span><span>5款</span><span class="eff-badge">64.5</span></div>
+<div class="efficiency-row"><span class="attr-no">6</span><strong>云南白药</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:20.2%"></div></div><span class="text-muted">456.2</span><span>9款</span><span class="eff-badge">50.7</span></div>
+<div class="efficiency-row"><span class="attr-no">7</span><strong>金杞</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:20.0%"></div></div><span class="text-muted">251.0</span><span>5款</span><span class="eff-badge">50.2</span></div>
+<div class="efficiency-row"><span class="attr-no">8</span><strong>优尚</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:19.8%"></div></div><span class="text-muted">49.7</span><span>1款</span><span class="eff-badge">49.7</span></div>
+<div class="efficiency-row"><span class="attr-no">9</span><strong>集妍堂</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:13.4%"></div></div><span class="text-muted">134.7</span><span>4款</span><span class="eff-badge">33.7</span></div>
+<div class="efficiency-row"><span class="attr-no">10</span><strong>哈药集团</strong><div class="brand-heat-bar"><div class="brand-heat-fill" style="width:12.9%"></div></div><span class="text-muted">64.9</span><span>2款</span><span class="eff-badge">32.4</span></div></div></div><div class="summary-box" style="margin-top:20px;"><strong>品牌格局洞察：</strong>黄金搭档热度1237.3、葵花889.6、仁和770.4，说明保健食品仍高度依赖品牌信任；但多燕瘦单SKU效率250.9、资膳堂效率154.8，证明人群和成分足够清晰时，少SKU也能高效转化。黄金搭档、仁和、葵花提供的是信任背书和渠道认知，多燕瘦提供的是体重管理心智，资膳堂提供的是三高复配路径。客户如果没有强品牌，必须用资质、批准功能、成分含量和适用人群降低信任成本，而不是只模仿头部品牌包装。 对客户而言，品牌不是只用于背书，还决定直播解释成本；黄金搭档、仁和、葵花能降低首次信任门槛，多燕瘦和资膳堂则提示可以用清晰人群切口做高效率单品。</div></div>
+<!-- ===== SECTION 4 ===== -->
+<div class="section"><div class="section-header"><div class="section-num">04</div><div class="section-title">关键词热度趋势</div><div class="section-desc">跨维度高增长关键词 TOP10 · 热度 = 销量 / 100</div></div><div class="kw-list"><div class="kw-row header"><span>排名</span><span>关键词</span><span>当月热度</span><span>增速</span><span>关联商品</span></div><div class="kw-row"><div class="kw-row-rank first">01</div><div class="kw-row-keyword"><div class="kw-name-text">茶多酚</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">494.5</div><div class="kw-row-stat-lbl">上月 1.4</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑35,994.16%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924969454" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1d3fb90008cfda2b0001d5f2351f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000960113444" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a26695b000daa271a678c0391511b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924878518" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1d3fb90008cfda2b0001d5f2351f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank first">02</div><div class="kw-row-keyword"><div class="kw-name-text">促进消化</div><span class="kw-cat-tag">功效</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">198.6</div><div class="kw-row-stat-lbl">上月 1.0</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑19,372.55%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000936750475" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000971680398" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank top3">03</div><div class="kw-row-keyword"><div class="kw-name-text">葡萄籽</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">367.9</div><div class="kw-row-stat-lbl">上月 2.8</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑13,041.07%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0aa0350002ca832a10d251e58cb01e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912988780" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a194b61000bc580b248c51b0b87d6c5000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001007266686" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a194b61000bc580b248c51b0b87d6c5000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank top3">04</div><div class="kw-row-keyword"><div class="kw-name-text">西洋参</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">356.0</div><div class="kw-row-stat-lbl">上月 2.8</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑12,615.36%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0aa0350002ca832a10d251e58cb01e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000998263527" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a2f96990008b99123a941d2156aeace000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank top3">05</div><div class="kw-row-keyword"><div class="kw-name-text">铬酵母</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">306.3</div><div class="kw-row-stat-lbl">上月 2.8</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑10,840.00%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0aa0350002ca832a10d251e58cb01e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000936750475" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank">06</div><div class="kw-row-keyword"><div class="kw-name-text">辅助降血糖</div><span class="kw-cat-tag">功效</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">360.2</div><div class="kw-row-stat-lbl">上月 6.9</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑5,121.01%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000866607666" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a0aa0350002ca832a10d251e58cb01e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000936750475" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank">07</div><div class="kw-row-keyword"><div class="kw-name-text">泽泻</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">1,066.2</div><div class="kw-row-stat-lbl">上月 44.6</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑2,287.82%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a38fb9e0000bee22b5e4c7ede521b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000924969454" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1d3fb90008cfda2b0001d5f2351f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000960113444" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a26695b000daa271a678c0391511b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank">08</div><div class="kw-row-keyword"><div class="kw-name-text">茯苓</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">670.9</div><div class="kw-row-stat-lbl">上月 43.0</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑1,461.59%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000936750475" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a38fb9e0000bee22b5e4c7ede521b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank">09</div><div class="kw-row-keyword"><div class="kw-name-text">运动</div><span class="kw-cat-tag">适用场景</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">244.0</div><div class="kw-row-stat-lbl">上月 18.1</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑1,246.80%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000896679147" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000936750475" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000971680398" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a1412bc000b592a2b04683307421f15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div>
+<div class="kw-row"><div class="kw-row-rank">10</div><div class="kw-row-keyword"><div class="kw-name-text">荷叶</div><span class="kw-cat-tag">成分原材料</span></div><div class="kw-row-stats"><div class="kw-row-stat-val rust">247.2</div><div class="kw-row-stat-lbl">上月 23.5</div></div><div class="kw-row-stats"><div class="kw-row-stat-val rust trend-up">↑951.87%</div><div class="kw-row-stat-lbl">环比增速</div></div><div class="kw-row-products"><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10001004541625" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a38fb9e0000bee22b5e4c7ede521b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000912224977" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a389b6b000bcf741bf3b0d8fb6e2d1e000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a><a class="kw-thumb-link" href="https://www.youwant.cn/home/#/productAnalysis/detail/10000904896935" target="_blank" rel="noopener"><img class="kw-row-thumb" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6a169f45000cd4e62a1c3a3121501b15000000a000004f50?imageView2/1/w/400/h/400/q/50" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt=""><div class="kw-row-thumb-placeholder" style="display:none">暂无商品图</div></a></div></div></div><div class="summary-box" style="margin-top:20px;"><strong>关键词趋势总结：</strong>左旋肉碱热度1525.5、泽泻1066.2、茯苓670.9、茶多酚494.5，说明减肥塑身的用户并非只看“减重”，还会识别运动辅助、草本代谢和控脂成分；葡萄籽、西洋参、铬酵母、辅助降血糖则指向中老年健康管理。促进消化、运动、日常补充等词说明使用场景也在影响成交。关键词应用必须严格匹配保健食品批准功能和合规边界，不能把辅助降血糖、促进消化、减脂瘦身混成一个承诺，否则会带来监管和口碑风险。 关键词落地时要按批准功能和目标人群拆开：成人减重看运动和代谢，中老年看血脂血糖，女士看体态和消化，睡眠类单独承接夜间场景，避免跨功效混写。</div></div>
+<!-- ===== SECTION 5 ===== -->
+<div class="section"><div class="section-header"><div class="section-num">05</div><div class="section-title">品类关键属性机会洞察</div><div class="section-desc">五维分词分析 · 关键词榜单 · 爆款浓度红蓝海矩阵 · 三维结论洞察</div></div><div class="attr-tabs" id="attrTabs"><button class="attr-tab active" onclick="switchTab(0)">成分原材料</button>
+<button class="attr-tab" onclick="switchTab(1)">适用人群</button>
+<button class="attr-tab" onclick="switchTab(2)">功效</button>
+<button class="attr-tab" onclick="switchTab(3)">适用场景</button></div><div class="attr-panels"><div class="attr-panel active" id="panel0"><div class="attr-main-grid"><div class="card" style="padding: 16px 18px;"><div class="card-title">成分原材料关键词榜单</div><div class="attr-rank-row header"><span>#</span><span>关键词</span><span>当月热度</span><span>上月热度</span><span>增速</span></div><div class="attr-rank-row"><span class="attr-no top">1</span><strong>左旋肉碱</strong><span>1,525.5</span><span style="color:#aaa">213.5</span><span class="trend-up">↑614.64%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">2</span><strong>泽泻</strong><span>1,066.2</span><span style="color:#aaa">44.6</span><span class="trend-up">↑2,287.82%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">3</span><strong>茯苓</strong><span>670.9</span><span style="color:#aaa">43.0</span><span class="trend-up">↑1,461.59%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">4</span><span>茶多酚</span><span>494.5</span><span style="color:#aaa">1.4</span><span class="trend-up">↑35,994.16%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">5</span><span>葡萄籽</span><span>367.9</span><span style="color:#aaa">2.8</span><span class="trend-up">↑13,041.07%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">6</span><span>西洋参</span><span>356.0</span><span style="color:#aaa">2.8</span><span class="trend-up">↑12,615.36%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">7</span><span>铬酵母</span><span>306.3</span><span style="color:#aaa">2.8</span><span class="trend-up">↑10,840.00%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">8</span><span>荷叶</span><span>247.2</span><span style="color:#aaa">23.5</span><span class="trend-up">↑951.87%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">9</span><span>决明子</span><span>156.2</span><span style="color:#aaa">23.0</span><span class="trend-up">↑580.23%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">10</span><span>钙</span><span>130.5</span><span style="color:#aaa">42.7</span><span class="trend-up">↑205.53%</span></div></div><div class="bubble-chart matrix-mode"><div class="bubble-chart-title">爆款浓度矩阵（总热度 × 平均单品热度）</div><div class="matrix-grid"><div class="matrix-axis-y">平均单品热度 ↑</div><div class="matrix-axis-x">当月总热度 →</div>
+<div class="matrix-quad darkhorse"><div class="matrix-quad-head"><span class="matrix-quad-icon">🟡</span><span class="matrix-quad-title">蓝海潜力</span><span class="matrix-quad-sub">低总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">铬酵母</span><span class="chip-heat">306.3</span><span class="chip-growth">1款</span></div>
+<div class="matrix-chip up"><span class="chip-name">西洋参</span><span class="chip-heat">178.0</span><span class="chip-growth">2款</span></div>
+<div class="matrix-chip up"><span class="chip-name">钙</span><span class="chip-heat">13.0</span><span class="chip-growth">10款</span></div>
+</div></div>
+<div class="matrix-quad ruler"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔵</span><span class="matrix-quad-title">蓝海爆款</span><span class="matrix-quad-sub">高总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">葡萄籽</span><span class="chip-heat">122.6</span><span class="chip-growth">3款</span></div>
+<div class="matrix-chip up"><span class="chip-name">泽泻</span><span class="chip-heat">20.9</span><span class="chip-growth">51款</span></div>
+</div></div>
+<div class="matrix-quad hidden"><div class="matrix-quad-head"><span class="matrix-quad-icon">⚪</span><span class="matrix-quad-title">长尾分散</span><span class="matrix-quad-sub">低总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">荷叶</span><span class="chip-heat">8.8</span><span class="chip-growth">28款</span></div>
+<div class="matrix-chip up"><span class="chip-name">决明子</span><span class="chip-heat">5.4</span><span class="chip-growth">29款</span></div>
+</div></div>
+<div class="matrix-quad mature"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔴</span><span class="matrix-quad-title">红海激战</span><span class="matrix-quad-sub">高总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">茶多酚</span><span class="chip-heat">12.7</span><span class="chip-growth">39款</span></div>
+<div class="matrix-chip up"><span class="chip-name">左旋肉碱</span><span class="chip-heat">9.6</span><span class="chip-growth">159款</span></div>
+<div class="matrix-chip up"><span class="chip-name">茯苓</span><span class="chip-heat">4.2</span><span class="chip-growth">158款</span></div>
+</div></div>
+</div></div></div><div class="conclusion-section-title">📌 成分原材料维度结论</div><div class="conclusion-3card"><div class="conclusion-card ruler"><div class="conclusion-card-header"><span class="conclusion-card-icon">🏆</span>热度霸主：左旋肉碱<span class="conclusion-card-tag">热度 1,525.5 / 614.64%</span></div><div class="conclusion-card-body">左旋肉碱在“成分卖点”维度热度最高，关联<strong>左旋肉碱、胶囊、泽泻胶囊</strong>，当前热度已经形成明确需求盘，可放大供给并拆分多个标题版本。</div></div><div class="conclusion-card darkhorse"><div class="conclusion-card-header"><span class="conclusion-card-icon">🚀</span>爆发黑马：茶多酚<span class="conclusion-card-tag">35,994.16%</span></div><div class="conclusion-card-body">茶多酚增速达到35,994.16%，但当前匹配商品约39款，环比爆发很强，重点抢新品窗口和达人讲解记忆点；建议先绑定茶多酚胶囊、纤秀胶囊、左旋肉碱胶囊验证点击转化。</div></div><div class="conclusion-card hidden"><div class="conclusion-card-header"><span class="conclusion-card-icon">💡</span>隐形潜力：铬酵母<span class="conclusion-card-tag">单品 306.3</span></div><div class="conclusion-card-body">铬酵母平均单品热度约306.3，说明供给不一定多但单品效率突出；把核心成分前置，配合产品词做功效感或原料感表达，避免只写泛品类名称。</div></div></div></div>
+<div class="attr-panel" id="panel1"><div class="attr-main-grid"><div class="card" style="padding: 16px 18px;"><div class="card-title">适用人群关键词榜单</div><div class="attr-rank-row header"><span>#</span><span>关键词</span><span>当月热度</span><span>上月热度</span><span>增速</span></div><div class="attr-rank-row"><span class="attr-no top">1</span><strong>中老年</strong><span>1,452.2</span><span style="color:#aaa">374.5</span><span class="trend-up">↑287.73%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">2</span><strong>成人</strong><span>1,408.3</span><span style="color:#aaa">265.8</span><span class="trend-up">↑429.85%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">3</span><strong>女士</strong><span>156.4</span><span style="color:#aaa">0.0</span><span class="trend-flat">新词</span></div>
+<div class="attr-rank-row"><span class="attr-no ">4</span><span>男士</span><span>113.1</span><span style="color:#aaa">0.0</span><span class="trend-flat">新词</span></div>
+<div class="attr-rank-row"><span class="attr-no ">5</span><span>孕妇/哺乳期</span><span>30.5</span><span style="color:#aaa">22.2</span><span class="trend-up">↑37.25%</span></div></div><div class="bubble-chart matrix-mode"><div class="bubble-chart-title">爆款浓度矩阵（总热度 × 平均单品热度）</div><div class="matrix-grid"><div class="matrix-axis-y">平均单品热度 ↑</div><div class="matrix-axis-x">当月总热度 →</div>
+<div class="matrix-quad darkhorse"><div class="matrix-quad-head"><span class="matrix-quad-icon">🟡</span><span class="matrix-quad-title">蓝海潜力</span><span class="matrix-quad-sub">低总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">男士</span><span class="chip-heat">8.7</span><span class="chip-growth">13款</span></div>
+</div></div>
+<div class="matrix-quad ruler"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔵</span><span class="matrix-quad-title">蓝海爆款</span><span class="matrix-quad-sub">高总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">成人</span><span class="chip-heat">20.7</span><span class="chip-growth">68款</span></div>
+<div class="matrix-chip up"><span class="chip-name">中老年</span><span class="chip-heat">9.0</span><span class="chip-growth">161款</span></div>
+</div></div>
+<div class="matrix-quad hidden"><div class="matrix-quad-head"><span class="matrix-quad-icon">⚪</span><span class="matrix-quad-title">长尾分散</span><span class="matrix-quad-sub">低总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">孕妇/哺乳期</span><span class="chip-heat">0.5</span><span class="chip-growth">56款</span></div>
+</div></div>
+<div class="matrix-quad mature"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔴</span><span class="matrix-quad-title">红海激战</span><span class="matrix-quad-sub">高总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">女士</span><span class="chip-heat">8.7</span><span class="chip-growth">18款</span></div>
+</div></div>
+</div></div></div><div class="conclusion-section-title">📌 适用人群维度结论</div><div class="conclusion-3card"><div class="conclusion-card ruler"><div class="conclusion-card-header"><span class="conclusion-card-icon">🏆</span>热度霸主：中老年<span class="conclusion-card-tag">热度 1,452.2 / 287.73%</span></div><div class="conclusion-card-body">中老年在“人群定位”维度热度最高，关联<strong>胶囊、左旋肉碱、减肥胶囊</strong>，当前热度已经形成明确需求盘，可放大供给并拆分多个标题版本。</div></div><div class="conclusion-card darkhorse"><div class="conclusion-card-header"><span class="conclusion-card-icon">🚀</span>爆发黑马：成人<span class="conclusion-card-tag">429.85%</span></div><div class="conclusion-card-body">成人增速达到429.85%，但当前匹配商品约68款，增速明显高于常规波动，适合进入短周期上新池；建议先绑定软胶囊、鱼油、左旋肉碱胶囊验证点击转化。</div></div><div class="conclusion-card hidden"><div class="conclusion-card-header"><span class="conclusion-card-icon">💡</span>隐形潜力：成人<span class="conclusion-card-tag">单品 20.7</span></div><div class="conclusion-card-body">成人平均单品热度约20.7，说明供给不一定多但单品效率突出；围绕目标人群重写标题和卖点，优先测试礼赠、自用、轻负担等差异化包装。</div></div></div></div>
+<div class="attr-panel" id="panel2"><div class="attr-main-grid"><div class="card" style="padding: 16px 18px;"><div class="card-title">功效关键词榜单</div><div class="attr-rank-row header"><span>#</span><span>关键词</span><span>当月热度</span><span>上月热度</span><span>增速</span></div><div class="attr-rank-row"><span class="attr-no top">1</span><strong>辅助降血脂</strong><span>857.3</span><span style="color:#aaa">124.9</span><span class="trend-up">↑586.55%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">2</span><strong>辅助降血糖</strong><span>360.2</span><span style="color:#aaa">6.9</span><span class="trend-up">↑5,121.01%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">3</span><strong>缓解体力疲劳</strong><span>247.9</span><span style="color:#aaa">90.8</span><span class="trend-up">↑172.86%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">4</span><span>促进消化</span><span>198.6</span><span style="color:#aaa">1.0</span><span class="trend-up">↑19,372.55%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">5</span><span>营养素补充</span><span>172.6</span><span style="color:#aaa">34.5</span><span class="trend-up">↑400.43%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">6</span><span>改善睡眠</span><span>52.4</span><span style="color:#aaa">19.5</span><span class="trend-up">↑168.10%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">7</span><span>增强免疫力</span><span>51.7</span><span style="color:#aaa">0.0</span><span class="trend-flat">新词</span></div>
+<div class="attr-rank-row"><span class="attr-no ">8</span><span>增加骨密度</span><span>48.6</span><span style="color:#aaa">30.4</span><span class="trend-up">↑59.82%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">9</span><span>通便</span><span>20.0</span><span style="color:#aaa">0.0</span><span class="trend-flat">新词</span></div>
+<div class="attr-rank-row"><span class="attr-no ">10</span><span>辅助降血压</span><span>8.7</span><span style="color:#aaa">0.0</span><span class="trend-flat">新词</span></div></div><div class="bubble-chart matrix-mode"><div class="bubble-chart-title">爆款浓度矩阵（总热度 × 平均单品热度）</div><div class="matrix-grid"><div class="matrix-axis-y">平均单品热度 ↑</div><div class="matrix-axis-x">当月总热度 →</div>
+<div class="matrix-quad darkhorse"><div class="matrix-quad-head"><span class="matrix-quad-icon">🟡</span><span class="matrix-quad-title">蓝海潜力</span><span class="matrix-quad-sub">低总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">通便</span><span class="chip-heat">20.0</span><span class="chip-growth">1款</span></div>
+<div class="matrix-chip up"><span class="chip-name">改善睡眠</span><span class="chip-heat">10.5</span><span class="chip-growth">5款</span></div>
+</div></div>
+<div class="matrix-quad ruler"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔵</span><span class="matrix-quad-title">蓝海爆款</span><span class="matrix-quad-sub">高总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">辅助降血糖</span><span class="chip-heat">360.2</span><span class="chip-growth">1款</span></div>
+<div class="matrix-chip up"><span class="chip-name">辅助降血脂</span><span class="chip-heat">50.4</span><span class="chip-growth">17款</span></div>
+<div class="matrix-chip up"><span class="chip-name">缓解体力疲劳</span><span class="chip-heat">4.5</span><span class="chip-growth">55款</span></div>
+</div></div>
+<div class="matrix-quad hidden"><div class="matrix-quad-head"><span class="matrix-quad-icon">⚪</span><span class="matrix-quad-title">长尾分散</span><span class="matrix-quad-sub">低总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">增强免疫力</span><span class="chip-heat">0.9</span><span class="chip-growth">57款</span></div>
+<div class="matrix-chip up"><span class="chip-name">增加骨密度</span><span class="chip-heat">0.9</span><span class="chip-growth">56款</span></div>
+<div class="matrix-chip up"><span class="chip-name">辅助降血压</span><span class="chip-heat">0.2</span><span class="chip-growth">40款</span></div>
+</div></div>
+<div class="matrix-quad mature"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔴</span><span class="matrix-quad-title">红海激战</span><span class="matrix-quad-sub">高总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">促进消化</span><span class="chip-heat">3.3</span><span class="chip-growth">60款</span></div>
+<div class="matrix-chip up"><span class="chip-name">营养素补充</span><span class="chip-heat">2.8</span><span class="chip-growth">61款</span></div>
+</div></div>
+</div></div></div><div class="conclusion-section-title">📌 功效维度结论</div><div class="conclusion-3card"><div class="conclusion-card ruler"><div class="conclusion-card-header"><span class="conclusion-card-icon">🏆</span>热度霸主：辅助降血脂<span class="conclusion-card-tag">热度 857.3 / 586.55%</span></div><div class="conclusion-card-body">辅助降血脂在“关键词机会”维度热度最高，关联<strong>茯苓泽泻胶囊、金杞胶囊、纤纤茶</strong>，当前热度已经形成明确需求盘，可放大供给并拆分多个标题版本。</div></div><div class="conclusion-card darkhorse"><div class="conclusion-card-header"><span class="conclusion-card-icon">🚀</span>爆发黑马：促进消化<span class="conclusion-card-tag">19,372.55%</span></div><div class="conclusion-card-body">促进消化增速达到19,372.55%，但当前匹配商品约60款，环比爆发很强，重点抢新品窗口和达人讲解记忆点；建议先绑定软胶囊、鸡内金、口服液验证点击转化。</div></div><div class="conclusion-card hidden"><div class="conclusion-card-header"><span class="conclusion-card-icon">💡</span>隐形潜力：辅助降血糖<span class="conclusion-card-tag">单品 360.2</span></div><div class="conclusion-card-body">辅助降血糖平均单品热度约360.2，说明供给不一定多但单品效率突出；把关键词与代表产品词组合成可测试标题，先用少量 SKU 验证点击和转化。</div></div></div></div>
+<div class="attr-panel" id="panel3"><div class="attr-main-grid"><div class="card" style="padding: 16px 18px;"><div class="card-title">适用场景关键词榜单</div><div class="attr-rank-row header"><span>#</span><span>关键词</span><span>当月热度</span><span>上月热度</span><span>增速</span></div><div class="attr-rank-row"><span class="attr-no top">1</span><strong>运动</strong><span>244.0</span><span style="color:#aaa">18.1</span><span class="trend-up">↑1,246.80%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">2</span><strong>日常补充</strong><span>107.0</span><span style="color:#aaa">12.4</span><span class="trend-up">↑760.37%</span></div>
+<div class="attr-rank-row"><span class="attr-no top">3</span><strong>送礼</strong><span>81.5</span><span style="color:#aaa">65.7</span><span class="trend-up">↑24.10%</span></div>
+<div class="attr-rank-row"><span class="attr-no ">4</span><span>睡前</span><span>43.5</span><span style="color:#aaa">7.0</span><span class="trend-up">↑521.00%</span></div></div><div class="bubble-chart matrix-mode"><div class="bubble-chart-title">爆款浓度矩阵（总热度 × 平均单品热度）</div><div class="matrix-grid"><div class="matrix-axis-y">平均单品热度 ↑</div><div class="matrix-axis-x">当月总热度 →</div>
+<div class="matrix-quad darkhorse"><div class="matrix-quad-head"><span class="matrix-quad-icon">🟡</span><span class="matrix-quad-title">蓝海潜力</span><span class="matrix-quad-sub">低总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">睡前</span><span class="chip-heat">14.5</span><span class="chip-growth">3款</span></div>
+</div></div>
+<div class="matrix-quad ruler"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔵</span><span class="matrix-quad-title">蓝海爆款</span><span class="matrix-quad-sub">高总热度 · 高爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">运动</span><span class="chip-heat">4.4</span><span class="chip-growth">55款</span></div>
+</div></div>
+<div class="matrix-quad hidden"><div class="matrix-quad-head"><span class="matrix-quad-icon">⚪</span><span class="matrix-quad-title">长尾分散</span><span class="matrix-quad-sub">低总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">送礼</span><span class="chip-heat">1.5</span><span class="chip-growth">56款</span></div>
+</div></div>
+<div class="matrix-quad mature"><div class="matrix-quad-head"><span class="matrix-quad-icon">🔴</span><span class="matrix-quad-title">红海激战</span><span class="matrix-quad-sub">高总热度 · 低爆款浓度</span></div><div class="matrix-chips">
+<div class="matrix-chip up"><span class="chip-name">日常补充</span><span class="chip-heat">3.7</span><span class="chip-growth">29款</span></div>
+</div></div>
+</div></div></div><div class="conclusion-section-title">📌 适用场景维度结论</div><div class="conclusion-3card"><div class="conclusion-card ruler"><div class="conclusion-card-header"><span class="conclusion-card-icon">🏆</span>热度霸主：运动<span class="conclusion-card-tag">热度 244.0 / 1,246.80%</span></div><div class="conclusion-card-body">运动在“场景需求”维度热度最高，关联<strong>软胶囊</strong>，热度处于可放量区间，可用 2-3 个 SKU 做价格带和卖点 AB 测试。</div></div><div class="conclusion-card darkhorse"><div class="conclusion-card-header"><span class="conclusion-card-icon">🚀</span>爆发黑马：运动<span class="conclusion-card-tag">1,246.80%</span></div><div class="conclusion-card-body">运动增速达到1,246.80%，但当前匹配商品约55款，环比爆发很强，重点抢新品窗口和达人讲解记忆点；建议先绑定软胶囊验证点击转化。</div></div><div class="conclusion-card hidden"><div class="conclusion-card-header"><span class="conclusion-card-icon">💡</span>隐形潜力：睡前<span class="conclusion-card-tag">单品 14.5</span></div><div class="conclusion-card-body">睡前平均单品热度约14.5，说明供给不一定多但单品效率突出；把使用场景写进标题和直播讲解开场，优先验证即食、代餐、佐餐等明确任务型需求。</div></div></div></div></div></div>
+<!-- ===== SECTION 6 ===== -->
+<style>
+.strategy-card-v2 { position: relative; overflow: hidden; }
+.strategy-v2-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:8px; }
+.strategy-v2-role { color:#b46a15; font-size:13px; font-weight:800; letter-spacing:.04em; }
+.strategy-card-v2 .strategy-10-name { font-size:22px; line-height:1.25; margin:8px 0 12px; }
+.strategy-card-v2 .strategy-10-formula { margin-bottom:12px; }
+.strategy-v2-evidence { border-top:1px solid #eee2d0; border-bottom:1px solid #eee2d0; padding:9px 0; margin-bottom:12px; color:#5f554a; font-size:13px; line-height:1.6; }
+.strategy-v2-evidence span { color:#9a5b12; font-weight:800; margin-right:10px; }
+.strategy-card-v2 .strategy-10-desc { font-size:15px; line-height:1.75; color:#2f2a24; }
+</style><div class="section"><div class="section-header"><div class="section-num">06</div><div class="section-title">选品洞察策略</div><div class="section-desc">高相似关键词合并 · 重点机会主题建议</div></div><div class="insight-chips"><div class="insight-chip gold">机会主题 = 需求词组 × 商品形态 × 运营动作</div><div class="insight-chip muted">热度：销量 / 100</div></div><div class="strategy-10-grid"><div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">01</div></div><div class="strategy-10-name">体重管理基础款</div><div class="strategy-10-formula"><strong>左旋肉碱/泽泻 × 软胶囊 × 成人体重管理</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考¥49–¥59.9 · 人群 成人体重管理、运动辅助人群 · 参考 黄金搭档碧生康减肥塑身好方软胶囊 / 黄金搭档</div><div class="strategy-10-desc">减肥塑身热度5860.8，黄金搭档单品热度1237.3，说明体重管理是保健食品最强入口。建议只选择资质清晰、批准功能明确的软胶囊或胶囊款，价格控制在¥49-¥59.9，内容强调配合运动和饮食管理，避免绝对化减重承诺。落地前必须先确认蓝帽资质和批准功能，直播话术只能围绕辅助和配合生活方式；建议设置入门单盒和周期装，避免靠夸大效果冲量。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">减肥塑身</span><span class="strategy-10-tag tag-blue">软胶囊</span><span class="strategy-10-tag tag-blue">合规</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">02</div></div><div class="strategy-10-name">草本代谢复配</div><div class="strategy-10-formula"><strong>茯苓/泽泻 × 草本胶囊 × 轻体管理</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考¥49.9–¥59.9 · 人群 成人轻体、女性体态管理人群 · 参考 修正茯苓泽泻胶囊 / 修正</div><div class="strategy-10-desc">泽泻热度1066.2、茯苓670.9，说明用户愿意接受草本代谢路径。建议用茯苓泽泻复配做轻体管理款，主图讲成分逻辑和适用周期，不要与强减肥承诺绑定；适合与左旋肉碱款形成对比，承接偏草本的人群。适合承接不喜欢强刺激减重的人群，内容重点是成分路径和适用周期；不要把茯苓泽泻与三高、睡眠等跨功效混讲。评价里应重点观察肠胃接受度和服用便利性，这会直接影响复购和差评率。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">茯苓</span><span class="strategy-10-tag tag-blue">泽泻</span><span class="strategy-10-tag tag-blue">草本</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">03</div></div><div class="strategy-10-name">运动辅助燃脂</div><div class="strategy-10-formula"><strong>左旋肉碱 × 运动场景 × 健身人群</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考¥49.9 · 人群 运动健身、控脂塑形人群 · 参考 多燕瘦左旋肉碱泽泻胶囊 / 多燕瘦</div><div class="strategy-10-desc">多燕瘦单SKU效率250.9，运动词热度244.0，说明体重管理可以从健身辅助切入。建议把左旋肉碱放在运动前后、控脂塑形场景中讲，搭配运动计划和服用周期，提高可信度；不要把它包装成无需运动的速效产品。建议绑定运动前后和控脂饮食场景，搭配打卡或周期组合；如果用户没有运动意愿，这类商品的体验落差会比较大。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">左旋肉碱</span><span class="strategy-10-tag tag-blue">运动</span><span class="strategy-10-tag tag-blue">塑形</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">04</div></div><div class="strategy-10-name">中老年三高复配</div><div class="strategy-10-formula"><strong>西洋参/葡萄籽/铬酵母 × 片剂 × 三高管理</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考¥49 · 人群 中老年、血糖血脂关注人群 · 参考 资善堂能觉牌西洋参葡萄籽铬酵母片 / 资善堂</div><div class="strategy-10-desc">调节三高虽然类目热度429.8，但资善堂相关SPU热度306.3，葡萄籽、西洋参、铬酵母和辅助降血糖词同时出现，说明中老年健康管理有明确需求。建议单独做三高辅助线，强调批准功能和成分含量，不能与减肥塑身混用话术。三高线应独立陈列，不要与减肥主线混放；详情页要突出辅助功能、成分含量、适用人群和禁忌，减少中老年用户误解。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">三高</span><span class="strategy-10-tag tag-blue">西洋参</span><span class="strategy-10-tag tag-blue">铬酵母</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">05</div></div><div class="strategy-10-name">茶多酚控脂线</div><div class="strategy-10-formula"><strong>茶多酚 × 控脂辅助 × 日常管理</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考¥39.9–¥59.9 · 人群 成人控脂、饭后管理人群 · 参考 九芝堂左旋肉碱茶多酚胶囊 / 九芝堂</div><div class="strategy-10-desc">茶多酚热度494.5且增速高，说明控脂和饭后管理有搜索基础。建议以茶多酚和左旋肉碱复配作为日常管理款，适合与高油饮食、运动辅助场景绑定；详情页必须说明保健食品属性和适用人群，避免医疗化表达。适合做饭后日常管理和控脂辅助，价格不宜过高；内容要解释茶多酚与左旋肉碱各自角色，避免被用户理解成速效减重。可与低糖饮食、饭后管理内容搭配，形成更可信的日常控脂方案。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">茶多酚</span><span class="strategy-10-tag tag-blue">控脂</span><span class="strategy-10-tag tag-blue">日常</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">06</div></div><div class="strategy-10-name">品牌信任入门款</div><div class="strategy-10-formula"><strong>仁和/葵花 × 低客单 × 初次购买</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考¥59–¥59.9 · 人群 初次尝试、品牌信任导向人群 · 参考 仁和碧生康牌好方软胶囊 / 仁和</div><div class="strategy-10-desc">仁和SKU多、葵花热度889.6，说明熟悉品牌能降低保健食品首次购买门槛。建议用仁和、葵花这类品牌款作为入门承接，价格不宜过高，重点讲资质、批准功能和适用周期；它们适合稳定转化，不适合承载过多差异化概念。这类品牌款可作为直播间信任锚点，用来承接首次购买；后续再用草本复配或运动辅助款做差异化升级。后续可用评价和复购数据判断是否扩展同品牌多规格，而不是一次性铺满。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">品牌</span><span class="strategy-10-tag tag-blue">入门</span><span class="strategy-10-tag tag-blue">信任</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">07</div></div><div class="strategy-10-name">睡眠改善小盘测试</div><div class="strategy-10-formula"><strong>睡前场景 × 改善睡眠 × 小规格验证</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考同类价格带 · 人群 睡眠困扰、成人日常补充人群 · 参考 改善睡眠类SPU / 改善睡眠</div><div class="strategy-10-desc">改善睡眠热度52.4，体量较小但需求明确，适合作为体重管理之外的风险分散线。建议先用小规格测试，重点讲睡前场景、成分依据和非药物属性，观察复购和评价；不要在主货盘中过早铺太多睡眠SKU。建议只做小规格和低承诺测试，观察评价中对入睡、醒后状态和口味的反馈；睡眠类话术尤其要避免医疗化表达。这类商品更看体验反馈，建议设置清晰试用周期，并跟踪差评中的无感原因。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">睡眠</span><span class="strategy-10-tag tag-blue">小盘</span><span class="strategy-10-tag tag-blue">风险分散</span></div></div>
+<div class="strategy-10-card strategy-card-v2"><div class="strategy-v2-top"><div class="strategy-v2-role">选品策略 · 机会判断</div><div class="strategy-10-num">08</div></div><div class="strategy-10-name">免疫营养补充</div><div class="strategy-10-formula"><strong>营养素补充 × 免疫增强 × 日常复购</strong></div><div class="strategy-v2-evidence"><span>关键证据</span>客单 参考同类价格带 · 人群 成人日常健康、中老年补充人群 · 参考 增强免疫类SPU / 保健食品</div><div class="strategy-10-desc">增强免疫热度90.1、补充营养素热度93.2，虽然不是最大类目，但能补足减肥塑身的单一风险。建议选成分明确、客单适中的日常补充款，作为复购和搭售线，内容强调长期补充和适用人群，不要用短期见效话术。适合作为体重管理之外的搭售和复购线，重点讲日常补充和适用人群；不要让免疫、减脂、三高在同一张主图里混杂。</div><div class="strategy-10-tags"><span class="strategy-10-tag tag-blue">免疫</span><span class="strategy-10-tag tag-blue">营养</span><span class="strategy-10-tag tag-blue">复购</span></div></div></div><div class="summary-box" style="margin-top:24px;"><strong>选品策略综述：</strong>短期可用¥49-¥59.9减肥塑身软胶囊做流量入口，但只选品牌资质清楚、成分路径明确、功效表达合规的商品；中期增加三高管理、免疫补充、睡眠改善等细分款，把中老年和成人日常健康管理做成第二增长线；长期建立运动辅助、成人体重管理、中老年慢病辅助三套货盘。风险控制优先级高于扩SKU：标题、主图和直播话术都应避免绝对化承诺，说明适用人群、服用周期、禁忌和配合生活方式，才能提高复购和降低投诉。 执行上建议先建立合规话术库，再上架商品；每个SKU都要对应成分逻辑、适用人群、服用周期和禁忌说明。没有这些证据的高热商品，短期能卖，长期售后和监管风险都高。</div></div>
+</div><!-- end .page -->
+<div class="footer"><div><strong>保健食品行业选品洞察报告</strong> · 2026年6月 · 数据来源：视频号带货平台</div><div>共分析 200 个 TOP 商品 · 9 个二级品类 · 4 维分词维度 · 热度=销量 / 100</div></div>
+<script>
+function switchProductTab(index) {
+  document.querySelectorAll('.product-tab').forEach((t, i) => t.classList.toggle('active', i === index));
+  document.querySelectorAll('.product-panel').forEach((p, i) => p.classList.toggle('active', i === index));
+}
+function switchTab(index) {
+  document.querySelectorAll('.attr-tab').forEach((t, i) => t.classList.toggle('active', i === index));
+  document.querySelectorAll('.attr-panel').forEach((p, i) => p.classList.toggle('active', i === index));
+}
+</script>
+</body>
+</html>
