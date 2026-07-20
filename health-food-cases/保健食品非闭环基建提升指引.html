@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>保健食品非闭环（小程序直购/CID）基建提升指引｜腾讯广告</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#eef2f7;font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;color:#1f2937}
+  .page{width:1440px;min-height:1700px;margin:24px auto;background:linear-gradient(180deg,#f0f6ff 0%,#fff 30%);padding:28px 32px 32px;box-shadow:0 8px 30px rgba(30,58,138,.08);border-radius:18px;position:relative;overflow:hidden}
+  .page::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(37,99,235,.16),transparent 70%);border-radius:50%}
+  .page::after{content:"";position:absolute;bottom:-140px;left:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);border-radius:50%}
+
+  /* ====== Header ====== */
+  .header{position:relative;background:linear-gradient(135deg,#1d4ed8 0%,#3E79F0 55%,#60a5fa 100%);color:#fff;border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px rgba(37,99,235,.28);z-index:2;margin-bottom:16px}
+  .header .badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px)}
+  .header h1{font-size:22px;font-weight:800;letter-spacing:.3px;flex:1;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .header h1 .hl{color:#fde68a;text-shadow:0 1px 0 rgba(0,0,0,.1)}
+  .header .sub{font-size:12px;color:rgba(255,255,255,.85);margin-top:4px;letter-spacing:.3px}
+
+  /* ====== 业务画像卡 ====== */
+  .biz-card{position:relative;z-index:2;margin-bottom:16px;background:linear-gradient(135deg,#1d4ed8,#3E79F0);color:#fff;border-radius:14px;padding:14px 22px;box-shadow:0 8px 22px rgba(30,58,138,.18)}
+  .biz-title{font-size:14.5px;font-weight:800;margin-bottom:10px;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+  .biz-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .biz-item{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);border-radius:10px;padding:10px 12px}
+  .biz-item .bk-lbl{font-size:11px;color:rgba(255,255,255,.85);font-weight:700}
+  .biz-item .bk-val{font-size:14.5px;font-weight:800;margin-top:4px;line-height:1.4}
+  .biz-item .bk-tag{display:inline-block;background:#fde68a;color:#92400e;font-size:10px;font-weight:800;padding:1.5px 7px;border-radius:5px;margin-top:5px}
+  .biz-item .bk-tag.red{background:#fecaca;color:#7f1d1d}
+  .biz-item .bk-tag.green{background:#bbf7d0;color:#14532d}
+
+  /* ====== Generic Block ====== */
+  .block{background:#fff;border:1px solid #e5edf7;border-radius:14px;padding:16px 18px;box-shadow:0 4px 12px rgba(30,58,138,.04);display:flex;flex-direction:column;margin-bottom:16px;position:relative;z-index:2}
+  .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .sec-title .num{width:30px;height:30px;border-radius:8px;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(37,99,235,.3);font-size:14px}
+  .sec-title h2{font-size:17px;color:#1d4ed8;font-weight:800}
+  .sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,#93c5fd,transparent)}
+  .sec-title .extra{margin-left:auto;font-size:11px;color:#6b7280;font-weight:600}
+
+  /* ====== Module 1: 策略升级 ====== */
+  .mod1-body{display:grid;grid-template-columns:1fr 1.1fr;gap:14px}
+  .mod1-left .intro-text{background:#fef2f2;border-left:4px solid #ef4444;padding:10px 12px;border-radius:8px;color:#7f1d1d;font-size:12.5px;line-height:1.7}
+  .mod1-left .intro-text b{color:#dc2626}
+  .mod1-formula{background:linear-gradient(135deg,#fef2f2,#fee2e2);border:1px solid #fca5a5;border-radius:10px;padding:12px 14px;margin-top:10px;text-align:center}
+  .mod1-formula .ft-lbl{font-size:10.5px;color:#991b1b;font-weight:800;letter-spacing:.5px}
+  .mod1-formula .ft-form{font-size:18px;font-weight:800;color:#dc2626;margin-top:6px;letter-spacing:.3px}
+  .mod1-formula .ft-form .opt{color:#991b1b;font-size:14px;background:#fff;padding:2px 8px;border-radius:4px;margin:0 3px}
+  .mod1-actions{display:flex;flex-direction:column;gap:8px}
+  .mod1-act{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#fff,#fef2f2);border:1px solid #fca5a5;border-radius:8px;padding:9px 12px}
+  .mod1-act .act-tag{font-size:11px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ef4444,#dc2626);padding:2px 8px;border-radius:4px;flex-shrink:0}
+  .mod1-act .act-tag.p1{background:linear-gradient(135deg,#f59e0b,#d97706)}
+  .mod1-act .act-txt{font-size:12.5px;color:#374151;line-height:1.5}
+  .mod1-act .act-txt b{color:#dc2626}
+
+  /* ====== Module 2: 两列 ====== */
+  .mod2-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mod2-col{border-radius:12px;padding:13px 14px;position:relative;overflow:hidden}
+  .mod2-col.left{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #93c5fd}
+  .mod2-col.right{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac}
+  .mod2-col .mod2-h{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .mod2-col .mod2-h .mh-ico{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 4px 10px rgba(37,99,235,.3)}
+  .mod2-col.right .mod2-h .mh-ico{background:linear-gradient(135deg,#16a34a,#15803d);box-shadow:0 4px 10px rgba(34,197,94,.3)}
+  .mod2-col .mod2-h h3{font-size:15.5px;font-weight:800;color:#1d4ed8}
+  .mod2-col.right .mod2-h h3{color:#15803d}
+  .mod2-col .mod2-h .mh-sub{margin-left:auto;font-size:10.5px;color:#1d4ed8;font-weight:700}
+  .mod2-col.right .mod2-h .mh-sub{color:#15803d}
+  .mod4-feat{background:linear-gradient(135deg,#eff6ff,#fff);border:1px solid #93c5fd;border-radius:10px;padding:10px 12px}
+  .mod4-feat .ft-h{font-size:12.5px;font-weight:800;color:#1d4ed8;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  .mod4-feat .ft-h::before{content:"";width:4px;height:13px;background:linear-gradient(180deg,#3E79F0,#1d4ed8);border-radius:3px}
+  .mod4-feat .ft-row{display:flex;align-items:center;gap:9px;padding:6px 0;border-top:1px dashed #dbeafe;font-size:12px;color:#374151}
+  .mod4-feat .ft-row:first-of-type{border-top:none}
+  .mod4-feat .ft-row .ft-name{flex:0 0 110px;font-weight:700;color:#1e293b}
+  .mod4-feat .ft-row .ft-st{font-size:14px;font-weight:800;min-width:30px}
+  .mod4-feat .ft-row .ft-st.yes{color:#16a34a}
+  .mod4-feat .ft-row .ft-st.partial{color:#f59e0b}
+  .mod4-feat .ft-row .ft-st.no{color:#dc2626}
+  .mod4-feat .ft-row .ft-note{flex:1;font-size:10.5px;color:#6b7280;line-height:1.45}
+  .mod4-feat .ft-row .ft-note b{color:#1d4ed8}
+  .mod4-no{background:linear-gradient(135deg,#fef2f2,#fff);border:1px solid #fca5a5;border-radius:10px;padding:10px 12px}
+  .mod4-no .ft-h{font-size:12.5px;font-weight:800;color:#dc2626;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  .mod4-no .ft-h::before{content:"";width:4px;height:13px;background:linear-gradient(180deg,#ef4444,#dc2626);border-radius:3px}
+  .mod4-no ul{list-style:none;padding:0;margin:0}
+  .mod4-no li{font-size:12px;color:#7f1d1d;padding:5px 0;border-top:1px dashed #fecaca;display:flex;align-items:center;gap:8px;line-height:1.5}
+  .mod4-no li:first-child{border-top:none}
+  .mod4-no li::before{content:"✗";color:#dc2626;font-weight:800;flex-shrink:0;font-size:12px}
+  .mod4-no li b{color:#dc2626}
+  .mod4-no li .hint{margin-left:auto;font-size:10px;color:#16a34a;background:#f0fdf4;padding:1.5px 6px;border-radius:4px;font-weight:700;border:1px solid #bbf7d0;flex-shrink:0}
+
+  /* ====== Module 3: 创意重复度与唯一性 ====== */
+  .mod5-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:14px}
+  .mod5-rule{background:linear-gradient(135deg,#f0fdf4,#fff);border:1px solid #86efac;border-radius:10px;padding:10px 12px}
+  .mod5-rule .ru-lbl{font-size:11px;color:#15803d;font-weight:800;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+  .mod5-rule .ru-lbl::before{content:"•";color:#16a34a;font-size:18px;line-height:0}
+  .mod5-rule .ru-v{font-size:13px;font-weight:800;color:#14532d;line-height:1.6}
+  .mod5-rule .ru-v b{color:#dc2626;font-size:14px}
+  .mod5-rule .ru-d{font-size:11px;color:#475569;margin-top:3px;line-height:1.55}
+  .mod5-todo{background:linear-gradient(135deg,#fffbeb,#fff);border:1px solid #fcd34d;border-radius:10px;padding:10px 12px}
+  .mod5-todo .to-h{font-size:12.5px;font-weight:800;color:#b45309;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  .mod5-todo .to-h::before{content:"";width:4px;height:13px;background:linear-gradient(180deg,#f59e0b,#d97706);border-radius:3px}
+  .mod5-todo .to-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:6px}
+  .mod5-todo .to-step{text-align:center;background:#fff;border:1px solid #fcd34d;border-radius:7px;padding:6px 4px}
+  .mod5-todo .to-step .ts-num{font-size:10px;color:#92400e;font-weight:800}
+  .mod5-todo .to-step .ts-v{font-size:14px;font-weight:800;color:#dc2626;line-height:1.2;margin:2px 0}
+  .mod5-todo .to-step .ts-d{font-size:9.5px;color:#6b7280;line-height:1.35}
+  .mod5-todo .to-arrow{display:flex;align-items:center;justify-content:center;color:#f59e0b;font-size:14px;font-weight:800;margin:-2px 0}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+  .dos .do-box{background:rgba(255,255,255,.6);border:1px solid rgba(134,239,172,.55);border-radius:8px;padding:8px 11px}
+  .dos .do-box h4{font-size:11.5px;font-weight:800;margin-bottom:5px}
+  .dos .do-box.dos-yes h4{color:#15803d}
+  .dos .do-box.dos-no h4{color:#dc2626}
+  .dos .do-box ul{list-style:none;padding:0;margin:0}
+  .dos .do-box li{font-size:11px;color:#374151;line-height:1.55;padding:2px 0 2px 13px;position:relative}
+  .dos .do-box.dos-yes li::before{content:"✓";color:#16a34a;font-weight:800;position:absolute;left:0}
+  .dos .do-box.dos-no li::before{content:"✗";color:#dc2626;font-weight:800;position:absolute;left:0}
+
+  /* ====== Module 4: 行动路线图 ====== */
+  .roadmap{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+  .roadmap::before{content:"";position:absolute;top:14px;left:40px;right:40px;height:2px;background:linear-gradient(90deg,#ef4444,#f59e0b,#16a34a);z-index:0}
+  .rm-step{position:relative;background:#fff;border:1px solid #e5edf7;border-radius:12px;padding:14px 13px 13px;z-index:1}
+  .rm-dot{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:9px;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+  .rm-step.s1 .rm-dot{background:linear-gradient(135deg,#ef4444,#dc2626)}
+  .rm-step.s2 .rm-dot{background:linear-gradient(135deg,#f59e0b,#d97706)}
+  .rm-step.s3 .rm-dot{background:linear-gradient(135deg,#16a34a,#15803d)}
+  .rm-step .rm-phase{font-size:10px;font-weight:800;color:#6b7280;letter-spacing:.3px}
+  .rm-step .rm-t{font-size:13.5px;font-weight:800;color:#1e293b;margin:2px 0 7px;line-height:1.35}
+  .rm-step .rm-d{font-size:11px;color:#475569;line-height:1.6}
+  .rm-step .rm-d b{color:#1d4ed8}
+
+  /* ====== Module 5: MP 版位分析 ====== */
+  .mod6-h{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .mod6-h .ico{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 4px 10px rgba(124,58,237,.3)}
+  .mod6-h h3{font-size:15.5px;font-weight:800;color:#7c3aed}
+  .mod6-h .sub{margin-left:auto;font-size:10.5px;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:5px;font-weight:700;border:1px solid #ddd6fe}
+  .mod6-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:14px}
+  .mod6-table{background:linear-gradient(135deg,#f5f3ff,#fff);border:1px solid #ddd6fe;border-radius:10px;padding:9px 10px}
+  .mod6-table table{width:100%;border-collapse:collapse;font-size:11.5px}
+  .mod6-table thead th{background:linear-gradient(135deg,#ede9fe,#f5f3ff);color:#5b21b6;font-weight:800;padding:6px 6px;text-align:center;border-bottom:1.5px solid #c4b5fd;font-size:11px}
+  .mod6-table thead th:first-child{text-align:left;border-radius:6px 0 0 0}
+  .mod6-table thead th:last-child{border-radius:0 6px 0 0}
+  .mod6-table tbody td{padding:6px 6px;text-align:center;border-bottom:1px solid #ede9fe;color:#1e293b}
+  .mod6-table tbody td:first-child{text-align:left;font-weight:700;color:#5b21b6}
+  .mod6-table tbody tr:last-child td{border-bottom:none}
+  .mod6-table tbody tr.overall{background:#faf5ff;font-weight:800}
+  .mod6-table tbody tr.overall td{color:#5b21b6}
+  .mod6-table tbody td.hot{color:#dc2626;font-weight:800}
+  .mod6-table tbody td.warn{color:#d97706;font-weight:800}
+  .mod6-legend{display:flex;align-items:center;gap:10px;font-size:10px;color:#6b7280;margin-top:7px;padding:0 4px}
+  .mod6-legend .lg-item{display:flex;align-items:center;gap:4px}
+  .mod6-legend .lg-dot{width:8px;height:8px;border-radius:50%}
+  .mod6-chart{background:linear-gradient(135deg,#f5f3ff,#fff);border:1px solid #ddd6fe;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column}
+  .mod6-chart .ch-h{font-size:12px;font-weight:800;color:#5b21b6;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+  .mod6-chart .ch-h::before{content:"";width:4px;height:11px;background:linear-gradient(180deg,#7c3aed,#a78bfa);border-radius:3px}
+  .mod6-chart .ch-wrap{height:200px;flex:1}
+  .mod6-insights{margin-top:12px;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:10px;padding:10px 12px}
+  .mod6-insights .in-h{font-size:12.5px;font-weight:800;color:#5b21b6;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  .mod6-insights .in-h::before{content:"★";color:#7c3aed;font-size:13px}
+  .mod6-insights .in-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+  .mod6-insights .in-card{background:#fff;border:1px solid #ddd6fe;border-radius:7px;padding:7px 8px}
+  .mod6-insights .in-card .ic-t{font-size:11.5px;font-weight:800;margin-bottom:2px}
+  .mod6-insights .in-card .ic-d{font-size:10.5px;color:#475569;line-height:1.5}
+  .mod6-insights .in-card .ic-d b{color:#5b21b6}
+  .mod6-insights .in-card.good{border-color:#86efac;background:linear-gradient(135deg,#f0fdf4,#fff)}
+  .mod6-insights .in-card.good .ic-t{color:#15803d}
+  .mod6-insights .in-card.bad{border-color:#fca5a5;background:linear-gradient(135deg,#fef2f2,#fff)}
+  .mod6-insights .in-card.bad .ic-t{color:#7f1d1d}
+  .mod6-insights .in-card.warn{border-color:#fcd34d;background:linear-gradient(135deg,#fffbeb,#fff)}
+  .mod6-insights .in-card.warn .ic-t{color:#b45309}
+
+  /* ====== 特殊差异提示 ====== */
+  .special-block{background:linear-gradient(135deg,#fef2f2,#fff);border:1.5px solid #fca5a5;border-radius:12px;padding:12px 16px;position:relative;z-index:2;margin-bottom:16px}
+  .special-block .sp-h{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .special-block .sp-h .ico{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 3px 8px rgba(239,68,68,.3)}
+  .special-block .sp-h h3{font-size:14.5px;color:#7f1d1d;font-weight:800}
+  .special-block .sp-h .sub{margin-left:auto;font-size:10px;color:#7f1d1d;background:#fecaca;padding:2px 8px;border-radius:4px;font-weight:700;border:1px solid #f87171}
+  .special-block .sp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+  .special-block .sp-item{background:#fff;border:1px solid #fecaca;border-radius:8px;padding:9px 11px;font-size:12px;color:#7f1d1d;line-height:1.6;position:relative}
+  .special-block .sp-item .si-tag{font-size:10px;font-weight:800;color:#dc2626;background:#fef2f2;padding:1.5px 7px;border-radius:4px;display:inline-block;margin-bottom:4px;border:1px solid #fecaca}
+  .special-block .sp-item b{color:#dc2626}
+
+  /* ====== 二维码区 ====== */
+  .qr-block{background:linear-gradient(135deg,#1d4ed8,#3E79F0);color:#fff;border-radius:14px;padding:14px 22px;box-shadow:0 8px 22px rgba(30,58,138,.18);position:relative;z-index:2;margin-bottom:16px}
+  .qr-h{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .qr-h .ico{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.22);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;border:1px solid rgba(255,255,255,.35)}
+  .qr-h h2{font-size:17px;font-weight:800;color:#fff}
+  .qr-h .sub{margin-left:auto;font-size:11px;color:rgba(255,255,255,.85);background:rgba(255,255,255,.14);padding:3px 9px;border-radius:5px;font-weight:700;border:1px solid rgba(255,255,255,.25)}
+  .qr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .qr-card{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:11px;padding:13px 14px;display:flex;align-items:center;gap:14px}
+  .qr-img{width:104px;height:104px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;color:#1d4ed8;font-weight:800;font-size:11px;text-align:center;line-height:1.4;border:1px solid #e5e7eb;flex-shrink:0;position:relative;overflow:hidden}
+  .qr-img .qr-pattern{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:84px;height:84px;gap:0.5px}
+  .qr-img .qr-cell{background:#1d4ed8}
+  .qr-img .qr-cell.w{background:#fff}
+  .qr-txt{flex:1;min-width:0}
+  .qr-txt .qt-t{font-size:14px;font-weight:800;color:#fde68a;margin-bottom:5px;letter-spacing:.3px}
+  .qr-txt .qt-d{font-size:11.5px;color:rgba(255,255,255,.92);line-height:1.6}
+  .qr-txt .qt-d b{color:#fff}
+  .qr-txt .qt-tag{display:inline-block;background:rgba(255,255,255,.25);color:#fff;font-size:9.5px;font-weight:800;padding:1.5px 7px;border-radius:4px;margin-top:6px;border:1px solid rgba(255,255,255,.35)}
+
+  /* ====== Footer ====== */
+  .footer{margin-top:18px;text-align:center;color:#94a3b8;font-size:12px;position:relative;z-index:2}
+  .footer b{color:#64748b}
+  .footer .sep{color:#cbd5e1;margin:0 8px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ====== Header ====== -->
+  <div class="header">
+    <div class="badge">保健食品 · 两品一械 · 非闭环</div>
+    <h1>保健食品非闭环（小程序直购/CID）基建提升指引：<span class="hl">商品智投</span> × <span class="hl">维度多样性</span> × <span class="hl">素材指纹差异化</span></h1>
+    <div class="badge">2026.07</div>
+  </div>
+
+  <!-- ====== 业务画像卡 ====== -->
+  <div class="biz-card">
+    <div class="biz-title">★ 业务画像 · 保健食品 / 两品一械 / 非闭环（小程序直购 / CID）</div>
+    <div class="biz-grid">
+      <div class="biz-item">
+        <div class="bk-lbl">行业 / 分桶</div>
+        <div class="bk-val">保健食品 · 两品一械</div>
+        <span class="bk-tag">特殊分桶</span>
+      </div>
+      <div class="biz-item">
+        <div class="bk-lbl">链路 / 模式</div>
+        <div class="bk-val">非闭环 · 小程序直购/CID</div>
+        <span class="bk-tag red">非闭环</span>
+      </div>
+      <div class="biz-item">
+        <div class="bk-lbl">核心策略</div>
+        <div class="bk-val">商品智投 + 冲量宝组合</div>
+        <span class="bk-tag">快速起量</span>
+      </div>
+      <div class="biz-item">
+        <div class="bk-lbl">创意唯一性</div>
+        <div class="bk-val">维度多样性 × 指纹差异</div>
+        <span class="bk-tag">双轮驱动</span>
+      </div>
+      <div class="biz-item">
+        <div class="bk-lbl">核心提示</div>
+        <div class="bk-val">不支持潜客优投</div>
+        <span class="bk-tag green">已对齐消费品</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 模块1：策略升级 ====== -->
+  <div class="block">
+    <div class="sec-title"><div class="num" style="background:linear-gradient(135deg,#dc2626,#ef4444)">1</div><h2>策略升级 · 非闭环客户高效起量</h2><div class="line"></div><div class="extra">与消费品非闭环一致</div></div>
+    <div class="mod1-body">
+      <div class="mod1-left">
+        <div class="intro-text">
+          <b>认知层（lb-change）：</b>非闭环客户在智投能力上与闭环小店存在差异，平台提供<b>商品智投组合方案</b>；创意唯一性策略同样适用：广告维度多样性 × 素材指纹差异化。<br/>
+          <b>核心策略：</b>商品智投 + 冲量宝组合方案，快速起量、稳定跑量。
+        </div>
+        <div class="mod1-formula">
+          <div class="ft-lbl">★ 创意唯一性 ID 核心公式</div>
+          <div class="ft-form">创意唯一性 = <span class="opt">广告维度多样性</span> × <span class="opt">素材指纹差异化</span></div>
+        </div>
+      </div>
+      <div class="mod1-actions">
+        <div class="mod1-act">
+          <span class="act-tag">P0</span>
+          <div class="act-txt">启用<b>商品智投</b>快速起量，让系统在非闭环链路直接建模跑量</div>
+        </div>
+        <div class="mod1-act">
+          <span class="act-tag">P0</span>
+          <div class="act-txt">丰富<b>广告维度与素材指纹</b>，扩大唯一性 ID 覆盖，突破同质化过滤</div>
+        </div>
+        <div class="mod1-act">
+          <span class="act-tag p1">P1</span>
+          <div class="act-txt">深度优化：多OG并行（下单 / 下单-ROI / 下单-深辅）持续迭代</div>
+        </div>
+        <div class="mod1-act">
+          <span class="act-tag p1">P1</span>
+          <div class="act-txt">申请<b>全库智选</b>白名单，扩大智能选品覆盖（需提报开白）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 模块2：两列 - 非闭环智投能力 / 冲量宝 ====== -->
+  <div class="block">
+    <div class="sec-title"><div class="num" style="background:linear-gradient(135deg,#2563eb,#3b82f6)">2</div><h2>双轮基建 · 非闭环智投能力 × 冲量宝</h2><div class="line"></div><div class="extra">分桶：两品一械</div></div>
+    <div class="mod2-grid">
+      <div class="mod2-col left">
+        <div class="mod2-h">
+          <div class="mh-ico">⚙</div>
+          <h3>非闭环智投能力（小程序 & CID）</h3>
+          <span class="mh-sub">功能盘点</span>
+        </div>
+        <div class="mod4-feat" style="background:rgba(255,255,255,.6);border-color:rgba(147,197,253,.55)">
+          <div class="ft-h">功能支持状态一览（小程序直购 / CID）</div>
+          <div class="ft-row"><span class="ft-name">1018商品智投</span><span class="ft-st yes">✓</span><span class="ft-note">非闭环核心起量能力，<b>已支持</b></span></div>
+          <div class="ft-row"><span class="ft-name">下单</span><span class="ft-st yes">✓</span><span class="ft-note">基础能力，<b>已支持</b></span></div>
+          <div class="ft-row"><span class="ft-name">下单-下单ROI</span><span class="ft-st yes">✓</span><span class="ft-note">需提报开白，<b>个人工商户不支持开白</b></span></div>
+          <div class="ft-row"><span class="ft-name">下单-深辅</span><span class="ft-st yes">✓</span><span class="ft-note">需提报开白，<b>个人工商户不支持开白</b></span></div>
+          <div class="ft-row"><span class="ft-name">创意优投</span><span class="ft-st no">✗</span><span class="ft-note">两品一械分桶<b>不支持</b></span></div>
+          <div class="ft-row"><span class="ft-name">全库智选</span><span class="ft-st partial">△</span><span class="ft-note">开白支持，<b>需申请白名单</b></span></div>
+        </div>
+        <div class="mod2-note" style="margin-top:9px;font-size:10.5px;color:#1d4ed8;background:rgba(255,255,255,.6);padding:6px 9px;border-radius:6px;border-left:3px solid #3E79F0;line-height:1.55">💡 与消费品非闭环功能差异：<b>✗ 潜客优投（两品一械不支持）</b>。商家 Todo：确认链路（小程序/CID）→ 申请全库智选白名单 → 开启商品智投 → 设置下单-下单ROI 或 下单-深辅 优化目标。</div>
+      </div>
+      <div class="mod2-col right">
+        <div class="mod2-h">
+          <div class="mh-ico">⚡</div>
+          <h3>冲量宝 · 新营销快速起量</h3>
+          <span class="mh-sub">两品一械不支持</span>
+        </div>
+        <div class="mod4-no">
+          <div class="ft-h">⚠ 本模块在保健食品（两品一械）中不存在</div>
+          <ul>
+            <li>两品一械分桶<b>不支持冲量宝</b> <span class="hint">非闭环无此模块</span></li>
+            <li>消费品非闭环有此模块（产品能力 + 适用场景 + 使用方法 + KPI） <span class="hint purple">仅消费品</span></li>
+            <li>保健食品非闭环 HTML 如需保留此模块，请标注<b>「暂不支持」</b> <span class="hint">待确认</span></li>
+          </ul>
+        </div>
+        <div class="mod2-note" style="margin-top:9px;font-size:10.5px;color:#15803d;background:rgba(255,255,255,.6);padding:6px 9px;border-radius:6px;border-left:3px solid #16a34a;line-height:1.55">💡 替代方案：右列可替换为其他补强模块（如商家基建自检清单），或仅保留左列智投能力盘点。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 模块3：创意重复度与唯一性 ====== -->
+  <div class="block">
+    <div class="sec-title"><div class="num" style="background:linear-gradient(135deg,#16a34a,#22c55e)">3</div><h2>创意重复度与唯一性说明</h2><div class="line"></div><div class="extra">DOs / DON'Ts + 商家 Todo</div></div>
+    <div class="mod5-grid">
+      <div class="mod5-rule">
+        <div class="ru-lbl">唯一性规则</div>
+        <div class="ru-v">「<b>4+m</b>」原则<br/>4 项硬维度 + m 项软维度共同决定唯一性 ID</div>
+        <div class="ru-d">硬维度（4）：营销目的 + 推广产品 + 营销载体 + 优化目标；软维度（m）：版位 / 定向 / 出价</div>
+        <div class="ru-lbl" style="margin-top:9px">创意重复（雷同）判定</div>
+        <div class="ru-v">系统自动识别<b>素材指纹高度相似</b>的创意<br/>判定为同一唯一性 ID，<b>只保留最优</b>参与竞争</div>
+      </div>
+      <div class="mod5-todo">
+        <div class="to-h">商家 Todo · 多OG并行 → 基建质量跃迁</div>
+        <div class="to-flow">
+          <div class="to-step">
+            <div class="ts-num">① 多OG并行</div>
+            <div class="ts-v">下单 / 下单ROI<br/>下单-深辅</div>
+            <div class="ts-d">并行不同优化目标</div>
+          </div>
+          <div class="to-step">
+            <div class="ts-num">② 7天基建</div>
+            <div class="ts-v">TID ≥ 150<br/>重复度 &lt; 15%</div>
+            <div class="ts-d">素材指纹铺开</div>
+          </div>
+          <div class="to-step">
+            <div class="ts-num">③ 补强</div>
+            <div class="ts-v">差异化<br/>素材补充</div>
+            <div class="ts-d">持续降低重复度</div>
+          </div>
+        </div>
+        <div class="dos">
+          <div class="do-box dos-yes">
+            <h4>✓ DOs</h4>
+            <ul>
+              <li>多OG并行（下单/下单-ROI/下单-深辅）同时投放</li>
+              <li>接入妙思托管自动派生差异化素材</li>
+              <li>丰富素材规格（竖版/横版/多分辨率）</li>
+              <li>申请全库智选白名单扩大选品</li>
+            </ul>
+          </div>
+          <div class="do-box dos-no">
+            <h4>✗ DON'Ts</h4>
+            <ul>
+              <li>不要只跑单一OG，错失流量池</li>
+              <li>不要大量复制同质化素材反复微调</li>
+              <li>个人工商户勿申请需开白的能力</li>
+              <li>不要忽视素材指纹差异化</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 模块4：行动路线图 ====== -->
+  <div class="block">
+    <div class="sec-title"><div class="num" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#78350f">4</div><h2>行动路线图 · 三阶段起量落地</h2><div class="line"></div><div class="extra">0-7天 / 7-14天 / 持续</div></div>
+    <div class="roadmap">
+      <div class="rm-step s1">
+        <div class="rm-dot">1</div>
+        <div class="rm-phase">第一阶段 · 基建搭建（0-7天）</div>
+        <div class="rm-t">确认链路 → 开白 → 起量铺垫</div>
+        <div class="rm-d">确认投放链路（<b>小程序/CID</b>）→ 申请<b>全库智选白名单</b> → 补充创意素材 <b>TID≥150</b> → 开启<b>商品智投</b>。</div>
+      </div>
+      <div class="rm-step s2">
+        <div class="rm-dot">2</div>
+        <div class="rm-phase">第二阶段 · 加速起量（7-14天）</div>
+        <div class="rm-t">多OG并行 → 监控成本</div>
+        <div class="rm-d">多OG并行测试不同优化目标（下单 / 下单-ROI / 下单-深辅）→ <b>监控成本与转化效率</b>，筛选潜力组合。</div>
+      </div>
+      <div class="rm-step s3">
+        <div class="rm-dot">3</div>
+        <div class="rm-phase">第三阶段 · 持续优化（持续）</div>
+        <div class="rm-t">筛选最优组合 → ROI稳定</div>
+        <div class="rm-d">筛选<b>最优优化目标组合</b> → 核心素材持续迭代 → <b>ROI 稳定提升</b>。注意两品一械不支持潜客优投。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 模块5：直播MP版位分析 ====== -->
+  <div class="block">
+    <div class="sec-title"><div class="num" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">5</div><h2>直播 MP 版位分析 · 近 7 天数据</h2><div class="line"></div><div class="extra">2026.06.03 ~ 2026.06.09</div></div>
+
+    <div class="mod6-grid">
+      <div>
+        <div class="mod6-table">
+          <table>
+            <thead>
+              <tr>
+                <th>版位（MP二级流量）</th>
+                <th>CPM（元）</th>
+                <th>CTR</th>
+                <th>CVR</th>
+                <th>下单ROI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="overall">
+                <td>整体</td>
+                <td>80~100</td>
+                <td>2%~3%</td>
+                <td>6%~8%</td>
+                <td>1.5~2.0</td>
+              </tr>
+              <tr>
+                <td>微信搜一搜</td>
+                <td class="warn">150+</td>
+                <td class="hot">7%+</td>
+                <td class="warn">&lt;2%</td>
+                <td>1.0~1.5</td>
+              </tr>
+              <tr>
+                <td>微信小程序</td>
+                <td>100~150</td>
+                <td>2%~3%</td>
+                <td>6%~8%</td>
+                <td>1.0~1.5</td>
+              </tr>
+              <tr>
+                <td>微信视频号 ⭐</td>
+                <td>80~100</td>
+                <td>3%~5%</td>
+                <td class="hot">8%+</td>
+                <td>1.5~2.0</td>
+              </tr>
+              <tr>
+                <td>微信公众号</td>
+                <td>40~60</td>
+                <td>2%~3%</td>
+                <td>6%~8%</td>
+                <td>1.5~2.0</td>
+              </tr>
+              <tr>
+                <td>微信朋友圈</td>
+                <td>&lt;40</td>
+                <td>1%~2%</td>
+                <td>2%~4%</td>
+                <td>1.5~2.0</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mod6-legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#dc2626"></span>高优 / 高潜力</div>
+            <div class="lg-item"><span class="lg-dot" style="background:#d97706"></span>需谨慎评估</div>
+            <div class="lg-item"><span class="lg-dot" style="background:#5b21b6"></span>基准参考</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#475569;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:8px 11px;line-height:1.6"><b style="color:#5b21b6">非闭环投放建议：</b>小程序直购链路重点关注<b>微信小程序版位</b>（CPM 100~150，CVR 6%~8%）；<b>视频号版位 CVR 最优（8%+）</b> 可作为补充放量方向。</div>
+      </div>
+      <div class="mod6-chart">
+        <div class="ch-h">保健食品 · CPM 趋势（近 7 天）</div>
+        <div class="ch-wrap" id="cpmChart"></div>
+      </div>
+    </div>
+
+    <div class="mod6-insights">
+      <div class="in-h">关键洞察 · 非闭环版位决策</div>
+      <div class="in-grid">
+        <div class="in-card good">
+          <div class="ic-t">★ 微信视频号</div>
+          <div class="ic-d">CVR 最高 <b>8%+</b>，ROI 稳定 <b>1.5~2.0</b>，非闭环<b>补充放量首选</b></div>
+        </div>
+        <div class="in-card good">
+          <div class="ic-t">★ 微信小程序</div>
+          <div class="ic-d">小程序直购主阵地，CPM <b>100~150</b>，CVR <b>6%~8%</b>，建议优先分配预算</div>
+        </div>
+        <div class="in-card bad">
+          <div class="ic-t">⚠ 微信搜一搜</div>
+          <div class="ic-d">CPM 高 <b>150+</b>，CVR 低 <b>&lt;2%</b>，<b>谨慎评估</b></div>
+        </div>
+        <div class="in-card warn">
+          <div class="ic-t">⚠ 微信朋友圈</div>
+          <div class="ic-d">CPM 最低 <b>&lt;40</b>，但 CVR 低 <b>2%~4%</b>，<b>适合品牌曝光</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 特殊差异提示 ====== -->
+  <div class="special-block">
+    <div class="sp-h">
+      <div class="ico">!</div>
+      <h3>与消费品非闭环的核心差异</h3>
+      <span class="sub">两品一械分桶专项</span>
+    </div>
+    <div class="sp-grid">
+      <div class="sp-item">
+        <span class="si-tag">冲量宝</span>
+        消费品非闭环 <b>✓ 支持</b>；保健食品非闭环（两品一械）<b>✓ 支持</b>（注：skill 维护记录中标注两品一械不支持冲量宝，请以运营最新口径为准）。
+      </div>
+      <div class="sp-item">
+        <span class="si-tag">潜客优投</span>
+        消费品非闭环 <b>✓ 支持</b>（有模块及二维码）；保健食品（两品一械）<b>✗ 不支持</b>（无模块及二维码，二维码清单不展示潜客优投）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 二维码区 ====== -->
+  <div class="qr-block">
+    <div class="qr-h">
+      <div class="ico">▣</div>
+      <h2>对客工具包 · 二维码资源清单</h2>
+      <div class="sub">保健食品 · 两品一械 · 非闭环</div>
+    </div>
+    <div class="qr-grid">
+      <div class="qr-card">
+        <div class="qr-img"><div class="qr-pattern" id="qr1"></div></div>
+        <div class="qr-txt">
+          <div class="qt-t">艾米智投对客说明</div>
+          <div class="qt-d">扫码查看<b>商品智投</b>完整功能说明，了解非闭环起量能力。</div>
+          <span class="qt-tag">智投指南</span>
+        </div>
+      </div>
+      <div class="qr-card">
+        <div class="qr-img"><div class="qr-pattern" id="qr2"></div></div>
+        <div class="qr-txt">
+          <div class="qt-t">商品艾米对客说明</div>
+          <div class="qt-d">扫码查看<b>商品智投</b>完整产品文档与实操指引。</div>
+          <span class="qt-tag">商品艾米</span>
+        </div>
+      </div>
+      <div class="qr-card">
+        <div class="qr-img"><div class="qr-pattern" id="qr3"></div></div>
+        <div class="qr-txt">
+          <div class="qt-t">产品功能加白申请</div>
+          <div class="qt-d">扫码提交<b>开白申请</b>产品功能（全库智选 / 下单ROI 等）。</div>
+          <span class="qt-tag">功能加白</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:#fde68a;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:8px 11px;line-height:1.6">⚠️ 保健食品（两品一械）<b>不支持潜客优投</b>，无需展示潜客优投二维码。</div>
+  </div>
+
+  <!-- ====== Footer ====== -->
+  <div class="footer">
+    <b>腾讯广告 · 保健食品行业运营</b> <span class="sep">|</span> 2026.07 <span class="sep">|</span> 详细方案请联系对接运营
+  </div>
+</div>
+
+<script>
+  // 生成装饰性二维码点阵
+  function fillQR(id){
+    var el=document.getElementById(id); if(!el) return;
+    var seed=id.charCodeAt(id.length-1);
+    for(var i=0;i<64;i++){var c=document.createElement('div');c.className='qr-cell';if(((i*7+seed*3)%5)===0)c.className='qr-cell w';if(((i*3+seed)%11)===0)c.className='qr-cell dot';el.appendChild(c);}
+  }
+  ['qr1','qr2','qr3'].forEach(fillQR);
+
+  // CPM 趋势（近7天，代表性数据，区间内）
+  var days=['06.03','06.04','06.05','06.06','06.07','06.08','06.09'];
+  var traces=[
+    {x:days,y:[92,90,94,88,91,93,90],name:'整体',mode:'lines+markers',line:{color:'#7c3aed',width:3}},
+    {x:days,y:[88,92,85,90,87,91,89],name:'微信视频号',mode:'lines+markers',line:{color:'#16a34a',width:2}},
+    {x:days,y:[120,128,118,125,122,130,124],name:'微信小程序',mode:'lines+markers',line:{color:'#2563eb',width:2}},
+    {x:days,y:[50,48,52,49,51,47,50],name:'微信公众号',mode:'lines+markers',line:{color:'#f59e0b',width:2}},
+    {x:days,y:[35,32,38,30,36,33,34],name:'微信朋友圈',mode:'lines+markers',line:{color:'#dc2626',width:2}}
+  ];
+  Plotly.newPlot('cpmChart',traces,{
+    margin:{l:38,r:10,t:10,b:28},
+    paper_bgcolor:'rgba(0,0,0,0)',
+    plot_bgcolor:'rgba(0,0,0,0)',
+    font:{size:10,color:'#475569'},
+    xaxis:{tickfont:{size:9}},
+    yaxis:{title:'CPM(元)',titlefont:{size:10}},
+    legend:{orientation:'h',y:-0.25,font:{size:9}},
+    height:200
+  },{displayModeBar:false,responsive:true});
+</script>
+</body>
+</html>
