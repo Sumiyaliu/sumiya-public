@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADQ 传统滋补品类现状与目标人群分析 - 2026年数据洞察</title>
+<!-- 引入 Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    herb: {
+                        50: '#f0f7f4',
+                        100: '#daebd5',
+                        200: '#b8d9c2',
+                        500: '#22c55e',
+                        600: '#15803d', // 茶绿 / 竹绿
+                        700: '#0f682c',
+                        800: '#0d5124',
+                        900: '#0a3d1d',
+                    },
+                    amber: {
+                        50: '#fdfbf7',
+                        100: '#fef3c7',
+                        500: '#f59e0b',
+                        700: '#b45309', // 蜜金 / 琥珀
+                    },
+                    shasha: {
+                        50: '#fcfdfd', // 玉白
+                        100: '#f4f7f5', // 浅草灰 / 暖沙
+                        200: '#e2ede5', // 翠边 border
+                    }
+                }
+            }
+        }
+    }
+</script>
+<style>
+/* 经典国潮毛玻璃 */
+.glass-nav {
+    background: rgba(252, 253, 253, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(218, 235, 213, 0.5);
+}
+
+/* 国潮淡雅卡片 */
+.card-herb {
+    background: #fcfdfd;
+    border: 1px solid #e2ede5;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(15, 80, 40, 0.012);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-herb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 80, 40, 0.04);
+    border-color: #b8d9c2;
+}
+
+/* 蜜金微光边框 */
+.gold-glow {
+    border: 1.5px solid rgba(180, 83, 9, 0.2);
+    box-shadow: 0 0 25px rgba(180, 83, 9, 0.02);
+}
+.gold-glow:hover {
+    border-color: rgba(180, 83, 9, 0.4);
+    box-shadow: 0 8px 30px rgba(180, 83, 9, 0.05);
+}
+
+/* 渐变文字 */
+.gradient-text-herb {
+    background: linear-gradient(135deg, #101d15 20%, #15803d 60%, #b45309 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-bg-hero {
+    background: radial-gradient(circle at top right, rgba(218, 235, 213, 0.35) 0%, rgba(252, 253, 253, 0) 70%),
+                radial-gradient(circle at bottom left, rgba(254, 243, 231, 0.25) 0%, rgba(252, 253, 253, 0) 65%);
+}
+
+/* 完美的手绘甜甜圈圆环图 (conic-gradient + White mask) */
+.donut-chart-gender {
+    background: conic-gradient(
+        #ff8a80 0% 47.9%, 
+        #64b5f6 47.9% 83.8%, 
+        #cbd5e1 83.8% 100%
+    );
+}
+
+.donut-chart-network {
+    background: conic-gradient(
+        #4fc3f7 0% 80.8%, 
+        #ffb74d 80.8% 96.5%, 
+        #81c784 96.5% 100%
+    );
+}
+</style>
+</head>
+<body class="bg-shasha-100 text-slate-800 min-h-screen pb-24 gradient-bg-hero">
+
+<!-- ⛩️ 顶部导航栏 -->
+<header class="glass-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <span class="p-1.5 bg-herb-50 rounded-lg border border-herb-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-13.9.2"></path><path d="M9 22v-4h4"></path></svg>
+            </span>
+            <span class="font-extrabold text-sm tracking-widest text-slate-800 uppercase flex items-center gap-1.5">
+                传统滋补投放百宝箱 <span class="bg-herb-600 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">V3.0</span>
+            </span>
+        </div>
+        
+        <a href="index.html" class="flex items-center gap-1 text-xs text-herb-700 font-bold hover:text-herb-900 transition-colors bg-herb-50 hover:bg-herb-100 px-3.5 py-1.5 rounded-full border border-herb-200 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" x2="5" y1="12" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            返回百宝箱首页
+        </a>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 mt-8">
+    
+    <!-- 📑 页面标题区 -->
+    <div class="text-center mb-8">
+        <span class="text-xs font-extrabold tracking-widest text-herb-700 bg-herb-100/60 px-3 py-1 rounded-full uppercase border border-herb-200/50 inline-block mb-2">
+            2026 腾讯闭环数据洞察看板
+        </span>
+        <h1 class="text-3xl font-black text-slate-800 mb-2 tracking-tight">
+            ADQ 传统滋补品类现状与目标人群分析
+        </h1>
+        <p class="text-sm text-slate-500 max-w-2xl mx-auto">
+            深度洞察大盘在投品类消耗、高价值客群占比，建立极具视觉与数据说服力的大促突围模型。
+        </p>
+    </div>
+
+    <!-- 📊 四大核心指标卡片 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <!-- 核心人群 -->
+        <div class="card-herb p-5 flex items-center gap-4">
+            <div class="p-3.5 bg-orange-50 text-orange-600 rounded-2xl border border-orange-100 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-2"><path d="M14 19a6 6 0 0 0-12 0"/><circle cx="8" cy="9" r="4"/><path d="M22 19a6 6 0 0 0-6-6 4 4 0 1 0 0-8"/></svg>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block font-medium">核心人群偏好</span>
+                <strong class="text-lg font-extrabold text-slate-800 block mt-0.5">60岁以上占62%+</strong>
+                <span class="text-[10px] text-orange-600 font-bold bg-orange-50 px-1.5 py-0.5 rounded mt-1 inline-block">银发群体高潜</span>
+            </div>
+        </div>
+
+        <!-- 性别分布 -->
+        <div class="card-herb p-5 flex items-center gap-4">
+            <div class="p-3.5 bg-sky-50 text-sky-600 rounded-2xl border border-sky-100 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-venn"><circle cx="12" cy="8" r="6"/><circle cx="8" cy="16" r="6"/><circle cx="16" cy="16" r="6"/></svg>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block font-medium">性别分布比例</span>
+                <strong class="text-lg font-extrabold text-slate-800 block mt-0.5">女性占比 47.9%</strong>
+                <span class="text-[10px] text-sky-600 font-bold bg-sky-50 px-1.5 py-0.5 rounded mt-1 inline-block">以女性滋补为主</span>
+            </div>
+        </div>
+
+        <!-- 设备偏好 -->
+        <div class="card-herb p-5 flex items-center gap-4">
+            <div class="p-3.5 bg-emerald-50 text-herb-600 rounded-2xl border border-emerald-100 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block font-medium">首选设备品牌</span>
+                <strong class="text-lg font-extrabold text-slate-800 block mt-0.5">华为用户 27.3%</strong>
+                <span class="text-[10px] text-herb-700 font-bold bg-herb-50 px-1.5 py-0.5 rounded mt-1 inline-block">高成效高净值偏好</span>
+            </div>
+        </div>
+
+        <!-- 核心品类 -->
+        <div class="card-herb p-5 flex items-center gap-4">
+            <div class="p-3.5 bg-purple-50 text-purple-600 rounded-2xl border border-purple-100 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block font-medium">领跑核心品类</span>
+                <strong class="text-lg font-extrabold text-slate-800 block mt-0.5">黄精/葛根/枸杞</strong>
+                <span class="text-[10px] text-purple-600 font-bold bg-purple-50 px-1.5 py-0.5 rounded mt-1 inline-block">药食同源领跑大盘</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📊 主体双栏布局 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        
+        <!-- 左栏：传统滋补完整品类排名 (5列) -->
+        <div class="lg:col-span-5 card-herb p-6 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="p-1.5 bg-herb-50 text-herb-600 rounded-lg border border-herb-100 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-3"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">大健康•日均消耗占比排名</strong>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400">大盘占比 (%)</span>
+                </div>
+                <div class="mb-4">
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        药食同源类目打散 | 数据口径：腾讯闭环链路 26H1 大盘日均。
+                        <br>消耗基准：<span class="font-bold text-herb-700">90.16 万元/日</span>
+                    </p>
+                </div>
+
+                <!-- 32个品类滚动区域 -->
+                <div class="space-y-3.5 pr-2 max-h-[700px] overflow-y-auto no-scrollbar">
+                    <!-- 黄精 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-[9px] font-black">1</span>
+                                黄精
+                            </span>
+                            <span class="font-black text-amber-700">10.95%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500 to-amber-700 h-full rounded-full" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 葛根 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-amber-500/80 text-white flex items-center justify-center text-[9px] font-black">2</span>
+                                葛根
+                            </span>
+                            <span class="font-bold text-amber-700/90">7.91%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500/80 to-amber-700/80 h-full rounded-full" style="width: 72.2%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 枸杞类 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-amber-500/60 text-white flex items-center justify-center text-[9px] font-black">3</span>
+                                枸杞类
+                            </span>
+                            <span class="font-bold text-amber-700/80">6.66%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500/60 to-amber-700/65 h-full rounded-full" style="width: 60.8%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 蜂类 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px] font-bold">4</span>
+                                蜂类
+                            </span>
+                            <span class="font-bold text-slate-600">5.52%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/80 h-full rounded-full" style="width: 50.4%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 燕窝 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px] font-bold">5</span>
+                                燕窝
+                            </span>
+                            <span class="font-bold text-slate-600">5.10%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/70 h-full rounded-full" style="width: 46.5%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 鹿制品 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px]">6</span>
+                                鹿制品
+                            </span>
+                            <span class="font-bold text-slate-500">4.86%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/60 h-full rounded-full" style="width: 44.3%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 参类 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px]">7</span>
+                                参类
+                            </span>
+                            <span class="font-bold text-slate-500">3.25%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/50 h-full rounded-full" style="width: 29.6%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 天麻 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px]">8</span>
+                                天麻
+                            </span>
+                            <span class="font-bold text-slate-500">2.77%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/50 h-full rounded-full" style="width: 25.2%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 石斛/枫斗 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px]">9</span>
+                                石斛/枫斗
+                            </span>
+                            <span class="font-bold text-slate-500">2.18%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/40 h-full rounded-full" style="width: 19.9%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 黄芪 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-700 flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[9px]">10</span>
+                                黄芪
+                            </span>
+                            <span class="font-bold text-slate-500">1.81%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-herb-600/40 h-full rounded-full" style="width: 16.5%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 茯苓 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-500 pl-5">茯苓</span>
+                            <span class="font-bold text-slate-400">0.48%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-herb-200 h-full rounded-full" style="width: 4.3%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 熟地黄 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-500 pl-5">熟地黄</span>
+                            <span class="font-bold text-slate-400">0.38%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-herb-200 h-full rounded-full" style="width: 3.4%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 党参 -->
+                    <div class="group">
+                        <div class="flex items-center justify-between text-xs mb-1">
+                            <span class="font-medium text-slate-500 pl-5">党参</span>
+                            <span class="font-bold text-slate-400">0.08%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-herb-100 h-full rounded-full" style="width: 0.8%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右栏：五大细分图表组件 (7列) -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+            <!-- 第一排：性别分布与年龄分布 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <!-- ① 性别分布 -->
+                <div class="card-herb p-5 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                        <span class="p-1 bg-sky-50 text-sky-600 rounded border border-sky-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/><path d="M12 14V2"/><path d="M12 2l3 3"/><path d="M12 2L9 5"/><path d="M17 14h-3"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">① 性别分布</strong>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-around gap-4 py-2">
+                        <div class="relative w-32 h-32 rounded-full donut-chart-gender flex items-center justify-center shadow-inner">
+                            <div class="w-20 h-20 rounded-full bg-white flex flex-col items-center justify-center shadow">
+                                <span class="text-[10px] text-slate-400 font-medium">主要群体</span>
+                                <span class="text-xs font-black text-rose-500">女性 47.9%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs">
+                                <span class="w-3 h-3 rounded-full bg-[#ff8a80]"></span>
+                                <span class="text-slate-500 w-12">女性:</span>
+                                <span class="font-extrabold text-slate-800">47.9%</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <span class="w-3 h-3 rounded-full bg-[#64b5f6]"></span>
+                                <span class="text-slate-500 w-12">男性:</span>
+                                <span class="font-extrabold text-slate-800">35.9%</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <span class="w-3 h-3 rounded-full bg-slate-300"></span>
+                                <span class="text-slate-500 w-12">未知:</span>
+                                <span class="font-extrabold text-slate-800">16.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ② 年龄分布 -->
+                <div class="card-herb p-5 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                        <span class="p-1 bg-amber-50 text-amber-700 rounded border border-amber-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">② 年龄分布</strong>
+                    </div>
+                    
+                    <div class="flex items-end justify-between gap-1 h-36 px-1 pt-4">
+                        <div class="flex flex-col items-center flex-1 group">
+                            <span class="text-[9px] font-bold text-slate-500 mb-1 scale-90">1.1%</span>
+                            <div class="w-full bg-slate-100 h-1.5 min-h-[3px] flex items-end">
+                                <div class="bg-herb-200 w-full h-full rounded-t-sm group-hover:bg-herb-600 transition-colors"></div>
+                            </div>
+                            <span class="text-[8px] text-slate-400 mt-1.5 scale-90">30-34</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1 group">
+                            <span class="text-[9px] font-bold text-slate-500 mb-1 scale-90">2.8%</span>
+                            <div class="w-full bg-slate-100 h-3.5 flex items-end">
+                                <div class="bg-herb-200 w-full h-full rounded-t-sm group-hover:bg-herb-600 transition-colors"></div>
+                            </div>
+                            <span class="text-[8px] text-slate-400 mt-1.5 scale-90">35-39</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1 group">
+                            <span class="text-[9px] font-bold text-slate-500 mb-1 scale-90">4.4%</span>
+                            <div class="w-full bg-slate-100 h-5.5 flex items-end">
+                                <div class="bg-herb-200 w-full h-full rounded-t-sm group-hover:bg-herb-600 transition-colors"></div>
+                            </div>
+                            <span class="text-[8px] text-slate-400 mt-1.5 scale-90">40-44</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1 group">
+                            <span class="text-[9px] font-bold text-slate-500 mb-1 scale-90">12.2%</span>
+                            <div class="w-full bg-slate-100 h-14 flex items-end">
+                                <div class="bg-herb-600/60 w-full h-full rounded-t-sm group-hover:bg-herb-600 transition-colors"></div>
+                            </div>
+                            <span class="text-[8px] text-slate-400 mt-1.5 scale-90">55-59</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1 group">
+                            <span class="text-[9px] font-bold text-amber-700 mb-1 scale-100">46.8%</span>
+                            <div class="w-full bg-slate-100 h-28 flex items-end">
+                                <div class="bg-gradient-to-t from-amber-500 to-amber-700 w-full h-full rounded-t-sm"></div>
+                            </div>
+                            <span class="text-[8px] font-extrabold text-amber-800 mt-1.5 whitespace-nowrap scale-95">65+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二排：学历与地域 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <!-- ③ 学历 -->
+                <div class="card-herb p-5 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                        <span class="p-1 bg-emerald-50 text-herb-600 rounded border border-emerald-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">③ 学历分布</strong>
+                    </div>
+                    
+                    <div class="space-y-2 py-1">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-600 mb-0.5">
+                                <span>初中</span>
+                                <span class="font-bold">42.7%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-herb-600 h-full rounded-full" style="width: 42.7%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-600 mb-0.5">
+                                <span>本科</span>
+                                <span class="font-bold">22.9%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-herb-600/70 h-full rounded-full" style="width: 22.9%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-600 mb-0.5">
+                                <span>高中</span>
+                                <span class="font-bold">20.4%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-herb-600/60 h-full rounded-full" style="width: 20.4%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ④ 地域分布 -->
+                <div class="card-herb p-5 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                        <span class="p-1 bg-purple-50 text-purple-600 rounded border border-purple-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">④ 地域分布 Top3</strong>
+                    </div>
+                    
+                    <div class="space-y-2 py-1">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-12 text-slate-500 font-medium">广东省</span>
+                            <div class="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-purple-500 h-full rounded-full" style="width: 100%;"></div>
+                            </div>
+                            <span class="font-bold text-slate-700 w-8 text-right">12.2%</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-12 text-slate-500 font-medium">江苏省</span>
+                            <div class="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-purple-400 h-full rounded-full" style="width: 68%;"></div>
+                            </div>
+                            <span class="font-bold text-slate-600 w-8 text-right">8.3%</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-12 text-slate-500 font-medium">浙江省</span>
+                            <div class="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-purple-400 h-full rounded-full" style="width: 63%;"></div>
+                            </div>
+                            <span class="font-bold text-slate-600 w-8 text-right">7.7%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三排：设备品牌分布与联网方式 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <!-- ⑤ 设备品牌 -->
+                <div class="card-herb p-5 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                        <span class="p-1 bg-emerald-50 text-herb-600 rounded border border-emerald-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/><path d="M20 9h3"/><path d="M20 15h3"/><path d="M1 9h3"/><path d="M1 15h3"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">⑤ 设备品牌 Top3</strong>
+                    </div>
+                    
+                    <div class="space-y-2.5 py-1">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-10 text-slate-500 font-medium">华为</span>
+                            <div class="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-orange-400 h-full rounded-full" style="width: 100%;"></div>
+                            </div>
+                            <span class="font-bold text-slate-700 w-8 text-right">27.3%</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-10 text-slate-500 font-medium">苹果</span>
+                            <div class="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-orange-300 h-full rounded-full" style="width: 68.5%;"></div>
+                            </div>
+                            <span class="font-bold text-slate-600 w-8 text-right">18.7%</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-10 text-slate-500 font-medium">荣耀</span>
+                            <div class="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-orange-300 h-full rounded-full" style="width: 57.5%;"></div>
+                            </div>
+                            <span class="font-bold text-slate-600 w-8 text-right">15.7%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⑥ 联网方式 -->
+                <div class="card-herb p-5 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                        <span class="p-1 bg-sky-50 text-sky-600 rounded border border-sky-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M5 13a10 10 0 0 1 14 0"/><path d="M1.5 9.5a15 15 0 0 1 21 0"/></svg>
+                        </span>
+                        <strong class="text-sm text-slate-800">⑥ 联网方式分布</strong>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-around gap-4 py-2">
+                        <div class="relative w-32 h-32 rounded-full donut-chart-network flex items-center justify-center shadow-inner">
+                            <div class="w-20 h-20 rounded-full bg-white flex flex-col items-center justify-center shadow">
+                                <span class="text-[10px] text-slate-400 font-medium">绝大多数</span>
+                                <span class="text-xs font-black text-sky-500">WiFi 80.8%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs">
+                                <span class="w-3 h-3 rounded-full bg-[#4fc3f7]"></span>
+                                <span class="text-slate-500 w-12">WiFi:</span>
+                                <span class="font-extrabold text-slate-800">80.8%</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <span class="w-3 h-3 rounded-full bg-[#ffb74d]"></span>
+                                <span class="text-slate-500 w-12">4G/5G:</span>
+                                <span class="font-extrabold text-slate-800">19.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<!-- 引入 Lucide 图标并初始化 -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
