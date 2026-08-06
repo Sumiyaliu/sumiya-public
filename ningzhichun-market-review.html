@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宁之春 · 枸杞原浆市场复盘与选品建议</title>
+<style>
+:root{--primary:#2F5496;--primary-dark:#1F3864;--accent:#D9A441;--bg:#F5F7FA;--card:#FFFFFF;--border:#E3E8EF;--text:#2B3445;--muted:#7A8699;--amber:#FFF7E6;--green:#1E8E5A;--red:#C0392B;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;}
+.header{background:linear-gradient(135deg,var(--primary-dark),var(--primary) 60%,#3A6AB5);color:#fff;padding:34px 40px 30px;}
+.header h1{font-size:25px;font-weight:700;letter-spacing:1px;}
+.header .sub{font-size:13px;opacity:.85;margin-top:6px;}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;}
+.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:12px 20px;min-width:150px;}
+.stat .num{font-size:22px;font-weight:700;}
+.stat .lbl{font-size:12px;opacity:.8;}
+.wrap{max-width:1400px;margin:0 auto;padding:24px 20px 60px;}
+.section{margin-bottom:40px;}
+.sec-title{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;color:var(--primary-dark);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+.sec-title .no{background:var(--primary);color:#fff;font-size:13px;width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;box-shadow:0 2px 8px rgba(31,56,100,.05);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:900px){.grid2{grid-template-columns:1fr;}}
+.tbl-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:auto;box-shadow:0 2px 8px rgba(31,56,100,.06);}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:1100px;}
+table.mini{min-width:0;}
+th{background:#F0F4FA;color:var(--primary-dark);font-weight:600;padding:11px 10px;text-align:left;white-space:nowrap;border-bottom:2px solid var(--border);font-size:12.5px;}
+th.sortable{cursor:pointer;user-select:none;}
+th.sortable:hover{background:#E7EEF8;}
+th .arrow{font-size:10px;margin-left:4px;color:var(--muted);}
+td{padding:10px 10px;border-bottom:1px solid #F0F3F7;vertical-align:top;}
+tr:hover td{background:#FAFBFE;}
+tr.nz td{background:var(--amber);}
+tr.nz:hover td{background:#FFF3DC;}
+.gmv{font-weight:700;color:var(--primary-dark);}
+.gmv.hot{color:var(--red);}
+.name-cell{min-width:320px;max-width:460px;font-weight:500;}
+.src{color:var(--muted);font-size:12px;margin-top:3px;}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;margin:1px 3px 1px 0;background:#EAF1FB;color:var(--primary);border:1px solid #D5E2F5;}
+.tag.amber{background:#FDF1DC;color:#A8781F;border-color:#F0D9A8;}
+.num-r{text-align:right;}
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.tab{padding:9px 18px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid var(--border);font-size:13.5px;color:var(--text);font-weight:500;transition:all .2s;}
+.tab:hover{border-color:var(--primary);}
+.tab.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+.tab .cnt{font-size:11px;background:rgba(0,0,0,.08);border-radius:20px;padding:1px 8px;margin-left:6px;}
+.tab.active .cnt{background:rgba(255,255,255,.25);}
+.panel{display:none;}
+.panel.active{display:block;}
+.toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center;}
+.toolbar input[type=text]{flex:1;min-width:220px;padding:9px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;outline:none;}
+.toolbar input[type=text]:focus{border-color:var(--primary);}
+.toolbar select{padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:#fff;outline:none;}
+.tip{background:#F0F4FA;border-left:4px solid var(--primary);padding:12px 16px;border-radius:6px;font-size:13px;color:var(--primary-dark);margin-bottom:14px;}
+.str-point{border-left:4px solid;padding:12px 16px;border-radius:6px;margin-bottom:12px;font-size:14px;}
+.str-point.good{background:#EFF7F2;border-color:var(--green);}
+.str-point.warn{background:#FDF3F3;border-color:var(--red);}
+.str-point .t{font-weight:700;font-size:15px;margin-bottom:4px;}
+.str-point p{color:#4A5568;font-size:13.5px;}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 12px;border-radius:20px;color:#fff;}
+.pill.p0{background:var(--red);}
+.pill.p1{background:var(--accent);color:#7A5A00;}
+.pill.p2{background:#7A8699;}
+.footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 0 40px;}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>宁之春 · 枸杞原浆市场复盘与选品建议</h1>
+  <div class="sub">数据来源：友望数据 商品搜索列表（直播挂车 / 短视频 / 直播引流款 / 带货中心）· 数据截止 2026-08 · 销售额已做脱敏处理</div>
+  <div class="stats">
+    <div class="stat"><div class="num">约130万</div><div class="lbl">宁之春去重后 GMV</div></div>
+    <div class="stat"><div class="num">24 款</div><div class="lbl">宁之春在售 SKU</div></div>
+    <div class="stat"><div class="num">86.8%</div><div class="lbl">短视频渠道占比（第一）</div></div>
+    <div class="stat"><div class="num">约518万</div><div class="lbl">直播渠道市场规模</div></div>
+    <div class="stat"><div class="num">209 位</div><div class="lbl">主力款关联博主</div></div>
+  </div>
+</div>
+<div class="wrap">
+
+  <div class="section">
+    <div class="sec-title"><span class="no">1</span>渠道概览（数据口径说明）</div>
+    <div class="tip">4 份数据对应 3 个独立场景：<b>直播挂车</b>（500 款，约 518 万）、<b>短视频带货</b>（19 款，约 44 万）、<b>直播引流款</b>（159 款，仅约 4 千，全为 5-14 元低价引流挂车款）。带货中心与直播渠道同源商品池（推荐位子集），并非独立渠道。宁之春全渠道去重后约 130 万元 GMV。</div>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:900px;">
+        <tr><th>渠道</th><th>商品数</th><th>有销量商品</th><th>渠道总销售额</th><th>宁之春销售额</th><th>宁之春占比</th><th>TOP1 品牌</th><th>TOP2 品牌</th><th>TOP3 品牌</th></tr>
+        <tr class="nz"><td>直播（挂车关联）</td><td>500</td><td>189</td><td class="gmv">约518万</td><td class="gmv">约91万</td><td><b>17.7%</b></td><td>纯耕 约208万</td><td>宁之春 约91万</td><td>好喜杞 约76万</td></tr>
+        <tr class="nz"><td>短视频带货</td><td>19</td><td>13</td><td class="gmv">约44万</td><td class="gmv">约38万</td><td><b>86.8%</b></td><td>宁之春 约38万</td><td>美羽栖 约5万</td><td>杞里香 约1万</td></tr>
+        <tr class="nz"><td>带货中心推荐</td><td>500</td><td>139</td><td class="gmv">约291万</td><td class="gmv">约71万</td><td><b>24.3%</b></td><td>宁之春 约71万</td><td>好喜杞 约38万</td><td>纯耕 约27万</td></tr>
+        <tr><td>直播引流款</td><td>159</td><td>5</td><td class="gmv">约4千</td><td>—</td><td>0%</td><td>月庆百货 约3千</td><td>森宝贸易 约1千</td><td>其他</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title"><span class="no">2</span>核心洞察：宁之春的优势与短板</div>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="color:var(--green);margin-bottom:14px;">优势（3 个）</h3>
+        <div class="str-point good"><div class="t">短视频渠道绝对霸主</div><p>占短视频渠道销售额 86.8%（约38万 vs 第二名美羽栖约5万）。主力款"红黑早C晚A 90袋2700ml"关联 <b>209 位博主</b>，达人供给强，是行业里短视频分销做得最好的品牌。</p></div>
+        <div class="str-point good"><div class="t">直播生态位居第二</div><p>直播渠道销售额约91万，仅次于纯耕（约208万）；SKU 矩阵完整（26 款），带货中心推荐位第一（约71万 / 24.3%），系统权重高。</p></div>
+        <div class="str-point good"><div class="t">心智清晰：早C晚A红黑组合</div><p>核心叙事"早红晚黑、早C晚A"已跑通，多 SKU 复用同一心智，具备规模化复制条件。</p></div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--red);margin-bottom:14px;">短板 / 最大增量空间（3 个）</h3>
+        <div class="str-point warn"><div class="t">直播转化能力几乎为零</div><p>宁之春 26 款商品 30 天直播销量合计仅 <b>98 件</b>；纯耕 32 款直播销量约1.8万件（587 场）。宁之春 135 场直播场次虚高但产出极低——<b>挂车了却卖不动，短视频势能未传导到直播间</b>。</p></div>
+        <div class="str-point warn"><div class="t">佣金率过低，达人不愿推直播</div><p>宁之春佣金仅 <b>1%</b>，市场主流为 10%-30%。这是直播转化差的直接原因之一，也限制了头部达人合作空间。</p></div>
+        <div class="str-point warn"><div class="t">缺少引流款布局</div><p>直播引流款渠道 159 款中宁之春 0 布局；月庆百货靠"拍五发六 9.9 元"在该渠道跑通，宁之春在直播间拉新入口上处于空白。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title"><span class="no">3</span>市场趋势（直播渠道品类关键词统计）</div>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:800px;">
+        <tr><th>品类关键词</th><th>商品数</th><th>总销售额</th><th>总销量</th><th>趋势判断</th></tr>
+        <tr><td><b>黑枸杞（含红黑组合）</b></td><td>229</td><td class="gmv">约316万</td><td>50,470</td><td>绝对主流赛道，占直播池 60%+，"早C晚A / 红黑双饮"为心智卖点</td></tr>
+        <tr><td>六味地黄</td><td>14</td><td class="gmv">约77万</td><td>13,589</td><td>高增长差异化成分，纯耕主推，客单 38-99 元</td></tr>
+        <tr><td>人参黄精</td><td>10</td><td class="gmv">约66万</td><td>11,870</td><td>滋补成分升级线，纯耕矩阵化运营</td></tr>
+        <tr><td>量贩装（大包装）</td><td>16</td><td class="gmv">约62万</td><td>2,429</td><td>高性价比囤货需求，好喜杞 299 元/960ml 单品验证</td></tr>
+        <tr><td>鲜果鲜榨 / NFC</td><td>88</td><td class="gmv">约64万</td><td>5,104</td><td>工艺背书已成标配，需叠加其他差异点</td></tr>
+        <tr><td>花青素</td><td>31</td><td class="gmv">约26万</td><td>2,073</td><td>黑枸杞核心功效点，美羽栖主推</td></tr>
+        <tr><td>酸枣仁 / 助眠</td><td>6</td><td class="gmv">约19万</td><td>2,125</td><td><b>差异化新赛道</b>，福东海小睡瓶验证，竞争少</td></tr>
+        <tr><td>蓝莓 / 桑葚</td><td>40</td><td class="gmv">约14万</td><td>3,669</td><td>风味 + 花青素补充线，SKU 多但单品弱</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title"><span class="no">4</span>选品与策略建议</div>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:900px;">
+        <tr><th>优先级</th><th>建议方向</th><th>目标渠道</th><th>建议价格带</th><th>参考竞品 / 依据</th><th>执行要点</th></tr>
+        <tr class="nz"><td><span class="pill p0">P0</span></td><td><b>直播主推款：38-49元红黑组合 90 袋</b></td><td>直播挂车 + 达播</td><td>38-49</td><td>纯耕 TOP 单品约94万 / 55 场直播</td><td>宁之春现价 38-99 元，建议拆分出 49 元内直播款，对标纯耕低价高量打法</td></tr>
+        <tr class="nz"><td><span class="pill p0">P0</span></td><td><b>提升佣金率，分层激励达人</b></td><td>直播 + 短视频</td><td>—</td><td>宁之春仅 1%，市场主流 10%-30%</td><td>设置基础佣金 + 直播场次阶梯奖励，激活 209 位存量达人的直播带货意愿</td></tr>
+        <tr class="nz"><td><span class="pill p0">P0</span></td><td><b>短视频素材反哺直播间</b></td><td>短视频 → 直播</td><td>38-99</td><td>宁之春短视频占 86.8%，209 博主</td><td>巩固短视频基本盘，短视频挂车 + 直播间投流闭环</td></tr>
+        <tr><td><span class="pill p1">P1</span></td><td>六味地黄 / 人参黄精成分线</td><td>直播 + 短视频</td><td>38-99</td><td>纯耕六味地黄约77万</td><td>补齐成分矩阵 SKU，蹭成分红利</td></tr>
+        <tr><td><span class="pill p1">P1</span></td><td>礼盒升级款：送礼场景</td><td>短视频 + 达播</td><td>69-99</td><td>早康 69-79 元礼盒约11万</td><td>春节/中秋节点提前备货，主打"早C晚A送礼"</td></tr>
+        <tr><td><span class="pill p1">P1</span></td><td>助眠线：酸枣仁小睡瓶</td><td>直播</td><td>89-299</td><td>福东海小睡瓶约19万 / 50 场直播</td><td>第二增长曲线，差异化竞争小</td></tr>
+        <tr><td><span class="pill p2">P2</span></td><td>9.9 元试饮引流款</td><td>直播引流款 + 直播间</td><td>9.9</td><td>月庆百货 9.9 元款</td><td>宁之春未布局引流款，可做"拍一发六"试饮装拉新</td></tr>
+        <tr><td><span class="pill p2">P2</span></td><td>量贩装大包装</td><td>直播</td><td>99-299</td><td>好喜杞 299 元/960ml</td><td>满足囤货型高性价比需求，提高客单</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title"><span class="no">5</span>商品特点总结（基于 609 款去重商品提炼）</div>
+    <div class="tip">从商品名称中提炼的赠品机制、价值机制、卖点与达人机制，供宁之春选品与包装话术参考。销售额均为脱敏约数。</div>
+
+    <h3 style="color:var(--primary-dark);margin:18px 0 10px;font-size:16px;">5.1 赠品与促销机制</h3>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:900px;">
+        <tr><th>机制类型</th><th>说明</th><th>代表案例</th><th>覆盖量级</th><th>借鉴建议</th></tr>
+        <tr class="nz"><td><b>到手价锚定</b></td><td>"X元到手Y袋"直接锚定到手价+到手量，行业最主流价值表达</td><td>纯耕"99元到手90袋"、宁之春"到手90袋2700ml"</td><td class="gmv">约229万 / 34款</td><td>宁之春已用，建议直播款强化"到手价"前置</td></tr>
+        <tr class="nz"><td><b>试喝装</b></td><td>"可试喝6袋"降低决策门槛，主用于礼盒升级款</td><td>宁之春礼盒升级款[可试喝6袋]、美羽栖[试喝一盒]</td><td class="gmv">约6万 / 21款</td><td>宁之春已有，可复制到直播引流款</td></tr>
+        <tr><td>拍X发Y</td><td>买X发Y的赠品放大机制，多用于引流款与黑枸杞单品</td><td>美羽栖"拍一发五"、月庆百货"拍五发六"9.9元</td><td class="gmv">约5万</td><td>9.9元引流款可用"拍一发六"放大</td></tr>
+        <tr><td>宠粉福利</td><td>达人粉丝专属福利话术，增强粉丝归属</td><td>美羽栖"宠粉福利拍一发五"</td><td class="gmv">约5万</td><td>头部达人专供款可叠加宠粉话术</td></tr>
+        <tr><td>即饮便携</td><td>"一撕一饮/开袋即饮/开瓶即饮"强调便捷</td><td>早康"一撕一饮"礼盒、月庆"开瓶即饮"</td><td class="gmv">约12万</td><td>礼盒/便携款可强化即饮话术</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--primary-dark);margin:18px 0 10px;font-size:16px;">5.2 价值机制与规格体系</h3>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:900px;">
+        <tr><th>机制类型</th><th>说明</th><th>代表案例</th><th>覆盖量级</th><th>借鉴建议</th></tr>
+        <tr class="nz"><td><b>组合装</b></td><td>红黑组合/成分组合，提升客单与心智</td><td>纯耕红黑组合、宁之春早C晚A组合</td><td class="gmv">约293万 / 72款</td><td>宁之春核心打法，继续深化</td></tr>
+        <tr><td>量贩装</td><td>大包装高性价比，满足囤货</td><td>好喜杞960ml量贩、纯耕2.7L量贩</td><td class="gmv">约57万 / 14款</td><td>建议补量贩款提客单</td></tr>
+        <tr><td>礼盒装</td><td>送礼场景，节日节点</td><td>早康礼盒、宁之春滋补礼盒、沃福百瑞礼盒</td><td class="gmv">约49万 / 46款</td><td>春节/中秋礼盒提前布局</td></tr>
+        <tr class="nz"><td><b>核心规格 30ml×90袋=2700ml</b></td><td>行业黄金规格，约99元，性价比锚点</td><td>纯耕/宁之春主力款均为该规格</td><td class="gmv">39款</td><td>守住主力规格，直播款沿用</td></tr>
+        <tr><td>差异化规格</td><td>跳出30ml小袋红海的差异化包装</td><td>福东海350ml小睡瓶、杞滋堂Q3条装</td><td class="gmv">约19万</td><td>助眠线可用小睡瓶形态</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--primary-dark);margin:18px 0 10px;font-size:16px;">5.3 卖点矩阵（成分 / 工艺 / 产地 / 场景）</h3>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:900px;">
+        <tr><th>维度</th><th>关键词</th><th>代表案例</th><th>量级</th><th>判断</th></tr>
+        <tr><td><b>成分-滋补升级</b></td><td>人参 / 黄精 / 六味地黄</td><td>纯耕六味地黄+人参黄精矩阵、宁之春人参黄精礼盒</td><td class="gmv">人参约89万 / 六味地黄约77万</td><td>纯耕主推差异化成分，宁之春应补齐</td></tr>
+        <tr><td><b>成分-功效细分</b></td><td>花青素 / 酸枣仁(助眠)</td><td>美羽栖花青素、福东海酸枣仁小睡瓶</td><td class="gmv">花青素约25万 / 酸枣仁约19万</td><td>助眠是蓝海，花青素是黑枸杞标配</td></tr>
+        <tr><td>工艺</td><td>NFC / 鲜果鲜榨 / 超微粉碎 / 无添加</td><td>杞滋堂Q3超微粉碎(技术差异化)、行业NFC标配</td><td class="gmv">NFC约63万 / 鲜榨约63万</td><td>NFC已成标配，需叠加其他差异点</td></tr>
+        <tr><td>产地</td><td>中宁(红) / 青海(黑) / 长白山(人参)</td><td>"宁夏中宁"红枸杞、"青海"黑枸杞背书</td><td class="gmv">中宁约82万</td><td>中宁背书最强，宁之春应强化产地</td></tr>
+        <tr class="nz"><td><b>场景概念</b></td><td>早C晚A / 早红晚黑 / 红黑双饮</td><td>宁之春早C晚A、纯耕早黑晚红双饮</td><td class="gmv">早C晚A约88万 / 红黑组合约235万</td><td>宁之春心智清晰，已是优势</td></tr>
+        <tr><td>送礼</td><td>礼盒 / 节日送礼</td><td>早康"节日送礼便携装"</td><td class="gmv">约12万</td><td>节点礼盒可做</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--primary-dark);margin:18px 0 10px;font-size:16px;">5.4 达人专供机制</h3>
+    <div class="tbl-card">
+      <table class="mini" style="min-width:900px;">
+        <tr><th>机制</th><th>说明</th><th>代表案例</th><th>量级</th><th>借鉴建议</th></tr>
+        <tr class="nz"><td><b>达人专属定制款</b></td><td>"XX专属"为达人定制SKU，行业标配</td><td>老马草原专属(宁之春约41万)、白菜GG专属(沃福百瑞约27万)</td><td class="gmv">约97万 / 92款</td><td>宁之春已在用，建议扩量+提佣金</td></tr>
+        <tr><td>严选背书</td><td>"XX严选"品质背书</td><td>刚哥严选(纯耕约12万)</td><td class="gmv">约12万</td><td>可做"宁之春严选"系列</td></tr>
+        <tr><td>头部主播单场爆破</td><td>单头部主播1-2场卖爆</td><td>白菜GG 1场约27万、好喜杞 1场约28万</td><td class="gmv">单场约27万</td><td>需提升佣金才能撬动头部</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title"><span class="no">6</span>SKU 明细（可搜索 / 排序 / 筛选）</div>
+    <div class="tip">点击表头可排序；搜索框按商品名/品牌筛选；下拉可按销售额区间过滤。宁之春自身 SKU 黄色高亮。各区块顶部可按品牌单独筛选。销售额均显示为脱敏后的约数。</div>
+    <div class="tabs" id="tabs"></div>
+    <div class="panel active" id="panel-0"></div>
+    <div class="panel" id="panel-1"></div>
+    <div class="panel" id="panel-2"></div>
+    <div class="panel" id="panel-3"></div>
+  </div>
+
+</div>
+<div class="footer">宁之春客户复盘 · 市场分析 &amp; 选品参考 | 由友望数据导出整理（销售额已脱敏）</div>
+
+<script>
+const DATA = {};
+DATA.nz = [{"n": "【老马草原】宁之春红黑枸杞原浆组合到手90袋早C晚A组合", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 4666, "g": "约41万", "gv": 410000, "b": 13, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合", "达人专供"]}, {"n": "宁之春红黑枸杞原浆早C晚A组合到手90袋共2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-99", "sa": 4617, "g": "约23万", "gv": 230000, "b": 209, "v": 8, "l": 49, "ls": 9, "lg": "约4百", "lgv": 400, "c": "1%", "t": ["红黑组合"]}, {"n": "宁之春红黑枸杞原浆早C晚A组合到手2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 1706, "g": "约15万", "gv": 150000, "b": 22, "v": 3, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合"]}, {"n": "礼盒升级款宁之春红黑枸杞原浆早C晚A组合滋补礼盒装[可试喝6袋]", "s": "宁之春佳菡营养膳食企业店", "p": "38-99", "sa": 773, "g": "约3万", "gv": 30000, "b": 8, "v": 0, "l": 2, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合", "礼盒", "试喝装"]}, {"n": "宁之春红黑枸杞原浆早C晚A组合滋补礼盒装", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 241, "g": "约2万", "gv": 20000, "b": 36, "v": 0, "l": 22, "ls": 69, "lg": "约7千", "lgv": 7000, "c": "--", "t": ["红黑组合", "礼盒"]}, {"n": "宁之春红黑枸杞原浆组合装优质营养鲜枸杞原浆", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 225, "g": "约2万", "gv": 20000, "b": 22, "v": 0, "l": 1, "ls": 2, "lg": "约2百", "lgv": 200, "c": "--", "t": ["红黑组合"]}, {"n": "[兰姐专属]宁之春黄精人参枸杞原浆鲜果鲜榨礼盒装含长白山人参宁夏枸杞", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 319, "g": "约1万", "gv": 10000, "b": 2, "v": 0, "l": 1, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["礼盒", "人参黄精", "鲜榨"]}, {"n": "宁之春黄精人参枸杞原浆鲜果鲜榨礼盒装含长白山人参宁夏枸杞", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 168, "g": "约7千", "gv": 7000, "b": 4, "v": 0, "l": 2, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["礼盒", "人参黄精", "鲜榨"]}, {"n": "宁之春红黑枸杞原浆早C晚A组合到手1200ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 108, "g": "约4千", "gv": 4000, "b": 19, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合"]}, {"n": "滋补礼盒宁夏中宁枸杞原浆30ml*90袋浓郁原浆", "s": "宁之春佳菡营养膳食企业店", "p": "88-199", "sa": 43, "g": "约4千", "gv": 4000, "b": 7, "v": 0, "l": 8, "ls": 1, "lg": "—", "lgv": 0, "c": "--", "t": ["礼盒"]}, {"n": "[99元滋补礼盒到手90袋]宁之春红黑枸杞原浆早C晚A组合到手2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-199", "sa": 97, "g": "约4千", "gv": 4000, "b": 60, "v": 1, "l": 4, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合", "礼盒"]}, {"n": "[西热力江专属]宁之春六味地黄原浆黄精人参枸杞原浆", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 43, "g": "约4千", "gv": 4000, "b": 4, "v": 0, "l": 12, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["人参黄精", "六味地黄"]}, {"n": "精选青海大果黑枸杞原浆头茬正宗枸杞原液", "s": "宁之春佳菡营养膳食企业店", "p": "88-199", "sa": 25, "g": "约2千", "gv": 2000, "b": 11, "v": 0, "l": 7, "ls": 1, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "【直播专属】宁之春红黑枸杞原浆组合到手90袋早C晚A组合lm", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 21, "g": "约2千", "gv": 2000, "b": 1, "v": 0, "l": 2, "ls": 5, "lg": "约5百", "lgv": 500, "c": "--", "t": ["红黑组合"]}, {"n": "礼盒升级款宁之春红黑枸杞原浆早C晚A组合滋补礼盒装", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 30, "g": "约1千", "gv": 1000, "b": 2, "v": 0, "l": 7, "ls": 11, "lg": "约5百", "lgv": 500, "c": "--", "t": ["红黑组合", "礼盒"]}, {"n": "[马年礼盒]红黑枸杞原浆组合到手90袋早C晚A组合到手2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 29, "g": "约1千", "gv": 1000, "b": 16, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合", "礼盒", "节庆"]}, {"n": "[99元滋补礼盒到手90袋]宁之春红黑枸杞原浆早C晚A组合到手2700ml  ZB", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 27, "g": "约1千", "gv": 1000, "b": 2, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合", "礼盒"]}, {"n": "宁之春人参枸杞原浆鲜果鲜榨礼盒装长白山人参宁夏枸杞[可试喝6袋]", "s": "宁之春佳菡营养膳食企业店", "p": "19-49", "sa": 44, "g": "约8百", "gv": 800, "b": 29, "v": 1, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["礼盒", "试喝装", "人参黄精", "鲜榨"]}, {"n": "[大圆哥专属]宁之春六味地黄原浆黄精人参枸杞原浆", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 8, "g": "约7百", "gv": 700, "b": 1, "v": 0, "l": 4, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["人参黄精", "六味地黄"]}, {"n": "宁之春人参枸杞原浆鲜果鲜榨礼盒装长白山人参宁夏枸杞到手2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 15, "g": "约7百", "gv": 700, "b": 3, "v": 0, "l": 7, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["礼盒", "人参黄精", "鲜榨"]}, {"n": "【试喝6袋】人参枸杞原浆鲜果鲜榨礼盒长白山人参宁夏枸杞到手40袋", "s": "宁之春佳菡营养膳食企业店", "p": "38-49", "sa": 14, "g": "约6百", "gv": 600, "b": 2, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["礼盒", "试喝装", "人参黄精", "鲜榨"]}, {"n": "宁之春升级款红黑枸杞原浆组合装到手190袋DX", "s": "宁之春佳菡营养膳食企业店", "p": "187-198", "sa": 2, "g": "约4百", "gv": 400, "b": 2, "v": 0, "l": 5, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合"]}, {"n": "[马年礼盒]红黑枸杞原浆组合到手90袋早C晚A组合到手2700ml 可试喝6袋", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 1, "g": "—", "gv": 0, "b": 16, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["红黑组合", "礼盒", "试喝装", "节庆"]}, {"n": "宁之春六味地黄人参原浆饮山茱萸枸杞原浆", "s": "宁之春佳菡营养膳食企业店", "p": "49", "sa": 0, "g": "—", "gv": 0, "b": 0, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": ["人参黄精", "六味地黄"]}];
+DATA.comp = [{"n": "[黑红双饮]纯耕红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋", "s": "纯耕", "p": "38-49", "sa": 20838, "g": "约94万", "gv": 940000, "b": 11, "v": 0, "l": 55, "ls": 8574, "lg": "约42万", "lgv": 420000, "c": "--", "t": []}, {"n": "好喜杞960ml量贩装中宁红枸杞原浆 NFC工艺鲜果鲜榨无添加", "s": "好喜杞亿联优选", "p": "299", "sa": 940, "g": "约28万", "gv": 280000, "b": 1, "v": 0, "l": 2, "ls": 936, "lg": "约28万", "lgv": 280000, "c": "--", "t": []}, {"n": "[六味地黄+人参黄精]纯耕枸杞原浆人参黄精六味地黄原浆组合zb", "s": "纯耕", "p": "38-49", "sa": 6247, "g": "约27万", "gv": 270000, "b": 2, "v": 0, "l": 28, "ls": 5580, "lg": "约27万", "lgv": 270000, "c": "--", "t": []}, {"n": "【白菜GG专属】沃福百瑞星杞几原浆 1+1红枸杞原浆黑枸杞原浆组合礼盒装", "s": "沃福百瑞枸杞", "p": "99", "sa": 2697, "g": "约27万", "gv": 270000, "b": 1, "v": 0, "l": 1, "ls": 2696, "lg": "约27万", "lgv": 270000, "c": "--", "t": []}, {"n": "[六味地黄+人参黄精]红黑枸杞人参黄精六味地黄枸杞原浆组合", "s": "纯耕", "p": "88-99", "sa": 2315, "g": "约22万", "gv": 220000, "b": 6, "v": 0, "l": 43, "ls": 502, "lg": "约5万", "lgv": 50000, "c": "--", "t": []}, {"n": "福东海小睡瓶350ml纯植物原浆无添加小蓝瓶人参酸枣仁枸杞原浆ZB", "s": "福东海福泽天下滋补店", "p": "89-299", "sa": 2122, "g": "约19万", "gv": 190000, "b": 1, "v": 0, "l": 50, "ls": 1925, "lg": "约17万", "lgv": 170000, "c": "--", "t": []}, {"n": "好喜杞960ml量贩装中宁枸杞原浆 NFC工艺小袋包装", "s": "好喜杞宁物优选", "p": "299", "sa": 522, "g": "约16万", "gv": 160000, "b": 4, "v": 0, "l": 5, "ls": 494, "lg": "约15万", "lgv": 150000, "c": "--", "t": []}, {"n": "[六味地黄枸杞原浆饮]纯耕六味地黄浓缩枸杞原浆草本植物饮品99到手90袋zb", "s": "纯耕", "p": "38-49", "sa": 2716, "g": "约13万", "gv": 130000, "b": 4, "v": 0, "l": 54, "ls": 1575, "lg": "约8万", "lgv": 80000, "c": "--", "t": []}, {"n": "[刚哥严选]纯耕红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋", "s": "纯耕", "p": "38-49", "sa": 3010, "g": "约12万", "gv": 120000, "b": 5, "v": 0, "l": 2, "ls": 1, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "早康宁夏中宁枸杞原浆礼盒装节日送礼便携装一撕一饮", "s": "早康", "p": "69-79", "sa": 1441, "g": "约11万", "gv": 110000, "b": 1, "v": 0, "l": 7, "ls": 1409, "lg": "约11万", "lgv": 110000, "c": "--", "t": []}, {"n": "【范大厨专属】杞滋堂Q3超微粉碎枸杞原浆宁夏中宁纯手工鲜枸杞原浆营养原榨榨汁", "s": "杞滋堂养生店", "p": "299-699", "sa": 213, "g": "约11万", "gv": 110000, "b": 4, "v": 0, "l": 3, "ls": 204, "lg": "约10万", "lgv": 100000, "c": "--", "t": []}, {"n": "杞九庄园鲜枸杞原浆酒52度500ml", "s": "杞九庄园枸杞酒", "p": "158-698", "sa": 601, "g": "约9万", "gv": 90000, "b": 2, "v": 0, "l": 2, "ls": 167, "lg": "约3万", "lgv": 30000, "c": "--", "t": []}, {"n": "【依依专属】美羽栖黑枸杞原浆青海鲜枸杞花青素100%原浆", "s": "美羽栖企业店", "p": "88.9-99.9", "sa": 892, "g": "约9万", "gv": 90000, "b": 3, "v": 0, "l": 3, "ls": 209, "lg": "约2万", "lgv": 20000, "c": "--", "t": []}, {"n": "[枸杞滋补组合]纯耕红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋ZB", "s": "纯耕", "p": "49-99", "sa": 1714, "g": "约8万", "gv": 80000, "b": 5, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[庞校长专属]好喜杞960ml中宁红枸杞原浆NFC原浆鲜果鲜榨 小袋包装方便携带", "s": "好喜杞冀坤中宁枸杞", "p": "291-299", "sa": 273, "g": "约8万", "gv": 80000, "b": 7, "v": 0, "l": 13, "ls": 263, "lg": "约8万", "lgv": 80000, "c": "--", "t": []}, {"n": "[人参黄精饮]纯耕人参黄精枸杞原浆饮 安徽黄精 长白山人参饮 99元到手90袋zb", "s": "纯耕", "p": "38-98", "sa": 1433, "g": "约7万", "gv": 70000, "b": 6, "v": 0, "l": 56, "ls": 494, "lg": "约2万", "lgv": 20000, "c": "--", "t": []}, {"n": "[庞校长专属]好喜杞900ml量版装黑枸杞原浆营养天然制品小袋包装好吸收", "s": "好喜杞冀坤中宁枸杞", "p": "288-299", "sa": 214, "g": "约6万", "gv": 60000, "b": 5, "v": 0, "l": 13, "ls": 212, "lg": "约6万", "lgv": 60000, "c": "--", "t": []}, {"n": "[六味地黄枸杞原浆饮]纯耕六味地黄浓缩枸杞原浆草本植物饮品99到手90袋", "s": "纯耕", "p": "41-99", "sa": 1182, "g": "约6万", "gv": 60000, "b": 6, "v": 0, "l": 6, "ls": 2, "lg": "约2百", "lgv": 200, "c": "--", "t": []}, {"n": "好喜杞900ml量贩装青海黑枸杞原浆 小袋包装满满花青素", "s": "好喜杞亿联优选", "p": "299", "sa": 189, "g": "约6万", "gv": 60000, "b": 1, "v": 0, "l": 1, "ls": 189, "lg": "约6万", "lgv": 60000, "c": "--", "t": []}, {"n": "[宝珠甄选专属]得养生宁夏有机枸杞原浆210ml*3盒", "s": "nan", "p": "99-149", "sa": 567, "g": "约6万", "gv": 60000, "b": 2, "v": 0, "l": 3, "ls": 529, "lg": "约5万", "lgv": 50000, "c": "--", "t": []}, {"n": "[阿豪专属]蓝莓桑葚黑枸杞原浆 100%NFC鲜果鲜榨 不加一滴水", "s": "三源迹臻养食饮", "p": "28.9-39.9", "sa": 1426, "g": "约6万", "gv": 60000, "b": 45, "v": 0, "l": 41, "ls": 181, "lg": "约7千", "lgv": 7000, "c": "--", "t": []}, {"n": "[花胖专属]六味地黄+人参黄精纯耕枸杞原浆人参黄精六味地黄原浆组合", "s": "纯耕", "p": "99", "sa": 526, "g": "约5万", "gv": 50000, "b": 1, "v": 0, "l": 1, "ls": 529, "lg": "约5万", "lgv": 50000, "c": "--", "t": []}, {"n": "[图图老师专属]XIZAN/玺赞安杞拉红枸杞原浆鲜果鲜榨滋补百日养套餐", "s": "玺赞庄园枸杞", "p": "699", "sa": 73, "g": "约5万", "gv": 50000, "b": 1, "v": 0, "l": 2, "ls": 76, "lg": "约5万", "lgv": 50000, "c": "--", "t": []}, {"n": "好喜杞900ml量贩装青海黑枸杞原浆 小袋包装携带方便", "s": "好喜杞宁物优选", "p": "299", "sa": 159, "g": "约5万", "gv": 50000, "b": 2, "v": 0, "l": 2, "ls": 138, "lg": "约4万", "lgv": 40000, "c": "--", "t": []}, {"n": "【宠粉福利拍一发五】美羽栖黑枸杞原浆青海正宗枸杞花青素汁原液", "s": "美羽栖企业店", "p": "88.9-99.9", "sa": 489, "g": "约5万", "gv": 50000, "b": 110, "v": 1, "l": 5, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "好喜杞960ml量贩装中宁红枸杞原浆 NFC工艺鲜果鲜榨无添加", "s": "好喜杞亿联优选", "p": "589-599", "sa": 61, "g": "约4万", "gv": 40000, "b": 1, "v": 0, "l": 2, "ls": 60, "lg": "约4万", "lgv": 40000, "c": "--", "t": []}, {"n": "【范大厨专属】杞滋堂黑枸杞原浆30ml/袋", "s": "杞滋堂养生店", "p": "499", "sa": 73, "g": "约4万", "gv": 40000, "b": 2, "v": 0, "l": 3, "ls": 73, "lg": "约4万", "lgv": 40000, "c": "--", "t": []}, {"n": "[人参黄精饮]纯耕人参黄精枸杞原浆饮 安徽黄精 长白山人参饮 99元到手90袋ZB", "s": "纯耕", "p": "41-99", "sa": 683, "g": "约3万", "gv": 30000, "b": 4, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[港口专属]【试喝一盒】美羽栖青海黑枸杞原浆花青素果汁液210mL/盒", "s": "美羽栖企业店", "p": "88.9-99.9", "sa": 256, "g": "约3万", "gv": 30000, "b": 38, "v": 0, "l": 12, "ls": 117, "lg": "约1万", "lgv": 10000, "c": "1%", "t": []}, {"n": "[刚哥专属]纯耕红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋", "s": "纯耕", "p": "38-49", "sa": 599, "g": "约2万", "gv": 20000, "b": 7, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[滋补组合]纯耕红黑枸杞原浆组合早黑晚红科学搭配278到手三箱", "s": "纯耕", "p": "258-278", "sa": 70, "g": "约2万", "gv": 20000, "b": 4, "v": 0, "l": 34, "ls": 46, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "玺赞枸杞庄园黑枸杞原浆青海原产高花青素鲜果鲜榨无添加套装", "s": "玺赞庄园枸杞", "p": "388-499", "sa": 47, "g": "约2万", "gv": 20000, "b": 1, "v": 0, "l": 1, "ls": 47, "lg": "约2万", "lgv": 20000, "c": "--", "t": []}, {"n": "[滋补组合]红黑枸杞原浆早C晚A科学搭配优质营养鲜枸杞原浆开袋即饮300ML", "s": "念豆滋补养生", "p": "39.9", "sa": 408, "g": "约2万", "gv": 20000, "b": 3, "v": 0, "l": 5, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "纯耕人参黄精枸杞原浆，99元90袋人参黄精枸杞原浆饮，宁夏头茬枸杞、吉林长白山的人参，安徽的黄精，新疆的肉苁蓉", "s": "纯耕", "p": "38-98", "sa": 374, "g": "约1万", "gv": 10000, "b": 5, "v": 0, "l": 1, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[六味地黄+人参黄精]纯耕枸杞原浆人参黄精六味地黄原浆组合cg", "s": "纯耕", "p": "49-198", "sa": 281, "g": "约1万", "gv": 10000, "b": 1, "v": 0, "l": 4, "ls": 302, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "王航弟枸杞原浆300ml", "s": "王航弟", "p": "30", "sa": 442, "g": "约1万", "gv": 10000, "b": 1, "v": 0, "l": 1, "ls": 385, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "口口浪 鲜榨宁夏中宁红枸杞原浆 顺丰快递", "s": "口口浪饮品", "p": "61.9-99.9", "sa": 212, "g": "约1万", "gv": 10000, "b": 14, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "纯耕2.7L（30ml*90袋）量贩装红黑枸杞原浆组合", "s": "纯耕", "p": "38-278", "sa": 330, "g": "约1万", "gv": 10000, "b": 29, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "杞滋堂三抗饮黑枸杞原浆", "s": "杞滋堂养生店", "p": "799-899", "sa": 14, "g": "约1万", "gv": 10000, "b": 1, "v": 0, "l": 2, "ls": 14, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "2026年头茬鲜果鲜榨宁夏中宁红枸杞原浆袋装方便饮用", "s": "元气杞点滋补养生店", "p": "18.9-29.91", "sa": 430, "g": "约1万", "gv": 10000, "b": 13, "v": 0, "l": 9, "ls": 52, "lg": "约2千", "lgv": 2000, "c": "--", "t": []}, {"n": "[豆豆姐姐专属]康元集团大果沙棘枸杞原浆100%FNC鲜果冷榨", "s": "CHILLTHING沙棘", "p": "225-236", "sa": 47, "g": "约1万", "gv": 10000, "b": 1, "v": 0, "l": 1, "ls": 46, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "杞滋堂akg枸杞原浆(50ml*60支)宁夏中宁枸杞长辈", "s": "杞滋堂养生店", "p": "9.9-4188", "sa": 11, "g": "约1万", "gv": 10000, "b": 2, "v": 0, "l": 2, "ls": 11, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "[红黑+六味地黄]纯耕红黑枸杞原浆六味地黄原浆180袋送红参原浆zb", "s": "纯耕", "p": "178-198", "sa": 56, "g": "约1万", "gv": 10000, "b": 4, "v": 0, "l": 43, "ls": 38, "lg": "约8千", "lgv": 8000, "c": "--", "t": []}, {"n": "【大陈专属】新疆红枸杞原浆NFC工艺原浆30ml*7袋/盒鲜活头茬鲜果鲜榨", "s": "杏福说时令心疆小店", "p": "94-99", "sa": 107, "g": "约1万", "gv": 10000, "b": 5, "v": 0, "l": 1, "ls": 107, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "[人参+六味地黄]纯耕人参枸杞原浆六味地黄原浆180袋送红黑原浆zb", "s": "纯耕", "p": "88-99", "sa": 111, "g": "约1万", "gv": 10000, "b": 4, "v": 0, "l": 28, "ls": 45, "lg": "约4千", "lgv": 4000, "c": "--", "t": []}, {"n": "新疆NFC黑枸杞原浆30ml*7袋/盒", "s": "蓓活堂食品小店", "p": "398", "sa": 26, "g": "约1万", "gv": 10000, "b": 1, "v": 0, "l": 2, "ls": 26, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "好喜杞900ml量贩装青海黑枸杞原浆 小袋包装满满花青素", "s": "好喜杞亿联优选", "p": "589-599", "sa": 17, "g": "约1万", "gv": 10000, "b": 1, "v": 0, "l": 1, "ls": 17, "lg": "约1万", "lgv": 10000, "c": "--", "t": []}, {"n": "好喜杞210ml中宁红枸杞原浆 NFC工艺鲜果鲜榨原浆xjz", "s": "好喜杞红润杞工厂店", "p": "148-159", "sa": 55, "g": "约9千", "gv": 9000, "b": 7, "v": 0, "l": 2, "ls": 54, "lg": "约9千", "lgv": 9000, "c": "--", "t": []}, {"n": "【六大0添加】红参枸杞纯原浆 重杞活力 开袋即饮", "s": "贡味盈企业店", "p": "58.9-69.9", "sa": 138, "g": "约8千", "gv": 8000, "b": 81, "v": 0, "l": 5, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "新疆黑枸杞原浆鲜果鲜榨营养可直接喝的便携饮品", "s": "拾味甄选电商", "p": "99.9", "sa": 70, "g": "约7千", "gv": 7000, "b": 1, "v": 0, "l": 1, "ls": 70, "lg": "约7千", "lgv": 7000, "c": "--", "t": []}, {"n": "新疆精河枸杞原浆30ml*40袋/箱鲜活头茬鲜果鲜榨不加水", "s": "新疆精河枸杞特产馆", "p": "38.8-59.8", "sa": 168, "g": "约7千", "gv": 7000, "b": 17, "v": 0, "l": 2, "ls": 1, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[滋补组合]纯耕红黑枸杞原浆组合早黑晚红科学搭配99元到手90袋zb", "s": "纯耕", "p": "38-49", "sa": 176, "g": "约7千", "gv": 7000, "b": 4, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[大哈专属][深本堂]有机鲜枸杞原浆鲜果鲜榨宁夏中宁红枸杞原浆500ml/盒", "s": "深本堂零零杞", "p": "88-228", "sa": 68, "g": "约6千", "gv": 6000, "b": 18, "v": 0, "l": 1, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "美羽栖青海黑枸杞原浆鲜榨枸杞汁210mL/盒", "s": "美羽栖企业店", "p": "88.9-99.9", "sa": 62, "g": "约6千", "gv": 6000, "b": 18, "v": 0, "l": 1, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[淑晗老师专属]好喜杞960ml中宁红枸杞原浆 NFC工艺量贩装", "s": "好喜杞红润杞工厂店", "p": "288-299", "sa": 20, "g": "约6千", "gv": 6000, "b": 5, "v": 0, "l": 1, "ls": 20, "lg": "约6千", "lgv": 6000, "c": "--", "t": []}, {"n": "蓝莓桑葚黑枸杞纯原浆 100%鲜果鲜榨NFC工艺", "s": "贡味盈企业店", "p": "34.9-179", "sa": 159, "g": "约6千", "gv": 6000, "b": 31, "v": 0, "l": 1, "ls": 149, "lg": "约6千", "lgv": 6000, "c": "--", "t": []}, {"n": "精河枸杞原浆30ml*90袋/箱鲜活头茬鲜果鲜榨不加一滴水", "s": "新疆精河枸杞特产馆", "p": "99", "sa": 53, "g": "约5千", "gv": 5000, "b": 2, "v": 0, "l": 2, "ls": 3, "lg": "约3百", "lgv": 300, "c": "--", "t": []}, {"n": "甄选-有机黑枸杞原浆", "s": "宁夏枸杞甄选小店", "p": "399", "sa": 13, "g": "约5千", "gv": 5000, "b": 3, "v": 0, "l": 1, "ls": 13, "lg": "约5千", "lgv": 5000, "c": "--", "t": []}, {"n": "中宁枸杞黑枸杞原浆2700ml礼盒", "s": "中宁枸杞电子商务", "p": "99", "sa": 52, "g": "约5千", "gv": 5000, "b": 1, "v": 0, "l": 1, "ls": 52, "lg": "约5千", "lgv": 5000, "c": "--", "t": []}, {"n": "纯耕 红黑枸杞原浆科学搭配到手90袋*30ml，共2700ml", "s": "杞里香", "p": "88-149", "sa": 56, "g": "约5千", "gv": 5000, "b": 26, "v": 0, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}];
+DATA.sp = [{"n": "宁之春红黑枸杞原浆早C晚A组合到手90袋共2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-99", "sa": 4617, "g": "约23万", "gv": 230000, "b": 209, "v": 8, "l": 49, "ls": 9, "lg": "约4百", "lgv": 400, "c": "1%", "t": []}, {"n": "宁之春红黑枸杞原浆早C晚A组合到手2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "88-99", "sa": 1706, "g": "约15万", "gv": 150000, "b": 22, "v": 3, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "【宠粉福利拍一发五】美羽栖黑枸杞原浆青海正宗枸杞花青素汁原液", "s": "美羽栖企业店", "p": "88.9-99.9", "sa": 489, "g": "约5万", "gv": 50000, "b": 110, "v": 1, "l": 5, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[滋补组合]纯耕红黑枸杞原浆组合1200ml、2700ml；宁夏的红枸杞，青海的黑枸杞饮红黑搭配", "s": "杞里香", "p": "38-198", "sa": 97, "g": "约4千", "gv": 4000, "b": 91, "v": 1, "l": 13, "ls": 1, "lg": "—", "lgv": 0, "c": "25%", "t": []}, {"n": "[99元滋补礼盒到手90袋]宁之春红黑枸杞原浆早C晚A组合到手2700ml", "s": "宁之春佳菡营养膳食企业店", "p": "38-199", "sa": 97, "g": "约4千", "gv": 4000, "b": 60, "v": 1, "l": 4, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "纯耕2.7L（90袋）量贩黑枸杞原浆，原液原汁,青海黑枸杞，富含花青素营养", "s": "纯耕", "p": "88-99", "sa": 32, "g": "约3千", "gv": 3000, "b": 9, "v": 2, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[现货速发]寰溪坊高浓缩金丝小分子冲饮&amp;居家日用冲调&amp;口感细腻纯正 枸杞原浆", "s": "寰溪坊滋补营养", "p": "91.9-99.9", "sa": 26, "g": "约2千", "gv": 2000, "b": 2, "v": 2, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "【拍五发六】早红+晚黑 黑红枸杞原浆 开瓶即饮q", "s": "月庆百货", "p": "9.9", "sa": 142, "g": "约1千", "gv": 1000, "b": 3, "v": 3, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "早康宁夏鲜果枸杞原浆早红晚黑大漠枸杞原浆礼盒装", "s": "早康", "p": "79-148", "sa": 15, "g": "约1千", "gv": 1000, "b": 3, "v": 6, "l": 1, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "宁之春人参枸杞原浆鲜果鲜榨礼盒装长白山人参宁夏枸杞[可试喝6袋]", "s": "宁之春佳菡营养膳食企业店", "p": "19-49", "sa": 44, "g": "约8百", "gv": 800, "b": 29, "v": 1, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "[滋补礼盒]纯耕红黑枸杞原浆组合1200ml/2700ml任选", "s": "杞里香", "p": "38-99", "sa": 15, "g": "约6百", "gv": 600, "b": 39, "v": 1, "l": 2, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "纯耕99元90袋；2700ml（90袋*30ml）；人参黄精枸杞原浆饮，宁夏头茬枸杞人参黄精肉苁蓉等", "s": "杞里香", "p": "43-99", "sa": 4, "g": "约2百", "gv": 200, "b": 4, "v": 1, "l": 7, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "源养集红黑滋补组合宁夏枸杞原浆天然鲜果鲜榨加班熬夜应酬", "s": "源养集", "p": "21.9-119.9", "sa": 1, "g": "—", "gv": 0, "b": 5, "v": 5, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "源养集宁夏头茬枸杞原浆天然鲜果鲜榨加班熬夜应酬早红晚黑", "s": "源养集", "p": "29.9-119.9", "sa": 0, "g": "—", "gv": 0, "b": 1, "v": 15, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "呀啦嗦 枸杞原浆&amp;黑枸杞原浆青海植物营养组合纯原浆30g*20袋/盒kk", "s": "呀啦嗦", "p": "41.9-199", "sa": 0, "g": "—", "gv": 0, "b": 4, "v": 1, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "国药有机鲜红枸杞原浆汁", "s": "小店", "p": "48.9", "sa": 0, "g": "—", "gv": 0, "b": 0, "v": 1, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "早康便携枸杞原浆礼盒", "s": "早康", "p": "79-148", "sa": 0, "g": "—", "gv": 0, "b": 1, "v": 4, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "杞滋堂枸杞原浆50ml*30支礼盒", "s": "杞滋堂工厂店", "p": "540", "sa": 0, "g": "—", "gv": 0, "b": 1, "v": 1, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "洛可果枸杞原浆黑枸杞红枸杞甄选原料不加一滴水30ml开袋即食送礼AY", "s": "洛可果鲜饮馆", "p": "29.9", "sa": 0, "g": "—", "gv": 0, "b": 0, "v": 1, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}];
+DATA.ll = [{"n": "【大牛夫妇专属】早红+晚黑 黑红枸杞原浆 开瓶即饮", "s": "月庆百货", "p": "0.99-9.9", "sa": 182, "g": "约2千", "gv": 2000, "b": 1, "v": 0, "l": 1, "ls": 176, "lg": "约2千", "lgv": 2000, "c": "--", "t": []}, {"n": "【拍五发六】早红+晚黑 黑红枸杞原浆 开瓶即饮q", "s": "月庆百货", "p": "9.9", "sa": 142, "g": "约1千", "gv": 1000, "b": 3, "v": 3, "l": 0, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}, {"n": "NFC汇乐益黑红枸杞原浆（味道随机）", "s": "森宝贸易", "p": "5", "sa": 240, "g": "约1千", "gv": 1000, "b": 1, "v": 0, "l": 1, "ls": 240, "lg": "约1千", "lgv": 1000, "c": "--", "t": []}, {"n": "福小禧鲜果鲜榨黑枸杞原浆袋装饮料枸杞原浆", "s": "福禧康养生滋补甄选店", "p": "9.99", "sa": 2, "g": "—", "gv": 0, "b": 2, "v": 0, "l": 1, "ls": 12, "lg": "约1百", "lgv": 100, "c": "--", "t": []}, {"n": "[官方正品] 倍膳健红枸杞黑枸杞原浆 300ml 植物饮料 开袋即饮 早晚搭配", "s": "BEISHANJIAN倍膳健青禾堂食品店", "p": "7.91-19.9", "sa": 1, "g": "—", "gv": 0, "b": 1, "v": 0, "l": 8, "ls": 0, "lg": "—", "lgv": 0, "c": "--", "t": []}];
+
+const CONFIG = [
+  {key:'nz', label:'宁之春 SKU', tip:'宁之春全渠道去重后 24 款商品，黄色高亮。'},
+  {key:'comp', label:'竞品参考 SKU', tip:'直播渠道销售额 TOP60 竞品商品，供选品对标。'},
+  {key:'sp', label:'短视频 SKU', tip:'短视频渠道全部 19 款商品（宁之春占 86.8%）。'},
+  {key:'ll', label:'直播引流款', tip:'直播间 9.9 元级低价引流挂车款（有销量 5 款）。'}
+];
+
+const fmt = n => n>=10000 ? (n/10000).toFixed(1)+'万' : n.toLocaleString();
+
+let state = {};
+function initState(){ CONFIG.forEach(c=>state[c.key]={sort:'gv',dir:-1,search:'',brand:'all',gmv:'all'}); }
+
+function renderTabs(){
+  const t = document.getElementById('tabs');
+  t.innerHTML = CONFIG.map((c,i)=>`<div class="tab ${i===0?'active':''}" data-i="${i}">${c.label}<span class="cnt">${DATA[c.key].length}</span></div>`).join('');
+  t.querySelectorAll('.tab').forEach(el=>el.onclick=()=>switchTab(+el.dataset.i));
+}
+function switchTab(i){
+  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab')[i].classList.add('active');
+  document.getElementById('panel-'+i).classList.add('active');
+  renderPanel(i);
+}
+
+function renderPanel(i){
+  const cfg = CONFIG[i]; const key = cfg.key;
+  const panel = document.getElementById('panel-'+i);
+  const st = state[key];
+  const brands = [...new Set(DATA[key].map(x=>x.s))].sort();
+  let list = DATA[key].slice();
+  if(st.search){ const q=st.search.toLowerCase(); list=list.filter(x=>x.n.toLowerCase().includes(q)||x.s.toLowerCase().includes(q)); }
+  if(st.brand!=='all') list=list.filter(x=>x.s===st.brand);
+  if(st.gmv==='high') list=list.filter(x=>x.gv>=50000);
+  else if(st.gmv==='mid') list=list.filter(x=>x.gv>=10000&&x.gv<50000);
+  else if(st.gmv==='low') list=list.filter(x=>x.gv<10000);
+  list.sort((a,b)=>{ const va=a[st.sort]||0,vb=b[st.sort]||0; return (typeof va==='string'?va.localeCompare(vb):va-vb)*st.dir; });
+
+  const tool = `<div class="toolbar">
+    <input type="text" placeholder="搜索商品名 / 品牌…" value="${st.search}">
+    <select id="brand-${i}">
+      <option value="all">全部品牌</option>${brands.map(b=>`<option value="${b}" ${st.brand===b?'selected':''}>${b}</option>`).join('')}
+    </select>
+    <select id="gmv-${i}">
+      <option value="all" ${st.gmv==='all'?'selected':''}>全部销售额</option>
+      <option value="high" ${st.gmv==='high'?'selected':''}>5万以上</option>
+      <option value="mid" ${st.gmv==='mid'?'selected':''}>1万-5万</option>
+      <option value="low" ${st.gmv==='low'?'selected':''}>1万以下</option>
+    </select>
+  </div>`;
+  const tip = `<div class="tip">${cfg.tip} 当前显示 ${list.length} / ${DATA[key].length} 款。</div>`;
+
+  const cols = ['商品名称','品牌来源','价格(元)','销量','销售额(脱敏)','关联博主','30天视频','30天直播场次','30天直播销量','30天直播销售额(脱敏)','佣金率'];
+  const kcols = ['n','s','p','sa','g','b','v','l','ls','lg','c'];
+  const sortable = {'n':'n','p':'p','sa':'sa','g':'gv','b':'b','lg':'lgv'};
+  const headers = cols.map((h,ci)=>{
+    const k=kcols[ci]; let arrow='';
+    if(k in sortable){ arrow = st.sort===k ? (st.dir===-1?'↓':'↑') : '↕'; }
+    return `<th class="sortable ${k==='g'||k==='lg'?'num-r':''}" data-k="${k}" data-v="${sortable[k]?sortable[k]:''}" data-opt="${sortable[k]?'1':'0'}">${h}<span class="arrow">${arrow}</span></th>`;
+  }).join('');
+
+  const body = list.map(x=>{
+    const hot = x.gv>=100000;
+    const isNz = key==='nz';
+    const tags = (x.t||[]).map(t=>`<span class="tag ${['红黑组合','礼盒','达人专供'].includes(t)?'amber':''}">${t}</span>`).join('');
+    return `<tr class="${isNz?'nz':''}">
+      <td class="name-cell">${x.n}<div class="src">${tags}${x.s}</div></td>
+      <td>${x.s}</td>
+      <td>${x.p}</td>
+      <td>${x.sa?fmt(x.sa):'—'}</td>
+      <td class="gmv ${hot?'hot':''} num-r">${x.g}</td>
+      <td>${x.b||'—'}</td>
+      <td>${x.v||'—'}</td>
+      <td>${x.l||'—'}</td>
+      <td>${x.ls?fmt(x.ls):'—'}</td>
+      <td class="num-r">${x.lg}</td>
+      <td class="com">${x.c==='--'||x.c==='nan'?'—':x.c}</td>
+    </tr>`;
+  }).join('');
+
+  panel.innerHTML = tool + tip + `<div class="tbl-card"><table><thead><tr>${headers}</tr></thead><tbody>${body||'<tr><td colspan="11" style="text-align:center;padding:30px;color:#999">无匹配商品</td></tr>'}</tbody></table></div>`;
+
+  panel.querySelector('input').oninput = e=>{ st.search=e.target.value; renderPanel(i); };
+  document.getElementById('brand-'+i).onchange = e=>{ st.brand=e.target.value; renderPanel(i); };
+  document.getElementById('gmv-'+i).onchange = e=>{ st.gmv=e.target.value; renderPanel(i); };
+  panel.querySelectorAll('th[data-opt="1"]').forEach(th=>th.onclick=()=>{
+    const k=th.dataset.v||th.dataset.k;
+    if(st.sort===k) st.dir*=-1; else { st.sort=k; st.dir=-1; }
+    renderPanel(i);
+  });
+}
+
+initState();
+renderTabs();
+renderPanel(0);
+</script>
+</body>
+</html>
