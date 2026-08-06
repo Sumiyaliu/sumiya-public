@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>至上元气 · 人参皂苷品类选品分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+    --bg-primary: #f0f2f5;
+    --bg-card: #ffffff;
+    --bg-header: #0d2b4e;
+    --bg-accent: #e8f0fe;
+    --text-primary: #1a1a2e;
+    --text-secondary: #6c757d;
+    --text-light: #999;
+    --text-on-dark: #ffffff;
+    --color-primary: #1a56a3;
+    --color-1: #2563eb;
+    --color-2: #f59e0b;
+    --color-3: #10b981;
+    --color-4: #ef4444;
+    --color-5: #8b5cf6;
+    --color-6: #ec4899;
+    --positive: #10b981;
+    --negative: #ef4444;
+    --warning: #f59e0b;
+    --radius: 10px;
+    --gap: 20px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1280px; margin: 0 auto; padding: var(--gap); }
+
+/* Header */
+.hero {
+    background: linear-gradient(135deg, #0d2b4e 0%, #1a56a3 100%);
+    color: var(--text-on-dark);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    margin-bottom: var(--gap);
+    box-shadow: var(--shadow-lg);
+}
+.hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+.hero .subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 4px; }
+.hero .meta { font-size: 13px; opacity: 0.6; }
+.hero .brand-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--bg-header);
+    margin: 32px 0 16px 0;
+    padding-left: 12px;
+    border-left: 4px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.section-title .num {
+    background: var(--color-primary);
+    color: #fff;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+}
+
+/* KPI Cards */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+    margin-bottom: var(--gap);
+}
+.kpi-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.kpi-card .label { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+.kpi-card .value { font-size: 30px; font-weight: 800; color: var(--bg-header); line-height: 1.1; }
+.kpi-card .note { font-size: 12px; color: var(--text-light); margin-top: 6px; }
+.kpi-card.warning .value { color: var(--negative); }
+.kpi-card.warning { border-left: 4px solid var(--negative); }
+.kpi-card.success { border-left: 4px solid var(--positive); }
+
+/* Charts */
+.chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    margin-bottom: var(--gap);
+}
+.chart-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+.chart-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+.chart-wrapper { position: relative; height: 280px; }
+
+/* Findings */
+.findings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    margin-bottom: var(--gap);
+}
+.finding-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--color-primary);
+    display: flex;
+    gap: 16px;
+}
+.finding-card .badge {
+    flex-shrink: 0;
+    background: var(--color-primary);
+    color: #fff;
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px;
+}
+.finding-card .content h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
+.finding-card .content p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+/* Strategy Cards */
+.strategy-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.strategy-card .num-badge {
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #2563eb, #1a56a3);
+    color: #fff;
+    min-width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+}
+.strategy-card .body h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--bg-header); }
+.strategy-card .body p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* Matrix Table */
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: var(--gap);
+}
+.matrix-table thead {
+    background: linear-gradient(135deg, #0d2b4e, #1a56a3);
+    color: #fff;
+}
+.matrix-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+}
+.matrix-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+.matrix-table tbody tr:hover { background: var(--bg-accent); }
+.matrix-table .priority-high { color: var(--negative); font-weight: 700; }
+.matrix-table .priority-mid { color: var(--warning); font-weight: 600; }
+.matrix-table .priority-low { color: var(--text-light); }
+.matrix-table .role-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.role-lead { background: #fee2e2; color: #991b1b; }
+-role-profit { background: #dbeafe; color: #1e40af; }
+.role-period { background: #fef3c7; color: #92400e; }
+.role-gift { background: #e0e7ff; color: #3730a3; }
+.role-extend { background: #f0fdf4; color: #166534; }
+.role-sleep { background: #faf5ff; color: #6b21a8; }
+
+/* Action Plan */
+.action-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: var(--gap);
+}
+.action-table thead {
+    background: linear-gradient(135deg, #0d2b4e, #1a56a3);
+    color: #fff;
+}
+.action-table th { padding: 12px 14px; text-align: left; font-weight: 600; white-space: nowrap; }
+.action-table td { padding: 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.action-table .p0 { background: #fef2f2; font-weight: 700; color: var(--negative); text-align: center; }
+.action-table .p1 { background: #fffbeb; font-weight: 600; color: var(--warning); text-align: center; }
+.action-table .p2 { background: #f0fdf4; font-weight: 600; color: var(--positive); text-align: center; }
+.action-table .deadline { font-weight: 600; color: var(--color-primary); white-space: nowrap; }
+
+/* Risk Cards */
+.risk-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    border-left: 4px solid var(--negative);
+    display: flex;
+    gap: 16px;
+}
+.risk-card .risk-badge {
+    flex-shrink: 0;
+    background: var(--negative);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    height: fit-content;
+    white-space: nowrap;
+}
+.risk-card .body h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
+.risk-card .body p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.risk-card .body .suggestion {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #f0fdf4;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #166534;
+}
+
+/* Competitor Table */
+.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: var(--gap);
+}
+.comp-table thead {
+    background: linear-gradient(135deg, #0d2b4e, #1a56a3);
+    color: #fff;
+}
+.comp-table th { padding: 12px 14px; text-align: left; font-weight: 600; }
+.comp-table td { padding: 12px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.comp-table .highlight { background: #fef9e7; }
+.comp-table .is-zs { background: #e8f0fe; font-weight: 600; }
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .chart-grid { grid-template-columns: 1fr; }
+    .findings-grid { grid-template-columns: 1fr; }
+    .container { padding: 12px; }
+}
+@media print {
+    body { background: #fff; }
+    .container { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+    <div class="subtitle">至上元气 · 人参皂苷轻养生品牌</div>
+    <h1>人参皂苷品类选品分析报告</h1>
+    <div class="meta">数据来源：友望数据商品搜索 | 分析日期：2026年8月6日 | 数据范围：微信视频号渠道</div>
+    <div class="brand-tag">品牌定位：稀有皂苷人参饮 · 200-300元中高端价格带</div>
+</div>
+
+<!-- Section 1: KPI -->
+<div class="section-title"><span class="num">1</span> 核心指标概览</div>
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="label">商品总数</div>
+        <div class="value">55</div>
+        <div class="note">去重后商品数</div>
+    </div>
+    <div class="kpi-card warning">
+        <div class="label">有销量商品数</div>
+        <div class="value">4</div>
+        <div class="note">占比仅 7.3%，品类教育不足</div>
+    </div>
+    <div class="kpi-card">
+        <div class="label">品类总销售额</div>
+        <div class="value">12.4<span style="font-size:16px">万</span></div>
+        <div class="note">全品类累计</div>
+    </div>
+    <div class="kpi-card">
+        <div class="label">品类平均价格</div>
+        <div class="value">400<span style="font-size:16px">元</span></div>
+        <div class="note">中位数 199 元</div>
+    </div>
+    <div class="kpi-card warning">
+        <div class="label">至上元气 SKU 数</div>
+        <div class="value">5</div>
+        <div class="note">当前在售</div>
+    </div>
+    <div class="kpi-card warning">
+        <div class="label">至上元气销量</div>
+        <div class="value">0<span style="font-size:16px"> 单</span></div>
+        <div class="note">零动销，需重点关注</div>
+    </div>
+    <div class="kpi-card">
+        <div class="label">30天直播销售额</div>
+        <div class="value">0.99<span style="font-size:16px">万</span></div>
+        <div class="note">直播渠道几乎空白</div>
+    </div>
+    <div class="kpi-card success">
+        <div class="label">200-300元占比</div>
+        <div class="value">97.2<span style="font-size:16px">%</span></div>
+        <div class="note">品类销售额来自该价格带</div>
+    </div>
+</div>
+
+<!-- Section 2: Charts -->
+<div class="section-title"><span class="num">2</span> 数据分析</div>
+<div class="chart-grid">
+    <div class="chart-card">
+        <h3>各价格区间销售额对比</h3>
+        <div class="chart-wrapper"><canvas id="chart-price"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>各产品类型销售额对比</h3>
+        <div class="chart-wrapper"><canvas id="chart-type"></canvas></div>
+    </div>
+</div>
+<div class="chart-grid">
+    <div class="chart-card">
+        <h3>各价格区间商品数 vs 有销量商品数</h3>
+        <div class="chart-wrapper"><canvas id="chart-tier-count"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>品牌销售额 TOP 5</h3>
+        <div class="chart-wrapper"><canvas id="chart-brand"></canvas></div>
+    </div>
+</div>
+
+<!-- Section 3: Findings -->
+<div class="section-title"><span class="num">3</span> 关键发现</div>
+<div class="findings-grid">
+    <div class="finding-card">
+        <div class="badge">1</div>
+        <div class="content">
+            <h4>品类整体处于早期阶段</h4>
+            <p>55个商品中仅4个有销量，总销售额12.4万元。说明"稀有皂苷人参饮"品类在微信视频号渠道仍处于市场教育期，消费者认知度低。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--positive);">
+        <div class="badge" style="background:var(--positive)">2</div>
+        <div class="content">
+            <h4>200-300元价格带是唯一验证过的有效区间</h4>
+            <p>该价格带贡献了97.2%的销售额，其中敖东红参皂苷冻干粉(299元)以403单/12万元销售额成为品类标杆。至上元气主定价297元正落在该区间。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--warning);">
+        <div class="badge" style="background:var(--warning)">3</div>
+        <div class="content">
+            <h4>冻干粉/固体饮料形态优势明显</h4>
+            <p>冻干粉形态单SKU贡献12万元销售额，远超液态饮品(19个SKU仅2,525元)。液态饮品虽SKU多，但尚未跑通。至上元气主打即饮液态，需重点关注。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--negative);">
+        <div class="badge" style="background:var(--negative)">4</div>
+        <div class="content">
+            <h4>至上元气当前零销量零活动</h4>
+            <p>5个SKU均零销量、零直播、零视频关联，在渠道中完全没有动销。商品分散在"颜之本悟"和"至上元气臻泰"两个店铺，且未设置佣金率。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--negative);">
+        <div class="badge" style="background:var(--negative)">5</div>
+        <div class="content">
+            <h4>定价体系混乱</h4>
+            <p>至上元气SKU价格从99元到999元跨度极大(99/292/297/994/999)，且同一产品不同规格价差明显，消费者选择困惑，不利于品牌心智建立。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--color-5);">
+        <div class="badge" style="background:var(--color-5)">6</div>
+        <div class="content">
+            <h4>直播渠道几乎空白</h4>
+            <p>全品类仅3个商品有直播活动，30天直播销售额不到1万元。直播作为视频号核心带货场景，几乎没有品牌在做人参皂苷品类。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--color-5);">
+        <div class="badge" style="background:var(--color-5)">7</div>
+        <div class="content">
+            <h4>佣金率设置缺失</h4>
+            <p>55个商品中仅2个设置了佣金率(25%-35%)，大部分商品未设佣金，导致达人缺乏带货动力。</p>
+        </div>
+    </div>
+    <div class="finding-card" style="border-left-color: var(--color-6);">
+        <div class="badge" style="background:var(--color-6)">8</div>
+        <div class="content">
+            <h4>品类标杆对标机会</h4>
+            <p>敖东(299元冻干粉)验证了价格带和形态，参秘(57-168元饮品)验证了低价引流策略，Arctic Treasure(39场直播)验证了高频直播打法。至上元气可三路并进。</p>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: Strategy -->
+<div class="section-title"><span class="num">4</span> 选品核心策略</div>
+<div class="strategy-card">
+    <div class="num-badge">1</div>
+    <div class="body">
+        <h4>锁定200-300元核心价格带</h4>
+        <p>数据显示200-300元价格带贡献了品类97.2%的销售额，敖东299元单品验证了该价格带的有效性。至上元气核心单品定价297元完全匹配，应作为主推价格锚点，不轻易降价。</p>
+    </div>
+</div>
+<div class="strategy-card">
+    <div class="num-badge">2</div>
+    <div class="body">
+        <h4>构建"引流款+利润款+礼赠款"三层产品矩阵</h4>
+        <p>引流款(99元单瓶体验装)降低试错门槛；利润款(297元标准装)作为核心利润来源；礼赠款(598-998元礼盒)覆盖送礼场景。三层结构覆盖不同消费决策阶段。</p>
+    </div>
+</div>
+<div class="strategy-card">
+    <div class="num-badge">3</div>
+    <div class="body">
+        <h4>即饮液态为主，冻干粉为辅</h4>
+        <p>虽然冻干粉形态目前跑出标杆(敖东)，但至上元气的品牌差异化在于"即饮便携+稀有皂苷"。建议保持液态即饮为核心，同时开发冻干粉/固体饮料SKU作为补充，覆盖偏好冲泡形态的消费者。</p>
+    </div>
+</div>
+<div class="strategy-card">
+    <div class="num-badge">4</div>
+    <div class="body">
+        <h4>聚焦"稀有皂苷"差异化心智，避免同质化价格战</h4>
+        <p>竞品多模糊宣传"含皂苷"，无数据支撑。至上元气应以"9种稀有人参皂苷+50000ug总皂苷+HPLC图谱全公开"建立数据壁垒，不做低价竞争，做价值教育。</p>
+    </div>
+</div>
+<div class="strategy-card">
+    <div class="num-badge">5</div>
+    <div class="body">
+        <h4>快速布局直播+达人分销</h4>
+        <p>当前品类直播几乎空白(仅3个商品有直播活动)，是先发制人的窗口期。建议立即设置25%-35%佣金率，匹配健康养生类达人进行直播带货，抢占品类心智。</p>
+    </div>
+</div>
+
+<!-- Section 5: Product Matrix -->
+<div class="section-title"><span class="num">5</span> 建议产品矩阵</div>
+<table class="matrix-table">
+    <thead>
+        <tr>
+            <th style="width:110px">产品定位</th>
+            <th>建议 SKU</th>
+            <th style="width:110px">价格区间</th>
+            <th style="width:180px">目标人群</th>
+            <th>核心卖点</th>
+            <th style="width:80px">优先级</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="role-tag role-lead">引流体验款</span></td>
+            <td>参萃续航饮 · 单瓶体验装</td>
+            <td><strong>89-99元</strong></td>
+            <td>初次尝试、价格敏感型职场人</td>
+            <td>低门槛体验稀有皂苷，1瓶≈25根2g人参泡水</td>
+            <td class="priority-high">★★★ 高</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="role-tag role-profit">核心利润款</span></td>
+            <td>参萃草本饮 · 标准装(6瓶)</td>
+            <td><strong>297-328元</strong></td>
+            <td>25-45岁职场中坚，日常抗疲劳自用</td>
+            <td>50000ug皂苷+22种皂苷+9种稀有皂苷，日夜双向调节</td>
+            <td class="priority-high">★★★ 最高</td>
+        </tr>
+        <tr>
+            <td><span class="role-tag role-period">周期养护款</span></td>
+            <td>参萃续航饮 · 月度装(15瓶)</td>
+            <td><strong>598-698元</strong></td>
+            <td>长期饮用、追求效果最大化的用户</td>
+            <td>月度周期养护，均摊日成本低至20元</td>
+            <td class="priority-mid">★★ 中</td>
+        </tr>
+        <tr>
+            <td><span class="role-tag role-gift">商务礼赠款</span></td>
+            <td>参萃续航礼盒 · 尊享装</td>
+            <td><strong>898-998元</strong></td>
+            <td>商务送礼、节日礼赠人群</td>
+            <td>高端礼盒+稀有皂苷数据透明+中科院背书</td>
+            <td class="priority-mid">★★ 中</td>
+        </tr>
+        <tr>
+            <td><span class="role-tag role-extend">延伸冻干款</span></td>
+            <td>稀有皂苷冻干粉 · 便携装</td>
+            <td><strong>259-299元</strong></td>
+            <td>偏好冲泡、出差场景用户</td>
+            <td>对标敖东冻干粉形态，以稀有皂苷含量差异化</td>
+            <td class="priority-mid">★★ 中</td>
+        </tr>
+        <tr>
+            <td><span class="role-tag role-sleep">助眠细分款</span></td>
+            <td>参萃草本饮 · 夜安版</td>
+            <td><strong>297-358元</strong></td>
+            <td>失眠焦虑、压力型失眠人群</td>
+            <td>夜间Rb1等成分安神助眠，精准切入助眠赛道</td>
+            <td class="priority-low">★ 低(二期)</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Section 6: Action Plan -->
+<div class="section-title"><span class="num">6</span> 行动建议（按优先级排序）</div>
+<table class="action-table">
+    <thead>
+        <tr>
+            <th style="width:60px">优先级</th>
+            <th style="width:130px">行动项</th>
+            <th>具体措施</th>
+            <th style="width:160px">预期效果</th>
+            <th style="width:70px">时间节点</th>
+            <th style="width:100px">负责方</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="p0">P0<br>紧急</td>
+            <td>清理定价体系</td>
+            <td>统一核心单品为297元标准装；取消999元礼盒(降为898元)；保留99元体验装引流。减少SKU数量，聚焦3-4个核心规格。</td>
+            <td>消除消费者选择困惑，集中销量</td>
+            <td class="deadline">1周内</td>
+            <td>品牌部+电商部</td>
+        </tr>
+        <tr>
+            <td class="p0">P0<br>紧急</td>
+            <td>设置佣金率</td>
+            <td>所有SKU设置30%-35%佣金率，高于品类平均(25%-35%)，吸引达人主动选品。</td>
+            <td>解锁达人分销渠道</td>
+            <td class="deadline">3天内</td>
+            <td>电商运营</td>
+        </tr>
+        <tr>
+            <td class="p0">P0<br>紧急</td>
+            <td>启动直播带货</td>
+            <td>匹配10-20位健康养生类达人进行专场直播；准备"稀有皂苷"品类教育话术和实验道具(HPLC图谱展示)。</td>
+            <td>从0到1建立直播动销</td>
+            <td class="deadline">2周内</td>
+            <td>直播运营</td>
+        </tr>
+        <tr>
+            <td class="p1">P1<br>重要</td>
+            <td>开发冻干粉SKU</td>
+            <td>基于现有参萃草本饮配方，开发冻干粉/固体饮料形态SKU，定价259-299元，对标敖东跑通品类。</td>
+            <td>覆盖冲泡偏好用户，抢占冻干粉赛道</td>
+            <td class="deadline">1-2月</td>
+            <td>产品研发</td>
+        </tr>
+        <tr>
+            <td class="p1">P1<br>重要</td>
+            <td>统一店铺运营</td>
+            <td>合并"颜之本悟"和"至上元气臻泰"为一个官方旗舰店，统一品牌形象和价格体系。</td>
+            <td>集中流量，提升品牌信任度</td>
+            <td class="deadline">1周内</td>
+            <td>电商部</td>
+        </tr>
+        <tr>
+            <td class="p1">P1<br>重要</td>
+            <td>制作品类教育短视频</td>
+            <td>产出"什么是稀有皂苷""为什么9种稀有皂苷更重要"等科普短视频，建立品类认知。</td>
+            <td>降低消费者决策门槛</td>
+            <td class="deadline">持续</td>
+            <td>内容运营</td>
+        </tr>
+        <tr>
+            <td class="p2">P2<br>跟进</td>
+            <td>开发周期装SKU</td>
+            <td>推出15瓶月度装/30瓶季装，降低单瓶均摊成本，提升复购率。</td>
+            <td>提升客单价和复购</td>
+            <td class="deadline">1-2月</td>
+            <td>产品研发</td>
+        </tr>
+        <tr>
+            <td class="p2">P2<br>跟进</td>
+            <td>布局助眠细分场景</td>
+            <td>基于"夜间安神"功效开发夜安版产品，切入助眠细分赛道，差异化竞争。</td>
+            <td>拓展品类边界</td>
+            <td class="deadline">3-6月</td>
+            <td>产品研发+品牌部</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Section 7: Competitor Reference -->
+<div class="section-title"><span class="num">7</span> 竞品标杆对标参考</div>
+<table class="comp-table">
+    <thead>
+        <tr>
+            <th style="width:180px">竞品标杆</th>
+            <th style="width:80px">价格</th>
+            <th style="width:60px">销量</th>
+            <th style="width:80px">销售额</th>
+            <th>核心成功要素</th>
+            <th>至上元气可借鉴点</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="highlight">
+            <td><strong>敖东红参皂苷冻干粉</strong></td>
+            <td>299元</td>
+            <td>403单</td>
+            <td>12万元</td>
+            <td>299元精准定价+冻干粉便携形态+"稀有皂苷"关键词卡位+独立包装礼盒装</td>
+            <td>定价299元区间已被验证有效；冻干粉形态值得跟进；独立包装礼盒装适配送礼</td>
+        </tr>
+        <tr>
+            <td><strong>参秘人参营养素饮品</strong></td>
+            <td>57-168元</td>
+            <td>43单</td>
+            <td>2,525元</td>
+            <td>低价入门+稀有人参皂苷8万微克/盒量化卖点+直播带货</td>
+            <td>量化皂苷含量的思路一致；低价引流策略可借鉴(99元体验装)</td>
+        </tr>
+        <tr>
+            <td><strong>Arctic Treasure 西洋参</strong></td>
+            <td>93-199元</td>
+            <td>6单</td>
+            <td>994元</td>
+            <td>39场直播高频曝光+进口背书+多价格规格</td>
+            <td>高频直播策略值得学习(39场)；多规格覆盖不同预算</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Section 8: Risk Warning -->
+<div class="section-title"><span class="num">8</span> 风险提示</div>
+<div class="risk-card">
+    <div class="risk-badge">风险1</div>
+    <div class="body">
+        <h4>品类教育成本高</h4>
+        <p>55个商品仅4个有销量，说明消费者对"稀有皂苷"概念认知度极低。需投入大量内容教育市场，短期ROI可能不达预期。</p>
+        <div class="suggestion">建议：分阶段投入，先以达人直播做品类教育，再放量投流。</div>
+    </div>
+</div>
+<div class="risk-card">
+    <div class="risk-badge">风险2</div>
+    <div class="body">
+        <h4>液态饮品形态未被验证</h4>
+        <p>当前品类跑通的标杆(敖东)是冻干粉形态，液态即饮形态19个SKU仅产生2,525元销售额。至上元气主推液态即饮，存在形态偏好风险。</p>
+        <div class="suggestion">建议：同步开发冻干粉SKU作为对冲。</div>
+    </div>
+</div>
+<div class="risk-card">
+    <div class="risk-badge">风险3</div>
+    <div class="body">
+        <h4>价格带竞争加剧</h4>
+        <p>200-300元价格带已有敖东等品牌占据，随着品类热度上升，更多竞品将涌入。</p>
+        <div class="suggestion">建议：加速稀有皂苷数据化心智建设，建立专利和科研壁垒，形成先发优势。</div>
+    </div>
+</div>
+<div class="risk-card">
+    <div class="risk-badge">风险4</div>
+    <div class="body">
+        <h4>渠道依赖达人直播</h4>
+        <p>视频号渠道核心带货模式依赖达人直播，品牌自播能力尚未建立。</p>
+        <div class="suggestion">建议：在达人直播起量的同时，同步建设品牌自播间，形成"达人分销+品牌自播"双轮驱动。</div>
+    </div>
+</div>
+
+<!-- Section 9: Competitor Detail -->
+<div class="section-title"><span class="num">9</span> 全部竞品商品明细</div>
+<table class="comp-table" id="detail-table">
+    <thead>
+        <tr>
+            <th style="width:40px">#</th>
+            <th>商品名称</th>
+            <th style="width:120px">品牌/来源</th>
+            <th style="width:80px">价格</th>
+            <th style="width:60px">销量</th>
+            <th style="width:80px">销售额</th>
+            <th style="width:60px">直播</th>
+            <th style="width:60px">直播销量</th>
+            <th style="width:80px">直播销售额</th>
+        </tr>
+    </thead>
+    <tbody id="detail-body"></tbody>
+</table>
+
+<div class="footer">
+    至上元气 · 人参皂苷轻养生品牌 · 选品分析报告 · 2026年8月6日
+</div>
+
+</div>
+
+<script>
+// Embedded data
+const PRODUCTS = [
+    {name:"敖东红参皂苷冻干粉人参滋补品膳食营养药食同源稀有人参皂苷独立包装礼盒装送礼D",brand:"敖东颐正健康滋补",price:"299",sales:403,revenue:120497,lives:1,liveSales:30,liveRev:8970,isZs:false},
+    {name:"参秘人参营养素饮品（含稀有人参皂苷8万微克/盒）",brand:"参秘-吉林参秘",price:"57-168",sales:43,revenue:2525,lives:1,liveSales:4,liveRev:272,isZs:false},
+    {name:"加拿大Arctic Treasure进口西洋参长斜片人参皂苷泡水切片送礼含片花旗参",brand:"ArcticTreasure枫运",price:"93-199",sales:6,revenue:994,lives:39,liveSales:4,liveRev:696,isZs:false},
+    {name:"ARCTIC SKY 加拿大进口西洋参 北极天空西洋参 花旗参60克瓶装",brand:"北极一号加拿大",price:"88-399",sales:2,revenue:179,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"至上元气参萃续航长白山5年人参15种稀有人参皂苷",brand:"颜之本悟",price:"297",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:true},
+    {name:"至上元气参萃续航长白山5年人参9种稀有人参皂苷",brand:"颜之本悟",price:"292-994",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:true},
+    {name:"[天舒老师专属]至上元气参萃续航长白山5年人参9种以上稀有人参皂苷礼盒装",brand:"颜之本悟",price:"999",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:true},
+    {name:"至上元气参萃续航饮-49000人参皂苷",brand:"至上元气臻泰",price:"297",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:true},
+    {name:"【至上元气】参萃续航饮（5年人参9种稀有人参皂苷）",brand:"至上元气臻泰",price:"99",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:true},
+    {name:"[奶爸乐哥专属]【参润月养】养生健康吉林长白山人参皂苷饮品送礼佳品高端",brand:"至上元气臻泰",price:"289-297",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"鹰牌花旗参固体饮料单盒装40包 西洋参人参皂苷",brand:"鹰牌花旗参",price:"279-1395",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"北京同仁堂内廷上用红参片人参皂苷滋补营养送父母长辈 礼盒装",brand:"九芝堂旭虹",price:"119-129",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"巨子生物速力奥能量口味发酵人参营养饮料人参皂苷饮品6罐",brand:"速力奥",price:"53.8-60",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"NORTHPOLE 1 北极一号 加拿大进口西洋参花旗参60g至227克礼盒装",brand:"加拿大北极参",price:"220",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"加拿大西洋参片100g/罐人参皂苷含片滋补品",brand:"龙宝滋补养生",price:"79.9-89.9",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"头盏灯即食黄金蜜制陈皮人参整根五年人参皂苷健康滋补品七支装礼盒装",brand:"头盏灯鼎陈陈皮",price:"198-199",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"长白山人参活性冻干参 煲汤泡酒正宗东北吉林特产人参 富含人参皂苷",brand:"长白山人参CBMGINSENG",price:"93-99",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"老谷头黑参浸膏浓缩萃取精华液人参皂苷滋补品礼盒装长辈",brand:"谷记老谷头",price:"242-248",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"今幸参元复合饮 富含多种高活性稀有人参皂苷",brand:"今幸",price:"292-298",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"今幸参元复合固体饮料 富含多种高活性稀有人参皂苷",brand:"今幸",price:"193-199",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"敖东红参饮30%浓缩人参皂苷精华源自长白山有机产地 0添加更放心",brand:"敖东健康",price:"369-399",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"正官庄人参红参切参礼盒礼品人参皂苷 送长辈父母 模压红参切参",brand:"正官庄参",price:"375-380",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"加拿大进口西洋参Arctic Treasure瓜子片人参皂苷礼盒泡水切片送礼含片花旗参",brand:"ArcticTreasure枫运",price:"392-398",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"巨子生物SKIGIN欣苷人参姜橙饮燃动EGCG热燃人参皂苷三伏天茶茯苓肉桂",brand:"SKIGIN欣苷",price:"279-537",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"ARCTIC SKY北极天空 加拿大进口西洋参100g至227克每盒各种规格分装方式",brand:"北极一号加拿大",price:"228-550",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"加拿大西洋参Arctic Treasure进口长斜片人参皂苷泡水切片送礼含片花旗参",brand:"ArcticTreasure枫运",price:"199",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"福东海 吉林长白山 红参 45克/瓶 5年 红参切片人参皂苷",brand:"福东海",price:"69.9-149",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"敖东西洋参原浆 10ml*30袋 精选优质西洋参 浓缩精华 含人参皂苷",brand:"敖东",price:"599",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"北京同仁堂内廷上用红参片人参皂苷滋补营养送父母长辈 礼盒装",brand:"同仁堂",price:"399",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"食尚知补西洋参片 加拿大花旗参片人参皂苷西洋参含片参茶",brand:"食尚知补",price:"449-499",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"陇膳堂 西洋参切片150克/1.6cm特大片 长白山产地 养生滋补礼品送长辈",brand:"陇膳堂",price:"168",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"橘香芯蕊 红参中大片60克人参皂苷红气滋补营养品红利含片切片",brand:"橘香芯蕊",price:"59",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+    {name:"头盏灯即食黄金蜜制陈皮人参整根五年人参皂苷健康滋补品七支装礼盒装送礼佳品",brand:"头盏灯鼎陈陈皮",price:"198",sales:0,revenue:0,lives:0,liveSales:0,liveRev:0,isZs:false},
+];
+
+// Sort by revenue desc
+PRODUCTS.sort((a,b) => b.revenue - a.revenue);
+
+// Render detail table
+const tbody = document.getElementById('detail-body');
+PRODUCTS.forEach((p, i) => {
+    const tr = document.createElement('tr');
+    if (p.isZs) tr.className = 'is-zs';
+    tr.innerHTML = `
+        <td style="text-align:center;color:#999">${i+1}</td>
+        <td>${p.isZs ? '【至上元气】' : ''}${p.name}</td>
+        <td>${p.brand}</td>
+        <td style="text-align:center">${p.price}</td>
+        <td style="text-align:center">${p.sales > 0 ? '<strong style="color:#10b981">' + p.sales + '</strong>' : '0'}</td>
+        <td style="text-align:center">${p.revenue > 0 ? '<strong>' + p.revenue.toLocaleString() + '</strong>' : '0'}</td>
+        <td style="text-align:center">${p.lives > 0 ? p.lives : '-'}</td>
+        <td style="text-align:center">${p.liveSales > 0 ? p.liveSales : '-'}</td>
+        <td style="text-align:center">${p.liveRev > 0 ? p.liveRev.toLocaleString() : '-'}</td>
+    `;
+    tbody.appendChild(tr);
+});
+
+// Charts
+const COLORS = ['#2563eb','#f59e0b','#10b981','#ef4444','#8b5cf6','#ec4899'];
+
+// Chart 1: Price tier revenue
+new Chart(document.getElementById('chart-price'), {
+    type: 'bar',
+    data: {
+        labels: ['0-100元','100-200元','200-300元','300-500元','500元以上'],
+        datasets: [{
+            label: '销售额(元)',
+            data: [0, 3519, 120676, 0, 0],
+            backgroundColor: ['#e5e7eb','#fde68a','#10b981','#fca5a5','#f3e8ff'],
+            borderColor: ['#9ca3af','#f59e0b','#059669','#dc2626','#8b5cf6'],
+            borderWidth: 2,
+            borderRadius: 6,
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' 元' } }
+        },
+        scales: {
+            y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() + '元' } }
+        }
+    }
+});
+
+// Chart 2: Product type revenue
+new Chart(document.getElementById('chart-type'), {
+    type: 'bar',
+    data: {
+        labels: ['冻干粉/固体饮料','人参饮品/液态','西洋参片/含片','红参片','其他'],
+        datasets: [{
+            label: '销售额(元)',
+            data: [120497, 2525, 994, 0, 179],
+            backgroundColor: COLORS.map(c => c + 'CC'),
+            borderColor: COLORS,
+            borderWidth: 1,
+            borderRadius: 4,
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' 元' } }
+        },
+        scales: {
+            x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } }
+        }
+    }
+});
+
+// Chart 3: Tier count vs sold
+new Chart(document.getElementById('chart-tier-count'), {
+    type: 'bar',
+    data: {
+        labels: ['0-100元','100-200元','200-300元','300-500元','500元以上'],
+        datasets: [
+            {
+                label: '商品总数',
+                data: [15, 13, 8, 10, 9],
+                backgroundColor: '#93c5fd',
+                borderRadius: 4,
+            },
+            {
+                label: '有销量商品数',
+                data: [0, 2, 2, 0, 0],
+                backgroundColor: '#10b981',
+                borderRadius: 4,
+            }
+        ]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'top', labels: { usePointStyle: true, padding: 16 } }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } }
+    }
+});
+
+// Chart 4: Brand revenue top 5
+new Chart(document.getElementById('chart-brand'), {
+    type: 'doughnut',
+    data: {
+        labels: ['敖东颐正健康滋补','参秘-吉林参秘','ArcticTreasure枫运','北极一号加拿大','其他'],
+        datasets: [{
+            data: [120497, 2525, 994, 179, 0],
+            backgroundColor: ['#2563eb','#f59e0b','#10b981','#ef4444','#e5e7eb'],
+            borderColor: '#fff',
+            borderWidth: 2,
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        cutout: '55%',
+        plugins: {
+            legend: { position: 'right', labels: { usePointStyle: true, padding: 12, font: { size: 12 } } },
+            tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.parsed.toLocaleString() + '元' } }
+        }
+    }
+});
+</script>
+</body>
+</html>
