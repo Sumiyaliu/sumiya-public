@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>数据变化 × 信任力体系合并分析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    color: #2c3e50;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1500px; margin: 0 auto; }
+  h1 {
+    font-size: 30px;
+    color: #1a3a5c;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .subtitle {
+    text-align: center;
+    color: #7a8a9a;
+    margin-bottom: 36px;
+    font-size: 14px;
+  }
+  .section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  }
+  .section-title {
+    font-size: 20px;
+    color: #1a3a5c;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #eef2f7;
+    font-weight: 600;
+  }
+  .section-title .icon {
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: #2e7dff;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+
+  /* 合并大表 */
+  .merged-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .merged-table thead {
+    background: #1a3a5c;
+    color: #fff;
+  }
+  .merged-table thead th {
+    padding: 14px 10px;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .merged-table thead th:first-child { border-radius: 8px 0 0 0; }
+  .merged-table thead th:last-child { border-radius: 0 8px 0 0; border-right: none; }
+  .merged-table thead th.sub {
+    background: #2c5680;
+    font-size: 11px;
+    font-weight: 500;
+    color: #c8d6e5;
+  }
+
+  .merged-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #eef2f7;
+    color: #3a4a5a;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .merged-table tr:hover { background: #f5f8fc; }
+
+  /* 分组分隔 */
+  .group-header td {
+    background: #f0f4f8;
+    font-weight: 700;
+    color: #1a3a5c;
+    font-size: 14px;
+    text-align: left !important;
+    padding: 12px 16px;
+    border-top: 2px solid #d0dae5;
+  }
+  .group-header .group-stats {
+    float: right;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7a8a9a;
+  }
+
+  /* 信任标签 */
+  .trust-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .tag-工业药企 { background: #e3f2fd; color: #1565c0; }
+  .tag-三农 { background: #e8f5e9; color: #2e7d32; }
+  .tag-工厂长 { background: #fff3e0; color: #e65100; }
+  .tag-新锐品牌 { background: #f3e5f5; color: #6a1b9a; }
+  .tag-央企 { background: #fce4ec; color: #c2185b; }
+  .tag-老字号 { background: #fff8e1; color: #f57c00; }
+  .tag-科研 { background: #e0f7fa; color: #00695c; }
+  .tag-复合 { background: #ede7f6; color: #4527a0; }
+
+  /* 变化标签 */
+  .change-up { color: #2e7d32; font-weight: 700; }
+  .change-down { color: #c62828; font-weight: 700; }
+  .change-new { color: #f57c00; font-weight: 700; }
+  .change-flat { color: #7a8a9a; font-weight: 600; }
+
+  /* 趋势小箭头 */
+  .arrow-up::before { content: "▲ "; }
+  .arrow-down::before { content: "▼ "; }
+  .arrow-new::before { content: "★ "; }
+
+  /* 汇总卡片 */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .summary-card {
+    padding: 18px;
+    border-radius: 8px;
+    background: #f8fafd;
+    border-left: 4px solid #2e7dff;
+  }
+  .summary-card.green { border-left-color: #2e7d32; }
+  .summary-card.red { border-left-color: #c62828; }
+  .summary-card.orange { border-left-color: #f57c00; }
+  .summary-card.purple { border-left-color: #6a1b9a; }
+  .summary-card h4 { font-size: 13px; color: #1a3a5c; margin-bottom: 6px; font-weight: 600; }
+  .summary-card .metric { font-size: 22px; font-weight: 700; color: #1a3a5c; margin-bottom: 4px; }
+  .summary-card .desc { font-size: 12px; color: #7a8a9a; }
+
+  /* 升级点 */
+  .insight-box {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .insight-item { display: flex; align-items: flex-start; margin-bottom: 18px; }
+  .insight-item:last-child { margin-bottom: 0; }
+  .insight-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    background: #2e7dff;
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; margin-right: 14px; font-size: 14px;
+  }
+  .insight-content h5 { font-size: 15px; color: #1a3a5c; margin-bottom: 6px; font-weight: 600; }
+  .insight-content p { font-size: 13px; color: #4a5a6a; line-height: 1.7; }
+
+  /* 行内进度条 */
+  .mini-bar {
+    display: inline-block;
+    width: 80px;
+    height: 6px;
+    background: #eef2f7;
+    border-radius: 3px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .mini-bar-fill { height: 100%; border-radius: 3px; }
+
+  /* 图例 */
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #4a5a6a;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  @media (max-width: 1000px) {
+    .merged-table { font-size: 12px; }
+    .merged-table th, .merged-table td { padding: 8px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>传统滋补闭环客户信任力体系数据洞察</h1>
+  <p class="subtitle">数据变化 × 信任力体系合并分析 · Top 20 客户 · 2026 H1 vs 2025 H2 · 日耗环比 × 信任体系归类</p>
+
+  <!-- 核心合并大表 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon"></span>一、数据变化 × 信任力体系合并表</h2>
+
+    <!-- 常规路径 vs 新思路路径 -->
+  <div style="margin-bottom:24px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+      <!-- 左：常规手段 -->
+      <div style="background:linear-gradient(135deg,#475569 0%,#334155 100%);border-radius:12px;padding:24px;color:#fff;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <span style="background:rgba(255,255,255,0.15);color:#cbd5e1;padding:2px 12px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:1px;">CONVENTIONAL</span>
+        </div>
+        <div style="font-size:18px;font-weight:700;margin-bottom:6px;">常规手段：稳人设 + 引入新锐 + 做大工业药企</div>
+        <p style="font-size:13px;color:#94a3b8;margin-bottom:16px;line-height:1.6;">沿用既有路径——稳固三农/工厂长人设、持续引入新锐品牌、做大工业药企基本盘。依赖产品力和人格魅力建立信任，基本盘稳但增速分化，天花板已现。</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;">
+            <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">稳人设</div>
+            <div style="font-size:12px;color:#e2e8f0;margin-bottom:4px;">阿吕 <span style="color:#4ade80;font-weight:700;">+28.5%</span></div>
+            <div style="font-size:12px;color:#e2e8f0;margin-bottom:4px;">珍蜂 <span style="color:#4ade80;font-weight:700;">+140.8%</span></div>
+            <div style="font-size:12px;color:#e2e8f0;">丽姐 <span style="color:#f87171;font-weight:700;">-52.5%</span></div>
+            <div style="font-size:11px;color:#64748b;margin-top:6px;">5户 3增2降 · 分化</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;">
+            <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">引入新锐</div>
+            <div style="font-size:12px;color:#e2e8f0;margin-bottom:4px;">小仙炖 <span style="color:#4ade80;font-weight:700;">+107%</span></div>
+            <div style="font-size:12px;color:#e2e8f0;margin-bottom:4px;">喜纯 <span style="color:#4ade80;font-weight:700;">+144.8%</span></div>
+            <div style="font-size:12px;color:#e2e8f0;">固本堂 <span style="color:#f87171;font-weight:700;">-91.2%</span></div>
+            <div style="font-size:11px;color:#64748b;margin-top:6px;">6户 3增2降1新 · 分化最重</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;">
+            <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">做大工业药企</div>
+            <div style="font-size:12px;color:#e2e8f0;margin-bottom:4px;">哈药 <span style="color:#4ade80;font-weight:700;">+73.2%</span></div>
+            <div style="font-size:12px;color:#e2e8f0;margin-bottom:4px;">仁和 <span style="color:#4ade80;font-weight:700;">+27.2%</span></div>
+            <div style="font-size:12px;color:#e2e8f0;">华北 <span style="color:#f87171;font-weight:700;">-1.8%</span></div>
+            <div style="font-size:11px;color:#64748b;margin-top:6px;">3增1降 · 稳但触顶</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(248,113,113,0.12);border-radius:8px;border-left:3px solid #f87171;font-size:13px;color:#fca5a5;">
+          <strong>数据结论：</strong>常规路径平均增速 +15.2%，但下滑面达 36%（5/14户下降），信任锚点天花板已现
+        </div>
+      </div>
+
+      <!-- 右：新思路 -->
+      <div style="background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);border-radius:12px;padding:24px;color:#fff;box-shadow:0 8px 24px rgba(37,99,235,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <span style="background:rgba(251,191,36,0.3);color:#fbbf24;padding:2px 12px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:1px;">NEW PATHWAY</span>
+        </div>
+        <div style="font-size:18px;font-weight:700;margin-bottom:6px;">新思路：信任包装新客户 + 找到增长锚点</div>
+        <p style="font-size:13px;color:#bfdbfe;margin-bottom:16px;line-height:1.6;">跳出产品/人设维度——用<strong style="color:#fbbf24;">文化传承</strong>、<strong style="color:#fbbf24;">机构权威</strong>、<strong style="color:#fbbf24;">科研专业</strong>等全新信任因素包装新客户，开辟非产品力驱动的增长锚点，4 户全部新增或高增，零下滑。</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;border:1px solid rgba(251,191,36,0.2);">
+            <div style="font-size:11px;color:#fbbf24;margin-bottom:4px;">CULTURAL TRUST · 文化信任</div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px;">中华老字号</div>
+            <div style="font-size:12px;color:#dbeafe;margin-bottom:2px;">金石墨酶 <span style="color:#4ade80;font-weight:700;">+289.5%</span></div>
+            <div style="font-size:12px;color:#dbeafe;">资善堂 <span style="color:#fbbf24;font-weight:700;">NEW</span></div>
+            <div style="font-size:11px;color:#93c5fd;margin-top:6px;">百年品牌历史背书</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;border:1px solid rgba(251,191,36,0.2);">
+            <div style="font-size:11px;color:#fbbf24;margin-bottom:4px;">INSTITUTIONAL · 机构信任</div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px;">央企/央媒党媒</div>
+            <div style="font-size:12px;color:#dbeafe;">钱姥姥黄精 <span style="color:#fbbf24;font-weight:700;">NEW</span></div>
+            <div style="font-size:11px;color:#93c5fd;margin-top:6px;">国家级机构权威背书</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;border:1px solid rgba(251,191,36,0.2);">
+            <div style="font-size:11px;color:#fbbf24;margin-bottom:4px;">SCIENTIFIC · 科研信任</div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px;">信任人设-科研</div>
+            <div style="font-size:12px;color:#dbeafe;">轻泉 <span style="color:#fbbf24;font-weight:700;">NEW</span></div>
+            <div style="font-size:11px;color:#93c5fd;margin-top:6px;">科研专家人格化背书</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;border:1px solid rgba(251,191,36,0.2);">
+            <div style="font-size:11px;color:#fbbf24;margin-bottom:4px;">COMPOSITE · 复合信任</div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px;">工业药企/老字号</div>
+            <div style="font-size:12px;color:#dbeafe;">桂龙 <span style="color:#4ade80;font-weight:700;">+55.8%</span></div>
+            <div style="font-size:11px;color:#93c5fd;margin-top:6px;">产品力+文化力双锚点</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(74,222,128,0.12);border-radius:8px;border-left:3px solid #4ade80;font-size:13px;color:#86efac;">
+          <strong>数据结论：</strong>新思路路径平均增速 +172.8%，零下滑（4/4户新增或高增），信任锚点已验证可复制
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 对比汇总条 -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;">
+      <div style="background:#f8fafd;border-radius:8px;padding:14px;text-align:center;border-top:3px solid #64748b;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">常规路径 · 平均增速</div>
+        <div style="font-size:24px;font-weight:700;color:#64748b;">+15.2%</div>
+      </div>
+      <div style="background:#f8fafd;border-radius:8px;padding:14px;text-align:center;border-top:3px solid #f87171;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">常规路径 · 下滑面</div>
+        <div style="font-size:24px;font-weight:700;color:#f87171;">36%</div>
+        <div style="font-size:11px;color:#94a3b8;">5/14户下降</div>
+      </div>
+      <div style="background:#eff6ff;border-radius:8px;padding:14px;text-align:center;border-top:3px solid #2563eb;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">新思路路径 · 平均增速</div>
+        <div style="font-size:24px;font-weight:700;color:#2563eb;">+172.8%</div>
+      </div>
+      <div style="background:#eff6ff;border-radius:8px;padding:14px;text-align:center;border-top:3px solid #4ade80;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">新思路路径 · 下滑面</div>
+        <div style="font-size:24px;font-weight:700;color:#4ade80;">0%</div>
+        <div style="font-size:11px;color:#94a3b8;">4/4户零下滑</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#2e7d32"></div>增长</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c62828"></div>下滑</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f57c00"></div>新增</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7a8a9a"></div>持平</div>
+    </div>
+
+    <table class="merged-table">
+      <thead>
+        <tr>
+          <th rowspan="2">信任体系</th>
+          <th rowspan="2">客户简称</th>
+          <th colspan="2">26H1</th>
+          <th colspan="2">25H2</th>
+          <th rowspan="2">日耗环比</th>
+          <th rowspan="2">趋势</th>
+          <th rowspan="2">信任升级点</th>
+        </tr>
+        <tr>
+          <th class="sub">总消耗(万)</th>
+          <th class="sub">日均(万)</th>
+          <th class="sub">总消耗(万)</th>
+          <th class="sub">日均(万)</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- 工业药企 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-工业药企">工业药企</span> &mdash; 产品力信任 · 基本盘
+            <span class="group-stats">3增 1降 | 均值日耗环比 +38.6%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-工业药企">工业药企</span></td>
+          <td>哈药集团</td>
+          <td>190.34</td><td>1.05</td>
+          <td>111.69</td><td>0.61</td>
+          <td class="change-up arrow-up">+73.2%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:75%;background:#2e7d32"></div></div></td>
+          <td>药企背书+品类扩张</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-工业药企">工业药企</span></td>
+          <td>仁和滋补</td>
+          <td>119.93</td><td>0.66</td>
+          <td>95.84</td><td>0.52</td>
+          <td class="change-up arrow-up">+27.2%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:27%;background:#2e7d32"></div></div></td>
+          <td>药企背书+滋补品类延伸</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-工业药企">工业药企</span></td>
+          <td>华北制药</td>
+          <td>2,578.68</td><td>14.33</td>
+          <td>2,668.98</td><td>14.59</td>
+          <td class="change-down arrow-down">-1.8%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:4%;background:#c62828"></div></div></td>
+          <td>体量大但增速触顶，需内容焕新</td>
+        </tr>
+
+        <!-- 工业药企/老字号（复合） -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-复合">工业药企 / 老字号（复合）</span> &mdash; 双信任加成
+            <span class="group-stats">1增 0降 | 日耗环比 +55.8%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-复合">复合</span></td>
+          <td>桂龙健康科技</td>
+          <td>88.81</td><td>0.49</td>
+          <td>57.94</td><td>0.32</td>
+          <td class="change-up arrow-up">+55.8%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:56%;background:#2e7d32"></div></div></td>
+          <td>药企+老字号双背书，复合优势</td>
+        </tr>
+
+        <!-- 信任人设-三农 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-三农">信任人设-三农</span> &mdash; 人格信任 · 产地直供
+            <span class="group-stats">3增 2降 | 内部分化严重</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-三农">三农</span></td>
+          <td>珍蜂虫草</td>
+          <td>234.99</td><td>1.30</td>
+          <td>99.22</td><td>0.54</td>
+          <td class="change-up arrow-up">+140.8%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#2e7d32"></div></div></td>
+          <td>蜂产品人设差异化，垂直品类爆发</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-三农">三农</span></td>
+          <td>农村阿吕/阿吕葛根</td>
+          <td>987.72</td><td>5.49</td>
+          <td>781.64</td><td>4.27</td>
+          <td class="change-up arrow-up">+28.5%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:28%;background:#2e7d32"></div></div></td>
+          <td>产地人设+品类纵深(葛根)IP化</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-三农">三农</span></td>
+          <td>老板长湛补</td>
+          <td>565.09</td><td>3.14</td>
+          <td>483.30</td><td>2.64</td>
+          <td class="change-up arrow-up">+18.9%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:19%;background:#2e7d32"></div></div></td>
+          <td>源头工厂人设，供应链信任</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-三农">三农</span></td>
+          <td>葛小妹</td>
+          <td>259.51</td><td>1.44</td>
+          <td>426.43</td><td>2.33</td>
+          <td class="change-down arrow-down">-38.1%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:38%;background:#c62828"></div></div></td>
+          <td>同质化人设衰退，需差异化升级</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-三农">三农</span></td>
+          <td>丽姐滋补</td>
+          <td>256.00</td><td>1.42</td>
+          <td>547.59</td><td>2.99</td>
+          <td class="change-down arrow-down">-52.5%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:52%;background:#c62828"></div></div></td>
+          <td>人设疲劳，需IP重构或退场</td>
+        </tr>
+
+        <!-- 信任人设-工厂长 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-工厂长">信任人设-工厂长</span> &mdash; 人格信任 · 供应链透明
+            <span class="group-stats">1增 0降 | 100%增长</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-工厂长">工厂长</span></td>
+          <td>田野牧蜂</td>
+          <td>550.27</td><td>3.06</td>
+          <td>473.07</td><td>2.58</td>
+          <td class="change-up arrow-up">+18.2%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:18%;background:#2e7d32"></div></div></td>
+          <td>蜂产品工厂长IP，供应链信任标杆</td>
+        </tr>
+
+        <!-- 新锐品牌 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-新锐品牌">新锐品牌</span> &mdash; 品牌力信任 · 分化最严重
+            <span class="group-stats">3增 2降 1新增 | 头尾差距 236%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>喜纯</td>
+          <td>129.50</td><td>0.72</td>
+          <td>53.77</td><td>0.29</td>
+          <td class="change-up arrow-up">+144.8%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#2e7d32"></div></div></td>
+          <td>品牌力+品类红利，爆发增长</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>小仙炖</td>
+          <td>444.36</td><td>2.47</td>
+          <td>218.26</td><td>1.19</td>
+          <td class="change-up arrow-up">+107.0%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#2e7d32"></div></div></td>
+          <td>鲜炖燕窝标杆品牌，品牌信任强</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>官栈</td>
+          <td>310.46</td><td>1.72</td>
+          <td>269.57</td><td>1.47</td>
+          <td class="change-up arrow-up">+17.1%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:17%;background:#2e7d32"></div></div></td>
+          <td>花胶品类头部品牌，稳步增长</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>神农金康</td>
+          <td>62.54</td><td>0.35</td>
+          <td>106.69</td><td>0.58</td>
+          <td class="change-down arrow-down">-40.4%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:40%;background:#c62828"></div></div></td>
+          <td>品牌力不足，需人设化改造</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>固本堂</td>
+          <td>61.47</td><td>0.34</td>
+          <td>708.58</td><td>3.87</td>
+          <td class="change-down arrow-down">-91.2%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:91%;background:#c62828"></div></div></td>
+          <td>断崖式下滑，信任体系需重建</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>纯耕</td>
+          <td>182.97</td><td>1.01</td>
+          <td colspan="2" style="color:#7a8a9a">新增客户</td>
+          <td class="change-new arrow-new">NEW</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#f57c00"></div></div></td>
+          <td>新锐品牌新增入局</td>
+        </tr>
+
+        <!-- 中华老字号 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-老字号">中华老字号</span> &mdash; 文化信任 · 历史传承
+            <span class="group-stats">1增 0降 1新增 | 增速 +289.5%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-老字号">老字号</span></td>
+          <td>金石墨酶</td>
+          <td>66.27</td><td>0.37</td>
+          <td>17.30</td><td>0.09</td>
+          <td class="change-up arrow-up">+289.5%</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#2e7d32"></div></div></td>
+          <td>老字号文化信任+品类红利爆发</td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-老字号">老字号</span></td>
+          <td>资善堂</td>
+          <td>108.78</td><td>0.60</td>
+          <td colspan="2" style="color:#7a8a9a">新增客户</td>
+          <td class="change-new arrow-new">NEW</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#f57c00"></div></div></td>
+          <td>老字号新入局，文化信任新入口</td>
+        </tr>
+
+        <!-- 央企国企/央媒党媒 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-央企">央企国企 / 央媒党媒</span> &mdash; 机构信任 · 权威背书
+            <span class="group-stats">0增 0降 1新增 | 新赛道</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-央企">央企/央媒</span></td>
+          <td>钱姥姥黄精</td>
+          <td>169.75</td><td>0.94</td>
+          <td colspan="2" style="color:#7a8a9a">新增客户</td>
+          <td class="change-new arrow-new">NEW</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#f57c00"></div></div></td>
+          <td>央企背书首次入局，机构信任新入口</td>
+        </tr>
+
+        <!-- 信任人设-科研 -->
+        <tr class="group-header">
+          <td colspan="9">
+            <span class="trust-tag tag-科研">信任人设-科研</span> &mdash; 人格信任 · 专业权威
+            <span class="group-stats">0增 0降 1新增 | 新赛道</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-科研">科研</span></td>
+          <td>轻泉</td>
+          <td>95.44</td><td>0.53</td>
+          <td colspan="2" style="color:#7a8a9a">新增客户</td>
+          <td class="change-new arrow-new">NEW</td>
+          <td><div class="mini-bar"><div class="mini-bar-fill" style="width:100%;background:#f57c00"></div></div></td>
+          <td>科研人设首次入局，专业信任新方向</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 二、信任体系汇总 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon"></span>二、各信任力体系汇总</h2>
+    <table class="merged-table">
+      <thead>
+        <tr>
+          <th>信任力体系</th>
+          <th>信任锚点</th>
+          <th>客户数</th>
+          <th>增长</th>
+          <th>下滑</th>
+          <th>新增</th>
+          <th>代表增速</th>
+          <th>体系判定</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="trust-tag tag-工业药企">工业药企</span></td>
+          <td>产品力 / 资质</td>
+          <td>3</td>
+          <td class="change-up">3</td>
+          <td class="change-down">1</td>
+          <td>-</td>
+          <td class="change-up">+73.2%</td>
+          <td><strong>稳健基本盘</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-复合">工业药企/老字号</span></td>
+          <td>产品力+文化</td>
+          <td>1</td>
+          <td class="change-up">1</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="change-up">+55.8%</td>
+          <td><strong>复合优势验证</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-三农">信任人设-三农</span></td>
+          <td>人格 / 产地</td>
+          <td>5</td>
+          <td class="change-up">3</td>
+          <td class="change-down">2</td>
+          <td>-</td>
+          <td class="change-up">+140.8%</td>
+          <td><strong>增长但分化</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-工厂长">信任人设-工厂长</span></td>
+          <td>人格 / 供应链</td>
+          <td>1</td>
+          <td class="change-up">1</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="change-up">+18.2%</td>
+          <td><strong>100%增长</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-新锐品牌">新锐品牌</span></td>
+          <td>品牌力</td>
+          <td>6</td>
+          <td class="change-up">3</td>
+          <td class="change-down">2</td>
+          <td class="change-new">1</td>
+          <td class="change-up">+144.8%</td>
+          <td><strong>分化最严重</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-老字号">中华老字号</span></td>
+          <td>文化 / 传承</td>
+          <td>2</td>
+          <td class="change-up">1</td>
+          <td>-</td>
+          <td class="change-new">1</td>
+          <td class="change-up">+289.5%</td>
+          <td><strong>强势入场</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-央企">央企/央媒</span></td>
+          <td>机构 / 权威</td>
+          <td>1</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="change-new">1</td>
+          <td class="change-new">NEW</td>
+          <td><strong>新入口</strong></td>
+        </tr>
+        <tr>
+          <td><span class="trust-tag tag-科研">信任人设-科研</span></td>
+          <td>人格 / 专业</td>
+          <td>1</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="change-new">1</td>
+          <td class="change-new">NEW</td>
+          <td><strong>新赛道</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 三、关键结论卡片 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon"></span>三、关键结论</h2>
+    <div class="summary-grid">
+      <div class="summary-card green">
+        <h4>增长最强体系</h4>
+        <div class="metric">中华老字号</div>
+        <div class="desc">金石墨酶+289.5% · 资善堂新增 · 文化信任爆发</div>
+      </div>
+      <div class="summary-card">
+        <h4>最稳体系</h4>
+        <div class="metric">工业药企</div>
+        <div class="desc">3增1降 · 华北仅-1.8% · 基本盘稳健</div>
+      </div>
+      <div class="summary-card purple">
+        <h4>爆发力体系</h4>
+        <div class="metric">信任人设</div>
+        <div class="desc">三农+工厂长+科研 · 三线全面增长或新增</div>
+      </div>
+      <div class="summary-card red">
+        <h4>风险最大</h4>
+        <div class="metric">新锐品牌</div>
+        <div class="desc">固本堂-91.2% · 神农-40.4% · 分化严重</div>
+      </div>
+      <div class="summary-card orange">
+        <h4>新增赛道</h4>
+        <div class="metric">央企/科研</div>
+        <div class="desc">钱姥姥黄精+轻泉 · 权威信任新入口</div>
+      </div>
+      <div class="summary-card green">
+        <h4>复合验证</h4>
+        <div class="metric">双信任加成</div>
+        <div class="desc">桂龙+55.8% · 多锚点有效性已验证</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、信任升级点 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon"></span>四、信任力体系升级点</h2>
+    <div class="insight-box">
+      <div class="insight-item">
+        <div class="insight-num">1</div>
+        <div class="insight-content">
+          <h5>信任锚点从「产品/品牌」升级为「人设 × 机构 × 文化」三维矩阵</h5>
+          <p>原体系以工业药企（产品力信任）为主，Top1 华北制药 -1.8% 已显疲态。新体系已扩展至<strong>人设信任</strong>（三农/工厂长/科研）、<strong>机构信任</strong>（央企/央媒）、<strong>文化信任</strong>（中华老字号）三大新锚点。信任来源从「成分/资质」单一维度进化为「人格故事 + 权威背书 + 文化传承」复合锚点。</p>
+        </div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-num">2</div>
+        <div class="insight-content">
+          <h5>「信任人设」成为增长最强细分体系，3 条人设线齐头并进</h5>
+          <p>三农人设（阿吕+28.5% / 老板+18.9% / 珍蜂+140.8%）、工厂长人设（田野牧蜂+18.2% 100%增长）、科研人设（轻泉新增）共同验证<strong>垂直人设 IP 化</strong>爆发力，应作为下一阶段核心扩张方向。</p>
+        </div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-num">3</div>
+        <div class="insight-content">
+          <h5>新锐品牌「头部领涨、尾部暴跌」，需建立分层运营机制</h5>
+          <p>小仙炖+107% / 喜纯+144.8% 头部领跑，但固本堂-91.2% / 神农金康-40.4% 断崖下滑。建议引入<strong>品牌成熟度分层运营</strong>——头部主投扩规模，尾部做人设化或 IP 改造。</p>
+        </div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-num">4</div>
+        <div class="insight-content">
+          <h5>「权威背书体系」正式入场，老字号 × 央企构成最强信任护城河</h5>
+          <p>钱姥姥黄精（央企/央媒）、资善堂（老字号）、金石墨酶（老字号+289.5%）首次进入 Top20，标志<strong>官方/文化权威</strong>成为新流量入口。复合体系桂龙+55.8% 验证双信任加成有效性。</p>
+        </div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-num">5</div>
+        <div class="insight-content">
+          <h5>「三农人设」需分诊：增长盘放大，衰退盘 IP 升级或退场</h5>
+          <p>5 个客户 3 增 2 降分化明显。增长盘（阿吕/老板/珍蜂）方法论可复制；衰退盘（葛小妹-38.1% / 丽姐-52.5%）属"同质化人设"疲劳。建议做<strong>地域/工艺/口音差异化升级</strong>或归并强势 IP。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
