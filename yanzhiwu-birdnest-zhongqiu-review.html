@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>燕窝品类视频号电商深度复盘 · 中秋送礼专题 · 以燕之屋为例</title>
+<!-- summary: 视频号燕窝品类的全景深度复盘：趋势 / 价格带 / 直播引流品 / 中秋送礼场景，结合友望数据（1,085 选品 + 679 月榜）与京东燕窝分析，对燕之屋产品矩阵做完整借鉴拆解。 -->
+<meta name="description" content="视频号燕窝品类中秋送礼专题深度复盘：直播为王、价格带分层、引流品五特征、礼赠场景拆解，结合燕之屋案例分析。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #b8845c;
+    --primary-dark: #8b5a3c;
+    --primary-light: #d4a98a;
+    --accent: #c0392b;
+    --bg: #faf7f2;
+    --bg-card: #ffffff;
+    --text: #2c2620;
+    --text-light: #6b6358;
+    --border: #ede4d8;
+    --gold: #d4a574;
+    --gold-dark: #a87850;
+    --green: #7a8c5e;
+    --green-dark: #5a6c3e;
+    --shadow: 0 2px 16px rgba(184, 132, 92, 0.08);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Source Han Sans", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    padding: 32px 16px 80px;
+  }
+  .container { max-width: 1080px; margin: 0 auto; }
+  header.hero {
+    text-align: center;
+    padding: 56px 32px 48px;
+    background: linear-gradient(135deg, #f9efe4 0%, #f5e3cf 100%);
+    border-radius: 20px;
+    margin-bottom: 36px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2), transparent 70%);
+    border-radius: 50%;
+  }
+  .eyebrow {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  header.hero h1 {
+    font-size: 2.4em;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  header.hero .subtitle {
+    font-size: 1.05em;
+    color: var(--text-light);
+    max-width: 720px;
+    margin: 0 auto 20px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-top: 16px;
+  }
+  .meta-row span::before { content: '·'; margin-right: 8px; color: var(--primary-light); }
+  .meta-row span:first-child::before { content: ''; margin-right: 0; }
+  .quick-summary {
+    background: linear-gradient(135deg, #fff9ec, #fef0d7);
+    border: 1px solid var(--gold);
+    border-left: 5px solid var(--gold-dark);
+    border-radius: 12px;
+    padding: 22px 28px;
+    margin-bottom: 36px;
+    box-shadow: var(--shadow);
+  }
+  .quick-summary h3 {
+    color: var(--gold-dark);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  .quick-summary p { color: var(--text); font-size: 1.0em; }
+  section {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  section h2 {
+    font-size: 1.65em;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  section h2 .num {
+    background: var(--primary);
+    color: white;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    font-weight: 700;
+  }
+  section h2 small {
+    font-size: 0.5em;
+    color: var(--text-light);
+    font-weight: normal;
+    margin-left: auto;
+  }
+  section h3 {
+    font-size: 1.2em;
+    color: var(--text);
+    margin: 24px 0 12px;
+    padding-left: 14px;
+    border-left: 4px solid var(--gold);
+  }
+  section h4 {
+    font-size: 1.05em;
+    color: var(--primary-dark);
+    margin: 18px 0 8px;
+  }
+  p { margin-bottom: 12px; color: var(--text); }
+  p.lead {
+    font-size: 1.08em;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    background: #fbf6ec;
+    border-radius: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 0.92em;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #faf6ef; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  th.num { text-align: right; }
+  td.price { color: var(--accent); font-weight: 600; }
+  td.highlight { background: #fef5e7 !important; font-weight: 600; color: var(--accent); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 16px 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0; }
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    section { padding: 24px 18px; }
+    header.hero h1 { font-size: 1.75em; }
+    header.hero { padding: 36px 20px 32px; }
+  }
+  .stat-card {
+    background: linear-gradient(135deg, #fff9ec, #fef3d9);
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--gold);
+  }
+  .stat-card .label { color: var(--text-light); font-size: 0.85em; }
+  .stat-card .value { color: var(--primary-dark); font-size: 1.7em; font-weight: 700; margin-top: 4px; }
+  .stat-card .delta { color: var(--accent); font-size: 0.85em; margin-top: 4px; }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .feature-item {
+    background: #fbf6ec;
+    padding: 16px 18px;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+  }
+  .feature-item .num-circle {
+    background: var(--gold-dark);
+    color: white;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    font-weight: 700;
+    margin-right: 10px;
+  }
+  .feature-item strong { color: var(--primary-dark); display: block; margin-bottom: 6px; }
+  .case-card {
+    background: #faf6ef;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 14px 0;
+    border-left: 5px solid var(--primary);
+  }
+  .case-card .title {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+  }
+  .case-card .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 10px 0;
+    font-size: 0.88em;
+    color: var(--text-light);
+  }
+  .case-card .metrics strong { color: var(--accent); }
+  .callout {
+    background: linear-gradient(135deg, #f0f7e8, #e8f0d8);
+    border-left: 5px solid var(--green-dark);
+    padding: 18px 22px;
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+  .callout.warning {
+    background: linear-gradient(135deg, #fef5e7, #fce8c4);
+    border-left-color: var(--accent);
+  }
+  .callout strong { color: var(--green-dark); }
+  .callout.warning strong { color: var(--accent); }
+  .action-list { padding-left: 0; list-style: none; }
+  .action-list li {
+    background: white;
+    margin: 10px 0;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    position: relative;
+    padding-left: 48px;
+  }
+  .action-list li::before {
+    content: counter(act);
+    counter-increment: act;
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    background: var(--gold-dark);
+    color: white;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    font-weight: 700;
+  }
+  .action-list { counter-reset: act; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .pill {
+    background: var(--primary-light);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+  }
+  .pill.gold { background: var(--gold-dark); }
+  .pill.green { background: var(--green-dark); }
+  .pill.accent { background: var(--accent); }
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  @media (max-width: 768px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi {
+    background: linear-gradient(135deg, #fff9ec, #fef0d7);
+    padding: 14px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .kpi .v { color: var(--primary-dark); font-size: 1.5em; font-weight: 700; }
+  .kpi .l { color: var(--text-light); font-size: 0.82em; margin-top: 4px; }
+  .chart-bar {
+    background: #f3ecdf;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  .chart-bar .bar-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; font-size: 0.92em; }
+  .chart-bar .label { width: 120px; color: var(--text-light); }
+  .chart-bar .bar-wrap { flex: 1; background: #ede4d8; border-radius: 4px; height: 22px; position: relative; overflow: hidden; }
+  .chart-bar .bar { background: linear-gradient(90deg, var(--primary-light), var(--primary)); height: 100%; border-radius: 4px; transition: width 0.6s; }
+  .chart-bar .bar.gold { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); }
+  .chart-bar .bar.accent { background: linear-gradient(90deg, #e07a6a, var(--accent)); }
+  .chart-bar .value { width: 90px; text-align: right; color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  footer.foot {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.88em;
+    padding: 32px 16px;
+  }
+  footer.foot a { color: var(--primary-dark); text-decoration: none; border-bottom: 1px dotted var(--primary-light); }
+  .toc {
+    background: #fbf6ec;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+  }
+  .toc h4 { color: var(--primary-dark); margin-bottom: 10px; font-size: 1.05em; }
+  .toc ol { padding-left: 22px; color: var(--text); }
+  .toc ol li { padding: 4px 0; }
+  .toc a { color: var(--text); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  .quote-box {
+    background: #fbf6ec;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 14px 0;
+    font-style: italic;
+    color: var(--text-light);
+    border-left: 4px solid var(--gold);
+  }
+  .quote-box strong { color: var(--primary-dark); font-style: normal; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <span class="eyebrow">视频号电商 · 品类深度复盘 · 中秋送礼专题</span>
+  <h1>燕窝品类的趋势、价格带与<br>直播引流品全解析</h1>
+  <p class="subtitle">以"燕之屋"为案例 · 看头部品牌如何用"礼盒+引流+月套餐"组合占领视频号燕窝市场</p>
+  <div class="meta-row">
+    <span>数据日期：2026-08-11</span>
+    <span>数据源：友望数据 1,085 条选品 + 679 条月榜</span>
+    <span>补充：京东燕窝行业分析</span>
+  </div>
+</header>
+
+<div class="quick-summary">
+  <h3>核心摘要</h3>
+  <p>视频号燕窝品类呈现<strong>"直播为王、价格分层、礼赠主导"</strong>格局。直播渠道贡献品类约 88% 销售额；50-100 元价格带是引流主力（10.6 万件销量），200-500 元为品质消费核心，1000 元以上为高端礼赠高地。中秋临近，"礼盒"+"试吃"+"大瓶装"组合已成为月榜送礼类目 Top3 共同打法。燕之屋以 75 个 SKU、176 万元月直播销售额领跑品类，其"引流品+月套餐+高端形象品"三梯度矩阵策略值得借鉴。</p>
+</div>
+
+<nav class="toc">
+  <h4>目录导览</h4>
+  <ol>
+    <li><a href="#s1">燕窝品类趋势：渠道格局 + 产品形态 + 品牌竞争</a></li>
+    <li><a href="#s2">价格带与商品洞察：三大核心价格带 + 京东数据印证</a></li>
+    <li><a href="#s3">直播引流品五大特征 + 标杆案例拆解</a></li>
+    <li><a href="#s4">中秋送礼场景专题：从词频到爆品清单</a></li>
+    <li><a href="#s5">燕之屋复盘：产品矩阵 + 借鉴方向</a></li>
+    <li><a href="#s6">总结与行动建议</a></li>
+  </ol>
+</nav>
+
+<section id="s1">
+  <h2><span class="num">01</span> 燕窝品类趋势分析 <small>Channel · Format · Brand</small></h2>
+  <p class="lead">视频号燕窝品类已从"原料级交易"演进为"直播内容驱动的内容电商"，鲜炖为基本盘、蛹虫草为现象级爆品、礼赠为最大增量来源。</p>
+
+  <h3>1.1 渠道格局：直播是绝对的统治渠道</h3>
+  <p>对 1,085 条搜索商品的"内容驱动模式"拆解显示，直播贡献了品类绝大部分销售额：</p>
+
+  <div class="chart-bar">
+    <div class="bar-row"><span class="label">仅直播驱动</span><span class="bar-wrap"><div class="bar" style="width:97%;"></div></span><span class="value">1,133 万（75%）</span></div>
+    <div class="bar-row"><span class="label">视频+直播双驱动</span><span class="bar-wrap"><div class="bar gold" style="width:13%;"></div></span><span class="value">158 万（10%）</span></div>
+    <div class="bar-row"><span class="label">仅视频驱动</span><span class="bar-wrap"><div class="bar gold" style="width:15%;"></div></span><span class="value">189 万（12%）</span></div>
+    <div class="bar-row"><span class="label">无关联内容</span><span class="bar-wrap"><div class="bar accent" style="width:3%;"></div></span><span class="value">42 万（3%）</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>驱动模式</th><th class="num">商品数</th><th class="num">总销量</th><th class="num">总销售额</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>仅直播驱动</td><td class="num">439</td><td class="num">126,699</td><td class="num highlight">1,133 万</td></tr>
+      <tr><td>仅视频驱动</td><td class="num">58</td><td class="num">31,613</td><td class="num">189 万</td></tr>
+      <tr><td>视频+直播双驱动</td><td class="num">26</td><td class="num">26,116</td><td class="num">158 万</td></tr>
+      <tr><td>无关联内容</td><td class="num">465</td><td class="num">4,989</td><td class="num">42 万</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>洞察：</strong>直播驱动商品以 40% 的 SKU 数贡献了品类 75% 的销售额。同时，465 个"无关联内容"商品（占 43%）几乎处于"僵尸"状态，仅贡献 42 万元——大量商家入局后未有效运营。<strong>视频号燕窝品类是个"赢家通吃"的直播战场。</strong>
+  </div>
+
+  <h3>1.2 产品形态：鲜炖为基本盘，蛹虫草是现象级爆品</h3>
+  <p>品类已从单一干燕窝延伸出 7 大产品形态，"鲜炖燕窝（瓶装）"为绝对主力（690 万元销售额），蛹虫草鲜炖燕窝以"低价+概念"成为现象级爆品（6.1 万件销量）：</p>
+
+  <table>
+    <thead>
+      <tr><th>产品形态</th><th class="num">商品数</th><th class="num">总销量</th><th class="num">总销售额</th><th class="num">直播销售额</th><th>直播/总销售额</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>鲜炖燕窝（瓶装）</strong></td><td class="num">139</td><td class="num">65,837</td><td class="num highlight">690 万</td><td class="num">344 万</td><td>50%</td></tr>
+      <tr><td>蛹虫草鲜炖燕窝</td><td class="num">73</td><td class="num">61,091</td><td class="num">378 万</td><td class="num">112 万</td><td>30%</td></tr>
+      <tr><td>冻干燕窝银耳羹</td><td class="num">51</td><td class="num">10,198</td><td class="num">198 万</td><td class="num">200 万</td><td>101%</td></tr>
+      <tr><td>干燕窝/燕盏</td><td class="num">54</td><td class="num">6,265</td><td class="num">169 万</td><td class="num">158 万</td><td>93%</td></tr>
+      <tr><td>燕窝粥</td><td class="num">89</td><td class="num">9,433</td><td class="num">36 万</td><td class="num">25 万</td><td>71%</td></tr>
+      <tr><td>燕窝饮</td><td class="num">23</td><td class="num">4,227</td><td class="num">80 万</td><td class="num">82 万</td><td>103%</td></tr>
+      <tr><td>即食燕窝杯</td><td class="num">12</td><td class="num">1,042</td><td class="num">8 万</td><td class="num">20 万</td><td>251%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>蛹虫草为什么爆？</strong>"蛹虫草"作为人工培育菌丝体，成本远低于天然燕窝，使商家能以 69.9 元的价格做到"鲜炖燕窝"的概念，极大降低消费者决策门槛。冻干银耳羹、燕窝饮直播销售额占比超 100%，说明这两类是<strong>天然的直播适配品类</strong>。
+  </div>
+
+  <h3>1.3 品牌竞争格局：燕之屋领跑，小仙炖紧随</h3>
+  <table>
+    <thead>
+      <tr><th>品牌</th><th class="num">SKU 数</th><th class="num">总销量</th><th class="num">总销售额</th><th class="num">直播销量</th><th class="num">直播销售额</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>燕之屋官方旗舰店</strong></td><td class="num">56</td><td class="num">3,636</td><td class="num">167 万</td><td class="num">4,326</td><td class="num highlight">176 万</td></tr>
+      <tr><td>小仙炖官方旗舰店</td><td class="num">27</td><td class="num">591</td><td class="num">109 万</td><td class="num">407</td><td class="num">96 万</td></tr>
+      <tr><td>汉方爷爷</td><td class="num">3</td><td class="num">18,213</td><td class="num">108 万</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>官花燕创智捷滋补店</td><td class="num">4</td><td class="num">3,659</td><td class="num">102 万</td><td class="num">3,536</td><td class="num">102 万</td></tr>
+      <tr><td>蓝雅健康小店</td><td class="num">12</td><td class="num">14,288</td><td class="num">97 万</td><td class="num">10,428</td><td class="num">73 万</td></tr>
+      <tr><td>郭亿易店铺</td><td class="num">2</td><td class="num">2,964</td><td class="num">89 万</td><td class="num">2,318</td><td class="num">69 万</td></tr>
+      <tr><td>燕之屋燕窝商城</td><td class="num">14</td><td class="num">1,304</td><td class="num">80 万</td><td class="num">191</td><td class="num">30 万</td></tr>
+    </tbody>
+  </table>
+
+  <p>燕之屋以 70+ 个 SKU 的庞大产品矩阵，在直播销售额上领先小仙炖近一倍。<strong>关键数据：燕之屋的直播销量（4,326 件）是常规销量（3,636 件）的 1.19 倍</strong>，说明其直播策略已超越常规货架销售，成为核心出货渠道。</p>
+
+  <p>小仙炖虽然 SKU 更少（27 个），但单 SKU 直播产出效率极高——核心 SKU 关联直播数高达 67 场/月，走的是"精选 SKU + 高频直播"的精准打法。汉方爷爷则完全反向，以"纯视频驱动"模式（0 直播关联）做到 1.08 亿销售额，是内容沉淀路径的标杆。</p>
+</section>
+
+<section id="s2">
+  <h2><span class="num">02</span> 价格带与商品洞察 <small>Price Band Deep-Dive</small></h2>
+  <p class="lead">视频号燕窝品类呈现"两头大、中间精"的价格分布格局——50-100 元走量、200-500 元走品质、1000 元以上走品牌力。</p>
+
+  <h3>2.1 选品库价格带全景</h3>
+  <table>
+    <thead>
+      <tr><th>价格带</th><th class="num">商品数</th><th class="num">总销量</th><th class="num">总销售额</th><th class="num">直播销量</th><th class="num">直播销售额</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0-30 元</td><td class="num">570</td><td class="num">88,612</td><td class="num">92 万</td><td class="num">46,777</td><td class="num">55 万</td></tr>
+      <tr><td>30-50 元</td><td class="num">45</td><td class="num">22,174</td><td class="num">85 万</td><td class="num">4,264</td><td class="num">20 万</td></tr>
+      <tr style="background:#fef5e7"><td><strong>50-100 元（核心引流带）</strong></td><td class="num"><strong>195</strong></td><td class="num highlight"><strong>105,866</strong></td><td class="num highlight"><strong>638 万</strong></td><td class="num"><strong>24,862</strong></td><td class="num"><strong>182 万</strong></td></tr>
+      <tr><td>100-200 元</td><td class="num">56</td><td class="num">6,610</td><td class="num">65 万</td><td class="num">4,816</td><td class="num">49 万</td></tr>
+      <tr style="background:#fef5e7"><td><strong>200-500 元（品质消费带）</strong></td><td class="num"><strong>74</strong></td><td class="num"><strong>12,845</strong></td><td class="num"><strong>338 万</strong></td><td class="num"><strong>9,399</strong></td><td class="num highlight"><strong>271 万</strong></td></tr>
+      <tr><td>500-1000 元</td><td class="num">45</td><td class="num">1,388</td><td class="num">87 万</td><td class="num">468</td><td class="num">41 万</td></tr>
+      <tr style="background:#fef5e7"><td><strong>1000-5000 元（高端礼赠带）</strong></td><td class="num"><strong>74</strong></td><td class="num"><strong>2,732</strong></td><td class="num highlight"><strong>398 万</strong></td><td class="num"><strong>1,972</strong></td><td class="num"><strong>342 万</strong></td></tr>
+      <tr><td>5000 元以上</td><td class="num">22</td><td class="num">670</td><td class="num">63 万</td><td class="num">569</td><td class="num">51 万</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.2 三大核心价格带解析</h3>
+  <div class="grid-3">
+    <div class="stat-card">
+      <div class="label">核心价格带 #1</div>
+      <div class="value">50-100 元</div>
+      <div class="delta">引流爆款带 · 10.6 万件销量</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">核心价格带 #2</div>
+      <div class="value">200-500 元</div>
+      <div class="delta">品质消费带 · 直播占比 80%</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">核心价格带 #3</div>
+      <div class="value">1000-5000 元</div>
+      <div class="delta">高端礼赠带 · 客单价极高</div>
+    </div>
+  </div>
+
+  <h3>2.3 月榜数据印证：高价品极度依赖直播</h3>
+  <p>2026 年 7 月月榜数据显示，价格带越高、需要的"直播信任场"越密：</p>
+  <table>
+    <thead>
+      <tr><th>价格带</th><th class="num">商品数</th><th class="num">直播销量</th><th class="num">直播销售额</th><th class="num">平均关联直播数</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0-30 元</td><td class="num">84</td><td class="num">13,370</td><td class="num">21 万</td><td class="num">5.7 场</td></tr>
+      <tr><td>50-100 元</td><td class="num">151</td><td class="num">23,141</td><td class="num">173 万</td><td class="num">4.9 场</td></tr>
+      <tr style="background:#fef5e7"><td><strong>200-500 元</strong></td><td class="num"><strong>87</strong></td><td class="num"><strong>15,332</strong></td><td class="num highlight"><strong>474 万</strong></td><td class="num"><strong>5.2 场</strong></td></tr>
+      <tr><td>1000-5000 元</td><td class="num">112</td><td class="num">2,052</td><td class="num">361 万</td><td class="num highlight">11.9 场</td></tr>
+      <tr><td>5000 元以上</td><td class="num">47</td><td class="num">81</td><td class="num">37 万</td><td class="num highlight">28.0 场</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>规律：</strong>5000 元以上价格带平均每品 <strong>28 场直播</strong>，是 50-100 元价格带（4.9 场）的 5.7 倍。高价燕窝极度依赖直播深度讲解和信任建立——直播间是高端燕窝的核心转化场景。
+  </div>
+
+  <h3>2.4 京东数据交叉印证：燕窝礼盒增速亮眼</h3>
+  <p>京东燕窝行业分析显示，礼盒类商品在 8 月呈现"高增长+高单价"的双重机会：</p>
+  <div class="grid-2">
+    <div class="case-card">
+      <div class="title">高端礼盒价格带</div>
+      <div class="metrics">
+        <span>738-5959 元整燕窝礼盒 <strong>+45.47%</strong></span>
+        <span>销量 <strong>+28.46%</strong></span>
+        <span>客单价 <strong>3.34 万元</strong></span>
+      </div>
+      <p>千元高客单价销售下滑（-6.51%），但 700-5959 元区间礼盒增长强劲——这是高端送礼的甜蜜价格点。</p>
+    </div>
+    <div class="case-card">
+      <div class="title">散装+礼盒组合带</div>
+      <div class="metrics">
+        <span>48-63 元散装礼盒 <strong>+60.10%</strong></span>
+        <span>284-493 元礼盒 <strong>+58.67%</strong></span>
+        <span>单品销售 <strong>1.20 万元</strong></span>
+      </div>
+      <p>低价散装+礼盒组合高速增长，体现"小包装引流+大包装锁客"的搭配策略在视频号同样有效。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="num">03</span> 直播引流品深度拆解 <small>Traffic-Driving Pattern</small></h2>
+  <p class="lead">视频号燕窝品类的"引流品"指低价、低决策门槛、高直播转化率、能快速拉动直播间 GMV 的产品。其核心特征、四大标杆案例、五大共性规律如下。</p>
+
+  <h3>3.1 引流品标杆案例</h3>
+
+  <div class="case-card">
+    <div class="title">案例一：山湖间蛹虫草鲜炖燕窝（69.9 元）—— 直播销量王者</div>
+    <div class="metrics">
+      <span>总销量 <strong>6,358 件</strong></span>
+      <span>直播销量 <strong>6,351 件（99.9%）</strong></span>
+      <span>直播销售额 <strong>44.4 万</strong></span>
+      <span>关联直播 <strong>14 场</strong></span>
+    </div>
+    <p>69.9 元让消费者"不用思考就能下单"，"蛹虫草鲜炖"让产品有高端燕窝的感知，实际成本极低。14 场直播产出 6,351 件，场均 454 件。整个山湖间系列在多店铺铺货（蓝雅、山湖间有方等），累计销量超过 1.8 万件，是品类内的"引流品矩阵"。</p>
+  </div>
+
+  <div class="case-card">
+    <div class="title">案例二：燕春语好事发生燕窝粥（328-339 元）—— 礼盒引流品</div>
+    <div class="metrics">
+      <span>7 月月榜第 2 名</span>
+      <span>直播销量 <strong>6,094 件</strong></span>
+      <span>直播销售额 <strong>207 万</strong></span>
+      <span>关联直播 <strong>10 场</strong></span>
+    </div>
+    <p>虽然价格不低，但"32 碗装 + 试吃一碗 + 中秋送礼"组合让它成为礼盒引流品——大包装拉低单碗成本，试吃机制降低决策门槛，节日场景驱动转化。</p>
+  </div>
+
+  <div class="case-card">
+    <div class="title">案例三：官花燕燕窝银耳羹（299-399 元）—— 达人专属引流</div>
+    <div class="metrics">
+      <span>直播销量 <strong>2,492 件</strong></span>
+      <span>直播销售额 <strong>74.5 万</strong></span>
+      <span>关联直播 <strong>3 场</strong></span>
+    </div>
+    <p>"[菲姐亮哥专属]"前缀表明这是为特定达人定制的引流品，通过达人私域信任快速转化。</p>
+  </div>
+
+  <div class="case-card">
+    <div class="title">案例四：京盛兴冻干燕窝银耳羹（99.9 元）—— 百元内冲泡引流</div>
+    <div class="metrics">
+      <span>直播销量 <strong>1,620 件</strong></span>
+      <span>直播销售额 <strong>16.2 万</strong></span>
+      <span>关联直播 <strong>1 场</strong></span>
+    </div>
+    <p>99.9 元定价精准卡在"百元心理关口"以内，冲泡即食形态降低使用门槛。</p>
+  </div>
+
+  <h3>3.2 引流品五大共性特征</h3>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div><span class="num-circle">1</span><strong>价格集中在 50-100 元</strong></div>
+      <p>足够低让消费者不用犹豫，又足够高让产品有"品质感"。月榜 50-100 元价格带以 151 个商品贡献 2.31 万件直播销量，是所有价格带中直播销量最高。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">2</span><strong>产品形态以冲泡/即食为主</strong></div>
+      <p>蛹虫草鲜炖燕窝（开盖即食）、冻干银耳羹（60 秒冲泡）、燕窝粥——引流品几乎清一色是"无需炖煮"的便利形态，决策链路极短。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">3</span><strong>概念包装大于真实燕窝含量</strong></div>
+      <p>"蛹虫草鲜炖燕窝"以蛹虫草菌丝体为主、"燕窝"为概念点缀；"燕窝银耳羹"以银耳为主体。用"燕窝"之名建立品质认知，用低成本原料实现低价走量。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">4</span><strong>高度依赖达人专属机制</strong></div>
+      <p>普遍带有"[七姐专属]""[菲姐亮哥专属]""[美歌生活专属]"等前缀，通过"专属价格"营造稀缺感和特权感，驱动直播间即时转化。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">5</span><strong>高频直播但不长尾</strong></div>
+      <p>引流品销量几乎 100% 来自直播，视频内容贡献极低。一旦停止直播，销量会快速归零——与汉方爷爷的视频内容沉淀形成鲜明对比。</p>
+    </div>
+  </div>
+
+  <h3>3.3 佣金率洞察</h3>
+  <p>48 个有佣金率数据的商品中，平均佣金率 <strong>15.2%</strong>、中位数 12.5%。高佣金率（30% 以上）集中在燕窝银耳羹、燕窝杏仁饮等低价冲泡类，最高达 45%（京栀坊燕窝坚果银耳羹）。真正的鲜炖燕窝和干燕窝佣金率普遍为"--"，说明高端燕窝更依赖品牌力而非佣金激励来驱动达人带货。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="num">04</span> 中秋送礼场景专题 <small>Mid-Autumn Festival Gifting</small></h2>
+  <p class="lead">中秋即将进入核心销售期。视频号上 22.5% 的商品具有"送礼属性"，贡献了 870 万销售额（占总销售额的 57%）。礼赠已是燕窝品类的核心增量来源。</p>
+
+  <h3>4.1 送礼属性商品全景</h3>
+  <table>
+    <thead>
+      <tr><th>指标</th><th class="num">送礼属性商品</th><th class="num">非送礼属性商品</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>商品数</td><td class="num">222（22.5%）</td><td class="num">766（77.5%）</td></tr>
+      <tr><td>总销量</td><td class="num">71,201</td><td class="num">118,216</td></tr>
+      <tr><td>总销售额</td><td class="num highlight">870 万</td><td class="num">651 万</td></tr>
+      <tr><td>直播销量</td><td class="num">18,537</td><td class="num">-</td></tr>
+      <tr><td>直播销售额</td><td class="num highlight">502 万</td><td class="num">-</td></tr>
+      <tr><td>月榜直播销售额</td><td class="num highlight">766 万</td><td class="num">-</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>关键洞察：</strong>仅占 22.5% SKU 数的送礼商品贡献了 57% 的品类销售额，<strong>礼赠就是视频号燕窝的"利润中心"</strong>。月榜数据更夸张——送礼属性商品直播销售额达 766 万元，占月榜总销售额的 65% 以上。
+  </div>
+
+  <h3>4.2 各送礼关键词热度</h3>
+  <div class="chart-bar">
+    <div class="bar-row"><span class="label">"送礼"（含前缀）</span><span class="bar-wrap"><div class="bar" style="width:95%;"></div></span><span class="value">143 个 SKU</span></div>
+    <div class="bar-row"><span class="label">"礼盒"</span><span class="bar-wrap"><div class="bar" style="width:80%;"></div></span><span class="value">115 个 SKU</span></div>
+    <div class="bar-row"><span class="label">"伴手礼"</span><span class="bar-wrap"><div class="bar gold" style="width:15%;"></div></span><span class="value">22 个 SKU</span></div>
+    <div class="bar-row"><span class="label">"送长辈"</span><span class="bar-wrap"><div class="bar gold" style="width:15%;"></div></span><span class="value">22 个 SKU</span></div>
+    <div class="bar-row"><span class="label">"走亲戚"</span><span class="bar-wrap"><div class="bar accent" style="width:2%;"></div></span><span class="value">3 个 SKU · 万级客单</span></div>
+    <div class="bar-row"><span class="label">"节日"</span><span class="bar-wrap"><div class="bar accent" style="width:4%;"></div></span><span class="value">6 个 SKU · 万级客单</span></div>
+    <div class="bar-row"><span class="label">"七夕"</span><span class="bar-wrap"><div class="bar accent" style="width:1%;"></div></span><span class="value">1 个 SKU · 燕之屋</span></div>
+  </div>
+
+  <div class="callout warning">
+    <strong>中秋季的稀缺机会：</strong>数据中只有 <strong>1 个商品</strong>在标题里使用"中秋"关键词（销量 196 件，销售额 65,566 元）——中秋是显性蓝海关键词。
+  </div>
+
+  <h3>4.3 送礼商品的"四类"标签策略</h3>
+  <p>通过对所有送礼商品的拆解，我们识别出 4 类送礼场景定位：</p>
+  <div class="grid-2">
+    <div class="case-card">
+      <div class="title">A. 自食/送礼双标签（最大类）</div>
+      <p>"自食/送礼/备孕/送长辈"等多标签叠加，覆盖日常自食、孕产滋补、长辈关怀多个场景。燕之屋的"鲜炖燕窝礼盒 30 瓶"即典型——同一 SKU 同时吃 4 类人群。</p>
+    </div>
+    <div class="case-card">
+      <div class="title">B. 节日+试吃组合（高转化）</div>
+      <p>"节日走亲戚+试吃一碗"是燕春语燕窝粥 207 万销售额的核心打法。低价试吃降低首次决策门槛，大包装送礼场景完成复购。</p>
+    </div>
+    <div class="case-card">
+      <div class="title">C. 颜值+礼盒（高溢价）</div>
+      <p>"高颜值礼盒""重瓣玫瑰冻干"是燕之屋燕窝杯的差异化武器，288-299 元价格带做出 649 件直播销量、19.4 万销售额，溢价能力远超普通鲜炖。</p>
+    </div>
+    <div class="case-card">
+      <div class="title">D. 月套餐+长期滋养</div>
+      <p>"30 瓶月套餐""季套餐"是把送礼变成"持续滋补承诺"。燕之屋 30 瓶礼盒 58.3 万、28 瓶月套餐 30.3 万、季套餐系列持续输出。</p>
+    </div>
+  </div>
+
+  <h3>4.4 中秋送礼爆品 TOP15</h3>
+  <p>2026 年 7 月月榜中送礼类商品直播销售额 Top15（直接反映当前送礼赛道格局）：</p>
+  <table>
+    <thead>
+      <tr><th class="num">排名</th><th>商品名称</th><th>商品来源</th><th>价格</th><th class="num">直播销量</th><th class="num">直播销售额</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num highlight">#2</td><td>燕春语好事发生燕窝粥 32 碗装</td><td>燕春语</td><td class="price">328-339</td><td class="num">6,094</td><td class="num highlight">207 万</td></tr>
+      <tr><td class="num">#6</td><td>[菲姐亮哥专属]燕窝银耳羹冻干走亲戚</td><td>官花燕</td><td class="price">299-399</td><td class="num">2,492</td><td class="num">74.5 万</td></tr>
+      <tr style="background:#fef5e7"><td class="num">#3</td><td><strong>燕之屋鲜炖燕窝礼盒 30 瓶</strong></td><td>燕之屋</td><td class="price">418-2396</td><td class="num">440</td><td class="num"><strong>58.3 万</strong></td></tr>
+      <tr><td class="num">#7</td><td>[双月套餐]小仙炖鲜炖燕窝 56 瓶</td><td>小仙炖</td><td class="price">2758-4368</td><td class="num">143</td><td class="num">39.8 万</td></tr>
+      <tr><td class="num">#10</td><td>[乐文爸专属]燕本裕玫瑰燕窝饮</td><td>燕本裕</td><td class="price">299-599</td><td class="num">1,284</td><td class="num">38.4 万</td></tr>
+      <tr style="background:#fef5e7"><td class="num">#5</td><td><strong>燕之屋精炖燕窝礼盒 30 瓶</strong></td><td>燕之屋</td><td class="price">1099-1699</td><td class="num">184</td><td class="num"><strong>22.1 万</strong></td></tr>
+      <tr style="background:#fef5e7"><td class="num">#17</td><td><strong>燕之屋丝浓系列干燕窝 50g</strong></td><td>燕之屋</td><td class="price">1199-2997</td><td class="num">70</td><td class="num"><strong>21.0 万</strong></td></tr>
+      <tr style="background:#fef5e7"><td class="num">#20</td><td><strong>燕之屋新一代鲜炖燕窝 56 瓶</strong></td><td>燕之屋</td><td class="price">299-4497</td><td class="num">55</td><td class="num"><strong>15.4 万</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.5 京东数据交叉印证：礼盒类目 8 月走势</h3>
+  <p>京东 8 月数据揭示了燕窝礼盒的几个关键变化：</p>
+  <ul style="padding-left:24px;margin:12px 0;">
+    <li>738-5959 元整燕窝礼盒销售额 <strong>+45.47%</strong>，销量 <strong>+28.46%</strong>——<strong>高端礼盒加速放量</strong></li>
+    <li>48-63 元散装礼盒 <strong>+60.10%</strong>，销量 <strong>+12000%</strong>——超低价引流礼盒增长惊人</li>
+    <li>284-493 元礼盒 <strong>+58.67%</strong>——<strong>中端礼盒同样高速增长</strong></li>
+    <li>3-231 元散装整燕窝礼盒 <strong>+68.28%</strong>，销售额 <strong>+85.33%</strong></li>
+  </ul>
+  <div class="callout warning">
+    <strong>趋势判断：</strong>京东数据显示<strong>千元以下</strong>的礼盒类燕窝（含散装+礼盒组合）正在高速放量，但<strong>1000 元以上</strong>高客单价产品销售下滑 6.51%。中秋备战应<strong>重点布局中端礼盒带（300-1500 元）</strong>，而非主推万元级奢侈品礼盒。
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="num">05</span> 燕之屋深度复盘 <small>Case Study · 燕之屋</small></h2>
+  <p class="lead">燕之屋在视频号月榜中以多个 SKU 上榜，7 月官方旗舰店 + 燕窝商城合计直播销售额约 <strong>176 万元</strong>，位居品类第一。其产品矩阵覆盖 99 元到 99,988 元的全价格带，是典型的"全价格带占位"头部品牌。</p>
+
+  <h3>5.1 燕之屋月榜核心数据</h3>
+  <table>
+    <thead>
+      <tr><th class="num">排行</th><th>产品名称</th><th>价格带</th><th class="num">直播销量</th><th class="num">直播销售额</th><th class="num">关联直播数</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num highlight">#1</td><td>整根人参燕窝饮 75g*6 瓶</td><td class="price">99-199 元</td><td class="num">1,311</td><td class="num">12.98 万</td><td class="num">2 场</td></tr>
+      <tr><td class="num">#2</td><td>燕窝杯·重瓣玫瑰冻干银耳羹</td><td class="price">288-299 元</td><td class="num">649</td><td class="num highlight">19.41 万</td><td class="num">2 场</td></tr>
+      <tr style="background:#fef5e7"><td class="num">#3</td><td><strong>鲜炖燕窝礼盒 40g*30 瓶</strong></td><td class="price">418-2396 元</td><td class="num">440</td><td class="num highlight"><strong>58.33 万</strong></td><td class="num">40 场</td></tr>
+      <tr><td class="num">#4</td><td>小燕浓牛奶黑米燕窝粥</td><td class="price">94-378 元</td><td class="num">295</td><td class="num">5.84 万</td><td class="num">2 场</td></tr>
+      <tr><td class="num">#5</td><td>鲜炖燕窝 43g*28 瓶月套餐</td><td class="price">1139-1539 元</td><td class="num">220</td><td class="num highlight">30.32 万</td><td class="num">22 场</td></tr>
+      <tr><td class="num">#6</td><td>精炖燕窝礼盒 40g*30 瓶</td><td class="price">1099-1699 元</td><td class="num">184</td><td class="num">22.06 万</td><td class="num">14 场</td></tr>
+      <tr><td class="num">#17</td><td>丝浓系列干燕窝 50g</td><td class="price">1199-2997 元</td><td class="num">70</td><td class="num">20.98 万</td><td class="num">2 场</td></tr>
+      <tr><td class="num">#20</td><td>新一代鲜炖燕窝 50g*56 瓶</td><td class="price">299-4497 元</td><td class="num">55</td><td class="num">15.39 万</td><td class="num">2 场</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.2 燕之屋的"三梯度"产品矩阵</h3>
+  <div class="grid-3">
+    <div class="stat-card">
+      <div class="label">梯度一 · 引流品</div>
+      <div class="value">100-300 元</div>
+      <div class="delta">拉流量 · 养新客</div>
+      <p style="margin-top:10px;font-size:0.88em;">人参燕窝饮、小燕浓燕窝粥、燕窝杯</p>
+    </div>
+    <div class="stat-card">
+      <div class="label">梯度二 · 核心利润</div>
+      <div class="value">1000-2000 元</div>
+      <div class="delta">做 GMV · 提客单</div>
+      <p style="margin-top:10px;font-size:0.88em;">30 瓶月套餐、精炖礼盒、28 瓶月套餐</p>
+    </div>
+    <div class="stat-card">
+      <div class="label">梯度三 · 形象锚定</div>
+      <div class="value">3000 元以上</div>
+      <div class="delta">立品牌 · 做背书</div>
+      <p style="margin-top:10px;font-size:0.88em;">干燕窝 50g、非遗京绣归燕礼盒</p>
+    </div>
+  </div>
+
+  <h3>5.3 燕之屋送礼属性产品矩阵</h3>
+  <p>燕之屋在搜索数据中有 <strong>29 个</strong>具有送礼属性的产品 SKU，覆盖"伴手礼/礼盒/送长辈/送领导/送朋友/送女友/七夕/中秋"等多重场景：</p>
+  <table>
+    <thead>
+      <tr><th>产品</th><th>价格带</th><th class="num">直播销售额</th><th>送礼场景</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background:#fef5e7"><td><strong>鲜炖燕窝礼盒 30 瓶</strong></td><td class="price">418-2396</td><td class="num highlight">38.4 万</td><td>自食/送礼/备孕/送长辈/送人/七夕</td></tr>
+      <tr><td>精炖燕窝礼盒 30 瓶</td><td class="price">1099-1699</td><td class="num">27.8 万</td><td>家庭装日常滋养/送女友</td></tr>
+      <tr><td>丝浓系列干燕窝 50g</td><td class="price">1199-2997</td><td class="num">21.0 万</td><td>溯源干燕/礼盒送礼</td></tr>
+      <tr><td>新一代鲜炖燕窝 50g*56 瓶</td><td class="price">299-4497</td><td class="num">15.4 万</td><td>女生日常滋养/备孕/送人送礼</td></tr>
+      <tr><td>鲜炖燕窝礼盒 90 瓶夏季滋补</td><td class="price">94-4197</td><td class="num">6.1 万</td><td>90 天自食/送长辈/送家人</td></tr>
+      <tr><td>燕之屋 4 星原盏干燕窝 100g</td><td class="price">1199-4100</td><td class="num">0.21 万</td><td>4 星礼盒/礼盒送礼</td></tr>
+      <tr><td>燕之屋燕盏 3 星原盏干燕窝 50g</td><td class="price">1399-3200</td><td class="num">0.17 万</td><td>三星礼盒/送人送礼</td></tr>
+      <tr><td>花漾年华礼盒 70g*15 瓶</td><td class="price">656-1538</td><td class="num">0.15 万</td><td>伴手礼/送朋友/送领导/高颜值礼盒</td></tr>
+      <tr><td>归燕鲜炖燕窝礼盒 40g*15 瓶</td><td class="price">758-769</td><td class="num">0.15 万</td><td>母亲节礼盒/伴手礼/送长辈</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.4 燕之屋值得学习的五个亮点</h3>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div><span class="num-circle">1</span><strong>场景化命名策略</strong></div>
+      <p>"整根人参燕窝饮·加班熬夜奋斗营养补充"——直接绑定消费场景。消费者听到"加班熬夜"时不需要理解燕窝功效，对号入座场景即可下单。比"蛹虫草""进口原料"等抽象描述更高效。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">2</span><strong>"可视化原料"反向引流</strong></div>
+      <p>整根人参燕窝饮 99-199 元、2 场直播产出 1,311 件（场均 655 件）。比山湖间蛹虫草的场均 454 件更高——原因是"整根人参"是可视化卖点，消费者在直播间能"看到"人参，信任感更强。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">3</span><strong>燕窝杯的颜值经济</strong></div>
+      <p>288-299 元的燕窝杯在直播间做出 649 件销量、19.4 万销售额。"重瓣玫瑰"的视觉冲击力 + "高颜值礼盒"包装，让产品在直播间有极强"种草力"。理解视频号女性用户对"颜值"的敏感度。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">4</span><strong>月套餐的"锁客"思维</strong></div>
+      <p>30 瓶月套餐关联直播数 40 场——单次转化难但锁定一个月消费（1000-2400 元）。燕之屋愿意为月套餐投入 40 场直播，说明其理解"高价品需要高频直播建立信任"的规律。</p>
+    </div>
+    <div class="feature-item">
+      <div><span class="num-circle">5</span><strong>多店铺矩阵化运营</strong></div>
+      <p>不只依赖"官方旗舰店"，还布局"燕窝商城""会员商城""碗燕"等多店铺，在不同店铺测试不同价格带和产品组合。多店铺矩阵让品牌同时覆盖不同层级的消费者。</p>
+    </div>
+  </div>
+
+  <h3>5.5 燕之屋可进一步优化的方向</h3>
+
+  <div class="callout warning">
+    <strong>优化一：引流品直播频次严重不足</strong>。燕之屋的引流品（人参燕窝饮、燕窝粥）关联直播数仅 1-2 场，而山湖间蛹虫草达 14 场。燕之屋的引流品单场效率高，但总场次不足导致总销量受限。建议将月直播场次提升至 10-15 场，按当前场均 655 件效率，月销量有望突破 6,000 件。
+  </div>
+
+  <div class="callout warning">
+    <strong>优化二：缺乏蛹虫草类超低价引流品</strong>。燕之屋最低价引流品是 99 元的人参燕窝饮，而品类数据显示 69.9 元蛹虫草鲜炖燕窝是视频号最高转化价格点。建议开发 60-80 元价格带的"概念引流品"。
+  </div>
+
+  <div class="callout warning">
+    <strong>优化三：视频内容沉淀不足</strong>。"30 天关联视频"几乎为 0，过度依赖直播。对比汉方爷爷通过 39 条视频内容做到 1.08 亿（0 直播），燕之屋可以增加"产品溯源""燕窝知识""食用场景"等短视频内容。
+  </div>
+
+  <div class="callout warning">
+    <strong>优化四：达人合作深度不够</strong>。小仙炖每个核心 SKU 关联直播数高达 67 场，燕之屋最高也仅 40 场。建议建立"达人专属 SKU"机制（[七姐专属]、[美歌生活专属]），用专属价格和佣金吸引更多中腰部达人。
+  </div>
+
+  <div class="callout warning">
+    <strong>优化五：燕窝粥品类存在感偏低</strong>。燕春语燕窝粥月销 207 万，燕之屋小燕浓燕窝粥直播销售额仅 7.6 万。建议加大燕窝粥的直播投入，对标"大包装+试吃+送礼"模式。
+  </div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">06</span> 总结与中秋行动建议 <small>Action Plan</small></h2>
+  <p class="lead">基于以上全品类数据 + 京东行业分析交叉印证，给出"燕之屋"在视频号中秋旺季的 6 条核心行动建议。</p>
+
+  <h3>6.1 品类核心趋势总结</h3>
+  <div class="kpi-row">
+    <div class="kpi"><div class="v">88%</div><div class="l">销售额来自直播</div></div>
+    <div class="kpi"><div class="v">57%</div><div class="l">销售额来自送礼</div></div>
+    <div class="kpi"><div class="v">69.9</div><div class="l">引流品黄金价格点</div></div>
+    <div class="kpi"><div class="v">176 万</div><div class="l">燕之屋月直播销售额</div></div>
+  </div>
+
+  <h3>6.2 中秋行动清单</h3>
+  <ol class="action-list">
+    <li><strong>扩充超低价引流品（69-99 元）：</strong>开发 60-80 元价格带引流品（如"菌草鲜炖燕窝""蓝莓山药燕窝饮"等），用更低价格点吸引新客进直播间，再向上引导至人参燕窝饮和鲜炖月套餐。</li>
+    <li><strong>提升引流品直播频次：</strong>将人参燕窝饮、燕窝杯、小燕浓燕窝粥的月直播场次从 1-2 场提升至 10 场以上，按当前场均效率，月销量有望破 6,000 件。</li>
+    <li><strong>建设达人专属 SKU 分销网络：</strong>为腰部达人设计专属价格和佣金（如"[七姐专属]燕之屋人参燕窝饮"），目标将核心 SKU 关联直播数从 2 场提升至 20 场以上。</li>
+    <li><strong>补齐短视频内容短板：</strong>每月产出 20-30 条产品溯源和场景化短视频（"燕窝原料溯源""开箱仪式感""食用场景"),为直播预热、为店铺引流。</li>
+    <li><strong>加大燕窝粥品类投入：</strong>将小燕浓燕窝粥作为中秋第二增长曲线，对标燕春语"大包装+试吃+送礼"模式，开发中秋限定包装和"试吃一碗"机制。</li>
+    <li><strong>中秋专场礼盒定制：</strong>鉴于视频号 99.9% 中秋关键词未占用，应立即启动中秋限定 SKU（如"燕之屋×中秋·月圆鲜炖礼盒"），将"中秋"作为标题核心关键词抢占蓝海。</li>
+  </ol>
+
+  <h3>6.3 中秋直播间话术框架建议</h3>
+  <div class="quote-box">
+    <strong>【开场钩子】</strong>"姐妹们，中秋回家送什么？月饼太俗、保健品太丑。今天给大家带来一款又能吃又有面子的中秋礼——"<br><br>
+    <strong>【场景代入】</strong>"想象一下，您拎着这盒燕窝回娘家，妈妈嘴上说'又乱花钱'，转身就放在客厅最显眼的位置，逢人就夸'这是我闺女买的'"——<br><br>
+    <strong>【信任建立】</strong>"咱们家的燕窝是印尼进口溯源码燕窝，每一瓶都有独立溯源码，您扫码就能看到原料产地、加工工厂……"<br><br>
+    <strong>【稀缺促销】</strong>"今天直播间专属价，只要 XXX 元，比旗舰店还便宜 XX 元，而且今天下单送您 [中秋限定礼袋]"——<br><br>
+    <strong>【临门一脚】</strong>"还剩最后 20 单，姐妹们赶紧拍，错过今天就只能等到明年中秋了！"
+  </div>
+
+  <h3>6.4 数据附录</h3>
+  <div class="grid-2">
+    <div class="case-card">
+      <div class="title">月榜 Top10 商品</div>
+      <p>燕之屋产品占据前 6 中的 5 个席位，强势霸榜。</p>
+      <ul style="padding-left:20px;margin-top:8px;font-size:0.92em;">
+        <li>#1 燕之屋整根人参燕窝饮（12.98 万）</li>
+        <li>#2 燕之屋燕窝杯（19.41 万）</li>
+        <li>#3 燕之屋鲜炖燕窝礼盒 30 瓶（58.33 万）</li>
+        <li>#4 燕之屋小燕浓燕窝粥（5.84 万）</li>
+        <li>#5 燕之屋鲜炖燕窝 28 瓶月套餐（30.32 万）</li>
+      </ul>
+    </div>
+    <div class="case-card">
+      <div class="title">燕之屋销售矩阵数据</div>
+      <ul style="padding-left:20px;margin-top:8px;font-size:0.92em;">
+        <li>燕之屋官方旗舰店：56 个 SKU，167 万 GMV</li>
+        <li>燕之屋燕窝商城：14 个 SKU，80 万 GMV</li>
+        <li>合计月直播销售额：约 176 万元</li>
+        <li>品类排名：第 1</li>
+        <li>核心利润品（30 瓶月套餐）：58.3 万</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <p>本报告基于视频号电商公开数据（友望数据）+ 京东燕窝行业分析生成</p>
+  <p>数据日期：2026-08-11 · 仅作行业研究与品类洞察参考</p>
+  <p style="margin-top:8px;"><a href="https://Sumiyaliu.github.io/sumiya-public/">← 返回 Sumiya 公开站点</a></p>
+</footer>
+
+</div>
+</body>
+</html>
