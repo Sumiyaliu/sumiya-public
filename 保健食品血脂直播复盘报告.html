@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>直播复盘报告｜汤臣倍健鱼油·盛夏养心脑专场</title>
+<style>
+  :root {
+    --green: #0f8a6d;
+    --green-light: #e6f4ef;
+    --teal: #17a589;
+    --tea-white: #f7f5f0;
+    --warm: #f5efe6;
+    --ink: #2b2b2b;
+    --muted: #6b6b6b;
+    --line: #e5e0d8;
+    --red: #d9534f;
+    --amber: #e6a23c;
+    --blue: #3b82c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--tea-white);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 900px; margin: 0 auto; padding: 40px 28px 80px; }
+
+  /* 顶部 */
+  .hero {
+    background: linear-gradient(135deg, #0f8a6d 0%, #17a589 60%, #3cbfa5 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(15,138,109,.22);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 240px; height: 240px;
+    background: rgba(255,255,255,.10);
+    border-radius: 50%;
+  }
+  .hero .tag {
+    display: inline-block;
+    background: rgba(255,255,255,.18);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 700; line-height: 1.35; }
+  .hero .sub { margin-top: 10px; font-size: 15px; opacity: .92; }
+  .hero .meta {
+    margin-top: 20px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+    font-size: 13px; opacity: .95;
+  }
+  .hero .meta span {
+    background: rgba(255,255,255,.14);
+    padding: 5px 12px; border-radius: 8px;
+  }
+
+  /* 区块 */
+  section { margin-top: 40px; }
+  h2 {
+    font-size: 21px; font-weight: 700;
+    padding-left: 14px;
+    border-left: 4px solid var(--green);
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  h3 { font-size: 16px; font-weight: 600; margin: 22px 0 10px; color: var(--green); }
+  p { margin: 10px 0; font-size: 15px; color: #3a3a3a; }
+  .lead {
+    background: var(--green-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    font-weight: 600;
+    color: var(--green);
+    border: 1px solid #cdeade;
+  }
+
+  /* 表格 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--green);
+    color: #fff;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #faf8f4; }
+
+  /* 卡片 */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 16px 0;
+  }
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    border-top: 4px solid var(--green);
+  }
+  .card.pro { border-top-color: var(--teal); }
+  .card.con { border-top-color: var(--red); }
+  .card h4 {
+    font-size: 15px; font-weight: 700; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card.pro h4 { color: var(--green); }
+  .card.con h4 { color: var(--red); }
+  .card ul { list-style: none; }
+  .card li {
+    font-size: 14px; color: #3a3a3a;
+    padding: 7px 0 7px 22px; position: relative;
+  }
+  .card.pro li::before { content: "✓"; color: var(--green); position: absolute; left: 0; font-weight: 700; }
+  .card.con li::before { content: "✕"; color: var(--red); position: absolute; left: 0; font-weight: 700; }
+
+  /* 星级 */
+  .stars { color: var(--amber); font-size: 15px; letter-spacing: 2px; }
+  .stars .off { color: #ddd; }
+
+  /* 评分条 */
+  .score-row {
+    display: grid; grid-template-columns: 130px 1fr 90px;
+    align-items: center; gap: 14px; margin: 14px 0;
+  }
+  .score-row .label { font-size: 14px; font-weight: 600; }
+  .bar { height: 12px; background: #eee; border-radius: 6px; overflow: hidden; }
+  .bar > div { height: 100%; border-radius: 6px; }
+  .score-row .val { font-size: 13px; color: var(--muted); }
+
+  /* 建议 */
+  .prio {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    margin: 16px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    border-left: 5px solid var(--green);
+  }
+  .prio.p0 { border-left-color: var(--red); }
+  .prio.p1 { border-left-color: var(--blue); }
+  .prio.p2 { border-left-color: var(--amber); }
+  .prio h4 { font-size: 16px; margin-bottom: 10px; }
+  .prio .badge {
+    display: inline-block; color: #fff; font-size: 12px;
+    padding: 2px 10px; border-radius: 6px; margin-right: 8px; vertical-align: 1px;
+  }
+  .badge.p0 { background: var(--red); }
+  .badge.p1 { background: var(--blue); }
+  .badge.p2 { background: var(--amber); }
+  .prio ul { margin-left: 20px; }
+  .prio li { font-size: 14px; color: #3a3a3a; margin: 6px 0; }
+
+  .subhead {
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    margin: 14px 0 6px; padding-left: 10px;
+    border-left: 3px solid var(--teal);
+  }
+
+  .warn {
+    background: #fdf3f2;
+    border: 1px solid #f5c6c4;
+    border-radius: 12px;
+    padding: 18px 22px;
+    color: #8a3d3a;
+  }
+  .warn li { margin: 6px 0 6px 20px; font-size: 14px; }
+
+  .note {
+    margin-top: 30px; font-size: 13px; color: var(--muted);
+    background: var(--warm); padding: 14px 18px; border-radius: 10px;
+  }
+
+  /* 风险标签 */
+  .risk {
+    display: inline-block;
+    font-size: 12px; font-weight: 700;
+    padding: 2px 9px; border-radius: 6px;
+    margin-right: 6px; white-space: nowrap;
+  }
+  .risk.r-red { background: #fdecea; color: #c0392b; border: 1px solid #f5c6c4; }
+  .risk.r-orange { background: #fdf0e2; color: #d97b0b; border: 1px solid #f5d9b8; }
+  .risk.r-yellow { background: #fdf8e3; color: #b8860b; border: 1px solid #f0e4b8; }
+  .risk.r-green { background: #e6f4ef; color: #0f8a6d; border: 1px solid #cdeade; }
+
+  .quote {
+    background: #faf8f4;
+    border-left: 3px solid var(--teal);
+    padding: 4px 12px;
+    border-radius: 4px;
+    color: #4a4a4a;
+    font-size: 13px;
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 30px 24px; }
+    .hero h1 { font-size: 22px; }
+    .score-row { grid-template-columns: 90px 1fr; }
+    .score-row .val { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="tag">直播吸引力 · 人货场复盘</div>
+    <h1>直播复盘报告<br>汤臣倍健鱼油 · 盛夏养心脑专场</h1>
+    <div class="sub">基于直播画面与话术音轨的完整诊断分析</div>
+    <div class="meta">
+      <span>复盘日期：2026-08-13</span>
+      <span>音频时长：6 分 48 秒</span>
+      <span>主推品：一号链接·金装鱼油</span>
+    </div>
+  </div>
+
+  <!-- 一、整体概览 -->
+  <section>
+    <h2>一、整体概览</h2>
+    <p>本次直播定位汤臣倍健金装鱼油「年中大促·最后一波」，主打「盛夏养心脑」概念。从截图与话术可识别以下关键事实：</p>
+    <table>
+      <thead><tr><th>维度</th><th>识别结果</th></tr></thead>
+      <tbody>
+        <tr><td>主推商品</td><td>一号链接·金装鱼油（两瓶/三瓶/四瓶装）</td></tr>
+        <tr><td>锚定价格</td><td>2 瓶装 298 / 3 瓶装 400 / 4 瓶装 542（活动价）</td></tr>
+        <tr><td>叠加机制</td><td>拍一发五：鱼油+维生素 D+小米风管三件套；拍一发七：再加手提套</td></tr>
+        <tr><td>主播数量</td><td>1 人（单人出镜）</td></tr>
+        <tr><td>适用人群</td><td>指数偏高 / 手脚剧麻 / 头晕头痛 / 容易忘事 / 胸闷心悸</td></tr>
+        <tr><td>资质背书</td><td>国家蓝帽、国际 IFOS 五星、美韩等多国认证、18 天酶解认证、有运险</td></tr>
+        <tr><td>直播间数据</td><td>13 人看过、0 人送礼、显示「直播中」</td></tr>
+        <tr><td>主播所在地</td><td>杭州市·宝石山</td></tr>
+      </tbody>
+    </table>
+    <p class="lead">一句话诊断：商品机制设计（货）相对完整，但主播表现（人）促销叫卖感强、缺乏专业感和温度，场景（场）停留在通用绿幕背景未做升级，整场偏「卖场促销式」而非「专业健康解决方案式」，与保健食品直播的本质要求存在差距。</p>
+  </section>
+
+  <!-- 二、画面分析 -->
+  <section>
+    <h2>二、画面分析（场景「场」+ 部分「货」）</h2>
+    <h3>2.1 优点</h3>
+    <div class="grid">
+      <div class="card pro">
+        <h4>品牌权威感强</h4>
+        <ul><li>顶部「汤臣倍健」红章 logo 显著，建立第一道信任</li></ul>
+      </div>
+      <div class="card pro">
+        <h4>产品矩阵丰富</h4>
+        <ul><li>鱼油（6 瓶）+ BYHEALTH 蛋白棒礼盒 + 维生素 D + 蜂胶 + 4 瓶礼盒装，赠品实物化呈现</li></ul>
+      </div>
+      <div class="card pro">
+        <h4>痛点可视化</h4>
+        <ul><li>左侧「适用人群」红色对勾列出 5 个具体症状，便于自我对号入座</li></ul>
+      </div>
+      <div class="card pro">
+        <h4>信任元素齐全</h4>
+        <ul><li>底部「18 天酶解认证、IFOS 五星认证、有运险、官方直播」四个图标</li></ul>
+      </div>
+      <div class="card pro">
+        <h4>官方背书</h4>
+        <ul><li>右上角「限时加赠」4 瓶礼盒装悬浮卡制造稀缺感</li></ul>
+      </div>
+      <div class="card pro">
+        <h4>地理标识</h4>
+        <ul><li>杭州·宝石山定位增加在地化真实感</li></ul>
+      </div>
+    </div>
+
+    <h3>2.2 关键问题</h3>
+    <div class="grid">
+      <div class="card con">
+        <h4>主播状态欠佳</h4>
+        <ul><li>截图捕捉到主播闭眼瞬间，整体偏静态、缺乏能量感，无法传递「健康活力」联想</li></ul>
+      </div>
+      <div class="card con">
+        <h4>场景缺乏专业升级</h4>
+        <ul><li>通用直播背景（海鱼图 + 奖杯架）属「简易背景」，损失约 54% 的 PV 提升空间</li></ul>
+      </div>
+      <div class="card con">
+        <h4>视觉焦点分散</h4>
+        <ul><li>主播、产品、文字三块元素均分画面，主播面部占比过大挤压产品细节</li></ul>
+      </div>
+      <div class="card con">
+        <h4>顶部文案力度弱</h4>
+        <ul><li>「好营养 敢送溯」表达模糊，无法形成购买冲动</li></ul>
+      </div>
+      <div class="card con">
+        <h4>互动数据暴露热度</h4>
+        <ul><li>13 人看过、0 人送礼，提示场观→互动转化路径不畅通</li></ul>
+      </div>
+      <div class="card con">
+        <h4>缺少紧迫感元素</h4>
+        <ul><li>没有「距活动结束 XX 分钟」「仅剩 XX 份」等倒计时/库存元素</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、话术分析 -->
+  <section>
+    <h2>三、话术分析（主播「人」+ 部分「货」）</h2>
+    <h3>3.1 话术时间轴结构</h3>
+    <table>
+      <thead><tr><th>时间区间</th><th>内容主题</th><th>话术要点</th></tr></thead>
+      <tbody>
+        <tr><td>0:00–0:54</td><td>开场 + 促销机制</td><td>三档规格、活动价、拍一发五/发七、年中大促最后一波</td></tr>
+        <tr><td>0:54–1:30</td><td>痛点唤醒</td><td>头昏眼花、手脚发麻、失眠、体力下降；体检单血脂/胆固醇偏高</td></tr>
+        <tr><td>1:30–2:20</td><td>产品功效</td><td>一瓶顶四瓶；EPA 清理血管油脂、DHA 让大脑更灵光、眼睛更明亮</td></tr>
+        <tr><td>2:20–3:40</td><td>资质背书</td><td>蓝帽、IFOS 五星、美韩多国认证、辅助降血脂、维持血脂健康</td></tr>
+        <tr><td>3:40–5:00</td><td>差异化对比</td><td>三大不同：纯度 96% vs 30-50%、鲜度、1cm 小颗粒易吞咽</td></tr>
+        <tr><td>5:00–6:48</td><td>重复号召</td><td>感谢罗小英姐姐关注；一瓶顶多瓶；最终号召拍一号链接</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3.2 优点</h3>
+    <div class="card pro">
+      <ul>
+        <li>痛点描述具体：5 个症状明确列出，与产品功效形成强对应</li>
+        <li>价格锚点清晰：298/400/542 三档阶梯，配合「两瓶不够、三瓶起步」引导</li>
+        <li>赠品叠加合理：拍一发五、拍一发七，满足「高价值感赠品提升客单价」原则</li>
+        <li>三大差异化逻辑清晰：纯度/鲜度/颗粒对比通俗易懂</li>
+        <li>资质背书完整：蓝帽 + IFOS + 多国认证三件套形成权威信任链</li>
+      </ul>
+    </div>
+
+    <h3>3.3 关键问题</h3>
+    <div class="subhead">A. 主播表现（人）维度 —— 评分 ★★☆☆☆</div>
+    <div class="card con">
+      <ul>
+        <li>促销叫卖感过强：连续重复「400、400、400」「一号链接」，属典型卖场叫卖话术，与「价值优先」相悖</li>
+        <li>专业人设缺失：全程无自我介绍专业背景，无法建立专家信任</li>
+        <li>情感温度不足：几乎没有真诚关怀语句，整场偏冷</li>
+        <li>缺乏互动引导：未设计提问钩子、抽奖福袋等机制</li>
+        <li>用户见证缺位：无真实用户反馈、使用对比、案例故事</li>
+        <li>结尾催促弱：结束时无「限时」「前 N 名加赠」等强催促</li>
+      </ul>
+    </div>
+
+    <div class="subhead">B. 商品表达（货）维度 —— 评分 ★★★☆☆</div>
+    <div class="card con">
+      <ul>
+        <li>价格数字口误/混乱：298/400/542 存在口齿不清或重复报价现象</li>
+        <li>数字逻辑有歧义：「三瓶装 400」被重复多次，易让观众误以为 400 最划算</li>
+        <li>赠品价值未量化：维 D、小米风管三件套、手提套均未给出价格锚定</li>
+        <li>使用场景化弱：未示范搭配、仅说「一天一次一次两粒」过于简略</li>
+        <li>客服话术穿插：夹杂「我错这个」「不用发售吗」等口误/客服片段，稀释专业度</li>
+      </ul>
+    </div>
+
+    <div class="subhead">C. 直播结构（场节奏）维度 —— 评分 ★★☆☆☆</div>
+    <div class="card con">
+      <ul>
+        <li>整体时长偏短：6 分 48 秒无法覆盖完整用户决策路径</li>
+        <li>缺失 BigDay 仪式感：无倒计时、限量库存、明星/嘉宾助阵</li>
+        <li>多角色缺位：单人出镜，错失「≥2 人 PV +108%」的协同效应</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 四、综合诊断 -->
+  <section>
+    <h2>四、综合诊断与对比</h2>
+    <div class="score-row">
+      <div class="label">主播表现（人）</div>
+      <div class="bar"><div style="width:40%; background:var(--red);"></div></div>
+      <div class="val">★★☆☆☆</div>
+    </div>
+    <div class="score-row">
+      <div class="label">直播商品（货）</div>
+      <div class="bar"><div style="width:80%; background:var(--green);"></div></div>
+      <div class="val">★★★★☆</div>
+    </div>
+    <div class="score-row">
+      <div class="label">直播场景（场）</div>
+      <div class="bar"><div style="width:60%; background:var(--amber);"></div></div>
+      <div class="val">★★★☆☆</div>
+    </div>
+
+    <table style="margin-top:22px;">
+      <thead><tr><th>维度</th><th>本场评分</th><th>方法论基准</th><th>差距</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>主播表现（人）</td><td>★★☆☆☆</td><td>亲和力 + 专业度，建立信任与温度</td><td>缺乏专业人设、情感温度、互动设计</td>
+        </tr>
+        <tr>
+          <td>直播商品（货）</td><td>★★★★☆</td><td>蓝帽 + 品牌 + 机制组合</td><td>价格锚点易混、赠品价值未量化</td>
+        </tr>
+        <tr>
+          <td>直播场景（场）</td><td>★★★☆☆</td><td>专业场景 PV +54% / BigDay 转化 +15%</td><td>通用绿幕背景、无地标仪式感</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="lead">核心结论：本场是「商品机制强、主播专业弱、场景未升级」的典型传统保健食品卖场式直播，与方法论倡导的「专业健康解决方案传递」存在结构性差距。</p>
+  </section>
+
+  <!-- 五、优化建议 -->
+  <section>
+    <h2>五、优化建议（按优先级排序）</h2>
+
+    <div class="prio p0">
+      <h4><span class="badge p0">P0</span>立即可改</h4>
+      <ul>
+        <li>主播脚本重塑：去掉「400、400、400」等重复叫卖，改用「今天最后一波福利、库存仅 XX 份」等价值+稀缺话术</li>
+        <li>数字口误纠正：录制前主播需把 298/400/542 分别读三遍确认，必要时用提示卡辅助</li>
+        <li>客服沟通离场：明确「助理」和「主播」分工，避免客服对话穿插到主播出镜话术中</li>
+      </ul>
+    </div>
+
+    <div class="prio p1">
+      <h4><span class="badge p1">P1</span>核心优化</h4>
+      <div class="subhead">A. 主播表现（人）</div>
+      <ul>
+        <li>建立专业人设：开场自我介绍「我是汤臣倍健官方营养顾问 XX，拥有 X 年临床营养经验」</li>
+        <li>深挖痛点：用一个真实匿名客户案例讲述「血脂偏高没重视，最终心梗住院」的故事</li>
+        <li>增加温度沟通：开场先问「叔叔阿姨最近睡眠怎么样？体检报告有没有箭头？」</li>
+        <li>设计互动钩子：每 5 分钟一次「评论区扣 1 抽奖送蛋白棒」</li>
+        <li>结尾强催促：「前 30 名下单送额外赠品」「仅剩 12 份库存」</li>
+      </ul>
+      <div class="subhead">B. 直播商品（货）</div>
+      <ul>
+        <li>价格表可视化：购物车 1 号链接旁贴价格表 298/400/542</li>
+        <li>赠品价值量化：维 D「价值 ¥98」、小米风管三件套「价值 ¥168」</li>
+        <li>场景化使用：直播演示鱼油倒入早餐牛奶、搭配沙拉</li>
+        <li>真实用户见证：直播贴 3-5 个使用前后对比图（征得用户同意）</li>
+      </ul>
+      <div class="subhead">C. 直播场景（场）</div>
+      <ul>
+        <li>场景升级：从绿幕切换到汤臣倍健品牌展厅、营养实验室、原料工厂（PV +54%）</li>
+        <li>视觉焦点重塑：主播缩到画面 1/3、产品放大到 1/2、留 1/6 给文字卖点</li>
+        <li>BigDay 元素：左上角倒计时「距活动结束 01:30:00」、右上角「仅剩 XX 份」</li>
+        <li>顶部文案改版：「血管干净、脑清眼亮——汤臣倍健金装鱼油」取代「好营养 敢送溯」</li>
+        <li>多人组合：增加 1 名助理或营养师同框出镜（PV +108%）</li>
+      </ul>
+    </div>
+
+    <div class="prio p2">
+      <h4><span class="badge p2">P2</span>节奏与策略</h4>
+      <p style="margin-bottom:10px;">参考方法论 BigDay 策划思路，整场 7 分钟建议按下述节奏安排：</p>
+      <table>
+        <thead><tr><th>时段</th><th>内容</th><th>占比</th></tr></thead>
+        <tbody>
+          <tr><td>0:00–0:30</td><td>痛点唤醒（开场+问候）</td><td>7%</td></tr>
+          <tr><td>0:30–2:00</td><td>解决方案（鱼油功效详解）</td><td>21%</td></tr>
+          <tr><td>2:00–3:30</td><td>信任建立（资质+见证）</td><td>21%</td></tr>
+          <tr><td>3:30–5:00</td><td>差异化对比（纯度/鲜度/颗粒）</td><td>21%</td></tr>
+          <tr><td>5:00–6:00</td><td>机制促销（价格+赠品）</td><td>14%</td></tr>
+          <tr><td>6:00–7:00</td><td>限时限量催促下单</td><td>16%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 六、风险提示 -->
+  <section>
+    <h2>六、风险提示</h2>
+    <p>以下风险依据《中华人民共和国广告法》《中华人民共和国食品安全法》及保健食品广告监管相关规定整理，按风险等级从高到低排列，并对照话术转录原文给出合规修正建议。</p>
+
+    <h3>6.1 合规红线风险（必须立即整改）</h3>
+    <table>
+      <thead><tr><th style="width:30%;">话术原文</th><th>风险点</th><th>合规建议</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="quote">「专门去清理您血管里面多余的油脂和垃圾」</span></td>
+          <td><span class="risk r-red">红线</span>暗示治疗/清理心血管疾病病灶，涉嫌涉及疾病治疗功能，违反《广告法》第十八条「保健食品广告不得涉及疾病预防、治疗功能」</td>
+          <td>删除「清理油脂垃圾」表述，改用蓝帽批准的「有助于维持血脂健康水平」</td>
+        </tr>
+        <tr>
+          <td><span class="quote">「纯度决定效果……直接能够给你们做到效果翻倍」</span></td>
+          <td><span class="risk r-red">红线</span>「效果翻倍」属表示功效的断言或保证，为绝对化用语，涉嫌违反《广告法》第十八条第一款</td>
+          <td>改为客观陈述：「96% 高纯度，每天 2 粒即可补充足量 Omega-3」</td>
+        </tr>
+        <tr>
+          <td><span class="quote">「一瓶能顶四瓶去吃的」「能够顶您吃市面上普通油的四到六粒」</span></td>
+          <td><span class="risk r-red">红线</span>与其他保健食品进行功效比较，且「一瓶顶四瓶」缺乏检测依据支撑，违反《广告法》第十八条第四款</td>
+          <td>删除跨产品比较，改为陈述本品规格与单粒含量：「每粒含 Omega-3 XXXXmg」</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>6.2 高风险（涉嫌违规，需谨慎处理）</h3>
+    <table>
+      <thead><tr><th style="width:30%;">话术原文</th><th>风险点</th><th>合规建议</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="quote">「辅助你们去降血脂」「维持您的血脂的健康水平」</span></td>
+          <td><span class="risk r-orange">高风险</span>「辅助降血脂」为蓝帽批准功能，可宣称，但全片未见「本品不能代替药物」显著提示，违反《食品安全法》第七十八条</td>
+          <td>直播全程常驻字幕/口播「保健食品不是药物，本品不能代替药物治疗疾病」</td>
+        </tr>
+        <tr>
+          <td><span class="quote">「96% 超高纯」「Omega3 纯度直接高达 96% 以上」</span></td>
+          <td><span class="risk r-orange">高风险</span>「超高纯」为敏感绝对化用语，且 96% 数值需有第三方检测报告佐证，否则涉嫌虚假宣传</td>
+          <td>去掉「超」字，改为「纯度达 96%」，并在页面挂出对应检测报告截图</td>
+        </tr>
+        <tr>
+          <td><span class="quote">「国家保健食品颁发的蓝帽子认证」「国际 IFOS 五星认证」「美国韩国等多国权威认证」</span></td>
+          <td><span class="risk r-orange">高风险</span>多国认证表述需确保真实有效且可查证；「多国认证」若无法逐一对应，涉嫌夸大背书</td>
+          <td>只保留可核验资质（蓝帽 + IFOS），并提供证书编号或查询入口</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>6.3 中风险（影响转化，建议优化）</h3>
+    <table>
+      <thead><tr><th style="width:30%;">问题现象</th><th>风险说明</th><th>优化建议</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="quote">「400、400、400、400、400」价格连续重复报价</span></td>
+          <td><span class="risk r-yellow">中风险</span>价格口播混乱，易让观众误判「三瓶装 400」为唯一最优价，产生比价困惑、降低下单信心</td>
+          <td>录前把 298/400/542 各读三遍确认，配合购物车旁价格表贴图</td>
+        </tr>
+        <tr>
+          <td><span class="quote">「拍一发五」「拍一发七」赠品叠加</span></td>
+          <td><span class="risk r-yellow">中风险</span>赠品（维 D、小米风管三件套、手提套）未明示价值，用户感知的「划算」缺乏量化支撑</td>
+          <td>逐项标注赠品价值（如「维 D 价值 ¥98」），并确保发货兑现</td>
+        </tr>
+        <tr>
+          <td><span class="quote">「我错这个」等口误重复、客服对话穿插</span></td>
+          <td><span class="risk r-yellow">中风险</span>主播口误与客服沟通片段混入出镜话术，稀释专业度、拉低信任</td>
+          <td>明确「主播 / 助理」分工，口误段落后期剪辑或重新录制</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>6.4 数据与运营提示</h3>
+    <div class="warn">
+      <ul>
+        <li>直播间互动数据偏低（13 人看过 / 0 人送礼），冷启动场观不足，建议场前用预热短视频引流、直播中福袋留人、配合付费投流提升初始场观</li>
+        <li>直播画面未出现「距活动结束」「仅剩 XX 份」等紧迫感元素，缺乏 BigDay 仪式感，影响最终转化，建议增加倒计时与库存提示</li>
+        <li>保健食品功效宣称需全程保持「本品不能代替药物」提示，且主播不得出现「治疗」「治愈」「根治」「清理血管垃圾」等医疗化表述</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="note">备注：本报告基于 Whisper-base 离线转录生成，少量字词存在转写偏差（如「血抹指单」应为「血脂指标」），但不影响话术整体结构与问题识别。</div>
+
+</div>
+</body>
+</html>
