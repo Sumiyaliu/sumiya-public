@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保健食品闭环智投能力梳理｜产品力汇总</title>
+<style>
+  :root {
+    --green: #0f8a6d;
+    --green-light: #e6f4ef;
+    --teal: #17a589;
+    --tea-white: #f7f5f0;
+    --warm: #f5efe6;
+    --ink: #2b2b2b;
+    --muted: #6b6b6b;
+    --line: #e5e0d8;
+    --red: #d9534f;
+    --amber: #e6a23c;
+    --blue: #3b82c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--tea-white);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1100px; margin: 0 auto; padding: 40px 28px 80px; }
+
+  /* 顶部 */
+  .hero {
+    background: linear-gradient(135deg, #0f8a6d 0%, #17a589 60%, #3cbfa5 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 46px 42px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(15,138,109,.22);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 260px; height: 260px;
+    background: rgba(255,255,255,.10);
+    border-radius: 50%;
+  }
+  .hero .tag {
+    display: inline-block;
+    background: rgba(255,255,255,.18);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 700; line-height: 1.35; }
+  .hero .sub { margin-top: 10px; font-size: 15px; opacity: .92; }
+  .hero .meta {
+    margin-top: 20px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+    font-size: 13px; opacity: .95;
+  }
+  .hero .meta span {
+    background: rgba(255,255,255,.14);
+    padding: 5px 12px; border-radius: 8px;
+  }
+
+  /* 区块 */
+  section { margin-top: 44px; }
+  h2 {
+    font-size: 22px; font-weight: 700;
+    padding-left: 14px;
+    border-left: 4px solid var(--green);
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  h3 {
+    font-size: 16px; font-weight: 600; margin: 26px 0 12px; color: var(--green);
+    padding-left: 10px; border-left: 3px solid var(--teal);
+  }
+  p { margin: 10px 0; font-size: 15px; color: #3a3a3a; }
+  .lead {
+    background: var(--green-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    font-weight: 600;
+    color: var(--green);
+    border: 1px solid #cdeade;
+  }
+  .rule {
+    background: #fdf3f2;
+    border: 1px solid #f5c6c4;
+    border-left: 5px solid var(--red);
+    border-radius: 12px;
+    padding: 16px 22px;
+    color: #8a3d3a;
+    font-weight: 600;
+    margin: 16px 0;
+  }
+
+  /* 表格 */
+  .table-wrap { overflow-x: auto; margin: 14px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    font-size: 14px;
+    min-width: 640px;
+  }
+  thead th {
+    background: var(--green);
+    color: #fff;
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #faf8f4; }
+  td.fname { font-weight: 600; white-space: nowrap; }
+
+  /* 状态标签 */
+  .s {
+    display: inline-block;
+    font-size: 12px; font-weight: 700;
+    padding: 3px 10px; border-radius: 6px;
+    white-space: nowrap; line-height: 1.5;
+  }
+  .s-yes   { background: #e6f4ef; color: #0f8a6d; border: 1px solid #bfe2d4; }
+  .s-open  { background: #fdf0e2; color: #d97b0b; border: 1px solid #f5d9b8; }
+  .s-report{ background: #fdecea; color: #c0392b; border: 1px solid #f5c6c4; }
+  .s-scene { background: #e8f1fb; color: #2563a8; border: 1px solid #c8dcf0; }
+  .s-no    { background: #f5f5f5; color: #999; border: 1px solid #e0e0e0; }
+
+  /* 类型卡片 */
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin: 16px 0; }
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    border-top: 4px solid var(--green);
+  }
+  .card h4 {
+    font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--green);
+  }
+  .card .row { font-size: 13.5px; color: #3a3a3a; margin: 8px 0; }
+  .card .row b { color: var(--ink); display: block; font-size: 13px; color: #6b6b6b; font-weight: 600; }
+
+  /* 注释 */
+  .note {
+    margin-top: 28px; font-size: 13px; color: var(--muted);
+    background: var(--warm); padding: 14px 18px; border-radius: 10px;
+  }
+
+  /* 开白入口 */
+  .entry {
+    background: #fff; border-radius: 14px; padding: 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05); margin: 16px 0;
+  }
+  .entry ol { margin-left: 20px; }
+  .entry li { font-size: 14px; color: #3a3a3a; margin: 8px 0; }
+  .entry .hl { color: var(--green); font-weight: 700; }
+
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 30px 24px; }
+    .hero h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="tag">智投产品力 · 能力汇总</div>
+    <h1>保健食品闭环智投能力梳理</h1>
+    <div class="sub">消费品 AIM+ 智投 · 保健食品适用能力总表（两品一械）</div>
+    <div class="meta">
+      <span>更新日期：2026-08-13</span>
+      <span>整理：@jadeyjcao（曹钰婕）</span>
+    </div>
+  </div>
+
+  <!-- 一、智投类型梳理 -->
+  <section>
+    <h2>一、保健食品闭环智投类型梳理</h2>
+    <p class="lead">保健食品（两品一械）行业的智投产品按投放链路分为以下三类，对应不同的投放场景和链路。</p>
+    <div class="grid">
+      <div class="card">
+        <h4>小店智投</h4>
+        <div class="row"><b>对应链路</b>微信小店闭环链路</div>
+        <div class="row"><b>适用场景</b>直播快推、小店商品、短直双开、全店托管；适用于 ROI 考核</div>
+        <div class="row"><b>当前适用性</b>闭环链路，交易全程在微信生态内完成；部分功能不支持或需开白</div>
+      </div>
+      <div class="card">
+        <h4>线索智投</h4>
+        <div class="row"><b>对应链路</b>加粉链路（社群加粉等）</div>
+        <div class="row"><b>适用场景</b>社群加粉、私域沉淀、线索获客；不以成交 ROI 为主</div>
+        <div class="row"><b>当前适用性</b>非闭环链路，重点在于获客和线索转化；保健品需额外做社群资质信息报备</div>
+      </div>
+      <div class="card">
+        <h4>商品智投</h4>
+        <div class="row"><b>对应链路</b>小程序直购 + CID 链路</div>
+        <div class="row"><b>适用场景</b>小程序成交、外部成交归因、非闭环商品转化；适用于 ROI 考核目标</div>
+        <div class="row"><b>当前适用性</b>非闭环链路，适用于有自有小程序商城或外部电商平台的客户</div>
+      </div>
+    </div>
+    <div class="rule">重要规则：保健食品行业强制执行「一户一品」，即单户投放单商品，账户维度与商品维度天然隔离。</div>
+  </section>
+
+  <!-- 二、功能详解 -->
+  <section>
+    <h2>二、保健食品支持的智投功能详解</h2>
+
+    <h3>2.1 智投场景能力</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能 / 场景</th><th>是否支持</th><th>功能含义</th><th>具体用法</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">短直双开</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>一个项目同时推广「微信小店商品」和「直播间」，短视频和直播双链路并行投放</td>
+          <td>创建项目时推广产品多选「微信小店商品」+「直播间」</td>
+          <td>适合老客多的直播间、非日播广告主、直播间流量不充足的广告主</td>
+        </tr>
+        <tr>
+          <td class="fname">单链路智能投放</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>一个项目仅推广「微信小店商品」或「直播间」，单品独立考核</td>
+          <td>创建项目时推广产品单选「微信小店商品」或「直播间」</td>
+          <td>适合仅经营直购不直播的广告主，或直播/直购独立考核的广告主</td>
+        </tr>
+        <tr>
+          <td class="fname">全店托管</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>一个项目托管小店全店商品，系统智能探索与调整实现全店 ROI 最大化</td>
+          <td>创建项目选择全店托管场景，设置店铺粒度下单 ROI 和日预算</td>
+          <td>同一账户下，全店托管一个店铺仅能创建一个项目；默认开启 AIGC 创意和组件全库智选</td>
+        </tr>
+        <tr>
+          <td class="fname">直播专场放量</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>专场放量场景下，系统自动生效直播专场跑量策略，放宽成本考核</td>
+          <td>项目营销场景选择「专场放量」即可自动生效</td>
+          <td>使用此能力的智投项目后续消耗不支持赔付</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.2 出价与优化能力</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能 / 场景</th><th>是否支持</th><th>功能含义</th><th>具体用法</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">下单 ROI 出价</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>以下单 ROI 为优化目标的出价方式，系统在项目粒度完成 ROI 考核</td>
+          <td>设置「店铺粒度」可接受的下单 ROI 目标值</td>
+          <td>建议表达真实 ROI，投放后不建议频繁修改出价</td>
+        </tr>
+        <tr>
+          <td class="fname">下单成本出价</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>以下单成本为优化目标的出价方式</td>
+          <td>设置目标下单成本</td>
+          <td>常规出价方式</td>
+        </tr>
+        <tr>
+          <td class="fname">净成交出价</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>剔除 1 小时内退款订单后的净成交下单 / 净成交 ROI 优化</td>
+          <td>选择净成交下单或净成交 ROI 作为投放目标</td>
+          <td>净成交下单目标应比普通下单出价更高；净成交 ROI 目标应比下单 ROI 更低（按净成交占比折算）</td>
+        </tr>
+        <tr>
+          <td class="fname">深辅 ROI（下单 ROI 深度优化）</td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>在下单 ROI 基础上增加深度辅助优化，进一步提升 ROI 稳定性</td>
+          <td>需提报【商品消费白名单】加白后使用</td>
+          <td>开白文档：【商品消费白名单提报】下单+下单 ROI 深度优化及深辅</td>
+        </tr>
+        <tr>
+          <td class="fname">分人群出价</td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>按人群标签差异化出价，对不同人群设置不同的出价系数</td>
+          <td>需提报加白后，在出价设置中配置分人群出价系数</td>
+          <td>开白文档：保健食品-分人群出价配置；赔付规则中每天修改分人群出价总次数不能超过 2 次</td>
+        </tr>
+        <tr>
+          <td class="fname">优选版位提价</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>对特定优质版位设置提价系数，系统优先在优质版位投放</td>
+          <td>在出价与预算模块设置版位提价系数</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td class="fname">潜客优投</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>系统对潜客人群（尚未转化但高意向的用户）提高出价，加速转化</td>
+          <td>开启「探索策略」按钮 → 策略类型选「潜客优投」→ 填写提价系数（1.1~2.0）</td>
+          <td>ROI 类出价：调价后出价=原始出价/调价系数；非 ROI 类出价：调价后出价=原始出价*调价系数</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.3 起量与跑量能力</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能 / 场景</th><th>是否支持</th><th>功能含义</th><th>具体用法</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">一键起量</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>新项目上线初期，系统自动提高出价帮助快速积累数据度过冷启动期</td>
+          <td>项目创建时默认生效，无需额外操作</td>
+          <td>一键起量期消耗不进行赔付，一键起量产生的转化不计入赔付转化门槛</td>
+        </tr>
+        <tr>
+          <td class="fname">一方跑量加权</td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>利用广告主一方数据（如 CRM 数据）回传加权，帮助系统更精准地找到目标人群</td>
+          <td>需提报【一方跑量加强鉴权申报】加白后使用</td>
+          <td>开白文档：一方跑量加强鉴权申报表</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.4 创意能力</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能 / 场景</th><th>是否支持</th><th>功能含义</th><th>具体用法</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">AIGC 自动创意</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>系统基于广告素材和推广产品，自动衍生适配全流量的多规格素材</td>
+          <td>项目创建时默认开启 AIGC 创意开关，需选择品牌形象（必填）</td>
+          <td>品牌形象一经提交不可更改；单直播场景需提供 1 个商品用于 AI 生成素材</td>
+        </tr>
+        <tr>
+          <td class="fname">组件全库智选</td>
+          <td><span class="s s-yes">✅ 支持（小店智投）</span></td>
+          <td>系统自动拉取账号下同推广产品的优质历史图片/视频素材填充广告</td>
+          <td>项目创建时默认开启，与 AIGC 创意一同默认开启</td>
+          <td>全店托管场景不支持关闭</td>
+        </tr>
+        <tr>
+          <td class="fname">创意优投</td>
+          <td><span class="s s-scene">⚠️ 分场景支持</span></td>
+          <td>系统自动优先分配预算给表现最好的素材，以更快速度、更低成本优选出跑量素材</td>
+          <td>在项目列表中点击「创意优投」→ 选择优投图片/视频 → 设置提价比例（10%~50%）和优投日预算 → 新建优投项目</td>
+          <td>非闭环商品智投：✅ 支持，无需开白；闭环小店智投：❌ 不支持；需满足 ①已拥有小店艾米权限 ②通过创意优投能力测试素材</td>
+        </tr>
+        <tr>
+          <td class="fname">浮层卡片/品牌形象/营销组件</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>在创意中设置浮层卡片、品牌形象、营销组件等</td>
+          <td>创意设置步骤中配置</td>
+          <td>品牌形象为必填项</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.5 版位与流量能力</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能 / 场景</th><th>是否支持</th><th>功能含义</th><th>具体用法</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">PCAD 版位拆分</td>
+          <td><span class="s s-report">⚠️ 需提报（黑名单回退）</span></td>
+          <td>将 PCAD 版位从 4 合 1 拆分为独立版位，便于分版位查看数据和优化</td>
+          <td>通过提报黑名单方式回退 PCAD 版位 4 合 1 功能</td>
+          <td>提报文档：【黑名单】PCAD 版位 4 合 1-产品功能回退黑名单提报</td>
+        </tr>
+        <tr>
+          <td class="fname">微信公号 & 插件版位拆分</td>
+          <td><span class="s s-report">⚠️ 需提报（黑名单回退）</span></td>
+          <td>将微信公号和插件版位从 2 合 1 拆分为独立版位</td>
+          <td>通过提报黑名单方式回退</td>
+          <td>提报文档：【黑名单】微信公号 & 插件版位 2 合 1-客户黑名单提报</td>
+        </tr>
+        <tr>
+          <td class="fname">复用至朋友圈（暗投屏蔽）</td>
+          <td><span class="s s-report">⚠️ 需提报</span></td>
+          <td>防止素材被暗投复用至朋友圈版位</td>
+          <td>提报需屏蔽的客户名单（UID & MDMID）</td>
+          <td>提报文档：【复用至朋友圈】暗投需屏蔽客户名单（UID & MDMID）</td>
+        </tr>
+        <tr>
+          <td class="fname">视频号版位加白</td>
+          <td><span class="s s-open">⚠️ 特定品类需加白</span></td>
+          <td>减肥品、三高 & 通便品需单独加白视频号版位</td>
+          <td>1、减肥品：需热招品牌 + 复审拒绝率低于品械均值 90%；2、三高通便品：仅需复审拒绝率低于品械均值 90%</td>
+          <td>准出规则：拒绝率高于品械均值 150% 或涉及重大违规将被剔除</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.6 其他能力</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能 / 场景</th><th>是否支持</th><th>功能含义</th><th>具体用法</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">互选订单改价</td>
+          <td><span class="s s-report">⚠️ 需提报</span></td>
+          <td>视频号互选合作中修改报价和订单价格</td>
+          <td>提报特殊修改申请及留档</td>
+          <td>提报文档：【内部】视频号互选报价和订单价格特殊修改申请及留档-2026</td>
+        </tr>
+        <tr>
+          <td class="fname">智投加白（小店智投白名单）</td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>小店智投产品本身的使用权限白名单</td>
+          <td>需提报【商品消费业务部-小店智投白名单配置 & case 提报】</td>
+          <td>保健食品客户需先获得小店智投使用权限（商品消费业务部-小店智投白名单配置 & case 提报）</td>
+        </tr>
+        <tr>
+          <td class="fname">成本保障 / 赔付</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>首次曝光 t 日至 t+3 日的超成本赔付和空耗赔付</td>
+          <td>自动生效，前期通过后置结算打款赔付</td>
+          <td>一键起量期消耗不赔付；每天修改出价/定向总次数不超过 2 次；直播专场放量项目不赔付</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- 三、差异对比 -->
+  <section>
+    <h2>三、智投功能差异对比 · 消费品 vs 两品一械（保健食品）</h2>
+    <p class="lead">以下是消费品与两品一械（保健食品）在智投功能上的核心差异。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>功能维度</th><th>消费品（通用）</th><th>两品一械（保健食品）</th><th>差异说明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fname">开户规则</td>
+          <td><span class="s s-yes">常规开户流程</span></td>
+          <td><span class="s s-open">专户专投</span></td>
+          <td>专户专投（一户一品），需药品库准入、保证金缴纳；保健食品强制一户一品，单主体保证金 50 万，政策集团 200 万</td>
+        </tr>
+        <tr>
+          <td class="fname">小店智投</td>
+          <td><span class="s s-yes">✅ 直接可用</span></td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>保健食品需先提报小店智投白名单才能使用</td>
+        </tr>
+        <tr>
+          <td class="fname">商品智投</td>
+          <td><span class="s s-yes">✅ 直接可用</span></td>
+          <td><span class="s s-yes">✅ 可用</span></td>
+          <td>非闭环链路，小程序直购 + CID</td>
+        </tr>
+        <tr>
+          <td class="fname">线索智投</td>
+          <td><span class="s s-yes">✅ 直接可用</span></td>
+          <td><span class="s s-yes">✅ 可用（需资质报备）</span></td>
+          <td>社群加粉链路需找保健食品代理商线下走社群资质信息报备</td>
+        </tr>
+        <tr>
+          <td class="fname">创意优投</td>
+          <td><span class="s s-yes">✅ 直接可用</span></td>
+          <td><span class="s s-scene">⚠️ 分场景</span></td>
+          <td>关键差异：非闭环商品智投支持创意优投（无需开白），闭环小店智投不支持创意优投</td>
+        </tr>
+        <tr>
+          <td class="fname">深辅 ROI</td>
+          <td><span class="s s-yes">✅ 直接可用或常规开白</span></td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>保健食品需提报【商品消费白名单】加白</td>
+        </tr>
+        <tr>
+          <td class="fname">分人群出价</td>
+          <td><span class="s s-yes">✅ 直接可用</span></td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>保健食品需提报【保健食品-分人群出价配置】加白</td>
+        </tr>
+        <tr>
+          <td class="fname">一方跑量加权</td>
+          <td><span class="s s-yes">✅ 直接可用或常规开白</span></td>
+          <td><span class="s s-open">⚠️ 需开白</span></td>
+          <td>保健食品需提报【一方跑量加强鉴权申报表】</td>
+        </tr>
+        <tr>
+          <td class="fname">PCAD 版位拆分</td>
+          <td><span class="s s-yes">✅ 默认 4 合 1</span></td>
+          <td><span class="s s-report">⚠️ 需提报黑名单回退</span></td>
+          <td>保健食品如需拆分版位看数据，需提报黑名单</td>
+        </tr>
+        <tr>
+          <td class="fname">视频号版位</td>
+          <td><span class="s s-yes">✅ 常规可用</span></td>
+          <td><span class="s s-open">⚠️ 特定品类需加白</span></td>
+          <td>减肥品、三高 & 通便品需单独加白视频号版位，且有准入准出规则</td>
+        </tr>
+        <tr>
+          <td class="fname">AIGC 自动创意</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>两者均支持，但保健食品单直播场景需提供 1 个商品用于 AI 生成</td>
+        </tr>
+        <tr>
+          <td class="fname">一键起量</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>两者均支持，赔付规则一致</td>
+        </tr>
+        <tr>
+          <td class="fname">净成交出价</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>两者均支持</td>
+        </tr>
+        <tr>
+          <td class="fname">全店托管</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td><span class="s s-open">✅ 支持（需开白）</span></td>
+          <td>保健食品需先获得小店智投权限</td>
+        </tr>
+        <tr>
+          <td class="fname">直播专场放量</td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td><span class="s s-yes">✅ 支持</span></td>
+          <td>两者均支持，但使用后不支持赔付</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- 四、开白入口 -->
+  <section>
+    <h2>四、保健食品开白 / 提报统一入口</h2>
+    <p>所有需要开白或提报的能力，统一通过以下入口操作：</p>
+    <div class="entry">
+      <ol>
+        <li><span class="hl">统一提报表：</span>腾讯广告 - 膳食滋补保健行业常用产品能力提报表（开白多个能力请多次填写）</li>
+        <li><span class="hl">开白时间：</span>一般为工作日 17 点统一加白，次日上午生效</li>
+      </ol>
+    </div>
+    <h3>各能力对应的开白文档</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>能力</th><th>文档</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">深辅 ROI 加白</td><td>【商品消费白名单提报】下单 + 下单 ROI 深度优化及深辅</td></tr>
+        <tr><td class="fname">智投加白</td><td>商品消费业务部 - 小店智投白名单配置 & case 提报</td></tr>
+        <tr><td class="fname">一方跑量加权</td><td>一方跑量加强鉴权申报表</td></tr>
+        <tr><td class="fname">分人群出价</td><td>保健食品 - 分人群出价配置</td></tr>
+        <tr><td class="fname">PCAD 版位拆分</td><td>【黑名单】PCAD 版位 4 合 1 - 产品功能回退黑名单提报</td></tr>
+        <tr><td class="fname">互选订单改价</td><td>【内部】视频号互选报价和订单价格特殊修改申请及留档 - 2026</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <div class="note">备注：本页面基于《保健食品 X 智投产品力汇总 - 保健食品适用能力汇总》整理生成。智投产品完整介绍可参考【消费品 AIM+ 智投】投放功能指南一览表（对客版本）。</div>
+
+</div>
+</body>
+</html>
