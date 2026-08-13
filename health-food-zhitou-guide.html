@@ -171,6 +171,15 @@
   .entry ol { margin-left: 20px; }
   .entry li { font-size: 14px; color: #3a3a3a; margin: 8px 0; }
   .entry .hl { color: var(--green); font-weight: 700; }
+  .entry a { color: var(--green); text-decoration: none; word-break: break-all; }
+  .entry a:hover { text-decoration: underline; }
+  .entry .btn {
+    display: inline-block; margin-top: 10px;
+    background: var(--green); color: #fff;
+    padding: 9px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+  }
+  .entry .btn:hover { background: var(--teal); }
 
   @media (max-width: 720px) {
     .grid { grid-template-columns: 1fr; }
@@ -541,9 +550,11 @@
     <p>所有需要开白或提报的能力，统一通过以下入口操作：</p>
     <div class="entry">
       <ol>
-        <li><span class="hl">统一提报表：</span>腾讯广告 - 膳食滋补保健行业常用产品能力提报表（开白多个能力请多次填写）</li>
+        <li><span class="hl">统一提报表：</span>【收集表】腾讯广告 - 健康滋补行业常用产品能力提报表（开白多个能力请多次填写）<br>
+          <a href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoAGYAPQbmACgCNpIQ8GdWRf" target="_blank" rel="noopener">https://doc.weixin.qq.com/forms/AJEAIQdfAAoAGYAPQbmACgCNpIQ8GdWRf</a></li>
         <li><span class="hl">开白时间：</span>一般为工作日 17 点统一加白，次日上午生效</li>
       </ol>
+      <a class="btn" href="https://doc.weixin.qq.com/forms/AJEAIQdfAAoAGYAPQbmACgCNpIQ8GdWRf" target="_blank" rel="noopener">前往填写开白提报表</a>
     </div>
     <h3>各能力对应的开白文档</h3>
     <div class="table-wrap"><table>
