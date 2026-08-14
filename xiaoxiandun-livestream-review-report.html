@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){window.__idata_artifact_error__=[];function _record(t){t=String(t==null?'unknown error':t).slice(0,5000);window.__idata_artifact_error__.push(t);try{window.parent&&window.parent.postMessage({type:'artifact-error',message:t.slice(0,500)},'*');}catch(_e){}}window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_record(parts.join('\n'));},true);window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_record((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小仙炖 · 直播链路复盘报告</title>
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root {--warm-bg:#FFF8F0;--warm-card:#FFF3E0;--warm-accent:#FF6D00;--warm-border:#FFE0B2;--cool-bg:#F0F7FF;--cool-card:#E3F2FD;--cool-accent:#1565C0;--cool-border:#BBDEFB;--text-primary:#1A1A2E;--text-secondary:#555;--red:#E53935;--green:#43A047;--orange:#FB8C00;--blue:#1E88E5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#F5F5F5;color:var(--text-primary);}
+.container{max-width:1200px;margin:0 auto;padding:20px;}
+.report-header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#FF6D00 0%,#1565C0 100%);color:white;border-radius:16px;margin-bottom:24px;}
+.report-header h1{font-size:28px;margin-bottom:8px;}
+.report-header .subtitle{font-size:14px;opacity:0.9;}
+.report-header .meta{font-size:12px;opacity:0.7;margin-top:8px;}
+.architecture{display:flex;gap:16px;margin-bottom:24px;}
+.arch-block{flex:1;border-radius:12px;padding:20px;}
+.arch-block.warm{background:var(--warm-bg);border:2px solid var(--warm-border);}
+.arch-block.cool{background:var(--cool-bg);border:2px solid var(--cool-border);}
+.arch-block h2{font-size:18px;margin-bottom:4px;}
+.arch-block.warm h2{color:var(--warm-accent);}
+.arch-block.cool h2{color:var(--cool-accent);}
+.arch-block .arch-sub{font-size:13px;color:var(--text-secondary);margin-bottom:12px;}
+.arch-arrow{display:flex;align-items:center;justify-content:center;font-size:28px;color:#999;flex-shrink:0;}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
+.metric-card{border-radius:10px;padding:14px;text-align:center;}
+.metric-card.warm{background:var(--warm-card);border:1px solid var(--warm-border);}
+.metric-card.cool{background:var(--cool-card);border:1px solid var(--cool-border);}
+.metric-card .label{font-size:12px;color:var(--text-secondary);margin-bottom:4px;}
+.metric-card .value{font-size:22px;font-weight:700;}
+.metric-card.warm .value{color:var(--warm-accent);}
+.metric-card.cool .value{color:var(--cool-accent);}
+.metric-card .sub{font-size:11px;color:var(--text-secondary);margin-top:2px;}
+.funnel-chain{display:flex;align-items:center;gap:8px;margin:16px 0;flex-wrap:wrap;justify-content:center;}
+.funnel-step{background:var(--warm-card);border:2px solid var(--warm-accent);border-radius:10px;padding:12px 18px;text-align:center;min-width:130px;}
+.funnel-step .step-label{font-size:11px;color:var(--text-secondary);}
+.funnel-step .step-value{font-size:20px;font-weight:700;color:var(--warm-accent);}
+.funnel-step .step-desc{font-size:10px;color:var(--text-secondary);}
+.funnel-arrow{font-size:20px;color:var(--warm-accent);}
+.live-funnel{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0;}
+.live-step{background:var(--cool-card);border:2px solid var(--cool-accent);border-radius:10px;padding:12px 24px;text-align:center;width:280px;}
+.live-step .step-label{font-size:12px;color:var(--text-secondary);}
+.live-step .step-value{font-size:18px;font-weight:700;color:var(--cool-accent);}
+.live-step .step-desc{font-size:10px;color:var(--text-secondary);}
+.live-funnel-arrow{font-size:16px;color:var(--cool-accent);}
+.live-funnel-rate{font-size:11px;color:var(--cool-accent);font-weight:600;}
+.diagnosis{border-radius:10px;padding:16px;margin:16px 0;font-size:14px;line-height:1.8;}
+.diagnosis.warm{background:#FFF3E0;border-left:4px solid var(--warm-accent);}
+.diagnosis.cool{background:#E3F2FD;border-left:4px solid var(--cool-accent);}
+.diagnosis .title{font-weight:700;margin-bottom:6px;}
+.section{background:white;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.section h3{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #eee;}
+.section h3.warm-title{border-bottom-color:var(--warm-accent);color:var(--warm-accent);}
+.section h3.cool-title{border-bottom-color:var(--cool-accent);color:var(--cool-accent);}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table th{background:#F5F5F5;padding:8px 10px;text-align:left;font-weight:600;border-bottom:2px solid #ddd;font-size:12px;}
+.data-table td{padding:7px 10px;border-bottom:1px solid #eee;}
+.data-table .num{text-align:right;font-variant-numeric:tabular-nums;}
+.chart-container{width:100%;height:320px;margin:12px 0;}
+.chart-container-sm{width:100%;height:260px;margin:12px 0;}
+.interactive-prompt{background:linear-gradient(135deg,#E3F2FD,#F3E5F5);border-radius:12px;padding:24px;text-align:center;margin:16px 0;border:2px dashed #90CAF9;}
+.interactive-prompt h4{font-size:16px;color:var(--cool-accent);margin-bottom:8px;}
+.interactive-prompt p{font-size:13px;color:var(--text-secondary);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:768px){.two-col{grid-template-columns:1fr;}.architecture{flex-direction:column;}.arch-arrow{transform:rotate(90deg);}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="report-header">
+  <h1>🔍 小仙炖 · 直播链路复盘报告</h1>
+  <div class="subtitle">直播链路 = 前半段素材（抓人） + 后半段直播间（留人）</div>
+  <div class="meta">复盘周期：近30天 | 数据口径：竞价 | 生成时间：2026年8月14日</div>
+</div>
+
+<div class="architecture">
+  <div class="arch-block warm">
+    <h2>🟡 前半段·素材（抓人）</h2>
+    <div class="arch-sub">在信息流里把人"拦下来"，核心看吸引力</div>
+    <div style="font-size:12px;color:var(--text-secondary);">
+      · 指标低 → 问题在素材本身（钩子弱、不抓人），先优化前端创意<br>
+      · 指标好但后端差 → 素材没问题，往右看直播间承接
+    </div>
+  </div>
+  <div class="arch-arrow">→</div>
+  <div class="arch-block cool">
+    <h2>🟢 后半段·直播间（留人）</h2>
+    <div class="arch-sub">进来后层层转化，按漏斗逐环节诊断</div>
+    <div style="font-size:12px;color:var(--text-secondary);">
+      · 进播率低 → 流量/人群标签问题<br>
+      · 点击率低 → 讲品节奏/排品问题<br>
+      · 下单率低 → 价格机制/逼单话术问题
+    </div>
+  </div>
+</div>
+
+<!-- ====== Block 1: 前半段·素材（抓人） ====== -->
+<div style="background:var(--warm-bg);border-radius:12px;padding:20px;margin-bottom:24px;border:2px solid var(--warm-border);">
+<h2 style="color:var(--warm-accent);font-size:20px;margin-bottom:16px;">🟡 第一块：前半段·素材（抓人）</h2>
+
+<div class="section">
+  <h3 class="warm-title">① 曝光PV起点</h3>
+  <div class="metrics-grid">
+    <div class="metric-card warm"><div class="label">总曝光PV</div><div class="value">574.5万</div><div class="sub">近30天累计</div></div>
+    <div class="metric-card warm"><div class="label">总消耗</div><div class="value">58.2万</div><div class="sub">日均19389元</div></div>
+    <div class="metric-card warm"><div class="label">CPM</div><div class="value">101元</div><div class="sub">大盘89元 | 正常</div></div>
+    <div class="metric-card warm"><div class="label">日均曝光</div><div class="value">19.1万</div><div class="sub">日均触达规模</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="warm-title">② 漏斗链条：CTR → 3s完播率 → 平均播放时长</h3>
+  <div class="funnel-chain">
+    <div class="funnel-step"><div class="step-label">CTR 点击率</div><div class="step-value">3.73%</div><div class="step-desc">素材封面/钩子是否够强</div></div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><div class="step-label">3秒完播率</div><div class="step-value">40.7%</div><div class="step-desc">前3秒是否留住人</div></div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><div class="step-label">快滑率</div><div class="step-value">36.6%</div><div class="step-desc">3秒内滑走比例</div></div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><div class="step-label">平均播放时长</div><div class="step-value">8.2s</div><div class="step-desc">内容整体吸引力</div></div>
+  </div>
+  <div class="diagnosis warm">
+    <div class="title">🔍 漏斗诊断</div>
+    <div>✅ 素材封面/钩子吸引力较强</div>
+    <div>✅ 前3秒留存较好</div>
+    <div>⚠️ 平均播放时长偏短，内容承接力不足</div>
+    <div style="margin-top:8px;font-weight:600;">🟡 素材吸引力尚可（CTR达标），但后端转化差 → 素材没问题，往右看直播间承接</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="warm-title">③ 流量版位结构</h3>
+  <div class="two-col">
+    <div><div id="chart-placement" class="chart-container"></div></div>
+    <div>
+      <table class="data-table">
+        <thead><tr><th>版位</th><th class="num">消耗</th><th class="num">占比</th><th class="num">CTR</th><th class="num">CVR</th><th class="num">CPM</th></tr></thead>
+        <tbody><tr><td>微信视频号</td><td class="num">38.12万</td><td class="num">65.5%</td><td class="num">1.12%</td><td class="num">3.45%</td><td class="num">155</td></tr>
+<tr><td>微信朋友圈</td><td class="num">5.20万</td><td class="num">8.9%</td><td class="num">0.29%</td><td class="num">0.70%</td><td class="num">42</td></tr>
+<tr><td>微信小程序</td><td class="num">3.82万</td><td class="num">6.6%</td><td class="num">4.09%</td><td class="num">0.13%</td><td class="num">70</td></tr>
+<tr><td>移动联盟</td><td class="num">3599</td><td class="num">0.6%</td><td class="num">9.43%</td><td class="num">0.00%</td><td class="num">7</td></tr>
+<tr><td>搜索广告</td><td class="num">1072</td><td class="num">0.2%</td><td class="num">1.05%</td><td class="num">0.00%</td><td class="num">3</td></tr>
+<tr><td>微信公众号</td><td class="num">2.05万</td><td class="num">3.5%</td><td class="num">0.98%</td><td class="num">2.02%</td><td class="num">84</td></tr>
+<tr><td>平台与内容广告</td><td class="num">1.15万</td><td class="num">2.0%</td><td class="num">38.68%</td><td class="num">0.00%</td><td class="num">50</td></tr>
+<tr><td>微信搜一搜</td><td class="num">7.37万</td><td class="num">12.7%</td><td class="num">9.31%</td><td class="num">0.75%</td><td class="num">468</td></tr>
+<tr><td>其他</td><td class="num">13</td><td class="num">0.0%</td><td class="num">14.57%</td><td class="num">0.00%</td><td class="num">54</td></tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="warm-title">④ 人群透视（LevelTag人群标签）</h3>
+  <div class="two-col">
+    <div>
+      <h4 style="font-size:14px;margin-bottom:8px;">人群类型消耗分布</h4>
+      <div id="chart-leveltag" class="chart-container-sm"></div>
+      <div class="diagnosis warm" style="margin-top:12px;">
+        <div class="title">🔍 人群诊断</div>
+        <div>LevelTag覆盖率：<strong>16.1%</strong>（58.2万 / 361.6万）</div>
+        <div>种草人群消耗占比最高（48.7%），但CVR偏低，种草→下单链路长</div>
+        <div>下单人群CVR最高（均值1.5%+），建议加大下单人群投放占比</div>
+        <div>粉丝人群CTR高但CVR低，需优化粉丝→下单的承接</div>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:14px;margin-bottom:8px;">TOP10 LevelTag人群</h4>
+      <table class="data-table">
+        <thead><tr><th>人群名称</th><th class="num">消耗</th><th class="num">占比</th><th class="num">CTR</th><th class="num">CVR</th></tr></thead>
+        <tbody>
+<tr><td title="52_8594223_13000006">营养及健康食品_直播种草人群</td><td class="num">194,926</td><td class="num">5.4%</td><td class="num">1.63%</td><td class="num">1.63%</td></tr>
+<tr><td title="52_2302767_3126475586">谷雨_src_>5s种草人群</td><td class="num">149,001</td><td class="num">4.1%</td><td class="num">2.06%</td><td class="num">1.15%</td></tr>
+<tr><td title="52_2302767_1199077354">谷雨_dst_>5s种草人群</td><td class="num">140,968</td><td class="num">3.9%</td><td class="num">2.13%</td><td class="num">0.99%</td></tr>
+<tr><td title="52_9704246_3383922539">美护90d无取消订单人群</td><td class="num">134,863</td><td class="num">3.7%</td><td class="num">1.36%</td><td class="num">2.09%</td></tr>
+<tr><td title="52_2103330_506">食品饮料传统滋补_小店全域下单人群</td><td class="num">98,321</td><td class="num">2.7%</td><td class="num">1.37%</td><td class="num">1.93%</td></tr>
+<tr><td title="52_8421670_1304670551">网红_麦珂娜-阿敏_粉丝种草人群</td><td class="num">96,229</td><td class="num">2.7%</td><td class="num">3.70%</td><td class="num">0.50%</td></tr>
+<tr><td title="52_8421670_290106880">网红_珊总-原料供应链_粉丝种草人群</td><td class="num">76,587</td><td class="num">2.1%</td><td class="num">3.58%</td><td class="num">0.46%</td></tr>
+<tr><td title="52_2302767_2874376552">完美日记_src_>5s种草人群</td><td class="num">75,076</td><td class="num">2.1%</td><td class="num">1.07%</td><td class="num">2.43%</td></tr>
+<tr><td title="52_2302767_2204008270">完美日记_dst_>5s种草人群</td><td class="num">66,376</td><td class="num">1.8%</td><td class="num">1.88%</td><td class="num">1.18%</td></tr>
+<tr><td title="52_2103330_1991">生鲜水果_小店全域下单人群</td><td class="num">64,221</td><td class="num">1.8%</td><td class="num">1.23%</td><td class="num">1.69%</td></tr>
+</tbody>
+      </table>
+      <h4 style="font-size:14px;margin:12px 0 8px;">人群类型汇总</h4>
+      <table class="data-table">
+        <thead><tr><th>人群类型</th><th class="num">消耗</th><th class="num">占比</th><th class="num">CTR</th><th class="num">CVR</th></tr></thead>
+        <tbody>
+<tr><td>种草人群</td><td class="num">1,761,326</td><td class="num">48.7%</td><td class="num">2.13%</td><td class="num">0.94%</td></tr>
+<tr><td>下单人群</td><td class="num">519,405</td><td class="num">14.4%</td><td class="num">1.38%</td><td class="num">1.66%</td></tr>
+<tr><td>粉丝人群</td><td class="num">228,605</td><td class="num">6.3%</td><td class="num">4.99%</td><td class="num">0.36%</td></tr>
+<tr><td>直播人群</td><td class="num">246,947</td><td class="num">6.8%</td><td class="num">4.37%</td><td class="num">0.67%</td></tr>
+<tr><td>其他</td><td class="num">753,673</td><td class="num">20.8%</td><td class="num">4.67%</td><td class="num">0.30%</td></tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="warm-title">⑤ 创意类型效果对比</h3>
+  <table class="data-table">
+    <thead><tr><th>创意类型</th><th class="num">消耗</th><th class="num">占比</th><th class="num">CTR</th><th class="num">CVR</th></tr></thead>
+    <tbody><tr><td>3 (视频)</td><td class="num">58.34万</td><td class="num">100.3%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>0 (默认)</td><td class="num">2.50万</td><td class="num">4.3%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>2 (图片)</td><td class="num">9982</td><td class="num">1.7%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>其他</td><td class="num">3938</td><td class="num">0.7%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+</tbody>
+  </table>
+</div>
+
+</div><!-- end Block 1 -->
+
+<!-- ====== Block 2: 后半段·直播间（留人） ====== -->
+<div style="background:var(--cool-bg);border-radius:12px;padding:20px;margin-bottom:24px;border:2px solid var(--cool-border);">
+<h2 style="color:var(--cool-accent);font-size:20px;margin-bottom:16px;">🟢 第二块：后半段·直播间（留人）</h2>
+
+<div class="section">
+  <h3 class="cool-title">① 核心KPI指标</h3>
+  <div class="metrics-grid">
+    <div class="metric-card cool"><div class="label">直播消耗</div><div class="value">50.5万</div><div class="sub">日均16846元</div></div>
+    <div class="metric-card cool"><div class="label">下单ROI</div><div class="value">1.39</div><div class="sub">⚠️</div></div>
+    <div class="metric-card cool"><div class="label">GMV</div><div class="value">46.5万</div><div class="sub">日均15512元</div></div>
+    <div class="metric-card cool"><div class="label">客单价</div><div class="value">2242元</div><div class="sub">下单单价</div></div>
+    <div class="metric-card cool"><div class="label">CVR vs 大盘</div><div class="value">0.50%</div><div class="sub">大盘4.69% | 偏低</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="cool-title">② 消耗&效果日级趋势</h3>
+  <div id="chart-daily" class="chart-container"></div>
+</div>
+
+<div class="section">
+  <h3 class="cool-title">③ 直播漏斗诊断</h3>
+  <div class="two-col">
+    <div>
+      <div class="live-funnel">
+        <div class="live-step"><div class="step-label">曝光 → 进播（看播PV）</div><div class="step-value" style="color:#FF6D00;font-size:24px;">1.42%</div><div class="step-desc">⚠️ 偏低，进播转化是首要瓶颈</div></div>
+        <div class="live-funnel-arrow">↓</div>
+        <div class="live-step"><div class="step-label">进播 → 点击商品（点击PV）</div><div class="step-value" style="color:#43A047;font-size:24px;">91.34%</div><div class="step-desc">✅ 健康，直播间商品引导到位</div></div>
+        <div class="live-funnel-arrow">↓</div>
+        <div class="live-step"><div class="step-label">点击 → 下单成交（订单）</div><div class="step-value" style="color:#1565C0;font-size:24px;">3.04%</div><div class="step-desc">⚠️ 中等，高客单价转化有提升空间</div></div>
+      </div>
+      <div class="diagnosis cool" style="margin-top:12px;">
+        <div class="title">🔍 漏斗诊断</div>
+        <div><strong>第一瓶颈：进播率 1.42%</strong> — 曝光→进播转化偏低，每100次曝光仅1.42人进入直播间。建议优化：①素材到直播间的引导话术 ②直播开播时段与投放时段对齐 ③直播间封面/标题优化提升点击意愿</div>
+        <div><strong>第二环节：商品点击率 91.34%</strong> — ✅ 进播后商品点击率高达91.34%（PV口径），说明直播间内商品展示和讲解引导到位，观众进播后能有效被商品吸引</div>
+        <div><strong>第三瓶颈：下单率 3.04%</strong> — 商品点击→下单转化率3.04%，结合客单价2,242元（高客单价品类），转化率中等。建议优化：①直播间限时优惠/赠品促单 ②商品详情页优化 ③主播逼单话术强化</div>
+        <div style="margin-top:8px;font-weight:600;">💡 核心结论：素材侧CTR达标（3.73%），但进播率仅1.42%，说明"素材能抓人但未能有效导流至直播间"。直播间内承接良好（商品点击率91.34%），但最终下单转化(3.04%)受高客单价影响。优化重心应放在"提升进播率"和"促单转化"两端。</div>
+      </div>
+    </div>
+
+<div style="margin-top:16px;">
+  <h4 style="font-size:14px;margin-bottom:8px;">漏斗指标日级趋势</h4>
+  <div id="chart-funnel" class="chart-container"></div>
+</div>
+    <div>
+      <h4 style="font-size:14px;margin-bottom:8px;">直播间明细</h4>
+      <table class="data-table">
+        <thead><tr><th>直播间</th><th class="num">消耗</th><th class="num">ROI</th><th class="num">GMV</th></tr></thead>
+        <tbody><tr><td>小仙炖鲜炖燕窝</td><td class="num">31.22万</td><td class="num">1.48</td><td class="num">31.8万</td></tr>
+<tr><td>小仙炖鲜炖燕窝滋补号</td><td class="num">19.32万</td><td class="num">1.25</td><td class="num">14.7万</td></tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="cool-title">④ 直播间画面分析</h3>
+  <div class="interactive-prompt">
+    <h4>📸 请上传直播间截图</h4>
+    <p>上传直播间画面截图后，将调用素材创意分析技能，对直播间画面进行多维度分析：<br>
+    画面构图 · 产品展示 · 主播形象 · 话术节奏 · 转化引导 · 优化建议</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="cool-title">⑤ OG智投策略分析</h3>
+  <table class="data-table">
+    <thead><tr><th>智投类型</th><th>优化目标组合</th><th class="num">消耗</th><th class="num">占比</th><th class="num">CPM</th><th class="num">ROI出价</th></tr></thead>
+    <tbody><tr><td>0 (非智投广告)</td><td style="font-size:11px;">204-0-6-0-0 (下单-下单ROI)</td><td class="num">19.17万</td><td class="num">33.0%</td><td class="num">201</td><td class="num">-</td></tr>
+<tr><td>3004 (推直播)</td><td style="font-size:11px;">204-0-0-0-0 (下单)</td><td class="num">19.02万</td><td class="num">32.7%</td><td class="num">66</td><td class="num">-</td></tr>
+<tr><td>0 (非智投广告)</td><td style="font-size:11px;">204-0-0-0-0 (下单)</td><td class="num">9.79万</td><td class="num">16.8%</td><td class="num">148</td><td class="num">-</td></tr>
+<tr><td>0 (非智投广告)</td><td style="font-size:11px;">204-0-0-0-6 (下单-辅助优化下单ROI)</td><td class="num">4.18万</td><td class="num">7.2%</td><td class="num">140</td><td class="num">-</td></tr>
+<tr><td>4001 (全域通直播)</td><td style="font-size:11px;">204-0-0-0-0 (下单)</td><td class="num">3.31万</td><td class="num">5.7%</td><td class="num">122</td><td class="num">-</td></tr>
+<tr><td>3004 (推直播)</td><td style="font-size:11px;">204-0-6-0-0 (下单-下单ROI)</td><td class="num">2.55万</td><td class="num">4.4%</td><td class="num">84</td><td class="num">-</td></tr>
+<tr><td>0 (非智投广告)</td><td style="font-size:11px;">0-0-0-0-0 ()</td><td class="num">2.50万</td><td class="num">4.3%</td><td class="num">3197</td><td class="num">-</td></tr>
+<tr><td>4002 (全域通直购)</td><td style="font-size:11px;">204-0-6-0-0 (下单-下单ROI)</td><td class="num">1.17万</td><td class="num">2.0%</td><td class="num">41</td><td class="num">-</td></tr>
+<tr><td>4001 (全域通直播)</td><td style="font-size:11px;">204-0-6-0-0 (下单-下单ROI)</td><td class="num">3427</td><td class="num">0.6%</td><td class="num">160</td><td class="num">-</td></tr>
+<tr><td>0 (非智投广告)</td><td style="font-size:11px;">10006-0-0-0-0 (微信流量预约行为)</td><td class="num">2034</td><td class="num">0.3%</td><td class="num">10</td><td class="num">-</td></tr>
+</tbody>
+  </table>
+  <div class="diagnosis cool">
+    <div class="title">🔍 智投诊断</div>
+    <div>智投渗透率：<strong>45.4%</strong> ⚠️ 渗透率偏低，建议提升至50%+</div>
+    <div>推直播+全域通合计占比：45.4%，非智投占比：54.6%</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="cool-title">⑥ 基建能力评估</h3>
+  <div class="metrics-grid">
+    <div class="metric-card cool"><div class="label">有消耗账户数</div><div class="value">13</div><div class="sub">近30天</div></div>
+    <div class="metric-card cool"><div class="label">素材数</div><div class="value">1687</div><div class="sub">近30天累计</div></div>
+    <div class="metric-card cool"><div class="label">TID数</div><div class="value">35516</div><div class="sub">展开创意数</div></div>
+    <div class="metric-card cool"><div class="label">DCID数</div><div class="value">13511</div><div class="sub">动态创意数</div></div>
+    <div class="metric-card cool"><div class="label">唯一性ID数</div><div class="value">34229</div><div class="sub">在线创意</div></div>
+    <div class="metric-card cool"><div class="label">3秒完播率</div><div class="value">40.4%</div><div class="sub">视频素材</div></div>
+  </div>
+  <div id="chart-infra" class="chart-container-sm"></div>
+</div>
+
+<div class="section">
+  <h3 class="cool-title">⑦ 出价诊断</h3>
+  <div class="diagnosis cool">
+    <div class="title">💰 出价合理性</div>
+    <div>客单价：2242元 | 假设考核ROI=1.5 → 合理出价≈1495元</div>
+    <div>当前下单ROI：1.39 ⚠️ ROI偏低，建议优化CVR或调整出价</div>
+  </div>
+</div>
+
+</div><!-- end Block 2 -->
+
+<!-- ====== 总结与行动清单 ====== -->
+<div class="section" style="border:2px solid #FF6D00;">
+  <h3 style="color:var(--warm-accent);border-bottom-color:var(--warm-accent);">📋 总结与行动清单</h3>
+  <div class="two-col">
+    <div>
+      <h4 style="color:var(--warm-accent);margin-bottom:8px;">🟡 前半段·素材侧</h4>
+      <div class="diagnosis warm">
+        <div>✅ 素材封面/钩子吸引力较强</div>
+        <div>✅ 前3秒留存较好</div>
+        <div>⚠️ 平均播放时长偏短，内容承接力不足</div>
+        <div style="margin-top:8px;"><strong>行动建议：</strong></div>
+        <div>1. CTR达标，保持当前素材策略</div>
+        <div>2. 快滑率可控，继续优化播放深度</div>
+        <div>3. 增加深度讲解型素材(>20s)，提升播放时长拐点</div>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:var(--cool-accent);margin-bottom:8px;">🟢 后半段·直播间侧</h4>
+      <div class="diagnosis cool">
+        <div>⚠️ ROI偏低</div>
+        <div>CVR vs 大盘：0.50% vs 4.69% (偏低)</div>
+        <div>智投渗透率：45.4% ⚠️ 偏低</div>
+        <div style="margin-top:8px;"><strong>行动建议：</strong></div>
+        <div>1. ROI偏低，优化直播间承接效率</div>
+        <div>2. CVR远低于大盘，重点优化直播漏斗各环节</div>
+        <div>3. 提升智投渗透率至50%+，启用下单ROI深度优化</div>
+        <div>4. 📸 上传直播间截图，获取画面优化建议</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<script>
+
+var cp = echarts.init(document.getElementById('chart-placement'));
+cp.setOption({
+  tooltip: {trigger:'item', formatter:'{b}: {c}元 ({d}%)'},
+  legend: {bottom:0, textStyle:{fontSize:11}},
+  series: [{type:'pie', radius:['35%','65%'], label:{formatter:'{b}\n{d}%', fontSize:11}, data:[{value:381179,name:'微信视频号'},{value:51951,name:'微信朋友圈'},{value:38158,name:'微信小程序'},{value:3599,name:'移动联盟'},{value:1072,name:'搜索广告'},{value:20505,name:'微信公众号'},{value:11506,name:'平台与内容广告'},{value:73693,name:'微信搜一搜'}]}]
+});
+
+var clt = echarts.init(document.getElementById('chart-leveltag'));
+clt.setOption({
+  tooltip: {trigger:'item', formatter:'{b}: {c}元 ({d}%)'},
+  legend: {bottom:0, textStyle:{fontSize:11}},
+  series: [{type:'pie', radius:['35%','65%'], label:{formatter:'{b}\n{d}%', fontSize:11}, data:[{value:1761326,name:'种草人群'},{value:753673,name:'其他'},{value:519405,name:'下单人群'},{value:246947,name:'直播人群'},{value:228605,name:'粉丝人群'}]}]
+});
+
+var cdy = echarts.init(document.getElementById('chart-daily'));
+cdy.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data:['消耗','CTR','CVR'], bottom:0},
+  xAxis: {type:'category', data:["07/15", "07/16", "07/17", "07/18", "07/19", "07/20", "07/21", "07/22", "07/23", "07/24", "07/25", "07/26", "07/27", "07/28", "07/29", "07/30", "07/31", "08/01", "08/02", "08/03", "08/04", "08/05", "08/06", "08/07", "08/08", "08/09", "08/10", "08/11", "08/12", "08/13", "08/14"], axisLabel:{fontSize:10, rotate:45}},
+  yAxis: [{type:'value', name:'消耗(元)'}, {type:'value', name:'%'}],
+  series: [{name:'消耗', type:'bar', data:[20274, 24387, 22416, 34912, 35859, 19765, 14247, 22227, 17522, 15874, 14344, 13567, 10862, 13152, 13156, 14239, 16494, 17337, 26249, 14091, 20957, 17345, 17488, 20741, 21805, 29655, 27001, 16869, 12878, 15893, 69], itemStyle:{color:'#1565C0'}},
+           {name:'CTR', type:'line', yAxisIndex:1, data:[1.68, 4.86, 4.56, 1.22, 0.92, 1.69, 3.13, 1.02, 2.86, 2.31, 2.17, 2.26, 2.11, 2.27, 4.34, 5.41, 2.41, 2.45, 1.56, 2.23, 2.29, 2.13, 2.73, 4.69, 10.31, 9.8, 10.67, 12.54, 9.07, 1.91, 1.67], itemStyle:{color:'#FF6D00'}},
+           {name:'CVR', type:'line', yAxisIndex:1, data:[0.76, 0.09, 0.12, 0.8, 0.42, 0.28, 0.26, 0.51, 4.03, 7.94, 0.4, 0.3, 0.36, 0.63, 0.19, 0.09, 0.49, 0.39, 0.71, 0.48, 0.68, 0.58, 0.17, 0.1, 0.12, 0.1, 0.07, 0.08, 0.12, 0.61, 0.0], itemStyle:{color:'#43A047'}}]
+});
+
+var ci = echarts.init(document.getElementById('chart-infra'));
+ci.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data:['账户数','素材数'], bottom:0},
+  xAxis: {type:'category', data:["07/14", "07/15", "07/16", "07/17", "07/18", "07/19", "07/20", "07/21", "07/22", "07/23", "07/24", "07/25", "07/26", "07/27", "07/28", "07/29", "07/30", "07/31", "08/01", "08/02", "08/03", "08/04", "08/05", "08/06", "08/07", "08/08", "08/09", "08/10", "08/11", "08/12", "08/13"], axisLabel:{fontSize:10, rotate:45}},
+  yAxis: [{type:'value', name:'账户数'}, {type:'value', name:'素材数'}],
+  series: [{name:'账户数', type:'line', data:[11, 11, 11, 11, 11, 11, 11, 11, 11, 9, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 7, 10, 9, 9, 9, 8, 8, 7], itemStyle:{color:'#1565C0'}},
+           {name:'素材数', type:'line', yAxisIndex:1, data:[193, 223, 266, 299, 335, 361, 376, 402, 365, 353, 324, 327, 348, 329, 342, 352, 357, 351, 346, 405, 382, 397, 409, 384, 383, 410, 412, 396, 409, 382, 303], itemStyle:{color:'#FF6D00'}}]
+});
+
+
+var cf = echarts.init(document.getElementById('chart-funnel'));
+cf.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data:['进播率','商品点击率','下单率'], bottom:0},
+  xAxis: {type:'category', data:["07/15", "07/16", "07/17", "07/18", "07/19", "07/20", "07/21", "07/22", "07/23", "07/24", "07/25", "07/26", "07/27", "07/28", "07/29", "07/30", "07/31", "08/01", "08/02", "08/03", "08/04", "08/05", "08/06", "08/07", "08/08", "08/09", "08/10", "08/11", "08/12", "08/13", "08/14"], axisLabel:{fontSize:10, rotate:45}},
+  yAxis: {type:'value', name:'%'},
+  series: [
+    {name:'进播率', type:'line', data:[2.1, 1.66, 1.22, 1.61, 1.54, 1.61, 1.67, 1.55, 1.4, 1.45, 1.7, 2.1, 1.62, 2.1, 1.75, 1.2, 1.54, 1.52, 1.57, 1.64, 2.02, 1.04, 1.29, 1.14, 1.49, 1.28, 1.11, 1.02, 1.38, 1.25, 1.5], itemStyle:{color:'#FF6D00'}, markLine:{data:[{type:'average', name:'均值'}]}},
+    {name:'商品点击率', type:'line', data:[114.29, 93.94, 75.93, 100.0, 83.33, 114.18, 101.33, 120.77, 78.79, 83.72, 99.11, 114.29, 108.11, 103.33, 79.75, 98.21, 97.08, 72.56, 87.5, 82.19, 94.49, 92.16, 90.65, 80.0, 78.24, 80.0, 87.23, 86.82, 87.0, 84.48, 100.0], itemStyle:{color:'#43A047'}},
+    {name:'下单率', type:'line', data:[4.17, 6.45, 3.05, 3.45, 0.77, 2.61, 2.19, 5.2, 5.77, 2.78, 2.7, 3.37, 5.5, 1.84, 4.62, 6.36, 4.51, 1.49, 0.77, 2.5, 1.67, 4.61, 1.78, 1.45, 2.37, 5.0, 3.25, 1.57, 2.68, 4.08, 3.21], itemStyle:{color:'#1565C0'}, markLine:{data:[{type:'average', name:'均值'}]}}
+  ]
+});
+
+window.addEventListener('resize', function(){cp.resize();clt.resize();cdy.resize();ci.resize();cf.resize();});
+
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><div id="__idata_artifact_err_overlay__" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none;width:min(640px,calc(100vw - 48px));max-height:80vh;padding:24px 28px;background:#ffffff;border:1px solid #fca5a5;border-left:4px solid #ef4444;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.12);z-index:2147483646;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;color:#7f1d1d;box-sizing:border-box;"><div style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;margin-bottom:14px;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ef4444;color:#fff;border-radius:50%;font-size:14px;font-weight:bold;flex-shrink:0;">!</span><span>图表渲染失败</span></div><pre id="__idata_artifact_err_msg__" style="margin:0;padding:14px 16px;background:#fef2f2;border-radius:8px;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#7f1d1d;max-height:60vh;overflow:auto;"></pre><div style="margin-top:12px;font-size:11px;color:#9ca3af;line-height:1.5;">报告给大模型可自动修复该脚本</div></div><script>(function(){var ov=document.getElementById('__idata_artifact_err_overlay__');var msg=document.getElementById('__idata_artifact_err_msg__');if(!ov||!msg)return;var shownSet={};function _show(t){if(!t||shownSet[t])return;shownSet[t]=1;msg.textContent=String(t).slice(0,3000);ov.style.display='block';}var q=window.__idata_artifact_error__||[];for(var i=0;i<q.length;i++)_show(q[i]);window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_show(parts.join('\n'));});window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_show((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>
