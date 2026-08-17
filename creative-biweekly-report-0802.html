@@ -69,6 +69,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 .video-link:hover{background:rgba(66,184,131,.18);transform:translateY(-1px);}
 .video-preview-wrapper{width:100%;border-radius:12px;overflow:hidden;background:#111;border:1px solid var(--border);position:relative;aspect-ratio:9/16;box-shadow:0 4px 12px rgba(0,0,0,.15);}
 .video-preview-wrapper video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none;}
+.video-preview-wrapper video::-webkit-media-controls-download-button{display:none!important;}
+.video-preview-wrapper video::-webkit-media-controls-enclosure{overflow:hidden;}
+.video-preview-wrapper video::-webkit-media-controls-panel{width:calc(100% + 2px);}
+#cobuildDemo video::-webkit-media-controls-download-button{display:none!important;}
+#cobuildDemo video::-webkit-media-controls-enclosure{overflow:hidden;}
 .video-preview-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:8px 10px;display:flex;justify-content:center;}
 .video-preview-overlay a{color:#fff;font-size:12px;text-decoration:none;display:flex;align-items:center;gap:4px;}
 .video-preview-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:12px;}
@@ -262,7 +267,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53gmaawaaaz4aoedlb7jvbumyebmzqac2a.f0.mp4?dis_k=c2f56958d89ace8129e71f26fe091337&amp;dis_t=1784801830&amp;m=1bdfe33ff29c519506056521bec9819e&amp;sha256=27e784ad2b073029a804ed9aacf576b4a9451676d610064e6902467b446442b7"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53gmaawaaaz4aoedlb7jvbumyebmzqac2a.f0.mp4?dis_k=c2f56958d89ace8129e71f26fe091337&amp;dis_t=1784801830&amp;m=1bdfe33ff29c519506056521bec9819e&amp;sha256=27e784ad2b073029a804ed9aacf576b4a9451676d610064e6902467b446442b7"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53gmaawaaaz4aoedlb7jvbumyebmzqac2a.f0.mp4?dis_k=c2f56958d89ace8129e71f26fe091337&amp;dis_t=1784801830&amp;m=1bdfe33ff29c519506056521bec9819e&amp;sha256=27e784ad2b073029a804ed9aacf576b4a9451676d610064e6902467b446442b7" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -298,7 +303,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53oqaz6aabjiakmoriabvbw5aet52adh2a.f0.mp4?dis_k=10237d8765a9552db913dc8cf8429a78&amp;dis_t=1781086534&amp;m=9a0b02db6238297e85595c6eaa0f6541"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53oqaz6aabjiakmoriabvbw5aet52adh2a.f0.mp4?dis_k=10237d8765a9552db913dc8cf8429a78&amp;dis_t=1781086534&amp;m=9a0b02db6238297e85595c6eaa0f6541"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53oqaz6aabjiakmoriabvbw5aet52adh2a.f0.mp4?dis_k=10237d8765a9552db913dc8cf8429a78&amp;dis_t=1781086534&amp;m=9a0b02db6238297e85595c6eaa0f6541" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -334,7 +339,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53zqbmyaacoqaklktllbvbrtaeztgaftca.f0.mp4?dis_k=0ce0be30b143380fbab3dffe6a654d71&amp;dis_t=1785294864&amp;m=08d54ac0e7c21129a09651630da1c9ee&amp;sha256=5a4cbef0158f0fb37b6aa5696e7dced9ea4f6fe986e8fc22325871715e7ef065"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53zqbmyaacoqaklktllbvbrtaeztgaftca.f0.mp4?dis_k=0ce0be30b143380fbab3dffe6a654d71&amp;dis_t=1785294864&amp;m=08d54ac0e7c21129a09651630da1c9ee&amp;sha256=5a4cbef0158f0fb37b6aa5696e7dced9ea4f6fe986e8fc22325871715e7ef065"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53zqbmyaacoqaklktllbvbrtaeztgaftca.f0.mp4?dis_k=0ce0be30b143380fbab3dffe6a654d71&amp;dis_t=1785294864&amp;m=08d54ac0e7c21129a09651630da1c9ee&amp;sha256=5a4cbef0158f0fb37b6aa5696e7dced9ea4f6fe986e8fc22325871715e7ef065" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -370,7 +375,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b535ibgeaacjuajfwdp7bvbr2qemlvaeysa.f0.mp4?dis_k=d321c29eabbaab78937799fa7c382ea7&amp;dis_t=1785593147&amp;m=f705aeba363ac398b90c968982bfff74&amp;sha256=5f390a27e4c62946a88a4dc6491bbd38755a1b6ef9e16109ce1273ce32e79972"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b535ibgeaacjuajfwdp7bvbr2qemlvaeysa.f0.mp4?dis_k=d321c29eabbaab78937799fa7c382ea7&amp;dis_t=1785593147&amp;m=f705aeba363ac398b90c968982bfff74&amp;sha256=5f390a27e4c62946a88a4dc6491bbd38755a1b6ef9e16109ce1273ce32e79972"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b535ibgeaacjuajfwdp7bvbr2qemlvaeysa.f0.mp4?dis_k=d321c29eabbaab78937799fa7c382ea7&amp;dis_t=1785593147&amp;m=f705aeba363ac398b90c968982bfff74&amp;sha256=5f390a27e4c62946a88a4dc6491bbd38755a1b6ef9e16109ce1273ce32e79972" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -406,7 +411,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53yeaboaaapiaiwqljinvbvqiec7aqaf2a.f0.mp4?dis_k=d5222ea6c72b42bd96be06c9969d4c0e&amp;dis_t=1785306471&amp;m=b9c9ae27fc9d8f65a8617f15255aa61f&amp;sha256=cbac6c8fda753c90f07168b343a5c1aadb9e630df33b0636b7ae28e984b6a51b"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53yeaboaaapiaiwqljinvbvqiec7aqaf2a.f0.mp4?dis_k=d5222ea6c72b42bd96be06c9969d4c0e&amp;dis_t=1785306471&amp;m=b9c9ae27fc9d8f65a8617f15255aa61f&amp;sha256=cbac6c8fda753c90f07168b343a5c1aadb9e630df33b0636b7ae28e984b6a51b"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53yeaboaaapiaiwqljinvbvqiec7aqaf2a.f0.mp4?dis_k=d5222ea6c72b42bd96be06c9969d4c0e&amp;dis_t=1785306471&amp;m=b9c9ae27fc9d8f65a8617f15255aa61f&amp;sha256=cbac6c8fda753c90f07168b343a5c1aadb9e630df33b0636b7ae28e984b6a51b" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -442,7 +447,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53nyabsaaayqachxlq55uru3qedfxaagka.f0.mp4?dis_k=f2828da26947c34f4b3c334ea28a03b4&amp;dis_t=1768963176&amp;m=e7377807d6cf5c207655abc93a9b6427&amp;sha256=949a59d2e515bb3b2e2edeecbee162e0aedb4ad3479e2c1bb88a4c045128c4fb"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53nyabsaaayqachxlq55uru3qedfxaagka.f0.mp4?dis_k=f2828da26947c34f4b3c334ea28a03b4&amp;dis_t=1768963176&amp;m=e7377807d6cf5c207655abc93a9b6427&amp;sha256=949a59d2e515bb3b2e2edeecbee162e0aedb4ad3479e2c1bb88a4c045128c4fb"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53nyabsaaayqachxlq55uru3qedfxaagka.f0.mp4?dis_k=f2828da26947c34f4b3c334ea28a03b4&amp;dis_t=1768963176&amp;m=e7377807d6cf5c207655abc93a9b6427&amp;sha256=949a59d2e515bb3b2e2edeecbee162e0aedb4ad3479e2c1bb88a4c045128c4fb" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -478,7 +483,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53niabmaaa44apfakxvvvbu2qeczvaafsa.f0.mp4?dis_k=1db3bfaff2d61a80d1bbc7851af3683d&amp;dis_t=1784145041&amp;m=50ea95d3ba50a8bd822b8ee7f1078a8e"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53niabmaaa44apfakxvvvbu2qeczvaafsa.f0.mp4?dis_k=1db3bfaff2d61a80d1bbc7851af3683d&amp;dis_t=1784145041&amp;m=50ea95d3ba50a8bd822b8ee7f1078a8e"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53niabmaaa44apfakxvvvbu2qeczvaafsa.f0.mp4?dis_k=1db3bfaff2d61a80d1bbc7851af3683d&amp;dis_t=1784145041&amp;m=50ea95d3ba50a8bd822b8ee7f1078a8e" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -514,7 +519,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53fubduaacjyaorktasjvbqliehiwqeosa.f0.mp4?dis_k=930f3366c353b11e417cdd9c8d0a0244&amp;dis_t=1784861287&amp;m=21c3a91bf974707106d8e54d2334fede"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53fubduaacjyaorktasjvbqliehiwqeosa.f0.mp4?dis_k=930f3366c353b11e417cdd9c8d0a0244&amp;dis_t=1784861287&amp;m=21c3a91bf974707106d8e54d2334fede"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53fubduaacjyaorktasjvbqliehiwqeosa.f0.mp4?dis_k=930f3366c353b11e417cdd9c8d0a0244&amp;dis_t=1784861287&amp;m=21c3a91bf974707106d8e54d2334fede" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -550,7 +555,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b533ebjoaacqmapogrm4vvbrwies7mqff2a.f0.mp4?dis_k=c96a71f277584b1fb10467e1f8bf7525&amp;dis_t=1781424247&amp;m=f72d6dd5caee730093b2ce1b516905a4&amp;sha256=f8affc97be0d4a3f9c7bbcb34ff9f55197a965e7ff15860d01b26651d4f45ed3"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b533ebjoaacqmapogrm4vvbrwies7mqff2a.f0.mp4?dis_k=c96a71f277584b1fb10467e1f8bf7525&amp;dis_t=1781424247&amp;m=f72d6dd5caee730093b2ce1b516905a4&amp;sha256=f8affc97be0d4a3f9c7bbcb34ff9f55197a965e7ff15860d01b26651d4f45ed3"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b533ebjoaacqmapogrm4vvbrwies7mqff2a.f0.mp4?dis_k=c96a71f277584b1fb10467e1f8bf7525&amp;dis_t=1781424247&amp;m=f72d6dd5caee730093b2ce1b516905a4&amp;sha256=f8affc97be0d4a3f9c7bbcb34ff9f55197a965e7ff15860d01b26651d4f45ed3" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -586,7 +591,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="card-left">
           <div class="video-preview-wrapper">
             <div class="video-preview-loading">加载中…</div>
-            <video preload="metadata" muted playsInline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53x4ahqaaa5uacxptuufvbvpyepc7qa6ca.f0.mp4?dis_k=a8e4d15ea1d1806d0a98e7d088b9a288&amp;dis_t=1786008437&amp;m=ac79d550ca5c7bef36fa9d416903ebab&amp;sha256=ec5f7088ea54cb6c673e81dc314ccd63c757103c872968d5c4a43e7c58363a84"></video>
+            <video preload="metadata" muted playsInline controls="false" controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture src="http://adsmind.gdtimg.com/ads_svp_video__0b53x4ahqaaa5uacxptuufvbvpyepc7qa6ca.f0.mp4?dis_k=a8e4d15ea1d1806d0a98e7d088b9a288&amp;dis_t=1786008437&amp;m=ac79d550ca5c7bef36fa9d416903ebab&amp;sha256=ec5f7088ea54cb6c673e81dc314ccd63c757103c872968d5c4a43e7c58363a84"></video>
             <div class="video-preview-watermark"></div>
             <div class="video-preview-badge">禁止下载</div>
             <div class="video-preview-overlay"><a href="http://adsmind.gdtimg.com/ads_svp_video__0b53x4ahqaaa5uacxptuufvbvpyepc7qa6ca.f0.mp4?dis_k=a8e4d15ea1d1806d0a98e7d088b9a288&amp;dis_t=1786008437&amp;m=ac79d550ca5c7bef36fa9d416903ebab&amp;sha256=ec5f7088ea54cb6c673e81dc314ccd63c757103c872968d5c4a43e7c58363a84" target="_blank">▶ 点击播放/查看原视频</a></div>
@@ -3099,7 +3104,7 @@ document.querySelectorAll('.copy-btn').forEach(function(btn){btn.addEventListene
   function clearStatus(){var el=document.getElementById('cobuildStatus');el.className='cobuild-status';el.textContent=''}
   function fill(draft){document.getElementById('skillName').value=draft.name||'';document.getElementById('skillTagline').value=draft.tagline||'';document.getElementById('skillVisual').value=draft.visualPrompt||'';document.getElementById('skillMotion').value=draft.motionPrompt||'';document.getElementById('skillDuration').value=String(draft.duration||15);document.getElementById('skillRatio').value=draft.ratio||'9:16'}
   function values(){var d=initialDraft(activeCard);d.name=document.getElementById('skillName').value.trim();d.tagline=document.getElementById('skillTagline').value.trim();d.visualPrompt=document.getElementById('skillVisual').value.trim();d.motionPrompt=document.getElementById('skillMotion').value.trim();d.duration=Number(document.getElementById('skillDuration').value);d.ratio=document.getElementById('skillRatio').value;return d}
-  function showResult(skillId,demo){document.getElementById('cobuildResult').classList.add('show');document.getElementById('cobuildSkillId').textContent=skillId||'--';document.getElementById('refreshDemoBtn').disabled=!skillId;document.getElementById('queryDraftBtn').disabled=!skillId;var status=demo&&demo.status||'not_started';var labels={not_started:'Demo 尚未生成',processing:'Demo 生成中',ready:'Demo 已完成',failed:'Demo 生成失败'};document.getElementById('cobuildDemoState').textContent=labels[status]||status;var box=document.getElementById('cobuildDemo');box.innerHTML='';if(status==='ready'&&demo&&demo.url){var v=document.createElement('video');v.controls=true;v.src=demo.url;if(demo.poster)v.poster=demo.poster;box.appendChild(v);if(demo.download_url){var a=document.createElement('a');a.className='cobuild-action';a.href=demo.download_url;a.target='_blank';a.textContent='下载 Demo';box.appendChild(a)}}}
+  function showResult(skillId,demo){document.getElementById('cobuildResult').classList.add('show');document.getElementById('cobuildSkillId').textContent=skillId||'--';document.getElementById('refreshDemoBtn').disabled=!skillId;document.getElementById('queryDraftBtn').disabled=!skillId;var status=demo&&demo.status||'not_started';var labels={not_started:'Demo 尚未生成',processing:'Demo 生成中',ready:'Demo 已完成',failed:'Demo 生成失败'};document.getElementById('cobuildDemoState').textContent=labels[status]||status;var box=document.getElementById('cobuildDemo');box.innerHTML='';if(status==='ready'&&demo&&demo.url){var v=document.createElement('video');v.controls=true;v.controlsList='nodownload noplaybackrate nofullscreen';v.disablePictureInPicture=true;v.src=demo.url;if(demo.poster)v.poster=demo.poster;v.addEventListener('contextmenu',function(e){e.preventDefault();return false});box.appendChild(v)}}
   function openModal(card){activeCard=card;requestKey='biweekly-'+card.dataset.date+'-'+(card.querySelector('.card-num')&&card.querySelector('.card-num').textContent||'card').replace(/\D/g,'')+'-'+Date.now();var draft=initialDraft(card);fill(draft);clearStatus();document.getElementById('cobuildResult').classList.remove('show');document.getElementById('refreshDemoBtn').disabled=true;document.getElementById('queryDraftBtn').disabled=true;var old=saved(card);if(old&&old.skillId){showResult(old.skillId,old.demo);setStatus('success','已读取本机保存的草稿记录，可继续查询草稿、刷新 Demo 状态或前往妙思。')}document.getElementById('cobuildModalSub').textContent=(card.dataset.industry||'')+' / '+(card.dataset.category||'')+' / '+(card.dataset.types||'');document.getElementById('cobuildModalMask').classList.add('active');document.body.style.overflow='hidden'}
   window.closeCobuildModal=function(){var m=document.getElementById('cobuildModalMask');if(m)m.classList.remove('active');document.body.style.overflow=''};
   function createDraft(){var btn=document.getElementById('createDraftBtn');var draft=values();if(!draft.name||(!draft.visualPrompt&&!draft.motionPrompt)){setStatus('error','请至少填写 Skill 名称，以及视觉提示词或镜头提示词。');return}btn.disabled=true;btn.textContent='正在创建草稿…';setStatus('info','正在调用行业共建开放 API。浏览器会携带当前 OA 登录态，不会保存或构造身份票据。');client.createDraft(draft,requestKey).then(function(res){var data=res.data;saveData(activeCard,{skillId:data.id,demo:data.demo,draft:draft,requestKey:requestKey});showResult(data.id,data.demo);setStatus('success','Skill 草稿已创建。下一步请前往 Cobuild 生成 Demo；Demo 验证后仍可进入妙思正式创作。')}).catch(function(err){var msg=err.message||'请求失败';if(err.status===400)msg='请求格式或幂等键错误，请检查参数后重试。';else if(err.status===401)msg='OA/太湖身份缺失或已过期，请先登录 Cobuild 后重试。';else if(err.status===403)msg='当前账号尚未加入共建平台，或没有 contributor/manager 权限。';else if(err.status===409)msg='同一幂等键对应的 Skill 内容已变化，请关闭弹窗后重新打开再创建。';else if(err.status===422)msg='技能字段校验失败，请检查名称、提示词等是否符合要求。';else if(err.code==='idempotency_conflict')msg='同一幂等键对应的 Skill 内容已变化，请关闭弹窗后重新打开再创建。';else if(err instanceof TypeError||/Failed to fetch|NetworkError/i.test(msg))msg='浏览器未能访问 API。若当前通过本地文件或非太湖域名打开，可能受到跨域/OA 网关限制；请部署到已接入太湖身份和允许跨域的网页环境后再试。';setStatus('error',msg+(err.traceId?'（trace_id: '+err.traceId+'）':''))}).then(function(){btn.disabled=false;btn.textContent='创建 Cobuild 草稿'})}
@@ -3124,7 +3129,7 @@ function switchPeriod(url){if(url&&url!==window.location.pathname.split('/').pop
     var link=card.querySelector('a.video-link');if(!link)return;var url=link.getAttribute('href');if(!url)return;var left=card.querySelector('.card-left');if(!left)return;
     var wrapper=document.createElement('div');wrapper.className='video-preview-wrapper';wrapper.addEventListener('contextmenu',function(e){e.preventDefault();return false});
     var loading=document.createElement('div');loading.className='video-preview-loading';loading.textContent='加载中…';wrapper.appendChild(loading);
-    var video=document.createElement('video');video.preload='metadata';video.muted=true;video.playsInline=true;video.controlsList='nodownload noplaybackrate nofullscreen';video.disablePictureInPicture=true;video.src=url;
+    var video=document.createElement('video');video.preload='metadata';video.muted=true;video.playsInline=true;video.controls=false;video.controlsList='nodownload noplaybackrate nofullscreen';video.disablePictureInPicture=true;video.src=url;
     video.addEventListener('loadeddata',function(){loading.style.display='none';video.style.display='block';try{video.currentTime=0.1}catch(_){}});
     video.addEventListener('error',function(){loading.textContent='视频预览不可用';loading.style.color='rgba(255,255,255,.4)'});
     video.style.display='none';video.addEventListener('click',function(){if(video.paused){video.play()}else{video.pause()}});
