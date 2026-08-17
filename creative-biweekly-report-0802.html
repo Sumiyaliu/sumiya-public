@@ -265,7 +265,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="mz-lock-error" id="jjLockError"></div>
       </div>
     </div>
-    <div class="related-cards jj-cards-locked" id="jjCardsContainer" style="display:none"><div class="card related-card locked" data-category="保暖用品">
+    <div class="related-cards jj-cards-locked" id="jjCardsContainer"><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">1</span>
@@ -640,7 +640,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="mz-lock-error" id="mzLockError"></div>
       </div>
     </div>
-    <div class="related-cards mz-cards" id="mzCardsContainer" style="display:none"><div class="card related-card locked" data-category="眼部护理" data-locked="true">
+    <div class="related-cards mz-cards" id="mzCardsContainer"><div class="card related-card locked" data-category="眼部护理" data-locked="true">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">1</span>
@@ -2939,12 +2939,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 .mz-lock-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(66,184,131,.25);}
 .mz-lock-error{color:#ef6b5a;font-size:12px;margin-top:12px;min-height:18px;}
 .blur-content{filter:blur(20px);pointer-events:none;}
-.related-card.locked .card-right{filter:blur(8px);pointer-events:none;user-select:none;}
-.related-card.locked .video-preview-loading{display:flex!important;}
+.related-card.locked .card-right{filter:blur(6px);pointer-events:none;user-select:none;}
+.related-card.locked .video-preview-wrapper{filter:blur(8px);}
+.related-card.locked .video-preview-loading{display:flex!important;color:rgba(255,255,255,.6);}
 .related-card.locked video{display:none!important;}
 .related-card.unlocked .video-preview-loading{display:none!important;}
 .related-card.unlocked video{display:block!important;}
 .related-card.unlocked .card-right{filter:none;pointer-events:auto;user-select:auto;}
+.related-card.unlocked .video-preview-wrapper{filter:none;}
 </style>
 <script>
 document.querySelectorAll('.related-tab').forEach(function(tab){
@@ -2961,8 +2963,7 @@ document.getElementById('mzUnlockBtn').addEventListener('click',function(){
   var pwd=input.value.trim();
   if(pwd==='599'){
     document.getElementById('mzLockScreen').style.display='none';
-    document.getElementById('mzCardsContainer').style.display='block';
-    document.querySelectorAll('.related-card.locked').forEach(function(card){
+    document.querySelectorAll('#mzCardsContainer .related-card.locked').forEach(function(card){
       card.classList.remove('locked');
       card.classList.add('unlocked');
       var video=card.querySelector('video');
@@ -2995,7 +2996,6 @@ document.getElementById('jjUnlockBtn').addEventListener('click',function(){
   var pwd=input.value.trim();
   if(pwd==='599'){
     document.getElementById('jjLockScreen').style.display='none';
-    document.getElementById('jjCardsContainer').style.display='block';
     document.querySelectorAll('#jjCardsContainer .related-card.locked').forEach(function(card){
       card.classList.remove('locked');
       card.classList.add('unlocked');
