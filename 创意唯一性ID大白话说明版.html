@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创意唯一性 ID 大白话版本</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f4f6f3;
+    color: #2d3a2e;
+    line-height: 1.75;
+    padding: 24px 16px 64px;
+  }
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #3d6b4f 0%, #5a8a6b 100%);
+    color: #fff;
+    border-radius: 18px;
+    padding: 40px 36px;
+    box-shadow: 0 6px 20px rgba(61,107,79,0.2);
+    margin-bottom: 24px;
+  }
+  .hero .tag { display: inline-block; background: rgba(255,255,255,0.16); padding: 3px 12px; border-radius: 10px; font-size: 12px; margin-bottom: 14px; }
+  .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+  .hero .sub { font-size: 15px; opacity: 0.92; }
+  .hero .sub b { color: #ffe9a0; }
+
+  /* 一句话 */
+  .oneliner {
+    background: #fff; border-radius: 14px; padding: 22px 28px; margin-bottom: 24px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05); border-left: 5px solid #3d6b4f;
+  }
+  .oneliner .big { font-size: 19px; font-weight: 700; color: #2d3a2e; margin-bottom: 4px; }
+  .oneliner .small { font-size: 13px; color: #7a8a7c; }
+
+  /* 区块 */
+  .section { background: #fff; border-radius: 14px; padding: 28px 32px; margin-bottom: 20px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); }
+  .sec-tag { display: inline-block; background: #e3eee5; color: #3d6b4f; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+  .section h2 { font-size: 21px; color: #2d3a2e; margin-bottom: 14px; }
+  .section h3 { font-size: 16px; color: #3d6b4f; margin: 18px 0 10px; padding-left: 10px; border-left: 3px solid #5a8a6b; }
+  .section p { margin-bottom: 10px; color: #3a4a3c; font-size: 14px; }
+
+  /* 主表格 */
+  table.factors { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); font-size: 14px; }
+  table.factors th { background: #3d6b4f; color: #fff; padding: 12px 14px; text-align: left; font-weight: 600; }
+  table.factors td { background: #fff; padding: 14px; border-bottom: 1px solid #ecf0eb; vertical-align: top; }
+  table.factors tr.group-row td { background: #f0f7f1; font-weight: 700; color: #2d6b3e; }
+  table.factors tr:last-child td { border-bottom: none; }
+  table.factors .col-id { width: 22%; }
+  table.factors .col-name { width: 30%; }
+  table.factors .col-desc { width: 48%; }
+  table.factors .id-badge { display: inline-block; background: #e8f0e5; color: #3d6b4f; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; margin-right: 4px; }
+  table.factors .id-badge.core { background: #fdf2e3; color: #b8862e; }
+  table.factors .name-pill { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+  table.factors .name-pill.marketing { background: #e8f0e5; color: #3d6b4f; }
+  table.factors .name-pill.bid { background: #ecf5ee; color: #2d6b3e; }
+  table.factors .name-pill.fp { background: #fdf6ec; color: #8a6618; }
+  table.factors .name-pill.fmt { background: #f0f7f1; color: #2d6b3e; }
+
+  /* 编号气泡 */
+  .num-bubble {
+    display: inline-block; width: 24px; height: 24px; background: #3d6b4f; color: #fff;
+    border-radius: 50%; text-align: center; line-height: 24px; font-size: 13px;
+    font-weight: 700; margin-right: 8px; flex-shrink: 0;
+  }
+
+  /* 维度详情卡 */
+  .dim-list { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px 0; }
+  .dim {
+    background: #f9fbf8; border: 1px solid #dce6dc; border-radius: 10px;
+    padding: 16px 18px; display: flex; align-items: flex-start;
+  }
+  .dim .left { flex-shrink: 0; width: 50px; }
+  .dim .right { flex: 1; }
+  .dim .rt { font-weight: 700; font-size: 14px; color: #2d3a2e; margin-bottom: 4px; }
+  .dim .rt .small { font-size: 12px; color: #8a9a8c; font-weight: 400; margin-left: 6px; }
+  .dim .rd { font-size: 13px; color: #4a5a4c; line-height: 1.7; }
+  .dim .rd ul { padding-left: 18px; margin-top: 4px; }
+  .dim .rd li { margin-bottom: 4px; }
+  .dim .rd b { color: #b04a3a; }
+  .dim .rd .ok { color: #2d6b3e; font-weight: 600; }
+  .dim .rd .bad { color: #b04a3a; font-weight: 600; }
+
+  /* 对比表 */
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .vs-card { border-radius: 12px; padding: 18px 20px; border: 1px solid #e0e0e0; }
+  .vs-card.kept { background: #ecf5ee; border-color: #b8d8be; }
+  .vs-card.excl { background: #fdf2f0; border-color: #f0c5be; }
+  .vs-card .vt { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .vs-card.kept .vt { color: #2d6b3e; }
+  .vs-card.excl .vt { color: #b04a3a; }
+  .vs-card ul { padding-left: 18px; }
+  .vs-card li { font-size: 13px; margin-bottom: 5px; color: #3a4a3c; }
+  .vs-card li b { color: #2d3a2e; }
+
+  /* 公式块 */
+  .formula {
+    background: linear-gradient(135deg, #fff8e7 0%, #fdf4d8 100%);
+    border-left: 5px solid #d4a548;
+    border-radius: 10px;
+    padding: 18px 22px; margin: 16px 0;
+  }
+  .formula .label { color: #b8862e; font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .formula .formula-eq { font-size: 18px; font-weight: 700; color: #2d3a2e; margin: 8px 0; }
+  .formula .formula-eq b { color: #3d6b4f; }
+  .formula .content { color: #4a3a1e; font-size: 14px; }
+  .formula .content b { color: #b04a3a; }
+
+  /* Case */
+  .case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 14px 0; }
+  .case-card { background: #f9fbf8; border: 1px solid #dce6dc; border-radius: 10px; padding: 14px; }
+  .case-card .ct { font-weight: 700; font-size: 13px; color: #2d3a2e; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .case-card .cd { font-size: 12px; color: #4a5a4c; line-height: 1.7; }
+  .case-card .cd b { color: #b04a3a; }
+  .case-card .cd .ok { color: #2d6b3e; font-weight: 600; }
+
+  /* Q&A */
+  .qa { background: #f9fbf8; border-radius: 9px; padding: 14px 18px; margin-bottom: 10px; border-left: 3px solid #5a8a6b; }
+  .qa .q { font-weight: 700; color: #2d3a2e; font-size: 14px; margin-bottom: 5px; }
+  .qa .a { color: #4a5a4c; font-size: 13px; }
+  .qa .a b { color: #3d6b4f; }
+
+  /* 解法 TAB */
+  .solve-intro {
+    background: #f0f7f1; border-left: 4px solid #3d6b4f; border-radius: 10px;
+    padding: 14px 18px; margin: 12px 0 18px; font-size: 14px; color: #2d6b3e;
+  }
+  table.solve { width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); font-size: 13px; }
+  table.solve th { background: #3d6b4f; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+  table.solve td { background: #fff; padding: 12px; border-bottom: 1px solid #ecf0eb; vertical-align: top; }
+  table.solve tr:last-child td { border-bottom: none; }
+  table.solve tr.group-row td { background: #f0f7f1; font-weight: 700; color: #2d6b3e; }
+  table.solve .col-elem { width: 18%; }
+  table.solve .col-name { width: 16%; }
+  table.solve .col-todo { width: 30%; background: #fafbf9; }
+  table.solve .col-note { width: 36%; }
+  table.solve .elem-tag { display: inline-block; padding: 3px 8px; border-radius: 5px; font-size: 12px; font-weight: 600; }
+  table.solve .elem-tag.core { background: #3d6b4f; color: #fff; }
+  table.solve .elem-tag.marketing { background: #5a8a6b; color: #fff; }
+  table.solve .elem-tag.bid { background: #6b9b7a; color: #fff; }
+  table.solve .elem-tag.fp { background: #d4a548; color: #fff; }
+  table.solve .elem-tag.fmt { background: #8a6618; color: #fff; }
+  table.solve .todo-cell { font-size: 13px; color: #2d3a2e; }
+  table.solve .note-cell { font-size: 13px; color: #4a5a4c; }
+  table.solve .note-cell b { color: #b04a3a; }
+  table.solve .note-cell .note-label { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #fdf2e3; color: #8a6618; margin-right: 4px; vertical-align: 1px; }
+  table.solve .note-cell ul { padding-left: 18px; margin-top: 4px; }
+  table.solve .note-cell li { margin-bottom: 3px; line-height: 1.6; }
+  table.solve .note-cell li b { color: #b04a3a; }
+
+  /* 底部 */
+  .foot { text-align: center; background: #fff; border-radius: 12px; padding: 20px; margin-top: 16px; font-size: 12px; color: #8a9a8c; }
+  .foot b { color: #3d6b4f; }
+
+  @media(max-width:768px){
+    .vs-grid, .case-grid { grid-template-columns: 1fr; }
+    .hero { padding: 28px 22px; }
+    .section { padding: 22px 18px; }
+    table.factors { font-size: 12px; }
+    table.factors th, table.factors td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <span class="tag">广告主指南 · 大白话版本</span>
+    <h1>创意唯一性 ID 大白话版本</h1>
+    <div class="sub">
+      平台用<b>"创意唯一性ID"</b>来识别你的每一条广告。它由<b>5 个关键要素</b>组成——<br>
+      只要其中<b>任意一个不同</b>，平台就认为是两条不同的广告，不会互相抢曝光。
+    </div>
+    <div style="margin-top:18px;background:rgba(255,255,255,0.14);border-radius:10px;padding:12px 16px;display:inline-block;">
+      <span style="font-size:13px;">想看更详细的操作指南？</span>
+      <a href="https://doc.weixin.qq.com/doc/w3_AJwAqgZ-ACcCNGLKmw5qLQO2DwaLn?scode=AJEAIQdfAAoXqqHYJfAY8AIQZXAAw" target="_blank" style="color:#ffe9a0;font-weight:600;font-size:13px;text-decoration:underline;margin-left:6px;">【腾讯营销】曝光创意唯一性ID投手实操指南 →</a>
+    </div>
+  </div>
+
+  <!-- 一句话 -->
+  <div class="oneliner">
+    <div class="big">广告身份 = 谁 + 投什么 + 怎么投 + 素材像不像 + 什么形式</div>
+    <div class="small">这 5 个要素里只要有一个不同，就是不同身份——同样的素材才会在竞争中互相抢曝光</div>
+  </div>
+
+  <!-- 1. 一表看懂 5 个关键要素 -->
+  <div class="section">
+    <span class="sec-tag">第 1 部分</span>
+    <h2>5 个关键要素，一张表看懂</h2>
+    <p>平台认定你的广告身份时，看的就是下面这 5 类要素。每一类里包含的具体设置项如下：</p>
+
+    <table class="factors">
+      <thead>
+        <tr>
+          <th class="col-id">关键要素</th>
+          <th class="col-name">具体设置项</th>
+          <th class="col-desc">对广告主意味着什么</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 要素1: 谁 -->
+        <tr>
+          <td><span class="id-badge core">① 谁</span><br><span style="font-size:11px;color:#8a9a8c;">平台自动识别</span></td>
+          <td><span class="name-pill">客户身份</span></td>
+          <td>平台会自动识别你属于哪个经营主体。<b>同一品牌无论开几个账户、几个主体，都会被认定为同一个"你"</b>。所以靠多开账户来增加曝光机会，是行不通的。</td>
+        </tr>
+
+        <!-- 要素2: 投什么 -->
+        <tr class="group-row">
+          <td colspan="3">
+            <span class="num-bubble">2</span>
+            投什么（共 4 个设置项）
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="4" style="vertical-align:middle;background:#fdfbf6;">
+            <span class="id-badge core">② 投什么<br>（4 项）</span><br>
+            <span style="font-size:11px;color:#8a9a8c;">你的营销目标</span>
+          </td>
+          <td><span class="name-pill marketing">营销目的</span></td>
+          <td>你想让用户做什么：买商品 / 留线索 / 装应用 / 看品牌。目的变了，整个广告的考核方式就不一样了。</td>
+        </tr>
+        <tr>
+          <td><span class="name-pill marketing">营销对象</span></td>
+          <td>你具体在卖什么（哪个商品、哪个活动）。<b>必须和你的落地页内容一致</b>，否则会被平台标记，严重时拿不到流量扶持。</td>
+        </tr>
+        <tr>
+          <td><span class="name-pill marketing">落地形式 + 转化路径</span></td>
+          <td>用户点进来后怎么转化（如：H5 表单 → 加企微；小程序 → 下单）。路径不同，相当于走了不同的转化通道。</td>
+        </tr>
+        <tr>
+          <td><span class="name-pill marketing">优化目标</span></td>
+          <td>平台帮你优化什么动作（如点击、表单提交、激活、付费）。<b>改了优化目标，平台会重新学习</b>，相当于一条全新的广告。</td>
+        </tr>
+
+        <!-- 要素3: 怎么投 -->
+        <tr class="group-row">
+          <td colspan="3">
+            <span class="num-bubble">3</span>
+            怎么投（共 2 个设置项）
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" style="vertical-align:middle;background:#fdfbf6;">
+            <span class="id-badge core">③ 怎么投<br>（2 项）</span><br>
+            <span style="font-size:11px;color:#8a9a8c;">出价和计费方式</span>
+          </td>
+          <td><span class="name-pill bid">出价策略</span></td>
+          <td>你用什么方式出价（标准出价 / 最大转化 / 目标 ROI 等）。<b>不同策略 = 不同的竞价赛道</b>。</td>
+        </tr>
+        <tr>
+          <td><span class="name-pill bid">计费方式</span></td>
+          <td>按曝光 / 按点击 / 按转化计费。<b>不同计费方式 = 不同的流量类型</b>，会分开独立竞争。</td>
+        </tr>
+
+        <!-- 要素4: 素材像不像 -->
+        <tr>
+          <td><span class="id-badge core">④ 素材像不像</span><br><span style="font-size:11px;color:#8a9a8c;">平台自动比对</span></td>
+          <td><span class="name-pill fp">素材内容指纹</span></td>
+          <td>平台会自动比对你的<b>图片 / 视频 / 文案</b>内容。这是判断"算不算重复"的核心：<b>素材内容有明显差异才算不同</b>，只改一两个字、只换封面不算。</td>
+        </tr>
+
+        <!-- 要素5: 什么形式 -->
+        <tr>
+          <td><span class="id-badge core">⑤ 什么形式</span><br><span style="font-size:11px;color:#8a9a8c;">广告形态</span></td>
+          <td><span class="name-pill fmt">创意形式</span></td>
+          <td>视频横版 / 竖版 / 卡片 / 多图 / 直播切片等。<b>形式不同，用户看到的场景不同</b>，即使素材内容一样也不会互相抢流量。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2. 每个要素到底管什么 -->
+  <div class="section">
+    <span class="sec-tag">第 2 部分</span>
+    <h2>每个要素到底管什么？</h2>
+    <p>把上面 5 个要素按"<b>它管什么、改了会怎样、什么操作不影响它</b>"展开，帮你理解为什么有些操作"看起来改了但其实没用"。</p>
+
+    <div class="dim-list">
+
+      <div class="dim">
+        <div class="left"><span class="num-bubble">1</span></div>
+        <div class="right">
+          <div class="rt">谁 <span class="small">客户身份</span></div>
+          <div class="rd">
+            管的是"这条广告是谁投的"。<b>同一品牌 = 同一个身份</b>，不管你开了几个账户。
+            <ul>
+              <li><b>改了会怎样</b>：事实上<b>改不了</b>——平台自动识别，你无法靠换主体来变成"另一个人"。</li>
+              <li><b>什么操作不影响</b>：换账户、换主体、换广告 ID，都<b>不会</b>让你变成新身份。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim">
+        <div class="left"><span class="num-bubble">2</span></div>
+        <div class="right">
+          <div class="rt">投什么（4 项） <span class="small">营销目的 / 营销对象 / 落地形式+转化路径 / 优化目标</span></div>
+          <div class="rd">
+            管的是"你投的是什么、想让用户做什么"。
+            <ul>
+              <li><b>营销目的</b>：买商品、留线索、装应用等；变了之后整个考核口径重算。</li>
+              <li><b>营销对象</b>：卖的具体商品/活动；必须和落地页一致，不一致会被标记。</li>
+              <li><b>落地形式 + 转化路径</b>：用户点进来后走哪条转化通道；改了相当于换了条路。</li>
+              <li><b>优化目标</b>：帮你优化点击还是付费等；改了平台会重新学习。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim">
+        <div class="left"><span class="num-bubble">3</span></div>
+        <div class="right">
+          <div class="rt">怎么投（2 项） <span class="small">出价策略 / 计费方式</span></div>
+          <div class="rd">
+            管的是"你用什么方式抢曝光、按什么方式结算"。
+            <ul>
+              <li><span class="ok">改了出价策略</span> → 等于换了竞价赛道（比如从"最大转化"切到"目标 ROI"）。</li>
+              <li><span class="ok">改了计费方式</span>（曝光 → 点击）→ 等于换了流量类型，可以独立竞争。</li>
+              <li><span class="bad">只调出价金额</span>（50 元 ↔ 60 元）<b>不算</b>，出价金额不在认定要素里。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim">
+        <div class="left"><span class="num-bubble">4</span></div>
+        <div class="right">
+          <div class="rt">素材像不像 <span class="small">素材内容指纹</span></div>
+          <div class="rd">
+            管的是"你的素材是不是换汤不换药"。这是判断重复的<b>核心</b>。
+            <ul>
+              <li><span class="ok">算"不同"</span>：视频/图片主体换了、文案重写了（卖点/利益点/受众变了）、主视觉明显不同。</li>
+              <li><span class="bad">仍算"相同"</span>：只改语气词（"釉色流转"→"釉色温润"）、只换封面不改视频、多图只换顺序、文案整体沿用。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim">
+        <div class="left"><span class="num-bubble">5</span></div>
+        <div class="right">
+          <div class="rt">什么形式 <span class="small">创意形式</span></div>
+          <div class="rd">
+            管的是"用户用什么方式看到这条广告"。
+            <ul>
+              <li>视频横版 vs 竖版 → 用户场景不同（横版适合 PC/朋友圈，竖版适合视频号/信息流）。</li>
+              <li>卡片 vs 多图 vs 长图文 → 落地交互不同，各算各的。</li>
+              <li><b>同素材换形式 ≠ 重复</b>，可以视为不同身份。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. 公式拆解 + 影响要素表 -->
+  <div class="section">
+    <span class="sec-tag">第 3 部分</span>
+    <h2>5 个要素怎么拼成你的广告身份</h2>
+
+    <!-- 公式可视化拼接块 -->
+    <div class="formula">
+      <div class="label">你的广告身份 = 5 个要素相加</div>
+      <div style="display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:14px 0 8px;">
+        <div style="flex:1;min-width:110px;background:#3d6b4f;color:#fff;border-radius:8px;padding:12px 8px;text-align:center;">
+          <div style="font-size:11px;opacity:0.85;">①</div>
+          <div style="font-weight:700;font-size:14px;margin:4px 0 2px;">谁</div>
+          <div style="font-size:11px;opacity:0.85;">1 项</div>
+        </div>
+        <div style="display:flex;align-items:center;color:#3d6b4f;font-weight:700;font-size:18px;">+</div>
+        <div style="flex:1.6;min-width:150px;background:#5a8a6b;color:#fff;border-radius:8px;padding:12px 8px;text-align:center;">
+          <div style="font-size:11px;opacity:0.85;">②</div>
+          <div style="font-weight:700;font-size:14px;margin:4px 0 2px;">投什么</div>
+          <div style="font-size:11px;opacity:0.85;">4 项</div>
+        </div>
+        <div style="display:flex;align-items:center;color:#3d6b4f;font-weight:700;font-size:18px;">+</div>
+        <div style="flex:1.3;min-width:130px;background:#6b9b7a;color:#fff;border-radius:8px;padding:12px 8px;text-align:center;">
+          <div style="font-size:11px;opacity:0.85;">③</div>
+          <div style="font-weight:700;font-size:14px;margin:4px 0 2px;">怎么投</div>
+          <div style="font-size:11px;opacity:0.85;">2 项</div>
+        </div>
+        <div style="display:flex;align-items:center;color:#3d6b4f;font-weight:700;font-size:18px;">+</div>
+        <div style="flex:1;min-width:110px;background:#d4a548;color:#fff;border-radius:8px;padding:12px 8px;text-align:center;">
+          <div style="font-size:11px;opacity:0.85;">④</div>
+          <div style="font-weight:700;font-size:14px;margin:4px 0 2px;">素材像不像</div>
+          <div style="font-size:11px;opacity:0.85;">1 项</div>
+        </div>
+        <div style="display:flex;align-items:center;color:#3d6b4f;font-weight:700;font-size:18px;">+</div>
+        <div style="flex:1;min-width:110px;background:#8a6618;color:#fff;border-radius:8px;padding:12px 8px;text-align:center;">
+          <div style="font-size:11px;opacity:0.85;">⑤</div>
+          <div style="font-weight:700;font-size:14px;margin:4px 0 2px;">什么形式</div>
+          <div style="font-size:11px;opacity:0.85;">1 项</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:10px;">
+        <div style="display:inline-block;background:#2d3a2e;color:#fff;border-radius:8px;padding:10px 20px;font-weight:700;font-size:15px;">
+          = 你的广告身份（5 类 / 9 项）
+        </div>
+      </div>
+      <div class="content" style="margin-top:12px;text-align:center;font-size:15px;">
+        <b>5 个要素任意一个不同 → 广告身份就不同 → 同样的素材才会在竞争中互相抢曝光</b>
+      </div>
+    </div>
+
+    <!-- 影响要素主表 -->
+    <h3>影响要素主表（5 类 / 9 项）</h3>
+    <table class="factors">
+      <thead>
+        <tr>
+          <th style="width:5%;">#</th>
+          <th style="width:17%;">关键要素</th>
+          <th style="width:8%;">项数</th>
+          <th style="width:33%;">具体设置项</th>
+          <th style="width:37%;">"任意一项不同"怎么体现</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>①</b></td>
+          <td><span class="id-badge core">谁</span></td>
+          <td><b>1</b></td>
+          <td>客户身份</td>
+          <td>平台自动识别，<b>换账户/换主体也不会变</b></td>
+        </tr>
+        <tr>
+          <td><b>②</b></td>
+          <td><span class="id-badge core">投什么</span></td>
+          <td><b>4</b></td>
+          <td>营销目的 / 营销对象 / 落地形式+转化路径 / 优化目标</td>
+          <td>4 项中<b>任改 1 项</b>即变（如优化目标从"点击"→"付费"）</td>
+        </tr>
+        <tr>
+          <td><b>③</b></td>
+          <td><span class="id-badge core">怎么投</span></td>
+          <td><b>2</b></td>
+          <td>出价策略 / 计费方式</td>
+          <td>2 项中<b>任改 1 项</b>即变（如计费从"曝光"→"点击"）<br><span style="font-size:12px;color:#b04a3a;">注：出价金额不在认定要素里</span></td>
+        </tr>
+        <tr>
+          <td><b>④</b></td>
+          <td><span class="id-badge core">素材像不像</span></td>
+          <td><b>1</b></td>
+          <td>素材内容指纹</td>
+          <td>主视觉/文案<b>明显差异</b>才变；微调语气词、换封面、换顺序<b>仍算相同</b></td>
+        </tr>
+        <tr>
+          <td><b>⑤</b></td>
+          <td><span class="id-badge core">什么形式</span></td>
+          <td><b>1</b></td>
+          <td>创意形式</td>
+          <td>横版↔竖版、卡片↔多图等<b>形态变化</b>即变</td>
+        </tr>
+        <tr style="background:#f0f7f1;">
+          <td colspan="2" style="font-weight:700;color:#2d6b3e;">合计</td>
+          <td style="font-weight:700;color:#2d6b3e;">9</td>
+          <td colspan="2" style="font-weight:700;color:#2d6b3e;">5 类要素 · 任意 1 项不同 → 广告身份不同</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 判定逻辑表 -->
+    <h3>"我做了这个操作，算不算重复？"判定表</h3>
+    <p style="font-size:13px;">前提：两条广告素材内容完全一致，只看 5 个要素里有没有任意一个不同。</p>
+    <table class="factors">
+      <thead>
+        <tr>
+          <th style="width:22%;">你做了什么</th>
+          <th style="width:40%;">5 个要素的变化</th>
+          <th style="width:18%;">广告身份</th>
+          <th style="width:20%;">算不算重复</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>同素材换账户投</td>
+          <td>只换了账户，<b>5 个要素全没变</b></td>
+          <td style="color:#b04a3a;font-weight:600;">没变</td>
+          <td style="color:#b04a3a;font-weight:700;">❌ 算重复</td>
+        </tr>
+        <tr>
+          <td>改了优化目标</td>
+          <td>② 投什么 · 优化目标 变了</td>
+          <td style="color:#2d6b3e;font-weight:600;">变了</td>
+          <td style="color:#2d6b3e;font-weight:700;">✅ 不算重复</td>
+        </tr>
+        <tr>
+          <td>素材只改了一两个字</td>
+          <td>④ 素材内容仍高度相似</td>
+          <td style="color:#b04a3a;font-weight:600;">没变</td>
+          <td style="color:#b04a3a;font-weight:700;">❌ 算重复</td>
+        </tr>
+        <tr>
+          <td>同视频换成竖版</td>
+          <td>⑤ 什么形式 变了</td>
+          <td style="color:#2d6b3e;font-weight:600;">变了</td>
+          <td style="color:#2d6b3e;font-weight:700;">✅ 不算重复</td>
+        </tr>
+        <tr>
+          <td>出价从 50 涨到 60</td>
+          <td>出价金额不在要素里，<b>5 个要素全没变</b></td>
+          <td style="color:#b04a3a;font-weight:600;">没变</td>
+          <td style="color:#b04a3a;font-weight:700;">❌ 算重复</td>
+        </tr>
+        <tr>
+          <td>换了计费方式</td>
+          <td>③ 怎么投 · 计费方式 变了</td>
+          <td style="color:#2d6b3e;font-weight:600;">变了</td>
+          <td style="color:#2d6b3e;font-weight:700;">✅ 不算重复</td>
+        </tr>
+        <tr>
+          <td>换了营销对象</td>
+          <td>② 投什么 · 营销对象 变了</td>
+          <td style="color:#2d6b3e;font-weight:600;">变了</td>
+          <td style="color:#2d6b3e;font-weight:700;">✅ 不算重复</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;color:#7a8a7c;background:#f9fbf8;padding:10px 14px;border-radius:8px;margin-top:10px;">
+      <b>一句话记忆</b>：你的广告身份 = <b>① 谁</b> + <b>② 投什么</b>（4 项）+ <b>③ 怎么投</b>（2 项）+ <b>④ 素材像不像</b>（1 项）+ <b>⑤ 什么形式</b>（1 项）。这 5 类<b>全部参与重复判定</b>，任意一项不同就是不同身份。
+    </p>
+
+  </div>
+
+  <!-- 4. 解法 TAB：5 类要素各自可执行的操作 -->
+  <div class="section">
+    <span class="sec-tag">第 4 部分 · 解法</span>
+    <h2>5 类要素各自怎么改？5 条可执行建议</h2>
+
+    <div class="solve-intro">
+      上文讲了 5 个要素"什么能改、什么不能改"。这一节直接给你<b>对每个要素改就能获得"新身份"的具体操作</b>——按重要性排序，越往后越涉及素材层面。
+    </div>
+
+    <table class="solve">
+      <thead>
+        <tr>
+          <th class="col-elem">关键要素</th>
+          <th class="col-name">具体设置项</th>
+          <th class="col-todo">你可以做什么操作</th>
+          <th class="col-note">备注说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 要素1: 谁（客户ID） -->
+        <tr>
+          <td><span class="elem-tag core">① 谁</span></td>
+          <td>客户身份</td>
+          <td class="todo-cell">
+            （<b>基本不可变</b>，由平台自动识别）<br>
+            想增加客户身份 → 必须按平台规则<b>真实增加主体</b>，<b>不要用 hack 手段堆主体</b>
+          </td>
+          <td class="note-cell">
+            <span class="note-label">注意</span>
+            增加客户主体、有概率增加新身份。注意使用<b>差异化主体工商信息、经营信息的主体</b>（属于 hack 系统行为，<b>会酌情尝试</b>）
+          </td>
+        </tr>
+
+        <!-- 要素2: 投什么（4 项） -->
+        <tr class="group-row">
+          <td colspan="4">
+            <span class="elem-tag marketing">② 投什么</span> · 通过改营销考核的 4 项获得新身份
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="4"><span class="elem-tag marketing">②</span></td>
+          <td>营销目的</td>
+          <td class="todo-cell">使用<b>智投二级影响目的：专场放量</b></td>
+          <td class="note-cell">
+            <span class="note-label">注意</span>
+            <b>保健食品暂不支持</b>
+          </td>
+        </tr>
+        <tr>
+          <td>营销对象</td>
+          <td class="todo-cell"><b>直播间商品表达</b></td>
+          <td class="note-cell">
+            <span class="note-label">注意</span>
+            <b>保健食品暂不支持</b>
+          </td>
+        </tr>
+        <tr>
+          <td>落地形式 + 转化路径</td>
+          <td class="todo-cell"><b>直播 / 直购 / cid 多链路投放</b></td>
+          <td class="note-cell">
+            <span class="note-label">建议</span>
+            在营销目的对应的"链路"里选<b>不同承接通道</b>，链路不同即获得新身份
+          </td>
+        </tr>
+        <tr>
+          <td>优化目标（OG）</td>
+          <td class="todo-cell"><b>多样化 OG 搭配</b>（下单、下单 ROI、24 小时下单等）</td>
+          <td class="note-cell">
+            <span class="note-label">建议</span>
+            同一批素材可搭配多种优化目标投放，<b>每个 OG 算独立身份</b>
+          </td>
+        </tr>
+
+        <!-- 要素3: 怎么投（2 项） -->
+        <tr class="group-row">
+          <td colspan="4">
+            <span class="elem-tag bid">③ 怎么投</span> · 通过改出价 / 计费获得新身份
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2"><span class="elem-tag bid">③</span></td>
+          <td>出价策略</td>
+          <td class="todo-cell"><b>自动出价 / 手动出价</b> 切换</td>
+          <td class="note-cell">
+            <span class="note-label">建议</span>
+            同一素材配不同出价策略，<b>按赛道独立竞争</b>
+          </td>
+        </tr>
+        <tr>
+          <td>计费方式</td>
+          <td class="todo-cell"><b>全量通 CPA 结算 / 全店托管-原生内容加热 / CPA 结算开白 new</b></td>
+          <td class="note-cell">
+            <span class="note-label">建议</span>
+            不同计费方式 = 不同流量商品，<b>独立计量、独立防卷</b>
+          </td>
+        </tr>
+
+        <!-- 要素4: 素材像不像（指纹）-->
+        <tr>
+          <td><span class="elem-tag fp">④ 素材像不像</span></td>
+          <td>素材内容指纹</td>
+          <td class="todo-cell">
+            <b>产品动作（重）</b>
+            <ol style="padding-left:18px;margin-top:4px;">
+              <li>引导 3.0 衍生 MAX 开关广告维度应开尽开</li>
+              <li>智投全库智选、项目维度应开尽开</li>
+              <li>智投 AIGC 开关，按客户对 AIGC 接受程度推进</li>
+              <li>直播-客户可增加直播实时画面推广</li>
+            </ol>
+            <b>生产动作（重）</b>
+            <ul style="padding-left:18px;margin-top:4px;">
+              <li>客户自制拆新增加创意指纹</li>
+            </ul>
+          </td>
+          <td class="note-cell">
+            <span class="note-label">重点</span>
+            这是改造成本<b>最高</b>、但<b>最核心</b>的一环——前 3 类要素的差异通常很快会被同样素材耗尽，<b>最终能否拉开差距，看的还是素材本身</b>。
+          </td>
+        </tr>
+
+        <!-- 要素5: 什么形式 -->
+        <tr>
+          <td><span class="elem-tag fmt">⑤ 什么形式</span></td>
+          <td>创意形式</td>
+          <td class="todo-cell"><b>卷形象视频、竖版横版版、同步可覆盖横版底存</b></td>
+          <td class="note-cell">
+            <span class="note-label">建议</span>
+            同一批素材做<b>竖版 + 横版 + 多图</b>等多种形式投放，可同时覆盖不同用户场景<br>
+            <span class="note-label" style="background:#ecf5ee;color:#2d6b3e;">提示</span>
+            视频横版本身也建议做差异化（卷形象视频 / 竖版横版版）
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:13px;color:#7a8a7c;background:#f9fbf8;padding:12px;border-radius:8px;margin-top:10px;">
+      <b>使用顺序建议</b>：先打通<b>①②③</b>三类的可改项（成本最低、上线最快）；<b>④ 素材</b>是中长期投入；<b>⑤ 形式</b>作为补充覆盖。<b>不建议</b>把力气放在堆主体、堆出价金额上——前文已说明这些不在认定要素里。
+    </p>
+  </div>
+
+  <!-- 5. 哪些操作不会带来新身份 -->
+  <div class="section">
+    <span class="sec-tag">第 5 部分</span>
+    <h2>这些操作不会让你获得"新身份"</h2>
+    <p>有些操作你可能以为"换了就等于新广告"，但<b>实际上不在认定要素里</b>，不会带来额外曝光机会：</p>
+
+    <div class="vs-grid">
+      <div class="vs-card kept">
+        <div class="vt">✅ 会改变广告身份（在认定要素里）</div>
+        <ul>
+          <li>客户身份（平台自动识别）</li>
+          <li>营销目的 / 营销对象 / 落地形式+转化路径 / 优化目标</li>
+          <li>出价策略 / 计费方式</li>
+          <li>素材内容指纹（有明显差异才算）</li>
+          <li>创意形式（横版↔竖版等）</li>
+        </ul>
+      </div>
+      <div class="vs-card excl">
+        <div class="vt">❌ 不会改变广告身份（不在认定要素里）</div>
+        <ul>
+          <li><b>换账户</b>（多开账户不增加新身份）</li>
+          <li><b>复制广告</b>（复制粘贴不算新广告）</li>
+          <li><b>换主体</b>（同一品牌多主体还是同一个"你"）</li>
+          <li><b>调出价金额</b>（出价高低不换赛道）</li>
+          <li><b>调定向</b>（地域/年龄/兴趣等人群不换身份）</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:#7a8a7c;background:#f9fbf8;padding:12px;border-radius:8px;margin-top:8px;">
+      <b>为什么这么设计？</b>平台希望让<b>真正优质的广告</b>拿到公平竞争的机会。靠复制账户、复制广告、调出价来"刷"曝光量的做法，在新规则下<b>不会再带来额外机会</b>。把精力放在<b>打磨差异化素材</b>和<b>深耕优质账户</b>上，回报更长期。
+    </p>
+  </div>
+
+  <!-- 6. 场景对照 -->
+  <div class="section">
+    <span class="sec-tag">第 6 部分</span>
+    <h2>常见操作对照：算不算重复？</h2>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="ct">同素材换账户投</div>
+        <div class="cd">
+          只换了账户，5 个要素全一样 → <b class="bad">算重复</b>，不会多拿曝光。
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="ct">改了优化目标</div>
+        <div class="cd">
+          优化目标从"点击"改成"付费" → <b class="ok">要素有差异</b>，身份变了，<b>不算重复</b>。
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="ct">素材只改一两个字</div>
+        <div class="cd">
+          文案"釉色流转"→"釉色温润"，其他全一样 → <b class="bad">仍算重复</b>。
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="ct">同视频换横竖版</div>
+        <div class="cd">
+          横版改成竖版 → <b class="ok">形式不同</b>，不算重复。
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="ct">出价从 50 涨到 60</div>
+        <div class="cd">
+          出价金额不在要素里，5 个要素没变 → <b class="bad">仍算同一身份</b>，需配合改素材才能不算重复。
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="ct">换了营销对象</div>
+        <div class="cd">
+          营销对象换了 → <b class="ok">算不同身份</b>，但素材和落地页也要跟着新对象一致。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Q&A -->
+  <div class="section">
+    <span class="sec-tag">第 7 部分</span>
+    <h2>常见问题</h2>
+
+    <div class="qa">
+      <div class="q">Q1：5 个要素是不是必须全改才算不同？</div>
+      <div class="a">不是。<b>只要 5 个里有任意一个不同</b>，就认为是不同身份。不需要同时改 5 个。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q2：同素材换横竖版真能"不算重复"吗？</div>
+      <div class="a"><b>不算违规</b>。平台认为横版竖版是不同的广告形态，用户看到的场景不一样。但如果你横竖版素材被同一人群看到，<b>建议素材本身也有差异</b>，否则用户体验上仍会感觉重复。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q3：同一品牌开了多个主体，会被认成几个身份？</div>
+      <div class="a"><b>只会被认成 1 个</b>。平台自动识别经营实体，同一品牌的多主体<b>归到同一个身份</b>，多开主体不会增加新身份。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q4：创意形式指的是什么？</div>
+      <div class="a">指<b>广告的展示形态</b>：视频横版 / 竖版、卡片、多图、直播切片等。同一条素材换成不同形式，算不同身份。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q5：我把同一条视频投到两个账户，为什么拿不到双倍曝光？</div>
+      <div class="a">因为 5 个要素全没变，平台认定是同一条广告。<b>多开账户投放同一素材</b>，不会带来额外曝光机会。建议把精力放在打磨<b>差异化素材</b>上。</div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="foot">
+    <b>精而强 &gt; 多而糙</b> · 把精力放在打磨优质素材上，平台会给你更公平、更长期的回报<br><br>
+    <span style="font-size:13px;">延伸阅读：</span>
+    <a href="https://doc.weixin.qq.com/doc/w3_AJwAqgZ-ACcCNGLKmw5qLQO2DwaLn?scode=AJEAIQdfAAoXqqHYJfAY8AIQZXAAw" target="_blank" style="color:#3d6b4f;font-weight:600;font-size:13px;text-decoration:underline;">【腾讯营销】曝光创意唯一性ID投手实操指南 →</a>
+  </div>
+
+</div>
+</body>
+</html>
