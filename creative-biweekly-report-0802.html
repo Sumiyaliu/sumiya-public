@@ -238,7 +238,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
   </div>
   <div class="related-panel active" data-panel="jj">
     <div class="related-note">关联人群：都市银发、资深中产、养生一族。三伏天养生场景下，居家日用类养生器材/艾灸贴/保暖用品与滋补品共享"冬病夏治"消费心智。</div>
-    <div class="related-cards"><div class="card related-card" data-category="保暖用品">
+    <div class="mz-lock-screen jj-lock-screen" id="jjLockScreen">
+      <div class="mz-lock-box">
+        <div class="mz-lock-icon">🔒</div>
+        <div class="mz-lock-title">关联内容需密码解锁</div>
+        <div class="mz-lock-desc">居家日用类素材为关联推荐内容，请联系行业运营获取访问密码。</div>
+        <div class="mz-lock-input-wrap">
+          <input type="password" class="mz-lock-input" id="jjPasswordInput" placeholder="请输入密码" maxlength="6">
+          <button class="mz-lock-btn" id="jjUnlockBtn">解锁</button>
+        </div>
+        <div class="mz-lock-error" id="jjLockError"></div>
+      </div>
+    </div>
+    <div class="related-cards jj-cards-locked" id="jjCardsContainer" style="display:none"><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">1</span>
@@ -274,7 +286,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="艾灸贴">
+    </div><div class="card related-card locked" data-category="艾灸贴">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">2</span>
@@ -310,7 +322,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="保暖用品">
+    </div><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">3</span>
@@ -346,7 +358,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="保暖用品">
+    </div><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">4</span>
@@ -382,7 +394,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="保暖用品">
+    </div><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">5</span>
@@ -418,7 +430,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="其他">
+    </div><div class="card related-card locked" data-category="其他">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">6</span>
@@ -454,7 +466,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="艾灸贴">
+    </div><div class="card related-card locked" data-category="艾灸贴">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">7</span>
@@ -490,7 +502,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="艾灸贴">
+    </div><div class="card related-card locked" data-category="艾灸贴">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">8</span>
@@ -526,7 +538,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="其他">
+    </div><div class="card related-card locked" data-category="其他">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">9</span>
@@ -562,7 +574,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           </div>
         </div>
       </div>
-    </div><div class="card related-card" data-category="保暖用品">
+    </div><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">10</span>
@@ -2970,6 +2982,40 @@ document.getElementById('mzUnlockBtn').addEventListener('click',function(){
 });
 document.getElementById('mzPasswordInput').addEventListener('keydown',function(e){
   if(e.key==='Enter')document.getElementById('mzUnlockBtn').click();
+});
+// 居家日用密码解锁
+document.getElementById('jjUnlockBtn').addEventListener('click',function(){
+  var input=document.getElementById('jjPasswordInput');
+  var error=document.getElementById('jjLockError');
+  var pwd=input.value.trim();
+  if(pwd==='599'){
+    document.getElementById('jjLockScreen').style.display='none';
+    document.getElementById('jjCardsContainer').style.display='block';
+    document.querySelectorAll('#jjCardsContainer .related-card.locked').forEach(function(card){
+      card.classList.remove('locked');
+      card.classList.add('unlocked');
+      var video=card.querySelector('video');
+      if(video&&video.src){video.load()}
+    });
+    document.querySelectorAll('#jjCardsContainer .video-preview-wrapper').forEach(function(wrapper){
+      var video=wrapper.querySelector('video');
+      var loading=wrapper.querySelector('.video-preview-loading');
+      if(video&&loading){
+        video.addEventListener('loadeddata',function(){loading.style.display='none';video.style.display='block';try{video.currentTime=0.1}catch(_){}});
+        video.addEventListener('error',function(){loading.textContent='视频预览不可用';loading.style.color='rgba(255,255,255,.4)'});
+        video.style.display='none';
+        video.addEventListener('click',function(){if(video.paused){video.play()}else{video.pause()}});
+        video.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+      }
+    });
+  }else{
+    error.textContent='密码错误，请联系行业运营获取正确密码。';
+    input.value='';
+    input.focus();
+  }
+});
+document.getElementById('jjPasswordInput').addEventListener('keydown',function(e){
+  if(e.key==='Enter')document.getElementById('jjUnlockBtn').click();
 });
 </script>
 
