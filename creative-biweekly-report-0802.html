@@ -271,7 +271,7 @@ document.querySelector('.tier-panel').classList.add('active');
 var industryFilter=document.getElementById('industryFilter'),categoryFilter=document.getElementById('categoryFilter'),typeFilter=document.getElementById('typeFilter'),filterCount=document.getElementById('filterCount');
 function updateCategories(){var ind=industryFilter.value;var cards=document.querySelectorAll('#cardsContainer .card');var cats=new Set();cards.forEach(function(c){if(ind==='all'||c.dataset.industry===ind){if(c.dataset.category)cats.add(c.dataset.category)}});categoryFilter.innerHTML='<option value="all">全部品类</option>';Array.from(cats).sort().forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;categoryFilter.appendChild(o)})}
 function applyFilters(){var ind=industryFilter.value,cat=categoryFilter.value,type=typeFilter.value;var count=0;document.querySelectorAll('#cardsContainer .card').forEach(function(card){var mI=ind==='all'||card.dataset.industry===ind;var mC=cat==='all'||card.dataset.category===cat;var mT=type==='all'||card.dataset.types.indexOf(type)>=0;if(mI&&mC&&mT){card.style.display='';count++}else{card.style.display='none'}});filterCount.textContent=count}
-industryFilter.addEventListener('change',function(){updateCategories();applyFilters()});
+industryFilter.addEventListener('change',function(){updateCategories();categoryFilter.value='all';applyFilters()});
 categoryFilter.addEventListener('change',applyFilters);
 typeFilter.addEventListener('change',applyFilters);
 updateCategories();
