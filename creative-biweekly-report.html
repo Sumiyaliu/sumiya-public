@@ -315,6 +315,8 @@
 
   <div class="filters">
     <div class="wrap filters-inner">
+      <div class="fsel" style="margin-right:auto">📅 期次<select id="dateFilter" onchange="switchPeriod(this.value)" style="font-weight:600;color:#2f8256"><option value="creative-biweekly-report.html" selected>2026-06-14 ~ 06-25（第0626期）</option><option value="creative-biweekly-report-0802.html">2026-08-02 ~ 08-15（第0817期·API共建版）</option></select></div>
+      <span class="fdiv"></span>
       <div class="fgroup">
         <span class="fgroup-label">行业</span>
         <div class="ind-tabs"><button class="ind-tab active" data-industry="传统滋补" onclick="switchIndustry('传统滋补', this)">🌿 传统滋补</button><button class="ind-tab" data-industry="保健食品" onclick="switchIndustry('保健食品', this)">💊 保健食品</button></div>
@@ -2251,6 +2253,13 @@
 
   rebuildCatOptions(curIndustry);
   applyFilters();
+</script>
+<script>
+function switchPeriod(url){
+  if(url&&url!==window.location.pathname.split('/').pop()){
+    window.location.href=url;
+  }
+}
 </script>
 </body>
 </html>
