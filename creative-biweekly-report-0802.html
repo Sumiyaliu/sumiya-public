@@ -269,7 +269,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="mz-lock-error" id="jjLockError"></div>
       </div>
     </div>
-    <div class="related-cards jj-cards-locked" id="jjCardsContainer"><div class="card related-card locked" data-category="保暖用品">
+    <div class="related-cards jj-cards-locked" id="jjCardsContainer" style="display:none"><div class="card related-card locked" data-category="保暖用品">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">1</span>
@@ -644,7 +644,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
         <div class="mz-lock-error" id="mzLockError"></div>
       </div>
     </div>
-    <div class="related-cards mz-cards" id="mzCardsContainer"><div class="card related-card locked" data-category="眼部护理" data-locked="true">
+    <div class="related-cards mz-cards" id="mzCardsContainer" style="display:none"><div class="card related-card locked" data-category="眼部护理" data-locked="true">
       <div class="card-header">
         <div class="header-left">
           <span class="card-num">1</span>
@@ -2967,6 +2967,7 @@ document.getElementById('mzUnlockBtn').addEventListener('click',function(){
   var pwd=input.value.trim();
   if(pwd==='599'){
     document.getElementById('mzLockScreen').style.display='none';
+    document.getElementById('mzCardsContainer').style.display='block';
     document.querySelectorAll('#mzCardsContainer .related-card.locked').forEach(function(card){
       card.classList.remove('locked');
       card.classList.add('unlocked');
@@ -3000,6 +3001,7 @@ document.getElementById('jjUnlockBtn').addEventListener('click',function(){
   var pwd=input.value.trim();
   if(pwd==='599'){
     document.getElementById('jjLockScreen').style.display='none';
+    document.getElementById('jjCardsContainer').style.display='block';
     document.querySelectorAll('#jjCardsContainer .related-card.locked').forEach(function(card){
       card.classList.remove('locked');
       card.classList.add('unlocked');
