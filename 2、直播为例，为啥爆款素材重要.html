@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){window.__idata_artifact_error__=[];function _record(t){t=String(t==null?'unknown error':t).slice(0,5000);window.__idata_artifact_error__.push(t);try{window.parent&&window.parent.postMessage({type:'artifact-error',message:t.slice(0,500)},'*');}catch(_e){}}window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_record(parts.join('\n'));},true);window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_record((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>直播链路 · 客户分层爆款产出率分析</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #2c3e50; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  h1 { text-align: center; font-size: 24px; margin: 20px 0; color: #1a1a2e; }
+  h2 { font-size: 18px; margin: 20px 0 10px; color: #16213e; border-left: 4px solid #e94560; padding-left: 12px; }
+  .subtitle { text-align: center; color: #666; font-size: 13px; margin-bottom: 20px; }
+  .card { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .kpi-box { flex: 1; min-width: 140px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; padding: 16px; text-align: center; }
+  .kpi-box.green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+  .kpi-box.orange { background: linear-gradient(135deg, #f12711 0%, #f5af19 100%); }
+  .kpi-box.blue { background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%); }
+  .kpi-label { font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
+  .kpi-value { font-size: 22px; font-weight: 700; }
+  .kpi-sub { font-size: 11px; opacity: 0.8; margin-top: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+  th { background: #1a1a2e; color: white; padding: 10px 8px; text-align: center; font-weight: 600; }
+  td { padding: 8px; text-align: center; border-bottom: 1px solid #eee; }
+  tr:hover td { background: #f0f4ff; }
+  .tier-head { font-weight: 700; color: #e94560; }
+  .hot { color: #e94560; font-weight: 700; }
+  .cold { color: #999; }
+  .insight { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.8; }
+  .insight strong { color: #e65100; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .chart-grid { grid-template-columns: 1fr; } .kpi-row { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔥 直播链路 · 客户分层爆款产出率分析</h1>
+  <div class="subtitle">保健食品 & 传统滋补 | 近2周素材数据(消耗≥5000元活跃素材) | 爆款定义: 消耗≥1万且CTR≥行业均值 | 保健食品行业CTR 3.15% / 传统滋补行业CTR 2.62%</div>
+
+  <!-- KPI概览 -->
+  <div class="card">
+    <h2>核心发现</h2>
+    <div class="kpi-row">
+      <div class="kpi-box">
+        <div class="kpi-label">保健食品头部产出率</div>
+        <div class="kpi-value">45.85%</div>
+        <div class="kpi-sub">尾部仅13.79%，差距32.1pp</div>
+      </div>
+      <div class="kpi-box green">
+        <div class="kpi-label">传统滋补头部产出率</div>
+        <div class="kpi-value">44.04%</div>
+        <div class="kpi-sub">尾部22.22%，差距21.8pp</div>
+      </div>
+      <div class="kpi-box orange">
+        <div class="kpi-label">保健头部爆款消耗占比</div>
+        <div class="kpi-value">68.7%</div>
+        <div class="kpi-sub">尾部仅15.4%</div>
+      </div>
+      <div class="kpi-box blue">
+        <div class="kpi-label">滋补头部爆款消耗占比</div>
+        <div class="kpi-value">78.0%</div>
+        <div class="kpi-sub">尾部42.6%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分层对比表 -->
+  <div class="card">
+    <h2>保健食品 · 分层爆款产出率</h2>
+    <table>
+      <tr><th>层级</th><th>客户数</th><th>有素材客户</th><th>有爆款客户</th><th>活跃素材</th><th>爆款素材</th><th>产出率</th><th>爆款消耗占比</th><th>户均素材</th><th>户均爆款</th></tr>
+      <tr><td class="tier-head">头部</td><td>3</td><td>3</td><td>3</td><td>205</td><td class="hot">94</td><td class="hot">45.85%</td><td class="hot">68.7%</td><td>68.3</td><td>31.33</td></tr><tr><td class="tier-head">腰部</td><td>10</td><td>10</td><td>6</td><td>126</td><td class="hot">24</td><td class="hot">19.05%</td><td class="hot">28.8%</td><td>12.6</td><td>2.4</td></tr><tr><td class="tier-head">尾部</td><td>38</td><td>10</td><td>4</td><td>29</td><td class="hot">4</td><td class="hot">13.79%</td><td class="hot">15.4%</td><td>2.9</td><td>0.4</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>传统滋补 · 分层爆款产出率</h2>
+    <table>
+      <tr><th>层级</th><th>客户数</th><th>有素材客户</th><th>有爆款客户</th><th>活跃素材</th><th>爆款素材</th><th>产出率</th><th>爆款消耗占比</th><th>户均素材</th><th>户均爆款</th></tr>
+      <tr><td class="tier-head">头部</td><td>3</td><td>3</td><td>3</td><td>109</td><td class="hot">48</td><td class="hot">44.04%</td><td class="hot">78.0%</td><td>36.3</td><td>16.0</td></tr><tr><td class="tier-head">腰部</td><td>10</td><td>10</td><td>8</td><td>143</td><td class="hot">45</td><td class="hot">31.47%</td><td class="hot">60.8%</td><td>14.3</td><td>4.5</td></tr><tr><td class="tier-head">尾部</td><td>342</td><td>81</td><td>28</td><td>153</td><td class="hot">34</td><td class="hot">22.22%</td><td class="hot">42.6%</td><td>1.9</td><td>0.42</td></tr>
+    </table>
+  </div>
+
+  <!-- 图表 -->
+  <div class="chart-grid">
+    <div class="card"><div id="chart1"></div></div>
+    <div class="card"><div id="chart2"></div></div>
+  </div>
+  <div class="chart-grid">
+    <div class="card"><div id="chart3"></div></div>
+    <div class="card"><div id="chart4"></div></div>
+  </div>
+  <div class="card"><div id="chart5" style="height:500px"></div></div>
+
+  <!-- 洞察 -->
+  <div class="card">
+    <h2>关键洞察</h2>
+    <div class="insight">
+      <strong>1. 层级越高，爆款产出率越高，呈显著梯度递减</strong><br>
+      保健食品：头部45.9% → 腰部19.1% → 尾部13.8%，头部是尾部的3.3倍<br>
+      传统滋补：头部44.0% → 腰部31.5% → 尾部22.2%，头部是尾部的2.0倍
+    </div>
+    <div class="insight">
+      <strong>2. 层级越高，爆款消耗占比越高——头部极度依赖爆款</strong><br>
+      保健食品头部68.7%消耗来自爆款，尾部仅15.4%<br>
+      传统滋补头部78.0%消耗来自爆款，尾部42.6%<br>
+      → 头部客户增长本质是爆款驱动，尾部客户增长靠素材量堆叠
+    </div>
+    <div class="insight">
+      <strong>3. 传统滋补各层级爆款依赖度均高于保健食品</strong><br>
+      腰部差距最显著：滋补60.8% vs 保健28.8%（差31.9pp）<br>
+      → 传统滋补直播链路更依赖爆款素材撬动消耗，素材质量是核心瓶颈
+    </div>
+    <div class="insight">
+      <strong>4. 户均爆款数差异巨大——头部与尾部存在"爆款鸿沟"</strong><br>
+      保健食品：头部户均31.3个爆款 vs 尾部0.4个（78倍差距）<br>
+      传统滋补：头部户均16.0个爆款 vs 尾部0.4个（38倍差距）<br>
+      → 尾部客户缺乏爆款产出能力，是增长天花板的核心原因
+    </div>
+    <div class="insight">
+      <strong>5. 保健食品腰部"爆款断崖"——产出率从头部45.9%骤降至腰部19.1%</strong><br>
+      传统滋补腰部产出率31.5%仍较高，说明滋补腰部客户素材质量更优<br>
+      → 保健食品腰部客户素材效率是最大短板，需重点提升CTR
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>策略建议</h2>
+    <div class="insight">
+      <strong>头部客户</strong>：爆款产出率已高（44-46%），重点不是"提产出率"而是"延长爆款生命周期"——通过素材迭代（A/B测试变体）延长爆款衰减周期，同时建立爆款素材库复用机制
+    </div>
+    <div class="insight">
+      <strong>保健食品腰部</strong>：产出率断崖（19.1%），需建立CTR预筛机制——素材上线48h内CTR<3%立即替换，避免低效素材占用预算；参考引力文化(40%)和恒凡(36.4%)的高产出率模式
+    </div>
+    <div class="insight">
+      <strong>传统滋补腰部</strong>：产出率较高(31.5%)但客户分散，需"复制爆款"——将高产出率客户(小小家山货77.8%、田野牧蜂64.3%)的素材策略标准化，向低产出率客户(哈药0%、燕之屋0%)推广
+    </div>
+    <div class="insight">
+      <strong>尾部客户</strong>：产出率低但基数大（保健38家/滋补342家），"爆款孵化"是关键——集中资源打1-2个爆款而非广撒网；传统滋补尾部产出率22.2%已高于保健13.8%，说明滋补尾部素材质量基础更好
+    </div>
+  </div>
+</div>
+
+<script>
+// 图表1: 分层产出率对比
+var tierOrder = ['头部', '腰部', '尾部'];
+var hfRates = [45.85, 19.05, 13.79];
+var ttRates = [44.04, 31.47, 22.22];
+
+Plotly.newPlot('chart1', [
+  {x: tierOrder, y: hfRates, type: 'bar', name: '保健食品', marker: {color: '#667eea'}, text: hfRates.map(v=>v+'%'), textposition: 'outside', textfont: {size: 12}},
+  {x: tierOrder, y: ttRates, type: 'bar', name: '传统滋补', marker: {color: '#38ef7d'}, text: ttRates.map(v=>v+'%'), textposition: 'outside', textfont: {size: 12}}
+], {
+  title: {text: '分层爆款产出率对比', font: {size: 15}},
+  yaxis: {title: '产出率(%)', range: [0, 55]},
+  barmode: 'group',
+  height: 350,
+  margin: {t: 50, b: 40},
+  font: {family: 'PingFang SC'}
+});
+
+// 图表2: 爆款消耗占比对比
+var hfCostPct = [68.7, 28.8, 15.4];
+var ttCostPct = [78.0, 60.8, 42.6];
+
+Plotly.newPlot('chart2', [
+  {x: tierOrder, y: hfCostPct, type: 'bar', name: '保健食品', marker: {color: '#667eea'}, text: hfCostPct.map(v=>v+'%'), textposition: 'outside', textfont: {size: 12}},
+  {x: tierOrder, y: ttCostPct, type: 'bar', name: '传统滋补', marker: {color: '#38ef7d'}, text: ttCostPct.map(v=>v+'%'), textposition: 'outside', textfont: {size: 12}}
+], {
+  title: {text: '分层爆款消耗占比对比', font: {size: 15}},
+  yaxis: {title: '爆款消耗占比(%)', range: [0, 90]},
+  barmode: 'group',
+  height: 350,
+  margin: {t: 50, b: 40},
+  font: {family: 'PingFang SC'}
+});
+
+// 图表3: 户均素材数 & 户均爆款数
+var hfAvgMat = [68.3, 12.6, 2.9];
+var ttAvgMat = [36.3, 14.3, 1.9];
+var hfAvgHot = [31.33, 2.4, 0.4];
+var ttAvgHot = [16.0, 4.5, 0.42];
+
+Plotly.newPlot('chart3', [
+  {x: tierOrder, y: hfAvgMat, type: 'bar', name: '保健-户均素材', marker: {color: '#667eea'}},
+  {x: tierOrder, y: ttAvgMat, type: 'bar', name: '滋补-户均素材', marker: {color: '#38ef7d'}, visible: 'legendonly'},
+  {x: tierOrder, y: hfAvgHot, type: 'bar', name: '保健-户均爆款', marker: {color: '#e94560'}},
+  {x: tierOrder, y: ttAvgHot, type: 'bar', name: '滋补-户均爆款', marker: {color: '#f5af19'}, visible: 'legendonly'}
+], {
+  title: {text: '户均活跃素材 & 户均爆款数', font: {size: 15}},
+  yaxis: {title: '数量'},
+  barmode: 'group',
+  height: 350,
+  margin: {t: 50, b: 40},
+  font: {family: 'PingFang SC'}
+});
+
+// 图表4: 有爆款客户占比
+var hfHotCustPct = [3/300.0, 6/1000.0, 4/1000.0];
+var ttHotCustPct = [3/300.0, 8/1000.0, 28/8100.0];
+
+Plotly.newPlot('chart4', [
+  {x: tierOrder, y: hfHotCustPct, type: 'bar', name: '保健食品', marker: {color: '#667eea'}, text: hfHotCustPct.map(v=>v+'%'), textposition: 'outside'},
+  {x: tierOrder, y: ttHotCustPct, type: 'bar', name: '传统滋补', marker: {color: '#38ef7d'}, text: ttHotCustPct.map(v=>v+'%'), textposition: 'outside'}
+], {
+  title: {text: '有爆款客户占比(有素材客户中)', font: {size: 15}},
+  yaxis: {title: '占比(%)', range: [0, 110]},
+  barmode: 'group',
+  height: 350,
+  margin: {t: 50, b: 40},
+  font: {family: 'PingFang SC'}
+});
+
+// 图表5: 客户散点图 - 日耗 vs 爆款产出率
+var hfTrace = {
+  x: [31.21, 33.94, 6.5, 2.87, 2.92, 0.05, 4.26, 1.12, 1.33, 3.06, 1.27, 0.0, 10.13, 0.86, 0.47, 2.4, 0.87, 0.18, 1.66, 0.0, 0.08, 0.93, 0.35],
+  y: [39.02, 53.01, 0.0, 12.5, 26.32, 14.29, 20.0, 0.0, 36.36, 28.57, 0.0, 20.0, 45.0, 33.33, 0.0, 40.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+  text: ["\u7533\u5b50\u8fb0 (\u5934\u90e8, 82\u7d20\u6750,32\u7206\u6b3e)", "\u53cc\u65b0 (\u5934\u90e8, 83\u7d20\u6750,44\u7206\u6b3e)", "\u591a\u71d5\u7626 (\u8170\u90e8, 24\u7d20\u6750,0\u7206\u6b3e)", "\u5a04\u5e95\u821f\u987a (\u8170\u90e8, 8\u7d20\u6750,1\u7206\u6b3e)", "\u5065\u5c14\u9a6c (\u8170\u90e8, 19\u7d20\u6750,5\u7206\u6b3e)", "\u5efa\u5a25\u5170 (\u5c3e\u90e8, 7\u7d20\u6750,1\u7206\u6b3e)", "\u4fee\u6b63\u81ea\u8425 (\u8170\u90e8, 30\u7d20\u6750,6\u7206\u6b3e)", "\u6d69\u817e (\u8170\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6052\u51e1 (\u8170\u90e8, 11\u7d20\u6750,4\u7206\u6b3e)", "\u542f\u4ed5\u660e (\u8170\u90e8, 7\u7d20\u6750,2\u7206\u6b3e)", "\u534e\u5317\u5236\u836f (\u8170\u90e8, 5\u7d20\u6750,0\u7206\u6b3e)", "\u5c1a\u5448 (\u5c3e\u90e8, 5\u7d20\u6750,1\u7206\u6b3e)", "\u5584\u667a (\u5934\u90e8, 40\u7d20\u6750,18\u7206\u6b3e)", "\u83b1\u7279\u7ef4\u5065 (\u5c3e\u90e8, 3\u7d20\u6750,1\u7206\u6b3e)", "\u5e7f\u5dde\u6c84\u52ad\u5065\u5eb7\u7ba1\u7406\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u5f15\u529b\u6587\u5316 (\u8170\u90e8, 15\u7d20\u6750,6\u7206\u6b3e)", "\u54c8\u836f\u96c6\u56e2 (\u5c3e\u90e8, 6\u7d20\u6750,0\u7206\u6b3e)", "\u715c\u9686\u5065\u5eb7 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u89c1\u6177\u835f(\u6210\u90fd)\u8d38\u6613\u6709\u9650\u8d23\u4efb\u516c\u53f8 (\u8170\u90e8, 6\u7d20\u6750,0\u7206\u6b3e)", "\u6c64\u81e3\u500d\u5065\u8840\u8102 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u8446\u6625\u5802 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u4e1c\u8425\u4ec1\u548c (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u6c5f\u6e56\u4f20\u5a92 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)"],
+  mode: 'markers+text',
+  name: '保健食品',
+  marker: {size: [27.333333333333332, 27.666666666666668, 8.0, 6, 6.333333333333333, 6, 10.0, 6, 6, 6, 6, 6, 13.333333333333334, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6], color: '#667eea', opacity: 0.8},
+  textposition: 'top center',
+  textfont: {size: 10}
+};
+
+var ttTrace = {
+  x: [20.0, 6.37, 10.3, 16.91, 4.2, 0.95, 1.12, 4.66, 3.49, 0.24, 0.43, 0.55, 1.91, 3.2, 0.52, 2.72, 0.35, 0.25, 0.53, 3.66, 0.11, 0.14, 0.3, 0.21, 1.83, 0.2, 0.37, 0.86, 0.33, 0.97, 0.4, 0.14, 0.53, 0.25, 0.59, 0.3, 0.21, 0.16, 0.2, 0.09, 0.99, 0.19, 0.07, 0.18, 0.41, 0.45, 0.21, 0.3, 0.16, 0.55, 0.26, 0.18, 0.22, 0.1, 0.0, 0.12, 0.09, 0.12, 0.2, 0.7, 0.57, 0.83, 0.14, 0.24, 0.56, 0.0, 0.03, 0.22, 0.25, 0.54, 0.03, 0.09, 0.11, 0.08, 0.38, 0.22, 0.06, 0.2, 0.04, 0.26, 0.12, 0.08, 0.15, 0.2, 0.01, 0.02, 0.05, 0.45, 0.05, 0.2, 0.1, 0.06, 0.12, 0.11],
+  y: [65.52, 33.33, 50.0, 32.26, 77.78, 40.0, 100.0, 23.08, 21.43, 0.0, 100.0, 0.0, 77.78, 0.0, 100.0, 64.29, 100.0, 0.0, 20.0, 22.22, 100.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 66.67, 50.0, 40.0, 0.0, 100.0, 100.0, 0.0, 25.0, 25.0, 0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 100.0, 0.0, 0.0, 25.0, 0.0, 33.33, 100.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 50.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+  text: ["\u6b66\u6c49\u946b\u987a\u53d1\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5934\u90e8, 29\u7d20\u6750,19\u7206\u6b3e)", "\u90d1\u5dde\u798f\u8fce\u79a7\u8336\u4e1a\u6709\u9650\u516c\u53f8 (\u8170\u90e8, 24\u7d20\u6750,8\u7206\u6b3e)", "\u6b66\u6c49\u5408\u610f\u5eb7\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5934\u90e8, 18\u7d20\u6750,9\u7206\u6b3e)", "\u534e\u5317\u5236\u836f (\u5934\u90e8, 62\u7d20\u6750,20\u7206\u6b3e)", "\u5c0f\u5c0f\u5bb6\u5c71\u8d27 (\u8170\u90e8, 9\u7d20\u6750,7\u7206\u6b3e)", "\u5927\u8fde\u6d77\u8fd9\u7247\u5546\u4e1a\u7ba1\u7406\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 5\u7d20\u6750,2\u7206\u6b3e)", "\u4e3d\u6c34\u5f08\u6570\u7f51\u7edc\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u8170\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u8f7b\u5f55 (\u8170\u90e8, 26\u7d20\u6750,6\u7206\u6b3e)", "\u5357\u9633\u70e8\u6052\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u8170\u90e8, 14\u7d20\u6750,3\u7206\u6b3e)", "\u6d77\u5357\u4e5d\u829d\u5065\u5eb7\u4ea7\u4e1a\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 3\u7d20\u6750,0\u7206\u6b3e)", "\u6797\u829d\u8d64\u79be\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u5b81\u6ce2\u5e02\u5317\u4ed1\u533a\u813e\u7ecf\u7535\u5b50\u5546\u52a1\u5546\u884c(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u8001\u73ed\u957f\u6ecb\u8865 (\u8170\u90e8, 9\u7d20\u6750,7\u7206\u6b3e)", "\u54c8\u836f\u96c6\u56e2 (\u8170\u90e8, 19\u7d20\u6750,0\u7206\u6b3e)", "\u8fde\u4e91\u6e2f\u9038\u4e4b\u667a\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u7530\u91ce\u7267\u8702 (\u8170\u90e8, 14\u7d20\u6750,9\u7206\u6b3e)", "\u676d\u5dde\u5e02\u4e0a\u57ce\u533a\u55e8\u680b\u8d38\u6613\u5546\u884c(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u6606\u660e\u8d39\u5b9a\u519c\u4ea7\u54c1\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u7533\u5b50\u8fb0 (\u5c3e\u90e8, 5\u7d20\u6750,1\u7206\u6b3e)", "\u767d\u8bd7\u9ece (\u8170\u90e8, 18\u7d20\u6750,4\u7206\u6b3e)", "\u9752\u5c9b\u5fa1\u81b3\u574a\u6d77\u6d0b\u79d1\u6280\u5f00\u53d1\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u591a\u71d5\u7626 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u9752\u5c9b\u5e02\u674e\u6ca7\u533a\u745e\u632f\u7ef4\u5546\u8d38\u5e97(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u5b89\u6eaa\u53bf\u53c2\u5185\u5de6\u4e1e\u76f8\u8336\u884c (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u71d5\u4e4b\u5c4b (\u8170\u90e8, 9\u7d20\u6750,0\u7206\u6b3e)", "\u8d63\u6986\u533a\u5b8f\u5546\u767e\u8d27\u7ecf\u8425\u90e8(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u8fde\u4e91\u6e2f\u5e02\u8d63\u6986\u533a\u94ed\u8d5b\u767e\u8d27\u5e97(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u9752\u79be\u545c\u5494(\u4e0a\u6d77)\u751f\u7269\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 3\u7d20\u6750,2\u7206\u6b3e)", "\u53c2\u987e\u95ee (\u5c3e\u90e8, 2\u7d20\u6750,1\u7206\u6b3e)", "\u5c0f\u4ed9\u7096 (\u5c3e\u90e8, 10\u7d20\u6750,4\u7206\u6b3e)", "\u970d\u5c0f\u7696 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u6cad\u9633\u6c83\u5764\u7535\u5b50\u5546\u52a1\u4e2d\u5fc3(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u5510\u6cb3\u53bf\u6cd3\u679c\u5546\u8d38\u5546\u884c(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u8fde\u4e91\u6e2f\u5e02\u8d63\u6986\u533a\u5065\u7396\u767e\u8d27\u5e97(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u65b0\u5a31\u79d1\u6280 (\u5c3e\u90e8, 4\u7d20\u6750,1\u7206\u6b3e)", "\u519c\u6751\u963f\u5415 (\u5c3e\u90e8, 4\u7d20\u6750,1\u7206\u6b3e)", "\u91cd\u5e86\u89c2\u5c7f\u96c6\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u676d\u5dde\u5e02\u4e0a\u57ce\u533a\u540c\u5f64\u8d38\u6613\u5546\u884c(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u88d5\u534e\u8f7b\u76c8\u76c8\u8702\u871c\u7ecf\u8425\u90e8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6c5f\u897f\u54c1\u6069\u519c\u4e1a\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u6b66\u6c49\u6c22\u6c27\u6c26\u8d38\u6613\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u8fde\u4e91\u6e2f\u5e02\u8d63\u6986\u533a\u666f\u745f\u767e\u8d27\u5e97(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u82ac\u73e0\u98df\u517b (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u9752\u5c9b\u767e\u8302\u6e90\u98df\u54c1\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6df1\u5733\u5e02\u7406\u60f3\u627f\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 4\u7d20\u6750,0\u7206\u6b3e)", "\u91d1\u65b9\u517b\u5c81 (\u5c3e\u90e8, 4\u7d20\u6750,1\u7206\u6b3e)", "\u5b81\u6ce2\u5b9d\u6a59\u6587\u5316\u4f20\u5a92\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u545c\u5494(\u5c71\u4e1c)\u751f\u7269\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 3\u7d20\u6750,1\u7206\u6b3e)", "\u4e1c\u839e\u5e02\u539a\u8857\u7434\u841d\u96ea\u8d38\u6613\u5546\u884c (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u5317\u4eac\u6625\u5065\u601d\u62d3\u751f\u7269\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 4\u7d20\u6750,2\u7206\u6b3e)", "\u5e0c\u4f4d\u6ecb\u8865 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u88d5\u534e\u897f\u5170\u81fb\u54c1\u98df\u54c1\u5e97 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u968f\u5dde\u5e02\u7075\u5de7\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u5bab\u79a7\u71d5 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u5b9a\u5dde\u5e02\u9526\u8f69\u8bda\u767e\u8d27\u5e97 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u5b81\u590f\u8018\u5883\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u817e\u6d77\u6e90\u6d77\u4ea7 (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u4e3d\u59d0\u6ecb\u8865 (\u5c3e\u90e8, 2\u7d20\u6750,1\u7206\u6b3e)", "\u6587\u5c71\u5e02\u6069\u667a\u519c\u526f\u4ea7\u54c1\u7ecf\u8425\u90e8(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 2\u7d20\u6750,1\u7206\u6b3e)", "\u559c\u7eaf (\u5c3e\u90e8, 5\u7d20\u6750,0\u7206\u6b3e)", "\u5b98\u6808 (\u5c3e\u90e8, 5\u7d20\u6750,0\u7206\u6b3e)", "\u845b\u5c0f\u59b9 (\u5c3e\u90e8, 7\u7d20\u6750,0\u7206\u6b3e)", "\u8d35\u9633\u5e02\u4e91\u5ca9\u533a\u7aef\u5561\u767e\u8d27\u5546\u884c(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,1\u7206\u6b3e)", "\u4e0a\u6d77\u98df\u6e90\u4e30\u7535\u5b50\u5546\u52a1\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u90d1\u5dde\u7396\u517b\u591a\u751f\u7269\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u9f99\u6770\u8d38\u6613 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u91cd\u5e86\u89c2\u8fb0\u6c90\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u897f\u85cf\u7956\u6587\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6587\u5c71\u5e02\u4e1c\u701a\u519c\u526f\u4ea7\u54c1\u7ecf\u8425\u90e8(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u949f\u7965\u5e02\u8c37\u9999\u6e90\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 4\u7d20\u6750,0\u7206\u6b3e)", "\u963f\u65b9(\u6df1\u5733)\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u4e1c\u6d25\u65b0\u533a(\u7ecf\u5f00\u533a)\u6d9b\u7814\u767e\u8d27\u5e97 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u5e7f\u5dde\u559c\u5e86\u5e86\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6f2f\u6cb3\u7ecf\u6d4e\u6280\u672f\u5f00\u53d1\u533a\u9e93\u6590\u5546\u8d38\u5e97(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 3\u7d20\u6750,0\u7206\u6b3e)", "\u7eaf\u8015 (\u5c3e\u90e8, 4\u7d20\u6750,0\u7206\u6b3e)", "\u957f\u6625\u5f52\u6734\u4e92\u8054\u7f51\u96f6\u552e\u6709\u9650\u8d23\u4efb\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u897f\u57df\u67b8\u675e (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u745e\u742a\u5965\u5170 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u76d0\u6d25\u53bf\u4e4c\u8499\u519c\u54c1\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u94f6\u5ddd\u4e30\u51ef\u56ed\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u5e7f\u5dde\u5e7f\u8fdb\u5927\u5065\u5eb7\u4fe1\u606f\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u5409\u6797\u5e02\u660c\u9091\u533a\u949f\u58f0\u571f\u7279\u4ea7\u5546\u884c (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6cc9\u5dde\u5609\u8c6a\u98df\u54c1\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u676d\u5dde\u540c\u5c0f\u5473\u5065\u5eb7\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 3\u7d20\u6750,0\u7206\u6b3e)", "\u629a\u677e\u53bf\u81fb\u53c2\u9601\u7279\u4ea7\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u970d\u5c71\u53bf\u6653\u9676\u59d1\u5a18\u77f3\u659b\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u7530\u4f34\u5c71(\u6c5f\u897f)\u98df\u54c1\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u53e5\u5bb9\u5e02\u5357\u5c40\u8d38\u6613\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 2\u7d20\u6750,0\u7206\u6b3e)", "\u8346\u5dde\u5e02\u6492\u4e2a\u6211\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u949f\u7965\u5e02\u963f\u4e91\u571f\u7279\u4ea7\u5546\u884c(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6b66\u6c49\u683c\u5353\u7279\u79d1\u6280\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u8d35\u5dde\u4e91\u57a6\u5546\u8d38\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u6e58\u6f6d\u8377\u6e58\u60a6\u8272\u4f9b\u5e94\u94fe\u7ba1\u7406\u6709\u9650\u516c\u53f8 (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)", "\u5510\u6cb3\u53bf\u85cf\u4e91\u767e\u8d27\u96f6\u552e\u7f51\u5e97(\u4e2a\u4f53\u5de5\u5546\u6237) (\u5c3e\u90e8, 1\u7d20\u6750,0\u7206\u6b3e)"],
+  mode: 'markers',
+  name: '传统滋补',
+  marker: {size: [9.666666666666666, 8.0, 6, 20.666666666666668, 6, 6, 6, 8.666666666666666, 6, 6, 6, 6, 6, 6.333333333333333, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6], color: '#38ef7d', opacity: 0.7},
+  textposition: 'top center',
+  textfont: {size: 9}
+};
+
+Plotly.newPlot('chart5', [hfTrace, ttTrace], {
+  title: {text: '客户日耗(万/日) vs 爆款产出率 — 气泡大小=素材数', font: {size: 15}},
+  xaxis: {title: '日耗(万/日)', type: 'log'},
+  yaxis: {title: '爆款产出率(%)', range: [-5, 105]},
+  height: 500,
+  hovermode: 'closest',
+  font: {family: 'PingFang SC'}
+});
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><div id="__idata_artifact_err_overlay__" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none;width:min(640px,calc(100vw - 48px));max-height:80vh;padding:24px 28px;background:#ffffff;border:1px solid #fca5a5;border-left:4px solid #ef4444;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.12);z-index:2147483646;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;color:#7f1d1d;box-sizing:border-box;"><div style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;margin-bottom:14px;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ef4444;color:#fff;border-radius:50%;font-size:14px;font-weight:bold;flex-shrink:0;">!</span><span>图表渲染失败</span></div><pre id="__idata_artifact_err_msg__" style="margin:0;padding:14px 16px;background:#fef2f2;border-radius:8px;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#7f1d1d;max-height:60vh;overflow:auto;"></pre><div style="margin-top:12px;font-size:11px;color:#9ca3af;line-height:1.5;">报告给大模型可自动修复该脚本</div></div><script>(function(){var ov=document.getElementById('__idata_artifact_err_overlay__');var msg=document.getElementById('__idata_artifact_err_msg__');if(!ov||!msg)return;var shownSet={};function _show(t){if(!t||shownSet[t])return;shownSet[t]=1;msg.textContent=String(t).slice(0,3000);ov.style.display='block';}var q=window.__idata_artifact_error__||[];for(var i=0;i<q.length;i++)_show(q[i]);window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_show(parts.join('\n'));});window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_show((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三个模块一句话回顾 · 总结</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+    body {
+      font-family: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f3f7f4;
+      background-image:
+        radial-gradient(at 0% 0%, hsla(143,32%,94%,1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(150,30%,90%,1) 0px, transparent 50%);
+    }
+    .text-forest { color: #1b3d22; }
+    .bg-forest { background-color: #1b3d22; }
+    .border-forest { border-color: #1b3d22; }
+
+    /* 模块卡片 */
+    .module-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .module-card:hover {
+      transform: translateY(-4px);
+    }
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      border-radius: 16px 0 0 16px;
+    }
+    .module-card.m1::before { background: linear-gradient(180deg, #4a7c59, #6b9b7a); }
+    .module-card.m2::before { background: linear-gradient(180deg, #3a6b9a, #5a8aba); }
+    .module-card.m3::before { background: linear-gradient(180deg, #d4a548, #e8c068); }
+
+    .module-badge {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .m1 .module-badge { background: linear-gradient(135deg, #4a7c59, #6b9b7a); }
+    .m2 .module-badge { background: linear-gradient(135deg, #3a6b9a, #5a8aba); }
+    .m3 .module-badge { background: linear-gradient(135deg, #d4a548, #e8c068); }
+
+    .keyword-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 2px 3px;
+    }
+    .kw-green { background: #e8f5e9; color: #2e7d32; }
+    .kw-blue { background: #e3f2fd; color: #1565c0; }
+    .kw-orange { background: #fff3e0; color: #e65100; }
+    .kw-red { background: #ffebee; color: #c62828; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .float-anim { animation: float 6s ease-in-out infinite; }
+
+    /* 核心金句区 */
+    .slogan-box {
+      background: linear-gradient(135deg, #1a3a2a 0%, #4a7c59 50%, #6b9b7a 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(74,124,89,0.25);
+    }
+    .slogan-box::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .slogan-box .big-slogan {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f9e79f;
+      letter-spacing: 4px;
+      text-shadow: 0 2px 20px rgba(249,231,159,0.3);
+    }
+    .slogan-box .sub-slogan {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 2;
+      margin-top: 20px;
+    }
+
+    /* 连接线 */
+    .connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .connector-line {
+      width: 2px; height: 32px;
+      background: linear-gradient(180deg, #c8d8c0, #4a7c59);
+      border-radius: 1px;
+    }
+    .connector-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #4a7c59;
+      box-shadow: 0 0 0 4px rgba(74,124,89,0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900 pb-16">
+
+  <div class="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+
+    <!-- 头部 -->
+    <header class="mb-12 text-center">
+      <div class="inline-flex items-center gap-2 bg-emerald-100/70 border border-emerald-200/50 px-4 py-1.5 rounded-full text-xs font-semibold text-emerald-800 mb-5 tracking-wide">
+        <i data-lucide="bookmark" class="w-3.5 h-3.5"></i> 总结 · SUMMARY
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-forest leading-tight mb-4">
+        三个模块<span class="text-emerald-600">一句话回顾</span>
+      </h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+        从看懂到做到，三个模块串成一条完整的素材增长主线
+      </p>
+    </header>
+
+    <!-- 三个模块卡片 -->
+    <div class="space-y-5">
+
+      <!-- 模块一 -->
+      <div class="module-card m1 bg-white border border-emerald-900/10 rounded-2xl p-6 md:p-8 shadow-md">
+        <div class="flex items-start gap-5">
+          <div class="module-badge float-anim">
+            <i data-lucide="eye" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2 flex-wrap">
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md tracking-wider">MODULE 01</span>
+              <span class="text-[11px] font-bold text-slate-400">看懂 · 方法论框架</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-black text-forest mb-3">三大视角看素材</h2>
+            <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3">
+              收入靠素材<span class="font-bold text-emerald-700">铺面 + 提点击</span>，竞争靠<span class="font-bold text-emerald-700">非重复素材</span>拿独立配额，长期靠<span class="font-bold text-emerald-700">爆款能孵化、能衔接</span>。
+            </p>
+            <div class="flex flex-wrap">
+              <span class="keyword-tag kw-green">铺面</span>
+              <span class="keyword-tag kw-green">提CTR</span>
+              <span class="keyword-tag kw-blue">非重复配额</span>
+              <span class="keyword-tag kw-green">孵化</span>
+              <span class="keyword-tag kw-green">衔接</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 连接器 -->
+      <div class="connector">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+        <div class="connector-line"></div>
+      </div>
+
+      <!-- 模块二 -->
+      <div class="module-card m2 bg-white border border-blue-900/10 rounded-2xl p-6 md:p-8 shadow-md">
+        <div class="flex items-start gap-5">
+          <div class="module-badge">
+            <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2 flex-wrap">
+              <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-md tracking-wider">MODULE 02</span>
+              <span class="text-[11px] font-bold text-slate-400">判断 · 数据验证</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-black text-forest mb-3">直播为例：为啥爆款重要</h2>
+            <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3">
+              头部爆款产出率<span class="font-bold text-blue-700">45%</span>、消耗占比<span class="font-bold text-blue-700">70%+</span>，尾部仅<span class="font-bold text-red-600">13%</span>和<span class="font-bold text-red-600">15%</span>——爆款是增长分水岭。
+            </p>
+            <div class="flex flex-wrap">
+              <span class="keyword-tag kw-blue">头部45%</span>
+              <span class="keyword-tag kw-blue">消耗70%+</span>
+              <span class="keyword-tag kw-red">尾部13%</span>
+              <span class="keyword-tag kw-red">78倍差距</span>
+              <span class="keyword-tag kw-orange">爆款鸿沟</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 连接器 -->
+      <div class="connector">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+        <div class="connector-line"></div>
+      </div>
+
+      <!-- 模块三 -->
+      <div class="module-card m3 bg-white border border-orange-900/10 rounded-2xl p-6 md:p-8 shadow-md">
+        <div class="flex items-start gap-5">
+          <div class="module-badge">
+            <i data-lucide="repeat" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2 flex-wrap">
+              <span class="text-[11px] font-bold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-md tracking-wider">MODULE 03</span>
+              <span class="text-[11px] font-bold text-slate-400">做到 · 执行方法论</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-black text-forest mb-3">爆款持续周期性增补</h2>
+            <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3">
+              <span class="font-bold text-orange-700">CTR破冰</span>、<span class="font-bold text-orange-700">3天生死线</span>、<span class="font-bold text-red-600">50%断崖衰退</span>、每<span class="font-bold text-orange-700">3-5天批次衔接</span>、压舱石不轻易动。
+            </p>
+            <div class="flex flex-wrap">
+              <span class="keyword-tag kw-orange">CTR破冰</span>
+              <span class="keyword-tag kw-orange">3天生死线</span>
+              <span class="keyword-tag kw-red">50%断崖</span>
+              <span class="keyword-tag kw-orange">3-5天衔接</span>
+              <span class="keyword-tag kw-green">压舱石</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 核心金句 -->
+    <div class="slogan-box mt-12">
+      <div class="absolute top-6 right-6 opacity-10">
+        <i data-lucide="sparkles" class="w-20 h-20"></i>
+      </div>
+      <div class="relative">
+        <div class="big-slogan">看懂 · 判断 · 做到</div>
+        <p class="sub-slogan mt-6">
+          爆款的生命周期有限，但爆款的「结构」可以无限复用<br>
+          把精力从"堆数量"转到"磨质量"上，回报更长期
+        </p>
+        <div class="mt-8 inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+          <span class="text-sm font-bold text-emerald-200 tracking-widest">铺面 · 提质 · 孵化 · 衔接</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="mt-12 text-center text-xs text-slate-400">
+      <p>爆款素材方法论三大模块 · 对外分享版 © 2026</p>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

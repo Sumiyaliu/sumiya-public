@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){window.__idata_artifact_error__=[];function _record(t){t=String(t==null?'unknown error':t).slice(0,5000);window.__idata_artifact_error__.push(t);try{window.parent&&window.parent.postMessage({type:'artifact-error',message:t.slice(0,500)},'*');}catch(_e){}}window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_record(parts.join('\n'));},true);window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_record((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爆款素材方法论</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #333; }
+.container { max-width: 1280px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 36px 40px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 26px; margin-bottom: 8px; letter-spacing: 2px; }
+.header p { font-size: 13px; opacity: 0.85; line-height: 1.6; }
+.card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.card-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #1a1a2e; display: flex; align-items: center; gap: 8px; }
+.card-title::before { content: ''; width: 4px; height: 16px; background: #e74c3c; border-radius: 2px; }
+.card-title.blue::before { background: #667eea; }
+.card-title.green::before { background: #27ae60; }
+.card-title.orange::before { background: #f39c12; }
+.chart { width: 100%; height: 420px; }
+.chart-tall { height: 520px; }
+.insight { background: #f8f9ff; border-left: 4px solid #667eea; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 14px; line-height: 1.8; }
+.insight strong { color: #667eea; }
+.insight.warn { border-left-color: #e74c3c; background: #fff5f5; }
+.insight.warn strong { color: #e74c3c; }
+.insight.ok { border-left-color: #27ae60; background: #f0fff4; }
+.insight.ok strong { color: #27ae60; }
+.insight.orange { border-left-color: #f39c12; background: #fffbf0; }
+.insight.orange strong { color: #f39c12; }
+.metric-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.metric-box { flex: 1; min-width: 120px; background: #f8f9ff; border-radius: 8px; padding: 14px; text-align: center; }
+.metric-box .num { font-size: 24px; font-weight: 700; color: #667eea; }
+.metric-box .label { font-size: 11px; color: #666; margin-top: 4px; }
+.metric-box .sub { font-size: 10px; color: #999; margin-top: 2px; }
+.metric-box.red .num { color: #e74c3c; }
+.metric-box.green .num { color: #27ae60; }
+.metric-box.orange .num { color: #f39c12; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+th { background: #f0f2f5; padding: 10px 12px; text-align: left; font-weight: 600; color: #555; }
+td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+tr:hover { background: #f8f9ff; }
+.tag-hot { background: #ffe0e0; color: #e74c3c; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.tag-slow { background: #fff3e0; color: #f39c12; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.tag-video { background: #e8f4fd; color: #3498db; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.flow-box { display: flex; align-items: center; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+.flow-step { background: white; border: 2px solid #667eea; border-radius: 8px; padding: 12px 16px; text-align: center; min-width: 140px; }
+.flow-step .step-title { font-size: 13px; font-weight: 600; color: #667eea; }
+.flow-step .step-desc { font-size: 11px; color: #666; margin-top: 4px; }
+.flow-arrow { font-size: 20px; color: #667eea; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🔥 爆款素材方法论</h1>
+<p>保健食品 · 直播链路 · 基于两家头部客户14天日粒度素材消耗追踪<br>素材类型：视频 | 爆款定义：3天内日耗≥1万 | 数据范围：2026-08-03 ~ 2026-08-16</p>
+</div>
+
+<!-- ===== 第一章：爆款破冰方法论 ===== -->
+<div class="card">
+<div class="card-title">第一章 · 爆款素材破冰方法论</div>
+
+<div class="metric-row">
+<div class="metric-box red"><div class="num">6-11%</div><div class="label">爆款产出率</div><div class="sub">3天内日耗≥1万</div></div>
+<div class="metric-box orange"><div class="num">100%</div><div class="label">高耗素材为视频</div><div class="sub">直播链路</div></div>
+<div class="metric-box"><div class="num">3-10%</div><div class="label">爆款CTR区间</div><div class="sub">行业均值5%</div></div>
+<div class="metric-box green"><div class="num">35%</div><div class="label">爆款前周贡献率</div><div class="sub">破冰核心</div></div>
+</div>
+
+<div class="insight orange">
+<strong>破冰的本质：爆款素材通过高CTR快速获取系统推荐流量，建立竞价模型和人群包，为后续慢热型素材铺路。</strong>
+</div>
+
+<div class="card-title blue" style="margin-top:20px">破冰三要素</div>
+<table>
+<thead><tr><th>要素</th><th>机制</th><th>客户A实证</th><th>客户B实证</th></tr></thead>
+<tbody>
+<tr><td><strong>高CTR触发推荐</strong></td><td>CTR远超行业均值→系统判定"优质素材"→扩大曝光分配</td><td>爆款CTR 9-10.8%（行业2倍+）</td><td>爆款CTR 3-5%（行业均值附近）</td></tr>
+<tr><td><strong>3天窗口期起量</strong></td><td>前3天日耗≥1万→进入"起量通道"→系统持续加量</td><td>5个素材3天内达1万/日</td><td>9个素材3天内达1万/日</td></tr>
+<tr><td><strong>建立竞价模型</strong></td><td>爆款积累转化数据→账户oCPX模型成熟→后续素材受益</td><td>爆款跑7天后慢热素材CTR从1%→10%</td><td>爆款持续14天，模型稳定</td></tr>
+</tbody>
+</table>
+
+<div class="card-title blue" style="margin-top:20px">两种破冰模式</div>
+<table>
+<thead><tr><th>模式</th><th>特征</th><th>CTR</th><th>起量速度</th><th>衰退速度</th><th>代表客户</th></tr></thead>
+<tbody>
+<tr><td><strong>高CTR快起型</strong></td><td>CTR极高(>8%)，首日即起量，但衰减快</td><td>9-10.8%</td><td>首日或次日</td><td>断崖式为主</td><td>客户A</td></tr>
+<tr><td><strong>稳CTR慢热型</strong></td><td>CTR中等(3-5%)，起量需1-2天，但衰减慢</td><td>3-5%</td><td>1-2天</td><td>缓慢衰退为主</td><td>客户B</td></tr>
+</tbody>
+</table>
+
+<div class="insight">
+<strong>破冰方法论核心：</strong><br>
+① <strong>CTR是破冰的钥匙</strong>——CTR≥行业均值2倍(>8%)可"首日破冰"，CTR在行业均值附近(3-5%)需1-2天爬坡<br>
+② <strong>3天是生死线</strong>——3天内日耗未达1万的素材，仅38%后续能爬坡到1万（慢热型），62%将沉入长尾<br>
+③ <strong>破冰≠持续</strong>——高CTR快起型破冰强但衰退快，稳CTR慢热型破冰慢但生命周期长，<strong>理想组合是"快起型破冰+慢热型接量"</strong>
+</div>
+</div>
+
+<!-- ===== 第二章：素材衰退模式 ===== -->
+<div class="card">
+<div class="card-title orange">第二章 · 素材衰退模式与预警</div>
+<div id="chart1" class="chart chart-tall"></div>
+
+<div class="metric-row">
+<div class="metric-box red"><div class="num">50%</div><div class="label">断崖式衰退</div><div class="sub">峰后3天<20%</div></div>
+<div class="metric-box orange"><div class="num">20%</div><div class="label">快速衰退</div><div class="sub">峰后3天20-40%</div></div>
+<div class="metric-box green"><div class="num">30%</div><div class="label">缓慢衰退</div><div class="sub">峰后3天≥40%</div></div>
+</div>
+
+<div class="insight warn">
+<strong>🔴 断崖式衰退（50%的高耗素材）</strong><br>
+峰值后1-2天消耗骤降至20%以下，几乎没有"余量"。<strong>预警：日耗低于峰值50%的次日即启动新批次上线。</strong>
+</div>
+
+<div class="insight orange">
+<strong>🟡 快速衰退（20%）</strong><br>
+峰值后有3-5天余量期，但消耗持续下滑。<strong>预警：峰值后2天启动接替，维持出价观察。</strong>
+</div>
+
+<div class="insight ok">
+<strong>🟢 缓慢衰退（30%）——压舱石素材</strong><br>
+有效生命周期10-14天，峰后7天仍保持40%+消耗。<strong>这是跑量稳定的真正基石，不轻易替换、不大幅调出价。</strong>
+</div>
+
+<table>
+<thead><tr><th>衰退模式</th><th>判定标准</th><th>替换时机</th><th>典型素材(脱敏)</th><th>素材类型</th></tr></thead>
+<tbody>
+<tr><td><span class="tag-hot">断崖式</span></td><td>峰后3天<20%</td><td>峰值后1天</td><td>客户A-爆款②(9%)、客户B-爆款⑤(2%)</td><td><span class="tag-video">视频</span></td></tr>
+<tr><td><span class="tag-slow">快速衰退</span></td><td>峰后3天20-40%</td><td>峰值后2天</td><td>客户A-慢热①(36%)</td><td><span class="tag-video">视频</span></td></tr>
+<tr><td><span class="tag-slow">缓慢衰退</span></td><td>峰后3天≥40%</td><td>峰值后4-5天</td><td>客户A-爆款①(54%)、客户B-爆款①(45%)</td><td><span class="tag-video">视频</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ===== 第三章：衔接节奏 ===== -->
+<div class="card">
+<div class="card-title green">第三章 · 爆款衔接节奏与素材管理</div>
+
+<div class="flow-box">
+<div class="flow-step"><div class="step-title">🔥 爆款破冰</div><div class="step-desc">前周贡献35%<br>建立竞价模型</div></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"><div class="step-title">📈 慢热爬坡</div><div class="step-desc">后周贡献30%<br>成为增长主力</div></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"><div class="step-title">🔄 新爆款接力</div><div class="step-desc">每3-5天新批次<br>衰减交叉上线</div></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"><div class="step-title">📊 慢热再爬坡</div><div class="step-desc">高耗池>50%<br>螺旋上升</div></div>
+</div>
+
+<div id="chart2" class="chart"></div>
+
+<div class="insight ok">
+<strong>四大衔接规律：</strong><br>
+① <strong>批次脉冲</strong>：每3-5天一个上线批次，关键批次10-16个视频素材，补充批次2-4个<br>
+② <strong>衰减交叉</strong>：新批次上线恰好在旧素材峰值后2-3天，确保3-4天重叠窗口<br>
+③ <strong>集群上线</strong>：同日上线多个视频素材形成"集群"，比逐日单发更易触发系统推荐<br>
+④ <strong>重叠期保障</strong>：峰值期6-7个高耗视频同时在跑时消耗最稳定，独撑模式容易波动
+</div>
+</div>
+
+<!-- ===== 第四章：客户对比 ===== -->
+<div class="card">
+<div class="card-title blue">第四章 · 两家头部客户模式对比</div>
+
+<div id="chart3" class="chart"></div>
+<div id="chart4" class="chart"></div>
+
+<table>
+<thead><tr><th>维度</th><th>客户A（慢热驱动型）</th><th>客户B（爆款驱动型）</th><th>差异洞察</th></tr></thead>
+<tbody>
+<tr><td>素材类型</td><td colspan="2" style="text-align:center"><span class="tag-video">100%视频素材</span></td><td>直播链路高耗素材均为视频</td></tr>
+<tr><td>活跃素材数</td><td>81个</td><td>82个</td><td>素材基数接近</td></tr>
+<tr><td>爆款数</td><td>5个(6.2%)</td><td>9个(11.0%)</td><td>客户B爆款产出率高80%</td></tr>
+<tr><td>爆款CTR</td><td>9-10.8%</td><td>3-5%</td><td>客户A爆款CTR极高但衰减快</td></tr>
+<tr><td>慢热数</td><td>8个</td><td>6个</td><td>客户A更依赖慢热型</td></tr>
+<tr><td>增量主力</td><td>慢热贡献68%</td><td>爆款+慢热均衡</td><td>客户B模式更健康</td></tr>
+<tr><td>压舱石素材</td><td>爆款①(14天/40.7万)</td><td>爆款①(14天/37.7万)</td><td>缓慢衰退型是核心</td></tr>
+<tr><td>最大单素材峰值</td><td>慢热① 14.5万/日</td><td>爆款① 7.3万/日</td><td>客户A有超级慢热素材</td></tr>
+</tbody>
+</table>
+
+<div class="insight">
+<strong>模式选型建议：</strong><br>
+• <strong>客户B模式（爆款驱动型）</strong>更优——更多爆款+更长生命周期+衰退更慢，适合素材产出能力强、CTR优化成熟的客户<br>
+• <strong>客户A模式（慢热驱动型）</strong>是"爆款不足时的次优解"——靠慢热爬坡爆发弥补爆款不足，适合素材产出能力一般但出价和基建扎实的客户<br>
+• <strong>理想路径</strong>：先用客户A模式（慢热驱动）度过素材积累期，逐步提升爆款产出率，向客户B模式过渡
+</div>
+</div>
+
+<!-- ===== 第五章：上线批次 ===== -->
+<div class="card">
+<div class="card-title">第五章 · 上线批次节奏与产出</div>
+<div id="chart5" class="chart chart-tall"></div>
+
+<div class="insight">
+<strong>批次产出规律：</strong><br>
+• <strong>开局批次</strong>（08/03）：30-39个视频素材，产出1-2个爆款+2-3个慢热，是素材池基础<br>
+• <strong>关键批次</strong>（08/08-08/10）：10-16个视频素材，产出2-3个爆款+1-2个慢热，是增量核心<br>
+• <strong>补充批次</strong>（08/12后）：2-4个视频素材，维持素材新鲜度，产出率低但不可缺<br>
+• <strong>产出率</strong>：关键批次高耗素材产出率约25-40%（10个素材产出3-4个高耗），补充批次约10-20%
+</div>
+</div>
+
+<!-- ===== 第六章：方法论总结 ===== -->
+<div class="card">
+<div class="card-title" style="font-size:18px">第六章 · 爆款素材方法论总结</div>
+
+<div class="insight ok">
+<strong>1. 破冰法则：CTR是钥匙，3天是生死线</strong><br>
+• 视频素材CTR≥行业2倍(>8%)→首日破冰；CTR在行业均值(3-5%)→1-2天爬坡破冰<br>
+• 3天内日耗未达1万→仅38%后续能爬坡成功，62%沉入长尾<br>
+• 破冰的本质是"建立竞价模型"——爆款积累的转化数据让后续所有素材受益
+</div>
+
+<div class="insight warn">
+<strong>2. 衰退管理：50%素材断崖式衰退，必须提前布局</strong><br>
+• 断崖式(峰后3天<20%)→峰值后1天即启动接替<br>
+• 快速衰退(20-40%)→峰值后2天启动<br>
+• 缓慢衰退(≥40%)→压舱石，峰值后4-5天启动，尽量延长生命周期<br>
+• 预警信号：日耗连续2天低于峰值50%
+</div>
+
+<div class="insight">
+<strong>3. 衔接节奏：批次脉冲+衰减交叉+集群上线</strong><br>
+• 每3-5天一个上线批次（关键批次10-16个视频，补充批次2-4个）<br>
+• 新批次在旧素材峰值后2-3天上线，确保3-4天重叠窗口<br>
+• 集群上线比逐日单发更有效——触发系统"素材多样性"推荐
+</div>
+
+<div class="insight orange">
+<strong>4. 慢热耐心法则：给潜力素材5-7天观察期</strong><br>
+• 客户A的慢热素材前4天日耗仅200元，第5天爆发到14.5万/日<br>
+• 判断标准：前3天日耗<1万但CTR≥3%→给予5-7天观察期<br>
+• 慢热型贡献了68%的增量，是增长的真正引擎<br>
+• 风险：设置7天硬截止——7天仍未达1万则替换
+</div>
+
+<div class="insight ok">
+<strong>5. 高耗素材池管理：池子贡献率>50%=健康</strong><br>
+• 素材金字塔：爆款6% + 慢热10% + 中等27% + 长尾57%<br>
+• 16%的高耗视频素材贡献45-57%的消耗<br>
+• 管理重心放在高耗池，长尾57%是"筛选池"而非浪费<br>
+• 核心指标：高耗素材池贡献率 > 50% = 健康跑量状态
+</div>
+
+<div class="insight">
+<strong>6. 压舱石识别：缓慢衰退型是跑量稳定的基石</strong><br>
+• 特征：峰值中等(5-7万/日) + 衰退缓慢(峰后3天≥40%) + 有效周期10-14天<br>
+• 客户A的爆款①和客户B的爆款①均为14天压舱石，贡献总消耗40万级<br>
+• 管理动作：不轻易替换、不大幅调出价，作为账户"底仓"长期运行
+</div>
+
+</div>
+
+</div>
+
+<script>
+var custAData = {"name": "客户A", "total_materials": 81, "hot_count": 5, "slow_count": 8, "decay_curves": [{"md5": "a94a25d9e903", "type": "慢热", "first_date": "08/10", "peak_date": "08/14", "peak_cost": 14.46, "total_cost": 27.63, "lifespan": 7, "decay_curve": [18.0, 72.7, null, null, null, null, null], "ctr": 10.76, "hit_day": 4}, {"md5": "bf5805fa0da6", "type": "爆款", "first_date": "08/03", "peak_date": "08/07", "peak_cost": 5.52, "total_cost": 40.74, "lifespan": 14, "decay_curve": [56.6, 60.0, 20.8, 42.5, 20.3, 52.9, 28.9], "ctr": 9.88, "hit_day": 0}, {"md5": "7bb9fdb58ea6", "type": "爆款", "first_date": "08/08", "peak_date": "08/13", "peak_cost": 5.5, "total_cost": 19.87, "lifespan": 9, "decay_curve": [8.5, 11.7, 5.5, null, null, null, null], "ctr": 9.03, "hit_day": 1}, {"md5": "0ee568259bfd", "type": "慢热", "first_date": "08/10", "peak_date": "08/13", "peak_cost": 5.19, "total_cost": 8.78, "lifespan": 7, "decay_curve": [13.1, 9.7, 44.4, null, null, null, null], "ctr": 6.81, "hit_day": 3}, {"md5": "abe72d676cfb", "type": "爆款", "first_date": "08/08", "peak_date": "08/09", "peak_cost": 4.16, "total_cost": 13.35, "lifespan": 9, "decay_curve": [49.7, 62.8, 12.0, 31.6, 35.6, 5.2, 4.1], "ctr": 4.39, "hit_day": 1}, {"md5": "4d9f89f4d109", "type": "慢热", "first_date": "08/05", "peak_date": "08/09", "peak_cost": 1.92, "total_cost": 6.43, "lifespan": 12, "decay_curve": [17.2, 5.7, 39.3, 42.1, 67.3, 33.3, 11.7], "ctr": 4.05, "hit_day": 4}, {"md5": "ed316faee7dc", "type": "慢热", "first_date": "08/12", "peak_date": "08/15", "peak_cost": 1.53, "total_cost": 1.8, "lifespan": 5, "decay_curve": [11.2, null, null, null, null, null, null], "ctr": 8.55, "hit_day": 3}, {"md5": "e10a453407b4", "type": "慢热", "first_date": "08/03", "peak_date": "08/15", "peak_cost": 1.38, "total_cost": 3.82, "lifespan": 14, "decay_curve": [19.9, null, null, null, null, null, null], "ctr": 3.63, "hit_day": 12}, {"md5": "8fd0168c7174", "type": "慢热", "first_date": "08/12", "peak_date": "08/16", "peak_cost": 1.37, "total_cost": 2.94, "lifespan": 5, "decay_curve": [null, null, null, null, null, null, null], "ctr": 4.62, "hit_day": 4}, {"md5": "760eb7ca4d78", "type": "慢热", "first_date": "08/03", "peak_date": "08/16", "peak_cost": 1.32, "total_cost": 4.14, "lifespan": 14, "decay_curve": [null, null, null, null, null, null, null], "ctr": 4.42, "hit_day": 13}, {"md5": "38a2630462dd", "type": "慢热", "first_date": "08/08", "peak_date": "08/11", "peak_cost": 1.29, "total_cost": 1.83, "lifespan": 9, "decay_curve": [8.7, 5.3, 2.1, 1.9, 3.2, null, null], "ctr": 4.22, "hit_day": 3}, {"md5": "c5bd802bdc12", "type": "爆款", "first_date": "08/08", "peak_date": "08/09", "peak_cost": 1.1, "total_cost": 2.17, "lifespan": 8, "decay_curve": [62.8, 9.3, 17.7, 6.7, 0.5, 0.5, null], "ctr": 5.22, "hit_day": 1}, {"md5": "c677ad56a97c", "type": "爆款", "first_date": "08/14", "peak_date": "08/16", "peak_cost": 1.09, "total_cost": 1.52, "lifespan": 3, "decay_curve": [null, null, null, null, null, null, null], "ctr": 9.4, "hit_day": 2}], "daily_struct": [{"date": "08/03", "total": 11.06, "hot": 3.87, "slow": 0.2, "hot_pct": 34.9, "slow_pct": 1.8}, {"date": "08/04", "total": 14.67, "hot": 4.94, "slow": 0.36, "hot_pct": 33.7, "slow_pct": 2.5}, {"date": "08/05", "total": 15.33, "hot": 4.32, "slow": 0.21, "hot_pct": 28.2, "slow_pct": 1.4}, {"date": "08/06", "total": 13.6, "hot": 3.83, "slow": 0.27, "hot_pct": 28.2, "slow_pct": 2.0}, {"date": "08/07", "total": 14.4, "hot": 5.52, "slow": 0.58, "hot_pct": 38.3, "slow_pct": 4.0}, {"date": "08/08", "total": 14.25, "hot": 3.98, "slow": 0.74, "hot_pct": 27.9, "slow_pct": 5.2}, {"date": "08/09", "total": 21.59, "hot": 10.16, "slow": 2.23, "hot_pct": 47.1, "slow_pct": 10.3}, {"date": "08/10", "total": 13.39, "hot": 4.81, "slow": 1.02, "hot_pct": 35.9, "slow_pct": 7.6}, {"date": "08/11", "total": 23.22, "hot": 10.33, "slow": 1.69, "hot_pct": 44.5, "slow_pct": 7.3}, {"date": "08/12", "total": 19.6, "hot": 6.97, "slow": 1.93, "hot_pct": 35.5, "slow_pct": 9.9}, {"date": "08/13", "total": 29.9, "hot": 9.81, "slow": 6.61, "hot_pct": 32.8, "slow_pct": 22.1}, {"date": "08/14", "total": 34.66, "hot": 3.57, "slow": 17.82, "hot_pct": 10.3, "slow_pct": 51.4}, {"date": "08/15", "total": 22.48, "hot": 3.47, "slow": 7.48, "hot_pct": 15.4, "slow_pct": 33.3}, {"date": "08/16", "total": 32.35, "hot": 2.08, "slow": 16.22, "hot_pct": 6.4, "slow_pct": 50.1}], "batches": [{"date": "08/03", "count": 34, "total_cost": 85.7, "max_peak": 5.5}, {"date": "08/04", "count": 1, "total_cost": 1.1, "max_peak": 0.5}, {"date": "08/05", "count": 17, "total_cost": 26.3, "max_peak": 1.9}, {"date": "08/06", "count": 1, "total_cost": 0.8, "max_peak": 0.5}, {"date": "08/08", "count": 10, "total_cost": 43.2, "max_peak": 5.5}, {"date": "08/09", "count": 2, "total_cost": 1.5, "max_peak": 0.5}, {"date": "08/10", "count": 4, "total_cost": 38.7, "max_peak": 14.5}, {"date": "08/11", "count": 2, "total_cost": 1.5, "max_peak": 0.4}, {"date": "08/12", "count": 4, "total_cost": 6.7, "max_peak": 1.5}, {"date": "08/13", "count": 3, "total_cost": 4.4, "max_peak": 1.0}, {"date": "08/14", "count": 2, "total_cost": 2.2, "max_peak": 1.1}, {"date": "08/16", "count": 1, "total_cost": 0.7, "max_peak": 0.7}]};
+var custBData = {"name": "客户B", "total_materials": 82, "hot_count": 9, "slow_count": 6, "decay_curves": [{"md5": "824a01695ccd", "type": "爆款", "first_date": "08/03", "peak_date": "08/11", "peak_cost": 7.33, "total_cost": 37.67, "lifespan": 14, "decay_curve": [53.2, 62.6, 48.8, 34.1, 37.2, null, null], "ctr": 3.11, "hit_day": 0}, {"md5": "986581914271", "type": "慢热", "first_date": "08/10", "peak_date": "08/14", "peak_cost": 6.45, "total_cost": 13.84, "lifespan": 7, "decay_curve": [52.0, 56.0, null, null, null, null, null], "ctr": null, "hit_day": 4}, {"md5": "42240bfc1447", "type": "爆款", "first_date": "08/03", "peak_date": "08/03", "peak_cost": 5.69, "total_cost": 14.65, "lifespan": 12, "decay_curve": [78.0, 60.2, 0.1, 0.1, 0.1, 0.6, 1.0], "ctr": 4.34, "hit_day": 0}, {"md5": "754b433118fb", "type": "慢热", "first_date": "08/04", "peak_date": "08/13", "peak_cost": 3.57, "total_cost": 14.45, "lifespan": 13, "decay_curve": [21.6, 14.2, 90.3, null, null, null, null], "ctr": null, "hit_day": 4}, {"md5": "f36c4dd4cee5", "type": "爆款", "first_date": "08/07", "peak_date": "08/09", "peak_cost": 3.3, "total_cost": 3.92, "lifespan": 4, "decay_curve": [18.6, null, null, null, null, null, null], "ctr": 5.11, "hit_day": 2}, {"md5": "b9a943b2da94", "type": "慢热", "first_date": "08/05", "peak_date": "08/11", "peak_cost": 2.84, "total_cost": 15.77, "lifespan": 12, "decay_curve": [84.2, 38.3, 82.4, 45.0, 59.9, null, null], "ctr": 3.54, "hit_day": 3}, {"md5": "604f13d60b7c", "type": "慢热", "first_date": "08/05", "peak_date": "08/11", "peak_cost": 1.63, "total_cost": 1.96, "lifespan": 8, "decay_curve": [0.1, null, null, null, null, null, null], "ctr": null, "hit_day": 6}, {"md5": "d1ef72048a6d", "type": "爆款", "first_date": "08/10", "peak_date": "08/10", "peak_cost": 1.34, "total_cost": 5.49, "lifespan": 7, "decay_curve": [84.9, 90.3, 93.0, 21.0, 10.9, 10.0, null], "ctr": null, "hit_day": 0}, {"md5": "ca7838aa289f", "type": "爆款", "first_date": "08/10", "peak_date": "08/10", "peak_cost": 1.32, "total_cost": 2.71, "lifespan": 6, "decay_curve": [0.8, 0.5, 4.3, 28.8, 70.5, null, null], "ctr": 4.31, "hit_day": 0}, {"md5": "d3ab1d524236", "type": "爆款", "first_date": "08/10", "peak_date": "08/11", "peak_cost": 1.18, "total_cost": 1.36, "lifespan": 7, "decay_curve": [4.2, 0.4, 0.2, 0.5, 0.2, null, null], "ctr": null, "hit_day": 1}, {"md5": "75fe0283f391", "type": "慢热", "first_date": "08/10", "peak_date": "08/16", "peak_cost": 1.16, "total_cost": 1.34, "lifespan": 7, "decay_curve": [null, null, null, null, null, null, null], "ctr": 5.0, "hit_day": 6}, {"md5": "2709b4d7bc55", "type": "爆款", "first_date": "08/08", "peak_date": "08/08", "peak_cost": 1.11, "total_cost": 1.5, "lifespan": 3, "decay_curve": [25.9, 9.2, null, null, null, null, null], "ctr": null, "hit_day": 0}, {"md5": "62b500ebb53f", "type": "爆款", "first_date": "08/03", "peak_date": "08/08", "peak_cost": 1.1, "total_cost": 5.38, "lifespan": 11, "decay_curve": [49.3, 19.4, 45.0, 47.4, 12.2, null, null], "ctr": 4.75, "hit_day": 2}, {"md5": "cd096ab4fff5", "type": "爆款", "first_date": "08/10", "peak_date": "08/11", "peak_cost": 1.04, "total_cost": 1.83, "lifespan": 7, "decay_curve": [47.0, 8.9, 9.7, 5.9, 2.6, null, null], "ctr": 3.85, "hit_day": 1}, {"md5": "0b9b338d37c0", "type": "慢热", "first_date": "08/03", "peak_date": "08/13", "peak_cost": 1.02, "total_cost": 2.64, "lifespan": 14, "decay_curve": [74.7, 26.0, 32.5, null, null, null, null], "ctr": null, "hit_day": 10}], "daily_struct": [{"date": "08/03", "total": 14.94, "hot": 6.97, "slow": 0.05, "hot_pct": 46.7, "slow_pct": 0.3}, {"date": "08/04", "total": 13.49, "hot": 5.31, "slow": 0.09, "hot_pct": 39.4, "slow_pct": 0.7}, {"date": "08/05", "total": 15.84, "hot": 6.24, "slow": 0.48, "hot_pct": 39.4, "slow_pct": 3.1}, {"date": "08/06", "total": 12.73, "hot": 3.49, "slow": 0.4, "hot_pct": 27.4, "slow_pct": 3.1}, {"date": "08/07", "total": 11.28, "hot": 0.99, "slow": 1.08, "hot_pct": 8.8, "slow_pct": 9.6}, {"date": "08/08", "total": 15.78, "hot": 3.82, "slow": 2.6, "hot_pct": 24.2, "slow_pct": 16.5}, {"date": "08/09", "total": 19.25, "hot": 6.35, "slow": 2.51, "hot_pct": 33.0, "slow_pct": 13.1}, {"date": "08/10", "total": 16.97, "hot": 5.88, "slow": 0.64, "hot_pct": 34.7, "slow_pct": 3.8}, {"date": "08/11", "total": 30.35, "hot": 11.23, "slow": 5.3, "hot_pct": 37.0, "slow_pct": 17.5}, {"date": "08/12", "total": 28.65, "hot": 6.23, "slow": 5.21, "hot_pct": 21.7, "slow_pct": 18.2}, {"date": "08/13", "total": 27.44, "hot": 6.1, "slow": 5.72, "hot_pct": 22.2, "slow_pct": 20.8}, {"date": "08/14", "total": 30.29, "hot": 4.05, "slow": 10.34, "hot_pct": 13.4, "slow_pct": 34.2}, {"date": "08/15", "total": 22.94, "hot": 3.35, "slow": 5.54, "hot_pct": 14.6, "slow_pct": 24.1}, {"date": "08/16", "total": 31.0, "hot": 4.49, "slow": 10.03, "hot_pct": 14.5, "slow_pct": 32.3}], "batches": [{"date": "08/03", "count": 39, "total_cost": 113.3, "max_peak": 7.3}, {"date": "08/04", "count": 7, "total_cost": 29.9, "max_peak": 3.6}, {"date": "08/05", "count": 4, "total_cost": 21.9, "max_peak": 2.8}, {"date": "08/06", "count": 3, "total_cost": 2.6, "max_peak": 0.8}, {"date": "08/07", "count": 1, "total_cost": 3.9, "max_peak": 3.3}, {"date": "08/08", "count": 2, "total_cost": 3.2, "max_peak": 1.1}, {"date": "08/09", "count": 4, "total_cost": 2.4, "max_peak": 0.5}, {"date": "08/10", "count": 16, "total_cost": 40.1, "max_peak": 6.5}, {"date": "08/11", "count": 2, "total_cost": 1.4, "max_peak": 0.4}, {"date": "08/12", "count": 1, "total_cost": 0.8, "max_peak": 0.4}, {"date": "08/13", "count": 2, "total_cost": 3.0, "max_peak": 0.8}, {"date": "08/15", "count": 1, "total_cost": 0.9, "max_peak": 0.9}]};
+var allDates = ["08/03", "08/04", "08/05", "08/06", "08/07", "08/08", "08/09", "08/10", "08/11", "08/12", "08/13", "08/14", "08/15", "08/16"];
+
+// === 图1: 衰退曲线 ===
+var chart1 = echarts.init(document.getElementById('chart1'));
+var decaySeries = [];
+
+custAData.decay_curves.forEach(function(m, idx) {
+    decaySeries.push({
+        name: 'A-素材' + (idx+1) + '(' + m.type + ' CTR' + (m.ctr||'-') + '%)',
+        type: 'line', data: m.decay_curve, smooth: true,
+        lineStyle: { width: m.type==='爆款'?2.5:1.5, color: m.type==='爆款'?'#e74c3c':'#f39c12', type: m.type==='爆款'?'solid':'dashed' },
+        itemStyle: { color: m.type==='爆款'?'#e74c3c':'#f39c12' }, symbolSize: 5,
+    });
+});
+
+custBData.decay_curves.forEach(function(m, idx) {
+    decaySeries.push({
+        name: 'B-素材' + (idx+1) + '(' + m.type + ' CTR' + (m.ctr||'-') + '%)',
+        type: 'line', data: m.decay_curve, smooth: true,
+        lineStyle: { width: m.type==='爆款'?2.5:1.5, color: m.type==='爆款'?'#c0392b':'#e67e22', type: m.type==='爆款'?'solid':'dotted' },
+        itemStyle: { color: m.type==='爆款'?'#c0392b':'#e67e22' }, symbolSize: 5,
+    });
+});
+
+chart1.setOption({
+    tooltip: { trigger: 'axis', formatter: function(params) {
+        var s = '峰后天数: ' + params[0].name + '<br/>';
+        params.forEach(function(p) { if(p.value!==null&&p.value!==undefined) s += p.marker + p.seriesName + ': ' + p.value + '%<br/>'; });
+        return s;
+    } },
+    legend: { top: 0, type: 'scroll', height: 60, fontSize: 10 },
+    grid: { left: 60, right: 30, top: 80, bottom: 40 },
+    xAxis: { type: 'category', data: ['峰后1天','峰后2天','峰后3天','峰后4天','峰后5天','峰后6天','峰后7天'] },
+    yAxis: { type: 'value', name: '占峰值%', max: 100 },
+    series: decaySeries
+});
+
+// === 图2: 客户A日消耗结构 ===
+var chart2 = echarts.init(document.getElementById('chart2'));
+var aDates = custAData.daily_struct.map(function(d){return d.date;});
+var aHot = custAData.daily_struct.map(function(d){return d.hot;});
+var aSlow = custAData.daily_struct.map(function(d){return d.slow;});
+var aTotal = custAData.daily_struct.map(function(d){return d.total;});
+var aHotPct = custAData.daily_struct.map(function(d){return d.hot_pct;});
+var aSlowPct = custAData.daily_struct.map(function(d){return d.slow_pct;});
+
+chart2.setOption({
+    title: { text: '客户A · 日消耗结构与贡献率交接', left: 'center', textStyle: {fontSize:14} },
+    tooltip: { trigger: 'axis' },
+    legend: { data: ['爆款消耗','慢热消耗','总消耗','爆款贡献率%','慢热贡献率%'], top: 30 },
+    grid: { left: 60, right: 60, top: 70, bottom: 40 },
+    xAxis: { type: 'category', data: aDates, axisLabel: {rotate:30} },
+    yAxis: [{type:'value',name:'万/日'},{type:'value',name:'%',max:70,position:'right'}],
+    series: [
+        {name:'爆款消耗',type:'bar',stack:'cost',data:aHot,itemStyle:{color:'#e74c3c'}},
+        {name:'慢热消耗',type:'bar',stack:'cost',data:aSlow,itemStyle:{color:'#f39c12'}},
+        {name:'总消耗',type:'line',data:aTotal,lineStyle:{width:2,color:'#667eea'},itemStyle:{color:'#667eea'}},
+        {name:'爆款贡献率%',type:'line',yAxisIndex:1,data:aHotPct,smooth:true,lineStyle:{color:'#e74c3c',type:'dashed'},itemStyle:{color:'#e74c3c'}},
+        {name:'慢热贡献率%',type:'line',yAxisIndex:1,data:aSlowPct,smooth:true,lineStyle:{color:'#f39c12',type:'dashed'},itemStyle:{color:'#f39c12'}},
+    ]
+});
+
+// === 图3: 客户B日消耗结构 ===
+var chart3 = echarts.init(document.getElementById('chart3'));
+var bDates = custBData.daily_struct.map(function(d){return d.date;});
+var bHot = custBData.daily_struct.map(function(d){return d.hot;});
+var bSlow = custBData.daily_struct.map(function(d){return d.slow;});
+var bTotal = custBData.daily_struct.map(function(d){return d.total;});
+var bHotPct = custBData.daily_struct.map(function(d){return d.hot_pct;});
+var bSlowPct = custBData.daily_struct.map(function(d){return d.slow_pct;});
+
+chart3.setOption({
+    title: { text: '客户B · 日消耗结构与贡献率交接', left: 'center', textStyle: {fontSize:14} },
+    tooltip: { trigger: 'axis' },
+    legend: { data: ['爆款消耗','慢热消耗','总消耗','爆款贡献率%','慢热贡献率%'], top: 30 },
+    grid: { left: 60, right: 60, top: 70, bottom: 40 },
+    xAxis: { type: 'category', data: bDates, axisLabel: {rotate:30} },
+    yAxis: [{type:'value',name:'万/日'},{type:'value',name:'%',max:70,position:'right'}],
+    series: [
+        {name:'爆款消耗',type:'bar',stack:'cost',data:bHot,itemStyle:{color:'#e74c3c'}},
+        {name:'慢热消耗',type:'bar',stack:'cost',data:bSlow,itemStyle:{color:'#f39c12'}},
+        {name:'总消耗',type:'line',data:bTotal,lineStyle:{width:2,color:'#667eea'},itemStyle:{color:'#667eea'}},
+        {name:'爆款贡献率%',type:'line',yAxisIndex:1,data:bHotPct,smooth:true,lineStyle:{color:'#e74c3c',type:'dashed'},itemStyle:{color:'#e74c3c'}},
+        {name:'慢热贡献率%',type:'line',yAxisIndex:1,data:bSlowPct,smooth:true,lineStyle:{color:'#f39c12',type:'dashed'},itemStyle:{color:'#f39c12'}},
+    ]
+});
+
+// === 图4: 上线批次 ===
+var chart5 = echarts.init(document.getElementById('chart5'));
+var allBatchDates = [];
+custAData.batches.forEach(function(b){ if(allBatchDates.indexOf(b.date)<0) allBatchDates.push(b.date); });
+custBData.batches.forEach(function(b){ if(allBatchDates.indexOf(b.date)<0) allBatchDates.push(b.date); });
+allBatchDates.sort();
+
+var aCountMap={}, aCostMap={}, bCountMap={}, bCostMap={};
+custAData.batches.forEach(function(b){ aCountMap[b.date]=b.count; aCostMap[b.date]=b.total_cost; });
+custBData.batches.forEach(function(b){ bCountMap[b.date]=b.count; bCostMap[b.date]=b.total_cost; });
+
+chart5.setOption({
+    tooltip: { trigger: 'axis' },
+    legend: { data: ['客户A-素材数','客户B-素材数','客户A-后续总消耗(万)','客户B-后续总消耗(万)'], top: 0 },
+    grid: { left: 60, right: 60, top: 40, bottom: 40 },
+    xAxis: { type: 'category', data: allBatchDates, axisLabel: {rotate:30} },
+    yAxis: [{type:'value',name:'素材数'},{type:'value',name:'万',position:'right'}],
+    series: [
+        {name:'客户A-素材数',type:'bar',data:allBatchDates.map(function(d){return aCountMap[d]||0;}),itemStyle:{color:'#667eea'}},
+        {name:'客户B-素材数',type:'bar',data:allBatchDates.map(function(d){return bCountMap[d]||0;}),itemStyle:{color:'#2ecc71'}},
+        {name:'客户A-后续总消耗(万)',type:'line',yAxisIndex:1,data:allBatchDates.map(function(d){return aCostMap[d]||0;}),lineStyle:{color:'#667eea',width:2},itemStyle:{color:'#667eea'}},
+        {name:'客户B-后续总消耗(万)',type:'line',yAxisIndex:1,data:allBatchDates.map(function(d){return bCostMap[d]||0;}),lineStyle:{color:'#2ecc71',width:2},itemStyle:{color:'#2ecc71'}},
+    ]
+});
+
+// 响应式
+window.addEventListener('resize', function() {
+    chart1.resize(); chart2.resize(); chart3.resize(); chart5.resize();
+});
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><div id="__idata_artifact_err_overlay__" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none;width:min(640px,calc(100vw - 48px));max-height:80vh;padding:24px 28px;background:#ffffff;border:1px solid #fca5a5;border-left:4px solid #ef4444;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.12);z-index:2147483646;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;color:#7f1d1d;box-sizing:border-box;"><div style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;margin-bottom:14px;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ef4444;color:#fff;border-radius:50%;font-size:14px;font-weight:bold;flex-shrink:0;">!</span><span>图表渲染失败</span></div><pre id="__idata_artifact_err_msg__" style="margin:0;padding:14px 16px;background:#fef2f2;border-radius:8px;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#7f1d1d;max-height:60vh;overflow:auto;"></pre><div style="margin-top:12px;font-size:11px;color:#9ca3af;line-height:1.5;">报告给大模型可自动修复该脚本</div></div><script>(function(){var ov=document.getElementById('__idata_artifact_err_overlay__');var msg=document.getElementById('__idata_artifact_err_msg__');if(!ov||!msg)return;var shownSet={};function _show(t){if(!t||shownSet[t])return;shownSet[t]=1;msg.textContent=String(t).slice(0,3000);ov.style.display='block';}var q=window.__idata_artifact_error__||[];for(var i=0;i<q.length;i++)_show(q[i]);window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_show(parts.join('\n'));});window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_show((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>

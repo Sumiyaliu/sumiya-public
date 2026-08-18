@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爆款素材方法论四大模块 · 对外分享版</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f3f7f4;
+      background-image:
+        radial-gradient(at 0% 0%, hsla(143,32%,94%,1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(150,30%,90%,1) 0px, transparent 50%);
+    }
+
+    .folder-tab {
+      position: relative;
+      background: #ffffff;
+      border-radius: 16px 16px 0 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .folder-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -20px;
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border-bottom-left-radius: 16px;
+      box-shadow: -10px 10px 0 10px #ffffff;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .active-tab {
+      background: #1e3f20 !important;
+      color: #ffffff !important;
+    }
+    .active-tab::after {
+      box-shadow: -10px 10px 0 10px #1e3f20 !important;
+    }
+
+    .folder-content {
+      opacity: 0;
+      transform: translateY(12px) scale(0.99);
+      display: none;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .folder-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .text-forest { color: #1b3d22; }
+    .bg-forest { background-color: #1b3d22; }
+    .border-forest { border-color: #1b3d22; }
+    .bg-sage { background-color: #e3ede4; }
+    .text-sage { color: #5c846e; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .float-anim { animation: float 6s ease-in-out infinite; }
+
+    /* ===== 内容组件 ===== */
+    .formula-box {
+      background: linear-gradient(135deg, #f0f7f1 0%, #e8f0e5 100%);
+      border: 1px dashed #6b9b7a; border-radius: 12px;
+      padding: 22px 26px; text-align: center; margin: 18px 0; font-size: 17px;
+    }
+    .formula-box .eq { font-weight: 700; line-height: 2; }
+    .formula-box .highlight { color: #4a7c59; font-weight: 700; background: #fff8e7; padding: 2px 8px; border-radius: 6px; }
+    .formula-box .dim { color: #aaa; }
+    .formula-box .arrow { color: #b8862e; margin: 0 4px; }
+    .formula-box .focus-line { margin-top: 12px; font-size: 14px; color: #4a5a4c; }
+    .formula-box .focus-line b { color: #b04a3a; }
+
+    .flow-chain {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      justify-content: center; background: #fafbf9; padding: 26px 18px;
+      border-radius: 12px; margin: 18px 0;
+    }
+    .flow-step {
+      background: #fff; border: 2px solid #5a8aba; color: #2d3a2e;
+      padding: 12px 16px; border-radius: 10px; font-size: 14px;
+      text-align: center; min-width: 88px;
+    }
+    .flow-step.start { background: #3a6b9a; color: #fff; border-color: #3a6b9a; font-weight: 600; }
+    .flow-step.end { background: #d4a548; color: #fff; border-color: #d4a548; font-weight: 600; }
+    .flow-step .step-name { font-weight: 600; font-size: 15px; }
+    .flow-step .step-desc { font-size: 11px; opacity: 0.8; margin-top: 2px; }
+    .flow-arrow { color: #5a8aba; font-size: 20px; font-weight: 700; }
+
+    .flow-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+    .rule-card { border-radius: 12px; padding: 18px 20px; border: 1px solid #e0e0e0; }
+    .rule-card.bad { background: #fdf2f0; border-color: #f0c5be; }
+    .rule-card.good { background: #f0f7f1; border-color: #b8d8be; }
+    .rule-card .r-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .rule-card.bad .r-title { color: #b04a3a; }
+    .rule-card.good .r-title { color: #2d6b3e; }
+    .rule-card .r-desc { font-size: 14px; color: #3a4a3c; }
+    .rule-card .r-action { font-size: 13px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #ddd; }
+    .rule-card.bad .r-action { color: #b04a3a; }
+    .rule-card.good .r-action { color: #2d6b3e; }
+
+    .incubation {
+      background: linear-gradient(135deg, #fff8e7 0%, #fdf4d8 100%);
+      border-radius: 16px; padding: 26px 30px; margin: 18px 0; border: 1px solid #e8d8a8;
+    }
+    .incubation .inc-title { text-align: center; font-size: 18px; font-weight: 700; color: #b8862e; margin-bottom: 18px; }
+    .inc-flow { display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .inc-node {
+      background: #fff; border-radius: 12px; padding: 16px 18px;
+      text-align: center; min-width: 116px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .inc-node .inc-icon { font-size: 26px; margin-bottom: 4px; }
+    .inc-node .inc-name { font-weight: 700; font-size: 14px; color: #2d3a2e; }
+    .inc-node .inc-desc { font-size: 11px; color: #7a8a7c; margin-top: 4px; }
+    .inc-arrow { color: #d4a548; font-size: 22px; font-weight: 700; }
+    .inc-node.core { background: linear-gradient(135deg, #d4a548, #e8c068); color: #fff; }
+    .inc-node.core .inc-name { color: #fff; }
+    .inc-node.core .inc-desc { color: rgba(255,255,255,0.9); }
+
+    .actions-box {
+      background: #fafbf9; border-radius: 12px; padding: 20px 24px;
+      margin: 18px 0; border-left: 4px solid #6b9b7a;
+    }
+    .actions-box .a-title { font-weight: 700; font-size: 15px; color: #4a7c59; margin-bottom: 12px; }
+    .actions-box ol { padding-left: 20px; }
+    .actions-box li { margin-bottom: 8px; font-size: 14px; color: #3a4a3c; }
+    .actions-box li b { color: #2d3a2e; }
+
+    .kpi-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 18px 0; }
+    .kpi-box {
+      flex: 1; min-width: 130px; border-radius: 10px; padding: 16px; text-align: center; color: #fff;
+    }
+    .kpi-box.purple { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .kpi-box.green-g { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+    .kpi-box.orange-g { background: linear-gradient(135deg, #f12711 0%, #f5af19 100%); }
+    .kpi-box.blue-g { background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%); }
+    .kpi-box.red-g { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+    .kpi-label { font-size: 12px; opacity: 0.92; margin-bottom: 4px; }
+    .kpi-value { font-size: 22px; font-weight: 700; }
+    .kpi-sub { font-size: 11px; opacity: 0.82; margin-top: 2px; }
+
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; background: #fff; border-radius: 10px; overflow: hidden; }
+    .data-table th { background: #1a1a2e; color: #fff; padding: 10px 8px; text-align: center; font-weight: 600; }
+    .data-table td { padding: 8px; text-align: center; border-bottom: 1px solid #eee; }
+    .data-table tr:hover td { background: #f0f4ff; }
+    .tier-head { font-weight: 700; color: #e94560; }
+    .hot { color: #e94560; font-weight: 700; }
+    .tag-hot { background: #ffe0e0; color: #e74c3c; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .tag-slow { background: #fff3e0; color: #f39c12; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .tag-video { background: #e8f4fd; color: #3498db; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+    .insight { background: #fff8e1; border-left: 4px solid #ffc107; padding: 14px 18px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.85; }
+    .insight strong { color: #e65100; }
+    .insight.warn { border-left-color: #e74c3c; background: #fff5f5; }
+    .insight.warn strong { color: #e74c3c; }
+    .insight.ok { border-left-color: #27ae60; background: #f0fff4; }
+    .insight.ok strong { color: #27ae60; }
+    .insight.orange { border-left-color: #f39c12; background: #fffbf0; }
+    .insight.orange strong { color: #f39c12; }
+    .insight.blue { border-left-color: #667eea; background: #f8f9ff; }
+    .insight.blue strong { color: #667eea; }
+
+    .key-callout { background: #fff8e7; border-left: 5px solid #d4a548; border-radius: 10px; padding: 18px 22px; margin: 18px 0; }
+    .key-callout .kc-title { color: #b8862e; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .key-callout .kc-body { color: #4a3a1e; font-size: 15px; }
+
+    .flow-box2 { display: flex; align-items: center; gap: 12px; margin: 18px 0; flex-wrap: wrap; }
+    .flow-step2 { background: #fff; border: 2px solid #667eea; border-radius: 8px; padding: 12px 16px; text-align: center; min-width: 140px; }
+    .flow-step2 .step-title2 { font-size: 13px; font-weight: 600; color: #667eea; }
+    .flow-step2 .step-desc2 { font-size: 11px; color: #666; margin-top: 4px; }
+
+    .summary-box {
+      background: linear-gradient(135deg, #1a3a2a 0%, #4a7c59 50%, #6b9b7a 100%);
+      color: #fff; border-radius: 16px; padding: 40px 40px; text-align: center; margin-top: 32px;
+    }
+    .summary-box h2 { color: #fff; font-size: 24px; margin-bottom: 16px; }
+    .summary-box p { color: rgba(255,255,255,0.95); font-size: 16px; line-height: 2; }
+    .summary-box .slogan { font-size: 26px; font-weight: 700; color: #f9e79f; margin: 16px 0; }
+    .summary-box .sub-row { font-size: 14px; opacity: 0.85; margin-top: 12px; }
+
+    .content-card {
+      background: #fff; border-radius: 16px; padding: 28px 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 20px;
+    }
+    .content-card.green { border-left: 6px solid #4a7c59; }
+    .content-card.blue { border-left: 6px solid #3a6b9a; }
+    .content-card.orange { border-left: 6px solid #d4a548; }
+
+    .card-header2 { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .card-num2 {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .green .card-num2 { background: linear-gradient(135deg, #4a7c59, #6b9b7a); }
+    .blue .card-num2 { background: linear-gradient(135deg, #3a6b9a, #5a8aba); }
+    .orange .card-num2 { background: linear-gradient(135deg, #d4a548, #e8c068); }
+    .card-label2 { font-size: 13px; font-weight: 600; }
+    .green .card-label2 { color: #4a7c59; }
+    .blue .card-label2 { color: #3a6b9a; }
+    .orange .card-label2 { color: #b8862e; }
+    .card-header2 h2 { font-size: 20px; color: #2d3a2e; margin-top: 2px; }
+
+    .sub-title2 { font-size: 18px; font-weight: 700; margin: 24px 0 12px; color: #2d3a2e; }
+
+    /* 源文件跳转链接按钮 */
+    .source-link-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1b3d22; color: #fff; font-weight: 700; font-size: 13px;
+      padding: 12px 24px; border-radius: 12px; text-decoration: none;
+      transition: all 0.3s; box-shadow: 0 4px 12px rgba(27,61,34,0.2);
+      margin-top: 24px;
+    }
+    .source-link-btn:hover {
+      background: #2d5a35; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,61,34,0.3);
+    }
+
+    /* 总结页模块卡 */
+    .module-card-s {
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .module-card-s:hover { transform: translateY(-4px); }
+    .module-card-s::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 5px; height: 100%; border-radius: 16px 0 0 16px;
+    }
+    .module-card-s.m1::before { background: linear-gradient(180deg, #4a7c59, #6b9b7a); }
+    .module-card-s.m2::before { background: linear-gradient(180deg, #3a6b9a, #5a8aba); }
+    .module-card-s.m3::before { background: linear-gradient(135deg, #d4a548, #e8c068); }
+    .module-badge-s {
+      width: 56px; height: 56px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; color: #fff; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .m1 .module-badge-s { background: linear-gradient(135deg, #4a7c59, #6b9b7a); }
+    .m2 .module-badge-s { background: linear-gradient(135deg, #3a6b9a, #5a8aba); }
+    .m3 .module-badge-s { background: linear-gradient(135deg, #d4a548, #e8c068); }
+    .keyword-tag {
+      display: inline-block; padding: 3px 10px; border-radius: 6px;
+      font-size: 11px; font-weight: 600; margin: 2px 3px;
+    }
+    .kw-green { background: #e8f5e9; color: #2e7d32; }
+    .kw-blue { background: #e3f2fd; color: #1565c0; }
+    .kw-orange { background: #fff3e0; color: #e65100; }
+    .kw-red { background: #ffebee; color: #c62828; }
+    .connector { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 8px 0; }
+    .connector-line { width: 2px; height: 32px; background: linear-gradient(180deg, #c8d8c0, #4a7c59); border-radius: 1px; }
+    .connector-dot { width: 10px; height: 10px; border-radius: 50%; background: #4a7c59; box-shadow: 0 0 0 4px rgba(74,124,89,0.15); }
+
+    @media (max-width: 768px) {
+      .flow-rules { grid-template-columns: 1fr; }
+      .content-card { padding: 24px 20px; }
+      .formula-box { font-size: 14px; padding: 18px 16px; }
+      .inc-flow { flex-direction: column; }
+      .inc-arrow { transform: rotate(90deg); }
+      .kpi-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900 pb-16">
+
+  <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+
+    <!-- ===== 头部 ===== -->
+    <header class="mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-emerald-100 pb-8">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-emerald-100/70 border border-emerald-200/50 px-3 py-1 rounded-full text-xs font-semibold text-emerald-800 mb-3 tracking-wide">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 animate-pulse"></i> 对外分享 · 爆款素材方法论
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-forest leading-tight">
+          素材驱动增长<span class="text-emerald-600">四大模块</span>
+        </h1>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base max-w-2xl font-normal leading-relaxed italic border-l-4 border-emerald-500 pl-4 bg-emerald-50/40 py-2 rounded-r-lg">
+          “素材能不能帮你稳定赚钱，取决于三件事：铺够没有、做得够不够好、能不能持续出爆款。这份材料把'为什么重要、怎么判断、怎么持续做、一句话总结'一次讲透。”
+        </p>
+      </div>
+      <div class="flex items-center gap-4 bg-white border border-emerald-900/10 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 w-full lg:w-auto lg:min-w-[320px]">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-700 to-teal-400 flex items-center justify-center text-white font-black text-xl shadow-inner float-anim flex-shrink-0">
+          S
+        </div>
+        <div class="flex-1">
+          <div class="text-xs font-semibold text-emerald-700/80 uppercase tracking-wider">对外分享 · SHARE</div>
+          <div class="text-base font-extrabold text-forest mt-0.5">爆款素材方法论</div>
+          <p class="text-xs text-slate-500 font-semibold">大健康行业 · 直播链路</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== 主体：左侧导航 + 右侧文件夹 ===== -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- ===== 左侧导航 ===== -->
+      <section class="lg:col-span-4 space-y-4">
+
+        <div class="bg-gradient-to-br from-emerald-900 to-emerald-800 text-white p-5 rounded-2xl shadow-lg relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-28 h-28 bg-emerald-700/20 rounded-full blur-xl"></div>
+          <div class="absolute right-4 top-4 opacity-10">
+            <i data-lucide="trending-up" class="w-16 h-16"></i>
+          </div>
+          <h3 class="text-base font-bold flex items-center gap-2 mb-2">
+            <i data-lucide="layers" class="w-4 h-4 text-emerald-300"></i> 四大模块 · 一条主线
+          </h3>
+          <p class="text-xs text-emerald-100/90 leading-relaxed font-light">
+            收入靠素材铺面+提点击，竞争靠非重复素材拿独立配额，长期稳定靠爆款能孵化能衔接。
+          </p>
+          <div class="mt-3 pt-3 border-t border-emerald-700/30 text-center">
+            <span class="text-[10px] text-emerald-300 font-bold tracking-widest">铺面 · 提质 · 孵化 · 衔接</span>
+          </div>
+        </div>
+
+        <!-- 文件夹切换标签组 -->
+        <div class="space-y-2" id="timeline-tabs">
+
+          <!-- Tab 1 -->
+          <button onclick="switchFolder('tab-method', this)" class="w-full text-left p-4 rounded-xl border border-emerald-900/5 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300 active-tab-btn" id="default-btn">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">01</span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">看懂 · 方法论框架</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">三大视角看素材</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <!-- Tab 2 -->
+          <button onclick="switchFolder('tab-data', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">02</span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">判断 · 数据验证</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">直播为例：为啥爆款重要</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <!-- Tab 3 -->
+          <button onclick="switchFolder('tab-action', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">03</span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">做到 · 执行方法论</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">爆款持续周期性增补</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <!-- Tab 4 -->
+          <button onclick="switchFolder('tab-summary', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">04</span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">总结 · 一句话回顾</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">三个模块一句话回顾</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+        </div>
+
+        <div class="bg-emerald-50/50 border border-emerald-200/50 p-5 rounded-2xl text-center">
+          <p class="text-[11px] text-emerald-700 font-bold uppercase tracking-widest mb-1.5">看懂 · 判断 · 做到 · 总结</p>
+          <p class="text-xs text-slate-500 italic">“爆款的生命周期有限，但爆款的「结构」可以无限复用。”</p>
+        </div>
+      </section>
+
+      <!-- ===== 右侧文件夹内容区 ===== -->
+      <section class="lg:col-span-8">
+
+        <!-- 文件夹 Tabs -->
+        <div class="flex items-end pl-4 overflow-x-auto" id="folder-tab-header">
+          <div id="tab-indicator-method" class="folder-tab px-5 py-3.5 text-xs font-bold text-forest active-tab cursor-pointer select-none whitespace-nowrap">methodology.md</div>
+          <div id="tab-indicator-data" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">live-data.html</div>
+          <div id="tab-indicator-action" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">lifecycle.view</div>
+          <div id="tab-indicator-summary" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">summary.md</div>
+        </div>
+
+        <!-- 文件夹内页 -->
+        <div class="bg-white border-2 border-emerald-900/10 rounded-2xl rounded-tl-none p-6 md:p-8 shadow-xl relative">
+
+          <div class="absolute right-8 bottom-8 pointer-events-none opacity-5">
+            <i data-lucide="folder-open" class="w-48 h-48"></i>
+          </div>
+
+          <!-- ================================================================ -->
+          <!-- TAB 1: 模块一 · 三大视角看素材 -->
+          <!-- ================================================================ -->
+          <div id="tab-method" class="folder-content active">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">MODULE 01 · 方法论框架</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">三大视角看素材 · 客户能直接上手的落地框架</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-emerald-600"></i> 看懂
+              </div>
+            </div>
+
+            <p style="margin-bottom:16px;color:#3a4a3c;font-size:15px;">素材运营不是玄学，它可以从三个非常具体的视角拆开来看：<b style="color:#b04a3a;">收入视角</b>回答"钱从哪来"，<b style="color:#b04a3a;">竞争视角</b>回答"为什么有的素材能拿到量、有的拿不到"，<b style="color:#b04a3a;">可执行视角</b>回答"怎么长期稳定跑量"。三个视角环环相扣，缺一不可。</p>
+
+            <!-- 视角一：收入 -->
+            <div class="content-card green">
+              <div class="card-header2">
+                <div class="card-num2">1</div>
+                <div>
+                  <div class="card-label2">收入视角 · 钱从哪里来</div>
+                  <h2>素材是创收的核心引擎，发力在 PV 和 CTR 两端</h2>
+                </div>
+              </div>
+              <div class="formula-box">
+                <div class="eq">
+                  <b>广告收入</b> <span class="arrow">=</span> 展现量 PV <span class="arrow">×</span> eCPM <span class="arrow">=</span> PV <span class="arrow">×</span> <span class="highlight">CTR</span> <span class="arrow">×</span> <span class="dim">CVR</span> <span class="arrow">×</span> <span class="dim">出价</span> <span class="arrow">×</span> 1000
+                </div>
+                <div class="focus-line">创意运营发力点 → <b>把 PV 做大</b>（铺更广、覆盖更多流量场景）<b>· 把 CTR 拉高</b>（素材更有吸引力）</div>
+              </div>
+              <p style="margin-bottom:12px;color:#4a5a4c;font-size:15px;">CVR 和出价更多是落地页和策略层面的事，但 <b style="color:#b04a3a;">PV 和 CTR 这两端就是创意运营的主战场</b>。素材铺得越广、做得越有吸引力，收入天花板就越高。</p>
+              <div class="actions-box">
+                <div class="a-title">落地动作</div>
+                <ol>
+                  <li><b>补面扩 PV</b>：持续补充非重复优质素材，覆盖更多版位和规格，让每条素材都有独立曝光机会</li>
+                  <li><b>提质拉 CTR</b>：打磨前3秒和内容结构，同样的曝光量能换来更多点击</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- 视角二：竞争 -->
+            <div class="content-card blue">
+              <div class="card-header2">
+                <div class="card-num2">2</div>
+                <div>
+                  <div class="card-label2">竞争视角 · 懂链路才不踩坑</div>
+                  <h2>素材要闯过五关才会被用户看到，懂规则才能拿量</h2>
+                </div>
+              </div>
+              <div class="flow-chain">
+                <div class="flow-step start"><div class="step-name">在线</div><div class="step-desc">审核通过</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step"><div class="step-name">索引·召回</div><div class="step-desc">系统优选</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step"><div class="step-name">粗排</div><div class="step-desc">打分过滤</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step"><div class="step-name">精排</div><div class="step-desc">质量排序</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step end"><div class="step-name">胜出</div><div class="step-desc">真正曝光</div></div>
+              </div>
+              <div class="flow-rules">
+                <div class="rule-card bad">
+                  <div class="r-title">重复素材 = 浪费配额</div>
+                  <div class="r-desc">同一素材在<b>粗排环节被直接砍掉</b>，多传不会多拿曝光，反而浪费了召回配额。</div>
+                  <div class="r-action">→ 别再复制粘贴堆数量</div>
+                </div>
+                <div class="rule-card good">
+                  <div class="r-title">非重复新素材 = 独立配额</div>
+                  <div class="r-desc">每条非重复的新素材有<b>冷启动保护配额</b>，多传非重复优质素材 = 更多曝光机会。</div>
+                  <div class="r-action">→ 精力花在打磨差异化素材上</div>
+                </div>
+              </div>
+              <div class="actions-box">
+                <div class="a-title">落地动作</div>
+                <ol>
+                  <li>同账户不传相同组件（<b>内容查重</b>），同广告不选相似内容组件</li>
+                  <li>跨版位可复用素材，但<b>跨账户同定向会叠加过滤</b>，别白费功夫</li>
+                  <li>把建广告精力从"堆数量"转到"<b>打磨差异化素材</b>"上</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- 视角三：可执行 -->
+            <div class="content-card orange">
+              <div class="card-header2">
+                <div class="card-num2">3</div>
+                <div>
+                  <div class="card-label2">可执行视角 · 长期稳定的核心</div>
+                  <h2>爆款能孵化、能衔接，客户才能长期稳定跑量</h2>
+                </div>
+              </div>
+              <p style="margin-bottom:16px;color:#4a5a4c;font-size:15px;">排除掉其他非基建问题后，客户能不能长期稳定跑量，看的就是一件事：<b style="color:#b04a3a;">爆款素材能不能持续孵化和衔接</b>。这是三大视角中最核心、最落地的一环。</p>
+              <div class="incubation">
+                <div class="inc-title">爆款孵化与衔接闭环</div>
+                <div class="inc-flow">
+                  <div class="inc-node"><div class="inc-icon">🔍</div><div class="inc-name">发现标杆</div><div class="inc-desc">行业高消耗高点击创意</div></div>
+                  <span class="inc-arrow">→</span>
+                  <div class="inc-node"><div class="inc-icon">📋</div><div class="inc-name">提炼结构</div><div class="inc-desc">开头3秒+卖点展开+收尾</div></div>
+                  <span class="inc-arrow">→</span>
+                  <div class="inc-node core"><div class="inc-icon">⚡</div><div class="inc-name">批量衍生</div><div class="inc-desc">妙思AIGC低成本扩量</div></div>
+                  <span class="inc-arrow">→</span>
+                  <div class="inc-node"><div class="inc-icon">🔄</div><div class="inc-name">持续衔接</div><div class="inc-desc">老素材衰退前提前补新</div></div>
+                </div>
+                <p style="text-align:center;margin-top:16px;font-size:14px;color:#4a3a1e;">
+                  <b>孵化</b>＝从标杆提炼可复用框架，低成本复制爆款结构<br>
+                  <b>衔接</b>＝爆款衰退前新素材已就位，素材池始终有新鲜优质内容在跑
+                </p>
+              </div>
+              <div class="key-callout">
+                <div class="kc-title">为什么「精而强 > 多而糙」</div>
+                <div class="kc-body">堆 100 条重复素材不如打磨 10 条真正不同的优质素材——前者跑不长久，后者能持续衔接、稳定拿量。<b style="color:#b04a3a;">爆款的生命周期有限，但爆款的「结构」可以无限复用</b>。</div>
+              </div>
+              <div class="actions-box" style="border-left-color:#d4a548;">
+                <div class="a-title" style="color:#b8862e;">落地动作</div>
+                <ol>
+                  <li><b>定期提炼爆款结构</b>：从行业高消耗、高点击创意中拆解开头3秒叙事+镜头流畅性（核心竞争力）</li>
+                  <li><b>AIGC批量衍生</b>：用妙思按爆款框架批量产出非重复素材，低成本扩量</li>
+                  <li><b>新素材加到老广告</b>：已起量的老广告优先补新素材（继承历史样本快速验证），而非每次新建广告</li>
+                  <li><b>盯生命周期提前衔接</b>：有消耗的素材持续盯，衰退前提前补新素材顶上</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="summary-box">
+              <h2>一句话记住三大视角</h2>
+              <p>收入靠素材<b style="color:#f9e79f;">铺面 + 提点击</b><br>竞争靠<b style="color:#f9e79f;">非重复素材</b>拿独立配额<br>长期稳定靠<b style="color:#f9e79f;">爆款能孵化、能衔接</b></p>
+              <div class="slogan">铺面 · 提质 · 孵化 · 衔接</div>
+              <p class="sub-row">三件事都是客户自己手上能做的事，把精力从"堆数量"转到"磨质量"上，回报更长期</p>
+            </div>
+
+            <!-- 源文件跳转 -->
+            <a href="1、方法论：三大视角看素材.html" target="_blank" class="source-link-btn">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 查看完整原版：方法论·三大视角看素材
+            </a>
+          </div>
+
+          <!-- ================================================================ -->
+          <!-- TAB 2: 模块二 · 直播为例（去对比·去客户名） -->
+          <!-- ================================================================ -->
+          <div id="tab-data" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">MODULE 02 · 数据验证</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">以直播为例：为什么爆款素材重要</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-emerald-600"></i> 判断
+              </div>
+            </div>
+
+            <p style="margin-bottom:12px;color:#3a4a3c;font-size:15px;">光讲方法论不够直观。下面用大健康行业近两周直播链路的真实素材数据，看看<b style="color:#b04a3a;">头部、腰部、尾部客户</b>在爆款产出上的差距到底有多大——数据会告诉你，<b style="color:#b04a3a;">爆款素材是拉开客户增长差距的核心变量</b>。</p>
+            <p style="font-size:13px;color:#888;margin-top:4px;margin-bottom:16px;">数据口径：大健康行业 | 近2周素材数据(消耗≥5000元活跃素材) | 爆款定义：消耗≥1万且CTR≥行业均值</p>
+
+            <!-- 核心发现 -->
+            <div class="content-card blue">
+              <div class="card-header2">
+                <div class="card-num2">★</div>
+                <div>
+                  <div class="card-label2">核心发现</div>
+                  <h2>四个数字看清"爆款鸿沟"</h2>
+                </div>
+              </div>
+              <div class="kpi-row">
+                <div class="kpi-box purple">
+                  <div class="kpi-label">头部爆款产出率</div>
+                  <div class="kpi-value">~45%</div>
+                  <div class="kpi-sub">尾部仅13-22%</div>
+                </div>
+                <div class="kpi-box green-g">
+                  <div class="kpi-label">头部爆款消耗占比</div>
+                  <div class="kpi-value">69-78%</div>
+                  <div class="kpi-sub">尾部仅15-43%</div>
+                </div>
+                <div class="kpi-box orange-g">
+                  <div class="kpi-label">头部户均爆款数</div>
+                  <div class="kpi-value">16-31个</div>
+                  <div class="kpi-sub">尾部仅0.4个</div>
+                </div>
+                <div class="kpi-box red-g">
+                  <div class="kpi-label">头尾爆款差距</div>
+                  <div class="kpi-value">38-78倍</div>
+                  <div class="kpi-sub">爆款鸿沟</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 分层数据 -->
+            <div class="content-card green">
+              <h3 class="sub-title2">行业分层爆款产出率</h3>
+              <table class="data-table">
+                <tr><th>层级</th><th>客户数</th><th>有素材客户</th><th>有爆款客户</th><th>活跃素材</th><th>爆款素材</th><th>产出率</th><th>爆款消耗占比</th><th>户均素材</th><th>户均爆款</th></tr>
+                <tr><td class="tier-head">头部</td><td>6</td><td>6</td><td>6</td><td>314</td><td class="hot">142</td><td class="hot">~45%</td><td class="hot">69-78%</td><td>52.3</td><td>23.7</td></tr>
+                <tr><td class="tier-head">腰部</td><td>20</td><td>20</td><td>14</td><td>269</td><td class="hot">69</td><td class="hot">~25%</td><td class="hot">29-61%</td><td>13.5</td><td>3.5</td></tr>
+                <tr><td class="tier-head">尾部</td><td>380</td><td>91</td><td>32</td><td>182</td><td class="hot">38</td><td class="hot">~18%</td><td class="hot">15-43%</td><td>2.0</td><td>0.4</td></tr>
+              </table>
+              <p style="font-size:12px;color:#999;margin-top:4px;">注：以上为大健康行业综合分层数据，各层级数据为头部客户的区间范围。</p>
+            </div>
+
+            <!-- 关键洞察（去对比） -->
+            <div class="content-card orange">
+              <h3 class="sub-title2">四条关键洞察</h3>
+              <div class="insight">
+                <strong>1. 层级越高，爆款产出率越高，呈显著梯度递减</strong><br>
+                头部 ~45% → 腰部 ~25% → 尾部 ~18%，头部产出率是尾部的 <strong>2-3倍</strong>。层级越高，素材效率越强。
+              </div>
+              <div class="insight">
+                <strong>2. 层级越高，爆款消耗占比越高——头部极度依赖爆款</strong><br>
+                头部 69-78% 消耗来自爆款，尾部仅 15-43%<br>
+                → 头部客户增长本质是爆款驱动，尾部客户增长靠素材量堆叠
+              </div>
+              <div class="insight warn">
+                <strong>3. 户均爆款数差异巨大——头部与尾部存在"爆款鸿沟"</strong><br>
+                头部户均 16-31 个爆款 vs 尾部仅 0.4 个（<strong>38-78倍差距</strong>）<br>
+                → 尾部客户缺乏爆款产出能力，是增长天花板的核心原因
+              </div>
+              <div class="insight orange">
+                <strong>4. 腰部是"分水岭"——产出率从头部骤降，是素材效率提升的关键区间</strong><br>
+                腰部产出率 ~25%，远低于头部 45%<br>
+                → 腰部客户素材效率是最大短板，提升 CTR 和爆款孵化能力是突破重点
+              </div>
+            </div>
+
+            <!-- 策略建议（去客户名） -->
+            <div class="content-card green">
+              <h3 class="sub-title2">分客群策略建议</h3>
+              <div class="insight ok">
+                <strong>头部客户</strong>：爆款产出率已高（~45%），重点不是"提产出率"而是"延长爆款生命周期"——通过素材迭代（A/B测试变体）延长爆款衰减周期，同时建立爆款素材库复用机制
+              </div>
+              <div class="insight warn">
+                <strong>腰部客户</strong>：产出率断崖（~25%），需建立 CTR 预筛机制——素材上线 48h 内 CTR 低于行业均值立即替换，避免低效素材占用预算；参考头部客户的高产出率模式，标准化爆款孵化流程
+              </div>
+              <div class="insight blue">
+                <strong>腰部复制爆款</strong>：将高产出率客户的素材策略（开头3秒结构、卖点展开方式）标准化，向低产出率客户推广，缩小层级内差距
+              </div>
+              <div class="insight orange">
+                <strong>尾部客户</strong>：产出率低但基数大（380家），"爆款孵化"是关键——集中资源打 1-2 个爆款而非广撒网；尾部产出率 ~18% 说明素材质量基础尚可，有提升空间
+              </div>
+            </div>
+
+            <!-- 源文件跳转 -->
+            <a href="2、直播为例，为啥爆款素材重要.html" target="_blank" class="source-link-btn">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 查看完整原版：直播为例·为啥爆款素材重要
+            </a>
+          </div>
+
+          <!-- ================================================================ -->
+          <!-- TAB 3: 模块三 · 爆款素材持续周期性增补 -->
+          <!-- ================================================================ -->
+          <div id="tab-action" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">MODULE 03 · 执行方法论</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">爆款素材持续周期性增补</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="repeat" class="w-3.5 h-3.5 text-emerald-600"></i> 做到
+              </div>
+            </div>
+
+            <p style="margin-bottom:12px;color:#3a4a3c;font-size:15px;">前面两个模块回答了"为什么要做爆款"和"爆款差距在哪"。这个模块回答最关键的执行问题：<b style="color:#b04a3a;">爆款素材有自己的生命周期，它不是一锤子买卖，而是一套需要持续补位、提前衔接的节奏管理</b>。下面是基于头部客户14天日粒度素材消耗追踪，提炼出的完整方法论。</p>
+            <p style="font-size:13px;color:#888;margin-top:4px;margin-bottom:16px;">数据口径：大健康行业 · 直播链路 · 基于头部客户14天日粒度素材消耗追踪 | 素材类型：视频 | 爆款定义：3天内日耗≥1万 | 数据范围：2026-08-03 ~ 2026-08-16</p>
+
+            <!-- 第一章：破冰 -->
+            <div class="content-card green">
+              <h3 class="sub-title2">第一章 · 爆款素材破冰方法论</h3>
+              <div class="kpi-row">
+                <div class="kpi-box red-g"><div class="kpi-label">爆款产出率</div><div class="kpi-value">6-11%</div><div class="kpi-sub">3天内日耗≥1万</div></div>
+                <div class="kpi-box orange-g"><div class="kpi-label">高耗素材为视频</div><div class="kpi-value">100%</div><div class="kpi-sub">直播链路</div></div>
+                <div class="kpi-box purple"><div class="kpi-label">爆款CTR区间</div><div class="kpi-value">3-10%</div><div class="kpi-sub">行业均值5%</div></div>
+                <div class="kpi-box green-g"><div class="kpi-label">爆款前周贡献率</div><div class="kpi-value">35%</div><div class="kpi-sub">破冰核心</div></div>
+              </div>
+              <div class="insight orange">
+                <strong>破冰的本质：爆款素材通过高CTR快速获取系统推荐流量，建立竞价模型和人群包，为后续慢热型素材铺路。</strong>
+              </div>
+              <h3 class="sub-title2" style="margin-top:24px;">破冰三要素</h3>
+              <table class="data-table">
+                <thead><tr><th>要素</th><th>机制</th><th>客户A实证</th><th>客户B实证</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>高CTR触发推荐</strong></td><td>CTR远超行业均值→系统判定"优质素材"→扩大曝光分配</td><td>爆款CTR 9-10.8%（行业2倍+）</td><td>爆款CTR 3-5%（行业均值附近）</td></tr>
+                  <tr><td><strong>3天窗口期起量</strong></td><td>前3天日耗≥1万→进入"起量通道"→系统持续加量</td><td>5个素材3天内达1万/日</td><td>9个素材3天内达1万/日</td></tr>
+                  <tr><td><strong>建立竞价模型</strong></td><td>爆款积累转化数据→账户oCPX模型成熟→后续素材受益</td><td>爆款跑7天后慢热素材CTR从1%→10%</td><td>爆款持续14天，模型稳定</td></tr>
+                </tbody>
+              </table>
+              <h3 class="sub-title2" style="margin-top:24px;">两种破冰模式</h3>
+              <table class="data-table">
+                <thead><tr><th>模式</th><th>特征</th><th>CTR</th><th>起量速度</th><th>衰退速度</th><th>代表客户</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>高CTR快起型</strong></td><td>CTR极高(>8%)，首日即起量，但衰减快</td><td>9-10.8%</td><td>首日或次日</td><td>断崖式为主</td><td>客户A</td></tr>
+                  <tr><td><strong>稳CTR慢热型</strong></td><td>CTR中等(3-5%)，起量需1-2天，但衰减慢</td><td>3-5%</td><td>1-2天</td><td>缓慢衰退为主</td><td>客户B</td></tr>
+                </tbody>
+              </table>
+              <div class="insight">
+                <strong>破冰方法论核心：</strong><br>
+                ① <strong>CTR是破冰的钥匙</strong>——CTR≥行业均值2倍(>8%)可"首日破冰"，CTR在行业均值附近(3-5%)需1-2天爬坡<br>
+                ② <strong>3天是生死线</strong>——3天内日耗未达1万的素材，仅38%后续能爬坡到1万（慢热型），62%将沉入长尾<br>
+                ③ <strong>破冰≠持续</strong>——高CTR快起型破冰强但衰退快，稳CTR慢热型破冰慢但生命周期长，<strong>理想组合是"快起型破冰+慢热型接量"</strong>
+              </div>
+            </div>
+
+            <!-- 第二章：衰退 -->
+            <div class="content-card orange">
+              <h3 class="sub-title2">第二章 · 素材衰退模式与预警</h3>
+              <div class="kpi-row">
+                <div class="kpi-box red-g"><div class="kpi-label">断崖式衰退</div><div class="kpi-value">50%</div><div class="kpi-sub">峰后3天<20%</div></div>
+                <div class="kpi-box orange-g"><div class="kpi-label">快速衰退</div><div class="kpi-value">20%</div><div class="kpi-sub">峰后3天20-40%</div></div>
+                <div class="kpi-box green-g"><div class="kpi-label">缓慢衰退</div><div class="kpi-value">30%</div><div class="kpi-sub">峰后3天≥40%</div></div>
+              </div>
+              <div class="insight warn">
+                <strong>断崖式衰退（50%的高耗素材）</strong><br>
+                峰值后1-2天消耗骤降至20%以下，几乎没有"余量"。<strong>预警：日耗低于峰值50%的次日即启动新批次上线。</strong>
+              </div>
+              <div class="insight orange">
+                <strong>快速衰退（20%）</strong><br>
+                峰值后有3-5天余量期，但消耗持续下滑。<strong>预警：峰值后2天启动接替，维持出价观察。</strong>
+              </div>
+              <div class="insight ok">
+                <strong>缓慢衰退（30%）——压舱石素材</strong><br>
+                有效生命周期10-14天，峰后7天仍保持40%+消耗。<strong>这是跑量稳定的真正基石，不轻易替换、不大幅调出价。</strong>
+              </div>
+              <table class="data-table">
+                <thead><tr><th>衰退模式</th><th>判定标准</th><th>替换时机</th><th>典型素材(脱敏)</th><th>素材类型</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="tag-hot">断崖式</span></td><td>峰后3天<20%</td><td>峰值后1天</td><td>客户A-爆款②(9%)、客户B-爆款⑤(2%)</td><td><span class="tag-video">视频</span></td></tr>
+                  <tr><td><span class="tag-slow">快速衰退</span></td><td>峰后3天20-40%</td><td>峰值后2天</td><td>客户A-慢热①(36%)</td><td><span class="tag-video">视频</span></td></tr>
+                  <tr><td><span class="tag-slow">缓慢衰退</span></td><td>峰后3天≥40%</td><td>峰值后4-5天</td><td>客户A-爆款①(54%)、客户B-爆款①(45%)</td><td><span class="tag-video">视频</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 第三章：衔接 -->
+            <div class="content-card green">
+              <h3 class="sub-title2">第三章 · 爆款衔接节奏与素材管理</h3>
+              <div class="flow-box2">
+                <div class="flow-step2"><div class="step-title2">🔥 爆款破冰</div><div class="step-desc2">前周贡献35%<br>建立竞价模型</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step2"><div class="step-title2">📈 慢热爬坡</div><div class="step-desc2">后周贡献30%<br>成为增长主力</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step2"><div class="step-title2">🔄 新爆款接力</div><div class="step-desc2">每3-5天新批次<br>衰减交叉上线</div></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step2"><div class="step-title2">📊 慢热再爬坡</div><div class="step-desc2">高耗池>50%<br>螺旋上升</div></div>
+              </div>
+              <div class="insight ok">
+                <strong>四大衔接规律：</strong><br>
+                ① <strong>批次脉冲</strong>：每3-5天一个上线批次，关键批次10-16个视频素材，补充批次2-4个<br>
+                ② <strong>衰减交叉</strong>：新批次上线恰好在旧素材峰值后2-3天，确保3-4天重叠窗口<br>
+                ③ <strong>集群上线</strong>：同日上线多个视频素材形成"集群"，比逐日单发更易触发系统推荐<br>
+                ④ <strong>重叠期保障</strong>：峰值期6-7个高耗视频同时在跑时消耗最稳定，独撑模式容易波动
+              </div>
+            </div>
+
+            <!-- 第四章：客户对比 -->
+            <div class="content-card blue">
+              <h3 class="sub-title2">第四章 · 两家头部客户模式对比</h3>
+              <table class="data-table">
+                <thead><tr><th>维度</th><th>客户A（慢热驱动型）</th><th>客户B（爆款驱动型）</th><th>差异洞察</th></tr></thead>
+                <tbody>
+                  <tr><td>素材类型</td><td colspan="2" style="text-align:center"><span class="tag-video">100%视频素材</span></td><td>直播链路高耗素材均为视频</td></tr>
+                  <tr><td>活跃素材数</td><td>81个</td><td>82个</td><td>素材基数接近</td></tr>
+                  <tr><td>爆款数</td><td>5个(6.2%)</td><td>9个(11.0%)</td><td>客户B爆款产出率高80%</td></tr>
+                  <tr><td>爆款CTR</td><td>9-10.8%</td><td>3-5%</td><td>客户A爆款CTR极高但衰减快</td></tr>
+                  <tr><td>慢热数</td><td>8个</td><td>6个</td><td>客户A更依赖慢热型</td></tr>
+                  <tr><td>增量主力</td><td>慢热贡献68%</td><td>爆款+慢热均衡</td><td>客户B模式更健康</td></tr>
+                  <tr><td>压舱石素材</td><td>爆款①(14天/40.7万)</td><td>爆款①(14天/37.7万)</td><td>缓慢衰退型是核心</td></tr>
+                  <tr><td>最大单素材峰值</td><td>慢热① 14.5万/日</td><td>爆款① 7.3万/日</td><td>客户A有超级慢热素材</td></tr>
+                </tbody>
+              </table>
+              <div class="insight">
+                <strong>模式选型建议：</strong><br>
+                • <strong>客户B模式（爆款驱动型）</strong>更优——更多爆款+更长生命周期+衰退更慢，适合素材产出能力强、CTR优化成熟的客户<br>
+                • <strong>客户A模式（慢热驱动型）</strong>是"爆款不足时的次优解"——靠慢热爬坡爆发弥补爆款不足，适合素材产出能力一般但出价和基建扎实的客户<br>
+                • <strong>理想路径</strong>：先用客户A模式（慢热驱动）度过素材积累期，逐步提升爆款产出率，向客户B模式过渡
+              </div>
+            </div>
+
+            <!-- 第五章：上线批次 -->
+            <div class="content-card orange">
+              <h3 class="sub-title2">第五章 · 上线批次节奏与产出</h3>
+              <div class="insight">
+                <strong>批次产出规律：</strong><br>
+                • <strong>开局批次</strong>（08/03）：30-39个视频素材，产出1-2个爆款+2-3个慢热，是素材池基础<br>
+                • <strong>关键批次</strong>（08/08-08/10）：10-16个视频素材，产出2-3个爆款+1-2个慢热，是增量核心<br>
+                • <strong>补充批次</strong>（08/12后）：2-4个视频素材，维持素材新鲜度，产出率低但不可缺<br>
+                • <strong>产出率</strong>：关键批次高耗素材产出率约25-40%（10个素材产出3-4个高耗），补充批次约10-20%
+              </div>
+            </div>
+
+            <!-- 第六章：方法论总结 -->
+            <div class="content-card green">
+              <h3 class="sub-title2" style="font-size:18px;">第六章 · 爆款素材方法论六大总结</h3>
+              <div class="insight ok">
+                <strong>1. 破冰法则：CTR是钥匙，3天是生死线</strong><br>
+                • 视频素材CTR≥行业2倍(>8%)→首日破冰；CTR在行业均值(3-5%)→1-2天爬坡破冰<br>
+                • 3天内日耗未达1万→仅38%后续能爬坡成功，62%沉入长尾<br>
+                • 破冰的本质是"建立竞价模型"——爆款积累的转化数据让后续所有素材受益
+              </div>
+              <div class="insight warn">
+                <strong>2. 衰退管理：50%素材断崖式衰退，必须提前布局</strong><br>
+                • 断崖式(峰后3天<20%)→峰值后1天即启动接替<br>
+                • 快速衰退(20-40%)→峰值后2天启动<br>
+                • 缓慢衰退(≥40%)→压舱石，峰值后4-5天启动，尽量延长生命周期<br>
+                • 预警信号：日耗连续2天低于峰值50%
+              </div>
+              <div class="insight">
+                <strong>3. 衔接节奏：批次脉冲+衰减交叉+集群上线</strong><br>
+                • 每3-5天一个上线批次（关键批次10-16个视频，补充批次2-4个）<br>
+                • 新批次在旧素材峰值后2-3天上线，确保3-4天重叠窗口<br>
+                • 集群上线比逐日单发更有效——触发系统"素材多样性"推荐
+              </div>
+              <div class="insight orange">
+                <strong>4. 慢热耐心法则：给潜力素材5-7天观察期</strong><br>
+                • 客户A的慢热素材前4天日耗仅200元，第5天爆发到14.5万/日<br>
+                • 判断标准：前3天日耗<1万但CTR≥3%→给予5-7天观察期<br>
+                • 慢热型贡献了68%的增量，是增长的真正引擎<br>
+                • 风险：设置7天硬截止——7天仍未达1万则替换
+              </div>
+              <div class="insight ok">
+                <strong>5. 高耗素材池管理：池子贡献率>50%=健康</strong><br>
+                • 素材金字塔：爆款6% + 慢热10% + 中等27% + 长尾57%<br>
+                • 16%的高耗视频素材贡献45-57%的消耗<br>
+                • 管理重心放在高耗池，长尾57%是"筛选池"而非浪费<br>
+                • 核心指标：高耗素材池贡献率 > 50% = 健康跑量状态
+              </div>
+              <div class="insight">
+                <strong>6. 压舱石识别：缓慢衰退型是跑量稳定的基石</strong><br>
+                • 特征：峰值中等(5-7万/日) + 衰退缓慢(峰后3天≥40%) + 有效周期10-14天<br>
+                • 客户A的爆款①和客户B的爆款①均为14天压舱石，贡献总消耗40万级<br>
+                • 管理动作：不轻易替换、不大幅调出价，作为账户"底仓"长期运行
+              </div>
+            </div>
+
+            <div class="summary-box">
+              <h2>三个模块一句话回顾</h2>
+              <p>
+                <b style="color:#f9e79f;">模块一（看懂）</b>：收入靠铺面提点击，竞争靠非重复拿配额，长期靠孵化衔接<br>
+                <b style="color:#f9e79f;">模块二（判断）</b>：头部爆款产出率~45%、消耗占比70%+，尾部仅~18%和~25%——爆款是增长分水岭<br>
+                <b style="color:#f9e79f;">模块三（做到）</b>：CTR破冰、3天生死线、50%断崖衰退、每3-5天批次衔接、压舱石不轻易动
+              </p>
+              <div class="slogan">看懂 · 判断 · 做到</div>
+              <p class="sub-row">爆款的生命周期有限，但爆款的「结构」可以无限复用——把精力从"堆数量"转到"磨质量"上</p>
+            </div>
+
+            <!-- 源文件跳转 -->
+            <a href="3、爆款素材持续周期性增补.html" target="_blank" class="source-link-btn">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 查看完整原版：爆款素材持续周期性增补
+            </a>
+          </div>
+
+          <!-- ================================================================ -->
+          <!-- TAB 4: 总结 · 三个模块一句话回顾 -->
+          <!-- ================================================================ -->
+          <div id="tab-summary" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">MODULE 04 · 总结回顾</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">三个模块一句话回顾</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="bookmark" class="w-3.5 h-3.5 text-emerald-600"></i> 总结
+              </div>
+            </div>
+
+            <p style="margin-bottom:20px;color:#3a4a3c;font-size:15px;">从看懂到做到，三个模块串成一条完整的素材增长主线。以下是一句话浓缩回顾：</p>
+
+            <!-- 三个模块卡片 -->
+            <div class="space-y-5">
+
+              <!-- 模块一 -->
+              <div class="module-card-s m1 bg-white border border-emerald-900/10 rounded-2xl p-6 md:p-8 shadow-md">
+                <div class="flex items-start gap-5">
+                  <div class="module-badge-s float-anim">
+                    <i data-lucide="eye" class="w-7 h-7"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2 flex-wrap">
+                      <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md tracking-wider">MODULE 01</span>
+                      <span class="text-[11px] font-bold text-slate-400">看懂 · 方法论框架</span>
+                    </div>
+                    <h2 class="text-lg md:text-xl font-black text-forest mb-3">三大视角看素材</h2>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3">
+                      收入靠素材<span class="font-bold text-emerald-700">铺面 + 提点击</span>，竞争靠<span class="font-bold text-emerald-700">非重复素材</span>拿独立配额，长期靠<span class="font-bold text-emerald-700">爆款能孵化、能衔接</span>。
+                    </p>
+                    <div class="flex flex-wrap">
+                      <span class="keyword-tag kw-green">铺面</span>
+                      <span class="keyword-tag kw-green">提CTR</span>
+                      <span class="keyword-tag kw-blue">非重复配额</span>
+                      <span class="keyword-tag kw-green">孵化</span>
+                      <span class="keyword-tag kw-green">衔接</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 连接器 -->
+              <div class="connector">
+                <div class="connector-line"></div>
+                <div class="connector-dot"></div>
+                <div class="connector-line"></div>
+              </div>
+
+              <!-- 模块二 -->
+              <div class="module-card-s m2 bg-white border border-blue-900/10 rounded-2xl p-6 md:p-8 shadow-md">
+                <div class="flex items-start gap-5">
+                  <div class="module-badge-s">
+                    <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2 flex-wrap">
+                      <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-md tracking-wider">MODULE 02</span>
+                      <span class="text-[11px] font-bold text-slate-400">判断 · 数据验证</span>
+                    </div>
+                    <h2 class="text-lg md:text-xl font-black text-forest mb-3">直播为例：为啥爆款重要</h2>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3">
+                      头部爆款产出率<span class="font-bold text-blue-700">~45%</span>、消耗占比<span class="font-bold text-blue-700">70%+</span>，尾部仅<span class="font-bold text-red-600">~18%</span>和<span class="font-bold text-red-600">~25%</span>——爆款是增长分水岭。
+                    </p>
+                    <div class="flex flex-wrap">
+                      <span class="keyword-tag kw-blue">头部~45%</span>
+                      <span class="keyword-tag kw-blue">消耗70%+</span>
+                      <span class="keyword-tag kw-red">尾部~18%</span>
+                      <span class="keyword-tag kw-red">38-78倍差距</span>
+                      <span class="keyword-tag kw-orange">爆款鸿沟</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 连接器 -->
+              <div class="connector">
+                <div class="connector-line"></div>
+                <div class="connector-dot"></div>
+                <div class="connector-line"></div>
+              </div>
+
+              <!-- 模块三 -->
+              <div class="module-card-s m3 bg-white border border-orange-900/10 rounded-2xl p-6 md:p-8 shadow-md">
+                <div class="flex items-start gap-5">
+                  <div class="module-badge-s">
+                    <i data-lucide="repeat" class="w-7 h-7"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2 flex-wrap">
+                      <span class="text-[11px] font-bold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-md tracking-wider">MODULE 03</span>
+                      <span class="text-[11px] font-bold text-slate-400">做到 · 执行方法论</span>
+                    </div>
+                    <h2 class="text-lg md:text-xl font-black text-forest mb-3">爆款持续周期性增补</h2>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3">
+                      <span class="font-bold text-orange-700">CTR破冰</span>、<span class="font-bold text-orange-700">3天生死线</span>、<span class="font-bold text-red-600">50%断崖衰退</span>、每<span class="font-bold text-orange-700">3-5天批次衔接</span>、压舱石不轻易动。
+                    </p>
+                    <div class="flex flex-wrap">
+                      <span class="keyword-tag kw-orange">CTR破冰</span>
+                      <span class="keyword-tag kw-orange">3天生死线</span>
+                      <span class="keyword-tag kw-red">50%断崖</span>
+                      <span class="keyword-tag kw-orange">3-5天衔接</span>
+                      <span class="keyword-tag kw-green">压舱石</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 核心金句 -->
+            <div class="summary-box mt-8">
+              <div class="text-center">
+                <div style="font-size:clamp(28px,5vw,42px);font-weight:800;color:#f9e79f;letter-spacing:4px;text-shadow:0 2px 20px rgba(249,231,159,0.3);">看懂 · 判断 · 做到</div>
+                <p style="color:rgba(255,255,255,0.85);font-size:15px;line-height:2;margin-top:20px;">
+                  爆款的生命周期有限，但爆款的「结构」可以无限复用<br>
+                  把精力从"堆数量"转到"磨质量"上，回报更长期
+                </p>
+                <div class="mt-6 inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                  <span style="font-size:14px;font-weight:700;color:#a7f3d0;letter-spacing:2px;">铺面 · 提质 · 孵化 · 衔接</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 源文件跳转 -->
+            <a href="三个模块一句话回顾_总结.html" target="_blank" class="source-link-btn">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 查看完整原版：三个模块一句话回顾·总结
+            </a>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="mt-16 pt-8 border-t border-emerald-100 text-center text-xs text-slate-400">
+      <p>爆款素材方法论四大模块 · 对外分享版 © 2026</p>
+      <p class="mt-1">铺面 · 提质 · 孵化 · 衔接</p>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function switchFolder(folderId, tabElement) {
+      // 隐藏所有内容
+      const contents = document.querySelectorAll('.folder-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      // 显示目标内容
+      const targetContent = document.getElementById(folderId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+
+      // 左侧导航高亮
+      const leftTabs = document.querySelectorAll('#timeline-tabs button');
+      leftTabs.forEach(tab => {
+        tab.classList.remove('border-emerald-800', 'bg-emerald-50/70', 'shadow-md');
+        tab.classList.add('border-slate-200', 'bg-white');
+        tab.querySelector('span').classList.remove('bg-emerald-800', 'text-white');
+        tab.querySelector('span').classList.add('bg-emerald-100', 'text-emerald-800');
+      });
+
+      tabElement.classList.remove('border-slate-200', 'bg-white');
+      tabElement.classList.add('border-emerald-800', 'bg-emerald-50/70', 'shadow-md');
+      tabElement.querySelector('span').classList.remove('bg-emerald-100', 'text-emerald-800');
+      tabElement.querySelector('span').classList.add('bg-emerald-800', 'text-white');
+
+      // 右侧文件夹Tab同步
+      const rightTabs = document.querySelectorAll('#folder-tab-header .folder-tab');
+      rightTabs.forEach(rt => {
+        rt.classList.remove('active-tab', 'text-forest');
+        rt.classList.add('text-slate-400', 'bg-transparent');
+      });
+
+      let rightTabId = '';
+      if (folderId === 'tab-method') rightTabId = 'tab-indicator-method';
+      else if (folderId === 'tab-data') rightTabId = 'tab-indicator-data';
+      else if (folderId === 'tab-action') rightTabId = 'tab-indicator-action';
+      else if (folderId === 'tab-summary') rightTabId = 'tab-indicator-summary';
+
+      const targetRightTab = document.getElementById(rightTabId);
+      if (targetRightTab) {
+        targetRightTab.classList.remove('text-slate-400', 'bg-transparent');
+        targetRightTab.classList.add('active-tab', 'text-forest');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const defaultBtn = document.getElementById('default-btn');
+      if (defaultBtn) {
+        defaultBtn.classList.remove('border-slate-200', 'bg-white');
+        defaultBtn.classList.add('border-emerald-800', 'bg-emerald-50/70', 'shadow-md');
+        defaultBtn.querySelector('span').classList.remove('bg-emerald-100', 'text-emerald-800');
+        defaultBtn.querySelector('span').classList.add('bg-emerald-800', 'text-white');
+      }
+    });
+
+    // 右侧文件夹Tab点击联动
+    document.getElementById('tab-indicator-method').addEventListener('click', function() {
+      switchFolder('tab-method', document.querySelector('#timeline-tabs button:nth-child(1)'));
+    });
+    document.getElementById('tab-indicator-data').addEventListener('click', function() {
+      switchFolder('tab-data', document.querySelector('#timeline-tabs button:nth-child(2)'));
+    });
+    document.getElementById('tab-indicator-action').addEventListener('click', function() {
+      switchFolder('tab-action', document.querySelector('#timeline-tabs button:nth-child(3)'));
+    });
+    document.getElementById('tab-indicator-summary').addEventListener('click', function() {
+      switchFolder('tab-summary', document.querySelector('#timeline-tabs button:nth-child(4)'));
+    });
+  </script>
+</body>
+</html>
