@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>爆款素材方法论四大模块 · 对外分享版</title>
+  <title>爆款素材方法论五大模块 · 对外分享版</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -280,7 +280,7 @@
           <i data-lucide="sparkles" class="w-3.5 h-3.5 animate-pulse"></i> 对外分享 · 爆款素材方法论
         </div>
         <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-forest leading-tight">
-          素材驱动增长<span class="text-emerald-600">四大模块</span>
+          素材驱动增长<span class="text-emerald-600">五大模块</span>
         </h1>
         <p class="text-slate-600 mt-3 text-sm sm:text-base max-w-2xl font-normal leading-relaxed italic border-l-4 border-emerald-500 pl-4 bg-emerald-50/40 py-2 rounded-r-lg">
           “素材能不能帮你稳定赚钱，取决于三件事：铺够没有、做得够不够好、能不能持续出爆款。这份材料把'为什么重要、怎么判断、怎么持续做、一句话总结'一次讲透。”
@@ -310,7 +310,7 @@
             <i data-lucide="trending-up" class="w-16 h-16"></i>
           </div>
           <h3 class="text-base font-bold flex items-center gap-2 mb-2">
-            <i data-lucide="layers" class="w-4 h-4 text-emerald-300"></i> 四大模块 · 一条主线
+            <i data-lucide="layers" class="w-4 h-4 text-emerald-300"></i> 五大模块 · 一条主线
           </h3>
           <p class="text-xs text-emerald-100/90 leading-relaxed font-light">
             收入靠素材铺面+提点击，竞争靠非重复素材拿独立配额，长期稳定靠爆款能孵化能衔接。
@@ -370,10 +370,22 @@
             </div>
             <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
           </button>
+
+          <!-- Tab 5 -->
+          <button onclick="switchFolder('tab-unique', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">05</span>
+              <div>
+                <span class="text-[11px] text-emerald-700 font-bold block">规则 · 唯一性ID</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">创意唯一性ID 大白话</span>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </button>
         </div>
 
         <div class="bg-emerald-50/50 border border-emerald-200/50 p-5 rounded-2xl text-center">
-          <p class="text-[11px] text-emerald-700 font-bold uppercase tracking-widest mb-1.5">看懂 · 判断 · 做到 · 总结</p>
+          <p class="text-[11px] text-emerald-700 font-bold uppercase tracking-widest mb-1.5">看懂 · 判断 · 做到 · 总结 · 规则</p>
           <p class="text-xs text-slate-500 italic">“爆款的生命周期有限，但爆款的「结构」可以无限复用。”</p>
         </div>
       </section>
@@ -387,6 +399,7 @@
           <div id="tab-indicator-data" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">live-data.html</div>
           <div id="tab-indicator-action" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">lifecycle.view</div>
           <div id="tab-indicator-summary" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">summary.md</div>
+          <div id="tab-indicator-unique" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">unique-id.md</div>
         </div>
 
         <!-- 文件夹内页 -->
@@ -977,13 +990,147 @@
             </a>
           </div>
 
+          <!-- ================================================================ -->
+          <!-- TAB 5: 创意唯一性ID 大白话版本 -->
+          <!-- ================================================================ -->
+          <div id="tab-unique" class="folder-content">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 mb-6">
+              <div>
+                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">MODULE 05 · 规则认知</span>
+                <h2 class="text-xl md:text-2xl font-black text-forest mt-2">创意唯一性 ID 大白话版本</h2>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <i data-lucide="fingerprint" class="w-3.5 h-3.5 text-emerald-600"></i> 规则
+              </div>
+            </div>
+
+            <p style="margin-bottom:16px;color:#3a4a3c;font-size:15px;">平台用<b style="color:#b04a3a;">"创意唯一性ID"</b>来识别你的每一条广告。它由<b style="color:#b04a3a;">5 个关键要素</b>组成——只要其中<b>任意一个不同</b>，平台就认为是两条不同的广告，不会互相抢曝光。</p>
+
+            <!-- 公式可视化 -->
+            <div class="formula-box">
+              <div class="eq">
+                <b>广告身份</b> <span class="arrow">=</span> <span class="highlight">① 谁</span> <span class="arrow">+</span> <span class="highlight">② 投什么</span>(4) <span class="arrow">+</span> <span class="highlight">③ 怎么投</span>(2) <span class="arrow">+</span> <span class="highlight">④ 素材像不像</span> <span class="arrow">+</span> <span class="highlight">⑤ 什么形式</span>
+              </div>
+              <div class="focus-line">
+                5 个要素任意一个不同 → 广告身份就不同 → 同样的素材才会在竞争中互相抢曝光<br>
+                <b>5 类 / 9 项</b> · 全部参与重复判定
+              </div>
+            </div>
+
+            <!-- 影响要素主表 -->
+            <div class="content-card green">
+              <div class="card-header2">
+                <div class="card-num2">1</div>
+                <div>
+                  <div class="card-label2">5 个关键要素 · 一表看懂</div>
+                  <h2>每一类里包含的具体设置项</h2>
+                </div>
+              </div>
+              <table class="data-table">
+                <tr><th>#</th><th>关键要素</th><th>项数</th><th>具体设置项</th><th>"任意一项不同"怎么体现</th></tr>
+                <tr><td><strong>①</strong></td><td>谁</td><td><b>1</b></td><td>客户身份</td><td>平台自动识别，换账户/换主体也不会变</td></tr>
+                <tr><td><strong>②</strong></td><td>投什么</td><td><b>4</b></td><td>营销目的 / 营销对象 / 落地形式+转化路径 / 优化目标</td><td>4 项中任改 1项即变（如优化目标从"点击"→"付费"）</td></tr>
+                <tr><td><strong>③</strong></td><td>怎么投</td><td><b>2</b></td><td>出价策略 / 计费方式</td><td>2 项中任改 1项即变（如计费从"曝光"→"点击"）<br><span style="font-size:11px;color:#b04a3a;">注：出价金额不在认定要素里</span></td></tr>
+                <tr><td><strong>④</strong></td><td>素材像不像</td><td><b>1</b></td><td>素材内容比对</td><td>主视觉/文案明显差异才变；微调语气词、换封面、换序仍算相同</td></tr>
+                <tr><td><strong>⑤</strong></td><td>什么形式</td><td><b>1</b></td><td>创意形式</td><td>横版↔竖版、卡片↔多图等形态变化即变</td></tr>
+                <tr style="background:#f0f7f1;"><td colspan="2" style="font-weight:700;color:#2d6b3e;">合计</td><td style="font-weight:700;color:#2d6b3e;">9</td><td colspan="2" style="font-weight:700;color:#2d6b3e;">5 类要素 · 任意 1项不同 → 广告身份不同</td></tr>
+              </table>
+            </div>
+
+            <!-- 判定表 -->
+            <div class="content-card blue">
+              <div class="card-header2">
+                <div class="card-num2">2</div>
+                <div>
+                  <div class="card-label2">"我做了这个操作，算不算重复？"判定表</div>
+                  <h2>前提：两条广告素材内容完全一致</h2>
+                </div>
+              </div>
+              <table class="data-table">
+                <tr><th>你做了什么</th><th>5 个要素的变化</th><th>广告身份</th><th>算不算重复</th></tr>
+                <tr><td>同素材换账户投</td><td>只换了账户，5个要素全没变</td><td class="hot">没变</td><td class="hot">❌ 算重复</td></tr>
+                <tr><td>改了优化目标</td><td>② 投什么·优化目标 变了</td><td style="color:#27ae60;font-weight:600;">变了</td><td style="color:#27ae60;font-weight:600;">✅ 不算</td></tr>
+                <tr><td>素材只改了一两个字</td><td>④ 素材内容仍高度相似</td><td class="hot">没变</td><td class="hot">❌ 算重复</td></tr>
+                <tr><td>同视频换成竖版</td><td>⑤ 什么形式 变了</td><td style="color:#27ae60;font-weight:600;">变了</td><td style="color:#27ae60;font-weight:600;">✅ 不算</td></tr>
+                <tr><td>出价从50涨到60</td><td>出价金额不在要素里，5个要素全没变</td><td class="hot">没变</td><td class="hot">❌ 算重复</td></tr>
+                <tr><td>换了计费方式</td><td>③ 怎么投·计费方式 变了</td><td style="color:#27ae60;font-weight:600;">变了</td><td style="color:#27ae60;font-weight:600;">✅ 不算</td></tr>
+                <tr><td>换了营销对象</td><td>② 投什么·营销对象 变了</td><td style="color:#27ae60;font-weight:600;">变了</td><td style="color:#27ae60;font-weight:600;">✅ 不算</td></tr>
+              </table>
+            </div>
+
+            <!-- 哪些操作不会带来新身份 -->
+            <div class="content-card orange">
+              <div class="card-header2">
+                <div class="card-num2">3</div>
+                <div>
+                  <div class="card-label2">这些操作不会让你获得"新身份"</div>
+                  <h2>不在认定要素里，不会带来额外曝光机会</h2>
+                </div>
+              </div>
+              <div class="flow-rules">
+                <div class="rule-card good">
+                  <div class="r-title">✅ 会改变广告身份</div>
+                  <div class="r-desc">客户身份（平台自动识别）<br>营销目的 / 营销对象 / 落地形式+转化路径 / 优化目标<br>出价策略 / 计费方式<br>素材内容比对（有明显差异才算）<br>创意形式（横版↔竖版等）</div>
+                </div>
+                <div class="rule-card bad">
+                  <div class="r-title">❌ 不会改变广告身份</div>
+                  <div class="r-desc"><b>换账户</b>（多开账户不增加新身份）<br><b>复制广告</b>（复制粘贴不算新广告）<br><b>换主体</b>（同一品牌多主体还是同一个"你"）<br><b>调出价金额</b>（出价高低不换赛道）<br><b>调定向</b>（地域/年龄/兴趣等人群不换身份）</div>
+                </div>
+              </div>
+              <div class="insight">
+                <strong>为什么这么设计？</strong>平台希望让真正优质的广告拿到公平竞争的机会。靠复制账户、复制广告、调出价来"刷"曝光量的做法，在新规则下不会再带来额外机会。把精力放在打磨差异化素材和深耕优质账户上，回报更长期。
+              </div>
+            </div>
+
+            <!-- 解法 TAB -->
+            <div class="content-card green">
+              <div class="card-header2">
+                <div class="card-num2">4</div>
+                <div>
+                  <div class="card-label2">解法 · 5 类要素各自怎么改</div>
+                  <h2>对每个要素改就能获得"新身份"的具体操作</h2>
+                </div>
+              </div>
+              <table class="data-table">
+                <tr><th>关键要素</th><th>具体设置项</th><th>你可以做什么操作</th><th>备注说明</th></tr>
+                <tr><td><strong>① 谁</strong></td><td>客户身份</td><td>真实增加主体，不要用 hack 手段堆主体</td><td>注意使用差异化主体工商信息（属于 hack 系统行为，会酌情尝试）</td></tr>
+                <tr><td rowspan="4"><strong>② 投什么</strong></td><td>营销目的</td><td>智投二级影响目的：专场放量</td><td style="color:#b04a3a;"><b>保健食品暂不支持</b></td></tr>
+                <tr><td>营销对象</td><td>直播间商品表达</td><td style="color:#b04a3a;"><b>保健食品暂不支持</b></td></tr>
+                <tr><td>落地形式+转化路径</td><td>直播 / 直购 / cid 多链路投放</td><td>选不同承接通道，链路不同即获得新身份</td></tr>
+                <tr><td>优化目标(OG)</td><td>多样化 OG 搭配（下单、下单ROI、24h下单等）</td><td>同一批素材配多种优化目标，每个 OG 算独立身份</td></tr>
+                <tr><td rowspan="2"><strong>③ 怎么投</strong></td><td>出价策略</td><td>自动出价 / 手动出价 切换</td><td>同一素材配不同出价策略，按赛道独立竞争</td></tr>
+                <tr><td>计费方式</td><td>全量通CPA结算 / 全店托管-原生内容加热 / CPA结算开白</td><td>不同计费方式=不同流量商品，独立计量</td></tr>
+                <tr><td><strong>④ 素材像不像</strong></td><td>素材内容比对</td><td>产品动作：引导3.0衍生MAX开关、智投全库智选、AIGC开关、直播实时画面<br>生产动作：客户自制拆新增加素材差异</td><td>改造成本最高但最核心——前3类差异很快被同样素材耗尽，最终看素材本身</td></tr>
+                <tr><td><strong>⑤ 什么形式</strong></td><td>创意形式</td><td>卷形象视频、竖版横版版、同步覆盖横版底存</td><td>同一批素材做竖版+横版+多图等多种形式</td></tr>
+              </table>
+              <div class="insight ok">
+                <strong>使用顺序建议：</strong>先打通 ①②③ 三类的可改项（成本最低、上线最快）；④ 素材是中长期投入；⑤ 形式作为补充覆盖。不建议把力气放在堆主体、堆出价金额上。
+              </div>
+            </div>
+
+            <!-- 对外宣导链接 -->
+            <div class="key-callout" style="text-align:center;">
+              <div class="kc-title">延伸阅读</div>
+              <div class="kc-body">
+                <a href="https://doc.weixin.qq.com/doc/w3_AJwAqgZ-ACcCNGLKmw5qLQO2DwaLn?scode=AJEAIQdfAAoXqqHYJfAY8AIQZXAAw" target="_blank" style="color:#3d6b4f;font-weight:700;text-decoration:underline;">
+                  【腾讯营销】曝光创意唯一性ID投手实操指南 →
+                </a>
+              </div>
+            </div>
+
+            <!-- 源文件跳转 -->
+            <a href="唯一性ID影响因子_萃取版.html" target="_blank" class="source-link-btn">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 查看完整原版：创意唯一性ID 大白话版本
+            </a>
+          </div>
+
         </div>
       </section>
     </main>
 
     <!-- 页脚 -->
     <footer class="mt-16 pt-8 border-t border-emerald-100 text-center text-xs text-slate-400">
-      <p>爆款素材方法论四大模块 · 对外分享版 © 2026</p>
+      <p>爆款素材方法论五大模块 · 对外分享版 © 2026</p>
       <p class="mt-1">铺面 · 提质 · 孵化 · 衔接</p>
     </footer>
   </div>
@@ -1028,6 +1175,7 @@
       else if (folderId === 'tab-data') rightTabId = 'tab-indicator-data';
       else if (folderId === 'tab-action') rightTabId = 'tab-indicator-action';
       else if (folderId === 'tab-summary') rightTabId = 'tab-indicator-summary';
+      else if (folderId === 'tab-unique') rightTabId = 'tab-indicator-unique';
 
       const targetRightTab = document.getElementById(rightTabId);
       if (targetRightTab) {
@@ -1060,6 +1208,9 @@
     });
     document.getElementById('tab-indicator-summary').addEventListener('click', function() {
       switchFolder('tab-summary', document.querySelector('#timeline-tabs button:nth-child(4)'));
+    });
+    document.getElementById('tab-indicator-unique').addEventListener('click', function() {
+      switchFolder('tab-unique', document.querySelector('#timeline-tabs button:nth-child(5)'));
     });
   </script>
 </body>
