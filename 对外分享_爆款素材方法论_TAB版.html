@@ -336,12 +336,12 @@
           </button>
 
           <!-- Tab 2 -->
-          <button onclick="switchFolder('tab-data', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+          <button onclick="switchFolder('tab-unique', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
             <div class="flex items-center gap-3">
               <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">02</span>
               <div>
-                <span class="text-[11px] text-emerald-700 font-bold block">判断 · 数据验证</span>
-                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">直播为例：为啥爆款重要</span>
+                <span class="text-[11px] text-emerald-700 font-bold block">规则 · 唯一性ID</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">创意唯一性ID 大白话</span>
               </div>
             </div>
             <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
@@ -360,12 +360,12 @@
           </button>
 
           <!-- Tab 4 -->
-          <button onclick="switchFolder('tab-unique', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
+          <button onclick="switchFolder('tab-data', this)" class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50/50 shadow-sm flex items-center justify-between group transition-all duration-300">
             <div class="flex items-center gap-3">
               <span class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-200/60 text-emerald-800 font-bold text-xs flex items-center justify-center transition-colors">04</span>
               <div>
-                <span class="text-[11px] text-emerald-700 font-bold block">规则 · 唯一性ID</span>
-                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">创意唯一性ID 大白话</span>
+                <span class="text-[11px] text-emerald-700 font-bold block">判断 · 数据验证</span>
+                <span class="text-xs font-bold text-forest tracking-tight block mt-0.5 group-hover:text-emerald-800">直播为例：为啥爆款重要</span>
               </div>
             </div>
             <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
@@ -385,7 +385,7 @@
         </div>
 
         <div class="bg-emerald-50/50 border border-emerald-200/50 p-5 rounded-2xl text-center">
-          <p class="text-[11px] text-emerald-700 font-bold uppercase tracking-widest mb-1.5">看懂 · 判断 · 做到 · 规则 · 总结</p>
+          <p class="text-[11px] text-emerald-700 font-bold uppercase tracking-widest mb-1.5">看懂 · 规则 · 做到 · 判断 · 总结</p>
           <p class="text-xs text-slate-500 italic">“爆款的生命周期有限，但爆款的「结构」可以无限复用。”</p>
         </div>
       </section>
@@ -396,9 +396,9 @@
         <!-- 文件夹 Tabs -->
         <div class="flex items-end pl-4 overflow-x-auto" id="folder-tab-header">
           <div id="tab-indicator-method" class="folder-tab px-5 py-3.5 text-xs font-bold text-forest active-tab cursor-pointer select-none whitespace-nowrap">methodology.md</div>
-          <div id="tab-indicator-data" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">live-data.html</div>
-          <div id="tab-indicator-action" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">lifecycle.view</div>
           <div id="tab-indicator-unique" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">unique-id.md</div>
+          <div id="tab-indicator-action" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">lifecycle.view</div>
+          <div id="tab-indicator-data" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">live-data.html</div>
           <div id="tab-indicator-summary" class="folder-tab px-5 py-3.5 text-xs font-bold text-slate-400 bg-transparent cursor-pointer select-none whitespace-nowrap">summary.md</div>
         </div>
 
@@ -1290,14 +1290,14 @@
     document.getElementById('tab-indicator-method').addEventListener('click', function() {
       switchFolder('tab-method', document.querySelector('#timeline-tabs button:nth-child(1)'));
     });
-    document.getElementById('tab-indicator-data').addEventListener('click', function() {
-      switchFolder('tab-data', document.querySelector('#timeline-tabs button:nth-child(2)'));
+    document.getElementById('tab-indicator-unique').addEventListener('click', function() {
+      switchFolder('tab-unique', document.querySelector('#timeline-tabs button:nth-child(2)'));
     });
     document.getElementById('tab-indicator-action').addEventListener('click', function() {
       switchFolder('tab-action', document.querySelector('#timeline-tabs button:nth-child(3)'));
     });
-    document.getElementById('tab-indicator-unique').addEventListener('click', function() {
-      switchFolder('tab-unique', document.querySelector('#timeline-tabs button:nth-child(4)'));
+    document.getElementById('tab-indicator-data').addEventListener('click', function() {
+      switchFolder('tab-data', document.querySelector('#timeline-tabs button:nth-child(4)'));
     });
     document.getElementById('tab-indicator-summary').addEventListener('click', function() {
       switchFolder('tab-summary', document.querySelector('#timeline-tabs button:nth-child(5)'));
