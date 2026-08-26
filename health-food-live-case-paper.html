@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>保健食品直播链路放量打法 · 案例长图</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #eef2f7; font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif; color: #1f2937; }
+  .page {
+    width: 1440px;
+    min-height: 900px;
+    margin: 24px auto;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 40%);
+    padding: 28px 32px 32px;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(59,130,246,0.18), transparent 70%);
+    border-radius: 50%;
+  }
+  .page::after {
+    content: "";
+    position: absolute;
+    bottom: -140px; left: -100px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* 标题 */
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    z-index: 2;
+    margin-bottom: 18px;
+  }
+  .header .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+  }
+  .header h1 {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    flex: 1;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .header h1 .hl {
+    color: #fde68a;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  }
+
+  /* 单排长图主容器 */
+  .main-col {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* 区块通用 */
+  .block {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .sec-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sec-title .num {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+    font-size: 15px;
+  }
+  .sec-title h2 { font-size: 18px; color: #1e3a8a; font-weight: 800; }
+  .sec-title .line { flex: 1; height: 1px; background: linear-gradient(90deg, #93c5fd, transparent); }
+
+  /* Section 1 */
+  .intro-text {
+    background: #f1f5ff;
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #1e3a8a;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .compare { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 12px; align-items: stretch; }
+  .compare .col { border-radius: 10px; padding: 14px 16px; border: 1px solid #e5edf7; }
+  .compare .before { background: #f7f8fa; border-color: #e5e7eb; }
+  .compare .after { background: linear-gradient(135deg, #ecfeff, #eff6ff); border-color: #bae6fd; }
+  .compare .col .tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .compare .before .tag { background: #e5e7eb; color: #4b5563; }
+  .compare .after .tag { background: #2563eb; color: #fff; }
+  .compare .col p { font-size: 13px; line-height: 1.7; color: #374151; }
+  .compare .arrow { display: flex; align-items: center; justify-content: center; color: #2563eb; font-size: 24px; font-weight: 800; }
+  .alert {
+    margin-top: 12px;
+    background: #fffbeb;
+    border: 1px dashed #fbbf24;
+    color: #92400e;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 12.5px;
+  }
+
+  /* Section 2 - 直播间案例卡片 */
+  .room-case {
+    border: 1px solid #e5edf7;
+    border-radius: 12px;
+    padding: 14px 16px 16px;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, #ffffff, #f8fbff);
+  }
+  .room-case:last-of-type { margin-bottom: 0; }
+  .room-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .room-rank {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 8px rgba(239,68,68,0.3);
+    flex-shrink: 0;
+  }
+  .room-name { font-size: 15px; font-weight: 800; color: #1e3a8a; }
+  .room-cat { font-size: 11px; color: #fff; background: #2563eb; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+  .room-id { font-size: 11px; color: #94a3b8; }
+  .room-roi { font-size: 11px; font-weight: 800; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+  .room-roi.good { background: #dcfce7; color: #15803d; }
+  .room-roi.bad { background: #fee2e2; color: #b91c1c; }
+  .room-body { display: grid; grid-template-columns: 118px 118px 1fr; gap: 12px; }
+  .room-img {
+    border: 1px dashed #93c5fd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f8fbff;
+    height: 158px;
+    position: relative;
+  }
+  .room-img.mech { border-color: #6ee7b7; background: #f0fdf4; }
+  .room-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .room-img .cap {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(30,58,138,0.78);
+    color: #fff; font-size: 10px; text-align: center; padding: 2px 0;
+    letter-spacing: 0.5px;
+  }
+  .room-img.mech .cap { background: rgba(5,150,105,0.8); }
+  .room-stats { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .room-kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .rk { background: #fff; border: 1px solid #e5edf7; border-radius: 8px; text-align: center; padding: 5px 2px 6px; }
+  .rk .v { font-size: 15px; font-weight: 800; color: #1e3a8a; line-height: 1.15; }
+  .rk .v .u { font-size: 9.5px; color: #64748b; font-weight: 600; margin-left: 1px; }
+  .rk .v.green { color: #059669; }
+  .rk .v.red { color: #dc2626; }
+  .rk .k { font-size: 10px; color: #6b7280; margin-top: 2px; }
+  .room-ext { font-size: 12px; line-height: 1.6; color: #374151; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .room-ext b { color: #1e3a8a; }
+  .ext-visual { background: #eff6ff; border-left: 3px solid #2563eb; padding: 6px 11px; border-radius: 5px; }
+  .ext-mech { background: #f0fdf4; border-left: 3px solid #10b981; padding: 6px 11px; border-radius: 5px; }
+  .ext-tag { font-size: 10.5px; font-weight: 800; color: #2563eb; margin-right: 4px; white-space: nowrap; }
+  .ext-mech .ext-tag { color: #059669; }
+
+  .highlight-title {
+    font-size: 14px; font-weight: 800; color: #1e3a8a;
+    display: flex; align-items: center; gap: 8px;
+    margin: 14px 0 8px;
+  }
+  .highlight-title::before {
+    content: ""; width: 4px; height: 15px;
+    background: linear-gradient(180deg, #2563eb, #06b6d4);
+    border-radius: 3px;
+  }
+
+  /* 图表 + KPI 并排 */
+  .chart-kpi-row { display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px; align-items: stretch; margin-top: 4px; }
+  .chart-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    padding: 10px 14px 6px;
+  }
+  .chart-wrap { height: 200px; position: relative; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .kpi {
+    background: linear-gradient(135deg, #ffffff, #f0f9ff);
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .kpi::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981);
+  }
+  .kpi .num { font-size: 17px; font-weight: 800; color: #2563eb; line-height: 1.2; }
+  .kpi .num .unit { font-size: 11px; color: inherit; margin-left: 2px; }
+  .kpi .num.red { color: #dc2626; }
+  .kpi .num.green { color: #059669; }
+  .kpi .num.orange { color: #ea580c; }
+  .kpi .num.purple { color: #7c3aed; }
+  .kpi .num.cyan { color: #0891b2; }
+  .kpi .lbl { font-size: 11px; color: #4b5563; margin-top: 4px; line-height: 1.35; }
+
+  /* Section 3 - PCAD 拿量策略 */
+  .pcad-intro {
+    background: linear-gradient(135deg, #f1f5ff, #ecfeff);
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+  }
+  .pcad-intro b { color: #dc2626; }
+  .pcad-kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 14px; }
+  .pkpi {
+    background: linear-gradient(135deg, #ffffff, #f0f9ff);
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 10px 6px 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pkpi::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+  }
+  .pkpi .num { font-size: 21px; font-weight: 800; color: #ea580c; line-height: 1.2; }
+  .pkpi .num .unit { font-size: 12px; color: inherit; margin-left: 1px; }
+  .pkpi .num.blue { color: #2563eb; }
+  .pkpi .num.green { color: #059669; }
+  .pkpi .num.purple { color: #7c3aed; }
+  .pkpi .lbl { font-size: 11px; color: #4b5563; margin-top: 5px; line-height: 1.35; }
+
+  .strategy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .strategy-card {
+    background: #fff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .strategy-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+  }
+  .strategy-card .s-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .strategy-card .s-num {
+    width: 24px; height: 24px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff; font-weight: 800; font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .strategy-card h4 { font-size: 14px; color: #1e3a8a; font-weight: 800; }
+  .strategy-card p { font-size: 12.5px; line-height: 1.7; color: #374151; }
+  .strategy-card p b { color: #1e3a8a; }
+  .strategy-card .s-kpi {
+    margin-top: 8px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #c2410c;
+    display: inline-block;
+  }
+
+  /* Section 4 - 搭建 */
+  .step-block { margin-bottom: 14px; display: flex; flex-direction: column; }
+  .step-block:last-child { margin-bottom: 0; }
+  .step-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .step-head .step-tag {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .step-head .step-tag.blue { background: linear-gradient(135deg, #2563eb, #06b6d4); }
+  .step-head h3 { font-size: 15px; color: #1f2937; font-weight: 700; }
+  .step-head .focus {
+    background: #fee2e2; color: #b91c1c;
+    font-size: 11.5px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px;
+  }
+
+  .substeps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .substep {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .substep .ttl {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    color: #1e3a8a;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e5edf7;
+    line-height: 1.5;
+  }
+  .substep .ttl b { color: #2563eb; margin-right: 4px; font-size: 14px; }
+  .substep .img-box {
+    background: #f9fafb;
+    padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100px;
+    overflow: hidden;
+    flex: 1;
+  }
+  .substep .img-box img { width: 100%; max-height: 110px; object-fit: contain; display: block; }
+
+  .step2-info { margin-bottom: 10px; }
+  .step2-info ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 24px; }
+  .step2-info li {
+    font-size: 12.5px;
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+    color: #374151;
+  }
+  .step2-info li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 0;
+    color: #2563eb; font-weight: 800;
+  }
+  .step2-info li b { color: #1e3a8a; }
+  .step2-info .note {
+    margin-top: 8px;
+    background: #f0fdf4;
+    border-left: 3px solid #10b981;
+    padding: 6px 10px;
+    color: #065f46;
+    font-size: 12px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .step2-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .step2-img-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .step2-img-card .ttl {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    color: #1e3a8a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-bottom: 1px solid #e5edf7;
+    text-align: center;
+  }
+  .step2-img-card .ttl b { color: #2563eb; }
+  .step2-img-card .img-box {
+    background: #f9fafb;
+    padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 150px;
+    max-height: 190px;
+    flex: 1;
+  }
+  .step2-img-card .img-box img { width: 100%; max-height: 180px; object-fit: contain; display: block; }
+
+  /* Section 5 - 海量扶持 */
+  .support-block {
+    background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+    border: 1px solid #fcd34d;
+  }
+  .support-grid { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+  .support-list { display: flex; flex-direction: column; gap: 8px; }
+  .support-item {
+    background: rgba(255,255,255,0.8);
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #78350f;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .support-item .lbl {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 78px;
+    text-align: center;
+  }
+  .support-item b { color: #b45309; }
+
+  .qrcode-box {
+    background: #fff;
+    border: 2px solid #fcd34d;
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(245,158,11,0.15);
+  }
+  .qrcode-box img { width: 110px; height: 110px; display: block; margin: 0 auto 4px; }
+  .qrcode-box .qr-tip { font-size: 11px; color: #78350f; font-weight: 700; line-height: 1.3; }
+  .qrcode-box .qr-tip span { color: #dc2626; }
+
+  /* Section 4 - 妙思爆款素材拆解工作流 */
+  .workflow-intro {
+    background: linear-gradient(135deg, #f0f9ff, #ecfeff);
+    border-left: 4px solid #06b6d4;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #1e3a8a;
+    margin-bottom: 14px;
+  }
+  .workflow-intro b { color: #dc2626; }
+  .workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .workflow-step {
+    background: #fff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .workflow-step::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981);
+  }
+  .ws-head { padding: 12px 14px 8px; display: flex; align-items: center; gap: 8px; }
+  .ws-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 8px rgba(37,99,235,0.3);
+    flex-shrink: 0;
+  }
+  .ws-title { font-size: 14px; font-weight: 800; color: #1e3a8a; line-height: 1.4; flex: 1; }
+  .ws-tag {
+    display: inline-block;
+    font-size: 10.5px; font-weight: 700;
+    padding: 1px 8px; border-radius: 999px;
+    background: #ecfdf5; color: #047857;
+    margin: 0 14px 8px;
+    width: fit-content;
+  }
+  .ws-desc { padding: 0 14px 10px; font-size: 12px; line-height: 1.7; color: #374151; }
+  .ws-desc b { color: #1e3a8a; }
+  .ws-img {
+    background: #f9fafb;
+    border-top: 1px solid #e5edf7;
+    padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 230px; max-height: 280px;
+    overflow: hidden;
+    flex: 1;
+  }
+  .ws-img img { width: 100%; max-height: 260px; object-fit: contain; display: block; border-radius: 6px; }
+  .workflow-loop {
+    margin-top: 12px;
+    background: #fffbeb;
+    border: 1px dashed #fbbf24;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #92400e;
+    text-align: center;
+  }
+  .workflow-loop b { color: #b45309; }
+
+  /* PCAD 截图/价值卡 */
+  .benchmark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+  .bm-card {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 12px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bm-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981);
+  }
+  .bm-tag {
+    display: inline-block;
+    font-size: 10.5px; font-weight: 800;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .bm-card h4 { font-size: 13.5px; color: #1e3a8a; font-weight: 800; margin-bottom: 5px; }
+  .bm-card p { font-size: 12px; line-height: 1.65; color: #374151; }
+  .bm-card p b { color: #dc2626; }
+  .chart-subtitle {
+    font-size: 12px; font-weight: 800; color: #1e3a8a;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .chart-subtitle::before {
+    content: ""; width: 3px; height: 12px;
+    background: linear-gradient(180deg, #2563eb, #06b6d4);
+    border-radius: 2px;
+  }
+  .kpi-col { display: flex; flex-direction: column; }
+  .pcad-twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px; align-items: stretch; }
+  .pcad-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .pcad-col .highlight-title { margin: 0; }
+  .pcad-col .pcad-intro { margin-bottom: 0; }
+  .pcad-col .pcad-flow { margin-bottom: 0; flex: 1; }
+  .pcad-col .pcad-flow img { max-height: 300px; }
+  .pcad-col .pcad-value-grid { grid-template-columns: 1fr; gap: 8px; margin-bottom: 0; }
+  .pcad-flow {
+    background: #fff;
+    border: 1px solid #e5edf7;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .pcad-flow img { width: 100%; max-height: 280px; object-fit: contain; display: block; border-radius: 6px; }
+  .pcad-value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 6px; }
+  .pv-card {
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+    border: 1px solid #86efac;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .pv-tag {
+    display: inline-block;
+    font-size: 10.5px; font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #10b981, #059669);
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .pv-card h4 { font-size: 14px; color: #065f46; font-weight: 800; margin-bottom: 6px; }
+  .pv-card p { font-size: 12.5px; line-height: 1.7; color: #1f2937; }
+  .pv-card p b { color: #047857; }
+
+  /* Section 5 - 微信小店 9 月中秋大促 */
+  .promo-block { background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border: 1px solid #fcd34d; }
+  .promo-header {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 6px 16px rgba(239,68,68,0.2);
+  }
+  .promo-header .ph-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .promo-header h3 { font-size: 17px; font-weight: 800; line-height: 1.3; flex: 1; }
+  .promo-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .pm-card {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pm-card .pm-lbl {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .pm-card .pm-val { font-size: 13px; color: #78350f; line-height: 1.5; }
+  .pm-card .pm-val b { color: #b45309; }
+  .promo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .play-card {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .play-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+  }
+  .play-card .pc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .play-card .pc-num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff; font-weight: 800; font-size: 12.5px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .play-card h4 { font-size: 14px; color: #1e3a8a; font-weight: 800; line-height: 1.4; }
+  .play-card .pc-sub { font-size: 11px; color: #dc2626; font-weight: 700; margin-bottom: 6px; }
+  .play-card p { font-size: 12px; line-height: 1.65; color: #374151; }
+  .play-card p b { color: #b45309; }
+  .play-card .pc-list { list-style: none; padding: 0; margin-top: 6px; }
+  .play-card .pc-list li {
+    font-size: 11.5px;
+    line-height: 1.6;
+    padding-left: 12px;
+    position: relative;
+    color: #4b5563;
+  }
+  .play-card .pc-list li::before {
+    content: "•";
+    position: absolute; left: 0; top: 0;
+    color: #ef4444; font-weight: 800;
+  }
+  .promo-link {
+    margin-top: 12px;
+    background: #fff;
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #78350f;
+    text-align: center;
+  }
+  .promo-link b { color: #b45309; }
+  .promo-link a { color: #2563eb; text-decoration: none; word-break: break-all; }
+  .promo-link a:hover { text-decoration: underline; }
+
+  .footer { margin-top: 16px; text-align: center; color: #94a3b8; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 标题 -->
+  <div class="header">
+    <div class="badge">行业案例 · 保健食品</div>
+    <h1>新品类组合打法 <span class="hl">7天</span>快速起量，单直播间峰值 <span class="hl">70W+</span></h1>
+    <div class="badge">保健食品 × 直播链路</div>
+  </div>
+
+  <!-- 单排长图主容器 -->
+  <div class="main-col">
+
+    <!-- Section 1 -->
+    <section class="block">
+      <div class="sec-title">
+        <div class="num">1</div>
+        <h2>什么是保健食品直播链路组合打法？</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="intro-text">
+        以<b>直播间为转化载体</b>，妙思AIGC数字人素材 × 单链路智投（全库智选+创意MAX）× 朋友圈九图+PCAD版位，三位一体组合放量。
+      </div>
+
+      <div class="compare">
+        <div class="col before">
+          <span class="tag">传统打法</span>
+          <p>实拍素材产能有限、成本高；人工盯盘调价起量慢；版位单一，流量天花板低。</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="col after">
+          <span class="tag">组合打法</span>
+          <p>数字人素材<b style="color:#dc2626;">批量克隆生成</b>；智投托管，创意MAX 开启后条均消耗 <b style="color:#dc2626;">+100%~110%</b>；朋友圈+PCAD 多版位覆盖，PCAD 日消耗 <b style="color:#dc2626;">1w→12w</b>。</p>
+        </div>
+      </div>
+
+      <div class="alert">⚠️ 保健食品广告须通过风控类目资质审核，素材不得涉及疾病预防/治疗功效宣称。</div>
+    </section>
+
+    <!-- Section 2 - 大盘入局基准与最新政策利好 -->
+    <section class="block">
+      <div class="sec-title">
+        <div class="num">2</div>
+        <h2>保健食品直播大盘入局基准与最新政策利好</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="s1-row" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 14px; margin-bottom: 14px;">
+        <div class="intro-text" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: center;">
+          💡 <b>大盘竞争态势：</b>保健食品直播大盘整体呈现<b>高消耗、中ROI、高CPM</b>的竞争态势。近14天<b>日均消耗约100万~120万元</b>，智投渗透率约<b>55%~60%</b>，代表系统智投托管和 AIGC 智能化基建已是行业标配入局共识。
+        </div>
+        <div class="apply-text" style="background: linear-gradient(135deg, #fffbeb, #fef3c7); border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 8px; color: #78350f; font-size: 13px; line-height: 1.7; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;"><span class="apply-tag" style="background:#dc2626; font-size:11px;">⚠️ 强力政策利好</span><b style="color: #b91c1c; font-size: 13.5px;">视频号减肥品类重大政策松绑！</b></div>
+          <span>视频号<b>减肥品类解除品牌等级限制</b>，现已按照敏感品类进行准入管理！高溢价、高转化的肥胖控制类目准入门槛大幅降低，广大商家迎来绝佳的红利期！</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 3 - 三大标杆案例 -->
+    <section class="block">
+      <div class="sec-title">
+        <div class="num">3</div>
+        <h2>三大标杆新品直播间案例</h2>
+        <div class="line"></div>
+      </div>
+
+      <!-- 直播间 1：中老年滋补自营标杆 -->
+      <div class="room-case">
+        <div class="room-head">
+          <div class="room-rank">1</div>
+          <span class="room-name">某中老年滋补自营直播间</span>
+          <span class="room-cat">增强免疫力+增加骨密度</span>
+          <span class="room-id">ID 662528***</span>
+          <span class="room-roi good">ROI 1.4~1.5 · 盈利标杆</span>
+        </div>
+        <div class="room-body">
+          <div class="room-img">
+            <img src="health-food-live-case-paper-assets/room_huangjin.svg" alt="黄金搭档直播间画面" />
+            <div class="cap">直播间画面</div>
+          </div>
+          <div class="room-img mech">
+            <img src="health-food-live-case-paper-assets/mech_huangjin.svg" alt="黄金搭档商品机制" />
+            <div class="cap">商品机制图</div>
+          </div>
+          <div class="room-stats">
+            <div class="room-kpis">
+              <div class="rk"><div class="v red">35~40<span class="u">万</span></div><div class="k">峰值日消耗（8/20）</div></div>
+              <div class="rk"><div class="v green">1.4~1.5</div><div class="k">下单ROI</div></div>
+              <div class="rk"><div class="v">240~250<span class="u">元</span></div><div class="k">客单价</div></div>
+              <div class="rk"><div class="v">5.5~6<span class="u">%</span></div><div class="k">CTR</div></div>
+              <div class="rk"><div class="v">3.5~4<span class="u">%</span></div><div class="k">CVR</div></div>
+              <div class="rk"><div class="v">320~340<span class="u">元</span></div><div class="k">CPM</div></div>
+            </div>
+            <div class="room-ext">
+              <div class="ext-visual"><span class="ext-tag">盈利标杆解析</span>老牌中老年滋补场景+蓝帽背书，AIGC数字人素材 CTR <b>5.5%~6%</b>，约为大盘均值的 <b>1.8~1.9 倍</b>；朋友圈+PCAD 双版位均稳健盈利，ROI <b>1.4~1.5</b>，是组合打法的盈利基本盘。</div>
+              <div class="ext-mech"><span class="ext-tag">机制延展</span>洋参牦牛骨粉<b>240元+高客单</b>（约为行业均值的 <b>2.8~2.9 倍</b>）礼盒装，"增强免疫+骨密度"双功能宣称，峰值日单日 <b>35万+</b>。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 直播间 2：仁博药房 -->
+      <div class="room-case">
+        <div class="room-head">
+          <div class="room-rank">2</div>
+          <span class="room-name">某三高调理药房直播间</span>
+          <span class="room-cat">调节三高-血脂</span>
+          <span class="room-id">ID 816116***</span>
+          <span class="room-roi bad">ROI ~1.0 · 起量标杆</span>
+        </div>
+        <div class="room-body">
+          <div class="room-img">
+            <img src="health-food-live-case-paper-assets/room_renbo.svg" alt="仁博药房直播间画面" />
+            <div class="cap">直播间画面</div>
+          </div>
+          <div class="room-img mech">
+            <img src="health-food-live-case-paper-assets/mech_renbo.svg" alt="仁博药房商品机制" />
+            <div class="cap">商品机制图</div>
+          </div>
+          <div class="room-stats">
+            <div class="room-kpis">
+              <div class="rk"><div class="v red">70万+</div><div class="k">峰值日消耗（8/23）</div></div>
+              <div class="rk"><div class="v">0.95~1.0</div><div class="k">下单ROI</div></div>
+              <div class="rk"><div class="v">80~90<span class="u">元</span></div><div class="k">客单价</div></div>
+              <div class="rk"><div class="v">4.5~5<span class="u">%</span></div><div class="k">CTR</div></div>
+              <div class="rk"><div class="v green">5.5~6<span class="u">%</span></div><div class="k">CVR 三大之首</div></div>
+              <div class="rk"><div class="v">200~210<span class="u">元</span></div><div class="k">CPM</div></div>
+            </div>
+            <div class="room-ext">
+              <div class="ext-visual"><span class="ext-tag">画面延展</span>药房药师专业人设信任感强，<b>CVR 5.5%+</b> 为三大直播间之首；智投 <b>100% 渗透</b>+全库智选开启，条均消耗 6800 元+。</div>
+              <div class="ext-mech"><span class="ext-tag">机制延展</span>银杏叶片<b>"拍一发二"</b>+80元级低客单引流；所在血脂类目环比<b>接近翻倍（≈+100%）</b>，单日爆发 <b>70万+</b>。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 直播间 3：平台级大健康营养标杆 -->
+      <div class="room-case">
+        <div class="room-head">
+          <div class="room-rank">3</div>
+          <span class="room-name">某平台级大健康营养直播间</span>
+          <span class="room-cat">增强免疫力</span>
+          <span class="room-id">ID 703601***</span>
+          <span class="room-roi good">ROI 1.2~1.3 · 潜力标杆</span>
+        </div>
+        <div class="room-body">
+          <div class="room-img">
+            <img src="health-food-live-case-paper-assets/room_jdh.svg" alt="JDH京东健康直播间画面" />
+            <div class="cap">直播间画面</div>
+          </div>
+          <div class="room-img mech">
+            <img src="health-food-live-case-paper-assets/mech_jdh.svg" alt="JDH京东健康商品机制" />
+            <div class="cap">商品机制图</div>
+          </div>
+          <div class="room-stats">
+            <div class="room-kpis">
+              <div class="rk"><div class="v red">9~10<span class="u">万</span></div><div class="k">峰值日消耗（8/25）</div></div>
+              <div class="rk"><div class="v green">1.2~1.3</div><div class="k">下单ROI</div></div>
+              <div class="rk"><div class="v">300~310<span class="u">元</span></div><div class="k">客单价 最高</div></div>
+              <div class="rk"><div class="v">1.2~1.3<span class="u">%</span></div><div class="k">CTR</div></div>
+              <div class="rk"><div class="v">~2<span class="u">%</span></div><div class="k">CVR</div></div>
+              <div class="rk"><div class="v green">50~60<span class="u">元</span></div><div class="k">CPM 最低</div></div>
+            </div>
+            <div class="room-ext">
+              <div class="ext-visual"><span class="ext-tag">潜力标杆解析</span>平台官方大号背书，<b>CPM 50~60元</b>处于低位，PCAD 版位 CTR 高达 <b>11%+</b>；客单 300元+、AIGC 渗透约 1%，属于素材蓝海，组合打法下增长释放弹性最大。</div>
+              <div class="ext-mech"><span class="ext-tag">机制延展</span>蛋白粉600g<b>礼盒装 300元+</b>高客单；创意MAX 开启后条均 5800 元+（<b>提升 3 倍+</b>）；AIGC 渗透约 1%，素材蓝海待挖掘。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="chart-kpi-row">
+        <div class="chart-card">
+          <div class="chart-subtitle">新品类组合打法 · 7 天快速起量曲线</div>
+          <div class="chart-wrap">
+            <canvas id="chart"></canvas>
+          </div>
+        </div>
+        <div class="kpi-col">
+        <div class="chart-subtitle" style="margin-bottom:8px;">行业基准 × 竞争力区间</div>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="num cyan">100~120<span class="unit"> 万/日</span></div>
+            <div class="lbl">大盘区间 · 行业日均消耗</div>
+          </div>
+          <div class="kpi">
+            <div class="num">1.1~1.2</div>
+            <div class="lbl">大盘区间 · 下单ROI</div>
+          </div>
+          <div class="kpi">
+            <div class="num">90~110<span class="unit"> 元</span></div>
+            <div class="lbl">大盘区间 · CPM</div>
+          </div>
+          <div class="kpi">
+            <div class="num">3.0~3.5<span class="unit"> %</span></div>
+            <div class="lbl">大盘区间 · CTR</div>
+          </div>
+          <div class="kpi">
+            <div class="num red">+15~20<span class="unit"> %</span></div>
+            <div class="lbl">竞争力 · 数字人CTR<br/>高于大盘</div>
+          </div>
+          <div class="kpi">
+            <div class="num purple">+100~110<span class="unit"> %</span></div>
+            <div class="lbl">竞争力 · 创意MAX<br/>条均消耗提升</div>
+          </div>
+          <div class="kpi">
+            <div class="num green">≈+100<span class="unit"> %</span></div>
+            <div class="lbl">竞争力 · 血脂类目<br/>环比增速</div>
+          </div>
+          <div class="kpi">
+            <div class="num orange">55~60<span class="unit"> %</span></div>
+            <div class="lbl">大盘区间 · 智投渗透率</div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 - PCAD 拿量策略 -->
+    <section class="block">
+      <div class="sec-title">
+        <div class="num" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">3</div>
+        <h2>PCAD 版位拿量策略 · 黄金搭档标杆案例</h2>
+        <div class="line" style="background: linear-gradient(90deg, #fcd34d, transparent);"></div>
+      </div>
+
+      <div class="pcad-intro">
+        <b>客户投放：</b>投放 PCAD（腾讯平台与内容媒体）期间，每日基建水平 <b>3000+</b>，搭配 PCAD 拿量策略，PCAD 日消耗 <b>1w → 12w</b>；下单 ROI 基本持平大盘，退货率优于大盘。
+      </div>
+
+      <div class="pcad-kpis">
+        <div class="pkpi">
+          <div class="num">1w→12w</div>
+          <div class="lbl">PCAD 日消耗</div>
+        </div>
+        <div class="pkpi">
+          <div class="num">3000+</div>
+          <div class="lbl">每日基建水平</div>
+        </div>
+        <div class="pkpi">
+          <div class="num">+35<span class="unit"> %+</span></div>
+          <div class="lbl">粗排通过率提升</div>
+        </div>
+        <div class="pkpi">
+          <div class="num">10+</div>
+          <div class="lbl">eCPM 扶持撬动比</div>
+        </div>
+        <div class="pkpi">
+          <div class="num blue">持平</div>
+          <div class="lbl">下单ROI vs 大盘</div>
+        </div>
+        <div class="pkpi">
+          <div class="num green">-12<span class="unit"> %</span></div>
+          <div class="lbl">退货率 vs 微广</div>
+        </div>
+      </div>
+
+      <div class="pcad-twocol">
+        <div class="pcad-col">
+          <div class="highlight-title">智投 · 智能创意「组件全库智选」开启</div>
+          <div class="pcad-intro" style="background: linear-gradient(135deg, #ecfeff, #f0f9ff); border-left-color: #06b6d4;">
+            在投放管理平台 → 智能创意设置中开启「<b>组件全库智选</b>」，系统为广告<b>智能匹配</b>推广产品的优质历史创意组件，搭配 PCAD 拿量策略快速起量。
+          </div>
+          <div class="pcad-flow">
+            <img src="health-food-live-case-paper-assets/pcad_intelligent_creative.png" alt="智投组件全库智选开启示意" />
+          </div>
+          <div class="promo-link" style="margin-top: 2px; text-align: left; border-color: #60a5fa; color: #1e3a8a;">
+            <b>保健食品智投实操指南 →</b> <a href="https://sumiyaliu.github.io/sumiya-public/health-food-zhitou-guide.html" target="_blank">打开《保健食品智投实操指南》</a>
+          </div>
+        </div>
+        <div class="pcad-col">
+          <div class="highlight-title">版位 · PCAD 自动衍生直播页 + 更低退货率</div>
+          <div class="pcad-flow">
+            <img src="health-food-live-case-paper-assets/pcad_jump_flow.png" alt="PCAD自动衍生直播页跳转示意" />
+          </div>
+          <div class="pcad-value-grid">
+            <div class="pv-card">
+              <div class="pv-tag">版位优势 ①</div>
+              <h4>自动衍生直播页</h4>
+              <p>PCAD 版位下，用户点击新闻竖版视频广告 → <b>自动拉起微信</b> → 官方页内播放短视频 → <b>一键进入视频号直播间</b>，落地路径短、转化链路顺滑。</p>
+            </div>
+            <div class="pv-card">
+              <div class="pv-tag">版位优势 ②</div>
+              <h4>退货率更低</h4>
+              <p>PCAD 用户为<b>已点开微信</b>的真实活跃用户，购物意图明确，<b>退货率较微广低 12%</b>，人群质量与下单质量双优。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-title">三大拿量策略</div>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="s-head">
+            <div class="s-num">①</div>
+            <h4>召回粗排保送</h4>
+          </div>
+          <p>潜客配置<b>粗排保送</b>，广告优先进入精排竞争，缩短冷启动链路。</p>
+          <span class="s-kpi">配置后粗排通过率提高 35%+</span>
+        </div>
+        <div class="strategy-card">
+          <div class="s-head">
+            <div class="s-num">②</div>
+            <h4>精排扶持</h4>
+          </div>
+          <p><b>eCPM 扶持</b>提升精排通过率，帮助新广告快速拿量、渡过学习期。</p>
+          <span class="s-kpi">扶持期间，撬动比 10+</span>
+        </div>
+        <div class="strategy-card">
+          <div class="s-head">
+            <div class="s-num">③</div>
+            <h4>流量优选</h4>
+          </div>
+          <p>新广告优先跑量至<b>信息流优质场景</b>，助力模型快速学习。</p>
+          <span class="s-kpi">实验组消耗及渗透均优于对照组</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 - 妙思爆款素材拆解工作流 -->
+    <section class="block">
+      <div class="sec-title">
+        <div class="num">4</div>
+        <h2>妙思爆款素材拆解工作流 · 双周迭代</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="workflow-intro">
+        行业运营基于「<b>爆款素材拆解 skill</b>」每 <b>双周</b> 拆解一批行业爆款素材，提炼为「<b>创建同款视频 Skill</b>」草稿，推送至妙思工坊后台供广告主在灵感广场采纳复用。
+      </div>
+
+      <div class="workflow-grid">
+        <div class="workflow-step">
+          <div class="ws-head">
+            <div class="ws-num">1</div>
+            <span class="ws-title">行业爆款素材拆解</span>
+          </div>
+          <span class="ws-tag">双周更新</span>
+          <div class="ws-desc">
+            基于保健食品 / 三高 / 成分解析等品类，行业运营每双周拆解一批跑量爆款，提炼<b>黄金三秒</b>、镜头结构、卖点话术，沉淀为「<b>创建同款视频 Skill</b>」草稿。
+          </div>
+          <div class="ws-img"><img src="health-food-live-case-paper-assets/skill_step1.png" alt="创建同款视频Skill草稿" /></div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="ws-head">
+            <div class="ws-num">2</div>
+            <span class="ws-title">推送妙思工坊后台</span>
+          </div>
+          <span class="ws-tag">工坊分发</span>
+          <div class="ws-desc">
+            行业运营将审核通过的 Skill 草稿推送到<b>妙思共建平台</b>（工坊后台）Skill 库，对全部广告主可见可复用，支持一键转 Demo 并通过开放 API 自动绑定。
+          </div>
+          <div class="ws-img"><img src="health-food-live-case-paper-assets/skill_step2.png" alt="妙思工坊Skill列表" /></div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="ws-head">
+            <div class="ws-num">3</div>
+            <span class="ws-title">灵感广场采纳</span>
+          </div>
+          <span class="ws-tag">广告主采纳</span>
+          <div class="ws-desc">
+            广告主在妙思<b>视频生成页</b>/<b>技能广场</b>中浏览技能（如清洁用品夸张对比、皮带、微缩世界），一键采纳行业爆款方法论，结合自家商品快速生产同款素材。
+          </div>
+          <div class="ws-img"><img src="health-food-live-case-paper-assets/skill_step3.png" alt="视频生成+技能广场" /></div>
+        </div>
+      </div>
+
+      <div class="workflow-loop">
+        <b>每双周一轮闭环：</b>行业爆款 → Skill 沉淀 → 工坊分发 → 灵感广场采纳 → 广告主生产同款素材
+      </div>
+      <div class="promo-link" style="margin-top: 12px; border-color: #06b6d4; color: #1e3a8a;">
+        <b>保健食品爆款素材双周报 →</b> <a href="https://sumiyaliu.github.io/sumiya-public/creative-biweekly-report-0802.html" target="_blank">查看《保健食品创意双周报》与最新爆款素材拆解</a>
+      </div>
+    </section>
+
+    <!-- Section 5 - 微信小店 9 月中秋大促 -->
+    <section class="block promo-block">
+      <div class="sec-title">
+        <div class="num" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">5</div>
+        <h2 style="color:#b45309;">微信小店 9 月中秋大促活动通知 🎁</h2>
+        <div class="line" style="background: linear-gradient(90deg, #fcd34d, transparent);"></div>
+      </div>
+
+      <div class="promo-header">
+        <div class="ph-icon">🥮</div>
+        <h3>9 月金秋大促 · 中秋专场 · 跟 618 相似 + 新增主播分享券玩法</h3>
+      </div>
+
+      <div class="promo-meta">
+        <div class="pm-card">
+          <span class="pm-lbl">报名时间</span>
+          <span class="pm-val">8月25日 <b>14:00</b> 开始</span>
+        </div>
+        <div class="pm-card">
+          <span class="pm-lbl">活动时间</span>
+          <span class="pm-val"><b>2026/9/4 - 9/27</b>（分享券激励 9/10 上线）</span>
+        </div>
+      </div>
+
+      <div class="promo-grid">
+        <div class="play-card">
+          <div class="pc-head">
+            <div class="pc-num">1</div>
+            <h4>跨店满减补贴</h4>
+          </div>
+          <div class="pc-sub">混资 + 全资</div>
+          <p>平台出资 + 商户出资组合，<b>跨店满减</b>补贴玩法，覆盖大促核心流量场景。</p>
+        </div>
+
+        <div class="play-card">
+          <div class="pc-head">
+            <div class="pc-num">2</div>
+            <h4>直播大场及跃迁激励</h4>
+          </div>
+          <div class="pc-sub">参加玩法 1 后可报名</div>
+          <p>激励构成三段式：</p>
+          <ul class="pc-list">
+            <li><b>基础激励：</b>按 GMV 阶梯比例</li>
+            <li><b>叠加激励：</b>跨店满减商品 GMV 占比 ≥ 50% 额外获得</li>
+            <li><b>首次跃迁激励：</b>单日支付 GMV 首次突破特定门槛</li>
+          </ul>
+        </div>
+
+        <div class="play-card">
+          <div class="pc-head">
+            <div class="pc-num">3</div>
+            <h4>主播分享券激励</h4>
+          </div>
+          <div class="pc-sub">🆕 新增玩法</div>
+          <p>参与玩法 2 并审核通过后，<b>自动生成</b>主播分享券入口：</p>
+          <ul class="pc-list">
+            <li>商家/带货者将平台出资的<b>满减券</b>分享至<b>微信群聊/单聊</b></li>
+            <li>用户领取后用于<b>发券者</b>的店铺/橱窗，私域反哺直播</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="promo-link">
+        <b>9 月金秋大促官方通知 →</b> <a href="https://store.weixin.qq.com/chengzhang/webdoc/wiki/9831/794263a6ea08b6bb/growth_center_platform_notice/2?bpath=%252Fnotice" target="_blank">store.weixin.qq.com/chengzhang/webdoc/wiki/9831/794263a6ea08b6bb</a>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="footer">保健食品直播链路 · 行业案例长图 · 数据周期 2026/08/12-08/25 · Confidential</div>
+</div>
+
+<script>
+  const ctx = document.getElementById('chart').getContext('2d');
+
+  const grad1 = ctx.createLinearGradient(0, 0, 0, 200);
+  grad1.addColorStop(0, 'rgba(37, 99, 235, 0.35)');
+  grad1.addColorStop(1, 'rgba(37, 99, 235, 0.02)');
+
+  const grad2 = ctx.createLinearGradient(0, 0, 0, 200);
+  grad2.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
+  grad2.addColorStop(1, 'rgba(16, 185, 129, 0.02)');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['8/20','8/21','8/22','8/23','8/24'],
+      datasets: [
+        {
+          label: '单直播间日消耗（万元）',
+          data: [2.6, 14.3, 42.7, 71.0, 26.2],
+          borderColor: '#10b981',
+          backgroundColor: grad2,
+          borderWidth: 3,
+          tension: 0.35,
+          fill: true,
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#10b981',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 18 } },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'end',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            font: { size: 11, weight: '600' },
+            color: '#1f2937',
+            boxWidth: 8,
+            padding: 8
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(30,58,138,0.95)',
+          padding: 10,
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} 万`
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#6b7280',
+            font: { size: 10 },
+            callback: (v) => v + '万'
+          },
+          grid: { color: 'rgba(148,163,184,0.18)' }
+        },
+        x: {
+          ticks: { color: '#374151', font: { weight: '700', size: 10 } },
+          grid: { display: false }
+        }
+      },
+      animation: { duration: 900 }
+    },
+    plugins: []
+  });
+</script>
+</body>
+</html>

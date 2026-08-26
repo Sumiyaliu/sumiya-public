@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 128" width="96" height="128">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eff6ff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient></defs>
+  <rect width="96" height="128" rx="6" fill="url(#g)"/>
+  <rect x="5" y="5" width="86" height="118" rx="4" fill="none" stroke="#93c5fd" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="48" y="26" text-anchor="middle" font-size="8.5" fill="#2563eb" font-weight="700">直播画面 · 已脱敏</text>
+  <text x="48" y="56" text-anchor="middle" font-size="8.5" fill="#1e3a8a" font-weight="700">某增强免疫力</text>
+  <text x="48" y="68" text-anchor="middle" font-size="8.5" fill="#1e3a8a" font-weight="700">类直播间</text>
+  <text x="48" y="88" text-anchor="middle" font-size="7" fill="#64748b">平台大号背书</text>
+  <text x="48" y="100" text-anchor="middle" font-size="7" fill="#64748b">礼盒装高客单</text>
+</svg>

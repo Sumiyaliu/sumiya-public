@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="400" height="280">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#ecfeff"/></linearGradient></defs>
+  <rect width="400" height="280" rx="8" fill="url(#g)"/>
+  <rect x="8" y="8" width="384" height="264" rx="6" fill="none" stroke="#93c5fd" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="200" y="120" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="700">搭建截图占位（步骤二 · 版位）</text>
+  <text x="200" y="145" text-anchor="middle" font-size="11" fill="#64748b">朋友圈九图（WXAD）+ PCAD 展示位勾选</text>
+  <text x="200" y="230" text-anchor="middle" font-size="10" fill="#94a3b8">提供真实截图后替换本文件（step2b.svg）</text>
+</svg>
