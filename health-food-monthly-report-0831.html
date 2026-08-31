@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保健食品 8月整体分析报告 | 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+<style>
+:root {
+  --bg: #f5f7fa; --card: #ffffff; --header: #14213d; --text: #212529; --muted: #6c757d;
+  --pos: #2a9d6f; --neg: #d64550; --gap: 16px; --radius: 10px;
+  --c1: #4C72B0; --c2: #DD8452; --c3: #55A868; --c4: #C44E52; --c5: #8172B3;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { max-width: 1280px; margin: 0 auto; padding: var(--gap); }
+.hero { background: linear-gradient(135deg, #14213d 0%, #1d3557 60%, #2a5d8f 100%); color: #fff; border-radius: var(--radius); padding: 32px 36px; margin-bottom: var(--gap); position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; right: -60px; top: -60px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
+.hero h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
+.hero .sub { margin-top: 8px; font-size: 13px; opacity: 0.85; }
+.hero .tags { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+.hero .tag { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); padding: 4px 14px; border-radius: 999px; font-size: 12.5px; }
+.section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; margin: 26px 0 14px; }
+.section-title .bar { width: 5px; height: 20px; background: var(--c1); border-radius: 3px; }
+.section-title .no { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 1px; }
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--gap); }
+.kpi { background: var(--card); border-radius: var(--radius); padding: 18px 20px; box-shadow: 0 1px 3px rgba(16,24,40,0.07); border-top: 3px solid var(--c1); }
+.kpi:nth-child(2) { border-top-color: var(--c2); } .kpi:nth-child(3) { border-top-color: var(--c3); }
+.kpi:nth-child(4) { border-top-color: var(--c4); } .kpi:nth-child(5) { border-top-color: var(--c5); }
+.kpi:nth-child(6) { border-top-color: #937860; }
+.kpi .lab { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+.kpi .val { font-size: 26px; font-weight: 700; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.kpi .note { font-size: 12px; color: var(--muted); }
+.kpi .note.up { color: var(--pos); font-weight: 600; }
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: var(--gap); }
+.chart-card { background: var(--card); border-radius: var(--radius); padding: 20px 22px; box-shadow: 0 1px 3px rgba(16,24,40,0.07); }
+.chart-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; }
+.chart-card .desc { font-size: 12px; color: var(--muted); margin-top: 10px; }
+.chart-wrap { position: relative; height: 300px; }
+.chart-wrap.tall { height: 380px; }
+.callout { background: linear-gradient(135deg, #fff8ed, #fffdf7); border: 1px solid #f3dfb8; border-left: 4px solid #e0a83c; border-radius: var(--radius); padding: 18px 22px; margin: 14px 0 var(--gap); font-size: 14px; }
+.callout b { color: #9a6b10; }
+.table-card { background: var(--card); border-radius: var(--radius); padding: 20px 22px; box-shadow: 0 1px 3px rgba(16,24,40,0.07); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #e9ecef; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0.4px; white-space: nowrap; }
+thead th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody td { padding: 9px 12px; border-bottom: 1px solid #f1f3f5; }
+tbody tr:hover { background: #f8f9fb; }
+tbody tr:last-child td { border-bottom: none; }
+.tname { max-width: 420px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rank { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #eef2f7; font-size: 12px; font-weight: 600; color: var(--muted); }
+tr:nth-child(1) .rank, tr:nth-child(2) .rank, tr:nth-child(3) .rank { background: #14213d; color: #fff; }
+.insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--gap); }
+.insight { background: var(--card); border-radius: var(--radius); padding: 20px 22px; box-shadow: 0 1px 3px rgba(16,24,40,0.07); }
+.insight .no { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; color: #fff; font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+.insight:nth-child(4n+1) .no { background: var(--c1); } .insight:nth-child(4n+2) .no { background: var(--c2); }
+.insight:nth-child(4n+3) .no { background: var(--c3); } .insight:nth-child(4n+4) .no { background: var(--c4); }
+.insight h4 { font-size: 14.5px; margin-bottom: 8px; }
+.insight p { font-size: 13px; color: var(--muted); }
+.pill { display:inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600; vertical-align: 1px; }
+.pill.hot { background: #fdecea; color: var(--neg); }
+.pill.opportunity { background: #e7f6ef; color: var(--pos); }
+.pill.risk { background: #fdf3e3; color: #b07a12; }
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px 0 12px; line-height: 1.8; }
+@media (max-width: 768px) { .hero { padding: 24px; } .chart-grid { grid-template-columns: 1fr; } .tname { max-width: 180px; } }
+@media print { body { background:#fff; } .chart-card,.kpi,.table-card,.insight { box-shadow:none; border:1px solid #e9ecef; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <h1>保健食品 · 2026年8月整体分析报告</h1>
+  <div class="sub">数据周期：2026-08-01 至 2026-08-26 ｜ 数据源：友望数据（500个监测商品）× 内部大盘分析（8月1-25日）｜ 平台：抖音电商</div>
+  <div class="tags">
+    <span class="tag">大盘环比 +65.23%</span>
+    <span class="tag">直播销售占比 82.7%</span>
+    <span class="tag">减肥类目占 58.5%</span>
+    <span class="tag">Top10 贡献 28.5%</span>
+  </div>
+</header>
+
+<div class="section-title"><span class="bar"></span>核心指标一览<span class="no">OVERVIEW</span></div>
+<section class="kpi-row">
+  <div class="kpi"><div class="lab">总销售额（500品）</div><div class="val">7,787.6万</div><div class="note up">大盘8月1-25日 990.1万 · 环比 +65.23%</div></div>
+  <div class="kpi"><div class="lab">总销量</div><div class="val">104.4万件</div><div class="note">达人数 +60.23%</div></div>
+  <div class="kpi"><div class="lab">30天直播销售额</div><div class="val">6,439.5万</div><div class="note up">直播销售占比 82.7%</div></div>
+  <div class="kpi"><div class="lab">客单价中位数</div><div class="val">59.9元</div><div class="note">商品标价均值 90.2元</div></div>
+  <div class="kpi"><div class="lab">关联博主</div><div class="val">1,676个</div><div class="note">平均 3.4个/商品</div></div>
+  <div class="kpi"><div class="lab">关联直播场次</div><div class="val">3,099场</div><div class="note">关联视频仅 12条 · 直播占 99.6%</div></div>
+</section>
+
+<div class="callout">
+  <b>一句话总结：</b>8月保健食品大盘环比 +65.23%，直播驱动占 82.7%，减肥赛道独占 58.5% 形成绝对支柱，30-100元价格带贡献 75% 销售，Top10 商品贡献 28.5%——呈现<b>「强反弹、强直播、强爆品、强头部」</b>四强格局。
+</div>
+
+<div class="section-title"><span class="bar"></span>品类结构分析<span class="no">CATEGORY</span></div>
+<section class="chart-grid">
+  <div class="chart-card">
+    <h3>各品类销售额占比</h3>
+    <div class="chart-wrap"><canvas id="catPie"></canvas></div>
+    <div class="desc">减肥瘦身 298个商品贡献 58.5% 销售额，与大盘口径（58.46%）交叉验证一致，是绝对核心赛道。</div>
+  </div>
+  <div class="chart-card">
+    <h3>各品类销售额与直播占比</h3>
+    <div class="chart-wrap"><canvas id="catBar"></canvas></div>
+    <div class="desc">蓝柱为销售额（万元），折线为该品类直播销售占比——减肥类直播依赖度最高（92.7%）。</div>
+  </div>
+</section>
+
+<div class="table-card" style="margin-top:var(--gap)">
+  <h3 style="font-size:14px;font-weight:600;margin-bottom:12px">品类明细表</h3>
+  <table>
+    <thead><tr><th>品类</th><th class="num">商品数</th><th class="num">销量(件)</th><th class="num">销售额</th><th class="num">销售占比</th><th class="num">直播销售占比</th><th class="num">平均价(元)</th></tr></thead>
+    <tbody><tr>
+      <td>减肥瘦身</td>
+      <td class="num">298</td>
+      <td class="num">671,790</td>
+      <td class="num">4,552.2万</td>
+      <td class="num">58.5%</td>
+      <td class="num">93%</td>
+      <td class="num">68</td>
+    </tr><tr>
+      <td>骨骼/关节</td>
+      <td class="num">25</td>
+      <td class="num">59,775</td>
+      <td class="num">1,038.6万</td>
+      <td class="num">13.3%</td>
+      <td class="num">61%</td>
+      <td class="num">204</td>
+    </tr><tr>
+      <td>其他</td>
+      <td class="num">76</td>
+      <td class="num">127,156</td>
+      <td class="num">866.8万</td>
+      <td class="num">11.1%</td>
+      <td class="num">77%</td>
+      <td class="num">122</td>
+    </tr><tr>
+      <td>血脂/心脑血管</td>
+      <td class="num">11</td>
+      <td class="num">61,192</td>
+      <td class="num">449.1万</td>
+      <td class="num">5.8%</td>
+      <td class="num">75%</td>
+      <td class="num">75</td>
+    </tr><tr>
+      <td>参类</td>
+      <td class="num">29</td>
+      <td class="num">72,238</td>
+      <td class="num">368.5万</td>
+      <td class="num">4.7%</td>
+      <td class="num">69%</td>
+      <td class="num">60</td>
+    </tr><tr>
+      <td>蛋白粉/免疫</td>
+      <td class="num">5</td>
+      <td class="num">10,493</td>
+      <td class="num">220.5万</td>
+      <td class="num">2.8%</td>
+      <td class="num">59%</td>
+      <td class="num">376</td>
+    </tr><tr>
+      <td>护肝</td>
+      <td class="num">8</td>
+      <td class="num">27,924</td>
+      <td class="num">111.7万</td>
+      <td class="num">1.4%</td>
+      <td class="num">87%</td>
+      <td class="num">121</td>
+    </tr><tr>
+      <td>鱼油/心脑血管</td>
+      <td class="num">6</td>
+      <td class="num">2,353</td>
+      <td class="num">85.2万</td>
+      <td class="num">1.1%</td>
+      <td class="num">52%</td>
+      <td class="num">265</td>
+    </tr><tr>
+      <td>辅酶Q10</td>
+      <td class="num">10</td>
+      <td class="num">6,283</td>
+      <td class="num">61.8万</td>
+      <td class="num">0.8%</td>
+      <td class="num">55%</td>
+      <td class="num">77</td>
+    </tr><tr>
+      <td>助眠/睡眠</td>
+      <td class="num">12</td>
+      <td class="num">2,983</td>
+      <td class="num">23.6万</td>
+      <td class="num">0.3%</td>
+      <td class="num">56%</td>
+      <td class="num">91</td>
+    </tr><tr>
+      <td>通便排毒</td>
+      <td class="num">5</td>
+      <td class="num">1,273</td>
+      <td class="num">5.9万</td>
+      <td class="num">0.1%</td>
+      <td class="num">65%</td>
+      <td class="num">89</td>
+    </tr><tr>
+      <td>维生素</td>
+      <td class="num">13</td>
+      <td class="num">791</td>
+      <td class="num">3.5万</td>
+      <td class="num">0.0%</td>
+      <td class="num">52%</td>
+      <td class="num">84</td>
+    </tr><tr>
+      <td>阿胶/补血</td>
+      <td class="num">1</td>
+      <td class="num">31</td>
+      <td class="num">0.2万</td>
+      <td class="num">0.0%</td>
+      <td class="num">30%</td>
+      <td class="num">44</td>
+    </tr><tr>
+      <td>益生菌</td>
+      <td class="num">1</td>
+      <td class="num">12</td>
+      <td class="num">0.1万</td>
+      <td class="num">0.0%</td>
+      <td class="num">0%</td>
+      <td class="num">112</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<div class="section-title"><span class="bar"></span>价格带分析<span class="no">PRICE TIER</span></div>
+<section class="chart-grid">
+  <div class="chart-card">
+    <h3>价格带销售额贡献</h3>
+    <div class="chart-wrap"><canvas id="priceBar"></canvas></div>
+    <div class="desc">30-100元价格带合计贡献 75.4% 销售额，是爆品绝对主流区间。</div>
+  </div>
+  <div class="chart-card">
+    <h3>价格带 × 直播销售占比</h3>
+    <div class="chart-wrap"><canvas id="priceLive"></canvas></div>
+    <div class="desc">价格越低直播依赖越高：0-30元区间直播占 89%，200元+ 仅 51%——高客单需达人深度种草。</div>
+  </div>
+</section>
+
+<div class="section-title"><span class="bar"></span>品牌格局<span class="no">BRAND</span></div>
+<section class="chart-grid">
+  <div class="chart-card">
+    <h3>品牌销售额 Top 15（万元）</h3>
+    <div class="chart-wrap tall"><canvas id="brandBar"></canvas></div>
+    <div class="desc">江中 + 黄金搭档 CR2 达 30%；减肥赛道五强：江中、云南白药、众久、999、多燕瘦；汤臣倍健走高客单礼盒差异化。</div>
+  </div>
+  <div class="chart-card">
+    <h3>热门卖点关键词频次 Top 15</h3>
+    <div class="chart-wrap tall"><canvas id="kwBar"></canvas></div>
+    <div class="desc">"加强版"已覆盖 26% 商品成标配话术；"蓝帽认证"出现 104 次是中老年转化利器。</div>
+  </div>
+</section>
+
+<div class="section-title"><span class="bar"></span>渠道结构：直播为王<span class="no">CHANNEL</span></div>
+<section class="chart-grid">
+  <div class="chart-card">
+    <h3>关联内容形态分布</h3>
+    <div class="chart-wrap"><canvas id="channelPie"></canvas></div>
+    <div class="desc">30天关联直播 3,099场 vs 关联视频 12条——视频种草几乎不起量，销售全部通过直播间成交。</div>
+  </div>
+  <div class="chart-card">
+    <h3>直播 vs 非直播销售额拆分</h3>
+    <div class="chart-wrap"><canvas id="salesSplit"></canvas></div>
+    <div class="desc">直播销售 6,439.5万（82.7%）vs 其他渠道 1,348.1万（17.3%），与大盘口径 82.7% 完全吻合。</div>
+  </div>
+</section>
+
+<div class="section-title"><span class="bar"></span>商品销售榜 Top 20<span class="no">TOP PRODUCTS</span></div>
+<div class="table-card">
+  <table>
+    <thead><tr><th style="width:56px">排名</th><th>商品名称</th><th>价格(元)</th><th class="num">销量(件)</th><th class="num">销售额</th><th class="num">直播销售额</th><th class="num">直播占比</th></tr></thead>
+    <tbody><tr>
+      <td><span class="rank">1</span></td>
+      <td class="tname">黄金搭档洋参牦牛骨粉增强免疫力增加骨密度中老年补品营养品</td>
+      <td>168-179</td>
+      <td class="num">52,284</td>
+      <td class="num">929.4万</td>
+      <td class="num">617.6万</td>
+      <td class="num">66%</td>
+    </tr><tr>
+      <td><span class="rank">2</span></td>
+      <td class="tname">汤臣倍健卓瑞蛋白粉600g礼盒 乳清蛋白质增强免疫力 成人中老年营养品</td>
+      <td>208-396</td>
+      <td class="num">9,388</td>
+      <td class="num">195.3万</td>
+      <td class="num">129.1万</td>
+      <td class="num">66%</td>
+    </tr><tr>
+      <td><span class="rank">3</span></td>
+      <td class="tname">[官方正品] 健尔马红曲人参银杏叶胶囊 0.3g/粒*28粒 改善中老年胆固醇高</td>
+      <td>60-99</td>
+      <td class="num">27,897</td>
+      <td class="num">187.8万</td>
+      <td class="num">104.1万</td>
+      <td class="num">55%</td>
+    </tr><tr>
+      <td><span class="rank">4</span></td>
+      <td class="tname">[调理血脂，拍一发二]敖东牌植物淄醇银杏叶片 0.4g*24 蓝帽认证</td>
+      <td>79</td>
+      <td class="num">20,803</td>
+      <td class="num">164.3万</td>
+      <td class="num">166.6万</td>
+      <td class="num">101%</td>
+    </tr><tr>
+      <td><span class="rank">5</span></td>
+      <td class="tname">【减肥加强版】江中 果疏丽人轻畅颗粒21袋/3盒蓝帽品质 方便 便携-qd2</td>
+      <td>99</td>
+      <td class="num">13,369</td>
+      <td class="num">132.4万</td>
+      <td class="num">129.5万</td>
+      <td class="num">98%</td>
+    </tr><tr>
+      <td><span class="rank">6</span></td>
+      <td class="tname">高压人群选择I万秘堂旗域藏宝牌天麻杜仲叶软胶囊</td>
+      <td>59-59.9</td>
+      <td class="num">22,339</td>
+      <td class="num">132.1万</td>
+      <td class="num">120.0万</td>
+      <td class="num">91%</td>
+    </tr><tr>
+      <td><span class="rank">7</span></td>
+      <td class="tname">【直播专享】999  肥胖人群专用  左旋肉碱丙酮酸钙壳聚糖胶囊</td>
+      <td>59</td>
+      <td class="num">21,516</td>
+      <td class="num">126.9万</td>
+      <td class="num">124.7万</td>
+      <td class="num">98%</td>
+    </tr><tr>
+      <td><span class="rank">8</span></td>
+      <td class="tname">【加强版 减肥】江中果疏丽人轻畅颗粒21袋/3盒冲泡 科学方便便携-qd</td>
+      <td>99</td>
+      <td class="num">12,034</td>
+      <td class="num">119.1万</td>
+      <td class="num">116.4万</td>
+      <td class="num">98%</td>
+    </tr><tr>
+      <td><span class="rank">9</span></td>
+      <td class="tname">（保持身材 控制脂肪）加强版众久茯苓泽泻胶囊 减肥燃脂瘦全身1</td>
+      <td>41.9-49.9</td>
+      <td class="num">23,806</td>
+      <td class="num">118.7万</td>
+      <td class="num">116.2万</td>
+      <td class="num">98%</td>
+    </tr><tr>
+      <td><span class="rank">10</span></td>
+      <td class="tname">多燕瘦 左旋肉碱泽泻胶囊健康减肥塑形控制体内脂肪</td>
+      <td>69.9</td>
+      <td class="num">16,304</td>
+      <td class="num">114.0万</td>
+      <td class="num">106.4万</td>
+      <td class="num">93%</td>
+    </tr><tr>
+      <td><span class="rank">11</span></td>
+      <td class="tname">肥胖人群专用 万秘堂 嫚影荷叶苍术太子参胶囊</td>
+      <td>59-69</td>
+      <td class="num">18,187</td>
+      <td class="num">108.9万</td>
+      <td class="num">119.8万</td>
+      <td class="num">110%</td>
+    </tr><tr>
+      <td><span class="rank">12</span></td>
+      <td class="tname">【加强版 减肥】江中果疏丽人轻畅颗粒21袋/3盒 冲泡 科学方便便携加强版-qd</td>
+      <td>99</td>
+      <td class="num">10,144</td>
+      <td class="num">100.4万</td>
+      <td class="num">98.4万</td>
+      <td class="num">98%</td>
+    </tr><tr>
+      <td><span class="rank">13</span></td>
+      <td class="tname">（保持身材 控制脂肪）加强版众久茯苓泽泻胶囊 减肥燃脂瘦全身</td>
+      <td>59.9</td>
+      <td class="num">15,662</td>
+      <td class="num">93.8万</td>
+      <td class="num">92.4万</td>
+      <td class="num">98%</td>
+    </tr><tr>
+      <td><span class="rank">14</span></td>
+      <td class="tname">加强版蓝帽正品减肥江中果疏丽人轻畅颗粒21袋/3盒 润肠通便方便 便携蓝帽品质-</td>
+      <td>99</td>
+      <td class="num">9,079</td>
+      <td class="num">89.9万</td>
+      <td class="num">87.6万</td>
+      <td class="num">97%</td>
+    </tr><tr>
+      <td><span class="rank">15</span></td>
+      <td class="tname">【云南白药】千草美姿维清丸63g/盒减肥丸减脂瘦身</td>
+      <td>99</td>
+      <td class="num">8,606</td>
+      <td class="num">85.2万</td>
+      <td class="num">68.0万</td>
+      <td class="num">80%</td>
+    </tr><tr>
+      <td><span class="rank">16</span></td>
+      <td class="tname">【云南白药】千草美姿维清丸63g/盒减肥丸减脂瘦身</td>
+      <td>99</td>
+      <td class="num">8,512</td>
+      <td class="num">84.3万</td>
+      <td class="num">82.1万</td>
+      <td class="num">97%</td>
+    </tr><tr>
+      <td><span class="rank">17</span></td>
+      <td class="tname">[长辈送礼]汤臣倍健旗舰96金装鱼油高纯浓度omega3成人DHA深海鱼油软胶囊</td>
+      <td>137-465</td>
+      <td class="num">2,239</td>
+      <td class="num">83.6万</td>
+      <td class="num">44.0万</td>
+      <td class="num">53%</td>
+    </tr><tr>
+      <td><span class="rank">18</span></td>
+      <td class="tname">【三伏加强版】999  肥胖人群专用  左旋肉碱丙酮酸钙壳聚糖胶囊A12</td>
+      <td>48-59</td>
+      <td class="num">14,004</td>
+      <td class="num">82.6万</td>
+      <td class="num">82.0万</td>
+      <td class="num">99%</td>
+    </tr><tr>
+      <td><span class="rank">19</span></td>
+      <td class="tname">[减肥 ]江中果疏丽人轻畅颗粒 7袋/盒 冲泡 科学方便便携-yl</td>
+      <td>99</td>
+      <td class="num">8,154</td>
+      <td class="num">80.7万</td>
+      <td class="num">78.6万</td>
+      <td class="num">97%</td>
+    </tr><tr>
+      <td><span class="rank">20</span></td>
+      <td class="tname">[保护肝损伤】增强免疫力辅助养肝护肝雅博人官方正品蓝帽破壁灵芝孢子粉中老年熬夜</td>
+      <td>39.9</td>
+      <td class="num">20,175</td>
+      <td class="num">80.5万</td>
+      <td class="num">74.0万</td>
+      <td class="num">92%</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<div class="section-title"><span class="bar"></span>关键洞察<span class="no">INSIGHTS</span></div>
+<section class="insight-grid">
+  <div class="insight"><span class="no">1</span><h4>减肥赛道一家独大 <span class="pill hot">红海</span></h4><p>商品数 298个（占59.6%）、销售额占 58.5%。江中以"果疏丽人轻畅颗粒"单品多SKU矩阵霸榜，Top10 中占 4 席。跟随打法＝单商品 3-5 个矩阵号铺中腰部主播。</p></div>
+  <div class="insight"><span class="no">2</span><h4>蓝帽中老年是转化利器 <span class="pill opportunity">机会</span></h4><p>PDF口径蓝帽子类占大盘 51.32%，产品名"蓝帽"出现 104 次。黄金搭档牦牛骨粉单品 929万验证路径，客单可上探至 200元+，送礼+免疫力双卖点。</p></div>
+  <div class="insight"><span class="no">3</span><h4>纯直播驱动型品类 <span class="pill hot">集中</span></h4><p>关联直播 3,099场 vs 视频 12条，直播销售占 82.7%。资源应 100% 投入直播间+直播切片短视频，长视频种草预算ROI低。</p></div>
+  <div class="insight"><span class="no">4</span><h4>高客单走差异化路线 <span class="pill opportunity">机会</span></h4><p>汤臣倍健蛋白粉礼盒（302元/195万）、鱼油礼盒（301元/84万）验证高客单路径：礼盒装+长辈送礼+稀缺原料（虫草、辅酶Q10）。</p></div>
+  <div class="insight"><span class="no">5</span><h4>第二增长曲线品类 <span class="pill opportunity">潜力</span></h4><p>心脑血管（11.99%）稳增，益生菌（4.53%）主打年轻女性"边吃边瘦"，助眠（0.33%）体量小但增速好，护肝（1.4%）瞄准熬夜人群——差异化避开减肥红海。</p></div>
+  <div class="insight"><span class="no">6</span><h4>矩阵号打法成为标配 <span class="pill risk">内卷</span></h4><p>Top10 中 4 组为同商品不同SKU链接（江中、众久等）；"加强版"话术覆盖 26% 商品。不挂"加强"难出量，需警惕同质化竞争加剧。</p></div>
+</section>
+
+<div class="section-title"><span class="bar"></span>行动建议与9月展望<span class="no">ACTIONS</span></div>
+<section class="insight-grid">
+  <div class="insight"><span class="no">①</span><h4>进攻减肥赛道</h4><p>跟随"江中模式"：单商品多SKU矩阵号（3-5个不同后缀链接）铺满中腰部主播，抢头部红利同时吃长尾流量。</p></div>
+  <div class="insight"><span class="no">②</span><h4>押注蓝帽中老年</h4><p>从骨骼/关节（牦牛骨粉、氨糖）切入，配合"送礼+免疫力"双卖点，客单上探 200元+，9月中秋礼盒季提前备货。</p></div>
+  <div class="insight"><span class="no">③</span><h4>拓展第二曲线</h4><p>益生菌/助眠/护肝以"年轻女性+熬夜/失眠"细分场景切入，视频+直播组合投放，差异化避开红海。</p></div>
+  <div class="insight"><span class="no">④</span><h4>9月备货建议</h4><p>开学季+中秋双驱动：备货蛋白粉/鱼油/辅酶Q10礼盒（客单200-400元）；秋养主题加大护肝（灵芝、葛根）、润肺选品；关注"加强版"迭代款。</p></div>
+</section>
+
+<footer>
+  数据来源：友望数据 商品搜索_商品列表（500商品）· 内部保健食品8月分析（2026_8_26）｜ 报告生成：2026-08-27<br>
+  注：直播销售占比&gt;100% 因直播预售/未付款单导致；品类分类基于产品名关键词正则匹配
+</footer>
+</div>
+
+<script>
+const COLORS = ['#4C72B0','#DD8452','#55A868','#C44E52','#8172B3','#937860','#DA8BC3','#8C8C8C','#CCB974','#64B5CD','#4C72B0','#DD8452','#55A868','#C44E52'];
+Chart.defaults.font.family = "-apple-system,'PingFang SC','Microsoft YaHei',sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#6c757d';
+
+const CAT = [{"品类": "减肥瘦身", "商品数": 298, "总销量": 671790, "总销售额": 45522259.7, "直播销售额": 42205453.0, "平均价": 67.6}, {"品类": "骨骼/关节", "商品数": 25, "总销量": 59775, "总销售额": 10385635.4, "直播销售额": 6347973.1, "平均价": 203.8}, {"品类": "其他", "商品数": 76, "总销量": 127156, "总销售额": 8667861.1, "直播销售额": 6675469.4, "平均价": 122.4}, {"品类": "血脂/心脑血管", "商品数": 11, "总销量": 61192, "总销售额": 4491255.0, "直播销售额": 3383271.0, "平均价": 75.3}, {"品类": "参类", "商品数": 29, "总销量": 72238, "总销售额": 3684539.5, "直播销售额": 2540690.8, "平均价": 60.2}, {"品类": "蛋白粉/免疫", "商品数": 5, "总销量": 10493, "总销售额": 2205158.1, "直播销售额": 1302491.4, "平均价": 376.2}, {"品类": "护肝", "商品数": 8, "总销量": 27924, "总销售额": 1116512.1, "直播销售额": 969155.6, "平均价": 121.4}, {"品类": "鱼油/心脑血管", "商品数": 6, "总销量": 2353, "总销售额": 851735.8, "直播销售额": 440694.0, "平均价": 265.2}, {"品类": "辅酶Q10", "商品数": 10, "总销量": 6283, "总销售额": 617586.5, "直播销售额": 339562.1, "平均价": 77.3}, {"品类": "助眠/睡眠", "商品数": 12, "总销量": 2983, "总销售额": 236286.6, "直播销售额": 132826.1, "平均价": 91.1}, {"品类": "通便排毒", "商品数": 5, "总销量": 1273, "总销售额": 58781.6, "直播销售额": 38461.8, "平均价": 88.6}, {"品类": "维生素", "商品数": 13, "总销量": 791, "总销售额": 35342.1, "直播销售额": 18452.2, "平均价": 83.5}, {"品类": "阿胶/补血", "商品数": 1, "总销量": 31, "总销售额": 1502.9, "直播销售额": 449.1, "平均价": 44.4}, {"品类": "益生菌", "商品数": 1, "总销量": 12, "总销售额": 1248.0, "直播销售额": 0.0, "平均价": 111.5}];
+const PT = [{"价格带": "0-30元", "商品数": 7, "总销量": 8698, "总销售额": 293094.2, "直播销售额": 260807.5}, {"价格带": "30-60元", "商品数": 262, "总销量": 514008, "总销售额": 26606544.0, "直播销售额": 23317582.6}, {"价格带": "60-100元", "商品数": 143, "总销量": 393654, "总销售额": 32072729.8, "直播销售额": 28868702.7}, {"价格带": "100-200元", "商品数": 59, "总销量": 103383, "总销售额": 13431803.1, "直播销售额": 9161560.4}, {"价格带": "200元+", "商品数": 29, "总销量": 24551, "总销售额": 5471533.3, "直播销售额": 2786296.4}];
+const BR = [{"品牌": "江中", "商品数": 26, "总销售额": 12331836.0, "总销量": 124564}, {"品牌": "黄金搭档", "商品数": 17, "总销售额": 10892377.1, "总销量": 70214}, {"品牌": "云南白药", "商品数": 27, "总销售额": 5785087.0, "总销量": 58464}, {"品牌": "999", "商品数": 27, "总销售额": 4562058.0, "总销量": 77656}, {"品牌": "众久", "商品数": 10, "总销售额": 4375663.4, "总销量": 82686}, {"品牌": "多燕瘦", "商品数": 9, "总销售额": 3465760.4, "总销量": 49626}, {"品牌": "汤臣倍健", "商品数": 32, "总销售额": 3370985.7399999998, "总销量": 14718}, {"品牌": "万秘堂", "商品数": 3, "总销售额": 2574404.4, "总销量": 43305}, {"品牌": "修正", "商品数": 14, "总销售额": 2292652.6999999997, "总销量": 38314}, {"品牌": "敖东", "商品数": 3, "总销售额": 2285154.0, "总销量": 28926}, {"品牌": "汇仁", "商品数": 24, "总销售额": 2096681.6, "总销量": 42044}, {"品牌": "健尔马", "商品数": 3, "总销售额": 1903809.0, "总销量": 28274}, {"品牌": "华北制药", "商品数": 14, "总销售额": 1657657.0, "总销量": 20477}, {"品牌": "雅博人", "商品数": 4, "总销售额": 1059892.9, "总销量": 26770}, {"品牌": "九芝堂", "商品数": 46, "总销售额": 805051.4000000001, "总销量": 17246}, {"品牌": "仁和", "商品数": 23, "总销售额": 722176.7000000001, "总销量": 12955}, {"品牌": "哈药", "商品数": 7, "总销售额": 688880.55, "总销量": 5633}, {"品牌": "莱特维健", "商品数": 2, "总销售额": 592892.0, "总销量": 4838}, {"品牌": "同仁堂", "商品数": 10, "总销售额": 535795.7, "总销量": 13078}, {"品牌": "红桃K", "商品数": 5, "总销售额": 358488.0, "总销量": 6980}];
+const KW = [["减肥", 250], ["加强版", 131], ["左旋", 106], ["蓝帽", 104], ["正品", 95], ["中老年", 88], ["官方", 57], ["钙", 54], ["肥胖", 52], ["泽泻", 50], ["茯苓", 39], ["辅助降", 35], ["瘦身", 30], ["拍一发", 26], ["免疫力", 24], ["燃脂", 22], ["控制脂肪", 16], ["护肝", 15], ["通便", 14], ["睡眠", 14], ["失眠", 13], ["血脂", 12], ["辅酶Q10", 12], ["褪黑素", 11], ["骨密度", 10], ["润肠通便", 9], ["鱼油", 7], ["银杏叶", 7], ["蛋白粉", 6]];
+
+const catSorted = [...CAT].sort((a,b)=>b.总销售额-a.总销售额);
+const top8 = catSorted.slice(0,8);
+const restSales = catSorted.slice(8).reduce((s,c)=>s+c.总销售额,0);
+new Chart(document.getElementById('catPie'), {
+  type: 'doughnut',
+  data: {
+    labels: [...top8.map(c=>c.品类), '其余合并'],
+    datasets: [{ data: [...top8.map(c=>c.总销售额), restSales], backgroundColor: COLORS.map(c=>c+'CC'), borderColor:'#fff', borderWidth:2 }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, cutout:'58%',
+    plugins: {
+      legend: { position:'right', labels:{ usePointStyle:true, padding:12, boxWidth:8 } },
+      tooltip: { callbacks: { label: (ctx)=> {
+        const total = ctx.dataset.data.reduce((a,b)=>a+b,0);
+        return ' ' + (ctx.parsed/10000).toFixed(1) + '万（' + (ctx.parsed/total*100).toFixed(1) + '%）';
+      }}}
+    }
+  }
+});
+
+const catTop10 = catSorted.slice(0,10);
+new Chart(document.getElementById('catBar'), {
+  data: {
+    labels: catTop10.map(c=>c.品类),
+    datasets: [
+      { type:'bar', label:'销售额(万元)', data: catTop10.map(c=>c.总销售额/10000), backgroundColor:'#4C72B0CC', borderRadius:4, yAxisID:'y' },
+      { type:'line', label:'直播销售占比', data: catTop10.map(c=>c.直播销售额/c.总销售额*100), borderColor:'#DD8452', backgroundColor:'#DD8452', borderWidth:2, tension:0.3, pointRadius:4, yAxisID:'y1' }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    interaction:{ mode:'index', intersect:false },
+    plugins: { legend:{ position:'top', labels:{usePointStyle:true, padding:14} } },
+    scales: {
+      x: { grid:{display:false}, ticks:{maxRotation:35, minRotation:0, font:{size:11}} },
+      y: { beginAtZero:true, title:{display:true, text:'万元'}, grid:{color:'#f0f1f3'} },
+      y1: { position:'right', beginAtZero:true, max:100, grid:{display:false}, ticks:{callback:v=>v+'%'} }
+    }
+  }
+});
+
+new Chart(document.getElementById('priceBar'), {
+  type:'bar',
+  data: {
+    labels: PT.map(p=>p.价格带),
+    datasets: [{ label:'销售额(万元)', data: PT.map(p=>p.总销售额/10000), backgroundColor: ['#8C8C8CCC','#64B5CDCC','#4C72B0CC','#DD8452CC','#C44E52CC'], borderRadius:4 }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins: { legend:{display:false}, tooltip:{ callbacks:{ label:(ctx)=>' '+(ctx.parsed.y*10000/10000).toFixed(1)+'万' } } },
+    scales: { y: { beginAtZero:true, title:{display:true,text:'万元'} }, x:{grid:{display:false}} }
+  }
+});
+
+new Chart(document.getElementById('priceLive'), {
+  type:'bar',
+  data: {
+    labels: PT.map(p=>p.价格带),
+    datasets: [{ label:'直播销售占比', data: PT.map(p=>p.直播销售额/p.总销售额*100), backgroundColor:'#55A868CC', borderRadius:4 }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins: { legend:{display:false}, tooltip:{ callbacks:{ label:(ctx)=>' 直播销售占比 '+ctx.parsed.y.toFixed(1)+'%' } } },
+    scales: { y: { beginAtZero:true, max:100, ticks:{callback:v=>v+'%'} }, x:{grid:{display:false}} }
+  }
+});
+
+const brTop = BR.slice(0,15).reverse();
+new Chart(document.getElementById('brandBar'), {
+  type:'bar',
+  data: {
+    labels: brTop.map(b=>b.品牌),
+    datasets: [{ label:'销售额(万元)', data: brTop.map(b=>b.总销售额/10000), backgroundColor:'#4C72B0CC', borderRadius:4 }]
+  },
+  options: {
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    plugins: {
+      legend:{display:false},
+      tooltip:{ callbacks:{ label:(ctx)=>{
+        const b = brTop[ctx.dataIndex];
+        return [' ' + (b.总销售额/10000).toFixed(1) + ' 万元', '商品数 ' + b.商品数 + ' · 销量 ' + b.总销量.toLocaleString() + '件'];
+      }}}
+    },
+    scales: { x:{ beginAtZero:true, title:{display:true,text:'万元'} }, y:{grid:{display:false}} }
+  }
+});
+
+const kwTop = KW.slice(0,15).reverse();
+new Chart(document.getElementById('kwBar'), {
+  type:'bar',
+  data: {
+    labels: kwTop.map(k=>k[0]),
+    datasets: [{ label:'出现频次', data: kwTop.map(k=>k[1]), backgroundColor:'#8172B3CC', borderRadius:4 }]
+  },
+  options: {
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    plugins: { legend:{display:false}, tooltip:{ callbacks:{ label:(ctx)=>' 出现 '+ctx.parsed.x+' 次 · 覆盖约 '+(ctx.parsed.x/500*100).toFixed(0)+'% 商品' } } },
+    scales: { x:{ beginAtZero:true }, y:{grid:{display:false}} }
+  }
+});
+
+new Chart(document.getElementById('channelPie'), {
+  type:'doughnut',
+  data: {
+    labels: ['30天关联直播（场）', '30天关联视频（条）'],
+    datasets: [{ data: [3099, 12], backgroundColor:['#4C72B0CC','#DD8452CC'], borderColor:'#fff', borderWidth:2 }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, cutout:'58%',
+    plugins: { legend:{ position:'right', labels:{usePointStyle:true, padding:12, boxWidth:8} } }
+  }
+});
+
+new Chart(document.getElementById('salesSplit'), {
+  type:'bar',
+  data: {
+    labels: ['销售额结构'],
+    datasets: [
+      { label:'直播销售 82.7%', data: [6439.5], backgroundColor:'#4C72B0CC', borderRadius:4 },
+      { label:'其他渠道 17.3%', data: [1348.1], backgroundColor:'#CCB974CC', borderRadius:4 }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, indexAxis:'y',
+    scales: { x:{ stacked:true, title:{display:true,text:'万元'} }, y:{ stacked:true, grid:{display:false} } },
+    plugins: { legend:{position:'top', labels:{usePointStyle:true, padding:14}}, tooltip:{ callbacks:{ label:(ctx)=>' '+ctx.parsed.x.toFixed(1)+' 万元' }} }
+  }
+});
+</script>
+</body>
+</html>
