@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蜂王浆品类 · 26H2 选品指南 Onepage</title>
+<style>
+:root{
+  --ink:#1A1A1A; --ink-2:#3D3D3D; --ink-3:#6B6B6B; --ink-4:#9A9A9A;
+  --paper:#FAF6F0; --paper-2:#F3ECE0; --card:#FFFFFF;
+  --crimson:#8B2332; --crimson-deep:#5E1620; --crimson-soft:#F5E6E8;
+  --gold:#B8893C; --gold-soft:#F3E9D6;
+  --jade:#3E6B5E; --jade-soft:#E5EEEA;
+  --line:#E5DDD2; --line-soft:#EFEAE2;
+  --fs-hero:30px; --fs-h1:21px; --fs-h2:15px; --fs-h3:12.5px;
+  --fs-body:11px; --fs-small:10px; --fs-tiny:9px;
+  --sp-xs:4px; --sp-sm:8px; --sp-md:14px; --sp-lg:24px; --sp-xl:40px; --sp-2xl:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:"Songti SC","STSong","Source Han Serif SC","SimSun",serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.7}
+.num,.en,.stat-big,.rank-n{font-family:"Georgia","Times New Roman",serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* —— 顶部刊头 —— */
+.masthead{border-top:4px solid var(--crimson-deep);padding:18px 0 10px;display:flex;justify-content:space-between;align-items:flex-end}
+.masthead .brand{font-size:13px;font-weight:bold;letter-spacing:.18em;color:var(--crimson-deep)}
+.masthead .meta{font-size:var(--fs-tiny);color:var(--ink-4);letter-spacing:.1em;text-align:right;line-height:1.6}
+.masthead .meta b{color:var(--ink-2)}
+
+/* —— 封面区 —— */
+.cover{padding:var(--sp-2xl) 0 var(--sp-xl)}
+.cover .eyebrow{font-size:var(--fs-small);letter-spacing:.34em;color:var(--crimson);text-transform:uppercase;margin-bottom:var(--sp-md)}
+.cover h1{font-size:var(--fs-hero);font-weight:bold;line-height:1.32;letter-spacing:.02em;margin-bottom:var(--sp-md);color:var(--ink)}
+.cover h1 em{font-style:normal;color:var(--crimson-deep)}
+.cover .lede{font-size:13px;color:var(--ink-2);line-height:1.9;max-width:780px;margin-bottom:var(--sp-xl)}
+.cover .lede b{color:var(--crimson-deep)}
+.cover .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--sp-md) 0}
+.cover .meta-grid dt{font-size:var(--fs-tiny);letter-spacing:.16em;color:var(--ink-4);margin-bottom:3px}
+.cover .meta-grid dd{font-size:11px;color:var(--ink);line-height:1.55}
+.cover .meta-grid dd b{color:var(--crimson-deep)}
+
+/* —— 章节通用 —— */
+.sec{padding:var(--sp-xl) 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:var(--sp-lg)}
+.sec-head .n{font-size:24px;font-weight:bold;color:var(--crimson-deep);font-family:"Georgia",serif}
+.sec-head .bar{width:28px;height:1px;background:var(--ink-4)}
+.sec-head .t{font-size:var(--fs-h1);font-weight:bold;letter-spacing:.02em}
+.sec-head .en{margin-left:auto;font-size:var(--fs-small);color:var(--ink-4);letter-spacing:.12em;font-style:italic}
+.sec-sub{font-size:12px;color:var(--ink-2);line-height:1.85;max-width:900px;margin-bottom:var(--sp-lg)}
+.sec-sub b{color:var(--crimson-deep)}
+
+/* —— 品类四格 —— */
+.base-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.base-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--crimson);padding:var(--sp-md) var(--sp-md) var(--sp-md)}
+.base-card .tag{font-size:var(--fs-tiny);letter-spacing:.18em;color:var(--crimson);font-weight:bold;margin-bottom:6px}
+.base-card .ttl{font-size:13px;font-weight:bold;color:var(--ink);margin-bottom:6px}
+.base-card .desc{font-size:var(--fs-body);color:var(--ink-2);line-height:1.7}
+.base-card.gold{border-top-color:var(--gold)} .base-card.gold .tag{color:var(--gold)}
+.base-card.jade{border-top-color:var(--jade)} .base-card.jade .tag{color:var(--jade)}
+
+/* —— 数据卡 —— */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.stat-card{background:var(--card);border:1px solid var(--line);padding:var(--sp-lg) var(--sp-md);position:relative;overflow:hidden}
+.stat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crimson)}
+.stat-card .stat-big{font-size:34px;font-weight:bold;color:var(--crimson-deep);line-height:1;letter-spacing:-.01em}
+.stat-card .stat-unit{font-size:13px;color:var(--ink-3);margin-left:3px}
+.stat-card .stat-label{font-size:var(--fs-body);color:var(--ink-2);margin-top:8px;line-height:1.6}
+.stat-card .stat-src{font-size:var(--fs-tiny);color:var(--ink-4);margin-top:8px;letter-spacing:.04em;border-top:0.5px solid var(--line-soft);padding-top:6px}
+
+/* —— 三轴 —— */
+.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.axis-card{background:var(--card);border:1px solid var(--line);padding:var(--sp-lg) var(--sp-md)}
+.axis-card .axis-n{font-size:var(--fs-tiny);letter-spacing:.2em;color:var(--gold);font-weight:bold}
+.axis-card .axis-t{font-size:15px;font-weight:bold;color:var(--ink);margin:4px 0 var(--sp-sm)}
+.axis-card .row{padding:7px 0;border-bottom:0.5px solid var(--line-soft)}
+.axis-card .row:last-child{border-bottom:0}
+.axis-card .row .k{font-size:var(--fs-tiny);letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase}
+.axis-card .row .v{font-size:var(--fs-body);color:var(--ink);line-height:1.6;margin-top:2px}
+.axis-card .kw{margin-top:var(--sp-sm);display:flex;flex-wrap:wrap;gap:5px}
+.axis-card .kw span{font-size:var(--fs-tiny);background:var(--paper-2);color:var(--ink-2);padding:2px 7px;border-radius:2px}
+.axis-card .kw span.hot{background:var(--crimson-soft);color:var(--crimson-deep);font-weight:bold}
+
+/* —— 榜单 —— */
+.rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.rank-card{background:var(--card);border:1px solid var(--line);padding:var(--sp-md)}
+.rank-card .rank-t{font-size:13px;font-weight:bold;color:var(--crimson-deep);padding-bottom:8px;border-bottom:1.5px solid var(--crimson-deep);margin-bottom:8px;letter-spacing:.04em}
+.rank-card ol{list-style:none;counter-reset:r}
+.rank-card li{counter-increment:r;display:flex;align-items:baseline;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--line-soft);font-size:var(--fs-body)}
+.rank-card li:last-child{border-bottom:0}
+.rank-card li::before{content:counter(r,decimal-leading-zero);font-family:"Georgia",serif;font-size:13px;font-weight:bold;color:var(--gold);min-width:22px}
+.rank-card li .nm{flex:1;color:var(--ink)}
+.rank-card li .dt{font-size:var(--fs-tiny);color:var(--ink-4);font-family:"Georgia",serif}
+.rank-card li.warn .nm{color:var(--ink-3)}
+.rank-card li.warn::before{color:var(--ink-4)}
+.rank-card li .flag{font-size:var(--fs-tiny);background:var(--crimson);color:#fff;padding:1px 5px;border-radius:2px;margin-left:4px}
+.rank-card li .sub{font-size:var(--fs-tiny);color:var(--ink-4);display:block}
+
+/* —— 营销三主线 —— */
+.line-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.line-card{background:var(--card);border:1px solid var(--line);padding:0;overflow:hidden}
+.line-card .lh{padding:var(--sp-md);color:#fff}
+.line-card.l1 .lh{background:var(--crimson-deep)} .line-card.l2 .lh{background:var(--gold)} .line-card.l3 .lh{background:var(--jade)}
+.line-card .lh .ln{font-size:var(--fs-tiny);letter-spacing:.2em;opacity:.8}
+.line-card .lh .lt{font-size:15px;font-weight:bold;margin-top:2px}
+.line-card .lb{padding:var(--sp-md)}
+.line-card .lb .it{padding:6px 0;border-bottom:0.5px solid var(--line-soft);font-size:var(--fs-body)}
+.line-card .lb .it:last-child{border-bottom:0}
+.line-card .lb .it .k{font-size:var(--fs-tiny);letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase}
+.line-card .lb .it .v{color:var(--ink-2);margin-top:2px;line-height:1.6}
+.line-card .lb .it .v b{color:var(--ink)}
+
+/* —— 表格 —— */
+.sku-wrap{overflow-x:auto}
+table.sku{width:100%;border-collapse:collapse;font-size:var(--fs-body)}
+table.sku th,table.sku td{border:0.5px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top;line-height:1.55}
+table.sku thead th{background:var(--crimson-deep);color:#fff;font-size:var(--fs-small);letter-spacing:.06em;font-weight:bold;text-align:center}
+table.sku td.c{text-align:center}
+table.sku .pri{font-weight:bold;font-family:"Georgia",serif}
+.p0{color:var(--crimson)} .p1{color:var(--gold)} .p2{color:var(--jade)} .p3{color:var(--ink-4)}
+tbody tr:hover{background:var(--paper-2)}
+
+/* —— 避坑 —— */
+.pit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.pit-card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--crimson);padding:var(--sp-md)}
+.pit-card .pn{font-size:var(--fs-tiny);letter-spacing:.2em;color:var(--crimson);font-weight:bold}
+.pit-card .pt{font-size:13px;font-weight:bold;color:var(--ink);margin:4px 0 8px;line-height:1.5}
+.pit-card .pd{font-size:var(--fs-body);color:var(--ink-2);line-height:1.75}
+.pit-card .pd b{color:var(--crimson-deep)}
+
+/* —— 图表条 —— */
+.bar-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:var(--fs-body)}
+.bar-row .bl{width:96px;color:var(--ink-2);text-align:right;flex-shrink:0}
+.bar-row .bt{flex:1;height:16px;background:var(--paper-2);position:relative;border-radius:1px}
+.bar-row .bt i{position:absolute;left:0;top:0;bottom:0;background:var(--crimson);border-radius:1px}
+.bar-row .bt i.g{background:var(--gold)} .bar-row .bt i.j{background:var(--jade)} .bar-row .bt i.k{background:var(--ink-3)}
+.bar-row .bv{font-family:"Georgia",serif;font-size:var(--fs-small);color:var(--ink-3);min-width:64px}
+
+.chart-box{background:var(--card);border:1px solid var(--line);padding:var(--sp-md)}
+.chart-box .ct{font-size:var(--fs-h3);font-weight:bold;color:var(--crimson-deep);padding-bottom:6px;border-bottom:0.5px solid var(--line);margin-bottom:var(--sp-sm);letter-spacing:.04em}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);margin:var(--sp-md) 0}
+
+footer.colophon{border-top:4px solid var(--crimson-deep);padding:var(--sp-lg) 0 var(--sp-xl);display:flex;justify-content:space-between;font-size:var(--fs-tiny);color:var(--ink-4);letter-spacing:.08em}
+.footnote{font-size:var(--fs-tiny);color:var(--ink-4);font-style:italic;margin-top:var(--sp-md);line-height:1.7}
+
+@media(max-width:880px){
+  .base-grid,.stat-grid,.axis-grid,.rank-grid,.line-grid,.pit-grid,.cover .meta-grid,.dual{grid-template-columns:1fr}
+  table.sku{font-size:9.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 刊头 -->
+  <div class="masthead">
+    <div class="brand">ROYAL JELLY · BEE PRODUCTS</div>
+    <div class="meta"><b>Vol. 02 / 26H2 Selection Issue</b><br>Category Entry Strategy · Confidential<br>数据来源：友望数据 · 视频号选品库 / 商品搜索（2026.09）</div>
+  </div>
+
+  <!-- 封面 -->
+  <section class="cover">
+    <div class="eyebrow">Category × Product Selection Brief</div>
+    <h1>蜂王浆品类 · <em>26H2 选品指南</em> Onepage</h1>
+    <p class="lede">
+      视频号蜂王浆赛道选品库共 <b>421 款商品</b>（171 家店铺），累计销售额约 <b>598 万元</b>——赛道极度头部化：<b>TOP10 商品贡献 92.9% 销售额</b>，仅 12.6%（53 款）有成交记录，87% 长尾沉寂。品牌端<b>汪氏一家独大（31 款 SKU、52.9% 份额）</b>，打法是"达人专属款 + 直播"：80 款专属款贡献 283 万元（47%）；疆山有礼凭单款<b>果冻状独立包装</b>（1,499–1,999 元）做到 99.7 万，验证"即食化改造"的高溢价空间。形态端，鲜浆/原浆 177 款 vs 冻干片 65 款，但<b>冻干片以 15% 的 SKU 数贡献 45% 销售额</b>；价格端呈双峰——1,000–2,000 元贡献 53%、300–500 元贡献 32%，而 <b>195 款商品挤在 100–300 元仅做出 2.5%</b>，"中间地带"严重塌陷。人群与场景词（中老年 2.2 万、送礼 0.6 万、熬夜 0 万）几乎空白。本指南以"市场信号 → 三维拓品 → 趋势榜单 → 竞品格局 → 营销组合 → SKU 矩阵 → 避坑提示"六步，给出 26H2 进入蜂王浆品类的选品优先级与上市节奏参考。
+    </p>
+    <dl class="meta-grid">
+      <div><dt>RAW · 基底原料</dt><dd>鲜蜂王浆（春浆/头茬），核心指标 <b>王浆酸（10-HDA）≥ 1.8–2.6%</b>，冻干锁鲜技术</dd></div>
+      <div><dt>SKU · 主流形态</dt><dd>鲜浆原浆（250g/500g 瓶装）、冻干片/含片（0.5g）、果冻条装，客单 <b>300–2,000 元</b></dd></div>
+      <div><dt>LABEL · 核心标签</dt><dd>头茬春浆 · 王浆酸 2.2%+ · 液体黄金 · 长寿因子 · 高原/产地直采 · 无添加</dd></div>
+      <div><dt>WINDOW · 机会窗口</dt><dd>中老年日常滋补 · 秋冬进补/节令礼赠 · 熬夜抗疲劳 · 女性养颜（<b>均为表达空白</b>）</dd></div>
+    </dl>
+  </section>
+
+  <!-- 01 市场信号 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">01</span><span class="bar"></span><span class="t">四组关键数据：赛道体量、集中度与渠道结构</span><span class="en">Market Signals</span></div>
+    <p class="sec-sub">蜂王浆是视频号滋补赛道里的<b>"小盘高客单"品类</b>：421 款商品累计成交不足 600 万元，远小于燕窝/蜂蜜，但成交高度依赖直播（近 30 天直播销售额 287 万，占总盘 48%）与达人信任背书（专属款贡献近半）。<b>这是典型的"达人渠道品"而非"货架流量品"</b>——没有主播带，货就动不了；没有形态创新，就只能困在 100–300 元的塌陷带里内卷。</p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div><span class="stat-big">598</span><span class="stat-unit">万元</span></div>
+        <div class="stat-label">选品库 421 款商品（171 店铺）累计销售额；其中 53 款有成交，87% 零成交</div>
+        <div class="stat-src">SOURCE · 友望数据 选品库搜索（截至 2026.09）</div>
+      </div>
+      <div class="stat-card">
+        <div><span class="stat-big">92.9</span><span class="stat-unit">%</span></div>
+        <div class="stat-label">TOP10 商品销售额集中度——头部通吃，比燕窝赛道（TOP20 占 50%）更极端</div>
+        <div class="stat-src">SOURCE · 选品库销售额分布测算</div>
+      </div>
+      <div class="stat-card">
+        <div><span class="stat-big">52.9</span><span class="stat-unit">%</span></div>
+        <div class="stat-label">汪氏品牌份额（31 款、316.4 万），双店铺矩阵 + 达人专属款打法</div>
+        <div class="stat-src">SOURCE · 选品库品牌聚合</div>
+      </div>
+      <div class="stat-card">
+        <div><span class="stat-big">287</span><span class="stat-unit">万</span></div>
+        <div class="stat-label">近 30 天直播销售额（4,749 件），占总盘 48%——直播是绝对主渠道</div>
+        <div class="stat-src">SOURCE · 选品库 30 天直播数据</div>
+      </div>
+    </div>
+
+    <div class="dual">
+      <div class="chart-box">
+        <div class="ct">品牌销售额格局 TOP8 · 单位：万元</div>
+        <div class="bar-row"><span class="bl">汪氏（双店）</span><span class="bt"><i style="width:100%"></i></span><span class="bv">316.4</span></div>
+        <div class="bar-row"><span class="bl">疆山有礼</span><span class="bt"><i class="g" style="width:31.5%"></i></span><span class="bv">99.7</span></div>
+        <div class="bar-row"><span class="bl">百花</span><span class="bt"><i class="j" style="width:28.7%"></i></span><span class="bv">90.7</span></div>
+        <div class="bar-row"><span class="bl">天草极</span><span class="bt"><i class="k" style="width:10.4%"></i></span><span class="bv">32.9</span></div>
+        <div class="bar-row"><span class="bl">滇蜂皇</span><span class="bt"><i class="g" style="width:6%"></i></span><span class="bv">19.1</span></div>
+        <div class="bar-row"><span class="bl">知蜂堂</span><span class="bt"><i class="k" style="width:4.2%"></i></span><span class="bv">13.4</span></div>
+        <div class="bar-row"><span class="bl">青原见山</span><span class="bt"><i class="j" style="width:3.6%"></i></span><span class="bv">11.3</span></div>
+        <div class="bar-row"><span class="bl">霖霖食品</span><span class="bt"><i class="k" style="width:1.1%"></i></span><span class="bv">3.6</span></div>
+      </div>
+      <div class="chart-box">
+        <div class="ct">价格带销售额分布（有效定价 407 款 / 446 万）· 单位：万元</div>
+        <div class="bar-row"><span class="bl">1000–2000元</span><span class="bt"><i style="width:100%"></i></span><span class="bv">237.7</span></div>
+        <div class="bar-row"><span class="bl">300–500元</span><span class="bt"><i class="g" style="width:59%"></i></span><span class="bv">140.5</span></div>
+        <div class="bar-row"><span class="bl">500–1000元</span><span class="bt"><i class="k" style="width:17%"></i></span><span class="bv">41.3</span></div>
+        <div class="bar-row"><span class="bl">&lt;100元</span><span class="bt"><i class="j" style="width:6.6%"></i></span><span class="bv">15.6</span></div>
+        <div class="bar-row"><span class="bl">100–300元</span><span class="bt"><i class="k" style="width:4.6%"></i></span><span class="bv">11.0</span></div>
+        <div class="bar-row"><span class="bl">&gt;2000元</span><span class="bt"><i style="width:0.5%"></i></span><span class="bv">0.0</span></div>
+      </div>
+    </div>
+    <p class="sec-sub">
+      <b>双峰结构与塌陷带</b>：1,000–2,000 元（43 款、53.3%）与 300–500 元（60 款、31.5%）构成两个成交极——前者是汪氏尊耀鲜浆、疆山有礼果冻条、知蜂堂 1,499 元鲜浆所在的高端礼赠带；后者是百花/天草极冻干片的主力装。<b>最大的反常识是 100–300 元：195 款商品（占 SKU 数 46%）合计只做出 11 万元（2.5%）</b>——这是白牌扎堆、无达人背书、无形态差异的"死亡价位"。要么上去做高端信任装，要么下来用 89–150 元鲜浆做单场爆款（青原见山 89 元单场 1,181 件已验证），<b>中间不要停留</b>。
+    </p>
+    <div class="footnote">口径说明：①"累计销售额"为友望选品库商品累计成交口径，非单月；②价格带取商品价格区间中值，剔除锚定虚高价（如 99,999 元挂价）商品 14 款；③直播销售额为近 30 天口径，与累计口径存在时间差。</div>
+  </section>
+
+  <!-- 02 三维拓品框架 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">02</span><span class="bar"></span><span class="t">三维拓品框架：形态 × 场景 × 价位</span><span class="en">Three-Axis Framework</span></div>
+    <p class="sec-sub">蜂王浆品类 SKU 为三轴交点：<b>形态（承载方式）× 场景（消费理由）× 价位（信任层级）</b>。当前市场在"形态"上已跑出两条被验证的路（冻干片、即食果冻条），在"场景"与"人群表达"上近乎空白——<b>破局点不在原料，而在"把液体黄金做方便、讲给谁听"。</b></p>
+    <div class="axis-grid">
+      <div class="axis-card">
+        <div class="axis-n">AXIS 01 / FORM</div>
+        <div class="axis-t">形态轴：从"瓶子"到"片子与条子"</div>
+        <div class="row"><div class="k">主轴现状</div><div class="v">鲜浆/原浆 177 款是绝对多数，但吃冷链、履约重、转化难；<b>冻干片 65 款（15% SKU）贡献 272 万（45%）</b>，常温、便携、好讲卖点</div></div>
+        <div class="row"><div class="k">升级方向</div><div class="v"><b>果冻状独立包装</b>——疆山有礼单款 99.7 万、近乎 100% 直播成交，是形态创新的标杆样本；冻干粉（6 款）尚未起量</div></div>
+        <div class="row"><div class="k">节令客群定向</div><div class="v">秋冬进补季主推冻干片周期装；中秋/年货切条装礼盒；通勤场景切条/含片</div></div>
+        <div class="kw"><span class="hot">冻干片/含片</span><span class="hot">果冻条装</span><span>鲜浆原浆</span><span>冻干粉</span><span class="hot">口服液/复合饮（0 款，空白）</span></div>
+      </div>
+      <div class="axis-card">
+        <div class="axis-n">AXIS 02 / SCENE</div>
+        <div class="axis-t">场景轴：原料词内卷，场景词空白</div>
+        <div class="row"><div class="k">主轴现状</div><div class="v">卖点集中在原料背书：王浆酸含量（39 款、204 万）、头茬/春浆（79 款、190 万）、产地（113 款、146 万）——<b>同质化最重的三张牌</b></div></div>
+        <div class="row"><div class="k">升级方向</div><div class="v"><b>独立包装/便携（20 款、101.7 万）</b>是唯一跑出规模的"使用价值"卖点；"长寿因子/液体黄金"情感话术（7 款、19.1 万）开始出现</div></div>
+        <div class="row"><div class="k">节令客群定向</div><div class="v">中老年日常（仅 2.2 万）→ 秋冬进补；送礼（0.6 万）→ 中秋/年货；熬夜抗疲劳（0）与女性养颜（近 0）→ 全年蓝海</div></div>
+        <div class="kw"><span class="hot">王浆酸含量</span><span class="hot">头茬春浆</span><span class="hot">独立包装/便携</span><span>产地直采</span><span class="hot">熬夜抗疲劳（空白）</span><span class="hot">节令礼赠（空白）</span></div>
+      </div>
+      <div class="axis-card">
+        <div class="axis-n">AXIS 03 / PRICE</div>
+        <div class="axis-t">价位轴：双峰成型，中间塌陷</div>
+        <div class="row"><div class="k">主轴现状</div><div class="v"><b>1,000–2,000 元高端信任装（53.3%）+ 300–500 元主力装（31.5%）</b>双峰；500–1,000 元（9.3%）由汪氏王浆片系列（699–998 元）独守</div></div>
+        <div class="row"><div class="k">升级方向</div><div class="v">100–300 元塌陷带（195 款仅 2.5%）需要"形态+达人"双重改造才有出路；89–150 元鲜浆尝鲜装是直播走量的入场券</div></div>
+        <div class="row"><div class="k">节令客群定向</div><div class="v">节前（中秋/年货）上探 1,000–2,000 礼赠装；平日 300–500 周期装养复购；新客用 89–150 尝鲜款拉直播间转化</div></div>
+        <div class="kw"><span class="hot">1000–2000 信任装</span><span class="hot">300–500 周期装</span><span>89–150 尝鲜装</span><span class="hot">100–300（塌陷，勿停留）</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 趋势榜单 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">03</span><span class="bar"></span><span class="t">三张 TOP8 榜单：形态与卖点即趋势</span><span class="en">Trend Rankings</span></div>
+    <p class="sec-sub">榜单按累计销售额排序，"空白"标记指该方向市场几乎无成交商品。<b>冻干片榜前十被汪氏与百花垄断但集中度尚可（TOP3 内有 28.9 万的云南中蜂单品）</b>，说明片剂赛道仍有单品突围窗口；鲜浆榜则是汪氏的绝对腹地，非头部玩家应避开正面交锋。</p>
+    <div class="rank-grid">
+      <div class="rank-card">
+        <div class="rank-t">冻干片 / 含片 TOP8 · 万元</div>
+        <ol>
+          <li><span class="nm">汪氏 · 晚安王浆片<span class="sub">贺邦老师专属 · 599–99999 元 · 80 款专属款之一</span></span><span class="dt">101.9</span></li>
+          <li><span class="nm">百花 · 紫金系列冻干粉片 0.5g<span class="sub">388–399 元 · 2,270 件 · 视频+直播双轮</span></span><span class="dt">90.2</span></li>
+          <li><span class="nm">天草极 · 云南中蜂蜂王浆冻干片<span class="sub">399 元 · 724 件 · 单场直播全成交</span></span><span class="dt">28.9</span></li>
+          <li><span class="nm">汪氏 · 鎏金时光王浆片 小分子Z<span class="sub">一心/赵老师专属 · 699–998 元</span></span><span class="dt">26.4</span></li>
+          <li><span class="nm">汪氏 · 鎏金时光王浆片（赵老师款）<span class="sub">899–998 元</span></span><span class="dt">13.8</span></li>
+          <li><span class="nm">天草极 · 福林堂人参蜂王浆冻干片<span class="sub">99 元 · 405 件 · 复合成分低价线</span></span><span class="dt">4.0</span></li>
+          <li><span class="nm">霖霖食品 · 蜂王浆冻干粉片 45g<span class="sub">129.9 元 · 无直播纯货架</span></span><span class="dt">3.6</span></li>
+          <li><span class="nm">田野牧蜂 · 藏区头茬蜂王浆片<span class="sub">156–2400 元 · 中老年定向话术</span></span><span class="dt">1.8</span></li>
+        </ol>
+      </div>
+      <div class="rank-card">
+        <div class="rank-t">鲜浆 / 原浆 TOP8 · 万元</div>
+        <ol>
+          <li><span class="nm">汪氏 · 尊耀款鲜浆（曦遥专属）<span class="sub">早春头茬 · 王浆酸&gt;2.22% · 1488–1799 元</span></span><span class="dt">92.6</span></li>
+          <li><span class="nm">汪氏 · 尊耀款鲜浆（无专属标）<span class="sub">1999–99999 元挂价</span></span><span class="dt">50.0</span></li>
+          <li><span class="nm">汪氏 · 尊耀款鲜浆（川川专属）<span class="sub">990–1699 元 · 314 件</span></span><span class="dt">31.3</span></li>
+          <li><span class="nm">知蜂堂 · 新蜂王浆 180g（一翩专属）<span class="sub">男女性滋补头茬 · 1499 元</span></span><span class="dt">10.9</span></li>
+          <li><span class="nm">知蜂堂 · 新蜂王浆 180g（海青专属）<span class="sub">1499 元</span></span><span class="dt">1.2</span></li>
+          <li><span class="nm">知蜂堂 · 新蜂王浆 180g（粉丝专属）<span class="sub">490–499 元 · 低门槛版</span></span><span class="dt">1.0</span></li>
+          <li><span class="nm">蜂跨跃 · 沂蒙山现取原浆 250g<span class="sub">88.9–99.9 元 · 产地现取叙事</span></span><span class="dt">0.8</span></li>
+          <li><span class="nm">大山原蜜 · 现挖现取头茬鲜活王浆<span class="sub">150–306 元</span></span><span class="dt">0.3</span></li>
+        </ol>
+      </div>
+      <div class="rank-card">
+        <div class="rank-t">卖点 / 场景关键词 TOP8 · 万元</div>
+        <ol>
+          <li><span class="nm">王浆酸（10-HDA）含量<span class="sub">39 款 · 硬指标，2.2%+ 成为主流话术</span></span><span class="dt">204.4</span></li>
+          <li><span class="nm">头茬 / 春浆<span class="sub">79 款 · 稀缺性与时令叙事</span></span><span class="dt">189.9</span></li>
+          <li><span class="nm">产地背书（高原/新疆/云南等）<span class="sub">113 款 · 用得最多但转化平平</span></span><span class="dt">146.0</span></li>
+          <li><span class="nm">独立包装 / 便携<span class="sub">20 款 · 唯一起量的使用价值卖点</span></span><span class="dt">101.7</span></li>
+          <li><span class="nm">长寿因子 / 液体黄金<span class="sub">7 款 · 情感话术，开始被验证</span></span><span class="dt">19.1</span></li>
+          <li><span class="nm">女性 / 男女性滋补<span class="sub">11 款 · 人群定向初步尝试</span></span><span class="dt">13.4</span></li>
+          <li><span class="nm">无添加 / 纯天然<span class="sub">17 款 · 品质底线话术</span></span><span class="dt">11.3</span></li>
+          <li><span class="nm">中老年人群 / 送礼 / 熬夜抗疲劳<span class="sub">合计 20 款、不足 3 万 —— </span><span class="flag">空白</span></span><span class="dt">2.8</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 竞品格局 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">04</span><span class="bar"></span><span class="t">竞品格局：五类玩家，五种打法</span><span class="en">Competitive Landscape</span></div>
+    <p class="sec-sub">头部玩家的分工远比份额数字更有参考价值：<b>汪氏用两个店铺、31 款 SKU、80 款专属款中的近半数做"达人矩阵收割"</b>；疆山有礼与天草极证明了"单款爆品 + 单场直播"的以小博大；百花是唯一"视频 + 直播"双轮驱动的品牌；滇蜂皇则是<b>广撒网达播的反面教材</b>。</p>
+    <div class="sku-wrap">
+      <table class="sku">
+        <thead><tr><th>品牌 / 店铺</th><th class="c">SKU 数</th><th class="c">销售额</th><th>分工与打法拆解</th></tr></thead>
+        <tbody>
+          <tr><td><b>汪氏</b>（WangS 汪氏蜜甘甜 + wangs 汪氏臻蜜本源）</td><td class="c">31</td><td class="c"><b>316.4 万</b></td><td>双店分工：蜜甘甜主卖<b>尊耀款鲜浆</b>（990–1,999 元），臻蜜本源主卖<b>晚安/鎏金王浆片</b>（599–998 元）；大量挂"老师专属"链接分达人结算，鲜浆+片剂双形态全价位覆盖，是"达人渠道品"打法的完全体</td></tr>
+          <tr><td><b>疆山有礼</b></td><td class="c">2</td><td class="c">99.7 万</td><td>单款思维极致：<b>花多力蜂王浆果冻状独立包装 150g（5g×30 碗）</b>，1,499–1,999 元高端定价，661 件直播销量几乎 100% 来自 3 场直播（1 位达人）——形态创新 + 高信任单点爆破</td></tr>
+          <tr><td><b>百花</b></td><td class="c">6</td><td class="c">90.7 万</td><td>紫金系列冻干粉片 0.5g/片，388–399 元适中价位，2,270 件为品类销量第一；8 位博主 + 9 场直播 + 短视频分发，<b>品类中唯一"内容双轮"玩家</b>，抗单一渠道波动能力最强</td></tr>
+          <tr><td><b>天草极</b></td><td class="c">2</td><td class="c">32.9 万</td><td>"大小组合"：399 元云南中蜂冻干片（28.9 万）+ 99 元福林堂人参蜂王浆冻干片（4 万）做低价引流款，均靠单场直播爆发，转化效率高但依赖主播档期</td></tr>
+          <tr><td><b>滇蜂皇</b></td><td class="c">4</td><td class="c">19.1 万</td><td><b>反面教材</b>：34 位博主、38 场直播的广撒网铺量，近 30 天直播仅 4,287 元（单场约 113 元）——没有大单品与话术沉淀的达播，量再大也无效</td></tr>
+          <tr><td><b>知蜂堂 / 青原见山</b></td><td class="c">11</td><td class="c">24.2 万</td><td>知蜂堂（老牌）以专属款试水 1,499 元高端鲜浆 + 490 元低门槛版分层；青原见山 89 元井冈山鲜浆靠 1 场直播卖出 1,181 件（10.5 万）——<b>低价鲜浆单场爆款的可行性验证</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sku-wrap" style="margin-top:var(--sp-lg)">
+      <table class="sku">
+        <thead><tr><th class="c">排名</th><th>商品</th><th>店铺</th><th class="c">价格</th><th class="c">销量</th><th class="c">累计销售额</th><th class="c">30天直播额</th><th class="c">形态标签</th></tr></thead>
+        <tbody>
+          <tr><td class="c">01</td><td><b>[贺邦老师专属] 汪氏晚安王浆片</b></td><td>汪氏臻蜜本源</td><td class="c">599–99999</td><td class="c">42</td><td class="c"><b>101.9 万</b></td><td class="c">2.9 万</td><td class="c">含片 · 助眠场景</td></tr>
+          <tr><td class="c">02</td><td><b>新疆花多力蜂王浆 150g（5g×30 碗）果冻状独立包装</b></td><td>疆山有礼</td><td class="c">1499–1999</td><td class="c">665</td><td class="c"><b>99.7 万</b></td><td class="c">99.1 万</td><td class="c">果冻条 · 便携</td></tr>
+          <tr><td class="c">03</td><td><b>[曦遥老师专属] 汪氏尊耀鲜浆 · 头茬 · 王浆酸&gt;2.22%</b></td><td>汪氏蜜甘甜</td><td class="c">1488–1799</td><td class="c">619</td><td class="c">92.6 万</td><td class="c">56.7 万</td><td class="c">鲜浆 · 高端</td></tr>
+          <tr><td class="c">04</td><td><b>[百花] 紫金系列滋补蜂王浆冻干粉片 0.5g/片</b></td><td>百花蜂产品</td><td class="c">388–399</td><td class="c">2270</td><td class="c">90.2 万</td><td class="c">11.4 万</td><td class="c">冻干片 · 周期装</td></tr>
+          <tr><td class="c">05</td><td>早春头茬 [王浆酸&gt;2.22%] 汪氏尊耀款鲜浆</td><td>汪氏蜜甘甜</td><td class="c">1999–99999</td><td class="c">5</td><td class="c">50.0 万</td><td class="c">—</td><td class="c">鲜浆 · 高端</td></tr>
+          <tr><td class="c">06</td><td>[川川老师专属] 汪氏尊耀款鲜浆</td><td>汪氏蜜甘甜</td><td class="c">990–1699</td><td class="c">314</td><td class="c">31.3 万</td><td class="c">18.1 万</td><td class="c">鲜浆 · 高端</td></tr>
+          <tr><td class="c">07</td><td><b>云南中蜂蜂王浆冻干片</b></td><td>天草极</td><td class="c">399</td><td class="c">724</td><td class="c">28.9 万</td><td class="c">28.9 万</td><td class="c">冻干片 · 单场爆款</td></tr>
+          <tr><td class="c">08</td><td>[一心老师专属] 汪氏鎏金时光王浆片 小分子Z</td><td>汪氏臻蜜本源</td><td class="c">699–998</td><td class="c">378</td><td class="c">26.4 万</td><td class="c">23.4 万</td><td class="c">含片 · 中高端</td></tr>
+          <tr><td class="c">09</td><td>[赵老师专属] 汪氏鎏金时光王浆片 小分子Z</td><td>汪氏臻蜜本源</td><td class="c">899–998</td><td class="c">154</td><td class="c">13.8 万</td><td class="c">13.4 万</td><td class="c">含片 · 中高端</td></tr>
+          <tr><td class="c">10</td><td>[一翩专属] 知蜂堂新蜂王浆 180g 头茬鲜浆</td><td>知蜂堂小店</td><td class="c">1499</td><td class="c">73</td><td class="c">10.9 万</td><td class="c">10.9 万</td><td class="c">鲜浆 · 高端</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-sub" style="margin-top:var(--sp-md)">
+      <b>解读</b>：TOP10 单品中 6 席来自汪氏、8 席挂"专属"标记，<b>蜂王浆在视频号的本质是"达人信任的变现品"</b>——王浆酸含量和头茬概念解决了"为什么值这个价"，专属链接解决了"跟谁买"。对新进入者而言，可复制的三条路径分别是：百花的<b>适中价位大单品 + 内容双轮</b>、疆山有礼的<b>形态创新高端定价</b>、天草极的<b>大小组合单场爆破</b>；而滇蜂皇证明了"先铺达人再磨产品"是死路。
+    </p>
+    <div class="footnote">口径说明：汪氏两店铺商品名称高度相似（同款多专属链接），累计销售额按店铺分别计入后加总，可能与真实品牌成交存在重复；"99999"为挂价锚点，不代表实际成交价。</div>
+  </section>
+
+  <!-- 05 营销三主线 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">05</span><span class="bar"></span><span class="t">营销三条主线：守盘 / 攻增量 / 拓蓝海</span><span class="en">Go-to-Market Lines</span></div>
+    <div class="line-grid">
+      <div class="line-card l1">
+        <div class="lh"><div class="ln">LINE 01 / DEFEND</div><div class="lt">王浆酸 × 中老年日常滋补（守基本盘）</div></div>
+        <div class="lb">
+          <div class="it"><div class="k">核心心智</div><div class="v"><b>每天两片 / 一勺的"液体黄金"</b>——王浆酸 2.2%+ 硬指标 + 头茬春浆稀缺性，给父母一辈的日常免疫投资</div></div>
+          <div class="it"><div class="k">话术词</div><div class="v">王浆酸 2.2% 以上 / 头茬春浆 / 液体黄金 / 长寿因子 / 无添加 / 产地直采</div></div>
+          <div class="it"><div class="k">视觉锚</div><div class="v">蜂场实景 + 王浆酸检测报告 + 中老年夫妇日常餐桌</div></div>
+          <div class="it"><div class="k">触达</div><div class="v">中老年/健康垂类达人专属款（对标汪氏"老师专属"模式）+ 情感号短视频"给爸妈的"叙事</div></div>
+          <div class="it"><div class="k">组合品</div><div class="v">300–500 元冻干片周期装（主力）+ 1,000–2,000 元鲜浆礼盒（高客单）</div></div>
+          <div class="it"><div class="k">时机</div><div class="v">秋冬进补季（10 月–次年 1 月）→ 年货节，重阳节双节点</div></div>
+          <div class="it"><div class="k">数据支撑</div><div class="v">王浆酸卖点成交 204 万第一；汪氏尊耀款鲜浆 3 条专属链接合计 173 万</div></div>
+        </div>
+      </div>
+      <div class="line-card l2">
+        <div class="lh"><div class="ln">LINE 02 / GROWTH</div><div class="lt">便携形态 × 节令礼赠（攻增量）</div></div>
+        <div class="lb">
+          <div class="it"><div class="k">核心心智</div><div class="v"><b>把"难保存、腥味重"的王浆变成拿得出手的礼</b>——冻干片/果冻条独立包装，常温携带、开袋即食</div></div>
+          <div class="it"><div class="k">话术词</div><div class="v">独立包装 / 随身携带 / 常温锁鲜 / 送长辈有面子 / 头茬礼盒</div></div>
+          <div class="it"><div class="k">视觉锚</div><div class="v">条装/瓶装开箱 + 礼盒质感 + 蜂巢金色系包装</div></div>
+          <div class="it"><div class="k">触达</div><div class="v">单点爆破式达播（对标疆山有礼 3 场 99 万）+ 礼赠场景短视频；佣金 20–40% 提升达人接品意愿</div></div>
+          <div class="it"><div class="k">组合品</div><div class="v">果冻条装 1,000–2,000 元礼盒（对标花多力）+ 冻干片 388–399 元主力装（对标百花）</div></div>
+          <div class="it"><div class="k">时机</div><div class="v">中秋（9–10 月）→ 国庆 → 年货节（12 月–1 月）双礼赠高峰</div></div>
+          <div class="it"><div class="k">数据支撑</div><div class="v">独立包装卖点 101.7 万且仅 20 款在卖；花多力果冻条 1,499–1,999 元卖出 99.7 万</div></div>
+        </div>
+      </div>
+      <div class="line-card l3">
+        <div class="lh"><div class="ln">LINE 03 / BLUE OCEAN</div><div class="lt">熬夜抗疲劳 × 女性养颜 × 即食化（拓蓝海）</div></div>
+        <div class="lb">
+          <div class="it"><div class="k">核心心智</div><div class="v"><b>熬夜加班后的"母体回血"轻滋补</b>——王浆 + 蜂蜜/人参复合即食饮，一口回血、无需冲泡</div></div>
+          <div class="it"><div class="k">话术词</div><div class="v">熬夜回血 / 抗疲劳 / 女性养颜 / 即食条装 / 办公室抽屉滋补</div></div>
+          <div class="it"><div class="k">视觉锚</div><div class="v">条装 + 办公桌/通勤包 + 夜间暖光</div></div>
+          <div class="it"><div class="k">触达</div><div class="v">职场/美妆/生活方式达人 + 短视频种草先行（蜂王浆品类 30 天关联视频仅 9 款，内容位极度稀缺）</div></div>
+          <div class="it"><div class="k">组合品</div><div class="v">人参/枸杞复合王浆饮 99–199 元（口服液形态全场 0 款竞品）+ 89–150 元鲜浆尝鲜装引流</div></div>
+          <div class="it"><div class="k">时机</div><div class="v">双 11 囤货季、春季养颜季，全年办公场景常销</div></div>
+          <div class="it"><div class="k">数据支撑</div><div class="v">熬夜/免疫关键词成交 0 元、送礼 0.6 万——表达空白即定价权；福林堂人参复配片 99 元已验证复合成分可行</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 SKU 路线图 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">06</span><span class="bar"></span><span class="t">单品拓展矩阵：8 款建议品</span><span class="en">SKU Roadmap</span></div>
+    <p class="sec-sub">按 P0–P3 优先级排列，列明形态、核心场景、客群、差异化锚点与上市节奏。P0 为 26H2 必上、对标已验证爆款；P1 为次优先补位；P2/P3 为中期布局与品类延伸。<b>核心原则：先做一个大单品，再横向铺形态——本赛道 87% 的 SKU 零成交，平铺即陪跑。</b></p>
+    <div class="sku-wrap">
+      <table class="sku">
+        <thead><tr><th class="c">优先级</th><th>拓展单品</th><th>形态 / 规格</th><th>核心场景</th><th>客群</th><th>差异化卖点 / 对位锚点</th><th>上市节奏</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c pri p0">P0</td>
+            <td><b>蜂王浆冻干片大单品</b>（0.5g×60 片周期装）</td>
+            <td>冻干含片 · 388–399 元</td>
+            <td>中老年日常滋补</td>
+            <td>45+ 人群 / 子女代购</td>
+            <td>对标百花紫金系列 90.2 万、云南中蜂冻干片 28.9 万；差异点：王浆酸 ≥2.2% 检测报告 + 头茬浆源溯源，片剂好讲、常温好发、佣金 30%+</td>
+            <td>26.09 上线，双 11 放量</td>
+          </tr>
+          <tr>
+            <td class="c pri p0">P0</td>
+            <td><b>头茬鲜浆高端信任装</b>（250g 礼盒）</td>
+            <td>鲜浆原浆 · 990–1,699 元</td>
+            <td>节令礼赠 + 重度用户复购</td>
+            <td>送礼人群 / 高净值中老年</td>
+            <td>对标汪氏尊耀款 173 万（3 条专属链接）、知蜂堂 1,499 元；差异点：冷链鲜达 + 单一达人专属链接 + 王浆酸批批可查</td>
+            <td>26.09 筹备，10 月进补季首发</td>
+          </tr>
+          <tr>
+            <td class="c pri p1">P1</td>
+            <td><b>果冻状独立包装便携条</b>（5g×30 条）</td>
+            <td>果冻条装 · 199–299 元 / 礼盒 1,000+</td>
+            <td>便携滋补 + 礼赠</td>
+            <td>25–55 全人群</td>
+            <td>对标疆山有礼花多力 99.7 万（1,499–1,999 元）；差异点：同形态下探至 300 元内做"轻礼盒"，覆盖塌陷带以外的新客过渡价位</td>
+            <td>26.10 中秋后测款，年货节冲量</td>
+          </tr>
+          <tr>
+            <td class="c pri p1">P1</td>
+            <td><b>鲜浆尝鲜引流装</b>（250g 原浆）</td>
+            <td>鲜浆 · 89–99 元</td>
+            <td>直播间走量拉新</td>
+            <td>新客 / 价格敏感型</td>
+            <td>对标青原见山 89 元单场 1,181 件（10.5 万）；差异点：产地现取叙事 + "第一次吃王浆"教育话术，为 P0 大单品导流</td>
+            <td>随 P0 达播档期同步上</td>
+          </tr>
+          <tr>
+            <td class="c pri p2">P2</td>
+            <td><b>人参/枸杞复合王浆饮</b>（条装即饮）</td>
+            <td>口服液/饮品 · 99–199 元</td>
+            <td>熬夜抗疲劳</td>
+            <td>25–40 职场人群</td>
+            <td><b>品类内 0 款竞品</b>；对标福林堂人参复配片（99 元、4 万）验证复合成分可行；差异点："熬夜回血一口饮"，切燕窝饮同类人群外溢</td>
+            <td>26H2 内 ODM 打样，27H1 上市</td>
+          </tr>
+          <tr>
+            <td class="c pri p2">P2</td>
+            <td><b>王浆片"晚安助眠"副线</b></td>
+            <td>含片 · 599–998 元</td>
+            <td>睡眠/夜间养护</td>
+            <td>30–50 女性 / 高压人群</td>
+            <td>对标汪氏晚安王浆片 101.9 万——<b>场景副线命名已被验证为品类第一单品</b>；差异点：副线独立命名区隔主线，避免心智混淆</td>
+            <td>26.12 上线，年货节测试</td>
+          </tr>
+          <tr>
+            <td class="c pri p3">P3</td>
+            <td><b>中老年节令礼盒</b>（片剂+条装组合）</td>
+            <td>组合礼盒 · 500–800 元</td>
+            <td>重阳 / 中秋 / 年货送礼</td>
+            <td>子女送礼人群</td>
+            <td>送礼关键词全场仅 0.6 万成交，属卡位型空白；以组合装抬客单、摊薄履约成本</td>
+            <td>27 年重阳节前布局</td>
+          </tr>
+          <tr>
+            <td class="c pri p3">P3</td>
+            <td><b>王浆蜜复配膏滋</b></td>
+            <td>膏滋/瓶装 · 200–400 元</td>
+            <td>日常冲饮</td>
+            <td>传统滋补交叉人群</td>
+            <td>品类延伸试水，借蜂蜜品类人群迁移；与蜂王浆鲜浆形成"浆-膏"价格与场景互补</td>
+            <td>视 P0/P1 复购数据再定</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 07 避坑提示 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">07</span><span class="bar"></span><span class="t">三条避坑提示</span><span class="en">Pitfalls</span></div>
+    <div class="pit-grid">
+      <div class="pit-card">
+        <div class="pn">PIT 01</div>
+        <div class="pt">头部通吃的赛道，平铺 SKU 必然陪跑</div>
+        <div class="pd">421 款商品中 <b>368 款（87%）零成交</b>，TOP10 占 92.9%。100–300 元"死亡价位"挤着 195 款白牌只做出 11 万。<b>动作</b>：先集中资源打一个 P0 大单品，验证达播模型后再横向铺形态；不要在无达人背书的情况下进中间价位。</div>
+      </div>
+      <div class="pit-card">
+        <div class="pn">PIT 02</div>
+        <div class="pt">达播 ≠ 产出：广撒网是无效消耗</div>
+        <div class="pd">滇蜂皇铺 34 位博主、38 场直播，近 30 天仅 4,287 元（单场约 113 元）；反观疆山有礼 1 位达人 3 场直播做出 99.1 万。<b>动作</b>：专属链接 + 高信任垂类达人的"汪氏模式"，佣金给足（20–40%），宁精勿多；无专属机制的普通挂车不做主投。</div>
+      </div>
+      <div class="pit-card">
+        <div class="pn">PIT 03</div>
+        <div class="pt">鲜浆履约与价格锚的隐性风险</div>
+        <div class="pd">鲜浆吃冷链、坏果即差评，且同款多链接挂 99,999 元锚定价（汪氏多条在列）易引发比价争议与平台判定风险。<b>动作</b>：鲜浆线限定发货半径与时效承诺；链接价格体系做"专属款隔离"，锚定价虚标需谨慎，用规格区隔代替价格虚标做层次。</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <div>ROYAL JELLY · CATEGORY SELECTION GUIDE · 26H2</div>
+    <div>数据来源：友望数据 · 视频号选品库 / 商品搜索（2026.09.09） · 内部参考 · CONFIDENTIAL</div>
+  </footer>
+</div>
+</body>
+</html>
