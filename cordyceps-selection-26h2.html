@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>冬虫夏草品类 · 26H2 选品指南 Onepage</title>
+<style>
+:root{
+  --ink:#1A1A1A; --ink-2:#3D3D3D; --ink-3:#6B6B6B; --ink-4:#9A9A9A;
+  --paper:#FAF6F0; --paper-2:#F3ECE0; --card:#FFFFFF;
+  --crimson:#8B2332; --crimson-deep:#5E1620; --crimson-soft:#F5E6E8;
+  --gold:#B8893C; --gold-soft:#F3E9D6;
+  --jade:#3E6B5E; --jade-soft:#E5EEEA;
+  --line:#E5DDD2; --line-soft:#EFEAE2;
+  --fs-hero:30px; --fs-h1:21px; --fs-h2:15px; --fs-h3:12.5px;
+  --fs-body:11px; --fs-small:10px; --fs-tiny:9px;
+  --sp-xs:4px; --sp-sm:8px; --sp-md:14px; --sp-lg:24px; --sp-xl:40px; --sp-2xl:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:"Songti SC","STSong","Source Han Serif SC","SimSun",serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.7}
+.num,.en,.stat-big,.rank-n{font-family:"Georgia","Times New Roman",serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+.masthead{border-top:4px solid var(--crimson-deep);padding:18px 0 10px;display:flex;justify-content:space-between;align-items:flex-end}
+.masthead .brand{font-size:13px;font-weight:bold;letter-spacing:.18em;color:var(--crimson-deep)}
+.masthead .meta{font-size:var(--fs-tiny);color:var(--ink-4);letter-spacing:.1em;text-align:right;line-height:1.6}
+.masthead .meta b{color:var(--ink-2)}
+
+.cover{padding:var(--sp-2xl) 0 var(--sp-xl)}
+.cover .eyebrow{font-size:var(--fs-small);letter-spacing:.34em;color:var(--crimson);text-transform:uppercase;margin-bottom:var(--sp-md)}
+.cover h1{font-size:var(--fs-hero);font-weight:bold;line-height:1.32;letter-spacing:.02em;margin-bottom:var(--sp-md);color:var(--ink)}
+.cover h1 em{font-style:normal;color:var(--crimson-deep)}
+.cover .lede{font-size:13px;color:var(--ink-2);line-height:1.9;max-width:780px;margin-bottom:var(--sp-xl)}
+.cover .lede b{color:var(--crimson-deep)}
+.cover .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--sp-md) 0}
+.cover .meta-grid dt{font-size:var(--fs-tiny);letter-spacing:.16em;color:var(--ink-4);margin-bottom:3px}
+.cover .meta-grid dd{font-size:11px;color:var(--ink);line-height:1.55}
+.cover .meta-grid dd b{color:var(--crimson-deep)}
+
+.sec{padding:var(--sp-xl) 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:var(--sp-lg)}
+.sec-head .n{font-size:24px;font-weight:bold;color:var(--crimson-deep);font-family:"Georgia",serif}
+.sec-head .bar{width:28px;height:1px;background:var(--ink-4)}
+.sec-head .t{font-size:var(--fs-h1);font-weight:bold;letter-spacing:.02em}
+.sec-head .en{margin-left:auto;font-size:var(--fs-small);color:var(--ink-4);letter-spacing:.12em;font-style:italic}
+.sec-sub{font-size:12px;color:var(--ink-2);line-height:1.85;max-width:900px;margin-bottom:var(--sp-lg)}
+.sec-sub b{color:var(--crimson-deep)}
+
+.base-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.base-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--crimson);padding:var(--sp-md)}
+.base-card .tag{font-size:var(--fs-tiny);letter-spacing:.18em;color:var(--crimson);font-weight:bold;margin-bottom:6px}
+.base-card .ttl{font-size:13px;font-weight:bold;color:var(--ink);margin-bottom:6px}
+.base-card .desc{font-size:var(--fs-body);color:var(--ink-2);line-height:1.7}
+.base-card.gold{border-top-color:var(--gold)} .base-card.gold .tag{color:var(--gold)}
+.base-card.jade{border-top-color:var(--jade)} .base-card.jade .tag{color:var(--jade)}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.stat-card{background:var(--card);border:1px solid var(--line);padding:var(--sp-lg) var(--sp-md);position:relative;overflow:hidden}
+.stat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crimson)}
+.stat-card .stat-big{font-size:34px;font-weight:bold;color:var(--crimson-deep);line-height:1;letter-spacing:-.01em}
+.stat-card .stat-unit{font-size:13px;color:var(--ink-3);margin-left:3px}
+.stat-card .stat-label{font-size:var(--fs-body);color:var(--ink-2);margin-top:8px;line-height:1.6}
+.stat-card .stat-src{font-size:var(--fs-tiny);color:var(--ink-4);margin-top:8px;letter-spacing:.04em;border-top:0.5px solid var(--line-soft);padding-top:6px}
+
+.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.axis-card{background:var(--card);border:1px solid var(--line);padding:var(--sp-lg) var(--sp-md)}
+.axis-card .axis-n{font-size:var(--fs-tiny);letter-spacing:.2em;color:var(--gold);font-weight:bold}
+.axis-card .axis-t{font-size:15px;font-weight:bold;color:var(--ink);margin:4px 0 var(--sp-sm)}
+.axis-card .row{padding:7px 0;border-bottom:0.5px solid var(--line-soft)}
+.axis-card .row:last-child{border-bottom:0}
+.axis-card .row .k{font-size:var(--fs-tiny);letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase}
+.axis-card .row .v{font-size:var(--fs-body);color:var(--ink);line-height:1.6;margin-top:2px}
+.axis-card .kw{margin-top:var(--sp-sm);display:flex;flex-wrap:wrap;gap:5px}
+.axis-card .kw span{font-size:var(--fs-tiny);background:var(--paper-2);color:var(--ink-2);padding:2px 7px;border-radius:2px}
+.axis-card .kw span.hot{background:var(--crimson-soft);color:var(--crimson-deep);font-weight:bold}
+
+.rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.rank-card{background:var(--card);border:1px solid var(--line);padding:var(--sp-md)}
+.rank-card .rank-t{font-size:13px;font-weight:bold;color:var(--crimson-deep);padding-bottom:8px;border-bottom:1.5px solid var(--crimson-deep);margin-bottom:8px;letter-spacing:.04em}
+.rank-card ol{list-style:none;counter-reset:r}
+.rank-card li{counter-increment:r;display:flex;align-items:baseline;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--line-soft);font-size:var(--fs-body)}
+.rank-card li:last-child{border-bottom:0}
+.rank-card li::before{content:counter(r,decimal-leading-zero);font-family:"Georgia",serif;font-size:13px;font-weight:bold;color:var(--gold);min-width:22px}
+.rank-card li .nm{flex:1;color:var(--ink)}
+.rank-card li .dt{font-size:var(--fs-tiny);color:var(--ink-4);font-family:"Georgia",serif}
+.rank-card li .flag{font-size:var(--fs-tiny);background:var(--crimson);color:#fff;padding:1px 5px;border-radius:2px;margin-left:4px}
+.rank-card li .sub{font-size:var(--fs-tiny);color:var(--ink-4);display:block}
+
+.line-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.line-card{background:var(--card);border:1px solid var(--line);overflow:hidden}
+.line-card .lh{padding:var(--sp-md);color:#fff}
+.line-card.l1 .lh{background:var(--crimson-deep)} .line-card.l2 .lh{background:var(--gold)} .line-card.l3 .lh{background:var(--jade)}
+.line-card .lh .ln{font-size:var(--fs-tiny);letter-spacing:.2em;opacity:.8}
+.line-card .lh .lt{font-size:15px;font-weight:bold;margin-top:2px}
+.line-card .lb{padding:var(--sp-md)}
+.line-card .lb .it{padding:6px 0;border-bottom:0.5px solid var(--line-soft);font-size:var(--fs-body)}
+.line-card .lb .it:last-child{border-bottom:0}
+.line-card .lb .it .k{font-size:var(--fs-tiny);letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase}
+.line-card .lb .it .v{color:var(--ink-2);margin-top:2px;line-height:1.6}
+.line-card .lb .it .v b{color:var(--ink)}
+
+.sku-wrap{overflow-x:auto}
+table.sku{width:100%;border-collapse:collapse;font-size:var(--fs-body)}
+table.sku th,table.sku td{border:0.5px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top;line-height:1.55}
+table.sku thead th{background:var(--crimson-deep);color:#fff;font-size:var(--fs-small);letter-spacing:.06em;font-weight:bold;text-align:center}
+table.sku td.c{text-align:center}
+table.sku .pri{font-weight:bold;font-family:"Georgia",serif}
+.p0{color:var(--crimson)} .p1{color:var(--gold)} .p2{color:var(--jade)} .p3{color:var(--ink-4)}
+tbody tr:hover{background:var(--paper-2)}
+
+.pit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md)}
+.pit-card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--crimson);padding:var(--sp-md)}
+.pit-card .pn{font-size:var(--fs-tiny);letter-spacing:.2em;color:var(--crimson);font-weight:bold}
+.pit-card .pt{font-size:13px;font-weight:bold;color:var(--ink);margin:4px 0 8px;line-height:1.5}
+.pit-card .pd{font-size:var(--fs-body);color:var(--ink-2);line-height:1.75}
+.pit-card .pd b{color:var(--crimson-deep)}
+
+.case-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);padding:var(--sp-md) var(--sp-lg);margin:var(--sp-md) 0}
+.case-card .cn{font-size:var(--fs-tiny);letter-spacing:.2em;color:var(--gold);font-weight:bold}
+.case-card .ct2{font-size:15px;font-weight:bold;color:var(--ink);margin:4px 0 var(--sp-sm)}
+.case-card .cg{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--sp-md);margin-top:var(--sp-sm)}
+.case-card .cg div{font-size:var(--fs-body)}
+.case-card .cg .k{font-size:var(--fs-tiny);letter-spacing:.1em;color:var(--ink-4)}
+.case-card .cg .v{font-family:"Georgia",serif;font-size:15px;color:var(--crimson-deep);font-weight:bold}
+.case-card .cd{font-size:var(--fs-body);color:var(--ink-2);line-height:1.75;margin-top:var(--sp-sm)}
+.case-card .cd b{color:var(--crimson-deep)}
+
+.bar-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:var(--fs-body)}
+.bar-row .bl{width:104px;color:var(--ink-2);text-align:right;flex-shrink:0}
+.bar-row .bt{flex:1;height:16px;background:var(--paper-2);position:relative;border-radius:1px}
+.bar-row .bt i{position:absolute;left:0;top:0;bottom:0;background:var(--crimson);border-radius:1px}
+.bar-row .bt i.g{background:var(--gold)} .bar-row .bt i.j{background:var(--jade)} .bar-row .bt i.k{background:var(--ink-3)}
+.bar-row .bv{font-family:"Georgia",serif;font-size:var(--fs-small);color:var(--ink-3);min-width:64px}
+
+.chart-box{background:var(--card);border:1px solid var(--line);padding:var(--sp-md)}
+.chart-box .ct{font-size:var(--fs-h3);font-weight:bold;color:var(--crimson-deep);padding-bottom:6px;border-bottom:0.5px solid var(--line);margin-bottom:var(--sp-sm);letter-spacing:.04em}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);margin:var(--sp-md) 0}
+
+footer.colophon{border-top:4px solid var(--crimson-deep);padding:var(--sp-lg) 0 var(--sp-xl);display:flex;justify-content:space-between;font-size:var(--fs-tiny);color:var(--ink-4);letter-spacing:.08em}
+.footnote{font-size:var(--fs-tiny);color:var(--ink-4);font-style:italic;margin-top:var(--sp-md);line-height:1.7}
+
+@media(max-width:880px){
+  .base-grid,.stat-grid,.axis-grid,.rank-grid,.line-grid,.pit-grid,.cover .meta-grid,.dual,.case-card .cg{grid-template-columns:1fr}
+  table.sku{font-size:9.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="brand">CORDYCEPS · CATERPILLAR FUNGUS</div>
+    <div class="meta"><b>Vol. 04 / 26H2 Selection Issue</b><br>Category Entry Diagnosis · Confidential<br>数据来源：友望数据 · 视频号选品库 / 商品搜索（2026.09）</div>
+  </div>
+
+  <section class="cover">
+    <div class="eyebrow">Category Diagnosis × Entry Decision Brief</div>
+    <h1>冬虫夏草品类 · <em>26H2 选品诊断</em> Onepage</h1>
+    <p class="lede">
+      同一口径下，蜂王浆 421 款商品做出 <b>598 万元</b>、酸枣仁 674 款做出 <b>476 万元</b>，而冬虫夏草 <b>529 款食用类商品（266 家店铺）累计成交额仅 1.59 万元、共 13 件</b>——这是一个<b>"有供给、无成交"的极端品类</b>：99.8% 的商品零成交，全品类关联博主合计仅 3 人、30 天直播仅 2 场，却有 <b>120 款达人专属链接（占 22.7%）空挂</b>。唯一跑通的是次玛陀「那曲冬虫夏草 8 克 / 32 根礼盒」（1,220–1,480 元，3 位博主 2 场直播卖出 13 件）。供给端高度拥挤且叙事雷同：规格（根/克）176 款、礼盒送礼 158 款、西藏/藏草 127 款、断草自用 90 款、那曲 86 款，而<b>"男性补肾""术后/免疫"等功效表达为 0 款</b>。另有 79 款日化类商品（牙膏、面霜）借用虫草概念，与食用类混在同一搜索词下。本报告因此不是"爆款复盘"，而是一份<b>进入决策诊断</b>：先回答"视频号是不是虫草的主场"，再给出若必须进入的三条最小试错路径。
+    </p>
+    <dl class="meta-grid">
+      <div><dt>RAW · 基底原料</dt><dd>西藏那曲 / 青海玉树野生冬虫夏草，核心指标 <b>规格（根/克）、虫草素与腺苷含量</b>，断草/整草分级</dd></div>
+      <div><dt>SKU · 主流形态</dt><dd>原草整草（380 款）、断草自用（90 款）、北虫草/蛹虫草（41 款）、深加工制品（12 款），起价中位 <b>363 元</b></dd></div>
+      <div><dt>LABEL · 核心标签</dt><dd>那曲产地 · 头期头茬 · 根/克规格 · 礼盒送礼 · 鲜草锁鲜 · 泡酒煲汤 · 不售假草</dd></div>
+      <div><dt>WINDOW · 机会窗口</dt><dd>1,000–3,000 元<b>唯一有成交</b>价格带 · 小规格品牌化（2.5–8g）· 术后/男性表达<b>完全空白</b></dd></div>
+    </dl>
+  </section>
+
+  <!-- 01 市场信号 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">01</span><span class="bar"></span><span class="t">四组关键数据：一个几乎未跑通的品类</span><span class="en">Market Signals</span></div>
+    <p class="sec-sub">蜂王浆与酸枣仁的共同点是"需求可见、达人可带"；冬虫夏草的问题不在需求，而在<b>交易场景与商品属性的错配</b>：客单 1,000–10,000 元、高度依赖真伪信任、需要线下验货与长期关系，而视频号直播是"即时决策 + 冲动转化"的场景。<b>529 款商品、266 家店铺、120 条达人链接，最终换来 13 件成交</b>——这不是运营问题，是品类与渠道的适配问题。</p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div><span class="stat-big">1.59</span><span class="stat-unit">万元</span></div>
+        <div class="stat-label">529 款食用类商品（266 店铺）累计成交额，共 13 件；同口径蜂王浆 598 万、酸枣仁 476 万</div>
+        <div class="stat-src">SOURCE · 友望数据 选品库搜索（截至 2026.09）</div>
+      </div>
+      <div class="stat-card">
+        <div><span class="stat-big">99.8</span><span class="stat-unit">%</span></div>
+        <div class="stat-label">零成交商品占比（528/529 款），对比酸枣仁 54%、蜂王浆 87%</div>
+        <div class="stat-src">SOURCE · 选品库商品成交分布</div>
+      </div>
+      <div class="stat-card">
+        <div><span class="stat-big">120</span><span class="stat-unit">款</span></div>
+        <div class="stat-label">达人专属链接数（占 22.7%）——全部空挂，全品类关联博主合计仅 3 人</div>
+        <div class="stat-src">SOURCE · 选品库关联博主/专属链接统计</div>
+      </div>
+      <div class="stat-card">
+        <div><span class="stat-big">1,431</span><span class="stat-unit">元</span></div>
+        <div class="stat-label">在售商品起价均值（中位 363 元、最高 39,993 元），客单天花板远超其他滋补品</div>
+        <div class="stat-src">SOURCE · 选品库商品价格分布（剔除锚定虚高价）</div>
+      </div>
+    </div>
+
+    <div class="dual">
+      <div class="chart-box">
+        <div class="ct">供给结构：价格带商品数分布（526 款）· 单位：款</div>
+        <div class="bar-row"><span class="bl">&lt;100元</span><span class="bt"><i style="width:100%"></i></span><span class="bv">213</span></div>
+        <div class="bar-row"><span class="bl">1000–3000元</span><span class="bt"><i class="g" style="width:50.2%"></i></span><span class="bv">107</span></div>
+        <div class="bar-row"><span class="bl">100–500元</span><span class="bt"><i class="j" style="width:35.7%"></i></span><span class="bv">76</span></div>
+        <div class="bar-row"><span class="bl">500–1000元</span><span class="bt"><i class="k" style="width:33.3%"></i></span><span class="bv">71</span></div>
+        <div class="bar-row"><span class="bl">3000–5000元</span><span class="bt"><i class="g" style="width:16.9%"></i></span><span class="bv">36</span></div>
+        <div class="bar-row"><span class="bl">&gt;10000元</span><span class="bt"><i class="k" style="width:6.1%"></i></span><span class="bv">13</span></div>
+        <div class="bar-row"><span class="bl">5000–10000元</span><span class="bt"><i class="j" style="width:4.7%"></i></span><span class="bv">10</span></div>
+      </div>
+      <div class="chart-box">
+        <div class="ct">供给结构：商品形态分布（529 款）· 单位：款</div>
+        <div class="bar-row"><span class="bl">原草整草/礼盒</span><span class="bt"><i style="width:100%"></i></span><span class="bv">380</span></div>
+        <div class="bar-row"><span class="bl">断草/自用性价比</span><span class="bt"><i class="g" style="width:23.7%"></i></span><span class="bv">90</span></div>
+        <div class="bar-row"><span class="bl">北虫草/蛹虫草</span><span class="bt"><i class="j" style="width:10.8%"></i></span><span class="bv">41</span></div>
+        <div class="bar-row"><span class="bl">深加工制品</span><span class="bt"><i class="k" style="width:3.2%"></i></span><span class="bv">12</span></div>
+        <div class="bar-row"><span class="bl">鲜草/锁鲜</span><span class="bt"><i class="g" style="width:1.6%"></i></span><span class="bv">6</span></div>
+        <div class="bar-row"><span class="bl">日化类（非食用）</span><span class="bt"><i class="k" style="width:20.8%"></i></span><span class="bv">79</span></div>
+      </div>
+    </div>
+    <p class="sec-sub">
+      <b>供给呈现"两头重、中间独苗"的畸形分布</b>：100 元以下 213 款（多为北虫草、虫草花与小规格试用品，起价低至 10 元）、1,000–3,000 元 107 款（唯一有成交与达人资源的带）、3,000 元以上 59 款（大草与高端礼盒，最贵 39,993 元）。<b>唯一成交恰好落在 1,000–3,000 元这一带</b>——1,220–1,480 元的 8 克小规格礼盒，说明该品类唯一可行的定价逻辑是"<b>把客单压到千元级、用小克重礼盒降低决策门槛</b>"，而不是按斤卖、按根卖。
+    </p>
+    <div class="footnote">口径说明：①已剔除 79 款日化非食用商品（牙膏、面霜等借用虫草概念），食用类 529 款为分析主体；②"累计销售额"为友望选品库商品累计成交口径，销量/销售额均为 0 表示监测期内无成交记录，不代表商品下架；③起价取商品价格区间下限，剔除 99,999 元级锚定挂价商品 3 款；④北虫草/蛹虫草（人工培养，与冬虫夏草不同物种）单列，避免与真草混淆。</div>
+  </section>
+
+  <!-- 02 唯一成交案例 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">02</span><span class="bar"></span><span class="t">唯一跑通的模型：一件商品的完整拆解</span><span class="en">The Only Working Case</span></div>
+    <p class="sec-sub">全品类仅 1 款商品有成交，它因此成为<b>唯一可复制的样本</b>。拆解它的定价、规格、渠道与达人结构，比分析 528 款零成交商品更有价值。</p>
+    <div class="case-card">
+      <div class="cn">CASE 01 / THE ONLY CONVERTED SKU</div>
+      <div class="ct2">次玛陀 · 西藏那曲冬虫夏草礼盒（二级 · 8 克 / 32 根）</div>
+      <div class="cg">
+        <div><div class="k">成交价带</div><div class="v">1,220–1,480</div></div>
+        <div><div class="k">销量 / 销售额</div><div class="v">13 件 / 1.59 万</div></div>
+        <div><div class="k">关联博主</div><div class="v">3 位</div></div>
+        <div><div class="k">30 天直播</div><div class="v">2 场</div></div>
+        <div><div class="k">客单（件均）</div><div class="v">1,220 元</div></div>
+      </div>
+      <div class="cd">
+        它的成功要素可以拆成四条：<b>一是克重做小</b>——8 克、32 根（4 根/克），把"按斤论价"的虫草变成千元级可下单的礼盒，客单 1,220 元远低于品类均值 1,431 元，处在"贵但咬得动"的心理区间；<b>二是规格说清楚</b>——"8 克 32 根"直接标注根/克比（本品类 176 款商品在做同样表达，是行业通用信任语言）；<b>三是产地背书</b>——那曲 + 西藏（127 款商品在做产地叙事，是消费者唯一认得的品质坐标）；<b>四是达人场景化</b>——以"方明生日专属"命名的达人专属链接，3 位博主 2 场直播即完成 13 件，<b>单场产出约 7,930 元</b>，说明小范围高信任达播在该品类是可行的，但天花板极低。<b>结论：可复制的是"千元级小克重礼盒 + 产地规格透明 + 少量高信任达人"这个组合，而不是品类本身的机会。</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 供给密度榜单 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">03</span><span class="bar"></span><span class="t">三张榜单：供给密度与叙事雷同度</span><span class="en">Supply Density Rankings</span></div>
+    <p class="sec-sub">由于几乎无成交，本节的榜单按<b>在售商品数（供给密度）</b>而非销售额排序——这恰恰暴露了品类的问题：<b>所有人都在用同一套话术</b>（根/克规格、礼盒送礼、西藏那曲、头期头茬），但"补肾""术后""免疫"等真实购买动机<b>零表达</b>。供给拥挤、叙事同质、需求表达缺失，三者叠加导致了 99.8% 的零成交。</p>
+    <div class="rank-grid">
+      <div class="rank-card">
+        <div class="rank-t">叙事关键词供给密度 TOP8 · 款</div>
+        <ol>
+          <li><span class="nm">规格（根/克/条）<span class="sub">176 款 · 行业通用信任语言，几乎人人在用</span></span><span class="dt">176</span></li>
+          <li><span class="nm">礼盒 / 送礼<span class="sub">158 款 · 供给第一大场景，但成交仅 1 款</span></span><span class="dt">158</span></li>
+          <li><span class="nm">西藏 / 藏草<span class="sub">127 款 · 产地是唯一被认得的品质坐标</span></span><span class="dt">127</span></li>
+          <li><span class="nm">断草 / 自用性价比<span class="sub">90 款 · 起价中位 1,415 元的低价切入线</span></span><span class="dt">90</span></li>
+          <li><span class="nm">那曲<span class="sub">86 款 · 最核心产地词，唯一成交品即出自那曲</span></span><span class="dt">86</span></li>
+          <li><span class="nm">头期 / 头茬<span class="sub">69 款 · 时令稀缺性叙事，转化未验证</span></span><span class="dt">69</span></li>
+          <li><span class="nm">北虫草 / 蛹虫草<span class="sub">41 款 · 起价低至 10 元的低价替代品，非真草</span></span><span class="dt">41</span></li>
+          <li><span class="nm">泡酒 / 煲汤<span class="sub">23 款 · 食用方式表达，属低频长尾</span></span><span class="dt">23</span></li>
+        </ol>
+      </div>
+      <div class="rank-card">
+        <div class="rank-t">在售 SKU 最多的店铺 TOP8 · 款</div>
+        <ol>
+          <li><span class="nm">还曲冬虫夏草<span class="sub">17 款 · 藏区系铺货店，0 成交</span></span><span class="dt">17</span></li>
+          <li><span class="nm">长长久久滋补养生店<span class="sub">15 款 · 通用滋补铺货店，0 成交</span></span><span class="dt">15</span></li>
+          <li><span class="nm">脉韵滋补坊<span class="sub">11 款 · 0 成交</span></span><span class="dt">11</span></li>
+          <li><span class="nm">御林堂臻选<span class="sub">11 款 · 0 成交</span></span><span class="dt">11</span></li>
+          <li><span class="nm">云巅雪域滋补坊<span class="sub">10 款 · 0 成交</span></span><span class="dt">10</span></li>
+          <li><span class="nm">诸事顺遂滋补养生店<span class="sub">9 款 · 0 成交</span></span><span class="dt">9</span></li>
+          <li><span class="nm">运憬行<span class="sub">9 款 · 高端线（12,888 元/50g），0 成交</span></span><span class="dt">9</span></li>
+          <li><span class="nm">广然堂<span class="sub">8 款 · 乐补堂那曲头茬 999 元，0 成交</span></span><span class="dt">8</span></li>
+        </ol>
+      </div>
+      <div class="rank-card">
+        <div class="rank-t">需求表达空白榜 · 款</div>
+        <ol>
+          <li><span class="nm">中老年 / 长辈 / 父母<span class="sub">19 款 · 有供给但表达粗放、无成交</span></span><span class="dt">19</span></li>
+          <li><span class="nm">深加工（含片/粉/口服液）<span class="sub">15 款 · 制品化几乎无人做，0 成交</span></span><span class="dt">15</span></li>
+          <li><span class="nm">玉树<span class="sub">9 款 · 第二大产地，认知度远低于那曲</span></span><span class="dt">9</span></li>
+          <li><span class="nm">鲜草 / 锁鲜<span class="sub">7 款 · 高客单鲜草线，0 成交</span></span><span class="dt">7</span></li>
+          <li><span class="nm">青海<span class="sub">5 款 · 产地叙事严重供给不足</span></span><span class="dt">5</span></li>
+          <li><span class="nm">男性补肾 / 术后 / 免疫<span class="sub"><b>0 款</b> · 真实购买动机完全无人表达</span><span class="flag">空白</span></span><span class="dt">0</span></li>
+          <li><span class="nm">腺苷 / 虫草素含量指标<span class="sub">仅云南白药孜补 1 款标注"腺苷含量高"</span><span class="flag">空白</span></span><span class="dt">1</span></li>
+          <li><span class="nm">第三方检测 / 溯源证书<span class="sub">0 款在标题明示 · 信任状供给缺失</span><span class="flag">空白</span></span><span class="dt">0</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="footnote">注意：关键词按商品名称匹配，一款商品可同时命中多个标签，故各标签商品数之和大于总量，仅用于判断供给密度与叙事方向。</div>
+  </section>
+
+  <!-- 04 竞品格局 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">04</span><span class="bar"></span><span class="t">竞品格局：五类玩家，全部未动销</span><span class="en">Competitive Landscape</span></div>
+    <p class="sec-sub">与蜂王浆（汪氏 52.9%）、酸枣仁（仁和系 18.7%）不同，<b>冬虫夏草没有领跑者，只有守候者</b>：老字号（童涵春堂、广药、群安堂、云南白药）已布点但零动销，藏区产地店（还曲、云巅雪域、藏地系）靠 SKU 铺量占位，性价比线（伊桦、云盛瑞草）主打断草，高端线（运憬行、国坤堂）挂出万元级价格。<b>唯一动销的是次玛陀，且只有 1.59 万。</b></p>
+    <div class="sku-wrap">
+      <table class="sku">
+        <thead><tr><th>品牌 / 店铺</th><th class="c">SKU</th><th class="c">代表价格</th><th>定位与打法拆解</th></tr></thead>
+        <tbody>
+          <tr><td><b>次玛陀那曲冬虫夏草店</b></td><td class="c">7</td><td class="c">1,220–1,480</td><td><b>全品类唯一成交者</b>：那曲礼盒（二级 · 8 克 32 根），3 位博主 2 场直播卖出 13 件、1.59 万。<b>可复制点</b>：小克重（8g）+ 千元客单 + 根/克规格透明 + 达人专属链接；<b>局限</b>：单场产出仅 7,930 元，天花板极低</td></tr>
+          <tr><td><b>云南白药（白药生活）</b></td><td class="c">1</td><td class="c">799–899</td><td><b>品牌化小规格的标杆思路</b>：孜补冬虫夏草礼盒 2.5g/盒，主打"腺苷含量高"——<b>全品类唯一用成分指标做卖点</b>；任姑娘专属链接已挂但零动销。品牌信任 + 超小克重 + 成分表达，是最接近"可规模化"的模型，但价格已压到 800 元以下</td></tr>
+          <tr><td><b>童涵春堂 / 群安堂 / 广药牌燕品春</b></td><td class="c">多款</td><td class="c">1,999–3,880</td><td><b>老字号布点未动销</b>：童涵春堂 Z60 10g 2,389 元（嘉玲专属）、群安堂 10 克装 1,399–3,880 元、广药牌精选 3,200 条一级 1,999 元。信任状最强但价格带偏高，与视频号的即时决策场景不匹配</td></tr>
+          <tr><td><b>伊桦滋补 / 云盛瑞草</b></td><td class="c">多款</td><td class="c">394–894</td><td><b>断草性价比线</b>：伊桦那曲大草 5g/罐 840 元、中断草 5g 起拍 540–590 元；云盛瑞草断草 5 克装 394–894 元，标题直书"不售假草、非人工虫草"。<b>断草是本品类唯一把克单价压到可冲动区间的形态</b>，但同样零成交</td></tr>
+          <tr><td><b>国坤堂 / 运憬行 / 贤慧堂</b></td><td class="c">多款</td><td class="c">1,499–12,888</td><td><b>高端与鲜草线</b>：国坤堂 5~6 根/克 36 根装 2,524–3,499 元、运憬行 3,000 头/公斤 50 克 12,888 元（当季鲜草 10 根 799 元）、贤慧堂鲜草锁鲜 1,499 元。万元以上单品在视频号无成交记录，属"展示型供给"</td></tr>
+          <tr><td><b>还曲 / 长长久久 / 脉韵 / 御林堂 / 云巅雪域</b></td><td class="c">64</td><td class="c">—</td><td><b>藏区系铺货店群</b>：合计 64 款 SKU，靠店铺名（那曲/雪域/藏地）建立产地联想，无品牌资产、无达人资源、无成交。<b>这类玩家构成了本品类 266 家店铺中的绝大多数</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sku-wrap" style="margin-top:var(--sp-lg)">
+      <table class="sku">
+        <thead><tr><th>商品</th><th>店铺</th><th class="c">价格</th><th class="c">销量</th><th class="c">累计销售额</th><th class="c">形态 / 定位</th></tr></thead>
+        <tbody>
+          <tr><td><b>【方明生日】专属（二级）8 克 32 根 西藏那曲冬虫夏草礼盒装</b></td><td>次玛陀那曲冬虫夏草店</td><td class="c">1220–1480</td><td class="c">13</td><td class="c"><b>1.59 万</b></td><td class="c">小规格礼盒 · 唯一成交</td></tr>
+          <tr><td>[任姑娘专属] 孜补冬虫夏草礼盒款 2.5g/盒 腺苷含量高</td><td>云南白药白药生活</td><td class="c">799–899</td><td class="c">0</td><td class="c">0</td><td class="c">品牌化超小规格</td></tr>
+          <tr><td>[嘉玲专属] 童涵春堂冬虫夏草 Z60 10g</td><td>童涵春堂1783健康</td><td class="c">2389</td><td class="c">0</td><td class="c">0</td><td class="c">老字号 10g 装</td></tr>
+          <tr><td>精选 3200 条一级冬虫夏草</td><td>广药牌燕品春</td><td class="c">1999</td><td class="c">0</td><td class="c">0</td><td class="c">老字号整草</td></tr>
+          <tr><td>【乐补堂】一级西藏那曲高海拔头茬冬虫夏草 3 条/克</td><td>广然堂</td><td class="c">999</td><td class="c">0</td><td class="c">0</td><td class="c">头茬整草 · 千元内</td></tr>
+          <tr><td>【表姐精选】高海拔西藏那曲冬虫夏草 中断草 / 5g 起拍</td><td>伊桦滋补养生</td><td class="c">540–590</td><td class="c">0</td><td class="c">0</td><td class="c">断草性价比线</td></tr>
+          <tr><td>国坤堂那曲冬虫夏草 5~6 根/克 36 根装 送礼礼盒</td><td>国坤堂野生冬虫夏草</td><td class="c">2524–3499</td><td class="c">0</td><td class="c">0</td><td class="c">高端整草礼盒</td></tr>
+          <tr><td>西藏源产地纯天然冬虫夏草 自用断草 5 克装（不售假草）</td><td>云盛瑞草</td><td class="c">394–894</td><td class="c">0</td><td class="c">0</td><td class="c">断草 · 真伪背书</td></tr>
+          <tr><td>当季鲜冬虫夏草自用优选 10 根（约 1.0–1.3 克/根）</td><td>运憬行</td><td class="c">799</td><td class="c">0</td><td class="c">0</td><td class="c">鲜草 · 按根售卖</td></tr>
+          <tr><td>送礼佳品特选冬虫夏草礼盒 3000 头/公斤 50 克/盒</td><td>运憬行</td><td class="c">12888</td><td class="c">0</td><td class="c">0</td><td class="c">万元级礼盒 · 展示型</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-sub" style="margin-top:var(--sp-md)">
+      <b>解读</b>：整张表的销售额列只有第一行有数字，这是本报告最重要的信息。老字号（童涵春堂、广药、云南白药）的信任状在这个品类失效了——它们在酸枣仁、燕窝等品类的品牌力无法迁移到虫草，因为<b>虫草的信任对象是"产地与真伪"，不是"品牌"</b>。真正有参考价值的两条线索是：云南白药把克重压到 2.5g、价格压到 799 元并用成分指标表达（最接近可规模化），以及次玛陀用 8g/1,220 元礼盒完成实际成交（唯一被验证）。
+    </p>
+  </section>
+
+  <!-- 05 三条路径 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">05</span><span class="bar"></span><span class="t">若必须进入：三条最小试错路径</span><span class="en">Entry Paths</span></div>
+    <p class="sec-sub">基于上述诊断，冬虫夏草<b>不建议作为 26H2 的主力拓品类目</b>。若因业务需要必须布局，应以"最小试错"为原则，优先选择已在别处被验证、且在本品类仅次玛陀/云南白药尝试过的路径。</p>
+    <div class="line-grid">
+      <div class="line-card l1">
+        <div class="lh"><div class="ln">PATH 01 / VERIFIED</div><div class="lt">千元级小克重礼盒（唯一被验证）</div></div>
+        <div class="lb">
+          <div class="it"><div class="k">核心心智</div><div class="v"><b>"一千多块，送爸妈一份那曲的真虫草"</b>——把按斤论价变成按盒论价</div></div>
+          <div class="it"><div class="k">话术词</div><div class="v">8 克 32 根 / 4 根每克 / 那曲产地 / 头期头茬 / 礼盒装 / 开盒即见虫草</div></div>
+          <div class="it"><div class="k">视觉锚</div><div class="v">礼盒开箱 + 根数清点特写 + 海拔标牌 + 手戴手套取草</div></div>
+          <div class="it"><div class="k">触达</div><div class="v">少量高信任达人（对标次玛陀 3 位博主 2 场），专属链接 + 佣金 30%+；<b>不做广撒网</b></div></div>
+          <div class="it"><div class="k">价格带</div><div class="v">1,220–1,480 元（8g/32 根），严格对标唯一成交样本</div></div>
+          <div class="it"><div class="k">时机</div><div class="v">中秋 → 重阳 → 年货节，礼赠场景唯一集中窗口</div></div>
+          <div class="it"><div class="k">预期管理</div><div class="v">单场产出约 7,930 元量级，<b>按"验证模型"而非"冲量"设定目标</b></div></div>
+        </div>
+      </div>
+      <div class="line-card l2">
+        <div class="lh"><div class="ln">PATH 02 / LOWEST RISK</div><div class="lt">断草/自用性价比线（低门槛引流）</div></div>
+        <div class="lb">
+          <div class="it"><div class="k">核心心智</div><div class="v"><b>"自己吃就不必为品相买单"</b>——断草同产地、同成分，价格砍半</div></div>
+          <div class="it"><div class="k">话术词</div><div class="v">断草 / 自用优选 / 不售假草 / 非人工虫草 / 泡酒煲汤 / 5 克起拍</div></div>
+          <div class="it"><div class="k">视觉锚</div><div class="v">断草实拍 + 与整草对比 + 炖煮/泡酒成品图</div></div>
+          <div class="it"><div class="k">触达</div><div class="v">产地人设号自播 + 中老年垂类达人（本品类"中老年"表达仅 19 款）</div></div>
+          <div class="it"><div class="k">价格带</div><div class="v">394–894 元（对标伊桦、云盛瑞草），<b>本区间供给 71 款但零成交，需先小批量测试</b></div></div>
+          <div class="it"><div class="k">时机</div><div class="v">秋冬进补季（10–12 月）自用场景为主</div></div>
+          <div class="it"><div class="k">风险提示</div><div class="v">断草品相差异易引发退货与差评，<b>须配"实物拍摄 + 克重复秤"承诺</b></div></div>
+        </div>
+      </div>
+      <div class="line-card l3">
+        <div class="lh"><div class="ln">PATH 03 / DIFFERENTIATED</div><div class="lt">成分指标 + 制品化（差异化卡位）</div></div>
+        <div class="lb">
+          <div class="it"><div class="k">核心心智</div><div class="v"><b>用可检测的成分，替代无法验证的产地故事</b>——腺苷/虫草素含量明示</div></div>
+          <div class="it"><div class="k">话术词</div><div class="v">腺苷含量 / 第三方检测报告 / 每批次可查 / 含片即食 / 免炖煮</div></div>
+          <div class="it"><div class="k">视觉锚</div><div class="v">检测报告特写 + 批次溯源码 + 便携含片/小瓶</div></div>
+          <div class="it"><div class="k">触达</div><div class="v">品牌自播 + 健康科普型内容（本品类短视频内容位几乎空白）</div></div>
+          <div class="it"><div class="k">价格带</div><div class="v">799–899 元（对标云南白药孜补 2.5g）；制品线可下探 200–500 元</div></div>
+          <div class="it"><div class="k">时机</div><div class="v">全年常销，节令做礼盒装叠加</div></div>
+          <div class="it"><div class="k">机会依据</div><div class="v"><b>全品类仅 1 款标注成分指标、深加工制品仅 12 款</b>——制品化与成分化是唯一无人占领的表达位</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 SKU 路线图 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">06</span><span class="bar"></span><span class="t">SKU 试错矩阵：小步快跑的 6 款建议</span><span class="en">SKU Roadmap</span></div>
+    <p class="sec-sub">鉴于品类整体未跑通，本矩阵<b>不设 P0 必上款</b>，全部为"测试性质"的 P1–P3：<b>先以 1 款最小 SKU 验证达播模型，验证通过再补第二条线；单款备货与投放预算应控制在其他品类的十分之一以内。</b></p>
+    <div class="sku-wrap">
+      <table class="sku">
+        <thead><tr><th class="c">优先级</th><th>测试单品</th><th>形态 / 规格</th><th>核心场景</th><th>客群</th><th>差异化锚点 / 对标对象</th><th>试错节奏</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c pri p1">P1</td>
+            <td><b>那曲冬虫夏草 8g 礼盒（4 根/克 · 32 根）</b></td>
+            <td>整草礼盒 · 1,220–1,480 元</td>
+            <td>节令送礼送父母</td>
+            <td>30–45 岁送礼人群</td>
+            <td>对标次玛陀唯一成交款（13 件 / 1.59 万 / 2 场直播）；差异点：加第三方检测卡 + 海拔标识，规格与价格严格对齐被验证区间</td>
+            <td>26.09 中秋前小批量测，3 位达人 2 场即止</td>
+          </tr>
+          <tr>
+            <td class="c pri p1">P1</td>
+            <td><b>孜补式成分明示小规格（2.5–5g）</b></td>
+            <td>礼盒/小罐 · 799–999 元</td>
+            <td>自用首次尝试</td>
+            <td>35–55 岁 / 新客</td>
+            <td>对标云南白药孜补 2.5g/799–899 元（腺苷含量高）；差异点：把"腺苷 + 虫草素双指标 + 批次报告"做成核心信任状，<b>本品类仅 1 款在做</b></td>
+            <td>26.10 上架，配合进补季内容测试</td>
+          </tr>
+          <tr>
+            <td class="c pri p2">P2</td>
+            <td><b>自用断草 5g 装（真伪承诺版）</b></td>
+            <td>断草 · 394–590 元</td>
+            <td>自用 / 泡酒煲汤</td>
+            <td>45–65 岁 / 价格敏感型</td>
+            <td>对标云盛瑞草 394–894 元、伊桦中断草 540–590 元；差异点：配"假一赔十 + 复秤视频"，用履约承诺补位品牌信任缺失</td>
+            <td>26.11 秋冬进补季小批量测试</td>
+          </tr>
+          <tr>
+            <td class="c pri p2">P2</td>
+            <td><b>虫草含片 / 即食制品</b></td>
+            <td>深加工 · 199–499 元</td>
+            <td>便携日常 / 办公</td>
+            <td>30–50 岁职场人群</td>
+            <td><b>全品类深加工仅 12 款、零成交</b>，属完全空白；把克单价压到百元级，绕开"真伪高客单"的核心阻力，是唯一可能规模化的形态</td>
+            <td>26H2 内 ODM 打样，27H1 试销</td>
+          </tr>
+          <tr>
+            <td class="c pri p3">P3</td>
+            <td><b>节令高端礼盒（20–50g）</b></td>
+            <td>整草礼盒 · 3,000–12,888 元</td>
+            <td>高端商务礼赠</td>
+            <td>高净值送礼人群</td>
+            <td>对标国坤堂 2,524–3,499 元、运憬行 12,888 元；<b>万元以上单品视频号零成交记录</b>，仅作品牌展示与线下导流，不作为成交目标</td>
+            <td>视 P1 验证结果再定</td>
+          </tr>
+          <tr>
+            <td class="c pri p3">P3</td>
+            <td><b>北虫草/虫草花引流款</b></td>
+            <td>低价替代品 · 10–99 元</td>
+            <td>搜索承接 / 概念引流</td>
+            <td>价格敏感型流量</td>
+            <td>对标 41 款北虫草（起价低至 10 元）；<b>注意与真草严格区隔命名</b>，避免误导与合规风险，仅作流量入口不作为主推</td>
+            <td>视搜索运营能力择机</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 07 避坑提示 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">07</span><span class="bar"></span><span class="t">三条避坑提示</span><span class="en">Pitfalls</span></div>
+    <div class="pit-grid">
+      <div class="pit-card">
+        <div class="pn">PIT 01</div>
+        <div class="pt">不要把虫草当作"可冲量的滋补品"立项</div>
+        <div class="pd">同口径下蜂王浆 598 万、酸枣仁 476 万，虫草仅 1.59 万；<b>120 条达人专属链接空挂、266 家店铺零动销</b>。即便复制唯一成功样本，单场产出也只有 7,930 元量级。<b>动作</b>：以"验证模型"立项，预算与备货按测试项目配置，不设 GMV 目标；把主要资源留在已跑通的品类。</div>
+      </div>
+      <div class="pit-card">
+        <div class="pn">PIT 02</div>
+        <div class="pt">产地故事同质化，真伪信任无法靠话术解决</div>
+        <div class="pd">"西藏/那曲"127 + 86 款在讲同一件事，"不售假草"已成通用话术，而<b>标题中明示第三方检测/溯源的商品为 0 款</b>。<b>动作</b>：把信任状从"产地形容词"换成"可验证凭证"——批次检测报告、海拔溯源码、复秤视频、假一赔十，并写进标题而非详情页。</div>
+      </div>
+      <div class="pit-card">
+        <div class="pn">PIT 03</div>
+        <div class="pt">定价与命名的两个硬风险</div>
+        <div class="pd">一是<b>万元级单品在视频号零成交</b>（3,000 元以上 59 款无一成交），高客单展示型供给不产生转化；二是<b>北虫草/蛹虫草与真草混在同一搜索词下</b>（41 款，起价 10 元）。<b>动作</b>：主推线严格控制在 1,500 元以内；命名必须标明"冬虫夏草"或"北冬虫夏草/蛹虫草"，避免物种混淆带来的合规与退货风险。</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <div>CORDYCEPS · CATEGORY DIAGNOSIS · 26H2</div>
+    <div>数据来源：友望数据 · 视频号选品库 / 商品搜索（2026.09.10） · 内部参考 · CONFIDENTIAL</div>
+  </footer>
+</div>
+</body>
+</html>
