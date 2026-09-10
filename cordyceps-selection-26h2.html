@@ -115,6 +115,18 @@ tbody tr:hover{background:var(--paper-2)}
 .pit-card .pd{font-size:var(--fs-body);color:var(--ink-2);line-height:1.75}
 .pit-card .pd b{color:var(--crimson-deep)}
 
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.gal-card{background:var(--card);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.gal-card .thumb{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--paper-2);border-bottom:1px solid var(--line-soft)}
+.gal-card .gb{padding:9px 10px;flex:1;display:flex;flex-direction:column}
+.gal-card .gn{font-size:10.5px;line-height:1.45;color:var(--ink);height:46px;overflow:hidden}
+.gal-card .gs{font-size:var(--fs-tiny);color:var(--ink-4);margin-top:3px}
+.gal-card .gm{display:flex;justify-content:space-between;align-items:center;margin-top:7px;padding-top:6px;border-top:0.5px solid var(--line-soft)}
+.gal-card .gp{font-family:"Georgia",serif;color:var(--crimson-deep);font-weight:bold;font-size:12px}
+.gal-card .gd{font-size:var(--fs-tiny);color:var(--ink-3);font-family:"Georgia",serif}
+.badge-hot{background:var(--crimson);color:#fff;padding:1px 5px;border-radius:2px;font-size:var(--fs-tiny)}
+.badge-zero{background:var(--paper-2);color:var(--ink-4);padding:1px 5px;border-radius:2px;font-size:var(--fs-tiny)}
+
 .case-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);padding:var(--sp-md) var(--sp-lg);margin:var(--sp-md) 0}
 .case-card .cn{font-size:var(--fs-tiny);letter-spacing:.2em;color:var(--gold);font-weight:bold}
 .case-card .ct2{font-size:15px;font-weight:bold;color:var(--ink);margin:4px 0 var(--sp-sm)}
@@ -141,6 +153,7 @@ footer.colophon{border-top:4px solid var(--crimson-deep);padding:var(--sp-lg) 0 
 
 @media(max-width:880px){
   .base-grid,.stat-grid,.axis-grid,.rank-grid,.line-grid,.pit-grid,.cover .meta-grid,.dual,.case-card .cg{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
   table.sku{font-size:9.5px}
 }
 </style>
@@ -328,9 +341,122 @@ footer.colophon{border-top:4px solid var(--crimson-deep);padding:var(--sp-lg) 0 
     </p>
   </section>
 
-  <!-- 05 三条路径 -->
+  <!-- 05 商品图鉴 -->
   <section class="sec">
-    <div class="sec-head"><span class="n">05</span><span class="bar"></span><span class="t">若必须进入：三条最小试错路径</span><span class="en">Entry Paths</span></div>
+    <div class="sec-head"><span class="n">05</span><span class="bar"></span><span class="t">重点 SKU 图鉴：13 款商品主图与数据</span><span class="en">SKU Gallery</span></div>
+    <p class="sec-sub">按"唯一成交 → 品牌化小规格 → 老字号/产地店 → 断草/鲜草"顺序排列。<b>13 款中仅第 01 款有真实成交（13 件），其余 12 款全部零动销</b>——图鉴本身就是品类现状的直观证明：主图、包装、规格与产地叙事都已就位，转化却几乎为零。</p>
+    <div class="gal-grid">
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6a79976d0002d0cddadfb2a0156aea6e000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="次玛陀那曲冬虫夏草8克32根礼盒">
+        <div class="gb">
+          <div class="gn"><b>次玛陀 · 那曲冬虫夏草礼盒（二级 · 8克/32根）</b></div>
+          <div class="gs">次玛陀那曲冬虫夏草店 · <span class="badge-hot">唯一成交</span></div>
+          <div class="gm"><span class="gp">¥1,220–1,480</span><span class="gd">13 件 / 1.59 万 · 3 博主</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/68ec7d12000ed0cf0b3ae492488b1715000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="次玛陀那曲冬虫夏草10克40根礼盒">
+        <div class="gb">
+          <div class="gn">次玛陀 · 那曲冬虫夏草礼盒（10克/40根 · 2025 新草）</div>
+          <div class="gs">次玛陀那曲冬虫夏草店 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥1,783–1,788</span><span class="gd">0 件 · 同店高端款</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6729a266000a21131df1ae5c7761b01e000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="云南白药孜补冬虫夏草礼盒2.5g">
+        <div class="gb">
+          <div class="gn"><b>云南白药 · 孜补冬虫夏草礼盒（2.5g/盒 · 腺苷含量高）</b></div>
+          <div class="gs">云南白药白药生活 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥799–899</span><span class="gd">成分指标唯一表达</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/687f5faa00008e72091761e41fa31715000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="童涵春堂冬虫夏草Z60 10g">
+        <div class="gb">
+          <div class="gn">童涵春堂 · 冬虫夏草 Z60（10g · 嘉玲专属）</div>
+          <div class="gs">童涵春堂1783健康 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥2,389</span><span class="gd">老字号 10g 装</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/676d6e8e00035d6717d779af5769bc1e000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="广药牌燕品春精选3200条一级冬虫夏草">
+        <div class="gb">
+          <div class="gn">广药牌燕品春 · 精选 3200 条一级冬虫夏草</div>
+          <div class="gs">广药牌燕品春 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥1,999</span><span class="gd">老字号整草</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6781bd940000f2110931e21463d81515000000a000004f50" alt="乐补堂一级西藏那曲头茬冬虫夏草">
+        <div class="gb">
+          <div class="gn">乐补堂 · 一级西藏那曲高海拔头茬（3 条/克）</div>
+          <div class="gs">广然堂 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥999</span><span class="gd">千元内整草</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/673f00660002de7107db4977fb340315000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="表姐精选西藏那曲冬虫夏草大草5g罐装">
+        <div class="gb">
+          <div class="gn">表姐精选 · 西藏那曲冬虫夏草大草（5g/罐）</div>
+          <div class="gs">伊桦滋补养生 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥840</span><span class="gd">整草小规格</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/67404c95000b916b28d26a0f3187bc1e000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="表姐精选那曲冬虫夏草中断草5g起拍">
+        <div class="gb">
+          <div class="gn">表姐精选 · 高海拔那曲冬虫夏草中断草（5g 起拍）</div>
+          <div class="gs">伊桦滋补养生 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥540–590</span><span class="gd">断草性价比线</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/6937be5d000b5a93298a60bc12c41715000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="国坤堂那曲冬虫夏草36根装礼盒">
+        <div class="gb">
+          <div class="gn">国坤堂 · 那曲冬虫夏草（5~6 根/克 · 36 根装礼盒）</div>
+          <div class="gs">国坤堂野生冬虫夏草 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥2,524–3,499</span><span class="gd">高端整草礼盒</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/685eada700088ea30c5dd646dd5a1815000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="云盛瑞草那曲断草5克装">
+        <div class="gb">
+          <div class="gn">云盛瑞草 · 那曲自用断草 5 克装（不售假草）</div>
+          <div class="gs">云盛瑞草-那曲野生真虫草 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥394–894</span><span class="gd">真伪承诺型断草</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/6764d4fd0003b5aa10ca3986e069bc1e000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="群安堂冬虫夏草10克装">
+        <div class="gb">
+          <div class="gn">群安堂 · 冬虫夏草 10 克装</div>
+          <div class="gs">群安堂公司 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥1,399–3,880</span><span class="gd">宽价区间铺货</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SH/reserved/69d674a7000869f61a256f782e418b0b000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="运憬行当季鲜冬虫夏草10根">
+        <div class="gb">
+          <div class="gn">运憬行 · 当季鲜冬虫夏草 10 根（1.0–1.3 克/根）</div>
+          <div class="gs">运憬行 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥799</span><span class="gd">鲜草按根售卖</span></div>
+        </div>
+      </div>
+      <div class="gal-card">
+        <img class="thumb" loading="lazy" src="https://wst.wxapp.tc.qq.com/161/20304/snscosdownload/SZ/reserved/682c30ab0009914c1df5e3e914ae311e000000a000004f50?imageView2/1/w/400/h/400/q/50" alt="贤慧堂西藏新鲜冬虫夏草锁鲜">
+        <div class="gb">
+          <div class="gn">贤慧堂 · 西藏新鲜冬虫夏草（无水干刷 · 真空冷冻锁鲜）</div>
+          <div class="gs">贤慧堂滋补养生 · <span class="badge-zero">零动销</span></div>
+          <div class="gm"><span class="gp">¥1,499</span><span class="gd">鲜草锁鲜线</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footnote">主图来源：友望数据 · 视频号选品库商品主图（腾讯 CDN 直链）；价格为商品页展示区间，销量与销售额为选品库累计口径，博主数为关联达人数。</div>
+  </section>
+
+  <!-- 06 三条路径 -->
+  <section class="sec">
+    <div class="sec-head"><span class="n">06</span><span class="bar"></span><span class="t">若必须进入：三条最小试错路径</span><span class="en">Entry Paths</span></div>
     <p class="sec-sub">基于上述诊断，冬虫夏草<b>不建议作为 26H2 的主力拓品类目</b>。若因业务需要必须布局，应以"最小试错"为原则，优先选择已在别处被验证、且在本品类仅次玛陀/云南白药尝试过的路径。</p>
     <div class="line-grid">
       <div class="line-card l1">
@@ -374,7 +500,7 @@ footer.colophon{border-top:4px solid var(--crimson-deep);padding:var(--sp-lg) 0 
 
   <!-- 06 SKU 路线图 -->
   <section class="sec">
-    <div class="sec-head"><span class="n">06</span><span class="bar"></span><span class="t">SKU 试错矩阵：小步快跑的 6 款建议</span><span class="en">SKU Roadmap</span></div>
+    <div class="sec-head"><span class="n">07</span><span class="bar"></span><span class="t">SKU 试错矩阵：小步快跑的 6 款建议</span><span class="en">SKU Roadmap</span></div>
     <p class="sec-sub">鉴于品类整体未跑通，本矩阵<b>不设 P0 必上款</b>，全部为"测试性质"的 P1–P3：<b>先以 1 款最小 SKU 验证达播模型，验证通过再补第二条线；单款备货与投放预算应控制在其他品类的十分之一以内。</b></p>
     <div class="sku-wrap">
       <table class="sku">
@@ -441,7 +567,7 @@ footer.colophon{border-top:4px solid var(--crimson-deep);padding:var(--sp-lg) 0 
 
   <!-- 07 避坑提示 -->
   <section class="sec">
-    <div class="sec-head"><span class="n">07</span><span class="bar"></span><span class="t">三条避坑提示</span><span class="en">Pitfalls</span></div>
+    <div class="sec-head"><span class="n">08</span><span class="bar"></span><span class="t">三条避坑提示</span><span class="en">Pitfalls</span></div>
     <div class="pit-grid">
       <div class="pit-card">
         <div class="pn">PIT 01</div>
