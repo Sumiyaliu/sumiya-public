@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>官栈花胶 · 经营力诊断报告 | One-Pager</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:#f2f3f5; color:#1f2329; padding:24px; font-size:13px;
+  }
+  .page { max-width:1200px; margin:0 auto; }
+  .card { background:#fff; border-radius:10px; padding:16px 18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  /* ---------- 头部 ---------- */
+  .header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; }
+  .h-left h1 { font-size:22px; font-weight:700; }
+  .h-left h1 em { font-style:normal; color:#e34d59; }
+  .h-left .sub { color:#6b7280; margin-top:6px; }
+  .h-left .sub b { color:#1f2329; }
+  .h-right { text-align:right; }
+  .h-right .lab { color:#6b7280; font-size:12px; }
+  .h-right .num { font-size:26px; font-weight:800; color:#e34d59; }
+  .h-right .cap { color:#8a919f; font-size:11px; margin-top:2px; }
+  /* ---------- 步骤条 ---------- */
+  .steps-bar { display:flex; gap:10px; margin-bottom:14px; }
+  .step-chip { flex:1; background:#fff; border-radius:8px; padding:8px 12px; font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,.05); }
+  .step-chip .no { display:inline-block; width:16px; height:16px; border-radius:50%; background:#1f2329; color:#fff; text-align:center; line-height:16px; font-size:10px; margin-right:6px; }
+  .step-chip.active .no { background:#e34d59; }
+  .step-chip small { color:#8a919f; font-weight:400; margin-left:4px; }
+  /* ---------- 通用 ---------- */
+  .step-tag { display:inline-block; background:#1f2329; color:#fff; border-radius:4px; padding:2px 8px; font-size:11px; font-weight:600; margin-right:6px; }
+  .step-tag.red { background:#e34d59; }
+  .step-tag.orange { background:#f59e0b; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:14px; }
+  .card h3 { font-size:14px; margin-bottom:10px; display:flex; align-items:center; justify-content:space-between; }
+  .pill { font-size:11px; border-radius:10px; padding:2px 10px; font-weight:600; }
+  .pill.bad { background:#fdecec; color:#e34d59; }
+  .pill.warn { background:#fef3e2; color:#d97706; }
+  .pill.ok { background:#e8f7ef; color:#16a34a; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { text-align:left; color:#8a919f; font-weight:500; padding:6px 8px; border-bottom:1px solid #eef0f2; white-space:nowrap; }
+  td { padding:7px 8px; border-bottom:1px solid #f4f5f6; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  .num-cell { font-variant-numeric:tabular-nums; font-weight:600; }
+  .down { color:#e34d59; } .up { color:#16a34a; }
+  .badge-h,.badge-m,.badge-l { display:inline-block; width:34px; text-align:center; border-radius:4px; font-size:11px; padding:1px 0; color:#fff; font-weight:600; }
+  .badge-h { background:#e34d59; } .badge-m { background:#f59e0b; } .badge-l { background:#9ca3af; }
+  /* ---------- 指标块 ---------- */
+  .kpi-row { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:14px; }
+  .kpi { background:#fff; border-radius:10px; padding:12px 14px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .kpi .v { font-size:18px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .kpi .k { color:#8a919f; font-size:11px; margin-top:2px; }
+  .kpi .d { font-size:11px; margin-top:4px; font-weight:600; }
+  /* ---------- P0 ---------- */
+  .p0 { border:1.5px solid #f59e0b; background:#fffdf5; margin-bottom:14px; }
+  .p0 h3 { color:#b45309; }
+  .p0 .ops { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:10px; }
+  .op { background:#fff; border:1px solid #f2e8c9; border-radius:8px; padding:10px 12px; }
+  .op b { display:block; margin-bottom:4px; }
+  .op span { color:#6b7280; font-size:12px; line-height:1.5; display:block; }
+  /* ---------- 力条 ---------- */
+  .force { display:flex; align-items:flex-start; gap:8px; padding:7px 0; border-bottom:1px dashed #f0f1f3; }
+  .force:last-child { border-bottom:none; }
+  .force .fname { width:52px; font-weight:700; flex-shrink:0; }
+  .force .fdesc { flex:1; color:#4b5563; line-height:1.5; }
+  .force .ftag { flex-shrink:0; }
+  .foot { display:flex; justify-content:space-between; color:#9ca3af; font-size:11px; margin-top:16px; }
+  .src { color:#8a919f; font-size:11px; line-height:1.7; }
+  .scope li { margin:4px 0 4px 16px; color:#4b5563; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== 头部 ===== -->
+  <div class="header">
+    <div class="h-left">
+      <h1>官栈花胶 经营力诊断：<em>销量翻倍、金额下滑</em>，结构失衡是主要矛盾</h1>
+      <div class="sub">诊断主线：<b>先看量额背离</b> → 再看大单品与自播短板 → 后看达人效率与内容供给 —— 按证据链定位可行动机会</div>
+    </div>
+    <div class="h-right">
+      <div class="lab">近90天销售额（环比）</div>
+      <div class="num">428.04w <span style="font-size:14px">↓ 8.28%</span></div>
+      <div class="cap">市占率 0.08%（环比 ↓0.02pct）· 数据窗口 2026.06.20–09.17</div>
+    </div>
+  </div>
+
+  <!-- ===== 步骤条 ===== -->
+  <div class="steps-bar">
+    <div class="step-chip"><span class="no">1</span>竞对比·外察差距 <small>vs 燕之屋 / 五个女博士</small></div>
+    <div class="step-chip"><span class="no">2</span>四力体检·看清客户短板 <small>经营 / 商品 / 内容 / 达人</small></div>
+    <div class="step-chip active"><span class="no">3</span>优先级判定·先做什么 <small>P0 结构修复</small></div>
+    <div class="step-chip"><span class="no">4</span>建议行动·落地清单</div>
+  </div>
+
+  <!-- ===== KPI 总览 ===== -->
+  <div class="kpi-row">
+    <div class="kpi"><div class="v">428.04w</div><div class="k">近90天销售额</div><div class="d down">↓ 8.28% 环比</div></div>
+    <div class="kpi"><div class="v">1.43w</div><div class="k">近90天销量</div><div class="d up">↑ 88.84% 环比</div></div>
+    <div class="kpi"><div class="v">≈299元</div><div class="k">推算件单价（额/量）</div><div class="d down">↓ 约51% 环比推算</div></div>
+    <div class="kpi"><div class="v">125 / 447</div><div class="k">带货博主 / 带货直播</div><div class="d up">↑ 48.81% / ↑ 22.13%</div></div>
+    <div class="kpi"><div class="v">60条</div><div class="k">近90天带货视频</div><div class="d down">仅为直播场次 1/7.5</div></div>
+    <div class="kpi"><div class="v">117个</div><div class="k">动销商品数</div><div class="d down">↓ 4.46% 环比</div></div>
+  </div>
+
+  <!-- ===== STEP 1 / STEP 2 ===== -->
+  <div class="grid-2">
+    <!-- STEP 1 -->
+    <div class="card">
+      <h3><span><span class="step-tag">STEP 1</span>竞对比 · 官栈在竞品测速中的位置</span><span class="pill bad">落后身位</span></h3>
+      <table>
+        <tr><th>品牌</th><th>90天走势特征（销售额）</th><th>关键观察</th></tr>
+        <tr>
+          <td><b>官栈</b>（本品）</td>
+          <td class="num-cell">日销 30–60w 区间窄幅波动，90天无爆发尖峰</td>
+          <td>缺乏节点运营，走势平稳但天花板低；90天总额环比下滑</td>
+        </tr>
+        <tr>
+          <td><b>燕之屋</b></td>
+          <td class="num-cell">多次冲高，09.06 尖峰约 140w+（日销约官栈 3 倍）</td>
+          <td>具备强节点爆发能力（大促/大场直播）</td>
+        </tr>
+        <tr>
+          <td><b>五个女博士</b></td>
+          <td class="num-cell">日常低位，09.09 单日尖峰约 40w</td>
+          <td>低成本起量打法，尖峰日即追平/反超官栈日销</td>
+        </tr>
+      </table>
+      <div style="margin-top:10px; color:#6b7280; line-height:1.6;">
+        结论：官栈的差距不是「日销底盘」，而是<b style="color:#e34d59">没有爆发点</b>——竞品靠节点尖峰拉开量差，官栈在 0.08% 市占率上还在丢失份额（↓0.02pct）。
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="card">
+      <h3><span><span class="step-tag">STEP 2</span>四力体检 · 逐项判断</span><span class="pill warn">2项未达标 / 2项机会</span></h3>
+      <div class="force"><div class="fname">经营力</div><div class="fdesc">90天销售额 428.04w（↓8.28%）；近30天 249.68w；直播销售额中<b>达人推广占 70.12%（144.22w），品牌自播仅 29.98%（61.47w）</b>，自播承重不足</div><div class="ftag"><span class="pill bad">未达标</span></div></div>
+      <div class="force"><div class="fname">商品力</div><div class="fdesc">动销 117 个（↓4.46%）；TOP1 大单品「双养鲜炖红花胶 96g」112.42w 占比 26%，<b>仅 1 位关联博主</b>；TOP3 商品集中度约 60%</div><div class="ftag"><span class="pill bad">未达标</span></div></div>
+      <div class="force"><div class="fname">内容力</div><div class="fdesc">带货视频仅 60 条 vs 带货直播 447 场；短视频种草供给明显薄弱，内容资产沉淀不足</div><div class="ftag"><span class="pill warn">最大机会</span></div></div>
+      <div class="force"><div class="fname">达人力</div><div class="fdesc">带货博主 125 人（↑48.81%）、直播 447 场（↑22.13%），但销售额反降——<b>投入放量、产出递减，人货匹配效率下降</b></div><div class="ftag"><span class="pill warn">待改善</span></div></div>
+    </div>
+  </div>
+
+  <!-- ===== 问题清单 ===== -->
+  <div class="card" style="margin-bottom:14px;">
+    <h3><span><span class="step-tag">诊断结论</span>发现的问题 · 可能原因 · 影响程度</span><span class="pill bad">共6项，2高2中2低</span></h3>
+    <table>
+      <tr><th style="width:34px">编号</th><th style="width:300px">问题描述（证据）</th><th>可能原因</th><th style="width:64px">影响程度</th></tr>
+      <tr>
+        <td class="num-cell">Q1</td>
+        <td><b>量额严重背离</b>：销量 ↑88.84%，销售额 ↓8.28%，推算件单价下滑约 51%（≈299元/件）</td>
+        <td>低价SKU（胶囊/小嫩瓶 ¥194–319 档）放量、高客单鲜炖装（¥981+）占比下降；达人低价机制走量</td>
+        <td><span class="badge-h">高</span></td>
+      </tr>
+      <tr>
+        <td class="num-cell">Q2</td>
+        <td><b>无节点爆发力</b>：90天无单日尖峰，竞品燕之屋单日可达 140w+（约官栈日销 3 倍），市占率 ↓0.02pct</td>
+        <td>缺少大促/大场直播的节点运营排期；资源未向爆发日集中</td>
+        <td><span class="badge-h">高</span></td>
+      </tr>
+      <tr>
+        <td class="num-cell">Q3</td>
+        <td><b>大单品依赖且背书单薄</b>：TOP1 商品 112.42w（占26%）仅 1 位关联博主、TOP3 集中度 60%</td>
+        <td>第二梯队商品（月套餐/礼盒）未跑出来；头部单品达人分发面窄</td>
+        <td><span class="badge-m">中</span></td>
+      </tr>
+      <tr>
+        <td class="num-cell">Q4</td>
+        <td><b>达人投入产出倒挂</b>：博主 +48.81%、直播 +22.13%，销售额却 ↓8.28%</td>
+        <td>新增博主以低粉/低匹配为主，带货低客单 SKU；缺乏博主分层与 ROI 考核</td>
+        <td><span class="badge-m">中</span></td>
+      </tr>
+      <tr>
+        <td class="num-cell">Q5</td>
+        <td><b>内容供给短板</b>：带货视频 60 条，仅为直播场次的 1/7.5；长尾内容资产少</td>
+        <td>运营重心全在直播；短视频种草→转化的内容链路未体系化</td>
+        <td><span class="badge-l">低</span></td>
+      </tr>
+      <tr>
+        <td class="num-cell">Q6</td>
+        <td><b>矩阵冗余、动销面收缩</b>：6 个品牌号 + 4 个小店并行，动销商品 117 个且 ↓4.46%</td>
+        <td>多账号分流流量与粉丝；长尾商品缺乏维护，货盘臃肿</td>
+        <td><span class="badge-l">低</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ===== P0 机会 ===== -->
+  <div class="card p0">
+    <h3><span><span class="step-tag orange">STEP 3</span>P0 · 最大机会：修复客单结构 + 建立节点爆发</span><span class="pill warn">优先级最高</span></h3>
+    <div class="ops">
+      <div class="op"><b>① 价格带重整（对 Q1）</b><span>高客单鲜炖装回到主推位，低价胶囊作为引流款控制机制价与占比；目标件单价回升至 380 元+</span></div>
+      <div class="op"><b>② 节点大场复制（对 Q2）</b><span>对标燕之屋 09.06 尖峰打法，按月排 1–2 场大场直播 + 资源集中投放，做出自己的爆发日</span></div>
+      <div class="op"><b>③ 达人提质控量（对 Q3/Q4）</b><span>TOP1 大单品从 1 位博主扩到 10+ 位腰部以上达人分发；对新增博主设客单/ROI 门槛，汰换低效达人</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 建议行动 + 依据 ===== -->
+  <div class="grid-2">
+    <div class="card">
+      <h3><span><span class="step-tag">STEP 4</span>建议行动清单（30天）</span></h3>
+      <table>
+        <tr><th style="width:40px">优先</th><th>动作</th><th style="width:110px">衡量指标</th></tr>
+        <tr><td><span class="badge-h">P0</span></td><td>重排货盘价格带：鲜炖高客单装为主推，低价款限定引流机制</td><td class="num-cell">件单价 ≥380元</td></tr>
+        <tr><td><span class="badge-h">P0</span></td><td>排定月度大场直播节点，集中投放资源做尖峰</td><td class="num-cell">单日峰值 ≥100w</td></tr>
+        <tr><td><span class="badge-m">P1</span></td><td>TOP1 大单品扩达人分发（1→10+ 位），建立博主分层考核</td><td class="num-cell">博主人均产出回升</td></tr>
+        <tr><td><span class="badge-m">P1</span></td><td>补短视频内容：每周 ≥15 条带货视频，围绕大单品沉淀素材</td><td class="num-cell">视频:直播 ≥1:3</td></tr>
+        <tr><td><span class="badge-l">P2</span></td><td>矩阵收敛：主账号聚焦运营，小店按品类归并；清理长尾 SKU</td><td class="num-cell">动销商品效率 ↑</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3><span><span class="step-tag">附录</span>诊断范围与局限</span></h3>
+      <div style="margin-top:6px;">
+        <div style="color:#8a919f; font-weight:600; margin-bottom:4px;">诊断范围界定：</div>
+        <ul class="scope">
+          <li>覆盖：经营结果指标、竞品相对表现、商品结构、直播/达人/视频供给；</li>
+          <li>不覆盖：投放消耗与 ROI 明细、用户资产（5A）、直播间过程指标（需后台数据补充）；</li>
+          <li>局限：竞品曲线为目测读数；直播构成图统计窗口以平台口径为准。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>官栈花胶 · 经营力诊断 One-Pager ｜ 推理链叙事：背离 → 短板 → 机会 → 行动</span>
+    <span>数据窗口：近90天（2026.06.20–09.17）· 出品日期 2026-09-18</span>
+  </div>
+</div>
+</body>
+</html>
