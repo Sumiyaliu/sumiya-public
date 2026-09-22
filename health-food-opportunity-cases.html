@@ -41,8 +41,9 @@
   /* ===== Hero ===== */
   .hero{
     background:linear-gradient(135deg,#0f766e 0%,#0d9488 55%,#14b8a6 100%);
-    color:#fff;border-radius:0 0 24px 24px;padding:24px 32px 22px;position:relative;overflow:hidden;
+    color:#fff;border-radius:0 0 24px 24px;padding:24px 0 22px;position:relative;overflow:hidden;
   }
+  .hero-inner{max-width:980px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
   .hero::after{
     content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
     border-radius:50%;background:rgba(255,255,255,.08);
@@ -66,6 +67,7 @@
     margin-top:10px;font-size:12px;background:rgba(253,230,138,.18);
     border:1px dashed rgba(253,230,138,.55);border-radius:8px;padding:5px 12px;color:#fef3c7;
   }
+  .hero-inner .meta:last-child{margin-bottom:0;}
 
   /* ===== Section ===== */
   section{margin-top:52px;}
@@ -202,6 +204,15 @@
   }
   .btn-line:hover{background:var(--primary-light);}
   .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  /* 案例卡按品牌 A–F 顺序排列 */
+  #case-jianfei{order:1;}
+  #case-xuezhi{order:2;}
+  #case-xuetang{order:3;}
+  #case-huangheban{order:4;}
+  #case-mianyi{order:5;}
+  #case-tongbian{order:6;}
+  #case-pingtai{order:7;}
+  #case-jizhi{order:8;}
   .case{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:box-shadow .25s,border-color .25s;}
   .case:hover{border-color:#99f6e4;}
   .case.open{border-color:var(--primary);box-shadow:0 6px 20px rgba(13,148,136,.12);}
@@ -350,14 +361,15 @@
 </head>
 <body>
 <div class="hero">
-  <div class="tag">行业洞察 · 保健食品 · 交互版</div>
-  <h1>保健食品<em>机会类目</em> × 典型案例</h1>
-  <p class="sub">六大功能赛道机会分级 · 八大标杆案例全景复盘 · 小店能力上线看板 · 组合放量公式</p>
-  <div class="meta">
-    <span>综合来源：直播链路放量打法案例长图 × 闭环直播标杆案例集</span>
-    <span>Confidential</span>
+  <div class="hero-inner">
+    <div class="tag">行业洞察 · 保健食品</div>
+    <h1>保健食品<em>机会类目</em> × 典型案例</h1>
+    <p class="sub">六大功能赛道机会分级 · 八大标杆案例全景复盘 · 小店能力上线看板 · 组合放量公式</p>
+    <div class="meta">
+      <span>综合来源：直播链路放量打法案例长图 × 闭环直播标杆案例集</span>
+      <span>Confidential</span>
+    </div>
   </div>
-  <div class="hint">🖱️ 本页支持点击交互：案例卡片 / 能力卡片 / 延伸内容均可点击展开，查看完整指标、机制拆解与溯源信息</div>
 </div>
 
 <div class="page">
