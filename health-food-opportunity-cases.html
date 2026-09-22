@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保健食品机会类目图谱 × 典型案例解码 · 行业洞察（交互版）</title>
+<meta name="description" content="保健食品六大功能赛道机会分级（通便 / 免疫骨密度 / 祛黄褐斑 / 降血脂 / 减肥 / 降血糖）× 八大标杆直播间案例复盘，含小店能力上线看板（专场放量 / 全库智选 / 潜客优投）与组合放量公式，支持点击展开查看完整指标与机制拆解。">
+<style>
+  :root{
+    --primary:#0d9488;
+    --primary-deep:#0f766e;
+    --primary-light:#ccfbf1;
+    --primary-bg:#f0fdfa;
+    --amber:#d97706;
+    --amber-light:#fef3c7;
+    --rose:#e11d48;
+    --rose-light:#ffe4e6;
+    --sky:#0284c7;
+    --sky-light:#e0f2fe;
+    --violet:#7c3aed;
+    --violet-light:#ede9fe;
+    --green:#16a34a;
+    --green-light:#dcfce7;
+    --ink:#1c1917;
+    --ink-2:#44403c;
+    --ink-3:#78716c;
+    --line:#e7e5e4;
+    --paper:#faf9f6;
+    --card:#ffffff;
+    --mint:#ecfdf5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:980px;margin:0 auto;padding:0 20px 60px;}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg,#0f766e 0%,#0d9488 55%,#14b8a6 100%);
+    color:#fff;border-radius:0 0 28px 28px;padding:44px 36px 36px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    border-radius:50%;background:rgba(255,255,255,.08);
+  }
+  .hero::before{
+    content:"";position:absolute;right:40px;bottom:-90px;width:180px;height:180px;
+    border-radius:50%;background:rgba(255,255,255,.06);
+  }
+  .hero .tag{
+    display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:4px 14px;border-radius:999px;font-size:13px;letter-spacing:2px;margin-bottom:18px;
+  }
+  .hero h1{font-size:26px;font-weight:700;letter-spacing:1px;line-height:1.4;}
+  .hero h1 em{font-style:normal;color:#fde68a;}
+  .hero .sub{margin-top:14px;font-size:15px;opacity:.92;}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .hero .meta span{
+    background:rgba(255,255,255,.14);border-radius:8px;padding:5px 12px;font-size:13px;
+  }
+  .hero .hint{
+    margin-top:18px;font-size:13px;background:rgba(253,230,138,.18);
+    border:1px dashed rgba(253,230,138,.55);border-radius:10px;padding:8px 14px;color:#fef3c7;
+  }
+
+  /* ===== Section ===== */
+  section{margin-top:52px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+  .sec-num{
+    width:36px;height:36px;border-radius:11px;background:var(--primary);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0;
+  }
+  .sec-head h2{font-size:21px;font-weight:700;color:var(--ink);}
+  .sec-head p{font-size:13px;color:var(--ink-3);margin-top:2px;}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:26px 28px;box-shadow:0 1px 3px rgba(28,25,23,.04);
+  }
+
+  /* ===== Status badges ===== */
+  .live{display:inline-flex;align-items:center;gap:5px;background:var(--green-light);color:#166534;border:1px solid #86efac;border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:700;}
+  .live i{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s infinite;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .chip{display:inline-block;background:var(--primary-bg);color:var(--primary-deep);border-radius:8px;padding:3px 10px;font-size:12px;font-weight:600;}
+
+  /* ===== Tier map ===== */
+  .tier-band{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+  .tier-chip{font-size:12px;padding:3px 12px;border-radius:999px;font-weight:600;line-height:1.5;}
+  .t-s{background:var(--primary-light);color:var(--primary-deep);}
+  .t-a{background:var(--amber-light);color:#92400e;}
+  .t-b{background:var(--sky-light);color:#075985;}
+  .t-c{background:var(--rose-light);color:#9f1239;}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .tier-card{border-radius:14px;padding:20px 18px;border:1.5px solid transparent;position:relative;}
+  .tier-card h3{font-size:17px;font-weight:700;margin-bottom:4px;}
+  .tier-card .verdict{font-size:12.5px;font-weight:600;margin-bottom:10px;opacity:.85;}
+  .tier-card ul{list-style:none;}
+  .tier-card li{font-size:12.5px;color:var(--ink-2);padding:3px 0 3px 16px;position:relative;}
+  .tier-card li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5;}
+  .tier-card .jump{
+    margin-top:10px;display:inline-block;font-size:12px;font-weight:700;cursor:pointer;
+    color:inherit;border:1px solid currentColor;border-radius:8px;padding:3px 12px;background:rgba(255,255,255,.6);
+    opacity:.85;transition:.2s;
+  }
+  .tier-card .jump:hover{opacity:1;transform:translateX(2px);}
+  .tier-card.s{background:var(--mint);border-color:#a7f3d0;}
+  .tier-card.s h3,.tier-card.s .verdict{color:var(--primary-deep);}
+  .tier-card.a{background:var(--amber-light);border-color:#fde68a;}
+  .tier-card.a h3,.tier-card.a .verdict{color:#92400e;}
+  .tier-card.b{background:var(--sky-light);border-color:#bae6fd;}
+  .tier-card.b h3,.tier-card.b .verdict{color:#075985;}
+  .tier-card.c{background:var(--rose-light);border-color:#fecdd3;}
+  .tier-card.c h3,.tier-card.c .verdict{color:#9f1239;}
+
+  /* ===== Market ===== */
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px;}
+  .stat{
+    background:linear-gradient(180deg,#ffffff,#f8fafc);border:1px solid var(--line);
+    border-radius:14px;padding:20px;text-align:center;
+  }
+  .stat .v{font-size:23px;font-weight:800;color:var(--primary-deep);}
+  .stat .v small{font-size:14px;font-weight:600;}
+  .stat .k{font-size:12.5px;color:var(--ink-3);margin-top:4px;}
+  .policy{
+    background:linear-gradient(90deg,#fffbeb,#fef3c7);border:1px solid #fde68a;border-radius:14px;
+    padding:18px 22px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .policy .flag{font-size:22px;line-height:1.2;}
+  .policy b{color:#92400e;}
+  .policy p{font-size:13.5px;color:#78350f;}
+
+  /* ===== 小店能力 ===== */
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .cap{
+    background:var(--card);border:1.5px solid #a7f3d0;border-radius:16px;padding:22px 20px;
+    position:relative;overflow:hidden;
+  }
+  .cap::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--primary),#14b8a6);}
+  .cap h3{font-size:17px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .cap .pos{font-size:12.5px;color:var(--primary-deep);font-weight:600;margin:6px 0 10px;}
+  .cap dl{font-size:12.5px;}
+  .cap dt{font-weight:700;color:var(--ink);margin-top:8px;}
+  .cap dd{color:var(--ink-2);margin-top:2px;}
+  .cap .ext-toggle{margin-top:12px;}
+
+  /* ===== 交互展开通用 ===== */
+  .exp-toggle{
+    display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--primary-deep);
+    background:var(--primary-bg);border:1px solid var(--primary-light);border-radius:8px;
+    padding:5px 12px;cursor:pointer;user-select:none;transition:.2s;
+  }
+  .exp-toggle:hover{background:var(--primary-light);}
+  .exp-toggle .arr{transition:transform .3s;display:inline-block;}
+  .exp-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
+  .exp-wrap>div{overflow:hidden;}
+  .exp-wrap.open{grid-template-rows:1fr;}
+  .open-arrow .arr{transform:rotate(180deg);}
+
+  .ext-box{
+    margin-top:12px;background:#f8fafc;border:1px dashed var(--line);border-radius:12px;padding:16px 18px;
+  }
+  .ext-box h5{font-size:13px;color:var(--ink);margin-bottom:8px;}
+  .ext-box p,.ext-box li{font-size:12.5px;color:var(--ink-2);}
+  .ext-box ul{padding-left:18px;}
+
+  /* ===== 机会类目 ===== */
+  .cat-item{display:flex;gap:18px;padding:22px 0;border-bottom:1px dashed var(--line);}
+  .cat-item:last-child{border-bottom:none;}
+  .cat-badge{
+    width:76px;height:76px;border-radius:16px;flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;
+  }
+  .cat-badge .rank{font-size:11px;opacity:.9;letter-spacing:1px;}
+  .cat-badge .no{font-size:26px;font-weight:800;line-height:1.1;}
+  .bg-s{background:linear-gradient(135deg,#0d9488,#14b8a6);}
+  .bg-a{background:linear-gradient(135deg,#d97706,#f59e0b);}
+  .bg-b{background:linear-gradient(135deg,#0284c7,#0ea5e9);}
+  .bg-c{background:linear-gradient(135deg,#e11d48,#f43f5e);}
+  .cat-body{flex:1;}
+  .cat-body h3{font-size:17.5px;font-weight:700;}
+  .cat-body h3 span{font-size:12.5px;font-weight:600;color:#fff;border-radius:6px;padding:2px 8px;margin-left:8px;vertical-align:2px;}
+  .cat-body .why{font-size:13.5px;color:var(--ink-2);margin:6px 0 10px;}
+  .kv{display:flex;flex-wrap:wrap;gap:8px;}
+  .kv span{
+    background:var(--primary-bg);color:var(--primary-deep);border-radius:8px;
+    padding:3px 10px;font-size:12px;font-weight:600;line-height:1.55;text-align:center;
+  }
+  .cat-actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
+
+  /* ===== 案例卡（可点击展开） ===== */
+  .case-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;}
+  .case-toolbar .tip{font-size:12.5px;color:var(--ink-3);}
+  .btn-line{
+    font-size:12.5px;font-weight:700;color:var(--primary-deep);background:var(--primary-bg);
+    border:1px solid var(--primary-light);border-radius:8px;padding:5px 14px;cursor:pointer;transition:.2s;
+  }
+  .btn-line:hover{background:var(--primary-light);}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .case{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:box-shadow .25s,border-color .25s;}
+  .case:hover{border-color:#99f6e4;}
+  .case.open{border-color:var(--primary);box-shadow:0 6px 20px rgba(13,148,136,.12);}
+  .case-head{padding:16px 20px 12px;cursor:pointer;user-select:none;position:relative;}
+  .case-head .track{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--primary-deep);background:var(--primary-light);border-radius:999px;padding:2px 10px;display:inline-block;margin-bottom:8px;}
+  .case-head h3{font-size:16.5px;font-weight:700;padding-right:24px;}
+  .case-head .role{font-size:12.5px;color:var(--ink-3);margin-top:2px;}
+  .case-head .fold{
+    position:absolute;right:18px;top:18px;width:22px;height:22px;border-radius:50%;
+    background:var(--primary-bg);color:var(--primary-deep);font-size:13px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;transition:transform .3s;
+  }
+  .case.open .case-head .fold{transform:rotate(180deg);background:var(--primary);color:#fff;}
+  .case-head .click-hint{font-size:11px;color:var(--primary);font-weight:600;margin-top:6px;}
+  .case.open .click-hint{display:none;}
+
+  .case-body{padding:14px 20px 18px;}
+  .case-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+  .cm{background:#fafaf9;border:1px solid var(--line);border-radius:10px;padding:8px 12px;}
+  .cm .v{font-size:17px;font-weight:800;color:var(--primary-deep);}
+  .cm .k{font-size:11px;color:var(--ink-3);}
+  .cm.hot .v{color:var(--amber);}
+  .case-body .insight{font-size:12.5px;color:var(--ink-2);}
+  .case-body .insight b{color:var(--ink);}
+  .case-body .insight::before{content:"◆ 核心打法  ";color:var(--primary);font-weight:700;}
+
+  .case-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;}
+  .case-detail>div{overflow:hidden;}
+  .case.open .case-detail{grid-template-rows:1fr;}
+  .cd-inner{padding:0 20px 20px;}
+  .cd-block{border-top:1px dashed var(--line);padding-top:14px;margin-top:4px;}
+  .cd-block h5{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .cd-block h5::before{content:"";width:4px;height:14px;border-radius:2px;background:var(--primary);}
+  .full-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .fm{background:#fafaf9;border:1px solid var(--line);border-radius:10px;padding:8px 10px;text-align:center;}
+  .fm .v{font-size:15.5px;font-weight:800;color:var(--primary-deep);}
+  .fm .v small{font-size:11px;font-weight:600;}
+  .fm .k{font-size:10.5px;color:var(--ink-3);}
+  .fm .cmp{font-size:10px;color:var(--amber);font-weight:600;margin-top:1px;}
+  .mech li{font-size:12.5px;color:var(--ink-2);padding:3px 0 3px 16px;position:relative;list-style:none;}
+  .mech li::before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:800;}
+  .rel-caps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+  .rel-caps .chip{cursor:default;}
+  .src-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .src-tag{font-size:10.5px;color:var(--ink-3);background:#fafaf9;border:1px solid var(--line);border-radius:6px;padding:2px 8px;}
+  .src-tag b{color:var(--ink-2);}
+  .ext-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .ext-links a{
+    font-size:11.5px;color:var(--sky);border:1px solid #bae6fd;background:var(--sky-light);
+    border-radius:8px;padding:3px 10px;text-decoration:none;font-weight:600;transition:.2s;
+  }
+  .ext-links a:hover{background:#bae6fd;}
+
+  /* ===== 组合公式 ===== */
+  .formula{display:flex;align-items:stretch;gap:0;margin-bottom:20px;flex-wrap:wrap;}
+  .f-node{
+    flex:1;min-width:200px;background:var(--card);border:1.5px solid var(--primary-light);
+    border-radius:14px;padding:18px;position:relative;
+  }
+  .f-node h4{font-size:15px;color:var(--primary-deep);font-weight:700;margin-bottom:6px;}
+  .f-node p{font-size:12.5px;color:var(--ink-2);}
+  .f-node .metric{margin-top:8px;font-size:12px;font-weight:700;color:var(--amber);}
+  .f-x{display:flex;align-items:center;padding:0 10px;font-size:24px;font-weight:800;color:var(--primary);}
+  .f-eq{display:flex;align-items:center;padding:0 10px;font-size:24px;font-weight:800;color:var(--ink-3);}
+  .f-result{
+    flex:1;min-width:200px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;
+    border-radius:14px;padding:18px;
+  }
+  .f-result h4{font-size:15px;font-weight:700;margin-bottom:6px;color:#fde68a;}
+  .f-result p{font-size:12.5px;opacity:.92;}
+  .vs-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0 6px;}
+  .vs-table th{background:var(--primary-bg);color:var(--primary-deep);padding:9px 12px;text-align:left;font-weight:700;}
+  .vs-table td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--ink-2);}
+  .vs-table tr:last-child td{border-bottom:none;}
+  .vs-table td:first-child{font-weight:600;color:var(--ink);}
+
+  .pcad{margin-top:18px;border-top:1px dashed var(--line);padding-top:16px;}
+  .pcad h4{font-size:14.5px;font-weight:800;margin-bottom:6px;}
+  .pcad .adv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+  .pcad .adv>div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--ink-2);}
+  .pcad .adv b{color:var(--ink);}
+  .pcad ol{padding-left:20px;}
+  .pcad ol li{font-size:12.5px;color:var(--ink-2);padding:2px 0;}
+  .pcad ol b{color:var(--ink);}
+  .op-path{
+    margin-top:10px;font-size:12px;background:var(--violet-light);border:1px solid #ddd6fe;
+    border-radius:8px;padding:8px 12px;color:#5b21b6;display:inline-block;
+  }
+
+  /* ===== 工作流 ===== */
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;}
+  .flow-node{
+    flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px;text-align:center;position:relative;
+  }
+  .flow-node .ic{font-size:20px;margin-bottom:4px;}
+  .flow-node h5{font-size:13.5px;font-weight:800;}
+  .flow-node p{font-size:11.5px;color:var(--ink-3);margin-top:4px;}
+  .flow-arr{display:flex;align-items:center;padding:0 6px;color:var(--primary);font-size:18px;font-weight:800;}
+
+  /* ===== 行动路径 ===== */
+  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;counter-increment:step;position:relative;}
+  .step::before{
+    content:counter(step,decimal-leading-zero);font-size:30px;font-weight:800;color:var(--primary-light);
+    position:absolute;right:16px;top:10px;line-height:1;
+  }
+  .step h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;padding-right:44px;}
+  .step p{font-size:12.5px;color:var(--ink-2);}
+  .step p b{color:var(--primary-deep);}
+  .step .rel{margin-top:8px;}
+
+  /* ===== 结论 ===== */
+  .conclusion{background:linear-gradient(135deg,#134e4a,#0f766e);border-radius:18px;color:#fff;padding:30px 32px;}
+  .conclusion h2{font-size:20px;margin-bottom:16px;color:#fde68a;}
+  .conclusion ol{list-style:none;}
+  .conclusion li{font-size:14px;padding:7px 0 7px 30px;position:relative;opacity:.95;}
+  .conclusion li::before{
+    content:attr(data-n);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:6px;
+    background:rgba(255,255,255,.16);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .conclusion b{color:#fde68a;}
+
+  footer{margin-top:44px;text-align:center;font-size:12px;color:var(--ink-3);line-height:1.9;}
+  footer .conf{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 14px;margin-bottom:8px;color:var(--ink-2);letter-spacing:2px;}
+  footer a{color:var(--sky);}
+
+  @media (max-width:760px){
+    .hero h1{font-size:20px;}
+    .tier-grid,.case-grid,.steps,.stat-row,.cap-grid{grid-template-columns:1fr;}
+    .full-metrics{grid-template-columns:repeat(2,1fr);}
+    .cat-item{flex-direction:column;}
+    .formula{flex-direction:column;}
+    .f-x,.f-eq{justify-content:center;padding:6px 0;}
+    .pcad .adv{grid-template-columns:1fr;}
+    .flow{flex-direction:column;}
+    .flow-arr{justify-content:center;padding:4px 0;}
+  }
+  @media print{
+    body{background:#fff;}
+    .hero{border-radius:0;}
+    .exp-wrap{grid-template-rows:1fr!important;}
+    .case-detail{grid-template-rows:1fr!important;}
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="tag">行业洞察 · 保健食品 · 交互版</div>
+  <h1>保健食品<em>机会类目图谱</em><br>× 典型案例打法解码</h1>
+  <p class="sub">六大功能赛道机会分级 · 八大标杆案例全景复盘 · 小店能力上线看板 · 组合放量公式</p>
+  <div class="meta">
+    <span>综合来源：直播链路放量打法案例长图 × 闭环直播标杆案例集</span>
+    <span>Confidential</span>
+  </div>
+  <div class="hint">🖱️ 本页支持点击交互：案例卡片 / 能力卡片 / 延伸内容均可点击展开，查看完整指标、机制拆解与溯源信息</div>
+</div>
+
+<div class="page">
+
+  <!-- 01 机会分级 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div>
+        <h2>六大功能赛道机会地图</h2>
+        <p>按「小程序直购×直播」双链路放量与闭环效率差值分级 · 点击卡片右下角可直达标杆案例</p>
+      </div>
+    </div>
+    <div class="tier-band">
+      <span class="tier-chip t-s">S 级 · 强机会（小程序直购×直播双链路放量 100%）</span>
+      <span class="tier-chip t-b">B 级 · 规模化验证期</span>
+      <span class="tier-chip t-c">C 级 · 谨慎入局</span>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card s">
+        <h3>通便功能 · ROI +0.90</h3>
+        <div class="verdict">S 级｜ROI 差值 +0.90 · 赛道第一</div>
+        <ul>
+          <li>直播闭环效率提升最大，直购近乎失效下的增量承接赛道</li>
+          <li>CVR 13–14%，全场最高</li>
+          <li>小程序直购×直播双链路放量 100%</li>
+        </ul>
+        <span class="jump" onclick="openCase('case-tongbian')">查看标杆案例 F →</span>
+      </div>
+      <div class="tier-card s">
+        <h3>增强免疫力 + 骨密度</h3>
+        <div class="verdict">S 级｜ROI 差值 +0.88 · 冲量标杆</div>
+        <ul>
+          <li>直播效率碾压直购，提升达两位数倍</li>
+          <li>峰值 GMV 膨胀率 3.8 倍</li>
+          <li>蓝帽双功能宣称 + 高客单礼盒基本盘</li>
+        </ul>
+        <span class="jump" onclick="openCase('case-mianyi')">查看标杆案例 E →</span>
+      </div>
+      <div class="tier-card s">
+        <h3>祛黄褐斑 + 贫血</h3>
+        <div class="verdict">S 级｜ROI 差值 +0.13 · 确定性最强</div>
+        <ul>
+          <li>体量与效率双优的强机会品类，直播消耗百万级</li>
+          <li>直播效率高 18%，小程序直购×直播双链路放量 100%</li>
+          <li>ROI 天花板 1.3–1.4（全场最高）</li>
+        </ul>
+        <span class="jump" onclick="openCase('case-huangheban')">查看标杆案例 D →</span>
+      </div>
+      <div class="tier-card b">
+        <h3>辅助降血脂</h3>
+        <div class="verdict">B 级｜效率与势能双高 · 稳健放量</div>
+        <ul>
+          <li>ROI 差值 +0.10，小程序直购×直播双链路放量 66.7%</li>
+          <li>高客单定位 ¥400–450，品牌升级赛道</li>
+          <li>血脂类目环比接近翻倍（≈+100%）</li>
+        </ul>
+        <span class="jump" onclick="openCase('case-xuezhi')">查看标杆案例 B →</span>
+      </div>
+      <div class="tier-card b">
+        <h3>减肥 · 最大盘</h3>
+        <div class="verdict">B 级｜直播 ROI ≈ 0.9 跑平直购</div>
+        <ul>
+          <li>直播消耗千万级，赛道天花板已验证</li>
+          <li>小程序直购×直播双链路放量 50%</li>
+          <li>叠加政策红利：视频号减肥品类准入松绑</li>
+        </ul>
+        <span class="jump" onclick="openCase('case-jianfei')">查看标杆案例 A →</span>
+      </div>
+      <div class="tier-card c">
+        <h3>辅助降血糖</h3>
+        <div class="verdict">C 级｜直购护城河 · 组合切入</div>
+        <ul>
+          <li>直购 ROI 略胜（≈1.0），小程序直购×直播双链路放量 0%</li>
+          <li>不宜单功能硬打</li>
+          <li>建议搭配「增强免疫力」组合形态入局</li>
+        </ul>
+        <span class="jump" onclick="openCase('case-xuetang')">查看标杆案例 C →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 大盘与政策 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div>
+        <h2>大盘基准 × 政策红利窗口</h2>
+        <p>入局前先看清的基本盘：高消耗、中 ROI、高 CPM 的竞争态势</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat-row">
+        <div class="stat"><div class="v">100–120<small>万/日</small></div><div class="k">近 14 天行业日均消耗</div></div>
+        <div class="stat"><div class="v">55–60<small>%</small></div><div class="k">智投渗透率 · 行业标配</div></div>
+        <div class="stat"><div class="v">100–110<small>%</small></div><div class="k">创意 MAX 开启后条均消耗增幅</div></div>
+      </div>
+      <div class="policy">
+        <div class="flag">🎁</div>
+        <div>
+          <b>政策利好：视频号减肥品类解除品牌等级限制</b>
+          <p>改为按敏感品类进行准入管理，高溢价、高转化的肥胖控制类目准入门槛大幅降低 —— 减肥赛道在「千万级最大盘」之上再叠加准入红利，商家迎来入局窗口期。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 小店能力上线 -->
+  <section id="sec-caps">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div>
+        <h2>保健食品小店能力上线看板</h2>
+        <p>三项核心能力均已支持保健食品类目 · 点击卡片下方按钮展开适用范围与使用指引</p>
+      </div>
+    </div>
+    <div class="cap-grid">
+      <div class="cap">
+        <h3>专场放量 <span class="live"><i></i>已上线</span></h3>
+        <div class="pos">直播专场场景的集中放量能力</div>
+        <dl>
+          <dt>适用范围</dt>
+          <dd>保健食品类目已全量支持；适配大促节点专场与主题专场直播间</dd>
+          <dt>典型场景</dt>
+          <dd>微信小店官方大促（如 9 月金秋大促·中秋专场）、品牌 BigDay 直播大场</dd>
+        </dl>
+        <div class="ext-toggle">
+          <span class="exp-toggle open-arrow" onclick="toggleExp(this)"><span class="arr">▼</span> 展开延伸内容</span>
+          <div class="exp-wrap">
+            <div>
+              <div class="ext-box">
+                <h5>🗓 延伸 · 9 月金秋大促 · 中秋专场（2026/9/4 – 9/27）</h5>
+                <ul>
+                  <li><b>报名时间：</b>8 月 25 日 14:00 开始；分享券激励 9/10 上线</li>
+                  <li><b>玩法一 · 跨店满减补贴：</b>平台出资 + 商户出资组合（混资/全资），跨店满减联动放量</li>
+                  <li><b>玩法二 · 直播大场及跃迁激励（三段式）：</b>基础激励（GMV 阶梯比例）+ 叠加激励（跨店满减商品 GMV 占比 ≥50% 额外获得）+ 首次跃迁激励（单日支付 GMV 首次突破门槛）</li>
+                  <li><b>玩法三 · 主播分享券（🆕）：</b>审核通过后自动生成分享券入口，满减券分享至微信群聊/单聊，用户领取后用于发券者店铺/橱窗，实现私域反哺直播</li>
+                  <li><b>官方提醒：</b>使用官方物料更易加持秋品起量</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cap">
+        <h3>全库智选 <span class="live"><i></i>已上线</span></h3>
+        <div class="pos">智能创意组件全库智选，系统自动优选组合</div>
+        <dl>
+          <dt>适用范围</dt>
+          <dd>保健食品类目已全量支持；适用于单链路智投投放（含创意 MAX 叠加）</dd>
+          <dt>操作路径</dt>
+          <dd>投放管理平台 → 智能创意设置 → 开启「组件全库智选」</dd>
+        </dl>
+        <div class="ext-toggle">
+          <span class="exp-toggle open-arrow" onclick="toggleExp(this)"><span class="arr">▼</span> 展开效果数据</span>
+          <div class="exp-wrap">
+            <div>
+              <div class="ext-box">
+                <h5>📊 延伸 · 实测效果</h5>
+                <ul>
+                  <li>创意 MAX + 全库智选开启后，条均消耗 <b>+100~110%</b></li>
+                  <li>三高调理药房直播间：智投 100% 渗透 + 全库智选，条均消耗 <b>6800 元+</b></li>
+                  <li>平台级营养直播间：创意 MAX 开启后条均消耗 5800 元+（提升 <b>3 倍+</b>）</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cap">
+        <h3>潜客优投 <span class="live"><i></i>已上线</span></h3>
+        <div class="pos">潜客人群优化投放与召回，缩短冷启动链路</div>
+        <dl>
+          <dt>适用范围</dt>
+          <dd>保健食品类目已全量支持；适配人群蓄水与召回场景（配合粗排保送）</dd>
+          <dt>典型场景</dt>
+          <dd>直播间潜客配置粗排保送 + eCPM 精排扶持 + 流量优选</dd>
+        </dl>
+        <div class="ext-toggle">
+          <span class="exp-toggle open-arrow" onclick="toggleExp(this)"><span class="arr">▼</span> 展开拿量策略</span>
+          <div class="exp-wrap">
+            <div>
+              <div class="ext-box">
+                <h5>🚀 延伸 · 三大拿量策略（PCAD 版位实测）</h5>
+                <ul>
+                  <li><b>召回粗排保送：</b>潜客配置粗排保送，缩短冷启动链路，粗排通过率 <b>+35%+</b></li>
+                  <li><b>精排扶持：</b>eCPM 扶持提升精排通过率，帮助新广告快速渡过学习期，扶持撬动比 <b>10+</b></li>
+                  <li><b>流量优选：</b>新广告优先跑量至信息流优质场景，助力模型快速学习</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 机会类目深度解读 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div>
+        <h2>机会类目深度解读</h2>
+        <p>为什么是它们？各自的赢面、打法要点与标杆去向</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cat-item">
+        <div class="cat-badge bg-s"><span class="rank">S 级</span><span class="no">01</span></div>
+        <div class="cat-body">
+          <h3>通便功能 <span style="background:var(--primary-deep)">ROI +0.90</span></h3>
+          <p class="why">直购近乎失效，直播是唯一的增量承接场。CVR 13–14% 为全场最高，意味着同等流量下直播间的转化确定性最强，天然适配「智投托管 + 高频素材迭代」的规模化模型。</p>
+          <div class="kv"><span>ROI 差值 +0.90（赛道第一）</span><span>小程序直购×直播双链路放量 100%</span><span>CVR 13–14%</span><span>低客单 ¥70–90 快决策</span></div>
+          <div class="cat-actions"><button class="btn-line" onclick="openCase('case-tongbian')">直达标杆案例 F →</button></div>
+        </div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-badge bg-s"><span class="rank">S 级</span><span class="no">02</span></div>
+        <div class="cat-body">
+          <h3>增强免疫力 + 骨密度 <span style="background:var(--primary-deep)">冲量标杆</span></h3>
+          <p class="why">直播效率碾压直购（提升达两位数倍）。中老年滋补场景 + 蓝帽双功能背书 + 高客单礼盒（约行业均值 2.8–2.9 倍），是组合打法下 ROI 最稳的「盈利基本盘」；AIGC 数字人素材 CTR 约为大盘 1.8–1.9 倍。</p>
+          <div class="kv"><span>ROI 差值 +0.88</span><span>小程序直购×直播双链路放量 100%</span><span>GMV 膨胀率 3.8 倍</span><span>客单 ¥240–310</span><span>创意重复度仅 10%</span></div>
+          <div class="cat-actions"><button class="btn-line" onclick="openCase('case-mianyi')">直达标杆案例 E →</button></div>
+        </div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-badge bg-s"><span class="rank">S 级</span><span class="no">03</span></div>
+        <div class="cat-body">
+          <h3>祛黄褐斑 + 贫血 <span style="background:var(--primary-deep)">确定性最强</span></h3>
+          <p class="why">体量与效率双优：直播消耗百万级、直播效率高 18%、小程序直购×直播双链路放量 100%。女性专属功能诉求在直播间「真人讲解 + 素材证言」场景下信任转化效率最高。</p>
+          <div class="kv"><span>ROI 差值 +0.13</span><span>小程序直购×直播双链路放量 100%</span><span>ROI 1.3–1.4 全场最高</span><span>进播率 9.2%</span></div>
+          <div class="cat-actions"><button class="btn-line" onclick="openCase('case-huangheban')">直达标杆案例 D →</button></div>
+        </div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-badge bg-b"><span class="rank">B 级</span><span class="no">04</span></div>
+        <div class="cat-body">
+          <h3>辅助降血脂 <span style="background:var(--sky)">品牌升级赛道</span></h3>
+          <p class="why">闭环效率与品牌势能双高。高客单 ¥400–450 的「长辈送礼」定位在直播场景完成品牌溢价，药师/专业人设直播间是其最优载体，血脂类目环比接近翻倍（≈+100%），峰值日耗可达 70 万+。</p>
+          <div class="kv"><span>ROI 差值 +0.10</span><span>小程序直购×直播双链路放量 66.7%</span><span>客单 ¥400–450</span><span>环比 ≈+100%</span></div>
+          <div class="cat-actions"><button class="btn-line" onclick="openCase('case-xuezhi')">直达标杆案例 B →</button></div>
+        </div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-badge bg-b"><span class="rank">B 级</span><span class="no">05</span></div>
+        <div class="cat-body">
+          <h3>减肥 <span style="background:var(--sky)">最大盘 × 政策红利</span></h3>
+          <p class="why">直播消耗千万级的最大赛道，直播 ROI 已跑平直购（≈0.9），进入规模化验证期。叠加视频号准入松绑政策，中老年减脂细分人群为核心切入口。</p>
+          <div class="kv"><span>直播 ROI ≈0.9</span><span>小程序直购×直播双链路放量 50%</span><span>日耗 20–40 万规模化</span><span>CVR 8–9%</span></div>
+          <div class="cat-actions"><button class="btn-line" onclick="openCase('case-jianfei')">直达标杆案例 A →</button></div>
+        </div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-badge bg-c"><span class="rank">C 级</span><span class="no">06</span></div>
+        <div class="cat-body">
+          <h3>辅助降血糖 <span style="background:var(--rose)">组合切入</span></h3>
+          <p class="why">赛道少有的「直购护城河」：直购 ROI 略胜（≈1.0）、小程序直购×直播双链路放量 0%，直播暂无效率优势。正确姿势是以「调节血糖 + 增强免疫力」组合形态入局，借 S 级类目的转化效率带量。</p>
+          <div class="kv"><span>直购 ROI ≈1.0</span><span>小程序直购×直播双链路放量 0%</span><span>CTR 4–5%（优于大盘 41%）</span><span>618 冲量 +131%</span></div>
+          <div class="cat-actions"><button class="btn-line" onclick="openCase('case-xuetang')">直达标杆案例 C →</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 典型案例 -->
+  <section id="sec-cases">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div>
+        <h2>八大标杆案例集 · 点击展开详情</h2>
+        <p>四力模型（商品力 × 内容力 × 经营力 × 投放力）· 展开后含完整指标、机制拆解与溯源信息</p>
+      </div>
+    </div>
+    <div class="case-toolbar">
+      <span class="tip">🖱️ 点击任意案例卡片头部展开 / 收起</span>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-line" onclick="toggleAllCases(true)">全部展开</button>
+        <button class="btn-line" onclick="toggleAllCases(false)">全部收起</button>
+      </div>
+    </div>
+    <div class="case-grid">
+
+      <!-- 案例 F 通便 -->
+      <div class="case" id="case-tongbian">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">通便功能 · S 级 · ROI +0.90</span>
+          <h3>品牌 F · 健康研究所直播间</h3>
+          <div class="role">定位：高转化直播带货 · 肠道养护场景</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开完整指标与机制拆解</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm hot"><div class="v">13–14%</div><div class="k">CVR（全场最高）</div></div>
+            <div class="cm"><div class="v">¥70–90</div><div class="k">客单价</div></div>
+          </div>
+          <p class="insight">蓝帽资质黄芪麦冬膏，低客单快决策 + 肠道养护场景话术，<b>下单率 13.4% 远超大盘</b>，转化效率是直播闭环最直接的受益者。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">13–14%</div><div class="k">CVR</div><div class="cmp">全场最高</div></div>
+              <div class="fm"><div class="v">13.4%</div><div class="k">下单率</div><div class="cmp">远超大盘</div></div>
+              <div class="fm"><div class="v">¥70–90</div><div class="k">客单价</div><div class="cmp">低客单快决策</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li>主推品：蓝帽资质<b>黄芪麦冬膏</b>，肠道养护功能宣称合规</li>
+              <li>赛道红利：直购近乎失效，直播为唯一增量承接场（ROI 差值 +0.90 赛道第一）</li>
+              <li>打法适配：低客单 + 高 CVR 特性，天然匹配「智投托管 + 高频素材迭代」规模化模型</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">全库智选 · 已上线</span>
+              <span class="chip">潜客优投 · 已上线</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源</b> 闭环直播标杆案例集</span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 案例 E 免疫骨密度（双源合并） -->
+      <div class="case" id="case-mianyi">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">免疫 + 骨密度 · S 级 · 盈利基本盘</span>
+          <h3>品牌 E × 中老年滋补自营直播间</h3>
+          <div class="role">定位：盈利标杆 × 品牌力驱动 · 素材生态最健康</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开双案例源完整数据</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm"><div class="v">1.4–1.5</div><div class="k">ROI（稳健盈利）</div></div>
+            <div class="cm hot"><div class="v">3.8 倍</div><div class="k">峰值 GMV 膨胀率</div></div>
+          </div>
+          <p class="insight">洋参牦牛骨粉礼盒「增强免疫 + 骨密度」双功能宣称，客单 ¥240–310；<b>AIGC 数字人素材 CTR 约为大盘 1.8–1.9 倍</b>，朋友圈 + PCAD 双版位均稳健盈利。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景 · 品牌 E 官方直播间</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">10%</div><div class="k">创意重复度</div><div class="cmp">全场最低</div></div>
+              <div class="fm"><div class="v">3.8 倍</div><div class="k">GMV 膨胀率</div><div class="cmp">峰值冲量全场最高</div></div>
+              <div class="fm"><div class="v">48.2%</div><div class="k">商品点击率</div><div class="cmp">素材生态最健康</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>指标全景 · 中老年滋补自营直播间（ID 662528***）</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">35–40<small>万</small></div><div class="k">峰值日耗（8/20）</div></div>
+              <div class="fm"><div class="v">1.4–1.5</div><div class="k">ROI</div></div>
+              <div class="fm"><div class="v">¥240–250</div><div class="k">客单价</div><div class="cmp">约行业均值 2.8–2.9 倍</div></div>
+              <div class="fm"><div class="v">5.5–6%</div><div class="k">CTR</div><div class="cmp">AIGC 素材 ≈ 大盘 1.8–1.9 倍</div></div>
+              <div class="fm"><div class="v">3.5–4%</div><div class="k">CVR</div></div>
+              <div class="fm"><div class="v">¥320–340</div><div class="k">CPM</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li>老牌中老年滋补场景 + <b>蓝帽背书</b>，「增强免疫 + 骨密度」双功能宣称</li>
+              <li>洋参牦牛骨粉<b>礼盒装 ¥240+</b> 高客单定位，朋友圈九图 + PCAD 双版位均稳健盈利</li>
+              <li>AIGC 数字人素材批量克隆生成，突破实拍产能限制，CTR 显著高于大盘均值</li>
+              <li>组合打法下 ROI 最稳的「盈利基本盘」</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">全库智选 · 已上线</span>
+              <span class="chip">专场放量 · 已上线</span>
+              <span class="chip">妙思 AIGC 数字人</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源 A</b> 直播链路放量打法案例长图</span>
+              <span class="src-tag"><b>溯源 B</b> 闭环直播标杆案例集</span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 案例 D 祛黄褐斑 -->
+      <div class="case" id="case-huangheban">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">祛黄褐斑 + 贫血 · S 级 · 确定性最强</span>
+          <h3>品牌 D · 保健品官方直播间</h3>
+          <div class="role">定位：高 ROI 精准获客</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开完整指标与机制拆解</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm hot"><div class="v">1.3–1.4</div><div class="k">ROI（全场最高）</div></div>
+            <div class="cm"><div class="v">320 个</div><div class="k">账户并行（行业领先基建）</div></div>
+          </div>
+          <p class="insight">非遗认证去黄褐斑口服液，<b>进播率 9.2% 高粘性</b>；以 320 账户并行的大基建规模，把精准获客做成确定性生意。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">1.3–1.4</div><div class="k">ROI</div><div class="cmp">全场最高</div></div>
+              <div class="fm"><div class="v">9.2%</div><div class="k">进播率</div><div class="cmp">高粘性</div></div>
+              <div class="fm"><div class="v">320 个</div><div class="k">账户并行</div><div class="cmp">行业领先基建</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li>主推品：<b>非遗认证去黄褐斑口服液</b>，认证背书强化信任</li>
+              <li>赛道红利：祛黄褐斑+贫血双功能，直播效率高 18%、小程序直购×直播双链路放量 100%、闭环确定性最强</li>
+              <li>大基建打法：320 账户并行 + 人群蓄水，参照《闭环基建提升指引》「曝光 × 点击 × 进入」政策公式</li>
+              <li>女性专属诉求在「真人讲解 + 素材证言」场景下信任转化效率最高</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">潜客优投 · 已上线</span>
+              <span class="chip">全库智选 · 已上线</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源</b> 闭环直播标杆案例集</span>
+            </div>
+            <div class="ext-links">
+              <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/" target="_blank">查看原案例集 →</a>
+              <a href="#sec-caps" onclick="openCase(null)">小店能力看板 →</a>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 案例 B 降血脂（双源合并） -->
+      <div class="case" id="case-xuezhi">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">辅助降血脂 · B 级 · 起量标杆</span>
+          <h3>品牌 B × 三高调理药房直播间</h3>
+          <div class="role">定位：高客单转化 × 峰值起量之最</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开双案例源完整数据</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm hot"><div class="v">70 万+</div><div class="k">峰值日耗（全场之最 8/23）</div></div>
+            <div class="cm"><div class="v">1.2–1.3</div><div class="k">ROI（品类最高）</div></div>
+          </div>
+          <p class="insight">药师专业人设信任感强；银杏叶片「拍一发二」低客单引流 + 深海鱼油 ¥400–450 礼盒承接，<b>智投 100% 渗透 + 全库智选，条均消耗 6800 元+</b>。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景 · 品牌 B 官方甄选</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">1.2–1.3</div><div class="k">ROI</div><div class="cmp">品类最高</div></div>
+              <div class="fm"><div class="v">¥400–450</div><div class="k">客单价</div><div class="cmp">品牌升级定位</div></div>
+              <div class="fm"><div class="v">+76%</div><div class="k">日耗环比</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>指标全景 · 三高调理药房直播间（ID 816116***）</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">70<small>万+</small></div><div class="k">峰值日耗（8/23）</div><div class="cmp">全场之最</div></div>
+              <div class="fm"><div class="v">0.95–1.0</div><div class="k">ROI</div></div>
+              <div class="fm"><div class="v">¥80–90</div><div class="k">客单价</div><div class="cmp">低客单引流</div></div>
+              <div class="fm"><div class="v">4.5–5%</div><div class="k">CTR</div></div>
+              <div class="fm"><div class="v">5.5–6%</div><div class="k">CVR</div><div class="cmp">三大之首</div></div>
+              <div class="fm"><div class="v">¥200–210</div><div class="k">CPM</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li><b>药房药师专业人设</b>，信任感强，适配三高类高信任门槛品类</li>
+              <li>银杏叶片<b>「拍一发二」</b> + 80 元级低客单引流，高客单鱼油礼盒承接转化</li>
+              <li>血脂类目环比接近翻倍（≈+100%），小程序直购×直播双链路放量 66.7%、ROI 差值 +0.10</li>
+              <li>长辈送礼场景 × 短直双开智投，实现 ROI 品类最高</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">全库智选 · 已上线（条均消耗 6800 元+）</span>
+              <span class="chip">专场放量 · 已上线</span>
+              <span class="chip">潜客优投 · 已上线</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源 A</b> 直播链路放量打法案例长图</span>
+              <span class="src-tag"><b>溯源 B</b> 闭环直播标杆案例集</span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 案例 A 减肥 -->
+      <div class="case" id="case-jianfei">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">减肥 · B 级 · 最大盘 × 政策红利</span>
+          <h3>品牌 A · 品牌自营店直播间</h3>
+          <div class="role">定位：规模化标杆 · NEW 入局即跑量</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开完整指标与机制拆解</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm hot"><div class="v">20–40 万</div><div class="k">日耗规模（全场标杆）</div></div>
+            <div class="cm"><div class="v">8–9%</div><div class="k">CVR（优秀）</div></div>
+          </div>
+          <p class="insight">左旋肉碱胶囊聚焦中老年减脂人群，CTR 3–4% 优于大盘；<b>叠加视频号减肥品类准入松绑，是当前红利窗口期最典型的入局样本</b>。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">20–40<small>万</small></div><div class="k">日耗规模</div><div class="cmp">全场规模化标杆</div></div>
+              <div class="fm"><div class="v">8–9%</div><div class="k">CVR</div><div class="cmp">优秀</div></div>
+              <div class="fm"><div class="v">3–4%</div><div class="k">CTR</div><div class="cmp">优于大盘</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li>主推品：<b>左旋肉碱胶囊</b>，中老年减脂人群为核心</li>
+              <li>赛道基本盘：直播消耗<b>千万级（最大盘）</b>，直播 ROI ≈ 0.9 已跑平直购，规模化验证期</li>
+              <li>政策红利：视频号减肥品类解除品牌等级限制，改按敏感品类准入管理，门槛大幅降低</li>
+              <li>小程序直购×直播双链路放量 50%，NEW 入局即跑量</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">专场放量 · 已上线</span>
+              <span class="chip">全库智选 · 已上线</span>
+              <span class="chip">潜客优投 · 已上线</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源</b> 闭环直播标杆案例集</span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 案例 C 降血糖 -->
+      <div class="case" id="case-xuetang">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">辅助降血糖 · C 级 · 组合切入样本</span>
+          <h3>品牌 C · 糖管理直播间</h3>
+          <div class="role">定位：新入局快速起量 · 多版位拓展</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开完整指标与机制拆解</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm"><div class="v">4–5%</div><div class="k">CTR（优于大盘 41%）</div></div>
+            <div class="cm hot"><div class="v">+131%</div><div class="k">618 大促冲量</div></div>
+          </div>
+          <p class="insight">西洋参葡萄籽铬酵母片 ¥40–50 低客单，凭素材强吸引力 + 多版位拓展实现大促冲量；<b>验证 C 级类目「组合形态 + 大促节点」的入局姿势</b>。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">4–5%</div><div class="k">CTR</div><div class="cmp">优于大盘 41%</div></div>
+              <div class="fm"><div class="v">+131%</div><div class="k">618 冲量</div><div class="cmp">大促弹性</div></div>
+              <div class="fm"><div class="v">¥40–50</div><div class="k">客单价</div><div class="cmp">超低客单试错</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li>主推品：<b>西洋参葡萄籽铬酵母片</b>，调节血糖功能宣称</li>
+              <li>赛道判断：直购 ROI 略胜（≈1.0）、小程序直购×直播双链路放量 0%，直播暂无效率优势</li>
+              <li>正确姿势：以「调节血糖 + 增强免疫力」<b>组合形态入局</b>，借 S 级类目转化效率带量</li>
+              <li>素材强吸引力 + 多版位拓展 + 大促节点（618 冲量 +131%）实现快速起量</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">专场放量 · 已上线（大促节点适配）</span>
+              <span class="chip">全库智选 · 已上线</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源</b> 闭环直播标杆案例集</span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 平台营养直播间 -->
+      <div class="case" id="case-pingtai">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">增强免疫力 · 潜力标杆 · 素材蓝海</span>
+          <h3>平台级大健康营养直播间</h3>
+          <div class="role">定位：素材蓝海 · 组合打法下增长弹性最大（ID 703601***）</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开完整指标与机制拆解</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm hot"><div class="v">¥300–310</div><div class="k">客单价（全场最高）</div></div>
+            <div class="cm"><div class="v">11%+</div><div class="k">PCAD 版位 CTR</div></div>
+          </div>
+          <p class="insight">平台官方大号背书 + 蛋白粉礼盒；<b>AIGC 渗透仅约 1%，属素材蓝海</b>，创意 MAX 开启后条均消耗 5800 元+（提升 3 倍+），组合打法下增长释放弹性最大。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>指标全景</h5>
+            <div class="full-metrics">
+              <div class="fm"><div class="v">9–10<small>万</small></div><div class="k">峰值日耗（8/25）</div></div>
+              <div class="fm"><div class="v">1.2–1.3</div><div class="k">ROI</div></div>
+              <div class="fm"><div class="v">¥300–310</div><div class="k">客单价</div><div class="cmp">全场最高</div></div>
+              <div class="fm"><div class="v">1.2–1.3%</div><div class="k">CTR</div></div>
+              <div class="fm"><div class="v">~2%</div><div class="k">CVR</div></div>
+              <div class="fm"><div class="v">¥50–60</div><div class="k">CPM</div><div class="cmp">全场最低</div></div>
+            </div>
+          </div>
+          <div class="cd-block">
+            <h5>机制拆解</h5>
+            <ul class="mech">
+              <li><b>平台官方大号背书</b>，天然信任势能，CPM 全场最低（¥50–60）</li>
+              <li>PCAD 版位 CTR 高达 <b>11%+</b>：自动衍生直播页路径短，已点开微信的真实活跃用户购物意图明确</li>
+              <li>蛋白粉 600g 礼盒装 ¥300+ 高客单；AIGC 渗透约 1%，<b>素材蓝海</b>，增长弹性最大</li>
+              <li>创意 MAX 开启后条均消耗 5800 元+（提升 3 倍+）</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">全库智选 · 已上线（创意 MAX 叠加）</span>
+              <span class="chip">妙思 AIGC 数字人</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源 A</b> 直播链路放量打法案例长图</span>
+            </div>
+            <div class="ext-links">
+              <a href="https://sumiyaliu.github.io/sumiya-public/health-food-live-case-paper.html" target="_blank">查看放量打法原长图 →</a>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- 基建指引 -->
+      <div class="case" id="case-jizhi">
+        <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="track">基建方法论 · 案例 7</span>
+          <h3>《保健食品闭环（直播小店）基建提升指引》</h3>
+          <div class="role">定位：从 0 到 1 搭建闭环直播间的全链路基建方法论</div>
+          <span class="fold">▼</span>
+          <div class="click-hint">点击展开方法论体系与对标索引</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="cm"><div class="v">1+2+3</div><div class="k">核心模块体系</div></div>
+            <div class="cm"><div class="v">曝光×点击×进入</div><div class="k">核心政策公式</div></div>
+          </div>
+          <p class="insight">人群蓄水 & 基建诊断 + 智投四大杠杆 + 创意重复度管理；<b>案例对标索引：规模化看品牌 A、高客单看品牌 B、高 ROI 看 D/E/F</b>。</p>
+        </div>
+        <div class="case-detail"><div><div class="cd-inner">
+          <div class="cd-block">
+            <h5>方法论模块</h5>
+            <ul class="mech">
+              <li><b>核心政策公式：</b>曝光 × 点击 × 进入 —— 直播间流量的三段式拆解框架</li>
+              <li><b>人群蓄水 & 基建诊断：</b>入场前的账户基建规模评估与人群资产盘点（标杆：品牌 D 320 账户并行）</li>
+              <li><b>智投能力四大杠杆：</b>全库智选 / 创意 MAX / 潜客优投 / 多版位拓展的组合运用</li>
+              <li><b>创意重复度 & 唯一性：</b>素材生态健康管理（标杆：品牌 E 重复度仅 10%，全场最优）</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>案例对标索引</h5>
+            <ul class="mech">
+              <li>规模化标杆 → 品牌 A（减肥，日耗 20–40 万）</li>
+              <li>高客单转化 → 品牌 B（降血脂，¥400–450）</li>
+              <li>新赛道起量 → 品牌 C（降血糖，618 冲量 +131%）</li>
+              <li>高 ROI 精准 → 品牌 D / E / F（1.3–1.4 / 1.4–1.5 / CVR 13–14%）</li>
+            </ul>
+          </div>
+          <div class="cd-block">
+            <h5>关联能力与溯源</h5>
+            <div class="rel-caps">
+              <span class="chip">专场放量 · 已上线</span>
+              <span class="chip">全库智选 · 已上线</span>
+              <span class="chip">潜客优投 · 已上线</span>
+            </div>
+            <div class="src-tags">
+              <span class="src-tag"><b>溯源</b> 闭环直播标杆案例集 · 方法论 2.0 版本</span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 06 组合公式 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div>
+        <h2>组合放量公式 · 三位一体</h2>
+        <p>机会类目 × 标杆案例背后的共性打法 · 关联小店能力均已上线</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="formula">
+        <div class="f-node">
+          <h4>妙思 AIGC 数字人素材</h4>
+          <p>批量克隆生成，突破实拍产能与成本限制</p>
+          <div class="metric">素材 CTR ≈ 大盘 1.8–1.9 倍</div>
+        </div>
+        <div class="f-x">×</div>
+        <div class="f-node">
+          <h4>单链路智投 <span class="live" style="font-size:10px;padding:1px 8px;"><i></i>全库智选已上线</span></h4>
+          <p>全库智选 + 创意 MAX，托管式投放减少人工盯盘</p>
+          <div class="metric">条均消耗 +100–110%</div>
+        </div>
+        <div class="f-x">×</div>
+        <div class="f-node">
+          <h4>朋友圈九图 + PCAD 版位</h4>
+          <p>多版位覆盖突破流量天花板，自动衍生直播页路径短</p>
+          <div class="metric">PCAD 日耗 1w→12w</div>
+        </div>
+        <div class="f-eq">=</div>
+        <div class="f-result">
+          <h4>7 天快速起量</h4>
+          <p>单直播间峰值日耗 70 万+；PCAD 退货率较微广低 12%，粗排通过率 +35%，eCPM 扶持撬动比 10+。</p>
+        </div>
+      </div>
+      <table class="vs-table">
+        <thead>
+          <tr><th>维度</th><th>传统打法</th><th>组合打法</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>素材</td><td>实拍产能有限、成本高</td><td>AIGC 数字人素材批量克隆生成</td></tr>
+          <tr><td>投放</td><td>人工盯盘调价、起量慢</td><td>智投托管 + 创意 MAX，条均消耗 +100~110%</td></tr>
+          <tr><td>版位</td><td>单一版位、流量天花板低</td><td>朋友圈 + PCAD 多版位，PCAD 日耗 1w→12w</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pcad">
+        <h4>📱 PCAD 版位 · 黄金搭档详解</h4>
+        <p style="font-size:12.5px;color:var(--ink-3);">客户投放效果：每日基建水平 3000+，PCAD 日消耗 1w→12w，下单 ROI 持平大盘。</p>
+        <div class="adv">
+          <div><b>优势一 · 自动衍生直播页：</b>点击新闻竖版视频广告 → 自动拉起微信 → 官方页内播放短视频 → 一键进入视频号直播间，落地路径短</div>
+          <div><b>优势二 · 退货率更低：</b>PCAD 用户为已点开微信的真实活跃用户，购物意图明确，退货率较微广低 12%</div>
+        </div>
+        <ol>
+          <li><b>召回粗排保送</b>（潜客优投 · 已上线）— 潜客配置粗排保送，缩短冷启动链路，粗排通过率提高 35%+</li>
+          <li><b>精排扶持</b> — eCPM 扶持提升精排通过率，帮助新广告快速渡过学习期</li>
+          <li><b>流量优选</b> — 新广告优先跑量至信息流优质场景，助力模型快速学习</li>
+        </ol>
+        <span class="op-path">⚙️ 操作指引：投放管理平台 → 智能创意设置 → 开启「组件全库智选」（保健食品类目已支持）</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 妙思工作流 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div>
+        <h2>妙思爆款素材拆解工作流 · 双周迭代</h2>
+        <p>行业运营的素材方法论闭环：行业爆款 → 广告主生产同款</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="flow">
+        <div class="flow-node">
+          <div class="ic">🔍</div>
+          <h5>① 行业爆款拆解</h5>
+          <p>双周更新，覆盖保健食品 / 三高 / 成分解析品类，提炼黄金三秒、镜头结构、卖点话术</p>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="ic">📝</div>
+          <h5>② Skill 草稿沉淀</h5>
+          <p>提炼方法论沉淀为「创建同款视频 Skill」草稿</p>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="ic">🏭</div>
+          <h5>③ 工坊后台推送</h5>
+          <p>审核通过的 Skill 推送至妙思共建平台 Skill 库，全部广告主可见可复用，支持一键转 Demo + 开放 API 自动绑定</p>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="ic">💡</div>
+          <h5>④ 灵感广场采纳</h5>
+          <p>广告主在视频生成页 / 技能广场一键采纳行业爆款方法论，结合自家商品快速生产同款素材</p>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-size:12.5px;color:var(--ink-3);text-align:center;">
+        闭环链路：行业爆款 → Skill 沉淀 → 工坊分发 → 灵感广场采纳 → 广告主生产同款素材 —— AIGC 渗透率低的直播间（如平台营养直播间仅 ~1%）增长弹性最大
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 行动路径 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div>
+        <h2>入局行动路径</h2>
+        <p>按类目分级匹配资源投入与打法节奏 · 依托已上线小店能力</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h4>优先卡位 S 级类目</h4>
+        <p>通便 / 免疫骨密度 / 祛黄褐斑：小程序直购×直播双链路放量 100%，以「蓝帽资质 + 低客单引流或高客单礼盒」直接上组合打法，抢占确定性增量。</p>
+        <div class="rel"><span class="chip">依托能力：全库智选 · 已上线</span></div>
+      </div>
+      <div class="step">
+        <h4>B 级赛道吃品牌与规模红利</h4>
+        <p>降血脂走 ¥400+ 长辈送礼高客单 + 药师人设；减肥赛道叠加<b>视频号准入松绑政策</b>，中老年减脂人群为核心切口。</p>
+        <div class="rel"><span class="chip">依托能力：专场放量 · 已上线（大促节点）</span></div>
+      </div>
+      <div class="step">
+        <h4>C 级类目组合形态切入</h4>
+        <p>降血糖不硬打，以「调节血糖 + 增强免疫力」组合品入局，借 S 级类目转化效率带量，避开直购护城河正面竞争。</p>
+        <div class="rel"><span class="chip">依托能力：潜客优投 · 已上线（精准召回）</span></div>
+      </div>
+      <div class="step">
+        <h4>基建先行 · 素材定胜负</h4>
+        <p>参照 320 账户并行标杆做基建蓄水；妙思 Skill 双周迭代（行业爆款 → Skill 沉淀 → 灵感广场采纳），AIGC 渗透率低的直播间增长弹性最大。</p>
+        <div class="rel"><span class="chip">依托能力：三项小店能力均已上线</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="conf">CONFIDENTIAL</div><br>
+    综合来源：<a href="https://sumiyaliu.github.io/sumiya-public/health-food-live-case-paper.html" target="_blank">直播链路放量打法案例长图</a> × <a href="https://sumiyaliu.github.io/sumiya-public/health-food-cases/" target="_blank">闭环直播标杆案例集</a><br>
+    ⚠️ 合规提示：保健食品广告须通过风控类目资质审核，素材不得涉及疾病预防 / 治疗功效宣称
+  </footer>
+
+</div>
+
+<script>
+  // 展开通用组件（小店能力延伸内容）
+  function toggleExp(btn){
+    const wrap = btn.nextElementSibling;
+    const isOpen = wrap.classList.toggle('open');
+    btn.classList.toggle('open-arrow', isOpen);
+    if(!btn.dataset.label){ btn.dataset.label = btn.textContent.replace('▼','').trim(); }
+    const base = btn.dataset.label.replace(/^展开/, '');
+    btn.childNodes[btn.childNodes.length-1].textContent = (isOpen ? ' 收起' : ' 展开') + base;
+  }
+
+  // 打开指定案例并滚动定位
+  function openCase(id){
+    if(id){
+      const el = document.getElementById(id);
+      if(el){
+        el.classList.add('open');
+        setTimeout(()=>{ el.scrollIntoView({behavior:'smooth',block:'center'}); },80);
+      }
+    }
+  }
+  // 全部展开 / 收起
+  function toggleAllCases(open){
+    document.querySelectorAll('.case').forEach(c=>{ c.classList.toggle('open',open); });
+  }
+</script>
+</body>
+</html>
