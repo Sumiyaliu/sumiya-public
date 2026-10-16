@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<!-- summary: 食品饮料视频素材表现分析方法论：北极星指标（ECPM+生态指标）、五维分析框架（时长/播放进度/制作形式/结构/开头）、四步法SOP、分析工具箱、检查清单与红线误区、数据速查卡。 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食品饮料素材分析攻略</title>
+<style>
+  :root{
+    --primary:#E8590C; --primary-dark:#C2410C; --primary-bg:#FFF4EC;
+    --green:#2B8A3E; --green-bg:#EBF7EF;
+    --teal:#0E7C86; --teal-bg:#E8F5F6;
+    --blue:#1D3A8F; --blue-bg:#EAF1FF;
+    --purple:#7048E8; --purple-bg:#F1EBFF;
+    --red:#C92A2A; --red-bg:#FDEDED;
+    --ink:#1E2A44; --gray-700:#4A5568; --gray-500:#8A94A6; --gray-100:#F5F7FA;
+    --line:#E3E8EF; --lk:#1668DC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:#FFF;color:var(--ink);font-size:14px;line-height:1.7;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 32px;}
+
+  /* ===== Header ===== */
+  .hero{background:linear-gradient(135deg,#1E2A44 0%,#2D3B5E 60%,#4A2E14 100%);color:#fff;padding:34px 0 26px;}
+  .hero .tag{display:inline-block;font-size:11px;letter-spacing:2px;font-weight:700;color:#FFD8B0;border:1px solid rgba(255,216,176,.45);border-radius:99px;padding:3px 12px;margin-bottom:12px;}
+  .hero h1{font-size:30px;font-weight:800;letter-spacing:1px;}
+  .hero .sub{font-size:13px;color:rgba(255,255,255,.75);margin-top:8px;}
+  .hero .meta{font-size:11px;color:rgba(255,255,255,.55);margin-top:6px;}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .toc a{font-size:12px;color:#fff;text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:4px 14px;}
+  .toc a:hover{background:rgba(255,255,255,.25);}
+
+  /* ===== 三句话结论 ===== */
+  .core3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:-14px auto 0;position:relative;z-index:2;}
+  .core3 .c{background:#fff;border:1px solid var(--line);border-top:3px solid var(--primary);border-radius:12px;padding:16px 18px;box-shadow:0 6px 18px rgba(30,42,68,.08);}
+  .core3 .c b{display:block;font-size:15px;margin-bottom:6px;}
+  .core3 .c p{font-size:12.5px;color:var(--gray-700);}
+  .core3 .c .no{display:inline-block;font-size:11px;font-weight:800;color:var(--primary);background:var(--primary-bg);border-radius:6px;padding:1px 8px;margin-bottom:8px;}
+
+  /* ===== 章节横幅 ===== */
+  .chapter{margin-top:34px;}
+  .chapter-banner{display:flex;align-items:center;gap:14px;border-radius:12px;padding:14px 22px;color:#fff;}
+  .cb-green{background:var(--green);} .cb-teal{background:var(--teal);} .cb-blue{background:var(--blue);} .cb-gray{background:#495057;} .cb-red{background:var(--red);}
+  .c-num{font-size:12px;font-weight:800;opacity:.85;border:1px solid rgba(255,255,255,.5);border-radius:6px;padding:2px 10px;flex:none;}
+  .c-title{font-size:19px;font-weight:800;}
+  .c-desc{font-size:12px;opacity:.85;margin-left:auto;text-align:right;max-width:46%;}
+
+  .section{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:18px 22px;background:#fff;}
+  .section h3{font-size:15.5px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .section h3 .chip{font-size:10.5px;font-weight:700;color:#fff;border-radius:6px;padding:2px 8px;flex:none;}
+  .note{font-size:11.5px;color:var(--gray-500);margin-top:10px;line-height:1.7;}
+  .callout{border-radius:10px;padding:14px 18px;margin-bottom:14px;}
+  .co-green{background:var(--green-bg);border:1px solid #BFE3C8;}
+  .callout b.tag{display:inline-block;font-size:11px;color:#fff;border-radius:6px;padding:2px 10px;margin-right:8px;vertical-align:1px;}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;}
+  th{background:var(--gray-100);color:var(--ink);font-weight:700;text-align:left;padding:8px 12px;border:1px solid var(--line);white-space:nowrap;}
+  td{padding:8px 12px;border:1px solid var(--line);color:var(--gray-700);vertical-align:top;}
+  td b{color:var(--ink);}
+  tr:nth-child(even) td{background:#FAFBFC;}
+  .td-hl{background:var(--primary-bg)!important;}
+  .td-hl b{color:var(--primary-dark);}
+
+  .kcards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;}
+  .kcard{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:linear-gradient(180deg,#FFF, #FBFCFE);}
+  .kcard .v{font-size:22px;font-weight:800;color:var(--primary-dark);}
+  .kcard .v small{font-size:12px;font-weight:700;}
+  .kcard .k{font-size:11.5px;color:var(--gray-500);margin-top:2px;line-height:1.5;}
+
+  .dim{display:flex;gap:14px;align-items:stretch;margin-bottom:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dim .d-head{flex:none;width:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;padding:12px;}
+  .dim .d-head .n{font-size:11px;opacity:.8;font-weight:700;}
+  .dim .d-head .t{font-size:16px;font-weight:800;margin-top:2px;}
+  .dim .d-body{padding:12px 16px;flex:1;}
+  .dim .d-body .q{font-size:13px;font-weight:700;margin-bottom:4px;}
+  .dim .d-body .a{font-size:12px;color:var(--gray-700);}
+  .dim .d-body .a b{color:var(--primary-dark);}
+
+  /* ===== SOP 步骤 ===== */
+  .sop{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:6px;position:relative;}
+  .sop:before{content:"";position:absolute;top:34px;left:6%;right:6%;height:2px;background:var(--line);z-index:0;}
+  .step{position:relative;z-index:1;padding:0 10px;text-align:center;}
+  .step .ball{width:68px;height:68px;border-radius:50%;margin:0 auto 10px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-weight:800;box-shadow:0 4px 12px rgba(30,42,68,.18);}
+  .step .ball .s{font-size:10px;opacity:.85;font-weight:700;}
+  .step .ball .num{font-size:22px;line-height:1;}
+  .step h4{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .step .do{font-size:11.5px;color:var(--gray-700);text-align:left;background:var(--gray-100);border-radius:8px;padding:8px 10px;line-height:1.65;}
+  .step .do b{color:var(--ink);}
+  .step .out{font-size:11px;margin-top:6px;color:var(--blue);font-weight:700;}
+
+  /* ===== 工具箱 ===== */
+  .lk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px;}
+  .lk-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F7F9FC;border:1px solid #DCE3EC;border-radius:10px;text-decoration:none;cursor:pointer;transition:all .15s;}
+  .lk-item:hover{border-color:var(--lk);background:#F0F6FF;}
+  .lk-no{font-size:16px;font-weight:800;color:var(--lk);flex:none;}
+  .lk-name{font-size:13.5px;font-weight:700;color:var(--ink);}
+  .lk-url{font-size:11px;color:var(--lk);margin-top:2px;}
+  .lk-tag{margin-left:auto;font-size:10.5px;color:var(--gray-500);background:#fff;border:1px solid #E3E8EF;border-radius:99px;padding:2px 10px;white-space:nowrap;flex:none;}
+
+  /* ===== 误区 & 清单 ===== */
+  .mistakes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .mis{background:var(--red-bg);border:1px solid #F1C4C4;border-radius:10px;padding:12px 14px;}
+  .mis b{font-size:13px;color:var(--red);display:block;margin-bottom:3px;}
+  .mis p{font-size:11.5px;color:var(--gray-700);}
+  .mis p i{font-style:normal;color:var(--green);font-weight:700;}
+  .checklist{counter-reset:ck;}
+  .ck{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all .15s;}
+  .ck:hover{border-color:var(--primary);}
+  .ck .box{flex:none;width:18px;height:18px;border:2px solid var(--primary);border-radius:5px;margin-top:2px;position:relative;}
+  .ck.done .box:after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;background:var(--primary);border-radius:3px;}
+  .ck .ct{font-size:12.5px;color:var(--ink);}
+  .ck .ct small{display:block;color:var(--gray-500);font-size:11px;}
+  .ck.done .ct{color:var(--gray-500);text-decoration:line-through;}
+
+  /* ===== 附录 & footer ===== */
+  .flow-link{margin-top:14px;background:var(--primary-bg);border:1px dashed var(--primary);border-radius:10px;padding:12px 16px;font-size:12.5px;color:var(--primary-dark);}
+  .footer{margin-top:36px;padding:20px 32px 28px;background:var(--gray-100);font-size:11.5px;color:var(--gray-500);line-height:1.8;}
+  .footer b{color:var(--gray-700);}
+
+  @media(max-width:1100px){.core3{grid-template-columns:1fr;}.kcards{grid-template-columns:repeat(2,1fr);}.sop{grid-template-columns:repeat(2,1fr);gap:18px 0;}.sop:before{display:none;}.c-desc{display:none;}}
+  @media(max-width:768px){.wrap{padding:0 16px;}.lk-grid,.mistakes{grid-template-columns:1fr;}.sop{grid-template-columns:1fr;}.dim{flex-direction:column;}.dim .d-head{width:100%;flex-direction:row;gap:8px;justify-content:flex-start;}}
+  @media print{.toc{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- ================= 头部 ================= -->
+<div class="hero">
+  <div class="wrap">
+    <div class="tag">CREATIVE ANALYSIS PLAYBOOK · 素材分析方法论</div>
+    <h1>食品饮料素材分析攻略</h1>
+    <div class="sub">从"看一条素材"到"排产一批选题"——视频号食品饮料视频素材的表现分析全流程 · 配套《食品cid素材指南》使用</div>
+    <div class="meta">数据口径：微信小店电商广告（业绩口径）× 视频号版位 × 视频创意 × 前30天 × Top10万有消耗创意；高CTR样本 Top1000（消耗×CTR 双重筛选）｜ 更新于 2026-10</div>
+    <div class="toc">
+      <a href="#ch1">① 分析北极星</a><a href="#ch2">② 五维分析框架</a><a href="#ch3">③ 四步法 SOP</a><a href="#ch4">④ 分析工具箱</a><a href="#ch5">⑤ 检查清单与误区</a><a href="#ch6">附：数据速查卡</a>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+<div class="core3">
+  <div class="c"><span class="no">结论一</span><b>分析素材 = 分析"留住用户"的能力</b><p>平台创意竞争已升级为 <b>竞争力得分 = ECPM + 生态指标</b>，3秒快滑率与播放时长决定素材生死——一切分析围绕这两条展开。</p></div>
+  <div class="c"><span class="no">结论二</span><b>五维定胜负</b><p>时长（60-120s）、播放进度（前20%定生死）、制作形式（2-4种组合+情景剧）、结构（乐高化六原子）、开头（利益+信任双驱动）。</p></div>
+  <div class="c"><span class="no">结论三</span><b>分析的目的不是打分，而是排产</b><p>按 S/A/B 分级输出结构化选题，S级直接进入 CID 爆款素材生产工作流复刻，形成"分析→生产→放大"闭环。</p></div>
+</div>
+
+<!-- ================= 第1章 ================= -->
+<div class="chapter" id="ch1">
+  <div class="chapter-banner cb-green"><span class="c-num">第 1 章</span><span class="c-title">分析的北极星——平台怎么评价一条素材</span><span class="c-desc">先看懂规则，再谈分析：素材好不好，平台说了算</span></div>
+  <div class="section">
+    <div class="callout co-green"><b class="tag" style="background:var(--green);">重要更新</b>9月14日起，平台在原有 ECPM 比价逻辑上<b>新增创意质量评估</b>——素材竞争力由「比价」进入「比价 + 比质」双维时代。这决定了素材分析的两大北极星指标。</div>
+    <div class="kcards">
+      <div class="kcard"><div class="v">ECPM<small> + </small>生态指标</div><div class="k">竞争力得分构成——素材质量首次进入比价核心逻辑</div></div>
+      <div class="kcard"><div class="v">3秒快滑率 ↓</div><div class="k">指标一：越低越好——内容先要「留住用户」，前3秒是第一道生死线</div></div>
+      <div class="kcard"><div class="v">播放时长 ↑</div><div class="k">指标二：越长越好——用户看得越久，素材竞争力越强</div></div>
+      <div class="kcard"><div class="v">≤11s</div><div class="k">各时长段有效播放时长中位数上限——用户耐心极其有限，钩子必须前置</div></div>
+    </div>
+    <div class="note">📌 对分析工作的牵引：评估一条素材，本质是回答三个问题——① 前3秒能不能留住人（快滑率）？② 用户愿意看多深（播放进度/时长）？③ 看完之后有没有行动（CTR/转化）？第2章的五维框架即由此展开。</div>
+  </div>
+</div>
+
+<!-- ================= 第2章 ================= -->
+<div class="chapter" id="ch2">
+  <div class="chapter-banner cb-teal"><span class="c-num">第 2 章</span><span class="c-title">五维分析框架——一条素材看什么</span><span class="c-desc">每个维度给出"看什么、结论是什么、依据是什么"</span></div>
+
+  <div class="section">
+    <h3>2.1 时长维度 <span class="chip" style="background:var(--teal);">60-120s 黄金区间</span></h3>
+    <div class="dim">
+      <div class="d-head" style="background:var(--teal);"><span class="n">DIMENSION 1</span><span class="t">时长结构</span></div>
+      <div class="d-body">
+        <div class="q">Q：这条素材多长？处在哪个供给分布段？</div>
+        <div class="a"><b>结论：主流供给 30-60s（占比37%），但无论消耗还是 CTR 视角都建议往 60-120s 做；≤30s 明确回避。</b>综合推荐 60-90s（当前占比26%），CTR 导向选 90-120s（占比仅10%，竞争密度低）。≤180s 内视频越长，3/5/10秒完播率越好。</div>
+      </div>
+    </div>
+    <table>
+      <tr><th>维度</th><th>建议</th><th>数据依据</th></tr>
+      <tr><td>综合推荐区间</td><td class="td-hl"><b>60-90s</b>（当前占比26%）</td><td>平台收入 + 制作成本综合最优</td></tr>
+      <tr><td>CTR导向区间</td><td class="td-hl"><b>90-120s</b>（当前占比10%）</td><td>平均/中位 CTR 更高，且竞争密度低</td></tr>
+      <tr><td>明确回避</td><td style="color:var(--red);"><b>≤30s</b></td><td>低于60s的3个区间，消耗和CTR越短越差</td></tr>
+      <tr><td>完播率</td><td>≤180s 内越长越好</td><td>180s+ 超长视频完播率略降</td></tr>
+    </table>
+    <div class="note">⚠️ 反直觉洞察：视频越长，有效播放时长并<b>不会</b>同步变长——所有时长段有效播放时长中位数都不超过 11s；但视频越长"能看完 x 秒"的人越多，所以做长仍合理。分析时长时别被"平均播放时长"迷惑，要看<b>进度分桶</b>。</div>
+  </div>
+
+  <div class="section">
+    <h3>2.2 播放进度维度 <span class="chip" style="background:var(--primary);">前20%定生死</span></h3>
+    <div class="dim">
+      <div class="d-head" style="background:var(--primary);"><span class="n">DIMENSION 2</span><span class="t">播放进度</span></div>
+      <div class="d-body">
+        <div class="q">Q：用户看到了百分之几？钩子在第几秒？</div>
+        <div class="a"><b>结论：有效播放进度与 CTR 显著正相关（Pearson r=0.54，进度每提升5%，CTR平均提升0.4-0.9pp）；60-120s 素材的优化重点是让用户看到 <b>前20%（约12-24s）</b>。</b></div>
+      </div>
+    </div>
+    <div class="kcards">
+      <div class="kcard"><div class="v">8.4<small>倍</small></div><div class="k">35-40%进度分桶 CTR 7.05% vs 0-5%分桶 0.84%——进度差距即效果差距</div></div>
+      <div class="kcard"><div class="v">&gt;6%</div><div class="k">播放进度&gt;25% 的创意平均 CTR，远高于整体平均 3.17%</div></div>
+      <div class="kcard"><div class="v">60%</div><div class="k">创意有效播放进度集中在 10-20%（CTR 2.44-3.40%）——存量提升空间大</div></div>
+      <div class="kcard"><div class="v">10→25→50<small>%</small></div><div class="k">进度衰减三连跳猛降，75%后趋平；时长越短降幅越大</div></div>
+    </div>
+    <table>
+      <tr><th>素材时长</th><th>CTR 跃升拐点</th><th>换算为秒</th></tr>
+      <tr><td>30-60s</td><td class="td-hl"><b>进度 &gt;25%</b></td><td>&gt;7.5-15s</td></tr>
+      <tr><td>60-90s</td><td class="td-hl"><b>进度 &gt;20%</b></td><td>&gt;12-18s</td></tr>
+      <tr><td>90-120s</td><td class="td-hl"><b>进度 &gt;20%</b></td><td>&gt;18-24s</td></tr>
+      <tr><td>120-150s</td><td class="td-hl"><b>进度 &gt;15%</b></td><td>&gt;18-22.5s</td></tr>
+      <tr><td>&lt;15s 或 &gt;150s</td><td>无明显拐点</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>2.3 制作形式维度 <span class="chip" style="background:var(--blue);">2-4种组合 + 情景剧</span></h3>
+    <div class="dim">
+      <div class="d-head" style="background:var(--blue);"><span class="n">DIMENSION 3</span><span class="t">制作形式</span></div>
+      <div class="d-body">
+        <div class="q">Q：用了哪几种形式？是单一还是组合？有没有情景剧？</div>
+        <div class="a"><b>结论：2-4种制作形式组合的 CTR 明显优于单一形式；真人情景剧/短剧是"低渗透（18.57%）高效果"的最大机会点</b>——在"实物+口播(+混剪)"成熟底座上叠加情景剧，控制在4种以内。</div>
+      </div>
+    </div>
+    <table>
+      <tr><th>制作形式数</th><th>平均时长</th><th>CTR 表现</th></tr>
+      <tr><td>1种（仅占5%）</td><td>48.6s</td><td style="color:var(--red);">最差</td></tr>
+      <tr><td class="td-hl"><b>2-4种</b></td><td class="td-hl"><b>57.4s → 78.5s</b></td><td class="td-hl"><b>明显更好（主流）</b></td></tr>
+      <tr><td>5种</td><td>80.0s</td><td>CTR 反降至 5.59%，信息过载</td></tr>
+    </table>
+    <table>
+      <tr><th>强势组合（Top1000 高CTR样本）</th><th>覆盖/占比</th><th>平均CTR</th></tr>
+      <tr><td>实物演示 + 混剪 + 口播</td><td>43.78%（最成熟稳定范式）</td><td>6.94%</td></tr>
+      <tr><td class="td-hl"><b>实物 + 混剪 + 口播 + 情景剧</b></td><td>Top3</td><td class="td-hl"><b>7.21%</b></td></tr>
+      <tr><td class="td-hl"><b>实物 + 口播 + 情景剧</b></td><td>Top4</td><td class="td-hl"><b>7.38%</b></td></tr>
+    </table>
+    <div class="kcards">
+      <div class="kcard"><div class="v">+5.74<small>pp</small></div><div class="k">含情景剧的 3秒完播率 51.93% vs 46.19%——显著增强开头引力</div></div>
+      <div class="kcard"><div class="v">+4.83<small>pp</small></div><div class="k">5秒完播率 35.92% vs 31.09%</div></div>
+      <div class="kcard"><div class="v">7.16<small>% vs 6.82%</small></div><div class="k">含 vs 不含情景剧的 CTR 均值（中位数 +0.36pp，约+5%）</div></div>
+      <div class="kcard"><div class="v">18.57%</div><div class="k">情景剧当前渗透率——最大潜力点；注意它是增强元素，须与其他形式配合</div></div>
+    </div>
+    <div class="note">单形式渗透率参考：实物产品/功能演示 95%+、真人口播 92%、混剪合成 60%+。</div>
+  </div>
+
+  <div class="section">
+    <h3>2.4 结构维度 <span class="chip" style="background:var(--purple);">乐高化 · 六原子阶段</span></h3>
+    <div class="dim">
+      <div class="d-head" style="background:var(--purple);"><span class="n">DIMENSION 4</span><span class="t">脚本结构</span></div>
+      <div class="d-body">
+        <div class="q">Q：脚本按什么顺序推进？属于哪类结构？</div>
+        <div class="a"><b>结论：不建议照搬6大结构公式（变种多、单创意难归类），建议拆解为原子化【阶段/内容类型】，按自定义顺序乐高式拼装。</b>任何脚本 = 六原子的排序组合，分析时按原子打标即可横向对比。</div>
+      </div>
+    </div>
+    <div class="kcards" style="grid-template-columns:repeat(6,1fr);">
+      <div class="kcard" style="text-align:center;"><div class="v" style="font-size:14px;">开场吸引</div><div class="k">六原子之一</div></div>
+      <div class="kcard" style="text-align:center;"><div class="v" style="font-size:14px;">产品展示</div><div class="k">六原子之二</div></div>
+      <div class="kcard" style="text-align:center;"><div class="v" style="font-size:14px;">信任建立</div><div class="k">六原子之三</div></div>
+      <div class="kcard" style="text-align:center;"><div class="v" style="font-size:14px;">场景体验</div><div class="k">六原子之四</div></div>
+      <div class="kcard" style="text-align:center;"><div class="v" style="font-size:14px;">剧情叙事</div><div class="k">六原子之五</div></div>
+      <div class="kcard" style="text-align:center;"><div class="v" style="font-size:14px;">促销转化</div><div class="k">六原子之六</div></div>
+    </div>
+    <table>
+      <tr><th>结构类型（供参考，不照搬）</th><th>占比</th><th>典型公式</th></tr>
+      <tr><td>产品展示型</td><td>39.1%</td><td>开场吸引 → 产品展示 → [信任建立] → [场景体验] → 促销转化</td></tr>
+      <tr><td>信任背书型</td><td>24.3%</td><td>开场吸引 → 信任建立 → 产品展示 → 促销转化</td></tr>
+      <tr><td>痛点方案型（PAS）</td><td>20.5%</td><td>开场吸引（痛点切入）→ 产品展示 → [信任建立/场景体验] → 促销转化</td></tr>
+      <tr><td>利益驱动型</td><td>13.0%</td><td>开场吸引（利益诱惑）→ 促销转化 → [产品展示] → 促销转化</td></tr>
+      <tr><td>场景体验型</td><td>3.0%</td><td>开场吸引 → 场景体验 → [产品展示] → 场景体验</td></tr>
+      <tr><td>剧情叙事型</td><td>0.1%</td><td>开场吸引 → 剧情叙事</td></tr>
+    </table>
+    <div class="note">表现形式（明星代言/素人口播/直播带货）与结构类型是两个维度：素人口播型占 52.2%（其中47%为产品展示型）；直播带货型 33% 产品展示 + 26% 利益驱动。</div>
+  </div>
+
+  <div class="section">
+    <h3>2.5 开头维度 <span class="chip" style="background:var(--primary-dark);">利益 + 信任 双驱动</span></h3>
+    <div class="dim">
+      <div class="d-head" style="background:var(--primary-dark);"><span class="n">DIMENSION 5</span><span class="t">开头钩子</span></div>
+      <div class="d-body">
+        <div class="q">Q：前3秒用了什么钩子？属于哪类驱动力？</div>
+        <div class="a"><b>结论：机制前置型独占近30%；从利益驱动+信任驱动两大主流入手，优先做机制前置、溯源拆解、权威背书、场景对话 4 个细分类型。</b>食品饮料的"效果"难以视觉化，结果前置型（A1）不做，视觉冲击交给感官爽点型（D3 爆汁拉丝）。</div>
+      </div>
+    </div>
+    <table>
+      <tr><th>优先开头（PDF明确建议）</th><th>驱动力</th><th>开头怎么做（第一段）</th><th>承接结构（整段视频）</th></tr>
+      <tr><td class="td-hl"><b>机制前置型</b>（独占近30%，主流）</td><td>利益</td><td>价格/买赠机制直接报出（"9块9""拍一发五"报价截停）</td><td>产品品质介绍 → 再次强调机制 → 行动号召</td></tr>
+      <tr><td class="td-hl"><b>溯源拆解型</b></td><td>信任</td><td>源头/产地/工厂展示（"带大家走进源头""我是XX厂长"）</td><td>品质/工艺拆解 → 价格优势 → 促销转化</td></tr>
+      <tr><td class="td-hl"><b>权威背书型</b></td><td>信任</td><td>权威人物/资质第一帧亮相（明星/博士/检测报告）</td><td>信任强化（工厂/成分/资质细节）→ 产品推荐 → 促销转化</td></tr>
+      <tr><td class="td-hl"><b>场景对话/带入型</b></td><td>情绪</td><td>生活对话场景（买卖对话/家人互动，第一帧就有人物在对话）</td><td>产品自然植入 → 促销转化</td></tr>
+    </table>
+    <div class="note">备选弹药库（5大驱动 × 18类型）：利益驱动（机制前置/结果前置-不做/效率承诺/稀缺紧迫）、痛点驱动（场景痛点/人群锁定/避坑翻车）、认知缺口（悬念/反常识/提问）、情绪驱动（冲突剧情/挑衅否定/感官爽点/场景对话）、信任驱动（权威背书/溯源拆解/社会认同/产品展示）。AIGC 批量生产开头资产时，按 18类型 × 6原子做组合矩阵，优先覆盖4个推荐类型。完整18类型速查表见《食品cid素材指南》附录。</div>
+  </div>
+</div>
+
+<!-- ================= 第3章 ================= -->
+<div class="chapter" id="ch3">
+  <div class="chapter-banner cb-blue"><span class="c-num">第 3 章</span><span class="c-title">素材分析四步法 SOP——从数据到排产</span><span class="c-desc">每一步明确：做什么 / 看什么 / 产出什么</span></div>
+  <div class="section">
+    <div class="sop">
+      <div class="step">
+        <div class="ball" style="background:var(--teal);"><span class="s">STEP</span><span class="num">1</span></div>
+        <h4>拉数据</h4>
+        <div class="do"><b>做什么：</b>用 Creative+ADQ 创意资产分析拉取素材投放表现。<br><b>看什么：</b>CTR、3秒快滑率、播放进度分桶、消耗。<br><b>筛什么：</b>高CTR样本按 消耗×CTR 双重筛选（Top1000口径）。</div>
+        <div class="out">产出：素材表现底表</div>
+      </div>
+      <div class="step">
+        <div class="ball" style="background:var(--green);"><span class="s">STEP</span><span class="num">2</span></div>
+        <h4>找参照</h4>
+        <div class="do"><b>做什么：</b>定位高表现素材作为参照系——妙思灵感·高表现素材参考 + 微信生态热门话题参考台。<br><b>看什么：</b>同品类高CTR素材的开头/形式/结构；生态热点话题与场景趋势。</div>
+        <div class="out">产出：高表现参照素材清单</div>
+      </div>
+      <div class="step">
+        <div class="ball" style="background:var(--blue);"><span class="s">STEP</span><span class="num">3</span></div>
+        <h4>拆结构</h4>
+        <div class="do"><b>做什么：</b>按第2章五维框架逐条打标。<br><b>打什么：</b>①时长区间 ②播放进度与钩子位置 ③制作形式组合（是否含情景剧）④六原子排序 ⑤开头类型与驱动力。</div>
+        <div class="out">产出：结构化标签库</div>
+      </div>
+      <div class="step">
+        <div class="ball" style="background:var(--primary);"><span class="s">STEP</span><span class="num">4</span></div>
+        <h4>定级排产</h4>
+        <div class="do"><b>做什么：</b>按表现与可复制度分 S/A/B 三级，S级优先排产。<br><b>怎么接：</b>S级选题直接进入《食品cid素材指南》CID 爆款素材生产工作流——妙思技能化一体出片复刻 → Adbuddy 放大。</div>
+        <div class="out">产出：S/A/B 选题排产清单</div>
+      </div>
+    </div>
+    <div class="flow-link">🔗 与生产线的衔接：本攻略负责"选出对的方向"，《食品cid素材指南》负责"把对的方向批量做出来"——S级选题 → 技能化一体出片（参考生成/AI灵感复用）→ 平台素材扶持权益 → Adbuddy 创意托管放大，投放反馈回流灵感池，形成闭环。</div>
+  </div>
+</div>
+
+<!-- ================= 第4章 ================= -->
+<div class="chapter" id="ch4">
+  <div class="chapter-banner cb-gray"><span class="c-num">第 4 章</span><span class="c-title">分析工具箱——四步法配套工具直达</span><span class="c-desc">点击直达，覆盖 拉数 / 找参照 / 排产全链路</span></div>
+  <div class="section">
+    <div class="lk-grid">
+      <a class="lk-item" href="https://hotspot.dacongming.chat/" target="_blank" rel="noopener"><span class="lk-no">①</span><span><span class="lk-name">微信生态热门话题参考</span><br><span class="lk-url">hotspot.dacongming.chat ↗</span></span><span class="lk-tag">找参照 · Step2</span></a>
+      <div class="lk-item" style="cursor:default;"><span class="lk-no">②</span><span><span class="lk-name">Creative+ADQ创意资产分析</span><br><span class="lk-url">腾讯文档 ｜ 内部文档（如需访问请联系对接团队）</span></span><span class="lk-tag">拉数据 · Step1</span></div>
+      <a class="lk-item" href="https://admuse.qq.com/#/index" target="_blank" rel="noopener"><span class="lk-no">③</span><span><span class="lk-name">妙思灵感 · 高表现素材参考</span><br><span class="lk-url">admuse.qq.com ｜ 妙思官网 ↗</span></span><span class="lk-tag">找参照 · Step2</span></a>
+      <div class="lk-item" style="cursor:default;"><span class="lk-no">④</span><span><span class="lk-name">Adbuddy 创意托管使用指引</span><br><span class="lk-url">腾讯文档 ｜ 内部文档（如需访问请联系对接团队）</span></span><span class="lk-tag">排产放大 · Step4</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 第5章 ================= -->
+<div class="chapter" id="ch5">
+  <div class="chapter-banner cb-red"><span class="c-num">第 5 章</span><span class="c-title">检查清单与常见误区</span><span class="c-desc">上线前过一遍清单；红线误区碰不得</span></div>
+  <div class="section">
+    <h3>5.1 五条红线误区（数据证伪的做法）</h3>
+    <div class="mistakes">
+      <div class="mis"><b>✗ 做 ≤30s 短视频</b><p>低于60s的3个区间，消耗和CTR越短越差。<i>✓ 60-120s，CTR导向90-120s。</i></p></div>
+      <div class="mis"><b>✗ 单一制作形式打天下</b><p>1种形式（仅占供给5%）CTR最差；5种则信息过载。<i>✓ 2-4种组合，实物+口播为底座。</i></p></div>
+      <div class="mis"><b>✗ 照搬6大脚本结构公式</b><p>变种太多、单创意难归类，参考价值有限。<i>✓ 拆成六原子阶段乐高式拼装。</i></p></div>
+      <div class="mis"><b>✗ 开头做"效果对比"（结果前置 A1）</b><p>食品饮料的"好吃/健康"难以视觉化，样本中为0条。<i>✓ 视觉冲击交给感官爽点（爆汁拉丝），机制/溯源/权威/对话四选一。</i></p></div>
+      <div class="mis"><b>✗ 把情景剧当独立承载形式</b><p>情景剧是增强元素，独立承载不成立。<i>✓ 叠加在实物+口播底座上，渗透率仅18.57%，是最大增量机会。</i></p></div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>5.2 素材分析十项检查清单（点击可勾选）</h3>
+    <div class="checklist" id="cklist">
+      <div class="ck"><span class="box"></span><span class="ct">时长落在 60-120s 区间<small>综合推荐 60-90s；CTR导向 90-120s（竞争密度低）</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">钩子位于视频前 20%（12-24s 内）<small>进度 &gt;20% 才有 CTR 跃升；前3秒决定快滑率</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">制作形式为 2-4 种组合<small>以实物演示 + 口播（+混剪）为成熟底座</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">组合中包含真人情景剧/短剧<small>3秒完播率 +5.74pp 的最大增量机会，渗透仅18.57%</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">脚本可拆解为六原子排序<small>开场吸引/产品展示/信任建立/场景体验/剧情叙事/促销转化</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">开头属于利益+信任双驱动之一<small>优先：机制前置 / 溯源拆解 / 权威背书 / 场景对话</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">用 Creative+ADQ 拉过投放表现数据<small>Step1：消耗×CTR 双重筛选高表现样本</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">对照过妙思高表现素材参照系<small>Step2：同品类高CTR素材 + 生态热点话题</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">按 S/A/B 完成分级，S级已排产<small>Step4：S级进入 CID 工作流技能化出片</small></span></div>
+      <div class="ck"><span class="box"></span><span class="ct">投放反馈已回流灵感池<small>分析→生产→放大→反馈 闭环跑通</small></span></div>
+    </div>
+    <div class="note">✅ 勾选状态仅保存在当前页面，刷新后重置；建议团队汇报时逐项过一遍。</div>
+  </div>
+</div>
+
+<!-- ================= 附录 ================= -->
+<div class="chapter" id="ch6">
+  <div class="chapter-banner cb-gray"><span class="c-num">附 录</span><span class="c-title">数据速查卡（汇报可直接引用）</span><span class="c-desc">全部结论均出自实测数据，来源见页脚</span></div>
+  <div class="section">
+    <div class="kcards">
+      <div class="kcard"><div class="v">r=0.54</div><div class="k">有效播放进度与CTR的Pearson相关系数；进度每+5%，CTR +0.4-0.9pp</div></div>
+      <div class="kcard"><div class="v">3.17%</div><div class="k">整体平均CTR；进度&gt;25%的创意平均CTR &gt;6%</div></div>
+      <div class="kcard"><div class="v">0.84% → 7.05%</div><div class="k">0-5% vs 35-40%进度分桶CTR（相差8.4倍）</div></div>
+      <div class="kcard"><div class="v">7.38%</div><div class="k">实物+口播+情景剧组合平均CTR（Top4组合）</div></div>
+      <div class="kcard"><div class="v">43.78%</div><div class="k">实物+混剪+口播组合在Top1000中的覆盖率（最成熟范式，CTR 6.94%）</div></div>
+      <div class="kcard"><div class="v">51.93%</div><div class="k">含情景剧素材的3秒完播率（vs 46.19%，+5.74pp）</div></div>
+      <div class="kcard"><div class="v">~60%</div><div class="k">食品饮料+美妆护肤+个护清洁为视频号消耗前三类目占比（各15%+）</div></div>
+      <div class="kcard"><div class="v">5套</div><div class="k">验证过的强势脚本模板（利益+情景剧/信任溯源/PAS/权威背书/场景对话），详见《食品cid素材指南》</div></div>
+    </div>
+    <div class="flow-link">📖 延伸阅读：《食品cid素材指南》——CID爆款素材生产工作流（背景→灵感洞察→创意生产·技能化出片→创意放大·Adbuddy托管），含五套强势脚本全文、5大驱动×18种开头公式速查表、平台扶持权益说明。</div>
+  </div>
+</div>
+
+</div>
+<div class="footer">
+  <b>数据来源</b>｜视频号食品饮料视频创意专项分析（2026年8月实测 · Top10万有消耗创意）· 本页为素材分析方法论攻略版 · 发布于 2026-10-16<br>
+  <b>口径说明</b>｜微信小店电商广告（业绩口径）× 视频号版位 × 视频创意 × 前30天 × Top10万有消耗创意；高CTR样本 Top1000（消耗×CTR 双重筛选）<br>
+  <b>配套文档</b>｜《食品cid素材指南》（CID爆款素材生产工作流）——五套强势脚本全文、5大驱动×18种开头公式速查表
+</div>
+
+<script>
+(function(){
+  // 检查清单点击勾选
+  document.querySelectorAll('.ck').forEach(function(el){
+    el.addEventListener('click', function(){ el.classList.toggle('done'); });
+  });
+  // 锚点平滑滚动
+  document.querySelectorAll('.toc a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t) window.scrollTo({top: t.offsetTop - 12, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

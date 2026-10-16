@@ -9,6 +9,7 @@
 - `traditional-tonic-toolbox-3.0.html` — 传统滋补投放百宝箱 V3.0（保底版）
 - `case-paper-1440/` — 1440 横版标杆案例纸内页集
 - `食品饮料素材分析攻略.md` — 食品饮料视频素材表现分析方法论（五维框架 + 四步法 SOP）
+- `food-beverage-creative-analysis-playbook.html` — 食品饮料素材分析攻略（渲染版，同上内容）
 - `sync_public.py` — 工作区白名单同步脚本
 - `.public_whitelist` — 公开站白名单配置
 
