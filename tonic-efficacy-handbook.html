@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){window.__idata_artifact_error__=[];function _record(t){t=String(t==null?'unknown error':t).slice(0,5000);window.__idata_artifact_error__.push(t);try{window.parent&&window.parent.postMessage({type:'artifact-error',message:t.slice(0,500)},'*');}catch(_e){}}window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_record(parts.join('\n'));},true);window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_record((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>滋补赛道功效成分手册 · 广告表述指南</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #F5F7FA; color: #1F2329; line-height: 1.6;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* ===== 头部 ===== */
+  .hero {
+    background: linear-gradient(135deg, #0B4FD9 0%, #296BEF 55%, #61C2FF 100%);
+    border-radius: 16px; padding: 36px 32px; color: #fff; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
+  .hero .sub { margin-top: 8px; font-size: 14px; opacity: .92; }
+  .hero .meta { margin-top: 14px; font-size: 12px; opacity: .75; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .stat {
+    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+    border-radius: 10px; padding: 10px 18px; min-width: 108px;
+  }
+  .stat .num { font-size: 24px; font-weight: 700; }
+  .stat .lbl { font-size: 12px; opacity: .9; margin-top: 2px; }
+
+  /* ===== 通用卡片 ===== */
+  .card {
+    background: #fff; border-radius: 14px; padding: 24px 26px;
+    margin-bottom: 20px; box-shadow: 0 1px 4px rgba(31,35,41,.06);
+  }
+  .card h2 {
+    font-size: 18px; font-weight: 700; color: #0B4FD9;
+    padding-left: 10px; border-left: 4px solid #296BEF; margin-bottom: 6px;
+  }
+  .card .hint { font-size: 13px; color: #646A73; margin-bottom: 16px; }
+
+  /* ===== 图例 ===== */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+  .legend span {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid transparent;
+  }
+  .lg-ok { background: #E2EFDA; color: #2E7D32; border-color: #B7DFB0; }
+  .lg-warn { background: #FFF2CC; color: #9C6B00; border-color: #F0D98C; }
+  .lg-ban { background: #FCE4E4; color: #C0392B; border-color: #F2B8B5; }
+  .lg-no { background: #EDEDED; color: #646A73; border-color: #D5D9DE; }
+  .lg-intercept { background: #3B1F2B; color: #FFD9D9; border-color: #5A2E3E; }
+
+  /* ===== 功效大类卡片 ===== */
+  .cat-card {
+    background: #fff; border-radius: 14px; margin-bottom: 18px;
+    box-shadow: 0 1px 4px rgba(31,35,41,.06); overflow: hidden;
+  }
+  .cat-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 24px; cursor: pointer; user-select: none;
+  }
+  .cat-head:hover { background: #F7FAFF; }
+  .cat-icon {
+    width: 46px; height: 46px; border-radius: 12px; background: #EDF4FF;
+    display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+  }
+  .cat-title { flex: 1; }
+  .cat-title .name { font-size: 17px; font-weight: 700; }
+  .cat-title .desc { font-size: 12.5px; color: #646A73; margin-top: 2px; }
+  .cat-count { text-align: right; }
+  .cat-count .n { font-size: 20px; font-weight: 700; color: #296BEF; }
+  .cat-count .t { font-size: 11px; color: #8F959E; }
+  .arrow { color: #8F959E; font-size: 12px; transition: transform .25s; }
+  .cat-card.open .arrow { transform: rotate(90deg); }
+  .cat-body { display: none; padding: 0 24px 20px; border-top: 1px solid #F0F2F5; }
+  .cat-card.open .cat-body { display: block; }
+
+  .phrase-box {
+    background: #F7FAFF; border-radius: 10px; padding: 12px 16px; margin: 14px 0;
+  }
+  .phrase-box .pb-t { font-size: 12px; font-weight: 700; color: #296BEF; margin-bottom: 6px; }
+  .phrase-box .pb-w { font-size: 12px; font-weight: 700; color: #C0392B; margin-bottom: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-size: 12.5px; padding: 3px 12px; border-radius: 20px;
+  }
+  .chip.ok { background: #E2EFDA; color: #2E7D32; }
+  .chip.ban { background: #FCE4E4; color: #C0392B; text-decoration: line-through; }
+
+  .dir-block { margin-top: 14px; }
+  .dir-title {
+    font-size: 14px; font-weight: 700; color: #1F2329; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .dir-title::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #296BEF; }
+
+  table { border-collapse: collapse; width: 100%; }
+  th {
+    background: #EDF4FF; color: #0B4FD9; font-size: 12.5px; font-weight: 700;
+    padding: 9px 12px; text-align: left; white-space: nowrap;
+  }
+  td {
+    font-size: 13px; padding: 9px 12px; border-bottom: 1px solid #F0F2F5;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  .tag {
+    display: inline-block; font-size: 11px; padding: 1px 8px;
+    border-radius: 12px; white-space: nowrap;
+  }
+  .tag.ok { background: #E2EFDA; color: #2E7D32; }
+  .tag.warn { background: #FFF2CC; color: #9C6B00; }
+  .tag.ban { background: #FCE4E4; color: #C0392B; }
+  .tag.no { background: #EDEDED; color: #646A73; }
+  .tag.intercept { background: #3B1F2B; color: #FFD9D9; }
+
+  .spec { color: #8F959E; font-size: 12px; }
+
+  /* ===== 禁用区 ===== */
+  .ban-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .ban-item {
+    border: 1px solid #F0E0E0; border-radius: 10px; padding: 14px 16px; background: #FFFBFB;
+  }
+  .ban-item .bn { font-weight: 700; font-size: 14px; color: #C0392B; }
+  .ban-item .bc { font-size: 12px; color: #8F959E; margin-top: 6px; line-height: 1.7; }
+  .ban-item .bc s { color: #C0392B; text-decoration-color: rgba(192,57,43,.5); }
+
+  .intercept-box {
+    background: #3B1F2B; color: #FFD9D9; border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 14px;
+  }
+  .intercept-box .bn { font-weight: 700; font-size: 15px; color: #FF9D9D; }
+  .intercept-box .bc { font-size: 12.5px; margin-top: 6px; opacity: .9; }
+
+  .no-item {
+    border: 1px solid #E5E7EB; border-radius: 10px; padding: 12px 16px; background: #FAFAFA;
+  }
+  .no-item .bn { font-weight: 700; font-size: 13.5px; color: #4A4F57; }
+  .no-item .bc { font-size: 12px; color: #8F959E; margin-top: 4px; }
+
+  /* ===== 翻译对照 ===== */
+  .tr-row td { font-size: 13px; }
+  .tr-row .no-say { color: #C0392B; text-decoration: line-through; text-decoration-color: rgba(192,57,43,.45); }
+  .tr-row .say { color: #2E7D32; font-weight: 600; }
+  .tr-row .cat { color: #8F959E; font-size: 12px; white-space: nowrap; }
+
+  /* ===== 风险区 ===== */
+  .risk-item {
+    border-left: 4px solid #F76852; background: #FFF9F8; border-radius: 0 10px 10px 0;
+    padding: 14px 18px; margin-bottom: 12px;
+  }
+  .risk-item.lv-warn { border-left-color: #FFAE19; background: #FFFDF5; }
+  .risk-item.lv-no { border-left-color: #8F959E; background: #FAFAFB; }
+  .risk-item.lv-ok { border-left-color: #76C84D; background: #F8FCF5; }
+  .risk-item .rt { font-weight: 700; font-size: 14px; }
+  .risk-item .rn { font-size: 12px; color: #296BEF; margin-top: 2px; }
+  .risk-item .rd { font-size: 12.5px; color: #4A4F57; margin-top: 6px; }
+
+  /* ===== 页脚 ===== */
+  .footer {
+    text-align: center; font-size: 12px; color: #8F959E; margin-top: 30px; line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 26px 20px; }
+    .hero h1 { font-size: 20px; }
+    .stat { min-width: 88px; padding: 8px 12px; }
+    .stat .num { font-size: 19px; }
+    .card { padding: 18px 16px; }
+    .cat-head { padding: 14px 16px; }
+    .cat-body { padding: 0 16px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 头部 -->
+  <div class="hero">
+    <h1>滋补赛道功效成分手册</h1>
+    <div class="sub">广告描述与成分科普表述指南 · 覆盖 13 个功效方向 × 110 个药食同源成分</div>
+    <div class="meta">数据来源：营养及健康食品词卡需求表（腾讯广告审核口径梳理）｜整理日期：2026-10-16</div>
+    <div class="stat-row">
+      <div class="stat"><div class="num">110</div><div class="lbl">梳理成分总数</div></div>
+      <div class="stat"><div class="num">87</div><div class="lbl">可出卡（可讲功效）</div></div>
+      <div class="stat"><div class="num">13</div><div class="lbl">功效方向大类</div></div>
+      <div class="stat"><div class="num">179</div><div class="lbl">成分-功效组合</div></div>
+      <div class="stat"><div class="num">17</div><div class="lbl">不可讲功效成分</div></div>
+    </div>
+  </div>
+
+  <!-- 使用说明 -->
+  <div class="card">
+    <h2>如何使用本手册</h2>
+    <div class="hint">给客户做成分研究、写广告描述前，先查两件事：① 该成分在哪个功效大类、能用哪些表述；② 该成分的禁用红线是什么。所有表述必须严格按词卡执行。</div>
+    <div class="legend">
+      <span class="lg-ok">可出卡 · 可讲功效</span>
+      <span class="lg-warn">部分规格禁用 / 判例破例（需确认）</span>
+      <span class="lg-ban">仅禁用 · 不能讲功效</span>
+      <span class="lg-no">不出卡 · 无功效方向</span>
+      <span class="lg-intercept">禁止准入 · 产品进不来</span>
+    </div>
+  </div>
+
+<div class="card" style="padding-bottom:8px;"><h2>功效方向 × 成分速查</h2><div class="hint">点击任一功效大类展开：查看该赛道的高频可用表述、高频禁用宣称，以及每个成分的具体可用短语。按成分池厚度排序。</div></div>
+<div class="cat-card" id="cat0">
+<div class="cat-head" onclick="toggleCat('cat0')">
+<div class="cat-icon">🍚</div>
+<div class="cat-title">
+<div class="name">脾胃类</div>
+<div class="desc">大餐场景主力赛道，成分池最厚</div>
+</div>
+<div class="cat-count"><div class="n">38</div><div class="t">个成分 · 45条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">脾胃舒坦</span><span class="chip ok">饭后少负担</span><span class="chip ok">胃口好</span><span class="chip ok">大餐少负担</span><span class="chip ok">吃饭香</span><span class="chip ok">健脾</span><span class="chip ok">补脾</span><span class="chip ok">健脾开胃</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">有助于消化</span><span class="chip ban">调理脾虚</span><span class="chip ban">止泻</span><span class="chip ban">消食</span><span class="chip ban">止呕</span><span class="chip ban">健胃消食</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">脾胃舒坦</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>丁香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、脾胃舒坦、胃口好、吃饭香、饭后少负担</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>山药</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补脾养胃、饭后少负担、脾胃舒坦、胃口好、补脾、大餐少负担</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>甘草</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补脾益气、补脾、脾胃舒坦、胃口好、饭后少负担、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>芡实</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补脾、脾胃舒坦、饭后少负担、大餐少负担、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>花椒</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>脾胃舒坦、胃口好、饭后少负担、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦芽</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾开胃、饭后少负担、大餐少负担、胃口好、吃饭香、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦芽</b><div class="spec">麦芽（生麦芽）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾开胃、饭后少负担、大餐少负担、胃口好、吃饭香、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>姜（生姜、干姜）</b><div class="spec">姜（生姜）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>脾胃舒坦、胃里舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>姜（生姜、干姜）</b><div class="spec">姜（干姜）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>脾胃舒坦、胃里舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>砂仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿开胃、开胃、胃口好、饭后少负担、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>香薷</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿和中、和中、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>益智仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>脾胃舒坦、胃里暖暖的、饭后少负担</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>莲子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补脾、脾胃舒坦、饭后少负担、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>高良姜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温胃、脾胃舒坦、胃口好、饭后少负担</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄精</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、饭后少负担、脾胃舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>铁皮石斛</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>益胃、益胃生津、胃里舒服、脾胃舒坦、胃口好</td>
+</tr></tbody>
+</table>
+</div>
+<div class="dir-block">
+<div class="dir-title">饭后少负担</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>八角茴香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>理气、饭后少负担、脾胃舒坦、肚子舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>刀豆</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、饭后少负担、脾胃舒坦、肚子舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>小茴香</b></td>
+<td><span class="tag warn">部分规格禁用</span></td>
+<td>理气和胃、饭后少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>山药</b><div class="spec">山药（麸炒山药）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补脾养胃、饭后少负担、脾胃舒坦、胃口好、补脾、大餐少负担</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>山楂</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>山楂</b><div class="spec">山楂（焦山楂）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>木瓜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>和胃化湿、和胃、饭后少负担、脾胃舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>白扁豆</b><div class="spec">白扁豆（白扁豆规格）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、健脾化湿、和中、饭后少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>白扁豆</b><div class="spec">白扁豆（炒白扁豆）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、健脾化湿、和中、饭后少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>肉豆蔻</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中行气、行气、饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>余甘子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>佛手</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>和胃、饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>沙棘</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>鸡内金</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、胃口好、吃饭香、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦芽</b><div class="spec">麦芽（炒麦芽）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾开胃、饭后少负担、大餐少负担、胃口好、吃饭香、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦芽</b><div class="spec">麦芽（焦麦芽）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾开胃、饭后少负担、大餐少负担、胃口好、吃饭香、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>茯苓</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、饭后少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>香橼</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>宽中、饭后少负担、大餐少负担、脾胃舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桔红</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>理气宽中、理气、饭后少负担、大餐少负担、脾胃舒坦、饭后肚子舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>莱菔子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、饭后肚子轻松、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>菊苣</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、胃口好、吃饭香、饭后轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>紫苏</b><div class="spec">紫苏（紫苏叶）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>行气和胃、和胃、饭后少负担、大餐少负担、脾胃舒坦、饭后肚子舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黑胡椒</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、饭后少负担、大餐少负担、脾胃舒坦、饭后胃里舒坦</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>橘皮</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>理气健脾、饭后少负担、大餐少负担、脾胃舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薏苡仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薤白</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>藿香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>饭后少负担、大餐少负担、脾胃舒坦、胃口好、吃饭香</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>党参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾、饭后少负担、大餐少负担、脾胃舒坦、胃口好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>化橘红</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>理气宽中、饭后少负担、脾胃舒坦、饭后肚子舒坦、胃口好</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat1">
+<div class="cat-head" onclick="toggleCat('cat1')">
+<div class="cat-icon">💧</div>
+<div class="cat-title">
+<div class="name">滋润类</div>
+<div class="desc">秋冬干燥场景，生津润口</div>
+</div>
+<div class="cat-count"><div class="n">25</div><div class="t">个成分 · 27条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">润口</span><span class="chip ok">口感清润</span><span class="chip ok">嘴里润润的</span><span class="chip ok">生津润口</span><span class="chip ok">生津</span><span class="chip ok">秋冬润口</span><span class="chip ok">滋阴</span><span class="chip ok">养阴</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">滋润肌肤</span><span class="chip ban">告别口干舌燥</span><span class="chip ban">止渴</span><span class="chip ban">生津止渴</span><span class="chip ban">止咳</span><span class="chip ban">清咽润喉</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">生津润口</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>山药</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津益肺、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>乌梅</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、口舌生津、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>玉竹</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>养阴润燥、养阴、润燥、生津、生津润口、润口</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>余甘子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、口感清润、酸甜生津、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>青果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、口感清润</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桑椹</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津润燥、滋阴、生津润口、润口、酸甜润口、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>葛根</b><div class="spec">葛根（葛根、粉葛）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>酸枣仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、酸甜生津、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>鲜芦根</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>党参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、口感清润</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>铁皮石斛</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>滋阴、生津、生津回甘、润口、口感清润</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>西洋参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>养阴、生津、生津润口、口感清润</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄芪</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>生津、生津润口、润口、口感清润</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>地黄</b><div class="spec">地黄（生地黄）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>滋阴、滋阴润养、秋冬润口、嘴里润润的、养阴生津、生津润口</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>地黄</b><div class="spec">地黄（鲜地黄）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>滋阴、滋阴润养、秋冬润口、嘴里润润的、养阴生津、生津润口</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦冬</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>养阴生津、生津润口、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>天冬</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>养阴润燥、生津润口、生津回甘、润口、秋冬润口、嘴里润润的</td>
+</tr></tbody>
+</table>
+</div>
+<div class="dir-block">
+<div class="dir-title">润口</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>百合</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>养阴润肺、养阴、润口、口感清润、口感滋润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>阿胶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>滋阴润燥、秋冬润口、润口、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>罗汉果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热润肺、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>胖大海</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润肺、润口、口感清润</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桑叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润燥、秋冬润燥、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄精</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>养阴、润口、口感清润、嘴里润润的、秋冬润口</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>蜂蜜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补中润燥、润燥、润口、口感清润、清甜润口、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>榧子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润肺、润口、口感清润、嘴里润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>地黄</b><div class="spec">地黄（熟地黄）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>滋阴、滋阴润养、秋冬润口、嘴里润润的、养阴生津、生津润口</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>燕窝</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润口、口感清润、嘴里润润的、秋冬润口</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat2">
+<div class="cat-head" onclick="toggleCat('cat2')">
+<div class="cat-icon">🌿</div>
+<div class="cat-title">
+<div class="name">清爽类</div>
+<div class="desc">夏季消暑，怕热人群</div>
+</div>
+<div class="cat-count"><div class="n">18</div><div class="t">个成分 · 18条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">清爽</span><span class="chip ok">夏日清爽</span><span class="chip ok">清爽回甘</span><span class="chip ok">口感清爽</span><span class="chip ok">清热</span><span class="chip ok">清清爽爽</span><span class="chip ok">清热生津</span><span class="chip ok">口感清甜</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">去火</span><span class="chip ban">不上火</span><span class="chip ban">降火</span><span class="chip ban">清热解毒</span><span class="chip ban">灭火器</span><span class="chip ban">解毒</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">清爽</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>马齿苋</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、口感清爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>甘草</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、清爽回甘、口感清甜、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>罗汉果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热、清爽、清爽回甘、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>金银花</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、夏日清爽、清爽回甘</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>青果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、清爽回甘、口感清爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>鱼腥草</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>栀子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、清清爽爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>胖大海</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热、清爽、清清爽爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>淡竹叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、夏日清爽、口感清爽、清爽回甘</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>菊花</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、清爽回甘、口感清爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>蒲公英</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、口感清爽、清爽回甘、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>鲜芦根</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清爽、口感清爽、清爽甘甜、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>铁皮石斛</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热、滋阴清热、清爽、清爽回甘</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>西洋参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热、清热生津、清爽、清爽回甘</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>地黄</b><div class="spec">地黄（鲜地黄）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热生津、清热、清爽、夏日清爽、口感清爽</td>
+</tr></tbody>
+</table>
+</div>
+<div class="dir-block">
+<div class="dir-title">消暑</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>白扁豆</b><div class="spec">白扁豆（白扁豆规格）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>消暑、和中消暑、清爽、夏日清爽</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>荷叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清暑化湿、清暑、清爽、夏日清爽、口感清爽、清爽一夏</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>藿香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>解暑、清爽、夏日清爽、暑天一身清爽</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat3">
+<div class="cat-head" onclick="toggleCat('cat3')">
+<div class="cat-icon">🌙</div>
+<div class="cat-title">
+<div class="name">睡眠情绪类</div>
+<div class="desc">睡前放松场景，高压人群</div>
+</div>
+<div class="cat-count"><div class="n">17</div><div class="t">个成分 · 17条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">舒缓心情</span><span class="chip ok">心情平和</span><span class="chip ok">静心</span><span class="chip ok">晚安</span><span class="chip ok">睡前放松</span><span class="chip ok">放松心情</span><span class="chip ok">好心情</span><span class="chip ok">让心慢下来</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">助眠</span><span class="chip ban">安神</span><span class="chip ban">改善睡眠</span><span class="chip ban">安神助眠</span><span class="chip ban">高质量睡眠</span><span class="chip ban">一觉到天亮</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">睡前放松</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>龙眼肉（桂圆）</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和、让心慢下来</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>百合</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和、放松心情</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>牡蛎</b><div class="spec">牡蛎（贝壳）</div></td>
+<td><span class="tag warn">部分规格禁用</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和、放松心情</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>枣（大枣/酸枣/黑枣）</b><div class="spec">枣（大枣）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>茯苓</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>莲子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>酸枣仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和、让心慢下来</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>灵芝</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心放松、舒缓心情、心情平和、让心慢下来</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦冬</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>晚安、睡前放松、静心、舒缓心情、心情平和</td>
+</tr></tbody>
+</table>
+</div>
+<div class="dir-block">
+<div class="dir-title">舒缓心情</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>佛手</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>舒缓心情、心情平和、心情舒畅、放松心情、好心情、静心</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦芽</b><div class="spec">麦芽（生麦芽）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>舒缓心情、心情平和、心情舒畅、放松心情</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>栀子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>舒缓心情、心情平和、静心、平心静气</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>香橼</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>舒缓心情、心情平和、好心情、放松心情</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>淡竹叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>静心、舒缓心情、心情平和、好心情</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>淡豆豉</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>静心、舒缓心情、心情平和、好心情</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>鲜芦根</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>静心、舒缓心情、心情平和、心平气和</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薄荷</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>舒缓心情、心情平和、心情舒畅、放松心情、静心</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat4">
+<div class="cat-head" onclick="toggleCat('cat4')">
+<div class="cat-icon">☔</div>
+<div class="cat-title">
+<div class="name">湿气类</div>
+<div class="desc">梅雨/回南天，身子沉重人群</div>
+</div>
+<div class="cat-count"><div class="n">13</div><div class="t">个成分 · 14条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">赶走湿气</span><span class="chip ok">一身轻松</span><span class="chip ok">化湿</span><span class="chip ok">浑身轻快</span><span class="chip ok">湿气退散</span><span class="chip ok">潮湿天一身轻松</span><span class="chip ok">身子轻快</span><span class="chip ok">梅雨季一身轻松</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">排湿毒</span><span class="chip ban">轻盈好体态</span><span class="chip ban">利水消肿</span><span class="chip ban">利尿</span><span class="chip ban">止泻</span><span class="chip ban">有助于消化</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">赶走湿气</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>木瓜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿、赶走湿气、一身轻松、浑身轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>白扁豆</b><div class="spec">白扁豆（白扁豆规格）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿、赶走湿气、一身轻松、浑身轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>白扁豆</b><div class="spec">白扁豆（炒白扁豆）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿、赶走湿气、一身轻松、浑身轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>赤小豆</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、湿气退散、梅雨季一身轻松、回南天身子轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>昆布</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、湿气退散、潮湿天一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>郁李仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、湿气退散、潮湿天一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>栀子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>砂仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿、赶走湿气、一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>茯苓</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>香薷</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿、赶走湿气、一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>荷叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>化湿、赶走湿气、梅雨天一身轻松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薏苡仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、一身轻松、身子轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>藿香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气、一身轻松、身子轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄芪</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>赶走湿气</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat5">
+<div class="cat-head" onclick="toggleCat('cat5')">
+<div class="cat-icon">🔥</div>
+<div class="cat-title">
+<div class="name">暖身类</div>
+<div class="desc">冬季手脚凉，怕冷人群</div>
+</div>
+<div class="cat-count"><div class="n">11</div><div class="t">个成分 · 12条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">胃里暖暖的</span><span class="chip ok">肚子暖暖的</span><span class="chip ok">温中</span><span class="chip ok">温中散寒</span><span class="chip ok">胃里热乎乎的</span><span class="chip ok">肚子热乎乎的</span><span class="chip ok">温脾</span><span class="chip ok">暖胃</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">有助于消化</span><span class="chip ban">告别手脚冰凉</span><span class="chip ban">止呕</span><span class="chip ban">调理脾虚</span><span class="chip ban">止痛</span><span class="chip ban">温阳</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">胃里暖暖的</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>丁香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>八角茴香</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>刀豆</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>小茴香</b></td>
+<td><span class="tag warn">部分规格禁用</span></td>
+<td>胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>肉豆蔻</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>花椒</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>姜（生姜、干姜）</b><div class="spec">姜（生姜）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、胃里暖暖的、肚子暖暖的、胃里热乎乎的、温中散寒、肚子热乎乎的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>姜（生姜、干姜）</b><div class="spec">姜（干姜）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中、胃里暖暖的、肚子暖暖的、胃里热乎乎的、温中散寒、肚子热乎乎的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>砂仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温脾、胃里暖暖的、肚子暖暖的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>高良姜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>胃里暖暖的、肚子暖暖的、暖胃</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黑胡椒</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>温中散寒、胃里暖暖的、肚子暖暖的、胃里暖乎乎的</td>
+</tr></tbody>
+</table>
+</div>
+<div class="dir-block">
+<div class="dir-title">全身暖暖的</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>肉桂</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>暖身、冬日暖身、全身暖暖的、手脚暖暖的、胃里暖暖的、肚子暖暖的</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat6">
+<div class="cat-head" onclick="toggleCat('cat6')">
+<div class="cat-icon">⚡</div>
+<div class="cat-title">
+<div class="name">精力类</div>
+<div class="desc">加班熬夜场景，打工人</div>
+</div>
+<div class="cat-count"><div class="n">12</div><div class="t">个成分 · 12条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">元气满满</span><span class="chip ok">精神头足</span><span class="chip ok">充满干劲</span><span class="chip ok">补气</span><span class="chip ok">活力满满</span><span class="chip ok">有精神</span><span class="chip ok">补气养阴</span><span class="chip ok">益气</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">抗疲劳</span><span class="chip ban">缓解疲劳</span><span class="chip ban">提神醒脑</span><span class="chip ban">体力充沛</span><span class="chip ban">打好底子</span><span class="chip ban">打好身体基础</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">元气满满</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>山药</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>元气满满、精神头足、充满干劲、活力满满</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>甘草</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>益气、元气满满、精神头足、充满干劲、有精神</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>龙眼肉（桂圆）</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>元气满满、精神头足、充满干劲、有精神</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>枣（大枣/酸枣/黑枣）</b><div class="spec">枣（大枣）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补中益气、元气满满、精神头足、充满干劲</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄精</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补气养阴、补气、元气满满、精神头足、充满干劲、活力满满</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>蜂蜜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补中、元气满满、精神头足、充满干劲</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>党参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>健脾益肺、元气满满、精神头足、充满干劲</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>西洋参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补气、补气养阴、元气满满、精神头足、充满干劲</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄芪</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补气、元气满满、精神头足、充满干劲、元气充电宝</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>灵芝</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>补气、元气满满、精神头足、充满干劲</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>燕窝</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>元气满满、精神头足、充满干劲</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>红参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>元气满满、元气充电、精神头足、充满干劲、活力满满</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat7">
+<div class="cat-head" onclick="toggleCat('cat7')">
+<div class="cat-icon">🎤</div>
+<div class="cat-title">
+<div class="name">嗓子类</div>
+<div class="desc">主播/老师/客服等用嗓人群</div>
+</div>
+<div class="cat-count"><div class="n">11</div><div class="t">个成分 · 11条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">嗓子舒润</span><span class="chip ok">说话多也舒服</span><span class="chip ok">嗓子舒服</span><span class="chip ok">润肺</span><span class="chip ok">说话多嗓子也舒服</span><span class="chip ok">嗓子舒舒服服</span><span class="chip ok">清热润肺</span><span class="chip ok">嗓子润润的</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">利咽</span><span class="chip ban">清咽润喉</span><span class="chip ban">喉咙清润</span><span class="chip ban">止咳</span><span class="chip ban">告别口干舌燥</span><span class="chip ban">滋润肌肤</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">嗓子舒润</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>百合</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润肺、嗓子舒润、嗓子舒服、说话多也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>罗汉果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、说话多也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>青果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、嗓子舒舒服服、说话多也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>胖大海</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>清热润肺、嗓子舒润、嗓子舒舒服服、说话多也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桑叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、嗓子舒服、说话多也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桔梗</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、嗓子舒服、说话多也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄精</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润肺、嗓子舒润、嗓子舒服、说话多嗓子也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>榧子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、说话多也舒服、嗓子润润的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薄荷</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、说话多也舒服、嗓子舒舒服服的</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>麦冬</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>润肺、嗓子舒润、嗓子舒服、说话多嗓子也舒服</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>天冬</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>嗓子舒润、嗓子舒服、说话多嗓子也舒服</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat8">
+<div class="cat-head" onclick="toggleCat('cat8')">
+<div class="cat-icon">🌅</div>
+<div class="cat-title">
+<div class="name">顺畅类</div>
+<div class="desc">晨起场景，讲"早起顺畅"</div>
+</div>
+<div class="cat-count"><div class="n">10</div><div class="t">个成分 · 10条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">早起顺畅</span><span class="chip ok">早上轻松自在</span><span class="chip ok">晨起轻松自在</span><span class="chip ok">早上起来轻松自在</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">通便</span><span class="chip ban">润肠通便</span><span class="chip ban">清肠</span><span class="chip ban">每天都顺畅</span><span class="chip ban">天天顺畅</span><span class="chip ban">清宿便</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">早起顺畅</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>火麻仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、早上轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>决明子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、早上轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>罗汉果</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>郁李仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>胖大海</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、早上轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桃仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、早上轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>紫苏籽</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、晨起轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黑芝麻</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、晨起轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>榧子</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅、早上起来轻松自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>肉苁蓉（荒漠）</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>早起顺畅</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat9">
+<div class="cat-head" onclick="toggleCat('cat9')">
+<div class="cat-icon">🌸</div>
+<div class="cat-title">
+<div class="name">气色类</div>
+<div class="desc">女性滋补，讲"好气色"</div>
+</div>
+<div class="cat-count"><div class="n">10</div><div class="t">个成分 · 10条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">好气色</span><span class="chip ok">气色红润</span><span class="chip ok">气色在线</span><span class="chip ok">秋冬好气色</span><span class="chip ok">满满好气色</span><span class="chip ok">看起来气色好</span><span class="chip ok">脸色红润</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">补血</span><span class="chip ban">养血</span><span class="chip ban">改善贫血</span><span class="chip ban">吃出好皮肤</span><span class="chip ban">素颜好气色</span><span class="chip ban">补气血</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">好气色</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>龙眼肉（桂圆）</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>阿胶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线、秋冬好气色</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>枣（大枣/酸枣/黑枣）</b><div class="spec">枣（大枣）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>枸杞子</b><div class="spec">枸杞子（判例破例：依据广审判例，非药典功能）</div></td>
+<td><span class="tag warn">判例破例·未经广审</span></td>
+<td>好气色、满满好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>桑椹</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线、看起来气色好</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黑芝麻</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>党参</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>肉苁蓉（荒漠）</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄芪</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>地黄</b><div class="spec">地黄（熟地黄）</div></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>好气色、气色红润、气色在线、脸色红润</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat10">
+<div class="cat-head" onclick="toggleCat('cat10')">
+<div class="cat-icon">🦵</div>
+<div class="cat-title">
+<div class="name">骨关节类</div>
+<div class="desc">运动/久站人群，腿脚自在</div>
+</div>
+<div class="cat-count"><div class="n">6</div><div class="t">个成分 · 6条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">腿脚活动更自在</span><span class="chip ok">走路轻快</span><span class="chip ok">爬山爬楼更自在</span><span class="chip ok">日常走动更自在</span><span class="chip ok">爬楼爬山更自在</span><span class="chip ok">腿脚轻快</span><span class="chip ok">运动后腿脚放松</span><span class="chip ok">动起来更自在</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">强筋骨</span><span class="chip ban">壮骨</span><span class="chip ban">补钙</span><span class="chip ban">增加骨密度</span><span class="chip ban">祛风湿</span><span class="chip ban">利水消肿</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">腿脚活动更自在</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>乌梢蛇</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>腿脚活动更自在、爬楼爬山更自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>木瓜</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>腿脚轻快、腿脚活动更自在、走路轻快、运动后腿脚放松</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薏苡仁</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>腿脚活动更自在、走路轻快、动起来更自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>黄芪</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>腿脚活动更自在、爬楼爬山腿脚轻快</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>天麻</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>腿脚活动更自在、爬山爬楼更自在、日常走动更自在</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>杜仲叶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>腿脚活动更自在、爬山爬楼更自在、日常走动更自在</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat11">
+<div class="cat-head" onclick="toggleCat('cat11')">
+<div class="cat-icon">💡</div>
+<div class="cat-title">
+<div class="name">头脑类</div>
+<div class="desc">用脑人群，头脑清醒</div>
+</div>
+<div class="cat-count"><div class="n">4</div><div class="t">个成分 · 4条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">头脑清醒</span><span class="chip ok">更专注</span><span class="chip ok">思路清晰</span><span class="chip ok">专注力在线</span><span class="chip ok">头脑清爽</span><span class="chip ok">神清气爽</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">降压</span><span class="chip ban">改善记忆</span><span class="chip ban">平肝</span><span class="chip ban">降血压</span><span class="chip ban">告别昏沉</span><span class="chip ban">疏散风热</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">头脑清醒</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>牡蛎</b><div class="spec">牡蛎（贝壳）</div></td>
+<td><span class="tag warn">部分规格禁用</span></td>
+<td>头脑清醒、更专注、思路清晰、专注力在线</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>菊花</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>头脑清醒、更专注、思路清晰</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>薄荷</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>头脑清醒、更专注、头脑清爽、神清气爽、思路清晰</td>
+</tr><tr>
+<td style="white-space:nowrap;"><b>天麻</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>头脑清醒、更专注、头脑清爽、思路清晰、专注力在线</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cat-card" id="cat12">
+<div class="cat-head" onclick="toggleCat('cat12')">
+<div class="cat-icon">🥛</div>
+<div class="cat-title">
+<div class="name">营养事实类</div>
+<div class="desc">高蛋白低脂，需营养成分表支撑</div>
+</div>
+<div class="cat-count"><div class="n">1</div><div class="t">个成分 · 1条组合</div></div>
+<div class="arrow">▶</div>
+</div>
+<div class="cat-body">
+<div class="phrase-box">
+<div class="pb-t">✅ 该赛道高频可用表述</div>
+<div class="chips"><span class="chip ok">高蛋白</span><span class="chip ok">低脂</span><span class="chip ok">满满胶原感</span></div>
+</div>
+<div class="phrase-box">
+<div class="pb-w">⛔ 该赛道高频禁用宣称</div>
+<div class="chips"><span class="chip ban">养宫</span><span class="chip ban">暖宫</span><span class="chip ban">呵护子宫</span><span class="chip ban">呵护小花园</span><span class="chip ban">保养卵巢</span><span class="chip ban">丰胸</span></div>
+</div>
+
+<div class="dir-block">
+<div class="dir-title">高蛋白</div>
+<table>
+<thead><tr><th style="width:22%">成分</th><th style="width:15%">状态</th><th>可用表述（功效短语）</th></tr></thead>
+<tbody><tr>
+<td style="white-space:nowrap;"><b>花胶</b></td>
+<td><span class="tag ok">可出卡</span></td>
+<td>高蛋白、低脂、满满胶原感</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div class="card">
+<h2>不可讲功效的成分清单</h2>
+<div class="hint">以下成分不能作为功效卖点做成分科普。其中"仅禁用"成分的产品仍可正常投放，但广告中该成分只能出现在配料表里。</div>
+
+<div class="intercept-box">
+<div class="bn">⛔ 虫草（禁止准入）</div>
+<div class="bc">目录外｜提报 P1<br>不在药食同源目录。冬虫夏草药典有条目，但任何食品形态都不得作普通食品原料，按准入拦截只出仅禁用卡；蛹虫草是新食品原料、无药典条目，只出仅禁用卡。品名写「虫草」要先分清是哪种再调卡。试出，未经广审、未盲审。</div>
+</div>
+<div style="font-weight:700;font-size:14px;margin:18px 0 10px;">🔴 仅禁用成分（16 个）——可投广告，不能讲功效</div>
+<div class="ban-grid">
+<div class="ban-item">
+<div class="bn">小蓟 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>凉血止血</s>、<s>凉血</s>、<s>止血</s>、<s>散瘀解毒消痈</s>、<s>散瘀</s>、<s>解毒</s>、<s>消痈</s>、<s>排毒</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">白芷 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>解表散寒</s>、<s>解表</s>、<s>治感冒</s>、<s>祛风止痛</s>、<s>祛风</s>、<s>止痛</s>、<s>缓解头痛</s>、<s>宣通鼻窍</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">白果 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>敛肺定喘</s>、<s>敛肺</s>、<s>定喘</s>、<s>平喘</s>、<s>止咳平喘</s>、<s>止带缩尿</s>、<s>止带</s>、<s>缩尿</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">枳椇子 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>解酒</s>、<s>醒酒</s>、<s>快速解酒</s>、<s>千杯不醉</s>、<s>解酒护肝</s>、<s>护肝</s>、<s>保肝</s>、<s>养肝</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">黄芥子 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>温肺豁痰利气</s>、<s>温肺</s>、<s>豁痰</s>、<s>化痰止咳</s>、<s>散结通络止痛</s>、<s>散结</s>、<s>消结节</s>、<s>散结节</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">槐米 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>凉血止血</s>、<s>凉血</s>、<s>止血</s>、<s>清肝泻火</s>、<s>清肝</s>、<s>泻火</s>、<s>去火</s>、<s>降火</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">槐花 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>凉血止血</s>、<s>凉血</s>、<s>止血</s>、<s>清肝泻火</s>、<s>清肝</s>、<s>泻火</s>、<s>去火</s>、<s>降火</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">鲜白茅根 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>凉血止血</s>、<s>凉血</s>、<s>止血</s>、<s>清热利尿</s>、<s>利尿</s>、<s>利尿通淋</s>、<s>利水消肿</s>、<s>消肿</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">覆盆子 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>益肾固精缩尿</s>、<s>益肾</s>、<s>补肾</s>、<s>固精</s>、<s>缩尿</s>、<s>补肾壮阳</s>、<s>壮阳</s>、<s>增强性功能</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">当归（仅限香辛料/调味品） <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>补血活血</s>、<s>补血</s>、<s>补气血</s>、<s>补血养颜</s>、<s>改善贫血</s>、<s>活血</s>、<s>活血化瘀</s>、<s>气血通畅</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">山柰 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>消食</s>、<s>健胃消食</s>、<s>有助于消化</s>、<s>促进消化</s>、<s>止痛</s>、<s>止胃痛</s>、<s>暖胃止痛</s>、<s>行气止痛</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">西红花（藏红花，仅限调味品） <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>活血化瘀</s>、<s>活血</s>、<s>化瘀</s>、<s>气血通畅</s>、<s>疏通血管</s>、<s>清血管</s>、<s>改善微循环</s>、<s>降血脂</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">草果 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>截疟除痰</s>、<s>截疟</s>、<s>除痰</s>、<s>化痰</s>、<s>祛痰</s>、<s>止呕</s>、<s>暖胃止痛</s>、<s>排湿毒</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">姜黄 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>破血行气</s>、<s>破血</s>、<s>通经止痛</s>、<s>通经</s>、<s>止痛</s>、<s>活血化瘀</s>、<s>活血</s>、<s>气血通畅</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">荜茇 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>下气止痛</s>、<s>下气</s>、<s>止痛</s>、<s>暖胃止痛</s>、<s>止呕</s>、<s>止泻</s>、<s>止牙痛</s></div>
+</div>
+<div class="ban-item">
+<div class="bn">山茱萸 <span class="tag ban">禁用</span></div>
+<div class="bc">产品可投，但该成分只能出现在配料表，不能作为功效卖点。典型禁用宣称：<s>补益肝肾</s>、<s>补肝肾</s>、<s>补肾</s>、<s>补肝</s>、<s>养肝</s>、<s>护肝</s>、<s>补肾壮阳</s>、<s>壮阳</s></div>
+</div></div>
+<div style="font-weight:700;font-size:14px;margin:22px 0 10px;">⚫ 不出卡成分（4 个）——无功效方向可讲</div>
+<div class="ban-grid">
+<div class="no-item">
+<div class="bn">代代花 <span class="tag no">不出卡</span></div>
+<div class="bc"></div>
+</div>
+<div class="no-item">
+<div class="bn">白扁豆花 <span class="tag no">不出卡</span></div>
+<div class="bc"></div>
+</div>
+<div class="no-item">
+<div class="bn">杏仁（甜、苦） <span class="tag no">不出卡</span></div>
+<div class="bc"></div>
+</div>
+<div class="no-item">
+<div class="bn">蝮蛇 <span class="tag no">不出卡</span></div>
+<div class="bc"></div>
+</div></div>
+<div style="font-weight:700;font-size:14px;margin:22px 0 10px;">🟡 部分规格禁用（2 个）——先核对规格再投放</div>
+<table>
+<thead><tr><th style="width:16%">成分</th><th style="width:16%">状态</th><th>说明</th></tr></thead>
+<tbody>
+<tr>
+<td style="white-space:nowrap;"><b>小茴香</b></td>
+<td><span class="tag warn">部分规格禁用</span></td>
+<td>禁用规格：小茴香（盐小茴香）。素材投放前需核对产品实际使用的规格，禁用规格只能作配料展示。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap;"><b>牡蛎</b></td>
+<td><span class="tag warn">部分规格禁用</span></td>
+<td>禁用规格：牡蛎（蚝肉、牡蛎肽，目录外）、牡蛎（煅牡蛎）。素材投放前需核对产品实际使用的规格，禁用规格只能作配料展示。</td>
+</tr></tbody>
+</table>
+</div>
+
+
+<div class="card">
+<h2>表述翻译对照：中医原词 → 生活化语言</h2>
+<div class="hint">中医功效原词在广告中几乎全线禁用，写文案时必须翻译成右侧的生活化表述。这是滋补赛道素材过审的核心规则。</div>
+<table>
+<thead><tr><th style="width:38%">⛔ 不能这样说（禁用原词）</th><th style="width:44%">✅ 可以这样说（生活化表述）</th><th>所属赛道</th></tr></thead>
+<tbody>
+<tr class="tr-row">
+<td class="no-say">助眠、安神、改善睡眠</td>
+<td class="say">睡前放松、静心、舒缓心情</td>
+<td class="cat">睡眠情绪类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">抗疲劳、缓解疲劳、提神醒脑</td>
+<td class="say">元气满满、精神头足、充满干劲</td>
+<td class="cat">精力类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">通便、润肠、清宿便</td>
+<td class="say">早起顺畅、早上轻松自在</td>
+<td class="cat">顺畅类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">补血、养血、改善贫血</td>
+<td class="say">好气色、气色红润</td>
+<td class="cat">气色类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">健脾消食、有助于消化、助消化</td>
+<td class="say">饭后少负担、大餐少负担、脾胃舒坦</td>
+<td class="cat">脾胃类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">利水消肿、利尿</td>
+<td class="say">赶走湿气、一身轻松</td>
+<td class="cat">湿气类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">清热解毒、去火、降火</td>
+<td class="say">清爽、夏日清爽、清爽回甘</td>
+<td class="cat">清爽类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">生津止渴、止渴</td>
+<td class="say">生津润口、嘴里润润的</td>
+<td class="cat">滋润类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">润肺止咳、止咳</td>
+<td class="say">嗓子舒润、说话多也舒服</td>
+<td class="cat">嗓子类</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">补肾壮阳、益肾、壮阳</td>
+<td class="say">（全线禁用，无替代表述）</td>
+<td class="cat">—</td>
+</tr>
+<tr class="tr-row">
+<td class="no-say">美容养颜、滋润肌肤</td>
+<td class="say">（全线禁用，无替代表述）</td>
+<td class="cat">—</td>
+</tr></tbody>
+</table>
+<div style="font-weight:700;font-size:14px;margin:22px 0 10px;">跨成分高频禁用词 TOP15（写文案优先避开）</div>
+<div class="chips" style="gap:8px;"><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">有助于消化（38个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">滋润肌肤（26个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">止泻（25个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">告别口干舌燥（24个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">止咳（24个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">调理脾虚（23个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">止渴（23个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">降火（20个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">去火（20个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">补肾（19个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">不上火（19个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">助眠（18个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">壮阳（17个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">男人加油站（17个成分禁用）</span><span class="chip ban" style="background:#FCE4E4;color:#C0392B;">止痛（17个成分禁用）</span></div>
+<div style="font-size:12.5px;color:#646A73;margin-top:14px;line-height:1.8;">
+另外三条通用规律：① 疾病与症状词（便秘、失眠、贫血、高血压等）禁用；② "有助于消化、助消化"这类看似温和的表述也在禁用列表；③ 人群限定——孕期/哺乳期/儿童/青少年/正在服药的人，几乎每张词卡都禁止描述。
+</div>
+</div>
+
+<div class="card"><h2>使用前需人工确认的风险项</h2><div class="hint">以下事项在给客户使用前需要先走广审或人工确认，避免素材被驳回。</div>
+<div class="risk-item lv-warn">
+<div class="rt">⚠️ 目录外试出卡</div>
+<div class="rn">涉及成分：燕窝、红参、花胶</div>
+<div class="rd">不在药食同源 106 种目录，卡为试出、未经广审未盲审——给客户使用前必须先过广审。花胶"营养事实类"为新卡种，卡种本身待广审确认。</div>
+</div>
+<div class="risk-item lv-warn">
+<div class="rt">⚠️ 判例破例</div>
+<div class="rn">涉及成分：枸杞子</div>
+<div class="rd">"好气色"卡依据广审判例（非药典功能），10-09 补卡版，试出未经广审——建议先用前过审。</div>
+</div>
+<div class="risk-item lv-warn">
+<div class="rt">⚠️ 判例与规则冲突</div>
+<div class="rn">涉及成分：蜂蜜、山楂</div>
+<div class="rd">蜂蜜"早起一杯更顺畅"判过但药典只有润燥（顺畅卡未开）；山楂"大餐少负担"判过但有化浊降脂心脑血管红线——冲突表述等人工裁定，暂不写进素材。</div>
+</div>
+<div class="risk-item lv-no">
+<div class="rt">⚠️ 身份待确认</div>
+<div class="rn">涉及成分：藿香、木瓜、铁皮石斛、枣</div>
+<div class="rd">藿香（药典为广藿香）、木瓜（药典为皱皮木瓜，水果木瓜非同条目）、石斛（需看配料确认是否铁皮石斛）、枣（仅大枣出卡，酸枣/黑枣无药典条目）。</div>
+</div>
+<div class="risk-item lv-ok">
+<div class="rt">⚠️ 提报优先级</div>
+<div class="rn"></div>
+<div class="rd">P0：阿胶、枸杞子、蜂蜜、铁皮石斛、西洋参、燕窝；P1：火麻仁、灵芝、地黄、红参、花胶、虫草；P2：玉竹、决明子、胖大海、桑叶、葛根、黄芪、天麻、天冬、化橘红。提报等级越高，越需优先推动广审确认。</div>
+</div>
+<div style="font-weight:700;font-size:14px;margin:20px 0 10px;">⭐ 多面手成分（覆盖 3 个以上功效方向，素材可复用）</div>
+<div class="chips" style="gap:8px;"><span class="chip ok" style="font-size:13px;padding:5px 14px;">黄芪 · 5个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">罗汉果 · 4个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">胖大海 · 4个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">黄精 · 4个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">党参 · 4个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">山药 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">木瓜 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">甘草 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">白扁豆 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">龙眼肉（桂圆） · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">百合 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">枣（大枣/酸枣/黑枣） · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">青果 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">栀子 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">砂仁 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">茯苓 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">榧子 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">鲜芦根 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">薄荷 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">薏苡仁 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">藿香 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">铁皮石斛 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">西洋参 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">地黄 · 3个功效方向</span><span class="chip ok" style="font-size:13px;padding:5px 14px;">麦冬 · 3个功效方向</span></div>
+</div>
+
+  <div class="footer">
+    滋补赛道功效成分手册 · 依据《营养及健康食品-词卡需求》整理<br>
+    词卡口径以腾讯广告审核最新版本为准；标注"试出/未经广审"的卡使用前需过广审确认
+  </div>
+</div>
+
+<script>
+function toggleCat(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><div id="__idata_artifact_err_overlay__" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none;width:min(640px,calc(100vw - 48px));max-height:80vh;padding:24px 28px;background:#ffffff;border:1px solid #fca5a5;border-left:4px solid #ef4444;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.12);z-index:2147483646;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;color:#7f1d1d;box-sizing:border-box;"><div style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;margin-bottom:14px;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ef4444;color:#fff;border-radius:50%;font-size:14px;font-weight:bold;flex-shrink:0;">!</span><span>图表渲染失败</span></div><pre id="__idata_artifact_err_msg__" style="margin:0;padding:14px 16px;background:#fef2f2;border-radius:8px;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#7f1d1d;max-height:60vh;overflow:auto;"></pre><div style="margin-top:12px;font-size:11px;color:#9ca3af;line-height:1.5;"><span id="__idata_artifact_err_copy_inline__" style="color:#5867ed;cursor:pointer;text-decoration:underline;">复制错误</span><span style="margin-left:4px;">报告给大模型可自动修复该脚本</span></div><div style="margin-top:14px;display:flex;justify-content:flex-end;gap:8px;"><button id="__idata_artifact_err_copy_btn__" type="button" style="padding:6px 14px;font-size:12px;background:#fff;color:#5867ed;border:1px solid #5867ed;border-radius:6px;cursor:pointer;">复制错误</button><button id="__idata_artifact_err_ignore_btn__" type="button" style="padding:6px 14px;font-size:12px;background:#fff;color:#7f1d1d;border:1px solid #fca5a5;border-radius:6px;cursor:pointer;">忽略错误</button></div></div><script>(function(){var ov=document.getElementById('__idata_artifact_err_overlay__');var msg=document.getElementById('__idata_artifact_err_msg__');if(!ov||!msg)return;var shownSet={};var m=window.location.pathname.match(/\/artifacts_v2\/([^/]+)\/(.+)$/);var sessionId=m?m[1]:'';var artifactName=m?decodeURIComponent(m[2]):'';function _hash(s){var h=5381;for(var i=0;i<s.length;i++){h=((h<<5)+h+s.charCodeAt(i))|0;}return (h>>>0).toString(36);}function _ignoreKey(t){return 'adw:artifact:err-ignored:'+sessionId+':'+artifactName+':'+_hash(t);}function _show(t){if(!t||shownSet[t])return;shownSet[t]=1;try{if(localStorage.getItem(_ignoreKey(t))){return;}}catch(_e){}msg.textContent=String(t).slice(0,3000);ov.style.display='block';}var q=window.__idata_artifact_error__||[];for(var i=0;i<q.length;i++)_show(q[i]);window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_show(parts.join('\n'));});window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_show((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});function _copyError(){var txt=msg.textContent;if(!txt)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){},function(){_copyFallback(txt);});}else{_copyFallback(txt);}}function _copyFallback(txt){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_e){}document.body.removeChild(ta);}function _ignoreError(){var txt=msg.textContent;try{localStorage.setItem(_ignoreKey(txt),'1');}catch(_e){}ov.style.display='none';}var copyInline=document.getElementById('__idata_artifact_err_copy_inline__');if(copyInline)copyInline.addEventListener('click',_copyError);var copyBtn=document.getElementById('__idata_artifact_err_copy_btn__');if(copyBtn){copyBtn.addEventListener('click',function(){_copyError();var orig=copyBtn.textContent;copyBtn.textContent='已复制';setTimeout(function(){copyBtn.textContent=orig;},1500);});}var ignoreBtn=document.getElementById('__idata_artifact_err_ignore_btn__');if(ignoreBtn)ignoreBtn.addEventListener('click',_ignoreError);})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>irfanwang</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>
