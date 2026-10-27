@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){window.__idata_artifact_error__=[];function _record(t){t=String(t==null?'unknown error':t).slice(0,5000);window.__idata_artifact_error__.push(t);try{window.parent&&window.parent.postMessage({type:'artifact-error',message:t.slice(0,500)},'*');}catch(_e){}}window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_record(parts.join('\n'));},true);window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_record((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>滋补-自建新锐DTC主体最新数据情况 v2（10.12-10.25）</title>
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f6f8; color: #26303e; padding: 24px; }
+.wrap { max-width: 1240px; margin: 0 auto; }
+h1 { font-size: 23px; margin-bottom: 6px; }
+.vtag { display:inline-block; background:#3478f6; color:#fff; font-size:12px; border-radius:4px; padding:2px 8px; vertical-align:middle; margin-left:8px;}
+.sub { color: #7a8699; font-size: 12.5px; line-height: 1.7; margin-bottom: 18px; }
+.card { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(20,30,50,.06); }
+h2 { font-size: 17px; margin-bottom: 14px; padding-left: 10px; border-left: 4px solid #3478f6; }
+.kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 18px; }
+.kpi { background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 1px 4px rgba(20,30,50,.06); border-top: 3px solid #3478f6; }
+.kpi .v { font-size: 22px; font-weight: 700; margin: 3px 0 2px; }
+.kpi .l { font-size: 12px; color: #7a8699; }
+.kpi.g { border-top-color: #2e7d32; } .kpi.y { border-top-color: #e65100; }
+.kpi.r { border-top-color: #c62828; } .kpi.n { border-top-color: #616161; }
+.up { color: #c62828; } .down { color: #2e7d32; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { background: #eef2f7; color: #4a586a; font-weight: 600; padding: 9px 7px; text-align: right; white-space: nowrap; position: sticky; top: 0; }
+th:nth-child(1), th:nth-child(2), th:nth-child(3), th:nth-child(10) { text-align: left; }
+td { padding: 7px 7px; border-bottom: 1px solid #eef1f5; text-align: right; white-space: nowrap; }
+td.tn { text-align: left; font-weight: 600; }
+td.hl { font-weight: 700; color: #1a3f6e; }
+tr.ghead td { padding: 8px 12px; font-size: 13.5px; border-bottom: 2px solid #fff; }
+tr.ghead .gi { font-size: 15px; margin-right: 4px; }
+tr.ghead .gmeta { margin-left: 14px; font-size: 12px; color: #6a7688; font-weight: 400; }
+tr.tier td { background: #f4f7fb; color: #4a586a; font-size: 12px; font-weight: 600; padding: 5px 12px; letter-spacing: .5px; }
+tr.row.active { background: #f6faff; }
+tr.row.active td.hl { color: #0d47a1; }
+tr.row.warnrow td:first-child { box-shadow: inset 3px 0 0 #ef6c00; }
+td.ver { text-align: left; }
+.vb { display: inline-block; padding: 1px 7px; border-radius: 9px; font-size: 11px; white-space: nowrap; }
+.vb.ok { background: #e8f5e9; color: #2e7d32; }
+.vb.warn { background: #fff3e0; color: #c62828; }
+.vb.blue { background: #e3f2fd; color: #1565c0; }
+.vb.gray { background: #f5f5f5; color: #9e9e9e; }
+.insight { background: #f8faff; border-left: 4px solid #3478f6; border-radius: 6px; padding: 12px 16px; margin: 10px 0; font-size: 13.5px; line-height: 1.9; }
+.warn2 { background: #fff8f2; border-left-color: #ef6c00; }
+.ok2 { background: #f1f8e9; border-left-color: #558b2f; }
+ol.moves li { margin: 7px 0; line-height: 1.8; font-size: 13.5px; }
+.foot { color: #98a3b3; font-size: 12px; margin-top: 8px; line-height: 1.8; }
+.legend { font-size: 12px; color: #7a8699; margin: 6px 0 10px; }
+</style>
+</head>
+<body><div class="wrap">
+<h1>传统滋补·自建新锐DTC主体投放数据周报<span class="vtag">v2｜主体清单补全版</span></h1>
+<div class="sub">统计周期：2026年10月12日—10月25日（双周·14天） ｜ 口径：KPI三级行业=传统滋补·竞价·主体维度（ops_advertiser_name，共60家主体） ｜ 四时段数据与闭环追踪报告口径一致<br><b>v2 相较 v1 主要变化</b>：CSV主体清单补全32家（河北荷宴17家上海系主体/轻录白诗黎9家/辽博士5家/小小家1家），全清单日耗口径由37.24万/日调整为64.49万/日，两版本不可直接环比；状态标注同步更新（合肥脉光已补标🟢）</div>
+
+<div class="kpis">
+<div class="kpi"><div class="l">全清单双周日耗（28组合行）</div><div class="v">64.49<span style="font-size:13px">万/日</span></div><div class="l">环比 <span class="up">+2.5%</span> ｜ 较8月基线 <span class="up">+23.6%</span></div></div>
+<div class="kpi g"><div class="l">🟢 ADQ在投</div><div class="v">14<span style="font-size:13px">行</span></div><div class="l">合计57.06万/日｜实际有消耗11行</div></div>
+<div class="kpi y"><div class="l">🟡 筹备中</div><div class="v">8<span style="font-size:13px">行</span></div><div class="l">其中1行已微量试投（郑州九牛）</div></div>
+<div class="kpi r"><div class="l">🔴 终止</div><div class="v">5<span style="font-size:13px">行</span></div><div class="l">本双周均无消耗，与状态标注一致</div></div>
+<div class="kpi n"><div class="l">⬜ 状态未标注</div><div class="v">1<span style="font-size:13px">行</span></div><div class="l">杭州前程×小小家 7.42万/日（+93%）</div></div>
+</div>
+
+<div class="card">
+<h2>一、全清单四时段走势（主体补全后完整口径）</h2>
+<div id="c1" style="height:290px"></div>
+<div class="insight">全清单四时段走势：<b>8月基线52.18 → 9.1-21为44.49 → 9.22-10.11为62.93 → 本双周64.49万/日</b>（环比+2.5%，较8月基线+23.6%）。v1→v2新增的27.25万/日为主体清单补全效应所致，主要增量来自：河北荷宴17家上海系主体（17.10万/日）、小小家（7.42万/日）、辽博士口径差（广州奢姬/金樽吟，1.08万/日）、轻录白诗黎口径差（润纤商贸(广州)，1.66万/日）等。<b>实际在投11个组合合计64.40万/日，占闭环传统滋补大盘（120.14万/日）的53.7%</b>——本清单已覆盖闭环大盘一半以上。</div>
+</div>
+
+<div class="card">
+<h2>二、28个组合行全景表（按投放状态分组·组内按规模分层）</h2>
+<div class="legend">分层规则：①按CSV"实际进度"状态分组（🟢在投/🟡筹备/🔴终止/未标注），组内按本双周日耗降序排列；②🟢在投组内按双周报层级标准分层——<b>腰部档≥1万/日</b> / <b>尾部档0.1~1万/日</b> / <b>试投及无消耗&lt;0.1万/日</b>；③行级标识：<span style="background:#f6faff;padding:0 6px;">浅蓝底=实际在投</span>、<span style="box-shadow:inset 3px 0 0 #ef6c00;padding:0 6px;">橙左边框=状态验证异常</span>，环比涨红跌绿、ROI&lt;1标红</div>
+<table>
+<thead><tr><th>客户</th><th>品牌/人设</th><th>状态</th><th>8月日耗</th><th>9.1-21</th><th>9.22-10.11</th><th>本双周日耗</th><th>环比</th><th>ROI</th><th>状态验证</th></tr></thead>
+<tbody>
+<tr class="ghead" style="background:#2e7d321a"><td colspan="10"><span class="gi">🟢</span> <b style="color:#2e7d32">ADQ在投</b><span class="gmeta">共14行 · 实际在投10行 · 合计日耗 <b style="color:#2e7d32">57.06</b> 万/日</span></td></tr>
+<tr class="tier"><td colspan="10">▸ 腰部档（≥1万/日，8个）</td></tr>
+<tr class="row active">
+<td class="tn">河北荷宴</td>
+<td class="tn">华北制药</td>
+<td>ADQ在投</td>
+<td>12.79</td>
+<td>10.43</td>
+<td>15.13</td>
+<td class="hl">17.10</td>
+<td style="color:#c62828">+13%</td>
+<td style="color:#2e7d32">1.57</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">鑫晨</td>
+<td class="tn">国药御方</td>
+<td>ADQ在投</td>
+<td>11.74</td>
+<td>10.79</td>
+<td>16.40</td>
+<td class="hl">13.56</td>
+<td style="color:#2e7d32">-17%</td>
+<td style="color:#c62828">0.93</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">鸿恩本草</td>
+<td class="tn">亳州徽药堂</td>
+<td>ADQ在投</td>
+<td>5.53</td>
+<td>3.44</td>
+<td>8.13</td>
+<td class="hl">7.24</td>
+<td style="color:#2e7d32">-11%</td>
+<td style="color:#2e7d32">1.11</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">武汉鑫晨</td>
+<td class="tn">健美世界冠军李秉键</td>
+<td>ADQ在投</td>
+<td>4.82</td>
+<td>9.95</td>
+<td>7.71</td>
+<td class="hl">5.28</td>
+<td style="color:#2e7d32">-31%</td>
+<td style="color:#c62828">0.92</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">江湖传媒</td>
+<td class="tn">辽博士</td>
+<td>ADQ在投</td>
+<td>0.002</td>
+<td>0.619</td>
+<td>1.49</td>
+<td class="hl">4.45</td>
+<td style="color:#c62828">+198%</td>
+<td style="color:#2e7d32">1.53</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">轻录白诗黎</td>
+<td class="tn">清华博士</td>
+<td>ADQ在投</td>
+<td>6.72</td>
+<td>2.62</td>
+<td>5.91</td>
+<td class="hl">4.20</td>
+<td style="color:#2e7d32">-29%</td>
+<td style="color:#2e7d32">1.12</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">钱姥姥</td>
+<td class="tn">新华网 /（中国食品健康报）</td>
+<td>ADQ在投</td>
+<td>6.71</td>
+<td>3.60</td>
+<td>2.28</td>
+<td class="hl">2.46</td>
+<td style="color:#c62828">+8%</td>
+<td style="color:#2e7d32">2.32</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">合肥脉光</td>
+<td class="tn">华北制药</td>
+<td>ADQ在投</td>
+<td>0</td>
+<td>0</td>
+<td>0.269</td>
+<td class="hl">1.18</td>
+<td style="color:#c62828">+340%</td>
+<td style="color:#2e7d32">1.85</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="tier"><td colspan="10">▸ 尾部档（0.1~1万/日，2个）</td></tr>
+<tr class="row active">
+<td class="tn">西安腾扬</td>
+<td class="tn">国药药材&amp;有机溯源认证</td>
+<td>ADQ在投</td>
+<td>0</td>
+<td>0.018</td>
+<td>1.64</td>
+<td class="hl">0.779</td>
+<td style="color:#2e7d32">-53%</td>
+<td style="color:#c62828">0.76</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="row active">
+<td class="tn">鑫晨</td>
+<td class="tn">水瑾悦</td>
+<td>ADQ在投</td>
+<td>0.041</td>
+<td>0</td>
+<td>0.007</td>
+<td class="hl">0.727</td>
+<td style="color:#9e9e9e">新起</td>
+<td style="color:#c62828">0.81</td>
+<td class="ver"><span class="vb ok">✅在投（有消耗）</span></td>
+</tr>
+<tr class="tier"><td colspan="10">▸ 试投/无消耗（<0.1万/日，4个）</td></tr>
+<tr class="row warnrow">
+<td class="tn">广州美茹</td>
+<td class="tn">童涵春堂</td>
+<td>ADQ在投</td>
+<td>0</td>
+<td>0.032</td>
+<td>0.092</td>
+<td class="hl">0.057</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#c62828">0.90</td>
+<td class="ver"><span class="vb warn">⚠️标🟢刚试投（不足0.1万/日，待放量）</span></td>
+</tr>
+<tr class="row warnrow">
+<td class="tn">长春瑞雅</td>
+<td class="tn">补养堂</td>
+<td>ADQ在投</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0.026</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#c62828">0.80</td>
+<td class="ver"><span class="vb warn">⚠️标🟢但本双周基本无消耗</span></td>
+</tr>
+<tr class="row warnrow">
+<td class="tn">健乐健康</td>
+<td class="tn">广东乡村振兴</td>
+<td>ADQ在投</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb warn">⚠️标🟢但本双周基本无消耗</span></td>
+</tr>
+<tr class="row warnrow">
+<td class="tn">宁轩岐</td>
+<td class="tn">南京中医院</td>
+<td>ADQ在投</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb warn">⚠️标🟢但本双周基本无消耗</span></td>
+</tr>
+<tr class="ghead" style="background:#e651001a"><td colspan="10"><span class="gi">🟡</span> <b style="color:#e65100">筹备中</b><span class="gmeta">共8行 · 实际在投0行 · 合计日耗 <b style="color:#e65100">0.007</b> 万/日</span></td></tr>
+<tr class="row">
+<td class="tn">郑州九牛</td>
+<td class="tn">养之祖</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0.007</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#c62828">0.38</td>
+<td class="ver"><span class="vb blue">🔵筹备中微量试投</span></td>
+</tr>
+<tr class="row">
+<td class="tn">甄实严选</td>
+<td class="tn">东阿阿胶</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">鑫晨</td>
+<td class="tn">中国农科院</td>
+<td>筹备中</td>
+<td>0.024</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">杭州缪岩</td>
+<td class="tn">浙江省中医院/杭州第一人民医院</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">长春瑞雅</td>
+<td class="tn">步长制药</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">广州乐视</td>
+<td class="tn">片仔黄</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">河北荷宴</td>
+<td class="tn">宏济堂</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">郑州腾风</td>
+<td class="tn">九华山</td>
+<td>筹备中</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅筹备中（无消耗，符合预期）</span></td>
+</tr>
+<tr class="ghead" style="background:#c628281a"><td colspan="10"><span class="gi">🔴</span> <b style="color:#c62828">终止</b><span class="gmeta">共5行 · 实际在投0行 · 合计日耗 <b style="color:#c62828">0.001</b> 万/日</span></td></tr>
+<tr class="row">
+<td class="tn">江西顺爆</td>
+<td class="tn">福东海</td>
+<td>终止</td>
+<td>0.589</td>
+<td>0.032</td>
+<td>0.007</td>
+<td class="hl">0.001</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅终止（本双周无消耗）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">金华至上</td>
+<td class="tn">淄博中医院</td>
+<td>终止</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅终止（本双周无消耗）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">向东科技</td>
+<td class="tn">李时珍</td>
+<td>终止</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅终止（本双周无消耗）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">江湖传媒</td>
+<td class="tn">福牌</td>
+<td>终止</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅终止（本双周无消耗）</span></td>
+</tr>
+<tr class="row">
+<td class="tn">长春双新</td>
+<td class="tn">鹤年堂</td>
+<td>终止</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="hl">0</td>
+<td style="color:#9e9e9e">—</td>
+<td style="color:#9e9e9e">—</td>
+<td class="ver"><span class="vb ok">✅终止（本双周无消耗）</span></td>
+</tr>
+<tr class="ghead" style="background:#6161611a"><td colspan="10"><span class="gi">⬜</span> <b style="color:#616161">未标注状态</b><span class="gmeta">共1行 · 实际在投1行 · 合计日耗 <b style="color:#616161">7.42</b> 万/日</span></td></tr>
+<tr class="row active">
+<td class="tn">杭州前程</td>
+<td class="tn">小小家</td>
+<td>未标注</td>
+<td>3.21</td>
+<td>2.95</td>
+<td>3.85</td>
+<td class="hl">7.42</td>
+<td style="color:#c62828">+93%</td>
+<td style="color:#c62828">0.98</td>
+<td class="ver"><span class="vb blue">🔵未标注状态但在投</span></td>
+</tr>
+
+</tbody>
+</table>
+<div class="foot">单位：万/日；ROI为本双周下单ROI（组合行内主体加权计算）。河北荷宴×华北制药为17家上海系主体合计（v2补全）；轻录白诗黎9家主体（含润纤商贸(广州)，v1简称口径2.54万/日）；辽博士5家主体（含广州奢姬/金樽吟，v1江湖传媒简称口径3.37万/日）。</div>
+</div>
+
+<div class="card">
+<h2>三、状态标注与实际消耗交叉验证</h2>
+<div class="insight ok2">✅ 标注一致（22行）：🟢在投组11行有消耗；🔴终止5行均无消耗（福东海8月0.59万/日→9月归零，时点吻合）；🟡筹备7行无消耗符合预期；<b>合肥脉光×华北制药 v2已补标🟢</b>（v1建议被采纳），1.18万/日（+340%），实际在投。</div>
+<div class="insight warn2">⚠️ 标注异常（4行，标🟢但消耗未跟上）：<b>广州美茹×童涵春堂</b> 0.06万/日（与"起量难"卡点一致，本周素材复盘）；<b>健乐健康</b> 零消耗（备注：先投豆子，GMV破5千再加ADQ）；<b>长春瑞雅×补养堂</b> 0.03万/日（"全部ready，等10月W2周四风控审批"——放量卡在风控环节）；<b>宁轩岐×南京中医院</b> 零消耗（主体南京种太阳四时段均无消耗，标🟢但未投放）。</div>
+<div class="insight">🔵 超预期（2行）：<b>杭州前程×小小家（郑州广辰主体）：CSV未标注状态，但四时段3.21→2.95→3.85→<b class="up">7.42万/日（+93%）</b>持续在投，为清单第3大组合，与闭环"小小家山货"（7.42万/日、+92.5%）完全吻合</b>——建议补全标注；<b>郑州九牛×养之祖</b> 标🟡"等供应链10月20日上线"，但主体河南养之祖已微量试投（943元/14天）。</div>
+</div>
+
+<div class="card">
+<h2>四、核心发现（v2新增视角）</h2>
+<ol class="moves">
+<li><b>主体补全重塑格局：华北制药系跃居清单第一大组合</b>——v1中"河北荷宴×华北制药"显示为0，v2补全17家上海系主体后实际达<b class="up">17.10万/日（+13%）</b>，超越国药御方（13.56万/日）；系内上海红视1.72/邯郸冀曜1.70/上海好音讯1.68/华药仁康1.60，ROI普遍1.6+，为清单最高效的大体量主体群（闭环"华北制药"真身19.80万/日，差额2.7万为清单外简称主体）。</li>
+<li><b>小小家：清单第3大在投组合状态未标注</b>——7.42万/日（+93%），直播链路，ROI 0.98接近打平，即闭环榜第2增长引擎"小小家山货"，建议补全标注（状态/性质/品类/进度字段均为空）。</li>
+<li><b>辽博士多主体接力增长+198%</b>——枫露(广州)连续四时段爬坡（0.05→1.16→2.62→3.35万/日），本双周新增广州奢姬（1.10万/日）+金樽吟（1.01万/日）接力放量；注：后两者在闭环追踪中为独立客户，CSV归入辽博士组合（口径已注明）。</li>
+<li><b>涨跌聚焦</b>：上涨组合——小小家+3.56万/日（+93%）、辽博士+2.95（+198%）、河北荷宴系+1.97（+13%）、丽水卓灵+0.91（+340%）、水瑾悦+0.72（新起）；下滑组合——国药御方-2.84（-17%，冲高回落）、李秉键-2.43（-31%，新卡点"CVR极低，虫草包装更新引入保险元素"）、轻录白诗黎-1.72（-29%，主体口径，备注"恢复3W本周拜访"）、徽药堂-0.89（-11%）、国药药材-0.86（-53%，"国庆起量ROI略低需勾兑"）。</li>
+<li><b>效率分层</b>：ROI&gt;1.5的组合共5个（河北荷宴系1.57/钱姥姥2.32/辽博士1.54/丽水卓灵1.85，及主体级红视1.72、冀曜1.70、好音讯1.68）；ROI&lt;1的在投组合共5个（国药御方0.93/小小家0.98/李秉键0.92/水瑾悦0.81/国药药材0.76），占在投量约44%；<b>广州迈悠电子商务（河北荷宴系内）ROI仅0.17，为效率洼地，建议重点排查</b>；在投组合加权ROI 1.10。</li>
+</ol>
+</div>
+
+<div class="card">
+<h2>五、下阶段跟进建议</h2>
+<table>
+<thead><tr><th style="width:64px">优先级</th><th style="width:280px">跟进对象</th><th style="text-align:left">关注重点</th></tr></thead>
+<tbody>
+<tr><td>P0</td><td style="text-align:left">杭州前程×小小家</td><td style="text-align:left">未标注但在投7.42万/日（+93%，清单第3大组合）——补全状态标注；跟进双11放量节奏</td></tr>
+<tr><td>P0</td><td style="text-align:left">鑫晨×国药御方</td><td style="text-align:left">高位回落-17%后双11是否重新放量；ROI 0.93卡点（待办：AIGC原生感内容+横版素材迭代）</td></tr>
+<tr><td>P0</td><td style="text-align:left">4个🟢异常行</td><td style="text-align:left">补养堂10月W2周四风控审批结果跟进；健乐健康豆子启动（GMV破5千/日）；广州美茹素材复盘；宁轩岐投放时间确认</td></tr>
+<tr><td>P1</td><td style="text-align:left">河北荷宴×华北制药</td><td style="text-align:left">17.10万/日（+13%）、主体ROI 1.6+，双11放量潜力评估；广州迈悠ROI 0.17重点排查</td></tr>
+<tr><td>P1</td><td style="text-align:left">江湖传媒×辽博士</td><td style="text-align:left">多主体接力（枫露+奢姬+金樽吟）+198%增长持续性跟踪</td></tr>
+<tr><td>P1</td><td style="text-align:left">轻录白诗黎</td><td style="text-align:left">本周拜访跟进（主体口径-29%，距"恢复3W"目标差1.1万/日）；钱姥姥系臻莓接力持续性</td></tr>
+<tr><td>P1</td><td style="text-align:left">郑州九牛×养之祖</td><td style="text-align:left">供应链上线（10月20日）后放量节奏跟进</td></tr>
+<tr><td>P2</td><td style="text-align:left">西安腾扬×国药药材 / 李秉键</td><td style="text-align:left">国药药材ROI勾兑（0.76，收缩-53%）；李秉键虫草包装更新（引入保险元素）后CVR改善情况</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="foot">
+口径说明：v2清单含28组合行/60家主体（v1为27行/32家）；新增32家主体按ops_advertiser_name精确匹配，全部命中；"未合作/暂未开始/暂无"行无主体且无消耗。闭环交叉验证锚点：小小家7.42万/日 = 闭环"小小家山货"7.42万/日 ✓；河北荷宴系17.10万/日 ≈ 闭环"华北制药"19.80万/日（差额2.7万为清单外简称主体）✓；武汉鑫顺发8月176.15万/日 ✓。截至10月25日数据已就绪。<br>
+数据来源：AMS经营数仓 ｜ 生成日期：2026-10-27 ｜ CSV清单：滋补-自建新锐DTC-工作表1 (1).csv（28组合行/60家主体） ｜ v2基于v1框架增量取数
+</div>
+</div>
+
+<script>
+var c1 = echarts.init(document.getElementById('c1'));
+c1.setOption({
+  title: {text: '全清单日耗走势（万/日·28组合行完整口径）', left: 'center', textStyle: {fontSize: 14}},
+  tooltip: {trigger: 'axis'},
+  grid: {left: 50, right: 30, bottom: 40, top: 50},
+  xAxis: {type: 'category', data: ['8月(基线)', '9.1-21', '9.22-10.11', '本双周 10.12-25']},
+  yAxis: {type: 'value', scale: true},
+  series: [{type: 'line', data: [52.18, 44.49, 62.93, 64.49], smooth: true, symbolSize: 8, itemStyle: {color: '#3478f6'},
+    areaStyle: {color: {type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{offset: 0, color: 'rgba(52,120,246,.2)'}, {offset: 1, color: 'rgba(52,120,246,.02)'}]}},
+    label: {show: true, fontSize: 11, fontWeight: 600}}]
+});
+window.addEventListener('resize', function(){ c1.resize(); });
+</script>
+<script>(function(){var _h=0,_t;function m(){var b=document.body;if(!b)return 0;return Math.max(b.scrollHeight,b.offsetHeight,Math.ceil(b.getBoundingClientRect().height))}function s(){var h=m();if(h>0&&h!==_h){_h=h;window.parent.postMessage({type:"iframe-resize",height:h},"*")}}function d(){clearTimeout(_t);_t=setTimeout(s,150)}if(document.readyState==="complete")s();else window.addEventListener("load",s);window.addEventListener("resize",d);if(typeof ResizeObserver!=="undefined"){var ro=new ResizeObserver(d);ro.observe(document.documentElement);if(document.body)ro.observe(document.body)}})();</script><div id="__idata_artifact_err_overlay__" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none;width:min(640px,calc(100vw - 48px));max-height:80vh;padding:24px 28px;background:#ffffff;border:1px solid #fca5a5;border-left:4px solid #ef4444;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.12);z-index:2147483646;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;color:#7f1d1d;box-sizing:border-box;"><div style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;margin-bottom:14px;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ef4444;color:#fff;border-radius:50%;font-size:14px;font-weight:bold;flex-shrink:0;">!</span><span>图表渲染失败</span></div><pre id="__idata_artifact_err_msg__" style="margin:0;padding:14px 16px;background:#fef2f2;border-radius:8px;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#7f1d1d;max-height:60vh;overflow:auto;"></pre><div style="margin-top:12px;font-size:11px;color:#9ca3af;line-height:1.5;"><span id="__idata_artifact_err_copy_inline__" style="color:#5867ed;cursor:pointer;text-decoration:underline;">复制错误</span><span style="margin-left:4px;">报告给大模型可自动修复该脚本</span></div><div style="margin-top:14px;display:flex;justify-content:flex-end;gap:8px;"><button id="__idata_artifact_err_copy_btn__" type="button" style="padding:6px 14px;font-size:12px;background:#fff;color:#5867ed;border:1px solid #5867ed;border-radius:6px;cursor:pointer;">复制错误</button><button id="__idata_artifact_err_ignore_btn__" type="button" style="padding:6px 14px;font-size:12px;background:#fff;color:#7f1d1d;border:1px solid #fca5a5;border-radius:6px;cursor:pointer;">忽略错误</button></div></div><script>(function(){var ov=document.getElementById('__idata_artifact_err_overlay__');var msg=document.getElementById('__idata_artifact_err_msg__');if(!ov||!msg)return;var shownSet={};var m=window.location.pathname.match(/\/artifacts_v2\/([^/]+)\/(.+)$/);var sessionId=m?m[1]:'';var artifactName=m?decodeURIComponent(m[2]):'';function _hash(s){var h=5381;for(var i=0;i<s.length;i++){h=((h<<5)+h+s.charCodeAt(i))|0;}return (h>>>0).toString(36);}function _ignoreKey(t){return 'adw:artifact:err-ignored:'+sessionId+':'+artifactName+':'+_hash(t);}function _show(t){if(!t||shownSet[t])return;shownSet[t]=1;try{if(localStorage.getItem(_ignoreKey(t))){return;}}catch(_e){}msg.textContent=String(t).slice(0,3000);ov.style.display='block';}var q=window.__idata_artifact_error__||[];for(var i=0;i<q.length;i++)_show(q[i]);window.addEventListener('error',function(ev){var parts=[];if(ev.error&&(ev.error.stack||ev.error.message)){parts.push(String(ev.error.stack||ev.error.message));}else{parts.push(ev.message||'Unknown error');}if(ev.filename){parts.push('\n(at '+ev.filename+':'+(ev.lineno||'?')+':'+(ev.colno||'?')+')');}_show(parts.join('\n'));});window.addEventListener('unhandledrejection',function(ev){var r=ev.reason;_show((r&&(r.stack||r.message))||r||'Unhandled Promise rejection');});function _copyError(){var txt=msg.textContent;if(!txt)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){},function(){_copyFallback(txt);});}else{_copyFallback(txt);}}function _copyFallback(txt){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_e){}document.body.removeChild(ta);}function _ignoreError(){var txt=msg.textContent;try{localStorage.setItem(_ignoreKey(txt),'1');}catch(_e){}ov.style.display='none';}var copyInline=document.getElementById('__idata_artifact_err_copy_inline__');if(copyInline)copyInline.addEventListener('click',_copyError);var copyBtn=document.getElementById('__idata_artifact_err_copy_btn__');if(copyBtn){copyBtn.addEventListener('click',function(){_copyError();var orig=copyBtn.textContent;copyBtn.textContent='已复制';setTimeout(function(){copyBtn.textContent=orig;},1500);});}var ignoreBtn=document.getElementById('__idata_artifact_err_ignore_btn__');if(ignoreBtn)ignoreBtn.addEventListener('click',_ignoreError);})();</script><style id="__adata_wm_style__">.__adata_wm__{position:fixed;inset:0;pointer-events:none;z-index:2147483647;background-repeat:repeat;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='160'><text x='50%' y='50%' fill='rgba(0,0,0,0.08)' font-size='14' font-family='-apple-system,Segoe UI,sans-serif' text-anchor='middle' transform='rotate(-25 120 80)'>sumiyaliu</text></svg>")}</style><div class="__adata_wm__" aria-hidden="true"></div></body>
+</html>
